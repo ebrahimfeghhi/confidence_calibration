@@ -1,0 +1,187 @@
+"""
+Run ESMFold2-Fast on FoldBench AbAg across multiple seeds.
+
+Defaults to 10% mask + 30% dropout (TTS settings). Pass --lm_mask_pct 0.0 --lm_dropout 0.0
+for a no-masking baseline.
+
+Usage:
+    # Baseline (no masking, no dropout):
+    CUDA_VISIBLE_DEVICES=3 python scripts/run_foldbench_abag.py \
+        --run_name baseline --seeds baseline_seed
+
+    # TTS (10% mask + 30% dropout):
+    CUDA_VISIBLE_DEVICES=3 python scripts/run_foldbench_abag.py \
+        --run_name esmfold2fast_tts --seeds 0 1 2 3 4 5 6 7 8 9 \
+        --lm_mask_pct 0.1 --lm_dropout 0.3
+"""
+
+import argparse
+import json
+import os
+import string
+from pathlib import Path
+
+import numpy as np
+import torch
+
+from esm.models.esmfold2 import ESMFold2InputBuilder, ProteinInput, StructurePredictionInput
+from transformers.models.esmfold2.modeling_esmfold2 import ESMFold2Model
+
+# --- repo-root bootstrap so `from paths import ...` works from any cwd ---
+import sys
+_p = Path(__file__).resolve()
+while not (_p / "paths.py").exists():
+    _p = _p.parent
+sys.path.insert(0, str(_p))
+from paths import ESM_PREDICTIONS, JSON_DIR
+
+CHAIN_LETTERS = string.ascii_uppercase
+
+
+def load_complexes(json_dir: str, glob_pattern: str = "*.json") -> list[tuple[str, StructurePredictionInput]]:
+    """Load all base (non-updated) JSON files and return (name, input) pairs."""
+    json_dir = Path(json_dir)
+    json_files = sorted(
+        p for p in json_dir.glob(glob_pattern)
+        if "updated" not in p.name and "update-msa" not in p.name
+    )
+
+    complexes = []
+    for json_path in json_files:
+        with open(json_path) as f:
+            data = json.load(f)
+
+        entry = data[0]
+        name = entry["name"]
+
+        chain_idx = 0
+        inputs = []
+        total_chains = sum(
+            s["proteinChain"].get("count", 1)
+            for s in entry["sequences"] if "proteinChain" in s
+        )
+        if total_chains > len(CHAIN_LETTERS):
+            print(f"WARNING: {name} has {total_chains} chains, exceeds {len(CHAIN_LETTERS)}-chain limit — skipping")
+            continue
+        for seq_entry in entry["sequences"]:
+            if "proteinChain" not in seq_entry:
+                continue
+            chain_data = seq_entry["proteinChain"]
+            sequence = chain_data["sequence"]
+            count = chain_data.get("count", 1)
+            ids = [CHAIN_LETTERS[chain_idx + i] for i in range(count)]
+            chain_idx += count
+            inputs.append(ProteinInput(id=ids if count > 1 else ids[0], sequence=sequence))
+
+        complexes.append((name, StructurePredictionInput(sequences=inputs)))
+
+    return complexes
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--run_name", required=True,
+                        help="Base output name. Each seed writes to foldbench_predictions/<run_name>_seed<N>/")
+    parser.add_argument("--seeds", nargs="+", default=list(range(10)))
+    parser.add_argument("--lm_mask_pct", type=float, default=0.1)
+    parser.add_argument("--lm_dropout", type=float, default=0.3)
+    parser.add_argument("--json_dir", default=str(JSON_DIR))
+    parser.add_argument("--json_files", nargs="+", default=None,
+                        help="Specific JSON files to process (overrides --json_dir).")
+    parser.add_argument("--complexes", nargs="+", default=None,
+                        help="Only process these complex names (e.g. 7txw 7ua2).")
+    parser.add_argument("--num_loops", type=int, default=16)
+    parser.add_argument("--num_sampling_steps", type=int, default=16)
+    parser.add_argument("--num_diffusion_samples", type=int, default=5)
+    args = parser.parse_args()
+
+    print("Loading ESMFold2-Fast...")
+    model = ESMFold2Model.from_pretrained("biohub/ESMFold2-Fast").cuda().eval()
+    builder = ESMFold2InputBuilder()
+
+    if args.json_files:
+        complexes = []
+        for jf in args.json_files:
+            complexes.extend(load_complexes(str(Path(jf).parent), glob_pattern=Path(jf).name))
+    else:
+        complexes = load_complexes(args.json_dir)
+    if args.complexes:
+        complexes = [(n, s) for n, s in complexes if n in args.complexes]
+    print(f"Loaded {len(complexes)} complexes from {args.json_dir}")
+
+    out_dir = ESM_PREDICTIONS / args.run_name
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    import datetime
+    config = vars(args).copy()
+    config["timestamp"] = datetime.datetime.now().isoformat()
+    config_path = out_dir / "config.json"
+    history = json.loads(config_path.read_text()) if config_path.exists() else []
+    if not isinstance(history, list):
+        history = [history]
+    history.append(config)
+    with open(config_path, "w") as f:
+        json.dump(history, f, indent=2)
+
+    for i, (name, spi) in enumerate(complexes):
+        print(f"\n{'='*60}")
+        print(f"  [{i+1}/{len(complexes)}] {name}")
+        print(f"{'='*60}")
+
+        for seed_val in args.seeds:
+            try:
+                seed_int = int(seed_val)
+                seed_dir_name = f"seed_{seed_int}"
+            except (ValueError, TypeError):
+                seed_int = 0
+                seed_dir_name = str(seed_val)
+
+            pred_dir = out_dir / name / seed_dir_name / "predictions"
+            if pred_dir.exists() and any(pred_dir.glob(f"{name}_sample_*.cif")):
+                print(f"  {seed_dir_name}  (skip — already exists)")
+                continue
+
+            print(f"  {seed_dir_name} ...", end="", flush=True)
+            try:
+                result = builder.fold(
+                    model,
+                    spi,
+                    seed=seed_int,
+                    num_loops=args.num_loops,
+                    num_sampling_steps=args.num_sampling_steps,
+                    num_diffusion_samples=args.num_diffusion_samples,
+                    lm_mask_pct=args.lm_mask_pct,
+                    lm_dropout=args.lm_dropout,
+                )
+                samples = result if isinstance(result, list) else [result]
+                pred_dir.mkdir(parents=True, exist_ok=True)
+                for k, sample in enumerate(samples):
+                    with open(pred_dir / f"{name}_sample_{k}.cif", "w") as f:
+                        f.write(sample.complex.to_mmcif())
+                    iptm = sample.iptm if sample.iptm is not None else (sample.ptm or 0.0)
+                    conf = {
+                        "ranking_score": iptm,
+                        "iptm": sample.iptm,
+                        "ptm": sample.ptm,
+                        "chain_pair_iptm": sample.pair_chains_iptm.tolist() if sample.pair_chains_iptm is not None else None,
+                    }
+                    with open(pred_dir / f"{name}_summary_confidence_sample_{k}.json", "w") as f:
+                        json.dump(conf, f)
+                    if sample.plddt is not None:
+                        np.save(pred_dir / f"{name}_plddt_sample_{k}.npy",
+                                sample.plddt.half().cpu().numpy())
+                    if sample.pae is not None:
+                        np.save(pred_dir / f"{name}_pae_sample_{k}.npy",
+                                sample.pae.half().cpu().numpy())
+                best_iptm = max(s.iptm or s.ptm or 0.0 for s in samples)
+                print(f"  best ipTM={best_iptm:.3f}")
+            except Exception as e:
+                print(f"  ERROR: {e}")
+            finally:
+                torch.cuda.empty_cache()
+
+    print("\nDone.")
+
+
+if __name__ == "__main__":
+    main()
