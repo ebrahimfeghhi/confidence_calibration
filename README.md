@@ -25,8 +25,7 @@ run/
   protenix/         # Protenix-v2 inference (needs the Protenix venv + checkpoint)
     run_benchmark_parallel.py        # 113-structure benchmark, seeds split across GPUs
 eval/               # model-agnostic
-    eval_ost_foldbench.py            # OST/DockQ for every sample -> CSV
-    compute_avg_abag_iptm.py         # add avg_abag_iptm / new_ranking_score cols
+    eval_ost_foldbench.py            # OST/DockQ + confidence scores per sample -> CSV
     compute_msa_depths.py            # MSA depths from JSONs (needs Protenix venv)
 plot/
     plot_scaling_ost.py              # TTS scaling curve + per-interface barplot
@@ -49,9 +48,9 @@ so you can invoke them from anywhere; just use the right interpreter.
 |-------|-------------------|-----|
 | `run/esm/*` | `~/esm/.venv/bin/python` (`paths.ESM_PYTHON`) | imports the `esm` package |
 | `run/protenix/run_benchmark_parallel.py` | `~/Protenix/.venv/bin/python` + `~/checkpoint` | calls Protenix `runner/inference.py` |
-| `eval/eval_ost_foldbench.py` | any python with `tqdm`; needs the `foldbench` conda env's **OST** binary (`paths.OST_BIN`) | runs `ost compare-structures` |
+| `eval/eval_ost_foldbench.py` | python with `tqdm` + `biotite` (else falls back to a `PROTENIX_PYTHON` subprocess); needs the `foldbench` conda env's **OST** binary (`paths.OST_BIN`) | runs `ost compare-structures` |
 | `eval/compute_msa_depths.py` | `~/Protenix/.venv/bin/python` | imports `protenix.data` |
-| `eval/compute_avg_abag_iptm.py`, `plot/*` | any python with numpy/matplotlib | pure post-processing |
+| `plot/*` | any python with numpy/matplotlib | pure post-processing |
 | `analysis/analyze_masks_7yxu.py` | `~/esm/.venv/bin/python` | imports the `esm` package |
 
 ## End-to-end example (ESMFold2 TTS)

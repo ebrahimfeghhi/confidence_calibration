@@ -4,7 +4,8 @@ Plot TTS scaling curve from dockq_ost.csv (FoldBench OST evaluation).
 For N seeds: draw 300 bootstrap samples of N seeds per interface,
 pick best by score_col, compute pass rate (DockQ >= threshold).
 
-Two curves are always overlaid: pair_iptm selection vs new_ranking_score selection.
+One curve per available selection score (pair_ranking_score, global_ranking_score,
+pair_iptm, global_iptm); older CSVs using new_ranking_score/iptm are read via aliases.
 Only N values where every N=1 interface has >= N seeds are plotted.
 
 Usage:
@@ -25,6 +26,23 @@ while not (_p / "paths.py").exists():
     _p = _p.parent
 sys.path.insert(0, str(_p))
 from paths import RESULTS_DIR
+
+# Map each canonical score column to the names it may appear under (new schema
+# first, then older aliases) so plots work on both old and new eval CSVs.
+SCORE_ALIASES = {
+    "pair_ranking_score":   ["pair_ranking_score", "new_ranking_score"],
+    "global_ranking_score": ["global_ranking_score"],
+    "pair_iptm":            ["pair_iptm"],
+    "global_iptm":          ["global_iptm", "iptm"],
+}
+
+
+def resolve_col(fieldnames, canonical):
+    """Return the column actually present in the CSV for a canonical score name."""
+    for name in SCORE_ALIASES.get(canonical, [canonical]):
+        if name in fieldnames:
+            return name
+    return None
 
 
 def load_data(csv_path, score_col):
@@ -128,28 +146,32 @@ def main():
         fieldnames = csv.DictReader(f).fieldnames or []
 
     SCORE_COLS = [
-        ("new_ranking_score",    "blue"),
+        ("pair_ranking_score",   "blue"),
         ("global_ranking_score", "green"),
         ("pair_iptm",            "orange"),
-        ("iptm",                 "red"),
+        ("global_iptm",          "red"),
     ]
-    curves = [(col, color) for col, color in SCORE_COLS if col in fieldnames]
+    curves = []  # (canonical, actual_column, color)
+    for canonical, color in SCORE_COLS:
+        actual = resolve_col(fieldnames, canonical)
+        if actual:
+            curves.append((canonical, actual, color))
     if not curves:
-        curves = [("ranking_score", "blue")]
+        curves = [("ranking_score", "ranking_score", "blue")]
 
     all_results = {}
     baseline = None
     baseline_color = "blue"
-    for score_col, color in curves:
-        by_iface, bl = load_data(csv_path, score_col=score_col)
-        print(f"Interfaces loaded: {len(by_iface)}  (scored by {score_col})")
-        all_results[score_col] = (by_iface, compute_tts(by_iface, NS, threshold=args.threshold))
-        if score_col == "new_ranking_score":
+    for canonical, actual, color in curves:
+        by_iface, bl = load_data(csv_path, score_col=actual)
+        print(f"Interfaces loaded: {len(by_iface)}  (scored by {canonical})")
+        all_results[canonical] = (by_iface, compute_tts(by_iface, NS, threshold=args.threshold))
+        if canonical == "pair_ranking_score":
             baseline, baseline_color = bl, color
 
-    for score_col, _ in curves:
-        _, results = all_results[score_col]
-        print(f"\n[{score_col}]")
+    for canonical, _actual, _color in curves:
+        _, results = all_results[canonical]
+        print(f"\n[{canonical}]")
         print(f"{'N':>4}  {'Pass Rate':>10}  {'±SD':>6}  {'Interfaces':>12}")
         print("-" * 40)
         for r in results:
@@ -164,18 +186,18 @@ def main():
 
         fig, ax = plt.subplots(figsize=(8, 5))
 
-        for score_col, color in curves:
-            _, results = all_results[score_col]
+        for canonical, actual, color in curves:
+            _, results = all_results[canonical]
             n_vals = [r["n"] for r in results]
             pr     = [r["pass_rate"] for r in results]
             sd     = [r["sd"] for r in results]
             LABELS = {
-                "new_ranking_score":    "0.8*pair_iptm + 0.2*ptm - clash",
-                "global_ranking_score": "0.8*iptm + 0.2*ptm - clash",
+                "pair_ranking_score":   "0.8*pair_iptm + 0.2*ptm - clash",
+                "global_ranking_score": "0.8*global_iptm + 0.2*ptm - clash",
                 "pair_iptm":            "pair_iptm",
-                "iptm":                 "iptm",
+                "global_iptm":          "global_iptm",
             }
-            label = LABELS.get(score_col, score_col)
+            label = LABELS.get(canonical, canonical)
             ax.plot(n_vals, [p * 100 for p in pr], "-o", color=color, markersize=6, label=label)
             ax.fill_between(n_vals,
                             [(p - s) * 100 for p, s in zip(pr, sd)],

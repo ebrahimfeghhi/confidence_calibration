@@ -9,7 +9,14 @@ Key design:
   - chain_mapping (ref→model chain dict) is saved for reference.
 
 Output: one row per (assembly_id, chain1, chain2, seed, sample)
-Columns: assembly_id, chain1, chain2, seed, sample, pair_iptm, new_ranking_score, iptm, global_ranking_score, dockq, chain_mapping
+Columns: assembly_id, chain1, chain2, seed, sample,
+         dockq,                 # interface DockQ (primary metric)
+         pair_iptm,             # this interface's chain-pair ipTM
+         global_iptm,           # whole-complex ipTM
+         ptm,                   # whole-complex pTM
+         pair_ranking_score,    # 0.8*pair_iptm   + 0.2*ptm - 100*clash
+         global_ranking_score,  # 0.8*global_iptm + 0.2*ptm - 100*clash
+         chain_mapping          # OST ref->model chain map (debug)
 
 Usage:
   python eval_ost_foldbench.py --pred_dir foldbench_abag/predictions_template
@@ -44,8 +51,8 @@ TARGETS_CSV  = paths.TARGETS_CSV
 
 MAX_WORKERS = 100
 FIELDNAMES  = ["assembly_id", "chain1", "chain2", "seed", "sample",
-               "pair_iptm", "new_ranking_score", "iptm", "global_ranking_score",
-               "dockq", "chain_mapping"]
+               "dockq", "pair_iptm", "global_iptm", "ptm",
+               "pair_ranking_score", "global_ranking_score", "chain_mapping"]
 
 POSTPROCESS_SCRIPT = """
 import sys
@@ -72,7 +79,48 @@ cif_file.write(dst)
 """
 
 
+try:
+    import biotite.structure.io.pdbx as _pdbx
+    _HAVE_BIOTITE = True
+except Exception:
+    _HAVE_BIOTITE = False
+
+
+def _postprocess_cif_inproc(src: Path, dst: Path) -> bool:
+    """Same patch as POSTPROCESS_SCRIPT, but in-process (no subprocess)."""
+    cif_file = _pdbx.CIFFile.read(str(src))
+    block = cif_file.block
+    atom_site = block.get("atom_site")
+    n = len(atom_site["group_PDB"])
+    atom_site["occupancy"]      = _pdbx.CIFColumn(_pdbx.CIFData(["1"] * n))
+    atom_site["B_iso_or_equiv"] = _pdbx.CIFColumn(_pdbx.CIFData(["0"] * n))
+    dict_entity_id = {}
+    for eid, grp in zip(atom_site["label_entity_id"].as_array().tolist(),
+                        atom_site["group_PDB"].as_array().tolist()):
+        if eid not in dict_entity_id:
+            dict_entity_id[eid] = ("polymer" if grp == "ATOM" else "non-polymer", grp)
+        elif dict_entity_id[eid][1] != grp:
+            dict_entity_id[eid] = ("polymer", grp)
+    block["entity"] = _pdbx.CIFCategory({
+        "id":   list(dict_entity_id.keys()),
+        "type": [dict_entity_id[k][0] for k in dict_entity_id.keys()],
+    })
+    cif_file.write(str(dst))
+    return True
+
+
 def postprocess_cif(src: Path, dst: Path) -> bool:
+    """Patch occupancy/B-factor/entity so OST can read a predicted CIF.
+
+    Done in-process when biotite is importable (faster, and the eval no longer
+    needs the Protenix venv just for this); otherwise falls back to running the
+    same code via a PROTENIX_PYTHON subprocess.
+    """
+    if _HAVE_BIOTITE:
+        try:
+            return _postprocess_cif_inproc(src, dst)
+        except Exception:
+            pass  # any in-process failure -> try the subprocess path below
     r = subprocess.run(
         [PROTENIX_PYTHON, "-c", POSTPROCESS_SCRIPT, str(src), str(dst)],
         capture_output=True, text=True, timeout=60,
@@ -102,7 +150,7 @@ def chain_to_asym_id(chain_id: str) -> int:
 
 
 def compute_confidence_scores(conf: dict, chain_mapping: dict, chain1: str, chain2: str) -> dict:
-    """Return pair_iptm, new_ranking_score, iptm, and global_ranking_score.
+    """Return pair_iptm, pair_ranking_score, global_iptm, ptm, global_ranking_score.
 
     Uses OST chain_mapping (ref->model) so that pair_iptm correctly indexes
     chain_pair_iptm even when model chains are not in the same order as reference chains.
@@ -126,21 +174,25 @@ def compute_confidence_scores(conf: dict, chain_mapping: dict, chain1: str, chai
             try:
                 i, j = chain_to_asym_id(m1), chain_to_asym_id(m2)
                 pair_iptm = (matrix[i][j] + matrix[j][i]) / 2
-                new_ranking_score = 0.8 * pair_iptm + 0.2 * ptm - 100 * has_clash
+                pair_ranking_score = 0.8 * pair_iptm + 0.2 * ptm - 100 * has_clash
             except (IndexError, TypeError):
-                pair_iptm = new_ranking_score = nan
+                pair_iptm = pair_ranking_score = nan
         else:
-            pair_iptm = new_ranking_score = nan
+            pair_iptm = pair_ranking_score = nan
     else:
-        pair_iptm = new_ranking_score = nan
+        pair_iptm = pair_ranking_score = nan
 
-    iptm = conf.get("iptm", nan)
-    global_ranking_score = 0.8 * iptm + 0.2 * ptm - 100 * has_clash if iptm == iptm else nan
+    global_iptm = conf.get("iptm", nan)
+    global_ranking_score = (
+        0.8 * global_iptm + 0.2 * ptm - 100 * has_clash
+        if global_iptm == global_iptm else nan
+    )
 
     return {
         "pair_iptm": pair_iptm,
-        "new_ranking_score": new_ranking_score,
-        "iptm": iptm,
+        "pair_ranking_score": pair_ranking_score,
+        "global_iptm": global_iptm,
+        "ptm": ptm,
         "global_ranking_score": global_ranking_score,
     }
 
@@ -301,9 +353,18 @@ def main():
                 for future in as_completed(futures):
                     try:
                         rows = future.result()
-                        with write_lock:
-                            writer.writerows(rows)
-                            csvfile.flush()
+                        # A group re-runs if ANY of its interfaces is missing, but
+                        # only the missing interfaces should be written — drop rows
+                        # already in the CSV so resume never duplicates.
+                        rows = [
+                            r for r in rows
+                            if (r["assembly_id"], r["chain1"], r["chain2"],
+                                str(r["seed"]), int(r["sample"])) not in done
+                        ]
+                        if rows:
+                            with write_lock:
+                                writer.writerows(rows)
+                                csvfile.flush()
                     except Exception as e:
                         tqdm.write(f"ERROR: {e}")
                     finally:

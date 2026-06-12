@@ -17,7 +17,7 @@ sys.path.insert(0, str(_p))
 from paths import RESULTS_DIR
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--csv", default="foldbench_abag/dockq_ost_predictions_template_all_samples_scored.csv")
+parser.add_argument("--csv", default="foldbench_abag/dockq_ost_predictions_template_all_samples.csv")
 parser.add_argument("--out", default=str(RESULTS_DIR / "tts_scatter.png"))
 parser.add_argument("--threshold", type=float, default=0.23)
 args = parser.parse_args()
@@ -29,7 +29,7 @@ THRESHOLD = args.threshold
 by_iface = defaultdict(lambda: defaultdict(list))  # key -> seed -> [(score, dq)]
 with open(CSV) as f:
     reader = csv.DictReader(f)
-    score_col = next((c for c in ["pair_iptm", "new_ranking_score", "ranking_score_new", "avg_abag_iptm", "ranking_score"]
+    score_col = next((c for c in ["pair_iptm", "pair_ranking_score", "new_ranking_score", "ranking_score"]
                       if c in reader.fieldnames), "ranking_score")
     for row in reader:
         try:

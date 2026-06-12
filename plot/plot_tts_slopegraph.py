@@ -18,7 +18,7 @@ while not (_p / "paths.py").exists():
 sys.path.insert(0, str(_p))
 from paths import RESULTS_DIR
 
-CSV       = Path("foldbench_abag/dockq_ost_predictions_template_all_samples_scored.csv")
+CSV       = Path("foldbench_abag/dockq_ost_predictions_template_all_samples.csv")
 OUT       = RESULTS_DIR / "tts_slopegraph.png"
 THRESHOLD = 0.23
 
