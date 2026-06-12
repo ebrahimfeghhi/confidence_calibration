@@ -23,7 +23,7 @@ run/
     run_foldbench_abag.py            # fold all complexes for a set of seeds
     run_foldbench_abag_parallel.py   # fan the above out across GPUs
   protenix/         # Protenix-v2 inference (needs the Protenix venv + checkpoint)
-    run_benchmark.sh                 # 113-structure benchmark across GPUs
+    run_benchmark_parallel.py        # 113-structure benchmark, seeds split across GPUs
 eval/               # model-agnostic
     eval_ost_foldbench.py            # OST/DockQ for every sample -> CSV
     compute_avg_abag_iptm.py         # add avg_abag_iptm / new_ranking_score cols
@@ -48,7 +48,7 @@ so you can invoke them from anywhere; just use the right interpreter.
 | Stage | Interpreter / env | Why |
 |-------|-------------------|-----|
 | `run/esm/*` | `~/esm/.venv/bin/python` (`paths.ESM_PYTHON`) | imports the `esm` package |
-| `run/protenix/run_benchmark.sh` | `~/Protenix/.venv/bin/python` + `~/checkpoint` | calls Protenix `runner/inference.py` |
+| `run/protenix/run_benchmark_parallel.py` | `~/Protenix/.venv/bin/python` + `~/checkpoint` | calls Protenix `runner/inference.py` |
 | `eval/eval_ost_foldbench.py` | any python with `tqdm`; needs the `foldbench` conda env's **OST** binary (`paths.OST_BIN`) | runs `ost compare-structures` |
 | `eval/compute_msa_depths.py` | `~/Protenix/.venv/bin/python` | imports `protenix.data` |
 | `eval/compute_avg_abag_iptm.py`, `plot/*` | any python with numpy/matplotlib | pure post-processing |
@@ -77,8 +77,17 @@ python plot/plot_scaling_ost.py \
 # -> results/tts_esmfold2fast_tts.png  and  results/tts_esmfold2fast_tts_barplot.png
 ```
 
-For Protenix, replace step 1 with `bash run/protenix/run_benchmark.sh` and point
-`eval` at `paths.PROTENIX_PREDICTIONS`. Steps 2–3 are identical.
+For Protenix, replace step 1 with the parallel launcher (same seeds-axis design as
+ESM — each GPU runs all structures for its share of seeds, one checkpoint load per
+GPU, resume-aware):
+
+```bash
+~/Protenix/.venv/bin/python run/protenix/run_benchmark_parallel.py \
+    --gpus 0 1 3 4 --seeds $(seq 101 110)
+# add --dry_run to preview per-GPU seeds, structure counts, and commands first
+```
+
+Then point `eval` at `paths.PROTENIX_PREDICTIONS`. Steps 2–3 are identical.
 
 ## Overriding paths
 
