@@ -22,7 +22,6 @@ run/
   esm/              # ESMFold2-Fast inference (needs the esm venv)
     run_foldbench_abag.py            # fold all complexes for a set of seeds
     run_foldbench_abag_parallel.py   # fan the above out across GPUs
-    monitor_and_launch.sh            # staged multi-batch launcher
   protenix/         # Protenix-v2 inference (needs the Protenix venv + checkpoint)
     run_benchmark.sh                 # 113-structure benchmark across GPUs
 eval/               # model-agnostic
