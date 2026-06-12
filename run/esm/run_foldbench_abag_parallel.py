@@ -20,7 +20,8 @@ _p = Path(__file__).resolve()
 while not (_p / "paths.py").exists():
     _p = _p.parent
 sys.path.insert(0, str(_p))
-from paths import ESM_PREDICTIONS, JSON_DIR
+from paths import ESM_PREDICTIONS, ESM_PYTHON, JSON_DIR
+from runlog import save_run_config
 
 
 def main():
@@ -41,8 +42,13 @@ def main():
     n_gpus = len(args.gpus)
     seed_chunks = [args.seeds[i::n_gpus] for i in range(n_gpus)]
 
-    log_dir = ESM_PREDICTIONS / args.run_name / "logs"
+    out_dir = ESM_PREDICTIONS / args.run_name
+    log_dir = out_dir / "logs"
     log_dir.mkdir(parents=True, exist_ok=True)
+
+    # Log the whole run once here; inner processes get --no_config_log so they
+    # don't each write a (racy) duplicate.
+    save_run_config(out_dir, {"model": "biohub/ESMFold2-Fast", **vars(args)})
 
     script = Path(__file__).resolve().parent / "run_foldbench_abag.py"
     procs = []
@@ -50,7 +56,7 @@ def main():
         if not seeds:
             continue
         cmd = [
-            sys.executable, str(script),
+            str(ESM_PYTHON), str(script),
             "--run_name", args.run_name,
             "--seeds", *map(str, seeds),
             "--num_loops", str(args.num_loops),
@@ -59,6 +65,7 @@ def main():
             "--lm_mask_pct", str(args.lm_mask_pct),
             "--lm_dropout", str(args.lm_dropout),
             "--json_dir", args.json_dir,
+            "--no_config_log",
         ]
         if args.complexes:
             cmd += ["--complexes", *args.complexes]

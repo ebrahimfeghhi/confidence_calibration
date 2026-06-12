@@ -89,6 +89,17 @@ GPU, resume-aware):
 
 Then point `eval` at `paths.PROTENIX_PREDICTIONS`. Steps 2–3 are identical.
 
+## Run configs
+
+Every run records its exact parameters. Both launchers call `save_run_config`
+(`runlog.py`), writing one JSON snapshot per invocation to
+`<run_dir>/configs/<timestamp>__<uuid>.json` — params + timestamp, host, pid, and
+the `tts_abag` git commit. The unique filename means concurrent GPU processes never
+clobber each other (the launcher logs the run once; inner workers get
+`--no_config_log`). So any prediction dir is self-describing; no external tracker
+needed. (If you later want cross-run dashboards, the natural place is the eval stage,
+logging config + DockQ pass-rate once results exist.)
+
 ## Overriding paths
 
 Every constant in `paths.py` reads an env var of the same name first, e.g.:

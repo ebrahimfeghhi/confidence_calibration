@@ -34,6 +34,7 @@ while not (_p / "paths.py").exists():
     _p = _p.parent
 sys.path.insert(0, str(_p))
 from paths import ESM_PREDICTIONS, JSON_DIR
+from runlog import save_run_config
 
 CHAIN_LETTERS = string.ascii_uppercase
 
@@ -93,6 +94,9 @@ def main():
     parser.add_argument("--num_loops", type=int, default=16)
     parser.add_argument("--num_sampling_steps", type=int, default=16)
     parser.add_argument("--num_diffusion_samples", type=int, default=5)
+    parser.add_argument("--no_config_log", action="store_true",
+                        help="Skip writing a config snapshot (set by the parallel "
+                             "launcher, which logs the run once itself).")
     args = parser.parse_args()
 
     print("Loading ESMFold2-Fast...")
@@ -112,16 +116,10 @@ def main():
     out_dir = ESM_PREDICTIONS / args.run_name
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    import datetime
-    config = vars(args).copy()
-    config["timestamp"] = datetime.datetime.now().isoformat()
-    config_path = out_dir / "config.json"
-    history = json.loads(config_path.read_text()) if config_path.exists() else []
-    if not isinstance(history, list):
-        history = [history]
-    history.append(config)
-    with open(config_path, "w") as f:
-        json.dump(history, f, indent=2)
+    # Standalone runs log their own config; under the parallel launcher this is
+    # suppressed (--no_config_log) so the launcher records the run exactly once.
+    if not args.no_config_log:
+        save_run_config(out_dir, {"model": "biohub/ESMFold2-Fast", **vars(args)})
 
     for i, (name, spi) in enumerate(complexes):
         print(f"\n{'='*60}")

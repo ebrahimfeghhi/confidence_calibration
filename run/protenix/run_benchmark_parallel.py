@@ -34,6 +34,7 @@ sys.path.insert(0, str(_p))
 from paths import (
     PROTENIX_REPO, PROTENIX_PYTHON, PROTENIX_CKPT, PROTENIX_PREDICTIONS, JSON_DIR,
 )
+from runlog import save_run_config
 
 GLOB = "*-final-updated.json"
 INFERENCE = "runner/inference.py"  # relative to PROTENIX_REPO (must be cwd)
@@ -88,6 +89,7 @@ def main():
 
     if not args.dry_run:
         dump_dir.mkdir(parents=True, exist_ok=True)
+        save_run_config(dump_dir, {"model": args.model_name, **vars(args)})
 
     procs = []
     for gpu, seeds in zip(args.gpus, seed_chunks):
