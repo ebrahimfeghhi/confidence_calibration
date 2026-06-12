@@ -125,6 +125,38 @@ def baseline_pass_rate(baseline_by_iface, threshold):
     return sum(1 for dq in dqs if dq >= threshold) / len(dqs)
 
 
+def print_seed_summary(by_iface, ns):
+    """Show the seed-count landscape so you can choose --ns sensibly.
+
+    Strict mode only plots an N where EVERY interface has >= N seeds, so the
+    curve's max N is the minimum seed count across interfaces. This prints, for
+    each requested N, how many interfaces qualify and whether that N will plot,
+    then names the interfaces holding the curve back.
+    """
+    counts = sorted(len(v) for v in by_iface.values())
+    n_ifaces = len(counts)
+    if not n_ifaces:
+        print("\nNo interfaces with seeds loaded.")
+        return
+    min_seeds = counts[0]
+    print(f"\nSeed counts across {n_ifaces} interfaces: "
+          f"min={min_seeds}  median={counts[n_ifaces // 2]}  max={counts[-1]}")
+    print(f"  {'N':>5}  {'interfaces w/ >= N':>18}")
+    for n in sorted(set(ns)):
+        k = sum(1 for c in counts if c >= n)
+        flag = "all (plotted)" if k == n_ifaces else f"{n_ifaces - k} short (dropped)"
+        print(f"  {n:>5}  {k:>18}   {flag}")
+    plotted = [n for n in sorted(ns) if n <= min_seeds]
+    print(f"  -> strict curve reaches N={max(plotted) if plotted else None} "
+          f"(min seed count = {min_seeds})")
+    laggards = sorted(((len(v), k) for k, v in by_iface.items() if len(v) < counts[-1]),
+                      key=lambda x: x[0])[:6]
+    if laggards:
+        print("  interfaces below max seed count:")
+        for cnt, (aid, c1, c2) in laggards:
+            print(f"      {cnt:>3} seeds   {aid} {c1}|{c2}")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--csv",       default="foldbench_abag/Protenix_dockq.csv")
@@ -168,6 +200,9 @@ def main():
         all_results[canonical] = (by_iface, compute_tts(by_iface, NS, threshold=args.threshold))
         if canonical == "pair_ranking_score":
             baseline, baseline_color = bl, color
+
+    # Seed-count landscape (based on the primary score column) so you can pick --ns.
+    print_seed_summary(all_results[curves[0][0]][0], NS)
 
     for canonical, _actual, _color in curves:
         _, results = all_results[canonical]

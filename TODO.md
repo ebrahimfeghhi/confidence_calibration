@@ -18,6 +18,14 @@ Things parked for later, with enough context to pick up cold.
   `/tmp/protenix_smoketest/configs/`.
 
 ## Optional / nice-to-have
+- [ ] **Switch example commands to `uv run` (user preference).** `esm` is a uv project
+  (`pyproject.toml`+`uv.lock`); `Protenix` is not. Almost everything runs via the esm
+  env — only `compute_msa_depths.py` imports `protenix`. Plan: update README + script
+  docstring examples to `uv run --no-sync --project ~/esm python <script>` (the
+  `--no-sync` guards the esm venv while jobs run); leave `compute_msa_depths.py` on
+  `~/Protenix/.venv/bin/python` (Protenix isn't a uv project — converting it later is a
+  separate task). Leave launcher *internal* subprocess plumbing (`ESM_PYTHON`/
+  `PROTENIX_PYTHON`) as-is — those are the same envs uv would use.
 - [ ] **Cross-run tracking at the eval stage.** If we want dashboards comparing run
   configs to DockQ outcomes, log `config + pass-rate` to wandb (or append a row to a
   `runs.csv`) from the eval/plot step — *not* the run step (runs emit no live metrics).
