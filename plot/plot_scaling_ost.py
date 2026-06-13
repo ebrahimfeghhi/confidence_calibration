@@ -118,6 +118,18 @@ def compute_tts(by_iface, ns, n_bootstrap=300, threshold=0.23):
     return results
 
 
+def restrict_baseline(baseline_by_iface, by_iface):
+    """Keep only baseline interfaces that also appear in the TTS curve set.
+
+    The CSV often carries baseline_seed rows for far more interfaces than have
+    normal seeds, so an unrestricted baseline averages over a different (larger)
+    population than the curves and isn't comparable. Restricting to the curve's
+    keys makes the baseline star an apples-to-apples reference at N=1.
+    """
+    curve_keys = set(by_iface)
+    return {k: v for k, v in baseline_by_iface.items() if k in curve_keys}
+
+
 def baseline_pass_rate(baseline_by_iface, threshold):
     if not baseline_by_iface:
         return None
@@ -141,6 +153,12 @@ def print_seed_summary(by_iface, ns):
     min_seeds = counts[0]
     print(f"\nSeed counts across {n_ifaces} interfaces: "
           f"min={min_seeds}  median={counts[n_ifaces // 2]}  max={counts[-1]}")
+    if min_seeds != counts[-1]:
+        n_below = sum(1 for c in counts if c < counts[-1])
+        print(f"  ⚠ UNEVEN SEED COUNTS: {n_below}/{n_ifaces} interfaces have "
+              f"fewer than {counts[-1]} seeds (range {min_seeds}–{counts[-1]}).")
+        print(f"    The strict curve stops at N={min_seeds}; interfaces are weighted "
+              f"equally, so under-seeded ones add noise at high N.")
     print(f"  {'N':>5}  {'interfaces w/ >= N':>18}")
     for n in sorted(set(ns)):
         k = sum(1 for c in counts if c >= n)
@@ -199,7 +217,14 @@ def main():
         print(f"Interfaces loaded: {len(by_iface)}  (scored by {canonical})")
         all_results[canonical] = (by_iface, compute_tts(by_iface, NS, threshold=args.threshold))
         if canonical == "pair_ranking_score":
-            baseline, baseline_color = bl, color
+            n_all = len(bl)
+            baseline = restrict_baseline(bl, by_iface)
+            baseline_color = color
+            dropped = n_all - len(baseline)
+            if dropped:
+                print(f"  baseline restricted to curve interfaces: "
+                      f"{len(baseline)} kept, {dropped} baseline-only dropped "
+                      f"(was {n_all})")
 
     # Seed-count landscape (based on the primary score column) so you can pick --ns.
     print_seed_summary(all_results[curves[0][0]][0], NS)
