@@ -91,6 +91,9 @@ def main():
                         help="Specific JSON files to process (overrides --json_dir).")
     parser.add_argument("--complexes", nargs="+", default=None,
                         help="Only process these complex names (e.g. 7txw 7ua2).")
+    parser.add_argument("--exclude_complexes", nargs="+", default=None,
+                        help="Skip these complex names (e.g. oversized targets that OOM "
+                             "the confidence head). Applied after --complexes.")
     parser.add_argument("--num_loops", type=int, default=16)
     parser.add_argument("--num_sampling_steps", type=int, default=16)
     parser.add_argument("--num_diffusion_samples", type=int, default=5)
@@ -120,6 +123,9 @@ def main():
         complexes = load_complexes(args.json_dir)
     if args.complexes:
         complexes = [(n, s) for n, s in complexes if n in args.complexes]
+    if args.exclude_complexes:
+        excluded = set(args.exclude_complexes)
+        complexes = [(n, s) for n, s in complexes if n not in excluded]
     print(f"Loaded {len(complexes)} complexes from {args.json_dir}")
 
     out_dir = ESM_PREDICTIONS / args.run_name

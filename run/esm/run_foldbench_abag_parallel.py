@@ -41,6 +41,8 @@ def main():
     parser.add_argument("--json_dir", default=str(JSON_DIR))
     parser.add_argument("--complexes", nargs="+", default=None,
                         help="Only process these complex names (e.g. 7txw 7ua2).")
+    parser.add_argument("--exclude_complexes", nargs="+", default=None,
+                        help="Skip these complex names (forwarded to each worker).")
     args = parser.parse_args()
 
     n_gpus = len(args.gpus)
@@ -74,6 +76,8 @@ def main():
         ]
         if args.complexes:
             cmd += ["--complexes", *args.complexes]
+        if args.exclude_complexes:
+            cmd += ["--exclude_complexes", *args.exclude_complexes]
         log_path = log_dir / f"gpu{gpu}.log"
         log_file = open(log_path, "w")
         proc = subprocess.Popen(cmd, env={**os.environ, "CUDA_VISIBLE_DEVICES": str(gpu),

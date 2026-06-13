@@ -18,6 +18,22 @@ Things parked for later, with enough context to pick up cold.
   `/tmp/protenix_smoketest/configs/`.
 
 ## Optional / nice-to-have
+- [ ] **Per-sample confidence head to fit large complexes (one diffusion sample at a
+  time).** ConfidenceHead OOMs on large AbAg targets (≥~1,440 res — the 16 currently
+  excluded: 8evd 7zau 8r4u 8xnh 7z2m 8oud 8fym 8en5 8pn0 8pyr 8j7t 8udz 8bf4 8dn7 8et0
+  7z1x) because it runs a full folding trunk over the L×L pair batched across **all**
+  `num_diffusion_samples` at once (`repeat_interleave` → Bm=5) in
+  `transformers/models/esmfold2/modeling_esmfold2.py` (~L201 `pair =
+  self._repeat_batch(z_base, num_diffusion_samples)`; trunk at ~L224). Even chunk_size 16
+  OOMs at L≈1440 (~93 GB) — the per-sample base allocation is un-chunkable and the 5×
+  batch is the multiplier. **Fix:** loop the confidence head over diffusion samples
+  one-at-a-time (batch=1), concatenating per-sample outputs
+  (plddt/pae/pde/ptm/iptm/pair_chains_iptm), instead of batching all 5. Cuts
+  confidence-head peak ~5× → large complexes fit; numerically identical; keeps 5 samples
+  + 50 seeds (honors the no-change-to-samples constraint). Trade-off: edits vendored
+  site-packages `modeling_esmfold2.py` (fragile — re-apply after reinstall) and is
+  slightly slower (serial over samples, but confidence is a small fraction of fold time).
+  Then re-run the 16 excluded complexes (drop `--exclude_complexes`).
 - [ ] **Switch example commands to `uv run` (user preference).** `esm` is a uv project
   (`pyproject.toml`+`uv.lock`); `Protenix` is not. Almost everything runs via the esm
   env — only `compute_msa_depths.py` imports `protenix`. Plan: update README + script
