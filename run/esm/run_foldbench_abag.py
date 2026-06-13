@@ -94,6 +94,11 @@ def main():
     parser.add_argument("--num_loops", type=int, default=16)
     parser.add_argument("--num_sampling_steps", type=int, default=16)
     parser.add_argument("--num_diffusion_samples", type=int, default=5)
+    parser.add_argument("--chunk_size", type=int, default=32,
+                        help="Token-axis chunk for L² ops (triangle/OPM/pair-transition) "
+                             "in both the folding trunk and the confidence head. Lower = "
+                             "less GPU memory, slightly slower; numerically identical. "
+                             "Default 32 (model default is 64). Pass 0 to disable chunking.")
     parser.add_argument("--no_config_log", action="store_true",
                         help="Skip writing a config snapshot (set by the parallel "
                              "launcher, which logs the run once itself).")
@@ -101,6 +106,10 @@ def main():
 
     print("Loading ESMFold2-Fast...")
     model = ESMFold2Model.from_pretrained("biohub/ESMFold2-Fast").cuda().eval()
+    # Cap the L² intermediates in both the trunk and the confidence head; the
+    # confidence head batches all diffusion samples through a full trunk pass and
+    # is the main OOM source on the largest AbAg complexes. None = chunking off.
+    model.set_chunk_size(args.chunk_size if args.chunk_size > 0 else None)
     builder = ESMFold2InputBuilder()
 
     if args.json_files:

@@ -34,6 +34,10 @@ def main():
     parser.add_argument("--num_loops", type=int, default=16)
     parser.add_argument("--num_sampling_steps", type=int, default=16)
     parser.add_argument("--num_diffusion_samples", type=int, default=5)
+    parser.add_argument("--chunk_size", type=int, default=32,
+                        help="Token-axis chunk for L² ops (forwarded to each worker). "
+                             "Lower = less GPU memory, slightly slower; numerically "
+                             "identical. Default 32. Pass 0 to disable chunking.")
     parser.add_argument("--json_dir", default=str(JSON_DIR))
     parser.add_argument("--complexes", nargs="+", default=None,
                         help="Only process these complex names (e.g. 7txw 7ua2).")
@@ -62,6 +66,7 @@ def main():
             "--num_loops", str(args.num_loops),
             "--num_sampling_steps", str(args.num_sampling_steps),
             "--num_diffusion_samples", str(args.num_diffusion_samples),
+            "--chunk_size", str(args.chunk_size),
             "--lm_mask_pct", str(args.lm_mask_pct),
             "--lm_dropout", str(args.lm_dropout),
             "--json_dir", args.json_dir,
