@@ -161,15 +161,13 @@ def compute_confidence_scores(conf: dict, chain_mapping: dict, chain1: str, chai
 
     matrix = conf.get("chain_pair_iptm", [])
     if matrix and chain_mapping:
-        # OST chain_mapping keys are reference chain names; for multi-copy
-        # assemblies they carry a copy suffix (e.g. "A-2"). Strip it so the
-        # lookup matches the suffix-stripped target chains, consistent with
-        # extract_dockq (which strips both sides).
-        norm_map = {k.split("-")[0]: v for k, v in chain_mapping.items()}
-        r1 = chain1.split("-")[0]
-        r2 = chain2.split("-")[0]
-        m1 = norm_map.get(r1)
-        m2 = norm_map.get(r2)
+        # chain_mapping keys are the exact reference chain names (including any
+        # copy suffix like "A-2"), which match the targets CSV — look them up
+        # directly. Do NOT strip the suffix: for a same-letter homo-oligomer that
+        # would collapse distinct keys ("A" and "A-2") onto a single model chain
+        # and read the wrong (diagonal) chain_pair_iptm entry.
+        m1 = chain_mapping.get(chain1)
+        m2 = chain_mapping.get(chain2)
         if m1 is not None and m2 is not None:
             try:
                 i, j = chain_to_asym_id(m1), chain_to_asym_id(m2)
@@ -198,11 +196,16 @@ def compute_confidence_scores(conf: dict, chain_mapping: dict, chain1: str, chai
 
 
 def extract_dockq(ost_data: dict, chain1: str, chain2: str) -> float:
-    """Extract DockQ for a reference interface, matching by first two elements with suffix stripping."""
+    """Extract DockQ for a reference interface by exact, order-independent chain match.
+
+    Match on the full reference labels (e.g. "A", "B-2"): OST's dockq_interfaces ref
+    slots, the targets CSV, and chain_mapping all use the same exact names, so there is
+    no need to strip the copy suffix — and stripping would conflate the separate
+    interfaces of a same-letter homo-oligomer (A, A-2, A-3 ...) into one.
+    """
     for i, iface in enumerate(ost_data.get("dockq_interfaces", [])):
-        c0, c1 = iface[0].split("-")[0], iface[1].split("-")[0]
-        r1, r2 = chain1.split("-")[0], chain2.split("-")[0]
-        if (c0 == r1 and c1 == r2) or (c0 == r2 and c1 == r1):
+        c0, c1 = iface[0], iface[1]
+        if (c0 == chain1 and c1 == chain2) or (c0 == chain2 and c1 == chain1):
             return ost_data["dockq"][i]
     return float("nan")
 
