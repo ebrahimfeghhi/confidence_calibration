@@ -63,6 +63,9 @@ PROTENIX_PREDICTIONS = _path(
 
 # --- Plot / CSV outputs ----------------------------------------------------
 RESULTS_DIR = _path("RESULTS_DIR", REPO_ROOT / "results")
+# Eval CSVs (one row per sample) live in a dedicated subdir so plots/figures
+# in RESULTS_DIR don't mingle with the raw data they're built from.
+CSV_DIR = _path("CSV_DIR", RESULTS_DIR / "csv_files")
 
 
 def _sh():
@@ -74,7 +77,7 @@ def _sh():
         "FOLDBENCH_DIR", "GROUND_TRUTHS", "TARGETS_CSV", "JSON_DIR",
         "ESM_REPO", "PROTENIX_REPO", "ESM_PYTHON", "PROTENIX_PYTHON",
         "PROTENIX_CKPT", "OST_BIN", "OST_LIB",
-        "ESM_PREDICTIONS", "PROTENIX_PREDICTIONS", "RESULTS_DIR",
+        "ESM_PREDICTIONS", "PROTENIX_PREDICTIONS", "RESULTS_DIR", "CSV_DIR",
     ):
         print(f'export {name}="{globals()[name]}"')
 

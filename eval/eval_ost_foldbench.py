@@ -284,7 +284,8 @@ def main():
 
     pred_dir = Path(args.pred_dir)
     out_csv  = Path(args.out_csv) if args.out_csv else \
-               pred_dir.parent / f"dockq_ost_{pred_dir.name}_all_samples.csv"
+               paths.CSV_DIR / f"dockq_ost_{pred_dir.name}_all_samples.csv"
+    out_csv.parent.mkdir(parents=True, exist_ok=True)
 
     pdb_to_ifaces = load_interfaces()
     n_ifaces = sum(len(v) for v in pdb_to_ifaces.values())
