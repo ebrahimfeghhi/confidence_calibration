@@ -181,6 +181,10 @@ def main():
     parser.add_argument("--out",       default=None)
     parser.add_argument("--threshold", type=float, default=0.23)
     parser.add_argument("--ns",        type=int, nargs="+", default=[1, 2, 5, 10, 20, 30, 50])
+    parser.add_argument("--sort", choices=["seed_mean", "baseline"], default="seed_mean",
+                        help="order of interfaces in the per-interface strip plot "
+                             "(both descending; interfaces lacking a baseline go last "
+                             "when sort=baseline)")
     args = parser.parse_args()
 
     csv_path = Path(args.csv)
@@ -291,20 +295,30 @@ def main():
         by_iface_bar = all_results[curves[0][0]][0]
         iface_means  = {k: sum(dq for _, _, dq in v) / len(v)
                         for k, v in by_iface_bar.items()}
-        sorted_ifaces = sorted(iface_means, key=lambda k: iface_means[k], reverse=True)
+        if args.sort == "baseline":
+            # baseline DockQ desc; interfaces with no baseline row sort to the end
+            sort_key = lambda k: (baseline.get(k, (None, -1.0))[1] if baseline else -1.0)
+        else:
+            sort_key = lambda k: iface_means[k]
+        sorted_ifaces = sorted(iface_means, key=sort_key, reverse=True)
         labels        = [f"{aid}\n{c1}|{c2}" for aid, c1, c2 in sorted_ifaces]
 
         fig2, ax2 = plt.subplots(figsize=(max(8, len(sorted_ifaces) * 0.5), 5))
         rng = random.Random(0)
+        baseline_star_color = "darkorange"
+        seed_mean_color = "black"
         for xi, key in enumerate(sorted_ifaces):
             dqs = [dq for _, _, dq in by_iface_bar[key]]
             jitter = [xi + rng.uniform(-0.25, 0.25) for _ in dqs]
             ax2.scatter(jitter, dqs, color="steelblue", alpha=0.5, s=18, zorder=3)
+            # seed mean: horizontal dash across the jitter band
+            ax2.scatter([xi], [iface_means[key]], marker="_", color=seed_mean_color,
+                        s=260, linewidths=2, zorder=4)
             if baseline:
                 entry = baseline.get(key)
                 if entry is not None:
-                    ax2.scatter([xi], [entry[1]], marker="*", color="gray",
-                                s=150, zorder=5)
+                    ax2.scatter([xi], [entry[1]], marker="*",
+                                color=baseline_star_color, s=150, zorder=5)
 
         ax2.axhline(args.threshold, color="red", linestyle="--", linewidth=1,
                     label=f"DockQ={args.threshold}")
@@ -312,7 +326,9 @@ def main():
         import matplotlib.lines as mlines
         ax2.legend(handles=[
             plt.scatter([], [], color="steelblue", alpha=0.6, s=18, label="seeds"),
-            mlines.Line2D([], [], marker="*", color="gray", linestyle="None",
+            mlines.Line2D([], [], marker="_", color=seed_mean_color, linestyle="None",
+                          markersize=10, markeredgewidth=2, label="seed mean"),
+            mlines.Line2D([], [], marker="*", color=baseline_star_color, linestyle="None",
                           markersize=10, label="baseline"),
             mlines.Line2D([], [], color="red", linestyle="--", label=f"DockQ={args.threshold}"),
         ])
@@ -326,6 +342,57 @@ def main():
         plt.tight_layout()
         plt.savefig(bar_path, dpi=150)
         print(f"Barplot saved to {bar_path}")
+
+        # --- scatter: baseline (x) vs iPTM-pick/median/max DockQ (y), one dot per interface ---
+        if baseline:
+            import statistics
+            iface_dqs    = {k: [dq for _, _, dq in v] for k, v in by_iface_bar.items()}
+            iface_median = {k: statistics.median(v) for k, v in iface_dqs.items()}
+            iface_max    = {k: max(v) for k, v in iface_dqs.items()}
+
+            # iPTM pick: DockQ of the single highest-pair_iptm sample per interface
+            # (confidence-based, oracle-free selection). load_data with score_col=iptm
+            # already takes the best-iptm sample per seed, so max over seeds gives the
+            # global highest-iptm sample's DockQ.
+            iptm_col   = resolve_col(fieldnames, "pair_iptm")
+            iface_iptm = {}
+            if iptm_col:
+                by_iface_iptm, _ = load_data(csv_path, score_col=iptm_col)
+                iface_iptm = {k: max(rows, key=lambda r: r[1])[2]
+                              for k, rows in by_iface_iptm.items()}
+            first_panel = ("iPTM pick", iface_iptm) if iface_iptm else ("mean across seeds", iface_means)
+            aggs = [
+                first_panel,
+                ("median across seeds", iface_median),
+                ("max across seeds",    iface_max),
+            ]
+            keys = [k for k in sorted_ifaces if k in baseline and k in first_panel[1]]
+            if keys:
+                fig3, axes3 = plt.subplots(1, 3, figsize=(18, 6), sharey=True)
+                for ax3, (name, agg) in zip(axes3, aggs):
+                    bx = [baseline[k][1] for k in keys]
+                    sy = [agg[k] for k in keys]
+                    n_above = sum(1 for x, y in zip(bx, sy) if y > x)
+                    ax3.scatter(bx, sy, color="steelblue", alpha=0.6, s=28, zorder=3)
+                    ax3.plot([0, 1], [0, 1], color="gray", linestyle="--",
+                             linewidth=1, zorder=2, label="y = x")
+                    ax3.axhline(args.threshold, color="red", linestyle=":", linewidth=1,
+                                zorder=1)
+                    ax3.axvline(args.threshold, color="red", linestyle=":", linewidth=1,
+                                zorder=1, label=f"DockQ={args.threshold}")
+                    ax3.set_xlim(0, 1)
+                    ax3.set_ylim(0, 1)
+                    ax3.set_aspect("equal")
+                    ax3.set_xlabel("baseline DockQ")
+                    ax3.set_title(f"{name}  ({n_above}/{len(keys)} above y=x)")
+                    ax3.grid(True, alpha=0.3)
+                    ax3.legend()
+                axes3[0].set_ylabel("per-interface DockQ")
+                fig3.suptitle(csv_path.stem, y=1.02)
+                scatter_path = out_path.replace(".png", "_baseline_vs_seedstats.png")
+                plt.tight_layout()
+                plt.savefig(scatter_path, dpi=150, bbox_inches="tight")
+                print(f"Scatter saved to {scatter_path}")
 
     except Exception as e:
         print(f"Could not plot: {e}")

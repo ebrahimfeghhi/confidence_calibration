@@ -34,6 +34,9 @@ def main():
     parser.add_argument("--num_loops", type=int, default=16)
     parser.add_argument("--num_sampling_steps", type=int, default=16)
     parser.add_argument("--num_diffusion_samples", type=int, default=5)
+    parser.add_argument("--weight_perturb_sigma", type=float, default=0.0,
+                        help="If >0, RandOpt-style per-seed Gaussian weight noise "
+                             "(forwarded to each worker). 0 = off (default).")
     parser.add_argument("--chunk_size", type=int, default=32,
                         help="Token-axis chunk for L² ops (forwarded to each worker). "
                              "Lower = less GPU memory, slightly slower; numerically "
@@ -68,6 +71,7 @@ def main():
             "--num_loops", str(args.num_loops),
             "--num_sampling_steps", str(args.num_sampling_steps),
             "--num_diffusion_samples", str(args.num_diffusion_samples),
+            "--weight_perturb_sigma", str(args.weight_perturb_sigma),
             "--chunk_size", str(args.chunk_size),
             "--lm_mask_pct", str(args.lm_mask_pct),
             "--lm_dropout", str(args.lm_dropout),

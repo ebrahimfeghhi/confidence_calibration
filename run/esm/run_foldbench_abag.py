@@ -97,6 +97,10 @@ def main():
     parser.add_argument("--num_loops", type=int, default=16)
     parser.add_argument("--num_sampling_steps", type=int, default=16)
     parser.add_argument("--num_diffusion_samples", type=int, default=5)
+    parser.add_argument("--weight_perturb_sigma", type=float, default=0.0,
+                        help="If >0, add Gaussian noise w += sigma*N(0,1) to every "
+                             "float weight, regenerated deterministically per seed "
+                             "(RandOpt-style). 0 = off (default).")
     parser.add_argument("--chunk_size", type=int, default=32,
                         help="Token-axis chunk for L² ops (triangle/OPM/pair-transition) "
                              "in both the folding trunk and the confidence head. Lower = "
@@ -114,6 +118,44 @@ def main():
     # is the main OOM source on the largest AbAg complexes. None = chunking off.
     model.set_chunk_size(args.chunk_size if args.chunk_size > 0 else None)
     builder = ESMFold2InputBuilder()
+
+    # RandOpt-style weight perturbation. The model is loaded once and reused across
+    # every (complex, seed), so we snapshot the pretrained weights and, per seed,
+    # restore from the snapshot then add seed-deterministic Gaussian noise. Restoring
+    # from the clone (rather than subtracting the noise back) makes seed -> weights an
+    # exact function with no float drift across the 50+ perturb cycles.
+    base_params = None
+    if args.weight_perturb_sigma > 0.0:
+        # Snapshot on CPU: a full GPU copy of the 6.5B-param weights pushes the
+        # confidence-head memory spike (it batches all diffusion samples through a
+        # trunk pass) into OOM on the largest AbAg complexes. Tensor.copy_ handles
+        # the CPU->GPU restore each seed; the noise is still generated on-GPU.
+        base_params = {n: p.detach().to("cpu", copy=True)
+                       for n, p in model.named_parameters()}
+        print(f"Weight perturbation ON: sigma={args.weight_perturb_sigma} "
+              f"({len(base_params)} parameter tensors snapshotted to CPU)")
+
+    def apply_weight_perturbation(seed_int):
+        """Restore pretrained weights, then add seed-deterministic Gaussian noise.
+
+        Noise is generated on CPU (a single seeded Generator, advanced across params in
+        fixed order) and moved to each parameter's current device. fold() offloads the
+        ESM-C submodule (_esmc) to CPU between seeds, so after the first fold the model
+        spans both devices — a single fixed-device generator would hit a device
+        mismatch. CPU generation also makes seed -> perturbation independent of where
+        each parameter currently lives, so it's bit-identical every run regardless of
+        fold's memory juggling. Decoupled from the global RNG that fold's _seed_context
+        reseeds for diffusion sampling.
+        """
+        gen = torch.Generator(device="cpu").manual_seed(int(seed_int))
+        with torch.no_grad():
+            for n, p in model.named_parameters():
+                p.copy_(base_params[n])                       # restore base (CPU -> p.device)
+            for n, p in model.named_parameters():
+                if not p.is_floating_point():
+                    continue
+                noise = torch.randn(p.shape, generator=gen)   # fp32 on CPU
+                p.add_((args.weight_perturb_sigma * noise).to(device=p.device, dtype=p.dtype))
 
     if args.json_files:
         complexes = []
@@ -156,6 +198,8 @@ def main():
 
             print(f"  {seed_dir_name} ...", end="", flush=True)
             try:
+                if args.weight_perturb_sigma > 0.0:
+                    apply_weight_perturbation(seed_int)
                 result = builder.fold(
                     model,
                     spi,
