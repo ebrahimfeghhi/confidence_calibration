@@ -49,7 +49,7 @@ OST_ENV = {**os.environ, "LD_LIBRARY_PATH": str(paths.OST_LIB)}
 GROUND_TRUTH = paths.GROUND_TRUTHS
 TARGETS_CSV  = paths.TARGETS_CSV
 
-MAX_WORKERS = 100
+MAX_WORKERS = 220
 FIELDNAMES  = ["assembly_id", "chain1", "chain2", "seed", "sample",
                "dockq", "pair_iptm", "global_iptm", "ptm",
                "pair_ranking_score", "global_ranking_score", "chain_mapping"]

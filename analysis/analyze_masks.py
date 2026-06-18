@@ -225,8 +225,13 @@ def build_lm_input_ids(features: dict):
     return lm_input_ids, expand_maps
 
 
-def generate_masks(lm_input_ids, features, expand_maps) -> dict:
-    """Return {seed: set of (asym_idx, residue_index) masked residues} (batch 0)."""
+def generate_masks(lm_input_ids, features, expand_maps, seeds=None) -> dict:
+    """Return {seed: set of (asym_idx, residue_index) masked residues} (batch 0).
+
+    seeds: iterable of seed ints to reproduce; defaults to module-level SEEDS.
+    """
+    if seeds is None:
+        seeds = SEEDS
     device   = lm_input_ids.device
     asym_id  = features["asym_id"][0]
     res_idx  = features["residue_index"][0]
@@ -236,7 +241,7 @@ def generate_masks(lm_input_ids, features, expand_maps) -> dict:
     expand_map   = expand_maps[0]
 
     seed_to_masked = {}
-    for seed in SEEDS:
+    for seed in seeds:
         with _seed_context(seed):
             special = (lm_input_ids == 0) | (lm_input_ids == 1) | (lm_input_ids == 2)
             do_mask = (torch.rand(lm_input_ids.shape, device=device) < LM_MASK_PCT) & ~special
