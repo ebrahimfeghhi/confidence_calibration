@@ -17,7 +17,7 @@ Determinism: `lm_dropout=0` (skipped here) AND a *fixed* initial pair state `z0`
 (drawn once, reused) — `_init_pair_state` is random, so without pinning it the loss
 would be noisy across steps.
 
-Run (esm venv, GPU): python analysis/grad_steer/forward_grad.py
+Run (esm venv, GPU): python confornet/forward_grad.py
 """
 import sys
 from pathlib import Path
@@ -27,7 +27,7 @@ import torch
 import torch.nn.functional as F
 from torch.utils.checkpoint import checkpoint
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "run" / "esm"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "run" / "esm"))
 from run_7txw_loop_diffusion import load_complex, build_conditioning  # noqa: E402
 from esm.models.esmfold2 import ESMFold2InputBuilder  # noqa: E402
 from transformers.models.esmfold2.modeling_esmfold2 import ESMFold2Model  # noqa: E402

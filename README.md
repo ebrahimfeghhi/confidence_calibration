@@ -14,6 +14,11 @@ The eval/plot/analysis code is model-agnostic — it reads a generic
 > locations are centralized in [`paths.py`](paths.py) — edit that one file (or
 > set the matching env vars) if anything moves.
 
+> **Steering experiment:** the active ConforNet docking-steering experiment is the
+> self-contained, portable [`confornet/`](confornet/README.md) (runs on a fresh GPU
+> server from a ~300 MB bundle). Earlier steering/analysis experiments are archived
+> under [`archive/`](archive/README.md).
+
 ## Layout
 
 ```
