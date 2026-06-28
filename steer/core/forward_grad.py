@@ -28,7 +28,7 @@ import torch.nn.functional as F
 from torch.utils.checkpoint import checkpoint
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "run" / "esm"))
-from loop_diffusion import load_complex, build_conditioning  # noqa: E402
+from complex_io import load_complex, build_conditioning  # noqa: E402
 from esm.models.esmfold2 import ESMFold2InputBuilder  # noqa: E402
 from transformers.models.esmfold2.modeling_esmfold2 import ESMFold2Model  # noqa: E402
 
