@@ -17,7 +17,7 @@ seeds can still be scored with the normal eval pipeline.
 
 Usage (one GPU, 20 seeds):
     CUDA_VISIBLE_DEVICES=0 ESM_PYTHON_run \
-        python run/esm/run_7txw_reps.py --seeds $(seq 0 19) --run_name 7txw_reps
+        python run/esm/capture_reps.py --seeds $(seq 0 19) --run_name 7txw_reps
 """
 
 import argparse

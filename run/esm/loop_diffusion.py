@@ -20,7 +20,7 @@ This mirrors forward() lines ~886-1081 verbatim, replacing only the trunk loop
 (`_run_one_loop`) with a load of the saved z.
 
 Usage (one GPU):
-    python run/esm/run_7txw_loop_diffusion.py --cells 10:16 14:16 --run_name 7txw_loops
+    python run/esm/loop_diffusion.py --cells 10:16 14:16 --run_name 7txw_loops
 """
 import argparse
 import json

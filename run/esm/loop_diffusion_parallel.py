@@ -1,10 +1,10 @@
-"""Launch run_7txw_loop_diffusion.py across GPUs, sharding (seed, loop) cells.
+"""Launch loop_diffusion.py across GPUs, sharding (seed, loop) cells.
 
 Cells = seeds x loops are split round-robin so each GPU gets a balanced share
 (each worker loads the model + conditioning once, then streams its cells).
 
 Usage:
-    python run/esm/run_7txw_loop_diffusion_parallel.py \
+    python run/esm/loop_diffusion_parallel.py \
         --gpus 0 2 5 --seeds 10 14 33 39 12 0 32 42 --loops $(seq 0 16) \
         --num_diffusion_samples 5
 """
@@ -43,7 +43,7 @@ def main():
     print(f"{len(cells)} cells across {n} GPUs "
           f"({len(args.seeds)} seeds x {len(args.loops)} loops)", flush=True)
 
-    script = Path(__file__).resolve().parent / "run_7txw_loop_diffusion.py"
+    script = Path(__file__).resolve().parent / "loop_diffusion.py"
     procs = []
     for gpu, shard in zip(args.gpus, shards):
         if not shard:

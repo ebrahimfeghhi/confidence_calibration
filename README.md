@@ -27,8 +27,8 @@ run/
   esm/              # ESMFold2-Fast inference (needs the esm venv)
     run_foldbench_abag.py            # fold all complexes for a set of seeds
     run_foldbench_abag_parallel.py   # fan the above out across GPUs
-    run_7txw_reps.py                 # capture baseline ESMC rep for a complex (steering prereq)
-    run_7txw_loop_diffusion.py       # per-loop diffusion + load_complex helper (used by steer/core)
+    capture_reps.py                 # capture baseline ESMC rep for a complex (steering prereq)
+    loop_diffusion.py       # per-loop diffusion + load_complex helper (used by steer/core)
   protenix/         # Protenix-v2 inference (needs the Protenix venv + checkpoint)
     run_benchmark_parallel.py        # 113-structure benchmark, seeds split across GPUs
 eval/               # model-agnostic

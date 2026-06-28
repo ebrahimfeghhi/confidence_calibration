@@ -50,7 +50,7 @@ per-GPU tmux session; one trial of 10 runs is ~10–20 min (target-size dependen
 # full prediction (structures + confidence)
 $PY run/esm/run_foldbench_abag.py --run_name <name> --complexes <pdb> --seeds 0..N
 # baseline ESMC rep that steering nudges (no mask, no dropout)
-$PY run/esm/run_7txw_reps.py --run_name <pdb>_reps_baseline --complex <pdb> \
+$PY run/esm/capture_reps.py --run_name <pdb>_reps_baseline --complex <pdb> \
       --seeds 0 --lm_mask_pct 0 --lm_dropout 0
 ```
 

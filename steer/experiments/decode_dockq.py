@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "run" / "esm"))
 import torch
 import numpy as np
 import forward_grad as fg
-from run_7txw_loop_diffusion import load_complex  # noqa
+from loop_diffusion import load_complex  # noqa
 from paths import JSON_DIR  # noqa
 
 OUT = Path(__file__).resolve().parent
