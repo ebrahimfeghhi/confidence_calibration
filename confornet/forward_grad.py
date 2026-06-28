@@ -38,11 +38,37 @@ while not (_p / "paths.py").exists():
 sys.path.insert(0, str(_p))
 from paths import ESM_PREDICTIONS, JSON_DIR  # noqa: E402
 
-REPS = ESM_PREDICTIONS / "7txw_reps" / "7txw"
-BASELINE = ESM_PREDICTIONS / "7txw_reps_baseline" / "7txw" / "seed_0"   # no mask, no dropout
-AB, C = slice(0, 438), slice(438, 609)        # antibody rows, antigen cols (7txw)
-GOOD = [10, 14, 33, 39]                        # G basin (this run); 10,33 mask-robust
 N_LOOPS = 16                                    # parcae runs N_LOOPS + 1 times
+
+# ----- per-target config: chain slices (antibody rows AB, antigen cols C) + captured-rep
+#       paths. Defaults to 7txw so every existing import keeps working; call
+#       configure_target(name) BEFORE load() to switch (load()/cross_distogram_from_z
+#       read these module globals at call time). NOTE chain ORDER is not assumable:
+#       7txw is antibody-first, 8im0 is antigen-first with a single VHH chain.
+TARGETS = {
+    "7txw": dict(ab=slice(0, 438), c=slice(438, 609),
+                 reps=ESM_PREDICTIONS / "7txw_reps" / "7txw",
+                 baseline=ESM_PREDICTIONS / "7txw_reps_baseline" / "7txw" / "seed_0",
+                 good=[10, 14, 33, 39]),
+    "8im0": dict(ab=slice(235, 362), c=slice(0, 235),
+                 reps=None,
+                 baseline=ESM_PREDICTIONS / "8im0_reps_baseline" / "8im0" / "seed_0",
+                 good=None),
+}
+_TARGET = "7txw"
+REPS = TARGETS["7txw"]["reps"]
+BASELINE = TARGETS["7txw"]["baseline"]
+AB, C = TARGETS["7txw"]["ab"], TARGETS["7txw"]["c"]
+GOOD = TARGETS["7txw"]["good"]
+
+
+def configure_target(name):
+    """Switch module target (chain slices + rep paths); returns the cfg dict."""
+    global REPS, BASELINE, AB, C, GOOD, _TARGET
+    cfg = TARGETS[name]
+    AB, C = cfg["ab"], cfg["c"]
+    BASELINE, REPS, GOOD, _TARGET = cfg["baseline"], cfg["reps"], cfg["good"], name
+    return cfg
 
 
 # ----------------------------------------------------------------------------- setup
@@ -54,7 +80,7 @@ def load(chunk_size: int = 32, keep_esmc: bool = False):
         model._esmc.to("cpu")              # LM reps come from saved npy; free ~6B weights
         torch.cuda.empty_cache()
     builder = ESMFold2InputBuilder()
-    spi = load_complex(str(JSON_DIR), "7txw")
+    spi = load_complex(str(JSON_DIR), _TARGET)
     feat, chain_infos = builder.prepare_input(spi, seed=0, device=model.device)
     with torch.no_grad():
         cond = build_conditioning(model, feat)
