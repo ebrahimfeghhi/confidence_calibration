@@ -2,4 +2,19 @@ __pycache__/
 *.pyc
 results/*
 !results/.gitkeep
-confornet/data/
+steer/data/
+
+# steer experiment outputs (co-located with scripts)
+steer/experiments/*.csv
+steer/experiments/*.npy
+steer/experiments/*.png
+steer/experiments/*.log
+steer/experiments/*.pt
+steer/experiments/decoded_*/
+
+# archived generated outputs (kept on disk, out of git)
+archive/**/*.npy
+archive/**/*.pt
+archive/**/*.png
+archive/**/*.csv
+archive/**/*.log

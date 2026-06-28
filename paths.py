@@ -69,9 +69,9 @@ CSV_DIR = _path("CSV_DIR", RESULTS_DIR / "csv_files")
 
 # --- ConforNet portable bundle ---------------------------------------------
 # Self-contained ~300 MB bundle (centroids + baseline rep + 7txw json + ground
-# truth + targets) produced by confornet/prepare_data.py, so the steering +
+# truth + targets) produced by archive/confornet/prepare_data.py, so the steering +
 # decode->DockQ experiment runs on a fresh server without the 195 GB 7txw_reps.
-CONFORNET_DATA = _path("CONFORNET_DATA", REPO_ROOT / "confornet" / "data")
+STEER_DATA = _path("STEER_DATA", REPO_ROOT / "steer" / "data")
 
 
 def _sh():
@@ -84,7 +84,7 @@ def _sh():
         "ESM_REPO", "PROTENIX_REPO", "ESM_PYTHON", "PROTENIX_PYTHON",
         "PROTENIX_CKPT", "OST_BIN", "OST_LIB",
         "ESM_PREDICTIONS", "PROTENIX_PREDICTIONS", "RESULTS_DIR", "CSV_DIR",
-        "CONFORNET_DATA",
+        "STEER_DATA",
     ):
         print(f'export {name}="{globals()[name]}"')
 
