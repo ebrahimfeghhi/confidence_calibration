@@ -14,10 +14,10 @@ The eval/plot/analysis code is model-agnostic — it reads a generic
 > locations are centralized in [`paths.py`](paths.py) — edit that one file (or
 > set the matching env vars) if anything moves.
 
-> **Steering experiment:** the active ConforNet docking-steering experiment is the
-> self-contained, portable [`confornet/`](confornet/README.md) (runs on a fresh GPU
-> server from a ~300 MB bundle). Earlier steering/analysis experiments are archived
-> under [`archive/`](archive/README.md).
+> **Steering experiment:** the active work is label-free **distogram-repulsion steering**
+> in [`steer/`](steer/README.md) — push ESMFold2 out of confident *wrong* antibody–antigen
+> orientations without using the ground truth. Superseded steering/analysis experiments
+> (including the earlier ConforNet line) are archived under `archive/`.
 
 ## Layout
 
@@ -27,20 +27,19 @@ run/
   esm/              # ESMFold2-Fast inference (needs the esm venv)
     run_foldbench_abag.py            # fold all complexes for a set of seeds
     run_foldbench_abag_parallel.py   # fan the above out across GPUs
+    run_7txw_reps.py                 # capture baseline ESMC rep for a complex (steering prereq)
+    run_7txw_loop_diffusion.py       # per-loop diffusion + load_complex helper (used by steer/core)
   protenix/         # Protenix-v2 inference (needs the Protenix venv + checkpoint)
     run_benchmark_parallel.py        # 113-structure benchmark, seeds split across GPUs
 eval/               # model-agnostic
     eval_ost_foldbench.py            # OST/DockQ + confidence scores per sample -> CSV
-    compute_msa_depths.py            # MSA depths from JSONs (needs Protenix venv)
 plot/
     plot_scaling_ost.py              # TTS scaling curve + per-interface barplot
-    plot_tts_scatter.py              # mean DockQ (N=1) vs best (N=50)
-    plot_tts_slopegraph.py           # per-interface pass rate N=1 vs N=50
-    plot_msa_depths.py               # MSA depth histogram
-    plot_interface_atoms.py          # interface size histogram
-analysis/
-    analyze_masks_7yxu.py            # mask-pattern case study (needs esm venv)
+steer/              # label-free distogram-repulsion steering  (see steer/README.md)
+    core/           # engine: forward_grad.py (differentiable trunk) + basins.py
+    experiments/    # repel_proven.py (the method), decode_dockq.py (steered -> CIF -> DockQ)
 results/            # default output dir for plots (git-ignored)
+archive/            # superseded run/eval/plot/steer one-offs (nothing imports it)
 ```
 
 ## Which environment runs what
@@ -54,9 +53,8 @@ so you can invoke them from anywhere; just use the right interpreter.
 | `run/esm/*` | `~/esm/.venv/bin/python` (`paths.ESM_PYTHON`) | imports the `esm` package |
 | `run/protenix/run_benchmark_parallel.py` | `~/Protenix/.venv/bin/python` + `~/checkpoint` | calls Protenix `runner/inference.py` |
 | `eval/eval_ost_foldbench.py` | python with `tqdm` + `biotite` (else falls back to a `PROTENIX_PYTHON` subprocess); needs the `foldbench` conda env's **OST** binary (`paths.OST_BIN`) | runs `ost compare-structures` |
-| `eval/compute_msa_depths.py` | `~/Protenix/.venv/bin/python` | imports `protenix.data` |
 | `plot/*` | any python with numpy/matplotlib | pure post-processing |
-| `analysis/analyze_masks_7yxu.py` | `~/esm/.venv/bin/python` | imports the `esm` package |
+| `steer/experiments/*` | `~/esm/.venv/bin/python` | imports the steering engine (`steer/core`) + `esm` |
 
 ## End-to-end example (ESMFold2 TTS)
 
