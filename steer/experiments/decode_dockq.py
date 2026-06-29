@@ -10,14 +10,20 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "core"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "run" / "esm"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "eval"))
+import csv
+import json
+import tempfile
 import torch
 import numpy as np
 import forward_grad as fg
 from complex_io import load_complex  # noqa
-from paths import JSON_DIR  # noqa
+from eval_ost_foldbench import postprocess_cif, run_ost  # noqa  (OST DockQ helpers)
+from paths import JSON_DIR, GROUND_TRUTHS  # noqa
 
 OUT = Path(__file__).resolve().parent
 TARGET = "8im0"
+NATIVE = GROUND_TRUTHS / f"{TARGET}-assembly1.cif"   # ground-truth complex for DockQ
 N_SAMPLES = 2          # diffusion samples per leaf (structure head is stochastic; take best dock)
 
 cfg = fg.configure_target(TARGET)
@@ -52,6 +58,18 @@ def write_best(samples, path_stem):
     return paths, iptms
 
 
+def dockq_cif(model_cif):
+    """OST DockQ of a predicted CIF vs the native complex; max over interfaces."""
+    model_cif = Path(model_cif)
+    with tempfile.TemporaryDirectory() as td:
+        patched, outj = Path(td) / "m.cif", Path(td) / "o.json"
+        postprocess_cif(model_cif, patched)
+        if not run_ost(patched, NATIVE, outj):
+            return float("nan")
+        dq = json.load(open(outj)).get("dockq", [])
+        return max(dq) if dq else float("nan")
+
+
 if __name__ == "__main__":
     arg = sys.argv[1] if len(sys.argv) > 1 else "sanity"
     if arg == "sanity":
@@ -65,10 +83,20 @@ if __name__ == "__main__":
         leaves = np.load(OUT / arg)                                # [n_runs,1,L,256]
         tag = arg.replace("leaves_", "").replace(".npy", "")
         d = OUT / f"decoded_{tag}"; d.mkdir(exist_ok=True)
-        print(f"decoding {len(leaves)} leaves from {arg} -> {d}", flush=True)
+        print(f"decoding {len(leaves)} leaves from {arg} -> {d}; native={NATIVE.name}", flush=True)
+        rows = []
         for i, leaf in enumerate(leaves):
             s_lm = torch.from_numpy(leaf.astype(np.float32)).cuda()
             samples = decode_slm(s_lm, n_samples=N_SAMPLES, seed=0)
             paths, iptms = write_best(samples, str(d / f"run{i+1}"))
-            print(f"  run {i+1}: iptm={[round(x,3) for x in iptms]}", flush=True)
-        print("done decoding.", flush=True)
+            dqs = [dockq_cif(p) for p in paths]
+            for k, (ip, dq) in enumerate(zip(iptms, dqs)):
+                rows.append(dict(run=i + 1, sample=k, iptm=round(ip, 4), dockq=round(dq, 4)))
+            best = max((x for x in dqs if x == x), default=float("nan"))
+            print(f"  run {i+1:2d}: iptm={[round(x,3) for x in iptms]}  "
+                  f"dockq={[round(x,3) for x in dqs]}  best={best:.3f}", flush=True)
+            with open(OUT / f"dockq_{tag}.csv", "w", newline="") as f:   # flush each run
+                w = csv.DictWriter(f, fieldnames=["run", "sample", "iptm", "dockq"])
+                w.writeheader(); w.writerows(rows)
+        best_overall = max((r["dockq"] for r in rows if r["dockq"] == r["dockq"]), default=float("nan"))
+        print(f"done. {len(rows)} structures scored -> dockq_{tag}.csv  best DockQ={best_overall:.3f}", flush=True)
