@@ -54,6 +54,24 @@ TARGETS = {
                  reps=None,
                  baseline=ESM_PREDICTIONS / "8im0_reps_baseline" / "8im0" / "seed_0",
                  good=None),
+    # 8c5h: antigen(His-tagged, 132)=tokens 0:132, nanobody(125)=tokens 132:257
+    "8c5h": dict(ab=slice(132, 257), c=slice(0, 132),
+                 reps=None,
+                 baseline=ESM_PREDICTIONS / "8c5h_reps_baseline" / "8c5h" / "seed_0",
+                 good=None),
+    # --- Tier-1 failures (single antibody + single antigen, contiguous AB). slices = JSON chain order.
+    "8ts0": dict(ab=slice(0, 450), c=slice(450, 619),      # Fab(236+214) | ag(169)
+                 reps=None, baseline=ESM_PREDICTIONS / "8ts0_reps_baseline" / "8ts0" / "seed_0", good=None),
+    "8z8v": dict(ab=slice(585, 708), c=slice(0, 585),      # ag(585) | VHH(123)
+                 reps=None, baseline=ESM_PREDICTIONS / "8z8v_reps_baseline" / "8z8v" / "seed_0", good=None),
+    "8urf": dict(ab=slice(0, 446), c=slice(446, 605),      # Fab(214+232) | ag(159)
+                 reps=None, baseline=ESM_PREDICTIONS / "8urf_reps_baseline" / "8urf" / "seed_0", good=None),
+    "8vzo": dict(ab=slice(551, 1006), c=slice(0, 551),     # ag(551) | Fab(240+215)
+                 reps=None, baseline=ESM_PREDICTIONS / "8vzo_reps_baseline" / "8vzo" / "seed_0", good=None),
+    "8jyr": dict(ab=slice(202, 642), c=slice(0, 202),      # ag(202) | Fab(222+218)
+                 reps=None, baseline=ESM_PREDICTIONS / "8jyr_reps_baseline" / "8jyr" / "seed_0", good=None),
+    "8vvl": dict(ab=slice(268, 707), c=slice(0, 268),      # ag(268) | Fab(226+213)
+                 reps=None, baseline=ESM_PREDICTIONS / "8vvl_reps_baseline" / "8vvl" / "seed_0", good=None),
 }
 _TARGET = "7txw"
 REPS = TARGETS["7txw"]["reps"]
@@ -72,9 +90,11 @@ def configure_target(name):
 
 
 # ----------------------------------------------------------------------------- setup
-def load(chunk_size: int = 32, keep_esmc: bool = False):
+def load(chunk_size: int = 32, keep_esmc: bool = False, kernel_backend: str = None):
     model = ESMFold2Model.from_pretrained("biohub/ESMFold2-Fast").cuda().eval()
-    model.set_chunk_size(chunk_size if chunk_size > 0 else None)
+    model.set_chunk_size(chunk_size if chunk_size > 0 else None)   # chunk_size<=0 -> None (no chunking; faster at L<600)
+    if kernel_backend:                     # "fused" -> Triton trimul kernel on the O(L^3) op (bf16 fwd+bwd); speeds steer & decode
+        model.set_kernel_backend(kernel_backend)
     model.requires_grad_(False)            # only the chosen leaf gets grad; no param-grad buffers
     if getattr(model, "_esmc", None) is not None and not keep_esmc:
         model._esmc.to("cpu")              # LM reps come from saved npy; free ~6B weights
@@ -142,10 +162,14 @@ def _loop_body(model, z, z_init, lm_z_i, pair_mask, a, b_mat):
     return model.folding_trunk(z, pair_attention_mask=pair_mask)
 
 
-def run_trunk(model, z_init, lm_z, pair_mask, z0, total_steps, collect_per_loop=False):
+def run_trunk(model, z_init, lm_z, pair_mask, z0, total_steps, collect_per_loop=False, use_ckpt=True):
     """Recycling trunk with **per-loop gradient checkpointing** so only the 17
     loop-boundary z's are retained (each loop is recomputed in backward). Returns
-    (z_final, per_loop_leaves). per_loop leaves give per-loop attribution."""
+    (z_final, per_loop_leaves). per_loop leaves give per-loop attribution.
+
+    use_ckpt=False drops the outer per-loop checkpoint (no recompute in backward) —
+    faster when VRAM allows (small L). NOTE: the model's inner per-block checkpoint
+    in FoldingTrunk.forward is unconditional, so this only removes the outer level."""
     a, b = model._discretized_dynamics()
     a = a.view(1, 1, 1, -1).to(device=z_init.device, dtype=z_init.dtype)
     b_mat = b.to(device=z_init.device, dtype=z_init.dtype)
@@ -158,8 +182,11 @@ def run_trunk(model, z_init, lm_z, pair_mask, z0, total_steps, collect_per_loop=
                 lm_z_i = lm_z.detach().clone().requires_grad_(True)
                 lm_z_i.retain_grad()
                 per_loop.append(lm_z_i)
-            z = checkpoint(_loop_body, model, z, z_init, lm_z_i, pair_mask, a, b_mat,
-                           use_reentrant=False)
+            if use_ckpt:
+                z = checkpoint(_loop_body, model, z, z_init, lm_z_i, pair_mask, a, b_mat,
+                               use_reentrant=False)
+            else:
+                z = _loop_body(model, z, z_init, lm_z_i, pair_mask, a, b_mat)
     return z, per_loop
 
 
@@ -173,6 +200,150 @@ def cross_distogram_from_z(model, z, pair_mask):
     logits = model.distogram_head(z + z.transpose(-2, -3))[0]      # [L,L,nbins]
     P = F.softmax(logits, dim=-1)[AB, C, :].reshape(-1, logits.shape[-1])
     return P
+
+
+def final_trunk_z(model, z_init, lm_z, pair_mask, z0, steps):
+    """Forward-only recycling -> final trunk pair-state z (what BOTH heads read).
+    Same z0/trajectory as the steering's disto_fwd, so a structure decoded from this z
+    follows the steered (escaped) distogram instead of a re-rolled forward pass."""
+    a, b = model._discretized_dynamics()
+    a = a.view(1, 1, 1, -1).to(z_init.device, z_init.dtype)
+    b_mat = b.to(z_init.device, z_init.dtype)
+    z = z0
+    with torch.no_grad(), torch.amp.autocast("cuda", dtype=torch.bfloat16):
+        for _ in range(steps):
+            z = _loop_body(model, z, z_init, lm_z, pair_mask, a, b_mat)
+    return z.float()
+
+
+def final_trunk_z_batched(model, z_init, lm_z_B, pair_mask, z0, steps):
+    """Batched forward-only launch: B leaves' pair conditioning lm_z_B [B,L,L,256]
+    -> final trunk z [B,L,L,256], all in one pass (grad-free). Same trajectory as
+    final_trunk_z but the leading batch dim B carries independent leaves; the shared
+    z_init/z0/a/b broadcast over it. Use to launch many steered s_lm's to loop 17 at
+    once before decoding."""
+    a, b = model._discretized_dynamics()
+    a = a.view(1, 1, 1, -1).to(z_init.device, z_init.dtype)
+    b_mat = b.to(z_init.device, z_init.dtype)
+    B = lm_z_B.shape[0]
+    z = z0.expand(B, -1, -1, -1).contiguous()      # shared initial pair state per leaf
+    pm = pair_mask.expand(B, -1, -1).contiguous() if pair_mask.shape[0] == 1 else pair_mask  # fused trimul needs mask batched to B (no broadcast)
+    with torch.no_grad(), torch.amp.autocast("cuda", dtype=torch.bfloat16):
+        for _ in range(steps):
+            z = _loop_body(model, z, z_init, lm_z_B, pm, a, b_mat)
+    return z.float()
+
+
+def decode_from_ztrunk(model, builder, feat, chain_infos, cond, z, n_samples, n_steps, name, seed):
+    """Diffuse a 3D structure from a GIVEN trunk z (tensor) -> decoded samples (each
+    .complex.to_mmcif(), .iptm). Port of the per-loop diffuse_from_z, taking the live
+    steering z_trunk so the structure is forced onto the steered orientation."""
+    tok_mask = feat["token_attention_mask"]
+    atm_mask = feat["atom_attention_mask"]
+    disto_idx = feat["distogram_atom_idx"]
+    with torch.no_grad(), torch.amp.autocast("cuda", dtype=torch.bfloat16):
+        zc = model.parcae_readout(z)
+        zc = model.parcae_coda(zc, pair_attention_mask=cond["pair_mask"])
+    zc = zc.float()
+    distogram_logits = model.distogram_head(zc + zc.transpose(-2, -3))
+    torch.manual_seed(seed)
+    with torch.no_grad():
+        structure_output = model.structure_head.sample(
+            z_trunk=zc, s_inputs=cond["x_inputs"], s_trunk=None,
+            relative_position_encoding=cond["rel_pos"],
+            ref_pos=feat["ref_pos"], ref_charge=feat["ref_charge"], ref_mask=atm_mask,
+            ref_element=cond["ref_element_oh"], ref_atom_name_chars=cond["ref_name_oh"],
+            ref_space_uid=feat["ref_space_uid"], tok_idx=cond["atom_to_token"],
+            asym_id=feat["asym_id"], residue_index=feat["residue_index"],
+            entity_id=feat["entity_id"], token_index=feat["token_index"], sym_id=feat["sym_id"],
+            token_attention_mask=tok_mask, num_diffusion_samples=n_samples,
+            num_sampling_steps=n_steps, noise_scale=None, step_scale=None,
+            return_atom_repr=False, denoising_early_exit_rmsd=None,
+        )
+        sample_coords = structure_output["sample_atom_coords"]
+        output = {"distogram_logits": distogram_logits, "sample_atom_coords": sample_coords}
+        confidence_output = model.confidence_head(
+            s_inputs=cond["x_inputs"].detach(), z=zc.detach().float(),
+            x_pred=sample_coords.detach(), distogram_atom_idx=disto_idx,
+            token_attention_mask=tok_mask, atom_to_token=cond["atom_to_token"],
+            atom_attention_mask=atm_mask, asym_id=feat["asym_id"], mol_type=feat["mol_type"],
+            num_diffusion_samples=n_samples,
+            relative_position_encoding=cond["rel_pos"].detach(),
+            token_bonds_encoding=cond["token_bonds_encoding"].detach(),
+        )
+    output.update(confidence_output)
+    output["atom_pad_mask"] = atm_mask.unsqueeze(0) if atm_mask.dim() == 1 else atm_mask
+    output["residue_index"] = feat["residue_index"]
+    output["entity_id"] = feat["entity_id"]
+    results = builder.decode(output, feat, chain_infos,
+                             num_diffusion_samples=n_samples, complex_id=name)
+    return results if isinstance(results, list) else [results]
+
+
+def decode_from_ztrunk_batched(model, builder, feat, chain_infos, cond, z_B,
+                               n_samples, n_steps, name, seed):
+    """Batched decode of B independent trunk states of the SAME target.
+
+    z_B: [B,L,L,·]. Only the expensive, sequential diffusion sampler is batched
+    across the B structures (effective batch B*n_samples, structure-major/sample-minor);
+    the cheap confidence_head + builder.decode stay per-structure so their single-
+    structure contract is untouched. Since all B share one target, the conditioning is
+    identical and just `expand`s over B. Returns list[B] of per-structure sample lists.
+
+    Seed note: one torch.manual_seed(seed) draws the whole batch's diffusion noise, so
+    per-structure noise differs from the batch-1 path (same method, reseeded samples)."""
+    B = z_B.shape[0]
+    tok_mask = feat["token_attention_mask"]
+    atm_mask = feat["atom_attention_mask"]
+    disto_idx = feat["distogram_atom_idx"]
+
+    def eb(t):                                   # expand a leading-1 tensor to batch B
+        return t.expand(B, *([-1] * (t.dim() - 1))) if torch.is_tensor(t) and t.shape[0] == 1 else t
+
+    pm_B = cond["pair_mask"].expand(B, -1, -1).contiguous()   # fused trimul needs mask batched to B (no broadcast)
+    with torch.no_grad(), torch.amp.autocast("cuda", dtype=torch.bfloat16):
+        zc = model.parcae_readout(z_B)
+        zc = model.parcae_coda(zc, pair_attention_mask=pm_B)
+    zc = zc.float()                              # [B,L,L,·]
+    distogram_logits = model.distogram_head(zc + zc.transpose(-2, -3))      # [B,L,L,nbins]
+    torch.manual_seed(seed)
+    with torch.no_grad():
+        structure_output = model.structure_head.sample(
+            z_trunk=zc, s_inputs=eb(cond["x_inputs"]), s_trunk=None,
+            relative_position_encoding=eb(cond["rel_pos"]),
+            ref_pos=eb(feat["ref_pos"]), ref_charge=eb(feat["ref_charge"]), ref_mask=eb(atm_mask),
+            ref_element=eb(cond["ref_element_oh"]), ref_atom_name_chars=eb(cond["ref_name_oh"]),
+            ref_space_uid=eb(feat["ref_space_uid"]), tok_idx=eb(cond["atom_to_token"]),
+            asym_id=eb(feat["asym_id"]), residue_index=eb(feat["residue_index"]),
+            entity_id=eb(feat["entity_id"]), token_index=eb(feat["token_index"]), sym_id=eb(feat["sym_id"]),
+            token_attention_mask=eb(tok_mask), num_diffusion_samples=n_samples,
+            num_sampling_steps=n_steps, noise_scale=None, step_scale=None,
+            return_atom_repr=False, denoising_early_exit_rmsd=None,
+        )
+        coords_all = structure_output["sample_atom_coords"]     # [B*n_samples, n_atoms, 3], structure-major
+    out = []
+    for bi in range(B):                          # confidence + mmcif per structure (cheap, unchanged contract)
+        coords_bi = coords_all[bi * n_samples:(bi + 1) * n_samples]
+        dl_bi = distogram_logits[bi:bi + 1] if torch.is_tensor(distogram_logits) else distogram_logits
+        output = {"distogram_logits": dl_bi, "sample_atom_coords": coords_bi}
+        with torch.no_grad():
+            confidence_output = model.confidence_head(
+                s_inputs=cond["x_inputs"].detach(), z=zc[bi:bi + 1].detach().float(),
+                x_pred=coords_bi.detach(), distogram_atom_idx=disto_idx,
+                token_attention_mask=tok_mask, atom_to_token=cond["atom_to_token"],
+                atom_attention_mask=atm_mask, asym_id=feat["asym_id"], mol_type=feat["mol_type"],
+                num_diffusion_samples=n_samples,
+                relative_position_encoding=cond["rel_pos"].detach(),
+                token_bonds_encoding=cond["token_bonds_encoding"].detach(),
+            )
+        output.update(confidence_output)
+        output["atom_pad_mask"] = atm_mask.unsqueeze(0) if atm_mask.dim() == 1 else atm_mask
+        output["residue_index"] = feat["residue_index"]
+        output["entity_id"] = feat["entity_id"]
+        results = builder.decode(output, feat, chain_infos,
+                                 num_diffusion_samples=n_samples, complex_id=name)
+        out.append(results if isinstance(results, list) else [results])
+    return out
 
 
 def distogram_from_s_lm(model, s_lm, z_init, pair_mask, z0,
