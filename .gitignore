@@ -11,6 +11,8 @@ steer/experiments/*.png
 steer/experiments/*.log
 steer/experiments/*.pt
 steer/experiments/decoded_*/
+steer/experiments/log_*.txt
+steer/experiments/chain_order_*.txt
 
 # archived generated outputs (kept on disk, out of git)
 archive/**/*.npy

@@ -7,7 +7,12 @@ maximizing W1 from all anchors (horizon K), append result. Anchors self-generate
 (label-free); G/B1/B2 centroids score only. Forward-only eval for speed.
 
 Flags: --maskreps (start each run from a saved masked ESMC rep, excl. known-G unless
---include-g), --zvary (resample z0 per run), --trials T --runs R --tag NAME.
+--include-g), --zvary (resample z0 per run), --joint-z0 (ALSO optimize the initial
+pair state z0 jointly with s_lm, same Adam call — z0 already sits on the s_lm
+backward graph so this is compute-free, just adds z0's O(L^2) optimizer state),
+--loss kernel (summed Gaussian-kernel basin-filling repulsion vs the default mean/softmin
+over anchors; bandwidth --kernel-h, 0=auto from the anchor-to-anchor NN spread, scaled by
+--kernel-c), --trials T --runs R --tag NAME.
 
 Run: CUDA_VISIBLE_DEVICES=N python repel_proven.py [flags]
 """
@@ -15,6 +20,7 @@ import sys
 import csv
 import time
 from pathlib import Path
+from statistics import median
 
 import torch
 
@@ -65,8 +71,10 @@ def main():
     init_frac = flag("--init-frac", INIT_FRAC, float)
     lever = flag("--lever", "slm", str)                  # slm | affine
     lr = flag("--lr", LR, float)
-    loss_mode = flag("--loss", "mean", str)              # mean | softmin (over anchors)
+    loss_mode = flag("--loss", "mean", str)              # mean | softmin | kernel (over anchors)
     tau = flag("--tau", 0.1, float)                       # soft-min temperature (-> hard min as tau->0)
+    kernel_h = flag("--kernel-h", 0.0, float)             # --loss kernel bandwidth h (0 = auto: median anchor-to-anchor NN W1)
+    kernel_c = flag("--kernel-c", 1.0, float)             # multiplier on the auto-calibrated h (widen>1 / narrow<1 the hills)
     tag = flag("--tag", "nudge_fz0", str)
     target = flag("--target", "7txw", str)               # 7txw | 8im0 | ... (chain slices + rep paths)
     pairwise = flag("--pairwise", False, bool)           # log W1 to every prior run at K=3 & K=17
@@ -94,13 +102,25 @@ def main():
     time_budget = flag("--time-budget", 0, int)          # stop campaign after this many wall-clock seconds (0=off)
     launch_batch = flag("--launch-batch", 2, int)        # batched 0->17 launch chunk for cycle decode (per-leaf fallback on OOM)
     plateau_warn = flag("--plateau-warn", 0.01, float)   # flag a run whose repel loss still climbs > this at its LAST step (M too few)
+    joint_z0 = flag("--joint-z0", False, bool)           # also optimize z0 (trunc-normal initial pair state) jointly with s_lm
+    lr_z0 = flag("--lr-z0", 0.0, float)                  # z0's own lr (0 = fall back to --lr); z0 is O(L^2), moves much faster than s_lm at the same lr
+    init_frac_z0 = flag("--init-frac-z0", 0.0, float)    # z0's own init nudge fraction (0 = fall back to --init-frac)
+    intra_ab = flag("--intra-ab", False, bool)           # also include the intra-antibody (AB×AB) block in the loss/anchors, alongside the proven AB×C block
+    intra_c = flag("--intra-c", False, bool)             # also include the intra-antigen (C×C) block in the loss/anchors, alongside the proven AB×C block
+    full_disto = flag("--full-disto", False, bool)       # untargeted: loss/anchors over the ENTIRE L×L distogram (overrides intra_ab/intra_c); ablation for whether targeting matters
     if no_score and (until_gt or pairwise):
         raise SystemExit("--no-score is incompatible with --until-gt / --pairwise (both need the K=17 score)")
+    if loss_mode not in ("mean", "softmin", "kernel"):
+        raise SystemExit(f"--loss must be mean|softmin|kernel (got '{loss_mode}')")
+    if loss_mode == "kernel" and multik:
+        raise SystemExit("--loss kernel + --multik not supported yet (each horizon's anchor set needs its own bandwidth)")
     if multik and not bptt:
         bptt = 1                                          # multi-K only affordable with truncated backprop
     print(f"config: lever={lever} maskreps={maskreps} zvary={zvary} T={T} R={R} "
           f"M={M} K={K} bptt={bptt} multik={multik} lr={lr} loss={loss_mode} tau={tau} "
-          f"init_frac={init_frac} decode={decode} plateau={plateau}(max{max_steps}) tag={tag}", flush=True)
+          f"kernel_h={kernel_h}(0=auto) kernel_c={kernel_c} "
+          f"init_frac={init_frac} decode={decode} plateau={plateau}(max{max_steps}) "
+          f"joint_z0={joint_z0} intra_ab={intra_ab} intra_c={intra_c} full_disto={full_disto} tag={tag}", flush=True)
     kcol = f"w1_k{K}"                                     # pairwise loss-horizon column name
     pair_fields = (["trial", "run", "prev"] + [f"w1_k{k}" for k in multik] + ["w1_k17"]) if multik \
         else ["trial", "run", "prev", kcol, "w1_k17"]
@@ -199,7 +219,7 @@ def main():
 
     def disto_grad(lm_z, z0, steps):                      # differentiable (checkpointed) for the loss
         z, _ = run_trunk(model, z_init, lm_z, pair_mask, z0, steps, use_ckpt=not fast_bwd)
-        return cross_distogram_from_z(model, z, pair_mask)
+        return cross_distogram_from_z(model, z, pair_mask, include_intra_ab=intra_ab, include_intra_c=intra_c, full_disto=full_disto)
 
     @torch.no_grad()
     def disto_fwd(lm_z, z0, steps):                       # forward-only (fast) for anchors/eval
@@ -207,7 +227,7 @@ def main():
         with torch.amp.autocast("cuda", dtype=torch.bfloat16):
             for _ in range(steps):
                 z = _loop_body(model, z, z_init, lm_z, pair_mask, a, b_mat)
-        return cross_distogram_from_z(model, z, pair_mask)
+        return cross_distogram_from_z(model, z, pair_mask, include_intra_ab=intra_ab, include_intra_c=intra_c, full_disto=full_disto)
 
     def disto_grad_trunc(lm_z, z0, steps, tb):            # K-loop forward value, grad only through last tb loops (ESMFold recycle regime)
         z = z0
@@ -218,8 +238,9 @@ def main():
         with torch.amp.autocast("cuda", dtype=torch.bfloat16):
             for _ in range(tb):
                 z = _loop_body(model, z, z_init, lm_z, pair_mask, a, b_mat)
-        return cross_distogram_from_z(model, z, pair_mask)
+        return cross_distogram_from_z(model, z, pair_mask, include_intra_ab=intra_ab, include_intra_c=intra_c, full_disto=full_disto)
 
+    global_peak_gb = [0.0]                                # campaign-wide VRAM peak (steering + decode), mutable cell for the nested fn below
     rows, step_rows, pair_rows, realg, nearg = [], [], [], 0, 0
     ref0 = disto_fwd(lm_z_base, z0_base, N_LOOPS + 1).detach() if gt_mode else None  # baseline (confident-wrong) basin
     outcomes = []                                        # K17 cross-distograms, saved for post-hoc ground-truth scoring
@@ -228,13 +249,21 @@ def main():
     campaign_stop = None                                 # "hit" | "timeout" | None (campaign mode)
     plateau_rows = []                                    # per-run last-step repel gain + plateaued flag
     cycle_best = []                                       # (cycle, best DockQ) history
+    # z0 leaves are O(L^2) (vs s_lm's O(L)) — ~200MB/run at L~640 in fp16. Keeping the
+    # whole campaign's worth around (like `leaves`) would repeat the exact disk-quota
+    # crash from saving per-run z tensors before. So this buffer holds only the CURRENT
+    # cycle's z0's (cleared right after that cycle's _cycle_decode call) — no permanent
+    # z0 archive, no crash-safety redecode for z0 (leaves/s_lm still has that).
+    z0_cycle_buf = []
     # In campaign mode anchors accumulate for the whole 12h in ONE process; store them
     # fp16 to halve VRAM (distograms are 0..1 over 64 bins; w1's cumsum promotes to fp32).
     anc_cast = (lambda x: x.half()) if cycle_decode else (lambda x: x)
 
-    def _cycle_decode(cyc, run_lo, run_hi, batch_leaves):
+    def _cycle_decode(cyc, run_lo, run_hi, batch_leaves, batch_z0=None):
         """Batched 0->17 launch + diffusion decode of ONE cycle's leaves; append per-
-        (run,sample) ab-ag DockQ + ipTM to dockq_{tag}.csv (cumulative). Returns best DockQ."""
+        (run,sample) ab-ag DockQ + ipTM to dockq_{tag}.csv (cumulative). Returns best DockQ.
+        batch_z0: per-leaf optimized z0's (--joint-z0), parallel to batch_leaves; None ->
+        shared z0_base (the proven, pre-joint-z0 path)."""
         import numpy as _np
         ddir = OUT / f"decoded_{tag}"; ddir.mkdir(exist_ok=True)
         drows, tdec, n = [], time.time(), len(batch_leaves)
@@ -242,12 +271,15 @@ def main():
             idx = list(range(c0, min(c0 + launch_batch, n)))
             lm_z_B = torch.cat([lift_to_lm_z(model, torch.from_numpy(batch_leaves[i].astype("float32")).cuda())
                                 for i in idx], dim=0)
+            z0_B = (torch.cat([torch.from_numpy(batch_z0[i].astype("float32")).cuda().to(z_init.dtype) for i in idx], dim=0)
+                    if batch_z0 is not None else z0_base)
             try:
-                z_B = fg.final_trunk_z_batched(model, z_init, lm_z_B, pair_mask, z0_base, N_LOOPS + 1)
+                z_B = fg.final_trunk_z_batched(model, z_init, lm_z_B, pair_mask, z0_B, N_LOOPS + 1)
                 z_list = [z_B[bi:bi + 1] for bi in range(len(idx))]
             except Exception as e:               # batched launch OOM/unsupported -> proven per-leaf fallback
                 print(f"       [cycle {cyc}] batched launch failed ({type(e).__name__}: {e}); per-leaf", flush=True)
-                z_list = [fg.final_trunk_z(model, z_init, lm_z_B[bi:bi + 1], pair_mask, z0_base, N_LOOPS + 1)
+                z_list = [fg.final_trunk_z(model, z_init, lm_z_B[bi:bi + 1], pair_mask,
+                                            (z0_B[bi:bi + 1] if batch_z0 is not None else z0_B), N_LOOPS + 1)
                           for bi in range(len(idx))]
             for bi, i in enumerate(idx):
                 run = run_lo + i
@@ -257,17 +289,35 @@ def main():
                     cif = ddir / f"run{run}_s{k}.cif"
                     cif.write_text(smp.complex.to_mmcif())
                     ip = float(smp.iptm) if smp.iptm is not None else (float(smp.ptm) if smp.ptm is not None else 0.0)
+                    pt = float(smp.ptm) if smp.ptm is not None else 0.0
                     dq = dockq_cif(cif)
-                    drows.append(dict(run=run, sample=k, iptm=round(ip, 4), dockq=round(dq, 4)))
+                    # pair_chains_iptm is already computed by confidence_head every decode (same
+                    # forward pass as .iptm/.ptm) -- just wasn't being extracted before. Row order
+                    # matches chain_infos (saved once below), NOT necessarily alphabetical A/B/C.
+                    pi = (_json.dumps([round(x, 4) for row in smp.pair_chains_iptm.tolist() for x in row])
+                          if smp.pair_chains_iptm is not None else "")
+                    drows.append(dict(run=run, sample=k, iptm=round(ip, 4), ptm=round(pt, 4),
+                                      dockq=round(dq, 4), pair_iptm=pi))
             del lm_z_B
             torch.cuda.empty_cache()
+        global_peak_gb[0] = max(global_peak_gb[0], round(torch.cuda.max_memory_allocated() / 1e9, 2))
         dockq_rows.extend(drows)
         with open(OUT / f"dockq_{tag}.csv", "w", newline="") as df:
-            dw = csv.DictWriter(df, fieldnames=["run", "sample", "iptm", "dockq"])
+            dw = csv.DictWriter(df, fieldnames=["run", "sample", "iptm", "ptm", "dockq", "pair_iptm"])
             dw.writeheader(); dw.writerows(dockq_rows)
+        chain_order_f = OUT / f"chain_order_{tag}.txt"
+        if not chain_order_f.exists():                       # pair_iptm's flattened NxN row order
+            chain_order_f.write_text(",".join(ci.chain_id for ci in chain_infos))
         _np.save(OUT / f"leaves_{tag}.npy", _np.stack(leaves))    # crash-safety: persist s_lm's seen so far
         best = max((d["dockq"] for d in drows if d["dockq"] == d["dockq"]), default=float("nan"))
         biptm = max((d["iptm"] for d in drows), default=float("nan"))
+        if batch_z0 is not None and stop_dockq and best == best and best >= stop_dockq:
+            # --joint-z0 hit: the winning run's optimized z0 is otherwise lost once
+            # z0_cycle_buf is cleared (it's cycle-local, see the buffer comment above) --
+            # without this, the hit CIF can never be exactly re-decoded (e.g. to recover
+            # pair_iptm after a code change) since z0_base alone won't reproduce it.
+            win = max((d for d in drows if d["dockq"] == best), key=lambda d: d["dockq"])
+            _np.save(OUT / f"z0_hit_{tag}.npy", batch_z0[win["run"] - run_lo])
         print(f"  == cycle {cyc} decode (runs {run_lo}-{run_hi}, {len(drows)} samples, "
               f"{time.time()-tdec:.0f}s): best DockQ={best:.3f}  best ipTM={biptm:.3f} ==", flush=True)
         return best
@@ -277,6 +327,7 @@ def main():
         print(f"\n===== trial {t} ({tag}) =====", flush=True)
         z0_seed0 = fixed_z0(model, z_init, seed=10000 + 1000 * t) if zvary else z0_base
         anchors = [anc_cast(disto_fwd(lm_z_base, z0_seed0, K).detach())]
+        anchor_nn = [float("inf")]                        # per-anchor nearest-neighbor W1 (--loss kernel auto-h); baseline has no neighbor yet
         anchors17 = [disto_fwd(lm_z_base, z0_seed0, N_LOOPS + 1).detach()] if pairwise else None
         anchors_multi = {k: [disto_fwd(lm_z_base, z0_seed0, k).detach()] for k in multik} if multik else None
         g = torch.Generator(device="cpu").manual_seed(777 + t)
@@ -292,22 +343,43 @@ def main():
                     net.W.add_(torch.randn_like(net.W) * 0.01)   # symmetry break
                     net.b.add_(torch.randn_like(net.b) * 0.01)
                 leaf = net
-                opt = torch.optim.Adam(net.parameters(), lr=lr)
                 params = list(net.parameters())
                 start = "affine"
             elif maskreps:
                 S = pool[perm[(r - 1) % len(perm)]]
                 leaf = single_rep_from_hidden(model, load_hidden(REPS / f"seed_{S}")).detach().clone().requires_grad_(True)
-                opt = torch.optim.Adam([leaf], lr=lr)
                 params = [leaf]
                 start = f"mask{S}"
             else:
                 torch.manual_seed(10000 + 1000 * t + r)
                 d = torch.randn_like(s0)
                 leaf = (s0 + d / d.norm() * init_frac * s0n).clone().requires_grad_(True)
-                opt = torch.optim.Adam([leaf], lr=lr)
                 params = [leaf]
                 start = "nudge"
+            z0_leaf = None
+            if joint_z0:
+                torch.manual_seed(20000 + 1000 * t + r)          # separate noise stream from the s_lm nudge
+                z0f = z0.float()
+                dz = torch.randn_like(z0f)
+                ifrac_z0 = init_frac_z0 if init_frac_z0 > 0 else init_frac
+                z0_leaf = (z0f + dz / dz.norm() * ifrac_z0 * z0f.norm()).clone().requires_grad_(True)
+
+            def z0_now():                                        # current z0 for the loss graph
+                return z0_leaf.to(z_init.dtype) if joint_z0 else z0
+            if joint_z0:
+                lr_eff_z0 = lr_z0 if lr_z0 > 0 else lr
+                opt = torch.optim.Adam([{"params": params, "lr": lr},
+                                        {"params": [z0_leaf], "lr": lr_eff_z0}])
+            else:
+                opt = torch.optim.Adam(params, lr=lr)
+            if loss_mode == "kernel":                     # bandwidth fixed for this run's steps (anchor spread, NOT candidate-to-anchor)
+                if kernel_h > 0:
+                    kernel_h_run = kernel_h
+                else:
+                    finite = [x for x in anchor_nn if x == x and x != float("inf")]
+                    kernel_h_run = max(median(finite) * kernel_c, 1e-6) if finite else 1.0
+            else:
+                kernel_h_run = 0.0
             rep = 0.0
             md_hist = []                                  # per-step repel value, for plateau-by-step-M detection
             s, stale, prev_md = 0, 0, -1e9
@@ -318,17 +390,24 @@ def main():
                         lm_z_g = cond_of(leaf)
                         per_k = []
                         for k in multik:
-                            Pk = disto_grad_trunc(lm_z_g, z0, k, bptt)
+                            Pk = disto_grad_trunc(lm_z_g, z0_now(), k, bptt)
                             per_k.append(torch.stack([w1(Pk, anc) for anc in anchors_multi[k]]).mean())
                         md = torch.stack(per_k).mean()
                     else:
-                        P = (disto_grad_trunc(cond_of(leaf), z0, K, bptt) if bptt
-                             else disto_grad(cond_of(leaf), z0, K))
+                        P = (disto_grad_trunc(cond_of(leaf), z0_now(), K, bptt) if bptt
+                             else disto_grad(cond_of(leaf), z0_now(), K))
                         dists = torch.stack([w1(P, anc) for anc in anchors])      # [n_anchors]
                         if loss_mode == "softmin":
                             # soft-min distance to the NEAREST anchor; recomputed each step,
                             # so the active (nearest) anchor is free to change as the leaf moves.
                             md = -tau * torch.logsumexp(-dists / tau, dim=0)
+                        elif loss_mode == "kernel":
+                            # summed Gaussian-kernel repulsion (metadynamics-style): each anchor is a
+                            # local hill exp(-(d/h)^2); we minimize their SUM (= move to the least-
+                            # crowded region). md = -bias keeps the "higher md = more repelled"
+                            # convention, so loss=-md=bias (minimized) and every downstream
+                            # log/plateau/CSV path is unchanged. h is per-run (kernel_h_run).
+                            md = -torch.exp(-(dists / kernel_h_run) ** 2).sum()
                         else:
                             md = dists.mean()                                 # mean over anchors (original)
                     loss = -md
@@ -336,8 +415,10 @@ def main():
                     drift = ((net.W.detach() - eye).norm() + net.b.detach().norm()).item()
                 else:
                     drift = ((leaf.detach() - s0).norm() / s0n).item()  # off-manifold drift so far
+                drift_z0 = (((z0_leaf.detach() - z0.float()).norm() / z0.float().norm()).item()
+                            if joint_z0 else 0.0)
                 step_rows.append(dict(trial=t, run=r, step=s, repel=round(md.item(), 5),
-                                      drift=round(drift, 5)))
+                                      drift=round(drift, 5), drift_z0=round(drift_z0, 5)))
                 opt.zero_grad(); loss.backward()
                 if lever == "affine":
                     torch.nn.utils.clip_grad_norm_(params, 10.0)
@@ -360,16 +441,25 @@ def main():
                       f"(last_gain={last_gain:+.4f} > {plateau_warn}); M={M} may be too few", flush=True)
             steer_secs = round(time.time() - t_run, 1)               # steering-only wall-clock
             steer_peak_gb = round(torch.cuda.max_memory_allocated() / 1e9, 2)
+            global_peak_gb[0] = max(global_peak_gb[0], steer_peak_gb)
             with torch.no_grad():
                 c_eval = cond_of(leaf)
-            anchors.append(anc_cast(disto_fwd(c_eval, z0, K).detach()))
+                z0_eval = z0_leaf.detach().to(z_init.dtype) if joint_z0 else z0
+            new_anc = anc_cast(disto_fwd(c_eval, z0_eval, K).detach())
+            if loss_mode == "kernel" and kernel_h <= 0:   # update anchor-to-anchor NN spread for next run's auto-h (O(N))
+                dnew = torch.stack([w1(new_anc, a) for a in anchors]).tolist()
+                for i, dv in enumerate(dnew):
+                    if dv < anchor_nn[i]:
+                        anchor_nn[i] = dv
+                anchor_nn.append(min(dnew))
+            anchors.append(new_anc)
             if multik:
                 for k in multik:
-                    anchors_multi[k].append(disto_fwd(c_eval, z0, k).detach())
+                    anchors_multi[k].append(disto_fwd(c_eval, z0_eval, k).detach())
             if no_score:                                      # --no-score fast path: skip the K=17 diagnostic (leaves unaffected)
                 wg, wb1, wb2, basin, rg = float("nan"), 0.0, 0.0, "?", False
             else:
-                P17 = disto_fwd(c_eval, z0, N_LOOPS + 1)
+                P17 = disto_fwd(c_eval, z0_eval, N_LOOPS + 1)
                 if pairwise:                                  # W1 of this run to every prior run, per loss-horizon + K17
                     for j in range(len(anchors17)):          # j=0 baseline B1, j>=1 prior runs
                         d = {"trial": t, "run": r, "prev": j,
@@ -403,8 +493,10 @@ def main():
                 outcomes.append(P17.detach().to(torch.float16).cpu().numpy())        # K17 cross-distogram
             if lever != "affine":
                 leaves.append(leaf.detach().to(torch.float16).cpu().numpy())          # optimized s_lm -> decode_batch.py
+            if joint_z0:
+                z0_cycle_buf.append(z0_eval.detach().to(torch.float16).cpu().numpy())  # cycle-local only, see note above
             if decode and (rg or not until_gt):           # decode (GT hits only when --until-gt) -> CIF -> DockQ
-                z_trunk = fg.final_trunk_z(model, z_init, c_eval, pair_mask, z0, N_LOOPS + 1)
+                z_trunk = fg.final_trunk_z(model, z_init, c_eval, pair_mask, z0_eval, N_LOOPS + 1)
                 samples = fg.decode_from_ztrunk(model, builder, feat, chain_infos, cond,
                                                 z_trunk, n_samples, n_steps, target, seed=r)
                 ddir = OUT / f"decoded_{tag}"; ddir.mkdir(exist_ok=True)
@@ -413,23 +505,31 @@ def main():
                     cif = ddir / f"run{r}_s{k}.cif"
                     cif.write_text(s.complex.to_mmcif())
                     ip = float(s.iptm) if s.iptm is not None else (float(s.ptm) if s.ptm is not None else 0.0)
+                    pt = float(s.ptm) if s.ptm is not None else 0.0
                     dq = dockq_cif(cif)
-                    dockq_rows.append(dict(run=r, sample=k, iptm=round(ip, 4), dockq=round(dq, 4)))
+                    pi = (_json.dumps([round(x, 4) for row in s.pair_chains_iptm.tolist() for x in row])
+                          if s.pair_chains_iptm is not None else "")
+                    dockq_rows.append(dict(run=r, sample=k, iptm=round(ip, 4), ptm=round(pt, 4),
+                                          dockq=round(dq, 4), pair_iptm=pi))
                     rdq.append((ip, dq))
                 bestdq = max((d for _, d in rdq if d == d), default=float("nan"))
                 print(f"       decode: iptm={[round(ip,3) for ip,_ in rdq]} "
                       f"dockq={[round(d,3) for _,d in rdq]} best={bestdq:.3f}", flush=True)
                 with open(OUT / f"dockq_{tag}.csv", "w", newline="") as df:
-                    dw = csv.DictWriter(df, fieldnames=["run", "sample", "iptm", "dockq"])
+                    dw = csv.DictWriter(df, fieldnames=["run", "sample", "iptm", "ptm", "dockq", "pair_iptm"])
                     dw.writeheader(); dw.writerows(dockq_rows)
+                chain_order_f = OUT / f"chain_order_{tag}.txt"
+                if not chain_order_f.exists():
+                    chain_order_f.write_text(",".join(ci.chain_id for ci in chain_infos))
             dt = round(time.time() - t_run, 1)
             rows.append(dict(trial=t, run=r, start=start, basin=basin, wg=round(wg, 4),
                              wb1=round(wb1, 4), wb2=round(wb2, 4), repel=round(rep, 4), secs=dt,
                              steer_secs=steer_secs, peak_gb=steer_peak_gb))
-            print(f"  run {r:2d} [{start:>7}]: basin={basin:>2} wg={wg:.3f}  ({dt}s)"
+            khseg = f" h={kernel_h_run:.4f}" if loss_mode == "kernel" else ""
+            print(f"  run {r:2d} [{start:>7}]: basin={basin:>2} wg={wg:.3f}{khseg}  ({dt}s)"
                   f"{'  <== REAL G!' if rg else ('  <-- nearG' if basin == 'G' else '')}", flush=True)
             with open(OUT / f"repel_{tag}_steps.csv", "w", newline="") as sf:   # incremental flush
-                sw = csv.DictWriter(sf, fieldnames=["trial", "run", "step", "repel", "drift"])
+                sw = csv.DictWriter(sf, fieldnames=["trial", "run", "step", "repel", "drift", "drift_z0"])
                 sw.writeheader(); sw.writerows(step_rows)
             with open(OUT / f"repel_{tag}.csv", "w", newline="") as rf:          # per-run results, flushed
                 rw = csv.DictWriter(rf, fieldnames=["trial", "run", "start", "basin", "wg", "wb1", "wb2", "repel", "secs", "steer_secs", "peak_gb"])
@@ -444,6 +544,8 @@ def main():
             del opt, leaf                                # P17 only exists when not no_score
             if not no_score:
                 del P17
+            if joint_z0:
+                del z0_leaf
             torch.cuda.empty_cache()
             if until_gt and rg:
                 print(f"  >> trial {t} REACHED GT at run {r} (W1->GT={wg:.3f}) — ending trial", flush=True)
@@ -451,8 +553,11 @@ def main():
             # --- campaign: batch-decode this cycle's leaves, stop on a DockQ hit or the time budget ---
             if cycle_decode and r % cycle_decode == 0:
                 cyc = r // cycle_decode
-                best = _cycle_decode(cyc, r - cycle_decode + 1, r, leaves[-cycle_decode:])
+                best = _cycle_decode(cyc, r - cycle_decode + 1, r, leaves[-cycle_decode:],
+                                     z0_cycle_buf[-cycle_decode:] if joint_z0 else None)
                 cycle_best.append((cyc, best))
+                if joint_z0:
+                    z0_cycle_buf.clear()          # cycle-local only (see buffer comment above)
                 if stop_dockq and best == best and best >= stop_dockq:
                     campaign_stop = "hit"
                     print(f"  >> CAMPAIGN HIT [{tag}]: cycle {cyc} best DockQ {best:.3f} >= "
@@ -470,7 +575,7 @@ def main():
         w = csv.DictWriter(f, fieldnames=["trial", "run", "start", "basin", "wg", "wb1", "wb2", "repel", "secs", "steer_secs", "peak_gb"])
         w.writeheader(); w.writerows(rows)
     with open(OUT / f"repel_{tag}_steps.csv", "w", newline="") as f:        # per-step loss trajectory
-        w = csv.DictWriter(f, fieldnames=["trial", "run", "step", "repel", "drift"])
+        w = csv.DictWriter(f, fieldnames=["trial", "run", "step", "repel", "drift", "drift_z0"])
         w.writeheader(); w.writerows(step_rows)
     if pairwise:
         with open(OUT / f"pairwise_{tag}.csv", "w", newline="") as f:
@@ -485,10 +590,26 @@ def main():
     if cycle_decode:                                     # campaign summary (DockQ-driven, not wg)
         overall = max((d["dockq"] for d in dockq_rows if d["dockq"] == d["dockq"]), default=float("nan"))
         n_notplat = sum(1 for p in plateau_rows if not p["plateaued"])
-        print(f"\n[{tag}] campaign done {time.time()-t0:.0f}s, stop={campaign_stop or 'runs-exhausted'}. "
+        elapsed = time.time() - t0
+        gpu_hours = round(elapsed / 3600, 3)
+        print(f"\n[{tag}] campaign done {elapsed:.0f}s ({gpu_hours}h), stop={campaign_stop or 'runs-exhausted'}. "
               f"{len(rows)} runs, {len(cycle_best)} cycles, best ab-ag DockQ={overall:.3f}. "
+              f"peak VRAM={global_peak_gb[0]}GB. "
               f"plateau: {n_notplat}/{len(plateau_rows)} runs still climbing at step M "
               f"(see plateau_{tag}.csv).", flush=True)
+        summary_csv = OUT / "campaign_summary.csv"           # one row per campaign, appended across all targets/configs
+        summary_fields = ["tag", "target", "joint_z0", "lr_z0", "intra_ab", "intra_c", "full_disto", "stop_reason",
+                          "n_runs", "n_cycles", "best_dockq", "elapsed_sec", "gpu_hours", "peak_vram_gb"]
+        write_header = not summary_csv.exists()
+        with open(summary_csv, "a", newline="") as sf:
+            sw = csv.DictWriter(sf, fieldnames=summary_fields)
+            if write_header:
+                sw.writeheader()
+            sw.writerow(dict(tag=tag, target=target, joint_z0=joint_z0, lr_z0=(lr_z0 if lr_z0 > 0 else lr),
+                             intra_ab=intra_ab, intra_c=intra_c, full_disto=full_disto,
+                             stop_reason=campaign_stop or "runs-exhausted",
+                             n_runs=len(rows), n_cycles=len(cycle_best), best_dockq=round(overall, 4),
+                             elapsed_sec=round(elapsed, 1), gpu_hours=gpu_hours, peak_vram_gb=global_peak_gb[0]))
         return
     _thr = gt_thresh if Qg is not None else REAL_G
     trials_hit = len({r["trial"] for r in rows if r["wg"] < _thr})

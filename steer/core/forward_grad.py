@@ -190,16 +190,31 @@ def run_trunk(model, z_init, lm_z, pair_mask, z0, total_steps, collect_per_loop=
     return z, per_loop
 
 
-def cross_distogram_from_z(model, z, pair_mask):
-    """z (trunk output) -> readout/coda -> distogram_head -> softmax -> AB×C block.
+def cross_distogram_from_z(model, z, pair_mask, include_intra_ab=False, include_intra_c=False, full_disto=False):
+    """z (trunk output) -> readout/coda -> distogram_head -> softmax -> AB×C block
+    (optionally concatenated with the AB×AB intra-antibody and/or C×C intra-antigen
+    blocks; or, with full_disto, the ENTIRE [L,L] distogram, untargeted). distogram_head
+    already computes the full [L,L,nbins] logits regardless of which blocks are used
+    below -- slicing more (or all) of it out is compute-free (same fwd/bwd through the
+    model either way), it just makes P (and its anchors) bigger. NOTE: w1()'s loss is a
+    plain mean over pairs, so full_disto dilutes the signal from whatever pairs actually
+    matter (interface/intra-antigen) with the much larger set of short-range, already-
+    well-determined local-backbone pairs that dominate a full distogram.
     Differentiable version of distogram_kl_basins.cross_distogram. Returns [npairs,nbins]."""
     with torch.amp.autocast("cuda", dtype=torch.bfloat16):
         z = model.parcae_readout(z)
         z = model.parcae_coda(z, pair_attention_mask=pair_mask)
     z = z.float()
     logits = model.distogram_head(z + z.transpose(-2, -3))[0]      # [L,L,nbins]
-    P = F.softmax(logits, dim=-1)[AB, C, :].reshape(-1, logits.shape[-1])
-    return P
+    P = F.softmax(logits, dim=-1)
+    if full_disto:
+        return P.reshape(-1, P.shape[-1])
+    blocks = [P[AB, C, :].reshape(-1, P.shape[-1])]
+    if include_intra_ab:
+        blocks.append(P[AB, AB, :].reshape(-1, P.shape[-1]))
+    if include_intra_c:
+        blocks.append(P[C, C, :].reshape(-1, P.shape[-1]))
+    return torch.cat(blocks, dim=0) if len(blocks) > 1 else blocks[0]
 
 
 def final_trunk_z(model, z_init, lm_z, pair_mask, z0, steps):
@@ -219,14 +234,15 @@ def final_trunk_z(model, z_init, lm_z, pair_mask, z0, steps):
 def final_trunk_z_batched(model, z_init, lm_z_B, pair_mask, z0, steps):
     """Batched forward-only launch: B leaves' pair conditioning lm_z_B [B,L,L,256]
     -> final trunk z [B,L,L,256], all in one pass (grad-free). Same trajectory as
-    final_trunk_z but the leading batch dim B carries independent leaves; the shared
-    z_init/z0/a/b broadcast over it. Use to launch many steered s_lm's to loop 17 at
-    once before decoding."""
+    final_trunk_z but the leading batch dim B carries independent leaves; z_init/a/b
+    always broadcast over it. z0 either broadcasts too (shape [1,L,L,256], the shared-
+    z0 proven path) or carries one z0 per leaf (shape [B,L,L,256], --joint-z0). Use to
+    launch many steered s_lm's to loop 17 at once before decoding."""
     a, b = model._discretized_dynamics()
     a = a.view(1, 1, 1, -1).to(z_init.device, z_init.dtype)
     b_mat = b.to(z_init.device, z_init.dtype)
     B = lm_z_B.shape[0]
-    z = z0.expand(B, -1, -1, -1).contiguous()      # shared initial pair state per leaf
+    z = (z0.expand(B, -1, -1, -1) if z0.shape[0] == 1 else z0).contiguous()  # shared or per-leaf initial pair state
     pm = pair_mask.expand(B, -1, -1).contiguous() if pair_mask.shape[0] == 1 else pair_mask  # fused trimul needs mask batched to B (no broadcast)
     with torch.no_grad(), torch.amp.autocast("cuda", dtype=torch.bfloat16):
         for _ in range(steps):
