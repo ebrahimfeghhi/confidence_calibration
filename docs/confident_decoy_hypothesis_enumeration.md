@@ -124,6 +124,46 @@ we have not looked at: build their DockQ matrices (`matrix_iptm.py`), run
 `hypothesis_enumeration.py` with no peeking. If first-distinct holds near 7/7 on fresh interfaces,
 it is a real method for this trap class; if it collapses, it was overfit to these 7.
 
+## Generalizing beyond two hypotheses (design, agreed 2026-07-10)
+
+The two-hypothesis case (H1 decoy, H2 good) is a special case of a general procedure: **greedy
+non-maximum suppression on the ipTM ranking, with DockQ as the overlap measure.**
+
+Algorithm:
+1. Order seeds by ipTM (desc). H1 = the most confident seed.
+2. Descend; a seed becomes a new hypothesis H_k only if it is **distinct from every hypothesis
+   already accepted**: `DockQ(H_i, H_k) < τ` for all i < k. (H3 must be < τ to both H1 and H2;
+   H4 < τ to all three; etc.)
+3. Return the top **H** hypotheses (H = shortlist size).
+4. (Optional, for per-seed pooling) assign each remaining seed to its **nearest anchor** — the
+   hypothesis it has the highest DockQ to (only matters for seeds near two anchors).
+
+Agreed design decisions:
+- **τ is the single continuous parameter.** It serves as both the distinctness cutoff for
+  enumeration and the cluster-assignment floor — use the *same* τ for both. **Tighter is safer**
+  (0.1–0.3): a loose τ (e.g. 0.4–0.5) lets a barely-shifted *decoy* count as a new hypothesis,
+  which can push the real good dock from H2 to H3/H4. Observed directly: first-distinct drops
+  7/7 → 5/7 going from τ=0.23 to τ=0.5. Safe band here is τ ∈ [0.1, 0.4] → H=2 → 7/7.
+- **No minimum-cluster / support rule.** Good docks can be genuinely rare — 8a44's good cluster
+  was **6 seeds of 1025**. Any support floor would delete the correct answer. Do not filter by
+  cluster size.
+- **H (shortlist size) is a discrete output-size choice, not a fitted parameter.** Read it off the
+  recall@H curve rather than tuning it. Here every interface has the first good dock at depth 2,
+  so H=2 gives full recall; a harder interface with two confident decoys ahead of the good dock
+  would need H=3.
+- DockQ is not a metric (no triangle inequality), so "distinct from H1 and H2 individually" does
+  not *prove* H3 is a clean third mode — but greedy NMS stays self-consistent because each accepted
+  hypothesis suppresses its own neighbourhood as you descend.
+
+Two goals, kept separate:
+- **Recall@H** — return H hypotheses, the good dock is among them. Core method; **just τ**. This is
+  the robust, deployable version (compress ~1025 seeds → a handful of hypotheses to hand off).
+- **Precision@1** — pick exactly one. Adds the optional confidence-pooling ranking layer (cluster
+  median ipTM, tight τ), which is only a partial signal (3/7 significant; fails on 8ts0).
+
+Immediate next step: lock τ (≈0.23, middle of the safe band) and run the blind held-out validation
+(see above) measuring recall@H for H=2,3 on fresh confident-decoy interfaces.
+
 ## Files
 
 - `steer/experiments/matrix_iptm.py` — builds the seed×seed DockQ matrices (memory-safe).
