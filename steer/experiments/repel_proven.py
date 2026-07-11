@@ -105,9 +105,15 @@ def main():
     joint_z0 = flag("--joint-z0", False, bool)           # also optimize z0 (trunc-normal initial pair state) jointly with s_lm
     lr_z0 = flag("--lr-z0", 0.0, float)                  # z0's own lr (0 = fall back to --lr); z0 is O(L^2), moves much faster than s_lm at the same lr
     init_frac_z0 = flag("--init-frac-z0", 0.0, float)    # z0's own init nudge fraction (0 = fall back to --init-frac)
+    no_z0_nudge = flag("--no-z0-nudge", False, bool)     # skip z0's random init nudge; start z0_leaf directly from z0 (s_lm's own nudge already gives every run a distinct step-0 gradient)
     intra_ab = flag("--intra-ab", False, bool)           # also include the intra-antibody (AB×AB) block in the loss/anchors, alongside the proven AB×C block
     intra_c = flag("--intra-c", False, bool)             # also include the intra-antigen (C×C) block in the loss/anchors, alongside the proven AB×C block
     full_disto = flag("--full-disto", False, bool)       # untargeted: loss/anchors over the ENTIRE L×L distogram (overrides intra_ab/intra_c); ablation for whether targeting matters
+    save_ckpt = flag("--save-ckpt", "", str)             # after the run loop, save {anchors, run} so a later --load-ckpt resumes THIS chain (progressive cycle-by-cycle sweeps)
+    load_ckpt = flag("--load-ckpt", "", str)             # resume: load anchors + continue the run loop from the saved run index (empty/missing file = fresh start)
+    save_disto = flag("--save-disto", False, bool)       # save each trial's per-run K=3 cross-distograms (the anchors, incl. baseline) -> disto_{tag}_t{t}.npy for post-hoc divergence analysis
+    gen_cloud = flag("--gen-cloud", 0, int)              # generational-cloud walk (s_lm lever): per generation, spawn N noisy particles (init_frac noise) around the current center, DECODE each (dockq+iptm) and accumulate its K-distogram anchor; then optimize 1 s_lm away from the ENTIRE accumulated pool (mean-W1, K-horizon, M steps) and re-center the walk on it. The decoded clouds are the candidates; the optimize step only steers WHERE we sample. --runs = number of generations. 0 = off.
+    cloud_wnoise = flag("--cloud-wnoise", 0.0, float)    # gen_cloud diversity source: 0 = perturb s_lm (default). >0 = instead HOLD s_lm at the center and perturb the fold-path WEIGHTS by w += sigma*N(0,1) per cloud particle (particle 0 stays clean = the directed point; optimize always uses clean weights). A/B for weight-noise vs input-noise clouds.
     if no_score and (until_gt or pairwise):
         raise SystemExit("--no-score is incompatible with --until-gt / --pairwise (both need the K=17 score)")
     if loss_mode not in ("mean", "softmin", "kernel"):
@@ -120,7 +126,8 @@ def main():
           f"M={M} K={K} bptt={bptt} multik={multik} lr={lr} loss={loss_mode} tau={tau} "
           f"kernel_h={kernel_h}(0=auto) kernel_c={kernel_c} "
           f"init_frac={init_frac} decode={decode} plateau={plateau}(max{max_steps}) "
-          f"joint_z0={joint_z0} intra_ab={intra_ab} intra_c={intra_c} full_disto={full_disto} tag={tag}", flush=True)
+          f"joint_z0={joint_z0} no_z0_nudge={no_z0_nudge} intra_ab={intra_ab} intra_c={intra_c} full_disto={full_disto} gen_cloud={gen_cloud} cloud_wnoise={cloud_wnoise} "
+          f"load_ckpt={load_ckpt or '-'} save_ckpt={save_ckpt or '-'} tag={tag}", flush=True)
     kcol = f"w1_k{K}"                                     # pairwise loss-horizon column name
     pair_fields = (["trial", "run", "prev"] + [f"w1_k{k}" for k in multik] + ["w1_k17"]) if multik \
         else ["trial", "run", "prev", kcol, "w1_k17"]
@@ -128,7 +135,7 @@ def main():
     cfg = fg.configure_target(target)                    # sets chain slices (AB,C) + rep paths for this complex
     gt_mode = target != "7txw"                           # no precomputed G/B1/B2 centroids for a new complex
     good = cfg["good"] or []
-    if decode or cycle_decode:                           # ab-ag DockQ of decoded structures vs native (inline OR campaign)
+    if decode or cycle_decode or gen_cloud:              # ab-ag DockQ of decoded structures vs native (inline OR campaign OR gen_cloud clouds)
         sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "eval"))
         import json as _json, tempfile as _tempfile, subprocess as _sub, csv as _csv
         from eval_ost_foldbench import postprocess_cif, OST_BIN, OST_ENV   # noqa: E402
@@ -217,6 +224,32 @@ def main():
     def cond_of(leaf):                                    # leaf -> pair conditioning lm_z (grad-capable)
         return leaf(lm_z_base) if lever == "affine" else lift_to_lm_z(model, leaf)
 
+    # weight-noise cloud (gen_cloud + --cloud-wnoise): snapshot pretrained weights, restore+noise per particle.
+    # s_lm is held fixed, so ESM-C is bypassed and only the fold-path weights move the output; snapshot lives
+    # on each param's own device (GPU-resident here since repel doesn't offload) for fast restore.
+    wn_base = None
+    if gen_cloud and cloud_wnoise > 0:
+        wn_base = {n: p.detach().clone() for n, p in model.named_parameters()}
+        print(f"cloud weight-noise ON: sigma={cloud_wnoise} ({len(wn_base)} param tensors snapshotted)", flush=True)
+
+    def wn_restore():                                     # restore pretrained weights (clean model)
+        if wn_base is None:
+            return
+        with torch.no_grad():
+            for n, p in model.named_parameters():
+                p.copy_(wn_base[n])
+
+    def wn_apply(seed_int):                               # clean weights + w += sigma*N(0,1) (seed-deterministic)
+        if wn_base is None:
+            return
+        with torch.no_grad():
+            for n, p in model.named_parameters():
+                p.copy_(wn_base[n])
+                if not p.is_floating_point():
+                    continue
+                g = torch.Generator(device=p.device).manual_seed(int(seed_int) % (2**31) + (hash(n) % 10007))
+                p.add_(cloud_wnoise * torch.randn(p.shape, generator=g, device=p.device, dtype=p.dtype))
+
     def disto_grad(lm_z, z0, steps):                      # differentiable (checkpointed) for the loss
         z, _ = run_trunk(model, z_init, lm_z, pair_mask, z0, steps, use_ckpt=not fast_bwd)
         return cross_distogram_from_z(model, z, pair_mask, include_intra_ab=intra_ab, include_intra_c=intra_c, full_disto=full_disto)
@@ -246,6 +279,7 @@ def main():
     outcomes = []                                        # K17 cross-distograms, saved for post-hoc ground-truth scoring
     leaves = []                                          # optimized s_lm per run, for decode -> structure -> DockQ
     dockq_rows = []                                      # inline per-(run,sample) iptm + DockQ when --decode
+    gc_rows = []                                          # gen_cloud: per-(trial,gen,particle,sample) iptm + DockQ of the decoded cloud particles
     campaign_stop = None                                 # "hit" | "timeout" | None (campaign mode)
     plateau_rows = []                                    # per-run last-step repel gain + plateaued flag
     cycle_best = []                                       # (cycle, best DockQ) history
@@ -326,13 +360,72 @@ def main():
         t = toff + t_local
         print(f"\n===== trial {t} ({tag}) =====", flush=True)
         z0_seed0 = fixed_z0(model, z_init, seed=10000 + 1000 * t) if zvary else z0_base
-        anchors = [anc_cast(disto_fwd(lm_z_base, z0_seed0, K).detach())]
+        start_run = 1
+        if load_ckpt and Path(load_ckpt).exists():        # resume an earlier cycle's accumulated anchors (progressive sweep)
+            _ck = torch.load(load_ckpt, map_location="cuda")
+            anchors = [a.cuda() for a in _ck["anchors"]]
+            start_run = int(_ck["run"]) + 1
+            print(f"  resumed: {len(anchors)} anchors from {load_ckpt}, continuing at run {start_run}", flush=True)
+        else:
+            anchors = [anc_cast(disto_fwd(lm_z_base, z0_seed0, K).detach())]
+        r = start_run - 1                                 # defined even if the run loop does 0 iterations
         anchor_nn = [float("inf")]                        # per-anchor nearest-neighbor W1 (--loss kernel auto-h); baseline has no neighbor yet
         anchors17 = [disto_fwd(lm_z_base, z0_seed0, N_LOOPS + 1).detach()] if pairwise else None
         anchors_multi = {k: [disto_fwd(lm_z_base, z0_seed0, k).detach()] for k in multik} if multik else None
         g = torch.Generator(device="cpu").manual_seed(777 + t)
         perm = torch.randperm(len(pool), generator=g).tolist()
-        for r in range(1, (max_runs if until_gt else R) + 1):
+        if gen_cloud:                                      # === generational cloud: optimize a BASE s_lm away from the pool, decode it + a noise cloud around it, accumulate ===
+            z0g = z0_seed0                                 # fixed z0 for the whole trial
+            anchors = []                                   # accumulating pool of decoded-cloud K-distograms (16, 32, 48, ...)
+            ddir = OUT / f"decoded_{tag}"; ddir.mkdir(exist_ok=True)
+            opt_slm = None                                 # latest optimized s_lm (None until the first optimize)
+            for gen in range(1, R + 1):
+                tgen = time.time()
+                center = opt_slm if opt_slm is not None else s0   # cloud sits on the latest OPTIMIZED point (base for gen 1); optimize itself always restarts from base (leash)
+                cen_n = center.norm().item()
+                for i in range(gen_cloud):                 # DECODE each cloud particle; particle 0 = the directed point (clean weights + optimized s_lm)
+                    if cloud_wnoise > 0:                    # weight-noise cloud: HOLD s_lm at center, diversify via fold-path weights
+                        part = center
+                        if i == 0:
+                            wn_restore()                   # particle 0 = clean weights = the directed point
+                        else:
+                            wn_apply(30000 + 991 * (100 * t + gen) + i)
+                    elif opt_slm is not None and i == 0:
+                        part = center                      # the optimized s_lm ITSELF gets decoded
+                    else:
+                        torch.manual_seed(30000 + 991 * (100 * t + gen) + i)
+                        dc = torch.randn_like(center)
+                        part = (center + dc / dc.norm() * init_frac * cen_n).detach()
+                    lm_part = lift_to_lm_z(model, part)
+                    anchors.append(anc_cast(disto_fwd(lm_part, z0g, K).detach()))
+                    z_trunk = fg.final_trunk_z(model, z_init, lm_part, pair_mask, z0g, N_LOOPS + 1)
+                    smps = fg.decode_from_ztrunk(model, builder, feat, chain_infos, cond, z_trunk, n_samples, n_steps, target, seed=1000 * gen + i)
+                    for k, sm in enumerate(smps):
+                        cif = ddir / f"t{t}_g{gen}_p{i}_s{k}.cif"; cif.write_text(sm.complex.to_mmcif())
+                        ip = float(sm.iptm) if sm.iptm is not None else (float(sm.ptm) if sm.ptm is not None else 0.0)
+                        gc_rows.append(dict(trial=t, gen=gen, particle=i, sample=k,
+                                            iptm=round(ip, 4), dockq=round(dockq_cif(cif), 4)))
+                    with open(OUT / f"dockq_{tag}.csv", "w", newline="") as df:     # flush after each particle
+                        dw = csv.DictWriter(df, fieldnames=["trial", "gen", "particle", "sample", "iptm", "dockq"])
+                        dw.writeheader(); dw.writerows(gc_rows)
+                gbest = max((x["dockq"] for x in gc_rows if x["trial"] == t and x["gen"] == gen), default=float("nan"))
+                if cloud_wnoise > 0:
+                    wn_restore()                           # clean weights for the directed optimize (s_lm gradient must see the true model)
+                torch.manual_seed(10000 + 1000 * t + gen)  # optimize a fresh BASE s_lm away from ALL accumulated anchors (K-horizon, M steps) -> next optimized point
+                d = torch.randn_like(s0)
+                leaf = (s0 + d / d.norm() * init_frac * s0n).clone().requires_grad_(True)
+                opt_adam = torch.optim.Adam([leaf], lr=lr)
+                md = torch.tensor(0.0)
+                for _ in range(M):
+                    P = (disto_grad_trunc(cond_of(leaf), z0g, K, bptt) if bptt else disto_grad(cond_of(leaf), z0g, K))
+                    md = torch.stack([w1(P, anc) for anc in anchors]).mean()
+                    opt_adam.zero_grad(); (-md).backward(); opt_adam.step()
+                opt_slm = leaf.detach().clone()
+                print(f"  gen {gen:2d}: decoded {gen_cloud} (incl. optimized s_lm), pool={len(anchors)}, "
+                      f"gen-best DockQ={gbest:.3f}, repel={md.item():.4f}  ({time.time()-tgen:.0f}s)", flush=True)
+                del opt_adam, leaf; torch.cuda.empty_cache()
+            continue
+        for r in range(start_run, start_run + (max_runs if until_gt else R)):
             t_run = time.time()
             torch.cuda.reset_peak_memory_stats()
             z0 = fixed_z0(model, z_init, seed=10000 + 1000 * t + r) if zvary else z0_base
@@ -358,11 +451,14 @@ def main():
                 start = "nudge"
             z0_leaf = None
             if joint_z0:
-                torch.manual_seed(20000 + 1000 * t + r)          # separate noise stream from the s_lm nudge
                 z0f = z0.float()
-                dz = torch.randn_like(z0f)
-                ifrac_z0 = init_frac_z0 if init_frac_z0 > 0 else init_frac
-                z0_leaf = (z0f + dz / dz.norm() * ifrac_z0 * z0f.norm()).clone().requires_grad_(True)
+                if no_z0_nudge:
+                    z0_leaf = z0f.clone().requires_grad_(True)
+                else:
+                    torch.manual_seed(20000 + 1000 * t + r)      # separate noise stream from the s_lm nudge
+                    dz = torch.randn_like(z0f)
+                    ifrac_z0 = init_frac_z0 if init_frac_z0 > 0 else init_frac
+                    z0_leaf = (z0f + dz / dz.norm() * ifrac_z0 * z0f.norm()).clone().requires_grad_(True)
 
             def z0_now():                                        # current z0 for the loss graph
                 return z0_leaf.to(z_init.dtype) if joint_z0 else z0
@@ -568,8 +664,22 @@ def main():
                       f"({r} runs done) — stopping.", flush=True)
             if campaign_stop:
                 break
+        if save_disto and anchors:                        # per-trial K=3 cross-distograms (baseline + each run) for post-hoc divergence analysis
+            import numpy as _np2
+            _np2.save(OUT / f"disto_{tag}_t{t}.npy",
+                      _np2.stack([a.detach().to(torch.float16).cpu().numpy() for a in anchors]))
+            print(f"  saved {len(anchors)} K=3 distograms (trial {t}) -> disto_{tag}_t{t}.npy", flush=True)
         if campaign_stop:
             break
+
+    if gen_cloud:                                         # gen_cloud flushes its dockq CSV + CIFs live during the run; the normal-run summary below assumes rows/leaves/outcomes (empty here) -> skip it
+        gcbest = max((x["dockq"] for x in gc_rows if x["dockq"] == x["dockq"]), default=float("nan"))
+        print(f"\n[{tag}] gen_cloud done: {len(gc_rows)} decodes, best ab-ag DockQ={gcbest:.3f}", flush=True)
+        return
+
+    if save_ckpt:                                         # persist accumulated anchors so a later --load-ckpt continues this chain
+        torch.save({"anchors": [a.detach().cpu() for a in anchors], "run": int(r)}, save_ckpt)
+        print(f"  saved checkpoint: {len(anchors)} anchors, through run {r} -> {save_ckpt}", flush=True)
 
     with open(OUT / f"repel_{tag}.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["trial", "run", "start", "basin", "wg", "wb1", "wb2", "repel", "secs", "steer_secs", "peak_gb"])

@@ -16,6 +16,13 @@
 # KERNELH (0=auto), KERNELC (1.0), INTRAC_TARGET (target name that also gets
 # --intra-c, e.g. INTRAC_TARGET=8vvl for the one structure that misfolded its
 # antigen -- see docs/z0_loss_scope_results.md / joint-z0-intra-antigen-loss).
+#
+# Always runs with --no-z0-nudge: z0_leaf starts directly from the fixed base z0
+# (no random init kick) and is shaped purely by the coupled gradient -- s_lm's
+# own per-run nudge already gives z0 a distinct step-0 gradient, so the extra
+# random kick was just adding high-dimensional noise on top of the trunk's
+# actual starting state. Tag suffix "_nonudge" keeps outputs separate from any
+# earlier nudged run of the same target/config.
 set -u
 PY=/home/ebrahim/esm/.venv/bin/python
 EXP=/home/ebrahim/tts_abag/steer/experiments
@@ -30,13 +37,13 @@ KERNELC=${KERNELC:-1.0}
 INTRAC_TARGET=${INTRAC_TARGET:-}
 
 run_campaign () {
-  local s=$1 extra="" tag="${1}_k3m5_kernel"
-  if [ "$s" = "$INTRAC_TARGET" ]; then extra="--intra-c"; tag="${1}_k3m5_kernel_intrac"; fi
-  echo "=== [$(date '+%F %T')] GPU $GPU: campaign $s (tag $tag) START  budget=${BUDGET}s loss=kernel(h=${KERNELH},c=${KERNELC}) joint-z0 lr-z0=${LRZ0} extra='${extra}' ==="
+  local s=$1 extra="" tag="${1}_k3m5_kernel_nonudge"
+  if [ "$s" = "$INTRAC_TARGET" ]; then extra="--intra-c"; tag="${1}_k3m5_kernel_intrac_nonudge"; fi
+  echo "=== [$(date '+%F %T')] GPU $GPU: campaign $s (tag $tag) START  budget=${BUDGET}s loss=kernel(h=${KERNELH},c=${KERNELC}) joint-z0 lr-z0=${LRZ0} no-z0-nudge extra='${extra}' ==="
   CUDA_VISIBLE_DEVICES="$GPU" "$PY" "$EXP/repel_proven.py" \
       --target "$s" --lever slm --M 5 --K 3 --lr 0.3 --init-frac 0.05 \
       --loss kernel --kernel-h "$KERNELH" --kernel-c "$KERNELC" \
-      --joint-z0 --lr-z0 "$LRZ0" $extra \
+      --joint-z0 --lr-z0 "$LRZ0" --no-z0-nudge $extra \
       --trials 1 --runs "$RUNS" --no-score --fused --chunk-size "$CS" \
       --cycle-decode "$CYC" --stop-dockq 0.23 --time-budget "$BUDGET" \
       --n-samples "$NS" --n-steps "$STEPS" --launch-batch "$LB" --tag "$tag" \
