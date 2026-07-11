@@ -101,11 +101,21 @@ def main():
                         help="If >0, add Gaussian noise w += sigma*N(0,1) to every "
                              "float weight, regenerated deterministically per seed "
                              "(RandOpt-style). 0 = off (default).")
+    parser.add_argument("--perturb_seed", type=int, default=None,
+                        help="If set (requires --weight_perturb_sigma>0), fix the weight "
+                             "perturbation to THIS seed and apply it ONCE, decoupled from the "
+                             "fold seed(s). One perturbed model then folds every complex/seed "
+                             "below. Unset = legacy behavior (perturbation reseeded per fold seed).")
     parser.add_argument("--chunk_size", type=int, default=32,
                         help="Token-axis chunk for L² ops (triangle/OPM/pair-transition) "
                              "in both the folding trunk and the confidence head. Lower = "
                              "less GPU memory, slightly slower; numerically identical. "
                              "Default 32 (model default is 64). Pass 0 to disable chunking.")
+    parser.add_argument("--fused", action="store_true",
+                        help="Enable the fused Triton trimul kernel on the O(L^3) "
+                             "triangle-multiply op (bf16 fwd). Method-preserving speedup; "
+                             "matches the steering path's --fused so wall-clock is "
+                             "comparable between baseline and steering.")
     parser.add_argument("--no_config_log", action="store_true",
                         help="Skip writing a config snapshot (set by the parallel "
                              "launcher, which logs the run once itself).")
@@ -117,6 +127,8 @@ def main():
     # confidence head batches all diffusion samples through a full trunk pass and
     # is the main OOM source on the largest AbAg complexes. None = chunking off.
     model.set_chunk_size(args.chunk_size if args.chunk_size > 0 else None)
+    if args.fused:                          # Triton trimul kernel on the O(L^3) op; method-preserving speedup
+        model.set_kernel_backend("fused")
     builder = ESMFold2InputBuilder()
 
     # RandOpt-style weight perturbation. The model is loaded once and reused across
@@ -156,6 +168,14 @@ def main():
                     continue
                 noise = torch.randn(p.shape, generator=gen)   # fp32 on CPU
                 p.add_((args.weight_perturb_sigma * noise).to(device=p.device, dtype=p.dtype))
+
+    # Decoupled mode: apply one fixed perturbation ONCE, reused across every fold below
+    # (fold() doesn't alter weight values, only shuffles _esmc between devices, so the
+    # perturbation persists). This is the RandOpt "one expert folds many complexes" path.
+    if base_params is not None and args.perturb_seed is not None:
+        apply_weight_perturbation(args.perturb_seed)
+        print(f"Applied fixed weight perturbation once (perturb_seed={args.perturb_seed}); "
+              f"reused across all complexes/seeds.")
 
     if args.json_files:
         complexes = []
@@ -198,8 +218,8 @@ def main():
 
             print(f"  {seed_dir_name} ...", end="", flush=True)
             try:
-                if args.weight_perturb_sigma > 0.0:
-                    apply_weight_perturbation(seed_int)
+                if args.weight_perturb_sigma > 0.0 and args.perturb_seed is None:
+                    apply_weight_perturbation(seed_int)   # legacy: reseed per fold seed
                 result = builder.fold(
                     model,
                     spi,

@@ -41,6 +41,9 @@ def main():
                         help="Token-axis chunk for L² ops (forwarded to each worker). "
                              "Lower = less GPU memory, slightly slower; numerically "
                              "identical. Default 32. Pass 0 to disable chunking.")
+    parser.add_argument("--fused", action="store_true",
+                        help="Enable the fused Triton trimul kernel (forwarded to each "
+                             "worker). Method-preserving speedup; matches steering's --fused.")
     parser.add_argument("--json_dir", default=str(JSON_DIR))
     parser.add_argument("--complexes", nargs="+", default=None,
                         help="Only process these complex names (e.g. 7txw 7ua2).")
@@ -78,6 +81,8 @@ def main():
             "--json_dir", args.json_dir,
             "--no_config_log",
         ]
+        if args.fused:
+            cmd += ["--fused"]
         if args.complexes:
             cmd += ["--complexes", *args.complexes]
         if args.exclude_complexes:
