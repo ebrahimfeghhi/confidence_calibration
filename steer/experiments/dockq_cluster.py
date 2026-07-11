@@ -33,7 +33,7 @@ from DockQ.DockQ import load_PDB, run_on_all_native_interfaces
 
 DEEP = Path.home() / "esm/foldbench_predictions/esmfold2fast_tts"
 CSVIN = "results/csv_files/dockq_ost_esmfold2fast_tts_deep.csv"
-THR = 0.23
+THR = float(os.environ.get("THR", 0.23))   # greedy merge threshold (sweepable overnight)
 MIN_CLUST = 5
 MEDOID_SAMPLE = 30
 NPROC = int(os.environ.get("NPROC", 32))     # override with NPROC=N; shared box, keep memory×workers bounded
@@ -142,9 +142,10 @@ def main(cx, c1, c2):
 
     # 1-2. greedy-leader
     import time
+    MAX_IT = int(os.environ.get("MAX_IT", 100000))   # cap tail iterations (tiny clusters); big basins seed early
     leftover = set(poses); clusters = []
     it = 0; t0 = time.time()
-    while len(leftover) >= MIN_CLUST:
+    while len(leftover) >= MIN_CLUST and it < MAX_IT:
         it += 1
         seed = max(leftover, key=lambda sk: P[sk][1])
         lst = list(leftover)
@@ -156,6 +157,27 @@ def main(cx, c1, c2):
         print(f"  [greedy it={it}] seed={seed} took_this_round={len(members)} "
               f"leftover={len(leftover)} elapsed={time.time()-t0:.1f}s", flush=True)
     print(f"  greedy: {len(clusters)} clusters, {len(leftover)} noise, {time.time()-t0:.1f}s total", flush=True)
+
+    # optional: dump greedy pose->cluster assignments (tiny CSV) so all selection metrics can be
+    # evaluated offline without re-clustering. SKIP_MEDOID short-circuits the expensive medoid+reassign
+    # step — for a THR/metric sweep the greedy partition is what we study.
+    cluster_out = os.environ.get("CLUSTER_OUT")
+    if cluster_out:
+        from pathlib import Path as _P
+        d = _P(cluster_out); d.mkdir(parents=True, exist_ok=True)
+        fn = d / f"{cx}_{c1}{c2}_thr{THR:.2f}.csv"
+        with open(fn, "w", newline="") as f:
+            w = csv.writer(f); w.writerow(["seed", "sample", "cluster_id", "dockq_gt", "pair_iptm"])
+            for cid, mem in enumerate(clusters):
+                for (s, k) in mem:
+                    gt, ip = P[(s, k)]; w.writerow([s, k, cid, f"{gt:.4f}", f"{ip:.4f}"])
+            for (s, k) in leftover:
+                gt, ip = P[(s, k)]; w.writerow([s, k, -1, f"{gt:.4f}", f"{ip:.4f}"])
+        print(f"  saved greedy assignments -> {fn}", flush=True)
+        if os.environ.get("SKIP_MEDOID"):
+            _stop_watch.set(); pool.close(); pool.join()
+            print(f"  SKIP_MEDOID set — done (greedy-only) for {cx} {c1}-{c2} @ THR={THR:.2f}", flush=True)
+            return None, None
 
     # 3a. medoid per cluster (subsampled)
     medoids = []
