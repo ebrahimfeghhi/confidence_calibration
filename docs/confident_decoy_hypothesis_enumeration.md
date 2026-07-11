@@ -199,3 +199,59 @@ Seven tight-margin ab–ag interfaces (`T7`): 8ts0 A-C, 8ts0 B-C, 8a44 A-D, 7yxu
 - `steer/experiments/hypothesis_enumeration.py` — the method (both stages) + stats; reproduces all
   numbers above.
 - `results/iptm_matrix/matrix_*.npy` (+ `_index.csv`, `scores_*.csv`) — matrices and per-seed scores.
+
+---
+
+## Session log — 2026-07-10 (afternoon): corrections to the above
+
+The results earlier in this doc are **superseded** by the findings below. Rerun and rewrite before
+trusting the tables above.
+
+**1. It is ONE method, not two.** Stage 1 (enumerate distinct hypotheses) and stage 2 (score each
+hypothesis by pooled ipTM) are stages, not rivals. "Return H2" was never a deliverable — it assumes
+you already know H1 is a decoy.
+
+**2. Leader clustering, single tau, no cap.** Descend by ipTM; a seed joins the leader it is most
+similar to if DockQ >= tau, else it becomes a new leader. Assignment falls out of suppression — the
+same test read both ways — so there is genuinely only ONE tau. The earlier "two taus in tension"
+was an artifact of a `MAX_H = 5` cap that was silently always binding. Drop the cap.
+This is Hartigan's leader algorithm (1975); order-dependence is its classic criticism, but our
+order (ipTM descending) is meaningful, so the weakness is the feature.
+
+**3. tau emits 22-353 hypotheses, not 2.** The cluster count is emergent, never specified. The good
+dock is still enumeration-rank 2 on all 7 — the rest is low-confidence debris.
+
+**4. THE DOCKQ MATRIX IS ASYMMETRIC AND WE WERE ONLY READING ONE DIRECTION.**
+`D[i][j]` = DockQ(reference=i, target=j) != `D[j][i]`, because the reference defines which interface
+contacts are scored. Clustering only ever read `D[leader][candidate]`. On 8ts0 A-C this **split the
+good basin into two clusters**: the two good leaders (true DockQ 0.908 and 0.884) had
+`D[A][B] = 0.397` (< tau=0.4 -> split) but `D[B][A] = 0.455` (>= tau -> merge). Split by 0.003, on
+the arbitrary choice of which pose we called the reference. 33,878 pairs (3.2% of the matrix) flip
+across tau depending on direction.
+**Fix: symmetrize with `S = (D + D.T) / 2`.** This healed the split and 8ts0 A-C now returns
+DockQ 0.916 at rank 1.
+
+**5. DBSCAN / single-linkage is WORSE.** Tested (symmetrized, tau=0.4, no minPts):
+precision@1 = **leader 5/7, single-linkage 3/7**. Chaining bridges the good basin into decoy blobs
+(7yxu: a clean win becomes a miss; 7zoz: good cluster falls to rank 21). Leader clustering stays.
+
+**Current best: leader clustering, symmetrized matrix, single tau = 0.4, no cap, rank clusters by
+median ipTM. precision@1 = 5/7** (vs 0/7 for naive argmax ipTM). Five genuine wins — the earlier
+unsymmetrized 5/7 contained one size-1-cluster fluke (7zoz), which is now correctly gone.
+
+**Confidence tiers (promising, untested at scale).** Group statistically-indistinguishable
+hypotheses (Mann-Whitney, p >= 0.05 vs the tier leader) into the same tier and return the top-K
+tiers. Good dock appears in tier 1 on 5/7, tier <= 2 on 6/7, tier <= 3 on 7/7.
+
+**The honest wall: 8ts0 B-C.** The decoy cluster is significantly MORE confident than the good one
+(Cliff's delta +0.99, p ~ 0) — pick any decoy seed and any good seed and the decoy has higher ipTM
+essentially every time. No pooling rule survives that. Statistical significance is NOT a correctness
+signal here; the most emphatic wins are on the interfaces where we are wrong.
+
+### Next session
+1. Rerun and rewrite the tables above with: symmetrized matrix, no cap, single tau = 0.4.
+2. Re-sweep tau on the symmetrized matrix (0.4 was chosen pre-symmetrization).
+3. Decide on the singleton problem: a size-1 cluster's "median ipTM" is not pooling. A minimum size
+   of 2-3 to WIN the argmax is different from a support floor on the shortlist (which is vetoed —
+   8a44's good cluster is 6 seeds).
+4. Then: the blind held-out validation.
