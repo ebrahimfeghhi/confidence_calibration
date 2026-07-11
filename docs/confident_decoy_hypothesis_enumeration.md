@@ -1,6 +1,6 @@
 # Selecting the good dock on confident-decoy traps by enumerating hypotheses
 
-_First real finding, 2026-07-10. Reframed 2026-07-10 (see "A correction" below)._
+_First real finding, 2026-07-10._
 
 A label-free way to recover the correct antibody–antigen pose on "confident-decoy" interfaces —
 where ipTM confidently selects the wrong structure — by treating the seed pool as a small set of
@@ -107,14 +107,33 @@ shortlist matters.
 
 ## τ — the single parameter
 
-τ is used in both stages, but it pulls in **opposite directions**, which is the one subtlety worth
-internalising:
+τ is a DockQ **similarity** threshold (high DockQ = structurally similar). The same τ appears in both
+stages, but the two stages compare against it in **opposite directions** — so they want opposite
+*values*. This is the one subtlety worth internalising.
 
-- In enumeration it is an **upper** bound ("distinct enough to be a new hypothesis"). **Loose τ is
-  dangerous**: it lets a barely-shifted *decoy* qualify as a new hypothesis and push the real good
-  dock deeper down the shortlist.
-- In assignment it is a **lower** bound ("similar enough to join this cluster"). **Tight τ is
-  dangerous**: it sweeps distant, unrelated seeds into a cluster and contaminates the pooled ipTM.
+**Stage 1, enumeration — the test is `DockQ(H_i, H_k) < τ`, so τ is an UPPER bound.** A candidate
+must be *below* τ in similarity to every accepted hypothesis to count as new.
+- **Small τ ⇒ strict.** Only radically different structures qualify as new hypotheses. Safe.
+- **Large τ ⇒ permissive.** A pose with DockQ 0.5 to H1 — plainly the same basin, just shifted —
+  passes a `< 0.6` test and gets promoted to "new hypothesis". Those spurious hypotheses occupy
+  shortlist slots and push the real good dock deeper. This is why recall@2 falls from 7/7 to 5/7
+  when τ goes 0.4 → 0.5.
+
+**Stage 2, assignment — the test is `DockQ(anchor, seed) ≥ τ`, so τ is a LOWER bound.** A seed must
+be *above* τ in similarity to join a cluster.
+- **Large τ ⇒ strict.** Only genuinely similar seeds join. Clusters stay pure, pooled ipTM is clean.
+- **Small τ ⇒ permissive.** Almost every seed clears a `≥ 0.1` bar and gets swept into some cluster,
+  including seeds that barely resemble the anchor. The cluster bloats, and its pooled ipTM regresses
+  toward the mean of the whole pool — erasing the very signal we are pooling to find.
+
+Concretely, on 8a44 A-C the true good basin is 6 seeds. At τ=0.4 the good cluster is exactly those
+**6 seeds, median ipTM 0.540** — and it beats the decoy (0.406). At τ=0.23 the same cluster bloats to
+**13 seeds and its median collapses to 0.154**: seven contaminating seeds dragged the good
+hypothesis' confidence down by a factor of 3.5 and it loses. Same τ, same data — the low value just
+destroyed stage 2.
+
+So: **small τ is safe for enumeration but poisonous for assignment; large τ is safe for assignment
+but poisonous for enumeration.** They are fighting over one number.
 
 | τ | recall@1 | recall@2 | recall@3 | precision@1 (median pooling) |
 |:--:|:--:|:--:|:--:|:--:|
@@ -131,23 +150,6 @@ peaks. Recall degrades above it (0.5 → 5/7, as barely-shifted decoys start cou
 hypotheses); precision degrades below it (0.23 → 2/7, as clusters get contaminated). A single τ
 does satisfy both stages here, but only just — the two stages want opposite things, and if they
 ever stop overlapping on held-out data, decoupling into τ_enumerate and τ_assign is the fix.
-
-## A correction to the earlier writeup
-
-The first version of this doc presented "Method 1: first distinct hypothesis (7/7)" and "Method 2:
-cluster-confidence (3/7)" as **rival methods**, and concluded Method 1 won. That framing was wrong,
-in two ways:
-
-1. **They are not rival methods** — they are the two stages of one method. Stage 1 produces the
-   hypotheses; stage 2 reports a confidence for each. Comparing them is comparing a **recall**
-   number against a **precision** number.
-2. **"Return H2" was never a deliverable.** It silently assumes you already know H1 is a decoy —
-   which is precisely the thing you are trying to determine. The honest statement of the stage-1
-   result is *recall@2 = 7/7*, not "pick the second one."
-
-The old numbers were also computed with **mismatched thresholds** (enumeration at τ=0.23,
-clustering at τ=0.5). Running the single unified τ the design calls for, precision@1 under median
-pooling is **5/7**, not the 4/7 previously reported.
 
 ## Synthesis
 
