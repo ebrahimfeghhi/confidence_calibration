@@ -1,16 +1,186 @@
 # Selecting the good dock on confident-decoy traps by enumerating hypotheses
 
-_First real finding, 2026-07-10._ A label-free way to recover the correct antibody–antigen pose on
-"confident-decoy" interfaces — where ipTM confidently selects the wrong structure — by treating the
-seed pool as a small set of competing structural hypotheses instead of scoring poses individually.
+_First real finding, 2026-07-10. Reframed 2026-07-10 (see "A correction" below)._
+
+A label-free way to recover the correct antibody–antigen pose on "confident-decoy" interfaces —
+where ipTM confidently selects the wrong structure — by treating the seed pool as a small set of
+competing **structural hypotheses** instead of scoring poses individually.
 
 ## The problem
 
-On a confident-decoy interface a good dock (DockQ > 0.4) exists in the seed pool, but the
-single highest-ipTM pose is a decoy (DockQ < 0.23). Naive ipTM selection (`argmax ipTM`) therefore
-fails by construction. Prior project work established this is a **genuine ipTM failure, not
-undersampling** (depth to 1024 seeds does not rescue it; see
+On a confident-decoy interface a good dock (DockQ > 0.4) exists in the seed pool, but the single
+highest-ipTM pose is a decoy. Naive ipTM selection (`argmax ipTM`) therefore fails **by
+construction** on this set. Prior work established this is a genuine ipTM failure, not
+undersampling — depth to 1024 seeds does not rescue it (see
 [`esmfold2fast_tts_benchmark.md`](esmfold2fast_tts_benchmark.md)).
+
+## The method — one method, two stages
+
+Do not think of these as rival methods. **Stage 1 decides what the candidate answers are; stage 2
+decides which one to believe.** Both are needed, and they are measured by different metrics.
+
+**τ = 0.4 is the single parameter.** It is used for both stages.
+
+### Stage 1 — ENUMERATE (greedy non-maximum suppression)
+
+Descend seeds by ipTM. A seed becomes a new hypothesis `H_k` only if it is structurally
+**distinct** from *every* hypothesis already accepted: `DockQ(H_i, H_k) < τ` for all `i < k`.
+(H3 must be < τ to both H1 and H2; H4 to all three; and so on.) This compresses ~1025 seeds into a
+handful of competing structural hypotheses.
+
+- Metric: **recall@H** — is a good dock among the top-H hypotheses?
+- No minimum-cluster / support rule. Good docks can be genuinely rare — 8a44's good hypothesis has
+  only **6 seeds of 1025**. Any support floor would delete the correct answer.
+
+### Stage 2 — SCORE (pooled confidence)
+
+Assign each seed to its **nearest anchor** (the hypothesis it has the highest DockQ to, provided
+that DockQ ≥ τ; seeds close to nothing stay unassigned). Then score each hypothesis by **pooling
+ipTM over its cluster** (median). Pooling is a variance-reduced confidence estimate: it asks *"is
+this hypothesis consistently confident?"* rather than *"did one pose get a lucky high ipTM?"*
+
+- Metric: **precision@1** — is the top-*scored* hypothesis a good dock?
+
+Reproduce everything below: `python steer/experiments/hypothesis_enumeration.py 0.4`
+
+## Results (τ = 0.4, all 7 interfaces)
+
+### Stage 1: enumeration → recall@2 = 7/7
+
+| interface | ipTM rank of each enumerated hypothesis | hypothesis-depth of first good dock |
+|---|---|:--:|
+| 8ts0 A-C | 1, **20**, 54, 108, 986 | 2 |
+| 8ts0 B-C | 1, **28**, 121, 986, 996 | 2 |
+| 8a44 A-D | 1, **9**, 216, 224, 231 | 2 |
+| 7yxu A-C | 1, **2**, 5, 49, 53 | 2 |
+| 8a44 A-C | 1, **22**, 213, 223, 226 | 2 |
+| 7zoz A-C | 1, **2**, 3, 4, 5 | 2 |
+| 8vui B-C | 1, **100**, 214, 260, 280 | 2 |
+
+**recall@1 = 0/7** (by construction — H1 is the argmax-ipTM pose, which is a decoy by definition of
+this set). **recall@2 = 7/7. recall@3 = 7/7.** On every interface the good dock is the *second*
+distinct hypothesis: the model proposes essentially two confident structural stories, and the good
+dock is the top confident structure that **disagrees** with the winner.
+
+Note how wide a net this casts cheaply: on 8vui the good dock sits at raw ipTM **rank 100**, and on
+8ts0 at rank 20 — ranks no confidence-based shortlist would reach — yet both are **hypothesis #2**,
+because everything above them is a near-duplicate of the decoy.
+
+### Stage 2: pooled confidence → precision@1 = 5/7
+
+Which hypothesis do we return if we must pick exactly one?
+
+| pooling rule for hypothesis confidence | good docks picked / 7 |
+|---|:--:|
+| `top` — max ipTM in the cluster (≈ no pooling; the naive baseline) | **0/7** |
+| `mean` — mean ipTM over the cluster | 3/7 |
+| **`median` — median ipTM over the cluster** | **5/7** |
+| `mass × median` — cluster size × median | 1/7 |
+
+The `top` row is 0/7 by construction (it reduces to argmax ipTM). The real result is that
+**pooling confidence over the hypothesis lifts precision@1 from 0/7 to 5/7.** Median beats mean
+(it discounts the good cluster's low tail). **Mass actively hurts** (1/7): the honest, unsupervised
+good hypothesis is usually *smaller* than the decoy's, so weighting by size favours the decoy. An
+earlier "4–5/7 with mass" result relied on ground truth inflating the good cluster's size.
+
+Is the good hypothesis' pooled confidence *significantly* higher than the decoy's?
+
+| interface | good hyp size | good median ipTM | decoy hyp size | decoy median ipTM | Cliff's δ | MWU p | significant? |
+|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 8a44 A-D | 7 | 0.489 | 327 | 0.345 | +0.62 | 5e-3 | **yes** |
+| 7yxu A-C | 45 | 0.268 | 27 | 0.130 | +0.81 | 1e-8 | **yes** |
+| 8a44 A-C | 6 | 0.540 | 290 | 0.406 | +0.78 | 1e-3 | **yes** |
+| 8vui B-C | 26 | 0.446 | 264 | 0.442 | −0.06 | 0.59 | no (tie) |
+| 7zoz A-C | 17 | 0.132 | 17 | 0.137 | −0.22 | 0.29 | no |
+| 8ts0 A-C | 159 | 0.512 | 19 | 0.515 | −0.21 | 0.13 | no |
+| 8ts0 B-C | 233 | 0.515 | 1 | 0.537 | −1.00 | 0.09 | no |
+
+**3/7 significant.** The mechanism is visible on 8a44 A-C: the single decoy pose (ipTM 0.582) looks
+*more* confident than the single good pose (0.553), but the cluster medians **flip** (decoy 0.406 vs
+good 0.540). The confident decoy was a **lucky high outlier in a mediocre cluster**, while the good
+hypothesis is *consistently* confident. Variance reduction is what exposes this.
+
+**8ts0 (both interfaces) is the genuinely hard case** and the honest failure: there the decoy is not
+a lucky outlier — it is structurally dominant *and* truly more confident, pose-wise and pooled.
+Pooling cannot fix it. Stage 1 still recovers it (it is hypothesis #2), which is exactly why the
+shortlist matters.
+
+## τ — the single parameter
+
+τ is used in both stages, but it pulls in **opposite directions**, which is the one subtlety worth
+internalising:
+
+- In enumeration it is an **upper** bound ("distinct enough to be a new hypothesis"). **Loose τ is
+  dangerous**: it lets a barely-shifted *decoy* qualify as a new hypothesis and push the real good
+  dock deeper down the shortlist.
+- In assignment it is a **lower** bound ("similar enough to join this cluster"). **Tight τ is
+  dangerous**: it sweeps distant, unrelated seeds into a cluster and contaminates the pooled ipTM.
+
+| τ | recall@1 | recall@2 | recall@3 | precision@1 (median pooling) |
+|:--:|:--:|:--:|:--:|:--:|
+| 0.10 | 0/7 | 7/7 | 7/7 | 1/7 |
+| 0.15 | 0/7 | 7/7 | 7/7 | 2/7 |
+| 0.23 | 0/7 | 7/7 | 7/7 | 2/7 |
+| 0.30 | 0/7 | 7/7 | 7/7 | 3/7 |
+| **0.40** | 0/7 | **7/7** | **7/7** | **5/7** |
+| 0.50 | 0/7 | 5/7 | 6/7 | 5/7 |
+| 0.60 | 0/7 | 5/7 | 5/7 | 4/7 |
+
+**τ = 0.4 is the corner**: the last value where recall@2 is still 7/7, and the first where precision
+peaks. Recall degrades above it (0.5 → 5/7, as barely-shifted decoys start counting as new
+hypotheses); precision degrades below it (0.23 → 2/7, as clusters get contaminated). A single τ
+does satisfy both stages here, but only just — the two stages want opposite things, and if they
+ever stop overlapping on held-out data, decoupling into τ_enumerate and τ_assign is the fix.
+
+## A correction to the earlier writeup
+
+The first version of this doc presented "Method 1: first distinct hypothesis (7/7)" and "Method 2:
+cluster-confidence (3/7)" as **rival methods**, and concluded Method 1 won. That framing was wrong,
+in two ways:
+
+1. **They are not rival methods** — they are the two stages of one method. Stage 1 produces the
+   hypotheses; stage 2 reports a confidence for each. Comparing them is comparing a **recall**
+   number against a **precision** number.
+2. **"Return H2" was never a deliverable.** It silently assumes you already know H1 is a decoy —
+   which is precisely the thing you are trying to determine. The honest statement of the stage-1
+   result is *recall@2 = 7/7*, not "pick the second one."
+
+The old numbers were also computed with **mismatched thresholds** (enumeration at τ=0.23,
+clustering at τ=0.5). Running the single unified τ the design calls for, precision@1 under median
+pooling is **5/7**, not the 4/7 previously reported.
+
+## Synthesis
+
+- The confident-decoy trap is a **two-hypothesis** problem. Don't score poses — enumerate the
+  distinct confident hypotheses, then score *those*.
+- **Enumeration is the strong part: recall@2 = 7/7.** Compressing ~1025 seeds to a 2-item shortlist
+  that always contains the answer is the robust, deployable result.
+- **Pooled confidence is the useful-but-partial part: precision@1 = 0/7 → 5/7**, 3/7 significant.
+  It works when the decoy is a lucky outlier; it fails when the decoy is genuinely, consistently
+  confident (8ts0).
+- If you must return one structure, return the top-scoring hypothesis (5/7). If you can return two,
+  return the shortlist (7/7).
+
+## Caveats (do not overclaim)
+
+1. **These 7 are the analysis set, not held out.** The method was *derived* by studying these
+   interfaces. Overfitting risk is real and unquantified. τ=0.4 in particular is now selected on
+   this set — it must be locked before validation, not re-tuned on held-out data.
+2. **The method presumes a trap.** recall@1 = 0/7 and the `top` rule's 0/7 are both *by
+   construction*: these interfaces were selected as ones where argmax-ipTM fails. On a normal
+   interface where ipTM already works, H1 is the right answer and pooling could talk you out of it.
+   A **trap detector** — deciding whether you are in this regime at all — is unbuilt and is the
+   main gap between this and a general selector.
+3. Pool caveat: Option A (best-ipTM sample per seed) can suppress good docks that lose the
+   intra-seed ipTM competition. The all-samples pool (Option B) is untested.
+
+## Next: the decisive experiment
+
+Lock **τ = 0.4** and validate blind on **held-out confident-decoy interfaces** from
+`decoy_structural_analysis.csv` that we have not looked at: build their DockQ matrices
+(`matrix_iptm.py`), run `hypothesis_enumeration.py`, no peeking, no re-tuning. Report **recall@2,
+recall@3, and precision@1**. If recall@2 holds near 7/7 on fresh interfaces it is a real method for
+this trap class; if it collapses it was overfit to these 7.
 
 ## Data
 
@@ -19,153 +189,11 @@ Seven tight-margin ab–ag interfaces (`T7`): 8ts0 A-C, 8ts0 B-C, 8a44 A-D, 7yxu
 (Option A: one representative pose per seed = its best-ipTM diffusion sample; the mask0/dropout0
 `baseline_seed` is included as a row; DockQ is interface-restricted to c1–c2). Matrices live at
 `results/iptm_matrix/matrix_<cx>_<c1><c2>.npy` with a row-index CSV (seed, sample, ipTM, dockq_gt).
-`dockq_gt` is used **only to score** whether a pick is good — never to select.
-
-Reproduce all numbers below: `python steer/experiments/hypothesis_enumeration.py 0.5`
-
-## What did NOT work (for the record)
-
-Every method that rewards **confidence or structural prominence** picks the decoy, because on these
-traps the decoy is *both* more confident and the denser/larger structural basin:
-
-| method | good docks recovered / 7 |
-|---|:--:|
-| naive ipTM (`argmax`) | 0 |
-| DockQ-weighted consensus ipTM — sum `S` or average `A` (soft, no cutoff) | 1 |
-| thresholded consensus / greedy-cluster mass×mean (symmetric, unsupervised) | 1 |
-
-Measured cause on 8ts0 A-C: among top-50 ipTM poses the decoys are mutually similar (avg pairwise
-DockQ 0.56, ~559 neighbours each) while the good docks are diffuse (0.48, ~90 neighbours). The
-confident decoy is a **sharp reproducible attractor**; consensus/mass amplify it. The earlier
-"oracle 4/7" (mass×mean) leaned on two crutches that do not transfer: the all-samples pool, and an
-**asymmetric measurement** (good cluster counted generously by ground-truth membership, decoy
-counted stringently near one reference).
-
-## What worked — Method 1: first distinct hypothesis (7/7)
-
-Descend seeds by ipTM. `H1` = most confident seed (the decoy). Keep going and take `H2` = the first
-seed that is **genuinely structurally distinct** from H1 (`DockQ(H1, seed) < τ`). On a
-confident-decoy trap the model proposes essentially two confident hypotheses — the decoy and the
-good dock — and **H2 is the good dock**.
-
-Rule: descend by ipTM, skip near-duplicates of the top pick, return the first different structure.
-
-| interface | H2 ipTM-rank | DockQ(H2,H1) | DockQ_gt of H2 |
-|---|:--:|:--:|:--:|
-| 8ts0 A-C | 20 | 0.027 | 0.908 ✅ |
-| 8ts0 B-C | 28 | 0.029 | 0.866 ✅ |
-| 8a44 A-D | 9 | 0.027 | 0.640 ✅ |
-| 7yxu A-C | 2 | 0.007 | 0.826 ✅ |
-| 8a44 A-C | 22 | 0.033 | 0.698 ✅ |
-| 7zoz A-C | 2 | 0.088 | 0.605 ✅ |
-| 8vui B-C | 100 | 0.054 | 0.720 ✅ |
-
-**7/7**, and **robust to the threshold**: identical 7/7 for every τ in [0.10, 0.40] (any cutoff that
-means "a different interface"). It works because it never tries to out-score the decoy on
-confidence — it uses ipTM only to *rank* and DockQ only to test *distinctness*.
-
-## What partly worked — Method 2: cluster-confidence (3/7 significant)
-
-Anchor two clusters on H1 and H2 (each seed joins the nearer reference if within a DockQ floor τ),
-then ask: is the **good** hypothesis's cluster more confident than the decoy's? (Your
-variance-reduction idea: pool ipTM over the cluster to get a lower-variance confidence estimate.)
-
-At τ=0.5, by cluster **median** ipTM (clusters are ~100% pure):
-
-| interface | winner | Cliff's δ | MWU p | significant? |
-|---|:--:|:--:|:--:|:--:|
-| 8a44 A-D | H2 (good) | −0.88 | 2e-4 | **yes** |
-| 7yxu A-C | H2 (good) | −0.86 | 2e-9 | **yes** |
-| 8a44 A-C | H2 (good) | −0.76 | 2e-3 | **yes** |
-| 8vui B-C | H2 (good) | −0.04 | 0.75 | no (tie) |
-| 7zoz A-C | H1 (decoy) | +0.33 | 0.56 | no (n=2/3) |
-| 8ts0 A-C | H1 (decoy) | +0.19 | 4e-3 | yes |
-| 8ts0 B-C | H1 (decoy) | +0.34 | 2e-10 | yes |
-
-**H2 wins the median comparison on 4/7; 3/7 are statistically significant** (8vui's win is a
-coin-flip, δ=−0.04). Two mechanistic points:
-
-- **Pooling vindicated where it works.** On 8a44 A-C the single decoy pose (ipTM 0.582) looks more
-  confident than the good pose (0.553), but the cluster medians flip (decoy 0.434 vs good 0.540):
-  the confident decoy was a **lucky high outlier in a mediocre cluster**, while the good hypothesis
-  is *consistently* confident. Variance reduction exposes this. **Median beats mean** (discounts the
-  good cluster's low tail); **tight τ (≥0.4) matters** (loose τ contaminates the good cluster).
-- **Mass hurts here** (unlike the oracle). H2 wins mass×median only 2/7. Reason: the honest,
-  unsupervised H2 cluster is usually *smaller* than the decoy cluster, so mass favours the decoy.
-  The earlier "4–5/7 with mass" relied on the ground-truth cheat inflating the good cluster's size.
-  Median-only (3/7 significant) is the better honest rule. Interesting complementarity: median wins
-  the *small* good-basin cases (8a44, 6 good seeds), mass×median wins the *large* good-basin cases
-  (8ts0, ~230 good seeds) — union covers 6/7, but no single fixed rule does.
-
-## Synthesis
-
-- The confident-decoy trap is a **two-hypothesis** problem. Don't score poses — enumerate the
-  distinct confident hypotheses. The good dock is the top confident structure that *disagrees* with
-  the winner (**H2**).
-- **Best selector: first-distinct → return H2. 7/7, threshold-robust.**
-- Confidence *pooling* is a real but partial *confirmation* signal (3/7 significant), useful when the
-  good hypothesis is robustly confident; it cannot help on **8ts0**, the one genuinely hard case
-  where the decoy is both structurally dominant and truly more confident.
-
-## Caveats (do not overclaim)
-
-1. **These 7 are the analysis set, not held out.** The 7/7 was found by studying these interfaces
-   (Method 1 was literally derived from 8ts0's plot). Overfitting risk is real and unquantified.
-2. **Method 1 is trap-specific.** On all 7, H1 is a decoy. On a normal interface where ipTM already
-   works, "return H2" would return a decoy. The general deliverable is "the good dock is H1 or H2"
-   (return both); H2 is the answer only when you know/ suspect a trap. A trap detector is future work.
-3. Pool caveat: Option A (best-ipTM sample per seed) can suppress good docks that lose the
-   intra-seed ipTM competition; the all-samples pool (Option B) is untested here and may differ.
-
-## Next: the decisive experiment
-
-Validate blind on **held-out confident-decoy interfaces** from `decoy_structural_analysis.csv` that
-we have not looked at: build their DockQ matrices (`matrix_iptm.py`), run
-`hypothesis_enumeration.py` with no peeking. If first-distinct holds near 7/7 on fresh interfaces,
-it is a real method for this trap class; if it collapses, it was overfit to these 7.
-
-## Generalizing beyond two hypotheses (design, agreed 2026-07-10)
-
-The two-hypothesis case (H1 decoy, H2 good) is a special case of a general procedure: **greedy
-non-maximum suppression on the ipTM ranking, with DockQ as the overlap measure.**
-
-Algorithm:
-1. Order seeds by ipTM (desc). H1 = the most confident seed.
-2. Descend; a seed becomes a new hypothesis H_k only if it is **distinct from every hypothesis
-   already accepted**: `DockQ(H_i, H_k) < τ` for all i < k. (H3 must be < τ to both H1 and H2;
-   H4 < τ to all three; etc.)
-3. Return the top **H** hypotheses (H = shortlist size).
-4. (Optional, for per-seed pooling) assign each remaining seed to its **nearest anchor** — the
-   hypothesis it has the highest DockQ to (only matters for seeds near two anchors).
-
-Agreed design decisions:
-- **τ is the single continuous parameter.** It serves as both the distinctness cutoff for
-  enumeration and the cluster-assignment floor — use the *same* τ for both. **Tighter is safer**
-  (0.1–0.3): a loose τ (e.g. 0.4–0.5) lets a barely-shifted *decoy* count as a new hypothesis,
-  which can push the real good dock from H2 to H3/H4. Observed directly: first-distinct drops
-  7/7 → 5/7 going from τ=0.23 to τ=0.5. Safe band here is τ ∈ [0.1, 0.4] → H=2 → 7/7.
-- **No minimum-cluster / support rule.** Good docks can be genuinely rare — 8a44's good cluster
-  was **6 seeds of 1025**. Any support floor would delete the correct answer. Do not filter by
-  cluster size.
-- **H (shortlist size) is a discrete output-size choice, not a fitted parameter.** Read it off the
-  recall@H curve rather than tuning it. Here every interface has the first good dock at depth 2,
-  so H=2 gives full recall; a harder interface with two confident decoys ahead of the good dock
-  would need H=3.
-- DockQ is not a metric (no triangle inequality), so "distinct from H1 and H2 individually" does
-  not *prove* H3 is a clean third mode — but greedy NMS stays self-consistent because each accepted
-  hypothesis suppresses its own neighbourhood as you descend.
-
-Two goals, kept separate:
-- **Recall@H** — return H hypotheses, the good dock is among them. Core method; **just τ**. This is
-  the robust, deployable version (compress ~1025 seeds → a handful of hypotheses to hand off).
-- **Precision@1** — pick exactly one. Adds the optional confidence-pooling ranking layer (cluster
-  median ipTM, tight τ), which is only a partial signal (3/7 significant; fails on 8ts0).
-
-Immediate next step: lock τ (≈0.23, middle of the safe band) and run the blind held-out validation
-(see above) measuring recall@H for H=2,3 on fresh confident-decoy interfaces.
+`dockq_gt` is used **only to score** whether a pick is good — **never to select**.
 
 ## Files
 
 - `steer/experiments/matrix_iptm.py` — builds the seed×seed DockQ matrices (memory-safe).
-- `steer/experiments/hypothesis_enumeration.py` — both methods + Mann-Whitney; reproduces all numbers.
-- `results/iptm_matrix/matrix_*.npy` (+ `_index.csv`, `scores_*.csv`) — the matrices and per-seed scores.
+- `steer/experiments/hypothesis_enumeration.py` — the method (both stages) + stats; reproduces all
+  numbers above.
+- `results/iptm_matrix/matrix_*.npy` (+ `_index.csv`, `scores_*.csv`) — matrices and per-seed scores.
