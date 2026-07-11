@@ -9,14 +9,15 @@ steer/experiments/*.csv
 steer/experiments/*.npy
 steer/experiments/*.png
 steer/experiments/*.log
+steer/experiments/*.out
 steer/experiments/*.pt
 steer/experiments/decoded_*/
+steer/experiments/*_state/
+steer/experiments/*_STOP
 steer/experiments/log_*.txt
 steer/experiments/chain_order_*.txt
 
-# archived generated outputs (kept on disk, out of git)
-archive/**/*.npy
-archive/**/*.pt
-archive/**/*.png
-archive/**/*.csv
-archive/**/*.log
+# Archived experiments: kept on disk, out of git entirely (1.8 GB of .npy/.pt tensors).
+# A leading-slash-free pattern with an internal slash is anchored to the repo root, so the
+# old `archive/**/*.npy` form never matched steer/experiments/archive/ — hence the bare name.
+archive/
