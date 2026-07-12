@@ -6,6 +6,10 @@ results/*
 !results/csv_files/
 results/csv_files/*
 !results/csv_files/train_test_split.json
+# DockQ matrices are 4.1 GB of generated data — out of git, but keep the timings
+!results/dockq_full/
+results/dockq_full/*
+!results/dockq_full/timings.csv
 steer/data/
 
 # steer experiment outputs (co-located with scripts)
