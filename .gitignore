@@ -2,6 +2,10 @@ __pycache__/
 *.pyc
 results/*
 !results/.gitkeep
+# the train/test split DEFINES the experiment — it must be version-controlled
+!results/csv_files/
+results/csv_files/*
+!results/csv_files/train_test_split.json
 steer/data/
 
 # steer experiment outputs (co-located with scripts)
