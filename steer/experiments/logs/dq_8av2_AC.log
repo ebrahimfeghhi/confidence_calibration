@@ -1,0 +1,3 @@
+[8av2_AC] 5125 poses -> 26,265,625 pairs
+[8av2_AC] DONE 51s (load 33s + compute 19s) | peak VRAM 1.8 GB | 510,872 pairs/s | saved results/dockq_full/dockq_8av2_AC.npy (105 MB)
+ALL DONE

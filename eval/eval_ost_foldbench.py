@@ -53,7 +53,8 @@ TARGETS_CSV  = paths.TARGETS_CSV
 # the isolated-pair rescue's chain subsetting), which holds the GIL. With threads, dense
 # failures (e.g. 8f60's antigen rescue on every group) serialize the whole pool and it crawls.
 # Separate processes sidestep the GIL entirely. OST itself is a subprocess, so this is I/O-bound.
-MAX_WORKERS = min(160, (os.cpu_count() or 8))
+# Shared box: never hog it. Override with OST_WORKERS=N (default keeps the old behaviour).
+MAX_WORKERS = int(os.environ.get("OST_WORKERS", min(160, (os.cpu_count() or 8))))
 FIELDNAMES  = ["assembly_id", "chain1", "chain2", "seed", "sample",
                "dockq", "pair_iptm", "global_iptm", "ptm",
                "pair_ranking_score", "global_ranking_score", "chain_mapping",

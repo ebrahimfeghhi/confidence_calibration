@@ -1,0 +1,3 @@
+[7yv1_AC] 5125 poses -> 26,265,625 pairs
+[7yv1_AC] DONE 50s (load 33s + compute 18s) | peak VRAM 2.4 GB | 520,724 pairs/s | saved results/dockq_full/dockq_7yv1_AC.npy (105 MB)
+ALL DONE

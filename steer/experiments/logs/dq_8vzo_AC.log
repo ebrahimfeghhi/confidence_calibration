@@ -1,0 +1,3 @@
+[8vzo_AC] 5125 poses -> 26,265,625 pairs
+[8vzo_AC] DONE 88s (load 61s + compute 27s) | peak VRAM 6.8 GB | 299,724 pairs/s | saved results/dockq_full/dockq_8vzo_AC.npy (105 MB)
+ALL DONE

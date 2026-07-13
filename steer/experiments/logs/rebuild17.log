@@ -1,0 +1,85 @@
+=== 2026-07-12 17:05:26 rebuild 17 interfaces (per-pose chain mapping fix) ===
+waiting for ONE fully-idle GPU (polling every 30s)...
+17:05:26 GPU 4 is free — claiming it
+17:05:26 [1/17] 7uvs_AC -> GPU 4
+[7uvs_AC] 2005 poses -> 4,020,025 pairs | model chain pairs used: [('A', 'E'), ('A', 'F'), ('B', 'E'), ('B', 'F')]
+[7uvs_AC] DONE 23s (load 19s + compute 4s) | peak VRAM 2.0 GB | 250 no-interface poses | saved results/dockq_full/dockq_7uvs_AC.npy (16 MB)
+ALL DONE
+17:05:52 [2/17] 7uvs_BC -> GPU 4
+[7uvs_BC] 2005 poses -> 4,020,025 pairs | model chain pairs used: [('C', 'E'), ('C', 'F'), ('D', 'E'), ('D', 'F')]
+[7uvs_BC] DONE 23s (load 19s + compute 4s) | peak VRAM 2.0 GB | 434 no-interface poses | saved results/dockq_full/dockq_7uvs_BC.npy (16 MB)
+ALL DONE
+17:06:16 [3/17] 7z1x_AB -> GPU 4
+[7z1x_AB] 1850 poses -> 3,422,500 pairs | model chain pairs used: [('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D')]
+[7z1x_AB] DONE 25s (load 21s + compute 3s) | peak VRAM 2.5 GB | 854 no-interface poses | saved results/dockq_full/dockq_7z1x_AB.npy (14 MB)
+ALL DONE
+17:06:43 [4/17] 8a67_AD -> GPU 4
+[8a67_AD] 2105 poses -> 4,431,025 pairs | model chain pairs used: [('A', 'G'), ('A', 'H'), ('B', 'G'), ('B', 'H'), ('C', 'G'), ('C', 'H'), ('D', 'G'), ('D', 'H'), ('E', 'G'), ('E', 'H'), ('F', 'G'), ('F', 'H')]
+Traceback (most recent call last):
+  File "/home/ebrahim/tts_abag/steer/experiments/dockq_torch.py", line 344, in <module>
+    build(cx, ch[0], ch[1], device=a.device)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/tts_abag/steer/experiments/dockq_torch.py", line 305, in build
+    M = dockq_matrix([(r[0], r[1], r[2]) for r in rows], device=device, verbose=False, timings=tm)
+  File "/home/ebrahim/tts_abag/steer/experiments/dockq_torch.py", line 154, in dockq_matrix
+    all1, all2, bb1, bb2, seg1, seg2 = load_poses(items, device)
+                                       ~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/ebrahim/tts_abag/steer/experiments/dockq_torch.py", line 89, in load_poses
+    raise ValueError(
+    ...<2 lines>...
+        f"the chain mapping is inconsistent")
+ValueError: pose 14 (8a67_sample_0.cif, chains A/H) has shapes (574, 3)/(1123, 3), expected (605, 3)/(1123, 3) — the chain mapping is inconsistent
+17:06:45 [5/17] 8av2_AC -> GPU 4
+[8av2_AC] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D')]
+[8av2_AC] DONE 51s (load 32s + compute 19s) | peak VRAM 1.8 GB | 39 no-interface poses | saved results/dockq_full/dockq_8av2_AC.npy (105 MB)
+ALL DONE
+17:07:37 [6/17] 8be1_AC -> GPU 4
+[8be1_AC] 2005 poses -> 4,020,025 pairs | model chain pairs used: [('A', 'E'), ('A', 'F'), ('B', 'E'), ('B', 'F')]
+[8be1_AC] DONE 23s (load 19s + compute 4s) | peak VRAM 2.0 GB | 596 no-interface poses | saved results/dockq_full/dockq_8be1_AC.npy (16 MB)
+ALL DONE
+17:08:02 [7/17] 8be3_AB -> GPU 4
+[8be3_AB] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D')]
+[8be3_AB] DONE 47s (load 28s + compute 18s) | peak VRAM 1.5 GB | 12 no-interface poses | saved results/dockq_full/dockq_8be3_AB.npy (105 MB)
+ALL DONE
+17:08:51 [8/17] 8oni_AE -> GPU 4
+[8oni_AE] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('A', 'E'), ('A', 'F'), ('B', 'E'), ('B', 'F')]
+[8oni_AE] DONE 50s (load 34s + compute 16s) | peak VRAM 0.9 GB | 648 no-interface poses | saved results/dockq_full/dockq_8oni_AE.npy (105 MB)
+ALL DONE
+17:09:43 [9/17] 8oni_AF -> GPU 4
+[8oni_AF] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('A', 'G'), ('A', 'H'), ('B', 'G'), ('B', 'H')]
+[8oni_AF] DONE 51s (load 34s + compute 17s) | peak VRAM 1.0 GB | 143 no-interface poses | saved results/dockq_full/dockq_8oni_AF.npy (105 MB)
+ALL DONE
+17:10:36 [10/17] 8oni_BE -> GPU 4
+[8oni_BE] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('C', 'E'), ('C', 'F'), ('D', 'E'), ('D', 'F')]
+[8oni_BE] DONE 47s (load 33s + compute 14s) | peak VRAM 0.9 GB | 1939 no-interface poses | saved results/dockq_full/dockq_8oni_BE.npy (105 MB)
+ALL DONE
+17:11:24 [11/17] 8oni_BF -> GPU 4
+[8oni_BF] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('C', 'G'), ('C', 'H'), ('D', 'G'), ('D', 'H')]
+[8oni_BF] DONE 49s (load 34s + compute 16s) | peak VRAM 1.0 GB | 713 no-interface poses | saved results/dockq_full/dockq_8oni_BF.npy (105 MB)
+ALL DONE
+17:12:16 [12/17] 8q3j_AB -> GPU 4
+[8q3j_AB] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D')]
+[8q3j_AB] DONE 64s (load 45s + compute 19s) | peak VRAM 2.1 GB | 260 no-interface poses | saved results/dockq_full/dockq_8q3j_AB.npy (105 MB)
+ALL DONE
+17:13:21 [13/17] 8q3j_AC -> GPU 4
+[8q3j_AC] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('A', 'E'), ('A', 'F'), ('B', 'E'), ('B', 'F')]
+[8q3j_AC] DONE 63s (load 45s + compute 18s) | peak VRAM 2.3 GB | 387 no-interface poses | saved results/dockq_full/dockq_8q3j_AC.npy (105 MB)
+ALL DONE
+17:14:27 [14/17] 8ux6_AF -> GPU 4
+[8ux6_AF] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('A', 'E'), ('A', 'F'), ('B', 'E'), ('B', 'F')]
+[8ux6_AF] DONE 50s (load 33s + compute 16s) | peak VRAM 1.0 GB | 452 no-interface poses | saved results/dockq_full/dockq_8ux6_AF.npy (105 MB)
+ALL DONE
+17:15:19 [15/17] 8ux6_DF -> GPU 4
+[8ux6_DF] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('C', 'E'), ('C', 'F'), ('D', 'E'), ('D', 'F')]
+[8ux6_DF] DONE 50s (load 33s + compute 17s) | peak VRAM 1.1 GB | 401 no-interface poses | saved results/dockq_full/dockq_8ux6_DF.npy (105 MB)
+ALL DONE
+17:16:11 [16/17] 8uky_AC -> GPU 4
+[8uky_AC] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('A', 'E'), ('A', 'F'), ('B', 'E'), ('B', 'F')]
+[8uky_AC] DONE 62s (load 45s + compute 18s) | peak VRAM 2.3 GB | 507 no-interface poses | saved results/dockq_full/dockq_8uky_AC.npy (105 MB)
+ALL DONE
+17:17:15 [17/17] 8uky_BC -> GPU 4
+[8uky_BC] 5125 poses -> 26,265,625 pairs | model chain pairs used: [('C', 'E'), ('C', 'F'), ('D', 'E'), ('D', 'F')]
+[8uky_BC] DONE 63s (load 45s + compute 18s) | peak VRAM 2.3 GB | 215 no-interface poses | saved results/dockq_full/dockq_8uky_BC.npy (105 MB)
+ALL DONE
+=== 2026-07-12 17:18:21 REBUILD COMPLETE ===
+matrices now present: 47

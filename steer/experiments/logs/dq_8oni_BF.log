@@ -1,0 +1,3 @@
+[8oni_BF] 5125 poses -> 26,265,625 pairs
+[8oni_BF] DONE 49s (load 34s + compute 15s) | peak VRAM 0.9 GB | 538,829 pairs/s | saved results/dockq_full/dockq_8oni_BF.npy (105 MB)
+ALL DONE

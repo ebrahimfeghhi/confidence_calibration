@@ -1,0 +1,3 @@
+[8oxx_AB] 5125 poses -> 26,265,625 pairs
+[8oxx_AB] DONE 77s (load 53s + compute 24s) | peak VRAM 6.0 GB | 339,390 pairs/s | saved results/dockq_full/dockq_8oxx_AB.npy (105 MB)
+ALL DONE

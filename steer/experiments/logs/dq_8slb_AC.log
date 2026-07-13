@@ -1,0 +1,3 @@
+[8slb_AC] 5125 poses -> 26,265,625 pairs
+[8slb_AC] DONE 60s (load 40s + compute 20s) | peak VRAM 3.9 GB | 440,697 pairs/s | saved results/dockq_full/dockq_8slb_AC.npy (105 MB)
+ALL DONE

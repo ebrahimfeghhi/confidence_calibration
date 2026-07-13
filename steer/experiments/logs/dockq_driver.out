@@ -1,0 +1,107 @@
+=== 2026-07-12 14:56:50 full Option-B DockQ: 48 interfaces on GPUs [1 2 3 4 6 7] ===
+  GPU 1: free
+  GPU 2: free
+  GPU 3: free
+  GPU 4: free
+  GPU 6: free
+  GPU 7: free
+14:56:51 [1/48] 7ua2_AC -> GPU 1  [sys mem 7%]
+14:56:53 [1/48] 7yv1_AB -> GPU 2  [sys mem 7%]
+14:56:55 [1/48] 7yv1_AC -> GPU 3  [sys mem 7%]
+14:56:57 [1/48] 7yxu_AC -> GPU 4  [sys mem 7%]
+14:56:59 [1/48] 7zoz_AB -> GPU 6  [sys mem 7%]
+14:57:01 [1/48] 7zoz_AC -> GPU 7  [sys mem 7%]
+14:57:48 [1/48] 8a44_AC -> GPU 2  [sys mem 7%]
+14:57:50 [1/48] 8a44_AD -> GPU 3  [sys mem 7%]
+14:57:52 [1/48] 8a67_AD -> GPU 4  [sys mem 7%]
+14:57:54 [1/48] 8dcm_AC -> GPU 1  [sys mem 7%]
+14:58:06 [1/48] 8dcm_BC -> GPU 6  [sys mem 7%]
+14:58:08 [1/48] 8dtn_AB -> GPU 4  [sys mem 7%]
+14:58:10 [1/48] 8oni_AE -> GPU 7  [sys mem 7%]
+14:58:52 [1/48] 8oni_AF -> GPU 4  [sys mem 7%]
+14:58:54 [1/48] 8oni_BE -> GPU 2  [sys mem 7%]
+14:58:56 [1/48] 8oni_BF -> GPU 3  [sys mem 7%]
+14:59:08 [1/48] 8q3j_AB -> GPU 7  [sys mem 7%]
+14:59:40 [1/48] 8q3j_AC -> GPU 4  [sys mem 7%]
+14:59:42 [1/48] 8sgn_AC -> GPU 2  [sys mem 7%]
+14:59:49 [1/48] 8sgn_BC -> GPU 1  [sys mem 7%]
+14:59:51 [1/48] 8ts0_AC -> GPU 3  [sys mem 7%]
+14:59:58 [1/48] 8ts0_BC -> GPU 6  [sys mem 7%]
+15:00:10 [1/48] 8vui_BC -> GPU 7  [sys mem 7%]
+15:00:37 [1/48] 7uvs_AC -> GPU 2  [sys mem 7%]
+15:00:44 [1/48] 7uvs_BC -> GPU 1  [sys mem 8%]
+15:00:46 [1/48] 7z1x_AB -> GPU 4  [sys mem 7%]
+15:00:48 [1/48] 8aok_AB -> GPU 3  [sys mem 7%]
+15:00:55 [1/48] 8av2_AC -> GPU 6  [sys mem 7%]
+15:01:07 [1/48] 8be1_AC -> GPU 2  [sys mem 7%]
+15:01:09 [1/48] 8be3_AB -> GPU 1  [sys mem 7%]
+15:01:11 [1/48] 8ivx_AB -> GPU 7  [sys mem 7%]
+15:01:23 [1/48] 8ivx_AC -> GPU 4  [sys mem 7%]
+15:01:30 [1/48] 8oxx_AB -> GPU 3  [sys mem 7%]
+15:01:37 [1/48] 8oxx_AC -> GPU 2  [sys mem 8%]
+15:01:49 [1/48] 8slb_AB -> GPU 6  [sys mem 8%]
+15:01:56 [1/48] 8slb_AC -> GPU 1  [sys mem 8%]
+15:02:48 [1/48] 8uky_AC -> GPU 7  [sys mem 7%]
+15:02:50 [1/48] 8uky_BC -> GPU 3  [sys mem 8%]
+15:02:57 [1/48] 8ux6_AF -> GPU 2  [sys mem 8%]
+15:02:59 [1/48] 8ux6_DF -> GPU 1  [sys mem 7%]
+15:03:01 [1/48] 8vvl_AB -> GPU 4  [sys mem 7%]
+15:03:03 [1/48] 8vvl_AC -> GPU 6  [sys mem 7%]
+15:03:45 [1/48] 8vzo_AC -> GPU 4  [sys mem 7%]
+15:03:47 [1/48] 8w84_AC -> GPU 6  [sys mem 8%]
+15:03:49 [1/48] 8w84_AD -> GPU 2  [sys mem 7%]
+15:03:56 [1/48] 8w84_BC -> GPU 1  [sys mem 8%]
+15:03:58 [1/48] 8w84_BD -> GPU 3  [sys mem 7%]
+15:04:00 [1/48] 9jbq_AC -> GPU 7  [sys mem 7%]
+=== 2026-07-12 15:05:15 COMPLETE — 48/48 matrices built ===
+4.1G	results/dockq_full
+--- timings (results/dockq_full/timings.csv) ---
+interface  n_poses  n_pairs   load_s  compute_s  total_s  pairs_per_s  peak_vram_gb  n_poses_no_interface  ref_dockq_core_hours  speedup_vs_ref  gpu
+7yxu_AC    5125     26265625  29.8    17.8       47.6     551376       1.85          49                    100.7                 7609            NVIDIA RTX PRO 6000 Blackwell Server Edition
+7yv1_AC    5125     26265625  32.5    17.9       50.4     520724       2.37          81                    100.7                 7186            NVIDIA RTX PRO 6000 Blackwell Server Edition
+7yv1_AB    5125     26265625  33.8    18.9       52.8     497576       2.47          0                     100.7                 6867            NVIDIA RTX PRO 6000 Blackwell Server Edition
+7ua2_AC    5125     26265625  37.9    21.3       59.2     443660       2.99          10                    100.7                 6123            NVIDIA RTX PRO 6000 Blackwell Server Edition
+7zoz_AB    5125     26265625  39.7    21.4       61.1     429649       4.08          2                     100.7                 5929            NVIDIA RTX PRO 6000 Blackwell Server Edition
+7zoz_AC    5125     26265625  39.6    20.5       60.1     437294       3.94          35                    100.7                 6035            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8a67_AD    2105     4431025   10.8    2.7        13.5     329400       0.32          1130                  17.0                  4546            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8dtn_AB    5125     26265625  25.1    13.4       38.4     683570       1.15          1727                  100.7                 9433            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8a44_AD    5125     26265625  41.0    19.3       60.3     435450       3.90          354                   100.7                 6009            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8a44_AC    5125     26265625  42.8    20.9       63.7     412304       4.05          29                    100.7                 5690            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8oni_AE    5125     26265625  35.9    15.2       51.1     513871       0.94          1130                  100.7                 7091            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8oni_AF    5125     26265625  33.6    11.6       45.2     581136       0.94          3601                  100.7                 8020            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8oni_BE    5125     26265625  33.5    11.7       45.1     581832       0.94          3548                  100.7                 8029            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8dcm_AC    5125     26265625  80.3    29.9       110.3    238195       9.48          7                     100.7                 3287            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8oni_BF    5125     26265625  33.7    15.1       48.7     538829       0.95          1150                  100.7                 7436            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8dcm_BC    5125     26265625  76.7    29.2       105.9    247949       8.90          37                    100.7                 3422            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8q3j_AB    5125     26265625  42.7    16.2       58.9     445616       1.52          959                   100.7                 6149            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8sgn_AC    3865     14938225  38.0    13.9       51.9     287625       4.68          14                    57.3                  3969            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8sgn_BC    3865     14938225  36.9    14.5       51.4     290454       4.92          0                     57.3                  4008            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8q3j_AC    5125     26265625  44.6    17.7       62.3     421887       2.14          676                   100.7                 5822            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8ts0_AC    5125     26265625  34.4    19.4       53.7     488668       2.52          0                     100.7                 6744            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8ts0_BC    5125     26265625  31.9    18.2       50.1     524167       2.33          0                     100.7                 7234            NVIDIA RTX PRO 6000 Blackwell Server Edition
+7uvs_AC    2005     4020025   20.1    4.4        24.6     163478       2.13          94                    15.4                  2256            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8vui_BC    5125     26265625  36.8    19.4       56.2     467502       2.98          15                    100.7                 6452            NVIDIA RTX PRO 6000 Blackwell Server Edition
+7uvs_BC    2005     4020025   19.6    3.0        22.7     177430       2.13          1328                  15.4                  2449            NVIDIA RTX PRO 6000 Blackwell Server Edition
+7z1x_AB    1850     3422500   27.5    5.2        32.6     104867       8.21          18                    13.1                  1447            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8aok_AB    5125     26265625  17.8    17.3       35.1     748484       1.19          0                     100.7                 10329           NVIDIA RTX PRO 6000 Blackwell Server Edition
+8be1_AC    2005     4020025   20.3    4.3        24.6     163236       2.17          248                   15.4                  2253            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8av2_AC    5125     26265625  32.9    18.5       51.4     510872       1.82          60                    100.7                 7050            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8be3_AB    5125     26265625  26.7    13.9       40.6     647686       1.17          1707                  100.7                 8938            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8ivx_AB    5125     26265625  66.0    27.0       93.1     282184       7.83          10                    100.7                 3894            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8oxx_AB    5125     26265625  53.3    24.1       77.4     339390       5.95          40                    100.7                 4684            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8ivx_AC    5125     26265625  61.6    26.2       87.8     299074       7.45          52                    100.7                 4127            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8oxx_AC    5125     26265625  50.9    23.5       74.4     353243       5.77          94                    100.7                 4875            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8slb_AB    5125     26265625  42.7    21.9       64.6     406810       4.27          0                     100.7                 5614            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8slb_AC    5125     26265625  39.6    20.0       59.6     440697       3.86          99                    100.7                 6082            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8vvl_AB    3830     14668900  29.5    12.2       41.7     351532       3.22          0                     56.2                  4851            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8vvl_AC    3830     14668900  28.0    11.6       39.7     369664       3.07          31                    56.2                  5101            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8ux6_AF    5125     26265625  35.0    14.3       49.3     532901       1.04          1665                  100.7                 7354            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8ux6_DF    5125     26265625  33.4    16.8       50.1     523944       1.04          343                   100.7                 7230            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8uky_BC    5125     26265625  47.1    15.3       62.5     420397       2.77          2888                  100.7                 5801            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8uky_AC    5125     26265625  48.3    21.6       69.9     375790       2.77          593                   100.7                 5186            NVIDIA RTX PRO 6000 Blackwell Server Edition
+9jbq_AC    3805     14478025  24.3    11.3       35.7     405671       1.67          0                     55.5                  5598            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8w84_AC    5125     26265625  40.4    18.3       58.6     447908       2.66          121                   100.7                 6181            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8w84_AD    5125     26265625  40.1    19.2       59.3     442585       3.15          25                    100.7                 6108            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8w84_BC    5125     26265625  38.0    16.2       54.2     484524       2.54          1111                  100.7                 6686            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8w84_BD    5125     26265625  39.3    18.7       58.0     453129       3.01          142                   100.7                 6253            NVIDIA RTX PRO 6000 Blackwell Server Edition
+8vzo_AC    5125     26265625  61.0    26.6       87.6     299724       6.84          22                    100.7                 4136            NVIDIA RTX PRO 6000 Blackwell Server Edition

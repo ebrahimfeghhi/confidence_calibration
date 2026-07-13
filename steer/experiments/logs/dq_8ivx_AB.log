@@ -1,0 +1,3 @@
+[8ivx_AB] 5125 poses -> 26,265,625 pairs
+[8ivx_AB] DONE 93s (load 66s + compute 27s) | peak VRAM 7.8 GB | 282,184 pairs/s | saved results/dockq_full/dockq_8ivx_AB.npy (105 MB)
+ALL DONE

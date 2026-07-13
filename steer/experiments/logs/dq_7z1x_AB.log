@@ -1,0 +1,3 @@
+[7z1x_AB] 1850 poses -> 3,422,500 pairs
+[7z1x_AB] DONE 33s (load 27s + compute 5s) | peak VRAM 8.2 GB | 104,867 pairs/s | saved results/dockq_full/dockq_7z1x_AB.npy (14 MB)
+ALL DONE
