@@ -1,3 +1,0 @@
-=== 2026-07-12 16:57:08 full Option-B DockQ: 48 interfaces on GPUs [1 2 3 4 6 7] ===
-  GPU 1: busy
-!!! GPU 1 is NOT free — refusing to launch. Fix GPUS and rerun.

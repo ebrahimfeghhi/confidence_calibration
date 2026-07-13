@@ -20,6 +20,7 @@ steer/experiments/*.csv
 steer/experiments/*.npy
 steer/experiments/*.png
 steer/experiments/*.log
+steer/experiments/logs/
 steer/experiments/*.out
 steer/experiments/*.pt
 steer/experiments/decoded_*/

@@ -1,3 +1,0 @@
-[8dcm_BC] 5125 poses -> 26,265,625 pairs
-[8dcm_BC] DONE 106s (load 77s + compute 29s) | peak VRAM 8.9 GB | 247,949 pairs/s | saved results/dockq_full/dockq_8dcm_BC.npy (105 MB)
-ALL DONE
