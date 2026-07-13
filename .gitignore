@@ -33,3 +33,16 @@ steer/experiments/chain_order_*.txt
 # A leading-slash-free pattern with an internal slash is anchored to the repo root, so the
 # old `archive/**/*.npy` form never matched steer/experiments/archive/ — hence the bare name.
 archive/
+
+# ---- SERVER-MOVE BACKUP (2026-07-13) ----------------------------------------
+# The box is being decommissioned. These are the irreplaceable RESULTS: OST ground
+# truth, the cluster sweep, and the index files needed to read the DockQ matrices.
+# Compressed they are ~30 MB, so they live in git. The 4.1 GB of .npy matrices and
+# the 600 GB of raw predictions do NOT fit on GitHub and go by scp.
+!results/csv_files/*.csv.gz
+!results/cluster_sweep/
+results/cluster_sweep/*
+!results/cluster_sweep/sweep.csv
+!results/cluster_sweep/clusters.json.gz
+!results/dockq_full/index_csvs.tar.gz
+!results/figures/
