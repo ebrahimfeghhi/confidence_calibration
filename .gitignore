@@ -7,6 +7,11 @@ results/*
 results/csv_files/*
 !results/csv_files/train_test_split.json
 !results/csv_files/difficulty_recomputed.json
+# recomputed per-pose DockQ vs the crystal (Protenix's own values were wrong)
+!results/dockq_vs_native/
+results/dockq_vs_native/*
+!results/dockq_vs_native/*.csv
+!results/dockq_vs_native/*.json
 # DockQ matrices are 4.1 GB of generated data — out of git, but keep the timings
 !results/dockq_full/
 results/dockq_full/*
