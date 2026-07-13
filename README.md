@@ -19,6 +19,30 @@ The eval/plot/analysis code is model-agnostic — it reads a generic
 > orientations without using the ground truth. Superseded steering/analysis experiments
 > (including the earlier ConforNet line) are archived under `archive/`.
 
+## DockQ: there are exactly TWO code paths. Do not add a third.
+
+Every DockQ bug this project has ever had was in **residue correspondence** — never in the
+DockQ math. So the two jobs are split, and only one of them does the hard part:
+
+| job | tool | why |
+|---|---|---|
+| **GROUND TRUTH** — a prediction vs the **crystal structure** | [`eval/eval_ost_foldbench.py`](eval/eval_ost_foldbench.py) → **OST** | Correspondence is **hard**: the crystal has unresolved loops, antibody chains use non-sequential Kabat numbering, chain names differ (crystal `H/L/A` vs model `A/B/C`), and the model predicts residues the crystal lacks. OST solves this, and it is what FoldBench uses. **Score every model with it — ESMFold2, Protenix, anything new.** |
+| **CLUSTERING** — a prediction vs **another prediction** | [`steer/experiments/dockq_torch.py`](steer/experiments/dockq_torch.py) → our GPU implementation | Correspondence is **free**: two predictions of the same sequence by the same model have identical residues in identical order. No alignment, so none of the above can go wrong. **Verified to reproduce OST exactly** (diffs ≤ 0.0005 = OST's 3-decimal rounding), and the reference DockQ python package on 7,354,375 pairs. |
+
+`dockq_torch.py` is the **only** file in the repo containing the DockQ formula. Everything else
+either calls OST or reads a `dockq` column from a CSV. **Do not reimplement pose-vs-crystal DockQ**
+— that path was tried, and deleted.
+
+**Traps, all of which have bitten us:**
+1. `chain1`/`chain2` in every scoring CSV are **native** chain ids, not model ones. The
+   `chain_mapping` column translates, and on multi-copy assemblies it **changes per pose**.
+2. Native chains are named by **`label_asym_id`**, not `auth_asym_id` (8ts0's heavy chain is auth
+   `H` but label `A`).
+3. **`results/csv_files/Protenix_dockq.csv` is WRONG — do not use it.** It never came from OST.
+   Use `results/csv_files/dockq_ost_protenix.csv`.
+
+Full detail, including the verification numbers: [`docs/dockq_ground_truth_and_gpu.md`](docs/dockq_ground_truth_and_gpu.md).
+
 ## Layout
 
 ```
