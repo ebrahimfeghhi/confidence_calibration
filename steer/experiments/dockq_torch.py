@@ -25,7 +25,7 @@ This does the same work in minutes.
 Usage:  python steer/experiments/dockq_torch.py --validate 8ts0 A C
         (checks against the saved reference matrix; must agree to ~1e-4)
 """
-import argparse, sys, time
+import argparse, json, sys, time
 from pathlib import Path
 import numpy as np
 import torch
@@ -36,8 +36,16 @@ IFACE_T2 = 10.0 ** 2
 
 
 # ---------------------------------------------------------------- loading
-def load_poses(paths, c1, c2, device):
-    """Load N poses of the SAME complex. Returns fixed-shape tensors (correspondence is exact).
+def load_poses(items, device):
+    """Load N poses of the SAME complex. items = [(path, chain1, chain2), ...] -- ONE CHAIN PAIR
+    PER POSE, because the model chain letters are NOT fixed.
+
+    The scoring CSV names chains by their NATIVE letters; the model files use different letters,
+    and the `chain_mapping` column (ref -> model) translates. On multi-copy assemblies the model
+    builds two copies of everything and OST maps the native onto whichever copy fits, so the
+    mapping CHANGES FROM POSE TO POSE (e.g. 8oni_AE uses model chains A-E, A-F, B-E or B-F
+    depending on the seed). Using the native letters directly on the model file scores the wrong
+    pair of molecules -- which is exactly the bug this signature exists to prevent.
 
     all1/all2   : [N, nat_k, 3]  every atom, for residue-residue contact distances
     bb1/bb2     : [N, nres_k, 4, 3]  backbone CA,C,N,O, for the RMSDs
@@ -46,12 +54,13 @@ def load_poses(paths, c1, c2, device):
     import gemmi
     A1 = A2 = B1 = B2 = None
     seg1 = seg2 = None
-    for n, p in enumerate(paths):
+    N = len(items)
+    for n, (p, ch1, ch2) in enumerate(items):
         st = gemmi.read_structure(str(p))
         st.setup_entities()
         m = st[0]
-        out = {}
-        for ch in (c1, c2):
+        out = []
+        for ch in (ch1, ch2):
             chain = m[ch]
             all_xyz, bb_xyz, seg = [], [], []
             for ri, res in enumerate(chain):
@@ -63,17 +72,24 @@ def load_poses(paths, c1, c2, device):
                 # a residue missing a backbone atom would break the fixed shape; use CA as filler
                 ca = bb.get("CA", [0.0, 0.0, 0.0])
                 bb_xyz.append([bb.get(a, ca) for a in BACKBONE])
-            out[ch] = (np.asarray(all_xyz, np.float32), np.asarray(bb_xyz, np.float32),
-                       np.asarray(seg, np.int64))
+            out.append((np.asarray(all_xyz, np.float32), np.asarray(bb_xyz, np.float32),
+                        np.asarray(seg, np.int64)))
+        (a1, b1, s1), (a2, b2, s2) = out
         if A1 is None:
-            N = len(paths)
-            a1, b1, s1 = out[c1]; a2, b2, s2 = out[c2]
             A1 = torch.empty((N,) + a1.shape, dtype=torch.float32)
             A2 = torch.empty((N,) + a2.shape, dtype=torch.float32)
             B1 = torch.empty((N,) + b1.shape, dtype=torch.float32)
             B2 = torch.empty((N,) + b2.shape, dtype=torch.float32)
             seg1 = torch.from_numpy(s1); seg2 = torch.from_numpy(s2)
-        a1, b1, _ = out[c1]; a2, b2, _ = out[c2]
+        # Every pose must yield the SAME shapes. Different poses may use different CHAIN LETTERS
+        # (multi-copy assemblies: OST maps the native onto whichever model copy fits), but the
+        # chains are copies of the same molecules, so residue and atom counts must agree. If they
+        # do not, the chain mapping is wrong and we would be comparing different molecules.
+        if a1.shape != A1.shape[1:] or a2.shape != A2.shape[1:]:
+            raise ValueError(
+                f"pose {n} ({Path(p).name}, chains {ch1}/{ch2}) has shapes "
+                f"{a1.shape}/{a2.shape}, expected {tuple(A1.shape[1:])}/{tuple(A2.shape[1:])} — "
+                f"the chain mapping is inconsistent")
         A1[n] = torch.from_numpy(a1); B1[n] = torch.from_numpy(b1)
         A2[n] = torch.from_numpy(a2); B2[n] = torch.from_numpy(b2)
     return (A1.to(device), A2.to(device), B1.to(device), B2.to(device),
@@ -130,18 +146,18 @@ def kabsch_rt(P, Q):
 
 
 # ---------------------------------------------------------------- the matrix
-def dockq_matrix(paths, c1, c2, device="cuda", verbose=True, timings=None):
+def dockq_matrix(items, device="cuda", verbose=True, timings=None):
     """Full [N, N] DockQ. Entry [i, j] = DockQ(reference = pose i, model = pose j).
+    items = [(path, chain1, chain2), ...] -- one chain pair PER POSE (see load_poses).
     Pass timings={} to have load/compute seconds written into it."""
     t0 = time.time()
-    all1, all2, bb1, bb2, seg1, seg2 = load_poses(paths, c1, c2, device)
+    all1, all2, bb1, bb2, seg1, seg2 = load_poses(items, device)
     t_load = time.time() - t0
     if timings is not None:
         timings["load_s"] = t_load
     N = all1.shape[0]; n1 = bb1.shape[1]; n2 = bb2.shape[1]
     if verbose:
-        print(f"  loaded {N} poses | chain {c1}: {n1} res, chain {c2}: {n2} res "
-              f"| {t_load:.0f}s", flush=True)
+        print(f"  loaded {N} poses | {n1} + {n2} residues | {t_load:.0f}s", flush=True)
 
     D = residue_sqdist(all1, all2, seg1, seg2, n1, n2)          # [N, n1, n2] squared
     del all1, all2
@@ -199,44 +215,75 @@ def dockq_matrix(paths, c1, c2, device="cuda", verbose=True, timings=None):
     return dq.cpu().numpy()
 
 
-# ---------------------------------------------------------------- validation
-def validate(cx, c1, c2, n=200, device="cuda"):
-    """Compare against the saved reference matrix (computed by the real DockQ package)."""
-    import csv
-    tag = f"{cx}_{c1}{c2}"
-    ref = np.load(f"results/iptm_matrix/matrix_{tag}.npy").astype(np.float64)
-    idx = list(csv.DictReader(open(f"results/iptm_matrix/matrix_{tag}_index.csv")))
-    DEEP = Path.home() / "esm/foldbench_predictions/esmfold2fast_tts"
-    paths = []
-    for r in idx[:n]:
-        s = r['seed']
-        sub = "baseline_seed" if s == "baseline_seed" else f"seed_{s}"
-        paths.append(DEEP / cx / sub / "predictions" / f"{cx}_sample_{r['sample']}.cif")
+# ---------------------------------------------------------------- pose list (with chain map)
+def pose_list(cx, c1, c2):
+    """Every diffusion sample of every seed, each with ITS OWN model chain pair.
 
-    print(f"validating {tag} on the first {n} poses "
-          f"({n*n:,} pairs) against the reference DockQ matrix\n")
-    mine = dockq_matrix(paths, c1, c2, device=device)
-    theirs = ref[:n, :n]
-    err = np.abs(mine - theirs)
-    print(f"\n  max abs error : {err.max():.6f}")
-    print(f"  mean abs error: {err.mean():.6f}")
-    print(f"  pairs off by >1e-3: {(err > 1e-3).sum():,} / {err.size:,}")
-    print(f"  correlation   : {np.corrcoef(mine.ravel(), theirs.ravel())[0,1]:.6f}")
-    ok = err.max() < 1e-3
-    print(f"\n  {'PASS — matches the reference DockQ' if ok else 'FAIL — does not match'}")
-    if not ok:
-        i, j = np.unravel_index(err.argmax(), err.shape)
-        print(f"  worst pair ({i},{j}): mine={mine[i,j]:.4f} reference={theirs[i,j]:.4f}")
-    return ok
+    c1/c2 are NATIVE (reference) chain letters. The model file uses different letters; the
+    scoring CSV's `chain_mapping` column (ref -> model) translates. On multi-copy assemblies the
+    mapping CHANGES PER POSE, because OST maps the native onto whichever model copy fits best.
+    Using c1/c2 directly on the model file scores the WRONG PAIR OF MOLECULES.
+
+    Returns [(path, model_chain1, model_chain2, iptm, dockq_gt, seed, sample), ...],
+    sorted by ipTM descending.
+    """
+    import csv as _csv
+    DEEP = Path.home() / "esm/foldbench_predictions/esmfold2fast_tts"
+    rows = []
+    for r in _csv.DictReader(open("results/csv_files/dockq_ost_esmfold2fast_tts_deep.csv")):
+        if (r['assembly_id'][:4], r['chain1'], r['chain2']) != (cx, c1, c2):
+            continue
+        try:
+            cm = json.loads(r['chain_mapping'])
+            m1, m2 = cm[c1], cm[c2]                     # ref -> model, PER POSE
+            s, k = r['seed'], int(r['sample'])
+            ip, gt = float(r['pair_iptm']), float(r['dockq'])
+        except Exception:
+            continue                                    # no usable mapping -> pose unusable
+        sub = "baseline_seed" if s == "baseline_seed" else f"seed_{s}"
+        p = DEEP / cx / sub / "predictions" / f"{cx}_sample_{k}.cif"
+        if p.exists():
+            rows.append((p, m1, m2, ip, gt, s, k))
+    rows.sort(key=lambda r: -r[3])
+    return rows
+
+
+# ---------------------------------------------------------------- validation
+def validate_against_ground_truth(tag, device="cuda"):
+    """INDEPENDENT check, against OST's ground truth -- NOT against our own earlier code.
+
+    The previous validation compared this implementation to matrix_iptm.py, which shared the same
+    chain-mapping bug. Two wrong implementations agreed perfectly and the check passed. Never
+    again: validate against a source produced by a DIFFERENT pipeline.
+
+    The test: take the pose closest to the crystal structure (highest dockq_gt). Any pose that is
+    structurally similar TO IT must also be close to the crystal. So our pose-pose DockQ from that
+    pose, D[best], must correlate strongly with dockq_gt across the pool. If we are scoring the
+    wrong chain pair, that correlation collapses to ~0.
+    """
+    M = np.load(f"results/dockq_full/dockq_{tag}.npy").astype(np.float64)
+    import csv as _csv
+    idx = list(_csv.DictReader(open(f"results/dockq_full/dockq_{tag}_index.csv")))
+    gt = np.array([float(r['dockq_gt']) for r in idx])
+    best = int(np.argmax(gt))
+    sim = M[best]                                       # similarity of every pose to the best one
+    ok = sim.sum() > 0
+    rho = float(np.corrcoef(sim, gt)[0, 1]) if ok else float("nan")
+    # rank correlation too -- robust to the DockQ nonlinearity
+    rs = float(np.corrcoef(np.argsort(np.argsort(sim)), np.argsort(np.argsort(gt)))[0, 1]) \
+        if ok else float("nan")
+    no_if = int((M.sum(axis=1) == 0).sum())
+    return dict(tag=tag, n=len(gt), best_gt=float(gt[best]), pearson=rho, spearman=rs,
+                no_interface=no_if, frac_no_interface=no_if / len(gt))
 
 
 # ---------------------------------------------------------------- build (Option B)
 def build(cx, c1, c2, outdir="results/dockq_full", device="cuda"):
     """Full Option-B DockQ matrix: EVERY diffusion sample of every seed (N ~ 5125).
 
-    No best-ipTM-per-seed pre-filter. That pre-filter picks each seed's representative by
-    argmax ipTM -- the exact operation we have shown is untrustworthy -- and on interfaces
-    where only 1-4 good poses exist in 5125 it very likely discards the answer outright.
+    No best-ipTM-per-seed pre-filter -- that filter picks each seed's representative by argmax
+    ipTM, the exact operation we have shown is untrustworthy, and on interfaces where only 1-4
+    good poses exist in 5125 it very likely discards the answer outright.
     """
     import csv as _csv
     tag = f"{cx}_{c1}{c2}"
@@ -245,42 +292,28 @@ def build(cx, c1, c2, outdir="results/dockq_full", device="cuda"):
     if npy.exists():
         print(f"[{tag}] exists, skipping", flush=True); return
 
-    DEEP = Path.home() / "esm/foldbench_predictions/esmfold2fast_tts"
-    rows = []
-    for r in _csv.DictReader(open("results/csv_files/dockq_ost_esmfold2fast_tts_deep.csv")):
-        if (r['assembly_id'][:4], r['chain1'], r['chain2']) != (cx, c1, c2):
-            continue
-        try:
-            s, k = r['seed'], int(r['sample'])
-            ip, gt = float(r['pair_iptm']), float(r['dockq'])
-        except Exception:
-            continue
-        sub = "baseline_seed" if s == "baseline_seed" else f"seed_{s}"
-        p = DEEP / cx / sub / "predictions" / f"{cx}_sample_{k}.cif"
-        if p.exists():
-            rows.append((p, ip, gt, s, k))
-    rows.sort(key=lambda r: -r[1])                      # ipTM descending
+    rows = pose_list(cx, c1, c2)
     if len(rows) < 500:
-        print(f"[{tag}] only {len(rows)} poses — SKIP", flush=True); return
-
+        print(f"[{tag}] only {len(rows)} usable poses — SKIP", flush=True); return
     N = len(rows)
-    print(f"[{tag}] {N} poses -> {N*N:,} pairs", flush=True)
+    pairs_used = sorted({(r[1], r[2]) for r in rows})
+    print(f"[{tag}] {N} poses -> {N*N:,} pairs | model chain pairs used: {pairs_used}", flush=True)
     if device == "cuda":
         torch.cuda.reset_peak_memory_stats()
 
     tm = {}
-    M = dockq_matrix([r[0] for r in rows], c1, c2, device=device, verbose=False, timings=tm)
+    M = dockq_matrix([(r[0], r[1], r[2]) for r in rows], device=device, verbose=False, timings=tm)
     t_load, t_compute, t_total = tm["load_s"], tm["compute_s"], tm["total_s"]
 
     np.save(npy, M.astype(np.float32))
     with open(out / f"dockq_{tag}_index.csv", "w", newline="") as f:
-        w = _csv.writer(f); w.writerow(["row", "seed", "sample", "iptm", "dockq_gt"])
-        for i, (_, ip, gt, s, k) in enumerate(rows):
-            w.writerow([i, s, k, f"{ip:.4f}", f"{gt:.4f}"])
+        w = _csv.writer(f)
+        w.writerow(["row", "seed", "sample", "model_chain1", "model_chain2", "iptm", "dockq_gt"])
+        for i, (_, m1, m2, ip, gt, s, k) in enumerate(rows):
+            w.writerow([i, s, k, m1, m2, f"{ip:.4f}", f"{gt:.4f}"])
 
     peak = torch.cuda.max_memory_allocated() / 1e9 if device == "cuda" else 0.0
     gpu = torch.cuda.get_device_name(0) if device == "cuda" else "cpu"
-    # per-interface timings, machine-readable, for the paper's compute section
     tf = out / "timings.csv"
     new = not tf.exists()
     with open(tf, "a", newline="") as f:
@@ -288,28 +321,28 @@ def build(cx, c1, c2, outdir="results/dockq_full", device="cuda"):
         if new:
             w.writerow(["interface", "n_poses", "n_pairs", "load_s", "compute_s", "total_s",
                         "pairs_per_s", "peak_vram_gb", "n_poses_no_interface",
-                        "ref_dockq_core_hours", "speedup_vs_ref", "gpu"])
+                        "n_model_chain_pairs", "ref_dockq_core_hours", "speedup_vs_ref", "gpu"])
         ref_h = N * N * 0.0138 / 3600                   # 13.8 ms/pair, measured for DockQ 2.1.3
         w.writerow([tag, N, N * N, f"{t_load:.1f}", f"{t_compute:.1f}", f"{t_total:.1f}",
                     f"{N*N/t_total:.0f}", f"{peak:.2f}", tm.get("n_no_iface", 0),
-                    f"{ref_h:.1f}", f"{ref_h*3600/t_total:.0f}", gpu])
+                    len(pairs_used), f"{ref_h:.1f}", f"{ref_h*3600/t_total:.0f}", gpu])
     print(f"[{tag}] DONE {t_total:.0f}s (load {t_load:.0f}s + compute {t_compute:.0f}s) | "
-          f"peak VRAM {peak:.1f} GB | {N*N/t_total:,.0f} pairs/s | saved {npy} "
-          f"({M.nbytes/1e6:.0f} MB)", flush=True)
+          f"peak VRAM {peak:.1f} GB | {tm.get('n_no_iface', 0)} no-interface poses | "
+          f"saved {npy} ({M.nbytes/1e6:.0f} MB)", flush=True)
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--validate", nargs=3, metavar=("CX", "C1", "C2"))
-    ap.add_argument("--build", nargs="+", metavar="TAG",
-                    help="interfaces to build, e.g. 8ts0_AC 7zoz_AC")
-    ap.add_argument("--n", type=int, default=200)
+    ap.add_argument("--build", nargs="+", metavar="TAG")
+    ap.add_argument("--check", nargs="+", metavar="TAG",
+                    help="validate saved matrices against OST ground truth")
     ap.add_argument("--device", default="cuda")
     a = ap.parse_args()
-    if a.validate:
-        sys.exit(0 if validate(*a.validate, n=a.n, device=a.device) else 1)
     if a.build:
         for t in a.build:
             cx, ch = t.split("_")
             build(cx, ch[0], ch[1], device=a.device)
         print("ALL DONE", flush=True)
+    if a.check:
+        for t in a.check:
+            print(validate_against_ground_truth(t, device=a.device))
