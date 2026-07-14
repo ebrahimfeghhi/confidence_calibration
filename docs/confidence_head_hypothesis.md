@@ -26,14 +26,16 @@ contrast, was assumed to be a trunk read-out measuring **self-consistency, not c
 **SUPERSEDED IN PART — read
 [`overnight_2026_07_14_summary.md`](overnight_2026_07_14_summary.md) first.**
 
-At 14 seeds the ablation's decomposition is **not stable** (the checkpoint effect flips sign), so
-the "the confidence-head account is dead" verdict below — written from the 8-seed run — is **NOT
-safe**. The hypothesis is **unresolved**, not refuted: Protenix still out-selects base ESMFold2+MSA
-by 19%.
+The "the confidence-head account is dead" verdict below was written from an **8-seed** run. At 14
+and 20 seeds the decomposition tells a different story: the checkpoint term is consistently
+**negative** and **+18% stays unexplained** between base ESMFold2+MSA and Protenix. **The hypothesis
+is UNRESOLVED, not refuted.**
 
-**What the ablation DID establish, and it is the bigger finding:
+**What the ablation DID establish, at 100-pose pools and P = 0.998 — and it is the bigger finding:
 the confident-decoy inversion is caused by running SINGLE-SEQUENCE, and an MSA cures it.**
-Both checkpoints invert without an MSA; both are healthy with one.
+Both checkpoints invert without an MSA (Cliff's δ at the top: −0.139, −0.200); both are healthy with
+one (+0.327, +0.568). The MSA lifts the selector **25% → 62%** on the same checkpoint
+(**+38%, 95% CI [+15%, +62%]**) and **halves the trap rate (60% → 33%)**.
 
 **What survives, in order of how much it is worth:**
 
