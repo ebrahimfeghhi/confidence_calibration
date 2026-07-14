@@ -19,6 +19,40 @@ The eval/plot/analysis code is model-agnostic — it reads a generic
 > orientations without using the ground truth. Superseded steering/analysis experiments
 > (including the earlier ConforNet line) are archived under `archive/`.
 
+## ⚠️ READ THIS BEFORE RUNNING ANYTHING — the benchmark is mis-configured
+
+**Every ESMFold2 number in this repo was produced by `biohub/ESMFold2-Fast` run SINGLE-SEQUENCE.**
+That is a handicapped setup, and it invalidates the comparison against Protenix that most of the
+analysis rests on:
+
+- `msa_encoder.enabled = **false**` in the ESMFold2-Fast checkpoint. Base `biohub/ESMFold2` has it
+  **true** (already cached).
+- [`run/esm/run_foldbench_abag.py`](run/esm/run_foldbench_abag.py) never passes an MSA — and at
+  `:46-48` it explicitly *filters out* the MSA-bearing JSONs.
+- Protenix uses MSAs (10k–16k sequences).
+
+**Measured (OST-scored, same seeds, same complexes) — "selector" = does argmax land on an
+acceptable pose, given one exists:**
+
+| | selector |
+|---|:--:|
+| ESMFold2-**Fast**, no MSA — *what this repo benchmarks* | **29%** |
+| base ESMFold2, no MSA | **45%** |
+| base ESMFold2, **with MSA** | **58%** |
+| Protenix, with MSA | **57%** |
+
+**Base ESMFold2 with an MSA selects as well as Protenix.** Re-baseline before doing any more method
+work — it is worth more than anything in `steer/`.
+
+→ **[`docs/overnight_2026_07_14_summary.md`](docs/overnight_2026_07_14_summary.md)** — read first.
+→ [`docs/confidence_head_hypothesis.md`](docs/confidence_head_hypothesis.md) — the full study.
+
+**The one finding that survives, and is worth more than the hypothesis was:** a confident decoy and
+a confident truth are **structurally indistinguishable** (same cohesion, same basin count, same
+concentration — only correctness differs). **So no structure-only, label-free selector can separate
+them.** That is why every clustering method tried here hits the same ceiling — a *perfect* oracle
+clustering scores 3/22, *worse* than the real method's 6/22. Stop tuning τ.
+
 ## DockQ: there are exactly TWO code paths. Do not add a third.
 
 Every DockQ bug this project has ever had was in **residue correspondence** — never in the
