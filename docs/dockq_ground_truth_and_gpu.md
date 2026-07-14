@@ -97,3 +97,38 @@ load to 774 on a 288-core shared box). ~6,750 poses takes ~3 minutes.
 `steer/experiments/dockq_vs_native.py` — an attempt to reimplement pose-vs-CRYSTAL DockQ on GPU. It
 got as far as reproducing OST exactly on 8ts0, then broke on 8vui's Kabat numbering. It was never
 needed: OST already does this, correctly. Deleted rather than maintained half-working.
+
+## Two more traps, found 2026-07-14 (both nearly manufactured a fake result)
+
+**5. gemmi 0.6.7 silently returns ZERO MODELS for ESMFold2's CIFs.** gemmi 0.7.5 reads both models'
+files. The Protenix venv has 0.6.7; `~/tts_abag/.venv-gpu` has 0.7.5. **Build both sides of any
+comparison with the SAME parser** — using two different ones is precisely how a fake result gets
+made. Both `results/dockq_protenix/` and `results/dockq_esm250/` were built with `.venv-gpu`.
+
+**6. Verifying against OST requires an EXPLICIT `-c REF:MDL` chain map.** Left to itself, OST
+re-derives its own chain correspondence between the two poses, and on a multi-copy assembly it will
+happily pair a DIFFERENT copy than your matrix used. Then OST and you are scoring two different
+comparisons and the diff is meaningless. This produced a phantom **0.2018 "mismatch"** on 8pmz_AB
+that vanished to **0.0004** once OST was pinned to our pairing. (Also: OST reports `dockq` as a
+**list** parallel to `dockq_interfaces`; there is no `dockq_scores` key. Looking for one produced
+12/12 phantom "OST failures".) See `steer/experiments/verify_protenix_dockq.py`.
+
+## Protenix pose-vs-pose matrices (new, 2026-07-14)
+
+| file | what |
+|---|---|
+| `results/dockq_protenix/dockq_<iface>.npy` | 165 interfaces, 250 poses each (50 seeds x 5 samples) |
+| `results/dockq_esm250/dockq_<iface>.npy` | the SAME interfaces from ESMFold2, subsampled to 250 poses with the same rng seed, so the two are depth-matched pose-for-pose |
+| `steer/experiments/dockq_protenix.py` | the builder. Imports `dockq_torch.dockq_matrix` — adds NO DockQ formula. |
+| `steer/experiments/dockq_esm_matched.py` | ditto for ESM |
+
+**Certified against OST**: 46/46 pose pairs across 12 random interfaces, worst diff **0.0005**
+(= OST's 3-decimal rounding). **Known limit:** interfaces carrying modified residues deviate by up
+to **0.0045** — e.g. 8vvl_AC, whose chain C has a PCA (pyroglutamate); our atom-level code counts
+its atoms, OST resolves it through its chemical-component dictionary. Negligible for
+cohesion/clustering statistics (tau = 0.35), but it is not zero.
+
+**Skip-and-log guard:** `dockq_torch` asserts a consistent atom count per chain across poses. Some
+multi-copy assemblies map the same chain letter onto differently-sized copies (8a67_AG, 8sfz_BF).
+Those interfaces are SKIPPED and logged rather than scored wrongly — that assertion is what caught
+the 17/48 chain-mapping corruption in the first place.
