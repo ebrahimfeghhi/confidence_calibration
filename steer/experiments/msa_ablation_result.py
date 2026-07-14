@@ -83,7 +83,9 @@ def stats(poses):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--nseeds", type=int, default=12)
+    ap.add_argument("--nseeds", type=int, default=8)
+    ap.add_argument("--min_seeds", type=int, default=4,
+                    help="drop an interface unless at least this many seeds finished in BOTH arms")
     a = ap.parse_args()
     rng = np.random.default_rng(20260713)
 
@@ -100,19 +102,34 @@ def main():
     if not keys:
         return
 
-    abl_seeds = {str(s) for s in range(a.nseeds)}          # the ablation ran seeds 0..n-1
     rows = []
+    skipped = 0
     for k in keys:
+        # The two ablation arms must be compared on the SAME seeds, or a difference could just be
+        # "B happened to finish the easy seeds". So intersect the seeds actually completed in BOTH
+        # arms, and use exactly those. (The arms are still running; this makes the analysis valid
+        # on whatever has finished rather than requiring a clean stop.)
+        abl = [h for h in ("A'", "B") if h in have]
+        if len(abl) == 2:
+            shared = ({p[0] for p in pools["A'"][k]} & {p[0] for p in pools["B"][k]})
+        else:
+            shared = {p[0] for p in pools[abl[0]][k]} if abl else set()
+        if len(shared) < a.min_seeds:
+            skipped += 1
+            continue
         d = {}
         for h in have:
-            seeds = sorted({p[0] for p in pools[h][k]})
-            if h in ("A", "C"):                            # long-running pools: random n seeds
-                keep = set(rng.choice(seeds, min(a.nseeds, len(seeds)), replace=False))
-            else:                                          # ablation arms: exactly seeds 0..n-1
-                keep = abl_seeds
+            if h in ("A'", "B"):
+                keep = shared                              # identical seeds in both arms
+            else:                                          # reference pools: match the COUNT
+                seeds = sorted({p[0] for p in pools[h][k]})
+                keep = set(rng.choice(seeds, min(len(shared), len(seeds)), replace=False))
             d[h] = stats([p for p in pools[h][k] if p[0] in keep])
         if all(d[h] for h in have):
             rows.append((k, d))
+    if skipped:
+        print(f"  ({skipped} interfaces dropped: fewer than {a.min_seeds} seeds finished in both "
+              f"ablation arms)\n")
 
     print(f"{'arm':<48}{'GENERATOR':>11}{'SELECTOR':>10}{'TOP-1':>8}{'purity':>9}{'AUC':>8}")
     print("-" * 94)
