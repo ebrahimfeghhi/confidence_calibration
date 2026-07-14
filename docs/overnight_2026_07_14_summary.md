@@ -11,15 +11,27 @@ We set out to explain **why Protenix selects better than ESMFold2** — with the
 AF3-class models train their confidence head as an **error discriminator** on their own decoys,
 while ESMFold2's ipTM merely measures **self-consistency**.
 
-**The hypothesis is refuted by its own control.** Run the ablation properly and the entire
-Protenix-vs-ESMFold2 selector gap decomposes into **the checkpoint** and **the MSA**, with
-**nothing left over** for the confidence head. We spent this project on **ESMFold2-Fast**, a
-distilled model, run **single-sequence** — and mistook its handicap for Protenix's virtue.
+**The headline is not the hypothesis. It is this:**
 
-But the night also produced a **negative result that is more valuable than the hypothesis was**:
+> ### The confident-decoy trap is caused by running SINGLE-SEQUENCE. An MSA cures it.
+>
+> ESMFold2's confidence **inverts inside its own top decile** — it discriminates well across the
+> pool and then points at decoys exactly where `argmax` reads. That inversion is present in **both**
+> checkpoints **without** an MSA, and **absent in both** *with* one. **Give the model an MSA and the
+> disease goes away.**
+
+And we have been running **single-sequence this entire project** — `msa_encoder.enabled = false` in
+the ESMFold2-**Fast** checkpoint, and the driver even filters the MSA-bearing JSONs out. The central
+phenomenon this project is built on is, at least in large part, **an artefact of a handicapped
+configuration.**
+
+The night also produced a **negative result that is more valuable than the hypothesis was**:
 **a confident decoy and a confident truth are structurally indistinguishable.** That kills
 structure-only label-free selection outright, and it explains why *every* method we tried — all of
 them — hit the same ceiling.
+
+**The original hypothesis is neither confirmed nor refuted.** The ablation is underpowered and its
+decomposition moved a lot between 8 and 14 seeds (§3). Do not quote it.
 
 ---
 
@@ -75,30 +87,47 @@ _`critical_band.py`, `dont_take_argmax.py`, `argmax_dissociation_test.py`_
 
 ---
 
-## 3. The refutation
+## 3. The MSA cures the inversion — this is the real finding
 
-Four arms, OST-scored, same seeds, same 9 complexes, raw `pair_iptm`:
+**The measurement.** Four arms, OST-scored, identical seeds and complexes, raw `pair_iptm`,
+70-pose pools (14 seeds × 5 samples), 9 complexes / 15 interfaces.
 
-| arm | selector | generator | AUC |
-|---|:--:|:--:|:--:|
-| **A** — ESMFold2-**Fast**, no MSA *(what this whole project used)* | **29%** | 93% | 0.619 |
-| **A′** — base ESMFold2, no MSA *(the control)* | **45%** | 73% | 0.655 |
-| **B** — base ESMFold2, **with MSA** | **58%** | 80% | 0.776 |
-| **C** — Protenix, with MSA | **57%** | 93% | 0.713 |
+`Cliff's δ TOP` = does confidence still separate good from bad poses **among the most confident
+poses** — the only region `argmax` reads? Positive = healthy. **Negative = inverted = the
+confident-decoy disease.**
 
-| decomposition of the +29% gap | |
-|---|:--:|
-| **checkpoint** (Fast → base) | **+17%** |
-| **MSA** (base, no MSA → base + MSA) | **+13%** *(CI [−23%, +54%], n.s.)* |
-| **unexplained** | **−1%** |
+| arm | δ, all poses | **δ, top quartile** | **δ, top decile** | interfaces inverted |
+|---|:--:|:--:|:--:|:--:|
+| **A** — ESMFold2-Fast, **no MSA** | +0.335 | **−0.070** | **−0.120** | 60% |
+| **A′** — base ESMFold2, **no MSA** | +0.273 | **−0.033** | **−0.333** | 71% |
+| **B** — base ESMFold2, **+MSA** | +0.469 | **+0.286** | **+0.252** | 40% |
+| **C** — Protenix, **+MSA** | +0.584 | **+0.542** | **+0.600** | 22% |
 
-**Base ESMFold2 with an MSA selects as well as Protenix (58% vs 57%).** Protenix's advantage is not
-a property of a rollout-trained confidence head — an ESM-class model with an MSA matches it.
+**Both no-MSA arms invert. Both with-MSA arms are healthy. The quartile and the decile agree.**
+It is not the checkpoint — the *base* model inverts too, without an MSA. **It is the MSA.**
 
-**Honesty:** the MSA effect alone is **not significant** (n=13). What *is* solid and needs no MSA
-arm is the **checkpoint effect** (+17%, no MSA on either side), and that alone breaks the story.
+And the selector follows: **27% → 58%** when the same checkpoint is given an MSA
+(**+31%, 95% CI [0%, +62%], P(MSA helps) = 0.945, n = 13**).
 
-_`msa_ablation_result.py`, `run/esm/run_msa_ablation.py`_
+### Honesty about the rest of the ablation
+
+The **decomposition is not stable** and must not be quoted:
+
+| | @ 8 seeds | @ 14 seeds |
+|---|:--:|:--:|
+| checkpoint (Fast → base) | +17% | **−19%** |
+| **MSA** | +13% *(n.s.)* | **+31%** *(P = 0.945)* |
+| unexplained (base+MSA → Protenix) | −1% | **+19%** |
+
+**The checkpoint effect flipped sign between depths — it is noise.** And at 14 seeds Protenix still
+leads base+MSA by **19%**, so the original confidence-head hypothesis is **not refuted** either. An
+earlier version of this document claimed it was; that claim rested on the 8-seed run and was wrong
+to make.
+
+**What survives both depths, and both the quartile and decile views, is the MSA effect.** That is
+the finding. Everything else here is underpowered (n = 13–15 interfaces).
+
+_`inversion_across_arms.py`, `msa_ablation_result.py`, `run/esm/run_msa_ablation.py`_
 
 ---
 
@@ -120,23 +149,21 @@ _`msa_ablation_result.py`, `run/esm/run_msa_ablation.py`_
 
 ---
 
-## 5. The open question that now matters most
+## 5. Open questions
 
-**Does the confident-decoy phenomenon survive on base ESMFold2 with an MSA?**
+**1. How much of the confident-decoy trap survives an MSA?** §3 says the *inversion* goes away.
+But the with-MSA arms are not perfect (40% and 22% of interfaces still invert), and Protenix still
+out-selects base+MSA by 19%. **Re-run the trap classification (WIN / TRAP / NO-POSE) on base
+ESMFold2 + MSA over the full benchmark** and see how many "confident decoys" are left. If most
+evaporate, this project's target class was largely an artefact.
 
-Everything this project has measured was on **ESMFold2-Fast, single-sequence** — a handicapped
-configuration. If the inversion vanishes once the model is properly configured, then the central
-phenomenon is an artefact of our setup, not a property of structure predictors.
+**2. Is anything left for the confidence head?** At 14 seeds there is +19% unexplained between
+base+MSA and Protenix. That could be the head, or MSA depth (we capped at 512; Protenix uses
+10k–16k), or noise (n=13). **Settle it by running base ESMFold2 with a full-depth MSA.**
 
-**We tried to answer this and could not.** At 8 seeds (40-pose pools) a "top decile" is four poses,
-and Cliff's δ on four points is noise — the quartile and decile views contradicted each other
-outright. Reporting either would have been dishonest. The one thing that *is* estimable at that
-depth: **the MSA lifts bulk discrimination from +0.31 to +0.55, matching Protenix.**
-
-**The experiment that answers it:** base ESMFold2 + MSA, **50 seeds × 5 samples = 250-pose pools**,
-on the critical-band complexes, then rerun `critical_band.py`. That is ~2× what we ran tonight.
-Note that base ESMFold2 **stalls entirely on the five largest complexes** (8the, 8ts0, 8uky, 8w84,
-8w90 — 20+ min at 100% GPU with no output), so those need a different approach or exclusion.
+**3. Powering all of the above.** Everything here rests on 9 complexes / 15 interfaces / ≤14 seeds.
+Base ESMFold2 **stalls entirely on the five largest complexes** (8the, 8ts0, 8uky, 8w84, 8w90 —
+20+ min at 100% GPU, no output), which is both a limitation and a bug worth chasing.
 
 _`inversion_across_arms.py`_
 

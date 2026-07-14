@@ -83,7 +83,7 @@ def stats(poses):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--nseeds", type=int, default=8)
+    ap.add_argument("--nseeds", type=int, default=14)
     ap.add_argument("--min_seeds", type=int, default=4,
                     help="drop an interface unless at least this many seeds finished in BOTH arms")
     a = ap.parse_args()
