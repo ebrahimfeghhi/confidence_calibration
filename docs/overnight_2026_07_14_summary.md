@@ -35,6 +35,45 @@ decomposition moved a lot between 8 and 14 seeds (§3). Do not quote it.
 
 ---
 
+## 0. TEST-TIME SCALING DOES NOT WORK ON THIS CONFIGURATION
+
+**The repo is called `tts_abag`. Its scaling curves were measured on the one setup where scaling
+does not pay.**
+
+Full common benchmark, **148 interfaces**, seeds 1 → 50, OST-scored, raw `pair_iptm`:
+
+| | n=1 | n=10 | **n=50** | gain |
+|---|:--:|:--:|:--:|:--:|
+| **coverage** — pool contains a good pose — ESMFold2-Fast | 51% | 75% | **85%** | +34% |
+| **coverage** — Protenix | 58% | 79% | **89%** | +31% |
+| **selector** — argmax finds it, given it exists — ESMFold2-Fast | 86% | 67% | **63%** | **−23%** |
+| **selector** — Protenix | 89% | 83% | **83%** | **−7%** |
+| **TOP-1** — ESMFold2-Fast | 44% | 50% | **54%** | **+11%** |
+| **TOP-1** — Protenix | 51% | 66% | **74%** | **+22%** |
+
+**Both models find the answer about equally often** (85% vs 89% coverage). **The entire difference
+is that Protenix can RECOGNISE it and ESMFold2 cannot** (selector 83% vs 63%) — **and that gap
+WIDENS with scale**, because ESM's selector decays three times faster.
+
+**Test-time scaling gives ESMFold2 poses it cannot use.** Protenix converts 2× more of its scaling
+into accuracy.
+
+And on the 4-arm set (15 interfaces, 1 → 20 seeds), the worst case is stark:
+
+| arm | top-1 @ n=1 | top-1 @ n=20 | **scaling gain** | selector decay |
+|---|:--:|:--:|:--:|:--:|
+| **base ESMFold2, no MSA** | 25% | **21%** | **−3%** | **−32%** |
+| base ESMFold2, +MSA | 36% | 53% | +17% | −6% |
+| Protenix, +MSA | 40% | 75% | +35% | −1% |
+
+**A single-sequence ESMFold2 gets ZERO benefit from test-time scaling** — its selector decays exactly
+as fast as its coverage improves. An MSA rescues the slope (−32% → −6%); Protenix's is essentially
+flat (−1%).
+
+_`scaling_by_arm.py`  (`--full` for the 148-interface version)_
+
+---
+
 ## 1. The result that matters most
 
 **There is no structural signature in a pose ensemble that distinguishes a confident decoy from a

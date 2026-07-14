@@ -60,16 +60,27 @@ def load(path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--reps", type=int, default=100)
+    ap.add_argument("--full", action="store_true",
+                    help="ESMFold2-Fast vs Protenix on the FULL common benchmark (150 interfaces, "
+                         "up to 50 seeds) instead of the 15-interface 4-arm set. Well-powered, but "
+                         "only the two arms that have deep pools.")
     a = ap.parse_args()
     rng = np.random.default_rng(20260713)
+    global ARMS
+    if a.full:
+        ARMS = [ARMS[0], ARMS[3]]                     # ESMFold2-Fast and Protenix only
     pools = {n: load(p) for n, p in ARMS}
-    keys = sorted(k for k in pools[ARMS[2][0]]
-                  if k[0] in CX and all(k in pools[n] for n, _ in ARMS))
-    depths = [1, 2, 5, 10, 20]
+    if a.full:
+        keys = sorted(set(pools[ARMS[0][0]]) & set(pools[ARMS[1][0]]))
+        depths = [1, 2, 5, 10, 20, 50]
+    else:
+        keys = sorted(k for k in pools[ARMS[2][0]]
+                      if k[0] in CX and all(k in pools[n] for n, _ in ARMS))
+        depths = [1, 2, 5, 10, 20]
 
     print(f"{len(keys)} interfaces present in all four arms\n")
     print("GENERATOR — P(pool contains an acceptable pose).  More seeds can only help.\n")
-    print(f"{'arm':<24}" + "".join(f"{f'n={d}':>8}" for d in depths) + f"{'  slope 1->20':>14}")
+    print(f"{'arm':<24}" + "".join(f"{f'n={d}':>8}" for d in depths) + f"{f'  slope 1->{depths[-1]}':>14}")
     print("-" * (24 + 8 * len(depths) + 14))
     gen = {}
     for name, _ in ARMS:
@@ -90,7 +101,7 @@ def main():
 
     print("\n\nSELECTOR — P(argmax lands on an acceptable pose | one exists).")
     print("             THIS is where the confident-decoy disease lives. It can go DOWN.\n")
-    print(f"{'arm':<24}" + "".join(f"{f'n={d}':>8}" for d in depths) + f"{'  slope 1->20':>14}")
+    print(f"{'arm':<24}" + "".join(f"{f'n={d}':>8}" for d in depths) + f"{f'  slope 1->{depths[-1]}':>14}")
     print("-" * (24 + 8 * len(depths) + 14))
     sel = {}
     for name, _ in ARMS:
@@ -115,7 +126,7 @@ def main():
         print(f"{name:<24}" + "".join(f"{v:>8.0%}" for v in row) + f"{row[-1]-row[0]:>+14.0%}")
 
     print("\n\nTOP-1 = generator x selector — what a user actually experiences.\n")
-    print(f"{'arm':<24}" + "".join(f"{f'n={d}':>8}" for d in depths) + f"{'  slope 1->20':>14}")
+    print(f"{'arm':<24}" + "".join(f"{f'n={d}':>8}" for d in depths) + f"{f'  slope 1->{depths[-1]}':>14}")
     print("-" * (24 + 8 * len(depths) + 14))
     for name, _ in ARMS:
         row = [g * s for g, s in zip(gen[name], sel[name])]
