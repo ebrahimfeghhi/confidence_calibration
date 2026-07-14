@@ -80,8 +80,9 @@ Per-interface the correspondence is exact: every inverted top decile lost; every
 And it makes a prediction with a **control that moves the opposite way** — back off from the argmax
 and it *helps* ESM, *destroys* Protenix (interaction **+40%, 95% CI [+10%, +71%], P = 0.996**).
 
-**Caveat:** this is a fact about **ESMFold2-Fast**. Whether it survives on the base checkpoint with
-an MSA is **unresolved** (§5).
+**And §3 shows what causes it: running single-sequence.** The base checkpoint inverts too, without
+an MSA — and *both* checkpoints stop inverting once given one. So this mechanism is real, and it is
+a property of **MSA-less** ESM confidence, not of ESMFold2-Fast specifically.
 
 _`critical_band.py`, `dont_take_argmax.py`, `argmax_dissociation_test.py`_
 
@@ -135,8 +136,8 @@ _`inversion_across_arms.py`, `msa_ablation_result.py`, `run/esm/run_msa_ablation
 
 - **Protenix's confidence head IS a rollout-trained error discriminator.** Mini-rollout under
   `no_grad` (`protenix.py:720-755`), head run on that sample (`:773-781`), targets are the sample's
-  **real error** vs ground truth (`loss.py:1757-1795`), trunk frozen (`confidence.py:65`). This is
-  true — it just isn't *why* it wins.
+  **real error** vs ground truth (`loss.py:1757-1795`), trunk frozen (`confidence.py:65`). Whether
+  this is *why* it out-selects ESMFold2 is **unresolved** — see §3.
 - **ESMFold2's head is also structure-conditioned** — takes sampled coords, re-runs per diffusion
   sample (`modeling_esmfold2.py:1061-1074`). Not a trunk read-out. My original mechanism was wrong.
 - **ESMFold2-Fast has `msa_encoder.enabled = false`.** Base `biohub/ESMFold2` has it **true**. Our

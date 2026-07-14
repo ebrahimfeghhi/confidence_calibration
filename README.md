@@ -31,18 +31,21 @@ analysis rests on:
   `:46-48` it explicitly *filters out* the MSA-bearing JSONs.
 - Protenix uses MSAs (10k–16k sequences).
 
-**Measured (OST-scored, same seeds, same complexes) — "selector" = does argmax land on an
-acceptable pose, given one exists:**
+**And running single-sequence is what CAUSES the confident-decoy trap this project is built on.**
+Confidence discriminates well across the pool and then **inverts inside its own top decile** —
+exactly where `argmax` reads. Measured (OST-scored, identical seeds and complexes; δ = Cliff's delta
+of confidence between acceptable and bad poses; **negative at the top = the disease**):
 
-| | selector |
-|---|:--:|
-| ESMFold2-**Fast**, no MSA — *what this repo benchmarks* | **29%** |
-| base ESMFold2, no MSA | **45%** |
-| base ESMFold2, **with MSA** | **58%** |
-| Protenix, with MSA | **57%** |
+| | δ, all poses | **δ, top quartile** | selector |
+|---|:--:|:--:|:--:|
+| ESMFold2-**Fast**, no MSA — *what this repo benchmarks* | +0.335 | **−0.070** | 47% |
+| base ESMFold2, no MSA | +0.273 | **−0.033** | 27% |
+| base ESMFold2, **with MSA** | +0.469 | **+0.286** | **58%** |
+| Protenix, with MSA | +0.584 | **+0.542** | 77% |
 
-**Base ESMFold2 with an MSA selects as well as Protenix.** Re-baseline before doing any more method
-work — it is worth more than anything in `steer/`.
+**Both no-MSA arms invert. Both with-MSA arms are healthy. An MSA cures it** (selector 27% → 58% on
+the same checkpoint, P = 0.945). Re-baseline before doing any more method work — it is worth more
+than anything in `steer/`.
 
 → **[`docs/overnight_2026_07_14_summary.md`](docs/overnight_2026_07_14_summary.md)** — read first.
 → [`docs/confidence_head_hypothesis.md`](docs/confidence_head_hypothesis.md) — the full study.
