@@ -33,19 +33,24 @@ analysis rests on:
 
 **And running single-sequence is what CAUSES the confident-decoy trap this project is built on.**
 Confidence discriminates well across the pool and then **inverts inside its own top decile** —
-exactly where `argmax` reads. Measured (OST-scored, identical seeds and complexes; δ = Cliff's delta
-of confidence between acceptable and bad poses; **negative at the top = the disease**):
+exactly where `argmax` reads. Measured (OST-scored, identical seeds and complexes, 100-pose pools;
+δ = Cliff's delta of confidence between acceptable and bad poses; **negative at the top = the
+disease**):
 
-| | δ, all poses | **δ, top quartile** | selector |
-|---|:--:|:--:|:--:|
-| ESMFold2-**Fast**, no MSA — *what this repo benchmarks* | +0.335 | **−0.070** | 47% |
-| base ESMFold2, no MSA | +0.273 | **−0.033** | 27% |
-| base ESMFold2, **with MSA** | +0.469 | **+0.286** | **58%** |
-| Protenix, with MSA | +0.584 | **+0.542** | 77% |
+| | δ, all poses | **δ, top quartile** | selector | **trap rate** |
+|---|:--:|:--:|:--:|:--:|
+| ESMFold2-**Fast**, no MSA — *what this repo benchmarks* | +0.359 | **−0.139** | 40% | **60%** |
+| base ESMFold2, no MSA | +0.209 | **−0.200** | 25% | **60%** |
+| base ESMFold2, **with MSA** | +0.464 | **+0.327** | **62%** | **33%** |
+| Protenix, with MSA | +0.623 | **+0.568** | 86% | **13%** |
 
-**Both no-MSA arms invert. Both with-MSA arms are healthy. An MSA cures it** (selector 27% → 58% on
-the same checkpoint, P = 0.945). Re-baseline before doing any more method work — it is worth more
-than anything in `steer/`.
+**Both no-MSA arms invert. Both with-MSA arms are healthy. An MSA cures it** — selector 25% → 62%
+on the *same* checkpoint (**+38%, 95% CI [+15%, +62%], P = 0.998**), and it **halves the trap rate**
+(60% → 33%), curing 44% of traps outright.
+
+**Every headline number in this repo is inflated by the missing MSA** — including the 47-interface
+confident-decoy set and the 6/22 clustering result. **Re-baseline on base ESMFold2 + MSA before
+doing any more method work.**
 
 → **[`docs/overnight_2026_07_14_summary.md`](docs/overnight_2026_07_14_summary.md)** — read first.
 → [`docs/confidence_head_hypothesis.md`](docs/confidence_head_hypothesis.md) — the full study.

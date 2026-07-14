@@ -95,8 +95,8 @@ def main():
     print(f"{len(keys)} interfaces with all four arms "
           f"(the 9 complexes base ESMFold2 can fold)\n")
 
-    for frac, label in ((0.25, "TOP QUARTILE (17 of 70 poses — the primary statistic)"),
-                        (0.10, "TOP DECILE (7 of 70 poses — still thin; shown for continuity)")):
+    for frac, label in ((0.25, "TOP QUARTILE (25 of 100 poses — the primary statistic)"),
+                        (0.10, "TOP DECILE (10 of 100 poses)")):
         print("=" * 78)
         print(label)
         print("=" * 78)
@@ -110,9 +110,9 @@ def main():
                 # two long-running pools to 8 seeds so nothing is compared at unequal depth.
                 seeds = sorted({p[0] for p in pools[name][k]})
                 if "base ESMFold2" in name:
-                    keep = {str(s) for s in range(14)}   # 14 seeds complete in BOTH arms
+                    keep = {str(s) for s in range(20)}   # 20 seeds complete in BOTH arms
                 else:
-                    keep = set(rng.choice(seeds, min(14, len(seeds)), replace=False))
+                    keep = set(rng.choice(seeds, min(20, len(seeds)), replace=False))
                 v = analyse([p for p in pools[name][k] if p[0] in keep], frac)
                 if v:
                     vals.append(v)

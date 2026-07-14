@@ -88,45 +88,45 @@ _`critical_band.py`, `dont_take_argmax.py`, `argmax_dissociation_test.py`_
 
 ---
 
-## 3. The MSA cures the inversion — this is the real finding
+## 3. The MSA cures the inversion — the finding
 
-**The measurement.** Four arms, OST-scored, identical seeds and complexes, raw `pair_iptm`,
-70-pose pools (14 seeds × 5 samples), 9 complexes / 15 interfaces.
+Four arms, OST-scored, identical seeds and complexes, raw `pair_iptm`, **100-pose pools**
+(20 seeds × 5 samples), 9 complexes / 15 interfaces.
 
 `Cliff's δ TOP` = does confidence still separate good from bad poses **among the most confident
 poses** — the only region `argmax` reads? Positive = healthy. **Negative = inverted = the
 confident-decoy disease.**
 
-| arm | δ, all poses | **δ, top quartile** | **δ, top decile** | interfaces inverted |
+| arm | δ, all poses | **δ, top quartile** | selector | AUC |
 |---|:--:|:--:|:--:|:--:|
-| **A** — ESMFold2-Fast, **no MSA** | +0.335 | **−0.070** | **−0.120** | 60% |
-| **A′** — base ESMFold2, **no MSA** | +0.273 | **−0.033** | **−0.333** | 71% |
-| **B** — base ESMFold2, **+MSA** | +0.469 | **+0.286** | **+0.252** | 40% |
-| **C** — Protenix, **+MSA** | +0.584 | **+0.542** | **+0.600** | 22% |
+| **A** — ESMFold2-Fast, **no MSA** *(what this project used)* | +0.359 | **−0.139** | 40% | 0.676 |
+| **A′** — base ESMFold2, **no MSA** | +0.209 | **−0.200** | 25% | 0.602 |
+| **B** — base ESMFold2, **+MSA** | +0.464 | **+0.327** | **62%** | 0.728 |
+| **C** — Protenix, **+MSA** | +0.623 | **+0.568** | 86% | 0.795 |
 
-**Both no-MSA arms invert. Both with-MSA arms are healthy. The quartile and the decile agree.**
-It is not the checkpoint — the *base* model inverts too, without an MSA. **It is the MSA.**
+**Both no-MSA arms invert. Both with-MSA arms are healthy.** It is not the checkpoint — the *base*
+model inverts too, without an MSA. **It is the MSA.** The top-quartile statistic is stable across
+40-, 70- and 100-pose pools.
 
-And the selector follows: **27% → 58%** when the same checkpoint is given an MSA
-(**+31%, 95% CI [0%, +62%], P(MSA helps) = 0.945, n = 13**).
+**And the selector follows: 25% → 62% on the same checkpoint —
++38%, 95% CI [+15%, +62%], P(MSA helps) = 0.998.** Significant.
 
-### Honesty about the rest of the ablation
+### The rest of the decomposition — read the caveat
 
-The **decomposition is not stable** and must not be quoted:
+| component of the ESMFold2-Fast → Protenix selector gap | @ 8 seeds | @ 14 | **@ 20 (final)** |
+|---|:--:|:--:|:--:|
+| checkpoint (Fast → base, no MSA either way) | +17% | −19% | **−15%** |
+| **MSA** (base, no MSA → base + MSA) | +13% *(n.s.)* | +31% | **+38%** *(P = 0.998)* |
+| unexplained (base+MSA → Protenix) | −1% | +19% | **+18%** |
 
-| | @ 8 seeds | @ 14 seeds |
-|---|:--:|:--:|
-| checkpoint (Fast → base) | +17% | **−19%** |
-| **MSA** | +13% *(n.s.)* | **+31%** *(P = 0.945)* |
-| unexplained (base+MSA → Protenix) | −1% | **+19%** |
+The **8-seed run was the outlier** — an earlier version of this document used it to declare the
+confidence-head hypothesis dead. That was wrong. At 14 and 20 seeds the checkpoint term is
+consistently **negative** (base ESMFold2 is, if anything, a slightly *worse* selector than -Fast
+when neither has an MSA), and **+18% stays unexplained** between base+MSA and Protenix.
 
-**The checkpoint effect flipped sign between depths — it is noise.** And at 14 seeds Protenix still
-leads base+MSA by **19%**, so the original confidence-head hypothesis is **not refuted** either. An
-earlier version of this document claimed it was; that claim rested on the 8-seed run and was wrong
-to make.
-
-**What survives both depths, and both the quartile and decile views, is the MSA effect.** That is
-the finding. Everything else here is underpowered (n = 13–15 interfaces).
+**So the confidence-head hypothesis is UNRESOLVED, not refuted.** Something still separates Protenix
+from a properly-configured ESMFold2. It could be the head, or MSA depth (we capped at 512; Protenix
+uses 10k–16k), or noise (n=13).
 
 _`inversion_across_arms.py`, `msa_ablation_result.py`, `run/esm/run_msa_ablation.py`_
 
@@ -150,26 +150,26 @@ _`inversion_across_arms.py`, `msa_ablation_result.py`, `run/esm/run_msa_ablation
 
 ---
 
-## 5. Does the trap class survive? Yes — but it is ~40% smaller than we thought
+## 5. Does the trap class survive an MSA? Yes — but it is HALVED
 
 The whole project targets one failure class: **TRAP** = confidence picks a pose below DockQ 0.23
 while an acceptable pose sits in the pool. If MSAs dissolve that class, the method work was aimed at
-a phantom. Classification on identical seeds and interfaces:
+a phantom. Classification on identical seeds and interfaces (20 seeds × 5 samples):
 
 | arm | WIN | **TRAP** | NO-POSE | **trap rate** |
 |---|:--:|:--:|:--:|:--:|
 | **A** — ESMFold2-Fast, no MSA *(what we benchmarked)* | 6 | **9** | 0 | **60%** |
-| **A′** — base ESMFold2, no MSA | 3 | **8** | 4 | **53%** |
-| **B** — base ESMFold2, **+MSA** | 7 | **5** | 3 | **33%** |
-| **C** — Protenix, +MSA | 11 | **2** | 2 | **13%** |
+| **A′** — base ESMFold2, no MSA | 3 | **9** | 3 | **60%** |
+| **B** — base ESMFold2, **+MSA** | 8 | **5** | 2 | **33%** |
+| **C** — Protenix, +MSA | 12 | **2** | 1 | **13%** |
 
-**Of the 8 traps in the no-MSA arm, the MSA cures 3 (38%) — and never makes the pool worse** (none
-converted to NO-POSE).
+**Of the 9 traps in the no-MSA arm, the MSA cures 4 (44%) — and never damages the pool** (zero
+converted to NO-POSE; the MSA fixed the *selection*, the good pose was already there).
 
-**So the trap is real, and running single-sequence roughly doubled it.** Five of fifteen interfaces
-stay trapped even with an MSA, and Protenix still has two. **The project has a genuine subject — it
-is just ~40% smaller than the benchmark said**, and every headline number in this repo (the 47-trap
-set, the 6/22) is inflated by the missing MSA.
+**So the trap is real, and running single-sequence roughly DOUBLED it (60% → 33%).** Five of fifteen
+interfaces stay trapped even with an MSA, and Protenix still has two. **The project has a genuine
+subject — it is just half the size the benchmark said**, and every headline number in this repo (the
+47-interface trap set, the 6/22) is inflated by the missing MSA.
 
 _`traps_survive_msa.py`_
 
