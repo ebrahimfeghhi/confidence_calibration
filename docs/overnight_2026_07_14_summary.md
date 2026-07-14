@@ -182,6 +182,31 @@ look true depending on which subset you examine.
 
 _`selection_quality.py`_
 
+### Control: the dissociation is NOT an artefact of our metric
+
+ESMFold2's `pair_chains_iptm` is a plain **double mean** (`modeling_esmfold2.py:318-333`); Protenix's
+`chain_pair_iptm` is a **max-over-anchor** (`sample_confidence.py:523-545`). A mean and a max behave
+completely differently at the tails, so the Spearman-vs-AUC dissociation could have been our own
+metric choice. **`global_iptm` is the SAME statistic in both models** (max-over-anchor, inter-chain
+TM-expectation) and both CSVs carry it. Re-running with it:
+
+| score | Spearman ρ (ESM / Protenix) | AUC | oracle gap |
+|---|:--:|:--:|:--:|
+| `pair_iptm` (mismatched) | +0.466 / +0.336 | 0.770 / 0.776 | 9.0% / 7.6% |
+| **`global_iptm` (matched)** | **+0.370 / +0.278** | 0.730 / 0.764 | 9.2% / 6.8% |
+| P(Protenix better), matched | **0.013 — ESM WINS** | 0.867 | 0.826 |
+
+**Same pattern. The aggregation confound is not the explanation.** ESMFold2's confidence orders the
+whole DockQ range better; Protenix's is sharper at the acceptable/not boundary. **A uniformly
+better-trained head should win both, and it does not.**
+
+**No verified mechanism.** I claimed this was because Protenix's head is a "discriminator" not a
+"regressor" — and cited `loss.py:1757-1795`. **That file refutes it**: the targets are pLDDT / PDE /
+PAE, i.e. binned *error magnitude* — a regressor. Both models emit the same logit shapes. The
+dissociation is a **fact**; the mechanism was fabricated and is withdrawn. **Next test: calibration**
+(does each model's confidence numerically *predict* DockQ — MAE, Brier, reliability curve?), which
+separates "uniformly better head" from "different failure shape".
+
 ---
 
 ## 1. The result that matters most
