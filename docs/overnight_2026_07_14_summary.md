@@ -184,12 +184,18 @@ base+MSA and Protenix. That could be the head, or MSA depth (we capped at 512; P
 **2. Powering all of the above.** Everything here rests on 9 complexes / 15 interfaces / 20 seeds.
 
 **A correction to my own earlier claim:** I wrote that base ESMFold2 "stalls entirely on the five
-largest complexes (8the, 8ts0, 8uky, 8w84, 8w90)". **That is false.** `8ts0` (619 residues),
-`8w90` (936) and `8w84` (858) all fold fine — **~192s each with an MSA**, tested directly. They were
-never *reached*: the runner processes complexes in list order, and `8the` (1,230 residues, genuinely
-the largest) is 10th and slow, so it blocked everything behind it. **The re-baseline is therefore
-far more feasible than I said** — sort the complex list by size, or shard it, and only the largest
-one or two are a real cost.
+largest complexes (8the, 8ts0, 8uky, 8w84, 8w90)". **That is false, and I should have caught it —
+`8ts0` is 619 residues, *smaller* than several complexes that fold without trouble (8oni, 974), so
+size was never a coherent explanation.**
+
+Tested directly: **`8ts0`, `8w84` and `8w90` all fold fine — ~192s each with an MSA.** Only **`8the`
+(1,230 residues) is genuinely slow: >20 minutes for a single fold**, versus ~192s for the rest. The
+runner walks the complex list *in order*, so 8the — sitting 10th — blocked everything behind it, and
+the other four were **never reached**. I saw "no output for 20 minutes" and inferred a five-complex
+stall from evidence that only ever supported one.
+
+**The re-baseline is therefore far more feasible than I said.** Sort the complex list by size or
+shard it, and only `8the` (and possibly `8uky`, 1,204 residues, untested) costs anything real.
 
 _`inversion_across_arms.py`_
 
