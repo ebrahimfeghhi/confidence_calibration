@@ -27,9 +27,32 @@ THIS RESOLVES EVERY APPARENT CONTRADICTION IN THE PROJECT:
   * Protenix loses global Spearman        -> it cannot rank WITHIN the good poses.
   * ESMFold2 wins AUC@0.80                -> it can tell a 0.9 from a 0.5.
 
+THREE CONTROLS, because Ebrahim rightly expected Protenix to be better across the board:
+
+  1. MATCHED STATISTIC. global_iptm is the SAME quantity in both models (max-over-anchor,
+     inter-chain TM-expectation), unlike pair_iptm (ESM = plain double mean; Protenix =
+     max-over-anchor). Pattern unchanged.
+
+  2. MATCHED DISPERSION. Spearman depends on how much DockQ variance there is to rank. Protenix's
+     pools actually have MORE (sd 0.185 vs 0.155), and on the matched-dispersion subset ESM's
+     advantage nearly TRIPLES (rho +0.426 vs +0.153, P(Prot better)=0.000).
+
+  3. MATCHED TASK -- the decisive one. At T=0.8 Protenix's "negatives" could have been harder
+     (0.5-0.8 poses rather than junk), making its AUC unfairly low. They are NOT: the negative
+     class is identical (mean DockQ 0.416 vs 0.400; 47% above 0.5 in BOTH). And forcing the exact
+     same problem -- separate DockQ>0.8 from DockQ in [0.5,0.8] within each model:
+
+         ESMFold2 AUC 0.736   Protenix AUC 0.623
+         diff -0.113, 95% CI [-0.200,-0.021], P(Protenix better) = 0.009
+
+     ESMFold2 is SIGNIFICANTLY better at telling an EXCELLENT pose from a merely GOOD one.
+
 PRACTICAL CONSEQUENCE. If you want a HIGH-ACCURACY structure (DockQ > 0.8), ESMFold2's confidence is
 the BETTER selector. Protenix only wins the low bar. Any claim of the form "model X has better
-confidence" is meaningless without naming the threshold.
+confidence" is meaningless without naming the threshold -- and this whole project has been
+implicitly fixed at 0.23.
+
+DO NOT rank Protenix's samples with Protenix's own confidence if you care about high accuracy.
 """
 import collections, csv
 import numpy as np
