@@ -1,5 +1,19 @@
 # Selecting the good dock on confident-decoy traps by enumerating hypotheses
 
+> ## ⚠️ SUPERSEDED IN PART — 2026-07-14
+>
+> Everything below was measured on **ESMFold2-Fast run SINGLE-SEQUENCE**
+> (`msa_encoder.enabled = false`; the driver also filters MSA-bearing JSONs out).
+> **Running without an MSA is what CAUSES the confident-decoy inversion** — confidence
+> discriminates across the pool and then inverts inside its own top decile, exactly where
+> `argmax` reads. Both checkpoints invert without an MSA; both are healthy with one.
+>
+> The trap class is **real but ~40% smaller** than the numbers here say (trap rate 53% → 33%
+> once the model has an MSA). **Every headline number below is inflated.**
+>
+> → **[`docs/overnight_2026_07_14_summary.md`](overnight_2026_07_14_summary.md)** — read first.
+
+
 _First real finding, 2026-07-10._
 
 A label-free way to recover the correct antibody–antigen pose on "confident-decoy" interfaces —

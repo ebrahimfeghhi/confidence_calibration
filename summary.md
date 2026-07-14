@@ -1,5 +1,19 @@
 # 7txw antibody–antigen TTS: findings summary
 
+> ## ⚠️ SUPERSEDED IN PART — 2026-07-14
+>
+> Everything below was measured on **ESMFold2-Fast run SINGLE-SEQUENCE**
+> (`msa_encoder.enabled = false`; the driver also filters MSA-bearing JSONs out).
+> **Running without an MSA is what CAUSES the confident-decoy inversion** — confidence
+> discriminates across the pool and then inverts inside its own top decile, exactly where
+> `argmax` reads. Both checkpoints invert without an MSA; both are healthy with one.
+>
+> The trap class is **real but ~40% smaller** than the numbers here say (trap rate 53% -> 33%
+> once the model has an MSA). **Every headline number below is inflated.**
+>
+> -> **[`docs/overnight_2026_07_14_summary.md`](docs/overnight_2026_07_14_summary.md)** — read first.
+
+
 Consolidated summary of the test-time-sampling (TTS) investigation on **`7txw-assembly1`,
 interface A|C** (chains A+B = a Fab antibody; chain C = the antigen). Model is
 **ESMFold2-Fast** (single-sequence), run with input LM masking (`lm_mask_pct=0.1`) and
