@@ -68,7 +68,7 @@ def load_msa(a3m_path, max_depth):
     return msa
 
 
-def load_complexes(names, max_depth):
+def load_complexes(names, max_depth, no_msa=False):
     """Protenix '-updated' JSONs (the ones WITH MSA paths -- the ESM driver deliberately skips
     these) -> [(name, StructurePredictionInput)] with an MSA attached to every protein chain."""
     out = []
@@ -90,7 +90,8 @@ def load_complexes(names, max_depth):
             ids = [CHAIN_LETTERS[chain_idx + i] for i in range(count)]
             chain_idx += count
             # unpaired MSA is the per-chain homolog set -- the coevolutionary signal we care about.
-            msa = load_msa(cd.get("unpairedMsaPath"), max_depth)
+            # The CONTROL arm attaches none, so the same checkpoint runs single-sequence.
+            msa = None if no_msa else load_msa(cd.get("unpairedMsaPath"), max_depth)
             depths.append(len(msa.entries) if msa else 0)
             inputs.append(ProteinInput(id=ids if count > 1 else ids[0], sequence=seq, msa=msa))
         if not inputs:
@@ -114,6 +115,11 @@ def main():
     ap.add_argument("--num_diffusion_samples", type=int, default=5)
     ap.add_argument("--msa_max_depth", type=int, default=1024)     # processor.py default
     ap.add_argument("--chunk_size", type=int, default=32)
+    ap.add_argument("--no_msa", action="store_true",
+                    help="THE CONTROL ARM. Run the SAME base checkpoint with NO MSA attached. "
+                         "Without this, the 'with-MSA' run differs from ESMFold2-Fast in BOTH the "
+                         "MSA and the checkpoint (base 1.3GB vs Fast 721MB are different models), "
+                         "and nothing can be attributed to the MSA. This arm isolates it.")
     a = ap.parse_args()
 
     print(f"Loading {a.model} ...", flush=True)
@@ -122,12 +128,13 @@ def main():
     cfg = getattr(model.config, "msa_encoder", None)
     enabled = getattr(cfg, "enabled", None) if cfg is not None else None
     print(f"  msa_encoder.enabled = {enabled}", flush=True)
-    if not enabled:
-        print("  *** THIS CHECKPOINT HAS NO MSA ENCODER — the ablation would be a no-op. ***")
+    if not enabled and not a.no_msa:
+        print("  *** THIS CHECKPOINT HAS NO MSA ENCODER — the with-MSA arm would be a no-op. ***")
         return
+    print(f"  ARM: {'CONTROL (no MSA attached)' if a.no_msa else 'WITH MSA'}", flush=True)
     builder = ESMFold2InputBuilder()
 
-    cxs = load_complexes(a.complexes, a.msa_max_depth)
+    cxs = load_complexes(a.complexes, a.msa_max_depth, no_msa=a.no_msa)
     out_root = Path(a.out_dir)
     t0 = time.time()
     n = 0
