@@ -74,6 +74,66 @@ _`scaling_by_arm.py`  (`--full` for the 148-interface version)_
 
 ---
 
+### And the prize is growing
+
+**HEADROOM** = `coverage × (1 − selector)` = the top-1 a *perfect* label-free selector would add,
+using only poses the model **has already generated**. No extra compute; purely better recognition.
+
+| seeds | ESMFold2-Fast: top-1 → oracle | **headroom** | Protenix: top-1 → oracle | **headroom** |
+|:--:|:--:|:--:|:--:|:--:|
+| 1 | 44% → 50% | **7%** | 52% → 57% | 6% |
+| 10 | 50% → 75% | **25%** | 66% → 80% | 14% |
+| **50** | 54% → **86%** | **31%** | 74% → 89% | **16%** |
+
+**A perfect selector would take ESMFold2 from 54% to 86% at 50 seeds — and the headroom GROWS with
+depth (7% → 31%).** The more you spend on sampling, the more imperfect selection costs you.
+
+**This validates the project's founding premise.** Selection *is* the bottleneck, and test-time
+scaling makes it worse — so the case for a label-free selector gets **stronger** as compute grows.
+
+The catch is §1: none of this headroom is reachable from the **pose ensemble**. It has to come from a
+better confidence *signal* — an MSA (worth +38% selector on its own), a discriminator trained on
+measured error, or a second model.
+
+_`selection_headroom.py`_
+
+---
+
+## 0b. Is Protenix just trained on more/better data?
+
+Ebrahim's question. **Partly yes — and I initially got this wrong** by leaning on coverage (a
+saturating statistic) to claim the generators were "nearly tied". The measures that actually probe
+the trunk (148 interfaces, 50 seeds):
+
+| | ESMFold2-Fast | Protenix | gap |
+|---|:--:|:--:|:--:|
+| coverage *(saturating — says little)* | 84% | 89% | +5% |
+| **pool purity** | 41% | 50% | **+10%** |
+| **best DockQ in pool** (the ceiling) | 0.613 | 0.697 | **+0.084** |
+| **median DockQ** (the *typical* pose) | 0.310 | 0.373 | **+0.063** |
+| % of poses > 0.80 | 16% | 20% | +3% |
+| **SELECTOR** | **65%** | **83%** | **+18%** |
+
+**Protenix's trunk is genuinely better** — better typical pose, purer pools, higher ceiling. Better
+data/training is clearly part of it.
+
+**But the selector gap (+18%) is roughly double any generator gap (+3 to +10%).** The advantage is
+disproportionately in *recognition*, not *construction*. And that matches the counterfactual: hold
+each model's own confidence values, resample its pool to the other's purity, and **~2/3 of the
+selector gap survives**.
+
+**Best synthesis this data supports:** ~**1/3** of Protenix's selector advantage is a better pool
+(which better data would produce); ~**2/3** points at the **confidence head** — the one component
+confirmed in source to be trained differently (on the measured error of its own rollout samples).
+
+**Standing caveat:** the *direct* measurement of head quality at the top is **not significant at
+n=13** (+0.048, 95% CI [−0.506, +0.603], P = 0.56). The full re-baseline would settle it with ~150
+interfaces.
+
+_`generator_quality.py`, `residual_gap.py`, `purity_vs_head.py`_
+
+---
+
 ## 1. The result that matters most
 
 **There is no structural signature in a pose ensemble that distinguishes a confident decoy from a
