@@ -181,9 +181,15 @@ _`traps_survive_msa.py`_
 base+MSA and Protenix. That could be the head, or MSA depth (we capped at 512; Protenix uses
 10k–16k), or noise (n=13). **Settle it by running base ESMFold2 with a full-depth MSA.**
 
-**2. Powering all of the above.** Everything here rests on 9 complexes / 15 interfaces / ≤14 seeds.
-Base ESMFold2 **stalls entirely on the five largest complexes** (8the, 8ts0, 8uky, 8w84, 8w90 —
-20+ min at 100% GPU, no output), which is both a limitation and a bug worth chasing.
+**2. Powering all of the above.** Everything here rests on 9 complexes / 15 interfaces / 20 seeds.
+
+**A correction to my own earlier claim:** I wrote that base ESMFold2 "stalls entirely on the five
+largest complexes (8the, 8ts0, 8uky, 8w84, 8w90)". **That is false.** `8ts0` (619 residues),
+`8w90` (936) and `8w84` (858) all fold fine — **~192s each with an MSA**, tested directly. They were
+never *reached*: the runner processes complexes in list order, and `8the` (1,230 residues, genuinely
+the largest) is 10th and slow, so it blocked everything behind it. **The re-baseline is therefore
+far more feasible than I said** — sort the complex list by size, or shard it, and only the largest
+one or two are a real cost.
 
 _`inversion_across_arms.py`_
 

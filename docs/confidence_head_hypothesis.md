@@ -387,9 +387,11 @@ MSA cures it.** Selector follows: **27% → 58%** on the same checkpoint
 
 ### Limits of this experiment
 
-- **9 complexes, 15 interfaces, 8 seeds.** Base ESMFold2 stalls on the five largest complexes
-  (8the, 8ts0, 8uky, 8w84, 8w90 — 20+ min at 100% GPU with no output), so they are excluded from
-  **all four arms**. The comparison is internally controlled but the sample is small.
+- **9 complexes, 15 interfaces, 20 seeds.** Five complexes are excluded from **all four arms**.
+  **NOT because they stall** — I claimed that and it was wrong. `8ts0`, `8w84` and `8w90` fold fine
+  (~192s each with an MSA, tested directly). They were never *reached*: the runner walks the complex
+  list in order, and `8the` (1,230 residues) sits 10th and is slow enough to block the rest. Sort by
+  size and the problem largely goes away.
 - **MSA depth capped at 512**, not Protenix's 10k–16k. At the processor default of 1024 the
   with-MSA arm produced ~0 folds/hour. 512 is still a real MSA (AF2-class models subsample to
   128–512 per pass) but it is a weaker treatment than Protenix gets.
