@@ -257,8 +257,53 @@ _Script: `top_decile_structure.py`_
   (worst diff 0.0005 = OST's rounding). Known limit: interfaces carrying modified residues
   (e.g. 8vvl_AC, pyroglutamate) deviate by up to 0.0045 — negligible for cohesion/clustering, but
   it is not zero. See `verify_protenix_dockq.py`.
-- **The MSA confound is NOT tested.** ESMFold2-Fast runs **single-sequence** — `msa_encoder.enabled
-  = false` in the checkpoint we use, while base `biohub/ESMFold2` has it **true**, and Protenix uses
-  MSAs. So the comparison has been **MSA vs no-MSA** all along. That could explain part or all of
-  the gap, and it is the single largest open threat to everything above. **Test it before
-  publishing any of this.**
+- **The MSA confound.** ESMFold2-Fast runs **single-sequence** — `msa_encoder.enabled = false` in
+  the checkpoint we use, while base `biohub/ESMFold2` has it **true**, and Protenix uses MSAs. So
+  the comparison has been **MSA vs no-MSA** all along, and that could explain part or all of the
+  gap. It is the largest threat to everything above. See §6.
+
+---
+
+## 6. The MSA confound
+
+### 6a. MSA *depth* does not drive the advantage
+
+If MSAs cause the gap, Protenix's advantage should **scale with MSA depth**. Protenix logs `N_msa`
+per structure. On 53 zero-template interfaces where both pools contain an acceptable pose:
+
+| Protenix MSA depth | Protenix | ESM | **advantage** |
+|---|:--:|:--:|:--:|
+| Q1 shallowest (10.3k–12.6k) | 87% | 60% | **+27%** |
+| Q2 (12.6k–13.4k) | 92% | 58% | **+33%** |
+| Q3 (13.4k–14.4k) | 69% | 85% | **−15%** |
+| Q4 deepest (14.4k–16.4k) | 77% | 92% | **−15%** |
+
+**Spearman = −0.299, p = 0.030.** The correlation runs **backwards**: Protenix's advantage is
+*largest* where its MSA is *shallowest*, and it **loses** to ESM where the MSA is deepest. That is
+the opposite of what the MSA hypothesis predicts.
+
+**But this does not settle it, and it would be dishonest to pretend it does.** The **minimum** MSA
+depth here is **10,262 sequences** (and `N_msa` caps at 16,384), so this compares *deep against
+deeper*, in a regime where the coevolutionary signal is almost certainly saturated. The contrast
+that matters is **0 vs 10,262** — ESMFold2-Fast has **no MSA at all** — and that contrast has zero
+variance in this data. There is also a confound of the confound: deep MSAs mean well-studied,
+conserved antigens, which are easier for *everyone*, including ESM's language model.
+
+_Script: `msa_confound.py`_
+
+### 6b. The ablation
+
+The only thing that settles it: run **base `biohub/ESMFold2`** (`msa_encoder.enabled = true`) with
+**Protenix's own MSAs**, on the 14 complexes of the selection-critical band, holding everything else
+fixed (same TTS settings, same 5 diffusion samples, depth-matched seeds, scored by the same OST).
+
+| outcome | meaning |
+|---|---|
+| ESM-with-MSA jumps to Protenix's selector accuracy | **the confidence-head account is dead** — it was MSAs |
+| it stays at the single-sequence level | **MSAs are not the explanation**; the account survives |
+| it lands between | both contribute; report the split |
+
+_Scripts: `run/esm/run_msa_ablation.py`, `run/esm/launch_msa_ablation.sh`,
+`steer/experiments/msa_ablation_result.py`_
+
+**RESULT: see §7 — filled in when the run completes.**
