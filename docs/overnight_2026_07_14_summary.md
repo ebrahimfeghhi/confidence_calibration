@@ -134,6 +134,56 @@ _`generator_quality.py`, `residual_gap.py`, `purity_vs_head.py`_
 
 ---
 
+## 0c. Is the "selector gap" real, or is it generation in disguise?
+
+Ebrahim's objection, and the sharpest one of the night: the `selector` statistic
+(P(argmax ipTM hits | a good pose exists)) is conditioned on coverage but is **still
+prevalence-sensitive** — a purer pool makes argmax land on a good pose more often even with an
+*identical* ranker, and Protenix's pools *are* purer.
+
+So: measure ORDERING only, using statistics invariant to base rate — per-target Spearman(ipTM,
+DockQ), AUC, Cliff's δ, **normalised ORACLE GAP** (rank of the first acceptable pose ÷ pool size;
+this is the objection's own metric, and prevalence moves numerator and denominator together so a
+richer pool cannot game it), and LIFT@k (precision@k ÷ base rate).
+
+### Full benchmark (90 targets, 50 seeds) — NO GAP
+
+| | Spearman ρ | AUC | oracle gap | median oracle rank |
+|---|:--:|:--:|:--:|:--:|
+| ESMFold2-Fast | **+0.466** | 0.770 | 9.0% | **1 of 250** |
+| Protenix | +0.336 | 0.776 | 7.6% | **1 of 250** |
+| P(Protenix better) | **0.002 — ESM WINS** | 0.587 | 0.722 | — |
+
+**On the benchmark as a whole there is no selection-quality gap at all.** By Spearman, ESMFold2's
+ipTM orders poses *significantly better*. **My "Protenix's confidence head is globally better"
+framing was wrong** — averaging over FoldBench hides the phenomenon completely.
+
+### Critical band (11 hard targets, pools 10–50% acceptable) — A LARGE GAP
+
+| | Spearman ρ | **AUC** | **Cliff's δ** | **oracle gap** |
+|---|:--:|:--:|:--:|:--:|
+| ESMFold2-Fast | +0.337 | 0.636 | +0.271 | **10.5%** |
+| base ESMFold2 + MSA | +0.263 | 0.687 | +0.374 | 2.4% |
+| Protenix | +0.329 | **0.825** | **+0.651** | **1.8%** |
+| P(Protenix better) | 0.485 — tie | **0.999** | **0.999** | **0.978** |
+
+**ESMFold2 buries the first good pose at 10.5% depth; Protenix at 1.8% — six times shallower.**
+
+### The answer
+
+**It is a genuine selection-quality gap, not a generation artefact — but ONLY on hard targets.** The
+oracle gap is immune to pool purity, and Protenix wins it decisively on the critical band and not at
+all on the full benchmark.
+
+**Consequence for every future comparison: STRATIFY BY POOL PURITY, or you will report a null.** The
+phenomenon lives on ~11–30 hard targets and every full-benchmark average washes it out. This is
+almost certainly why "ESMFold2's confidence is broken" and "ESMFold2's confidence is fine" can both
+look true depending on which subset you examine.
+
+_`selection_quality.py`_
+
+---
+
 ## 1. The result that matters most
 
 **There is no structural signature in a pose ensemble that distinguishes a confident decoy from a
