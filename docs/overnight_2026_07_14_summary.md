@@ -150,19 +150,38 @@ _`inversion_across_arms.py`, `msa_ablation_result.py`, `run/esm/run_msa_ablation
 
 ---
 
-## 5. Open questions
+## 5. Does the trap class survive? Yes — but it is ~40% smaller than we thought
 
-**1. How much of the confident-decoy trap survives an MSA?** §3 says the *inversion* goes away.
-But the with-MSA arms are not perfect (40% and 22% of interfaces still invert), and Protenix still
-out-selects base+MSA by 19%. **Re-run the trap classification (WIN / TRAP / NO-POSE) on base
-ESMFold2 + MSA over the full benchmark** and see how many "confident decoys" are left. If most
-evaporate, this project's target class was largely an artefact.
+The whole project targets one failure class: **TRAP** = confidence picks a pose below DockQ 0.23
+while an acceptable pose sits in the pool. If MSAs dissolve that class, the method work was aimed at
+a phantom. Classification on identical seeds and interfaces:
 
-**2. Is anything left for the confidence head?** At 14 seeds there is +19% unexplained between
+| arm | WIN | **TRAP** | NO-POSE | **trap rate** |
+|---|:--:|:--:|:--:|:--:|
+| **A** — ESMFold2-Fast, no MSA *(what we benchmarked)* | 6 | **9** | 0 | **60%** |
+| **A′** — base ESMFold2, no MSA | 3 | **8** | 4 | **53%** |
+| **B** — base ESMFold2, **+MSA** | 7 | **5** | 3 | **33%** |
+| **C** — Protenix, +MSA | 11 | **2** | 2 | **13%** |
+
+**Of the 8 traps in the no-MSA arm, the MSA cures 3 (38%) — and never makes the pool worse** (none
+converted to NO-POSE).
+
+**So the trap is real, and running single-sequence roughly doubled it.** Five of fifteen interfaces
+stay trapped even with an MSA, and Protenix still has two. **The project has a genuine subject — it
+is just ~40% smaller than the benchmark said**, and every headline number in this repo (the 47-trap
+set, the 6/22) is inflated by the missing MSA.
+
+_`traps_survive_msa.py`_
+
+---
+
+## 6. Remaining open questions
+
+**1. Is anything left for the confidence head?** At 14 seeds there is +19% unexplained between
 base+MSA and Protenix. That could be the head, or MSA depth (we capped at 512; Protenix uses
 10k–16k), or noise (n=13). **Settle it by running base ESMFold2 with a full-depth MSA.**
 
-**3. Powering all of the above.** Everything here rests on 9 complexes / 15 interfaces / ≤14 seeds.
+**2. Powering all of the above.** Everything here rests on 9 complexes / 15 interfaces / ≤14 seeds.
 Base ESMFold2 **stalls entirely on the five largest complexes** (8the, 8ts0, 8uky, 8w84, 8w90 —
 20+ min at 100% GPU, no output), which is both a limitation and a bug worth chasing.
 
@@ -170,7 +189,7 @@ _`inversion_across_arms.py`_
 
 ---
 
-## 6. What to do next
+## 7. What to do next
 
 **The cheap, dull fix first.** Before any more method work: **re-run the benchmark on base
 ESMFold2 with MSAs.** That is worth ~+29 points of selector accuracy — more than anything we
@@ -188,7 +207,7 @@ all capped by §1.
 
 ---
 
-## 7. Method notes worth keeping
+## 8. Method notes worth keeping
 
 - **DockQ has exactly two code paths.** OST = ground truth. `dockq_torch.py` = pose-vs-pose only.
   Protenix matrices are now certified against OST (46/46 pairs ≤ 0.0005; up to 0.0045 on interfaces
