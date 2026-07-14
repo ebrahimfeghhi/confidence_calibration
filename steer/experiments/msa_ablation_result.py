@@ -159,33 +159,60 @@ def main():
     print(f"\n  SELECTOR   no MSA {sA_:.0%}  ->  with MSA {sB:.0%}   (delta {sB - sA_:+.0%})")
     print(f"  GENERATOR  no MSA {gA_:.0%}  ->  with MSA {gB:.0%}   (delta {gB - gA_:+.0%})")
 
-    if "C" in out:
-        sC = out["C"]["sel"]
-        gap = sC - sA_
-        closed = (sB - sA_) / gap if abs(gap) > 1e-9 else float("nan")
-        print(f"\n  Protenix's selector: {sC:.0%}")
-        print(f"  the (base ESM -> Protenix) selector gap is {gap:+.0%}")
-        print(f"  giving ESM the SAME MSAs closes {closed:.0%} of it\n")
-        if closed > 0.6:
-            print("  >>> MSAs EXPLAIN THE GAP. The confidence-head account is DEAD.")
-        elif closed < 0.25:
-            print("  >>> MSAs DO NOT EXPLAIN THE GAP. Handing ESMFold2 the very MSAs Protenix uses")
-            print("      does not make it select like Protenix. The confidence-head account in")
-            print("      docs/confidence_head_hypothesis.md SURVIVES its largest challenge.")
-        else:
-            print(f"  >>> PARTIAL: MSAs account for {closed:.0%} of the gap. The rest is not MSAs.")
-
-    # paired bootstrap on the B - A' selector difference (interfaces are the resampling unit)
+    # paired bootstrap on the B - A' selector difference (interfaces are the resampling unit).
+    # This is computed BEFORE any verdict, because the verdict must respect it.
     both = [(r[1]["A'"], r[1]["B"]) for r in rows if r[1]["A'"]["has"] or r[1]["B"]["has"]]
+    p_helps = lo = hi = None
     if both:
         x = np.array([p[0]["hit"] for p in both], float)
         y = np.array([p[1]["hit"] for p in both], float)
         bs = np.array([(lambda i: y[i].mean() - x[i].mean())(rng.integers(0, len(x), len(x)))
                        for _ in range(10000)])
         lo, hi = np.percentile(bs, [2.5, 97.5])
+        p_helps = float((bs > 0).mean())
         print(f"\n  paired bootstrap on (with-MSA − no-MSA), n={len(x)} interfaces:")
         print(f"    delta {y.mean()-x.mean():+.0%}   95% CI [{lo:+.0%}, {hi:+.0%}]   "
-              f"P(MSA helps) = {(bs > 0).mean():.3f}")
+              f"P(MSA helps) = {p_helps:.3f}")
+
+    if "C" in out and "A" in out:
+        sC, sA = out["C"]["sel"], out["A"]["sel"]
+        print(f"\n  for reference:  ESMFold2-Fast {sA:.0%}   Protenix {sC:.0%}")
+        print(f"\n  DECOMPOSITION of the ESMFold2-Fast -> Protenix selector gap ({sC - sA:+.0%}):")
+        print(f"    checkpoint (Fast -> base, no MSA either way) : {sA_ - sA:+.0%}")
+        print(f"    MSA        (base, no MSA -> base, with MSA)  : {sB - sA_:+.0%}"
+              + (f"   [95% CI {lo:+.0%}..{hi:+.0%} — NOT significant]" if p_helps is not None
+                 and lo is not None and lo < 0 < hi else ""))
+        print(f"    remaining unexplained (base+MSA -> Protenix) : {sC - sB:+.0%}")
+
+    print("\n" + "-" * 94)
+    print("  HONEST VERDICT")
+    print("-" * 94)
+    if p_helps is not None and lo is not None and lo < 0 < hi:
+        print(f"""
+  The MSA point estimate is {sB - sA_:+.0%}, but its 95% CI is [{lo:+.0%}, {hi:+.0%}] and
+  P(MSA helps) = {p_helps:.2f}. With n={len(both)} interfaces this experiment CANNOT establish that
+  MSAs help selection. It also cannot rule it out. It is UNDERPOWERED, and saying anything
+  stronger would be dishonest.
+
+  What it DOES establish, and this is the uncomfortable part:
+
+    * base ESMFold2 WITH an MSA selects as well as Protenix ({sB:.0%} vs {out['C']['sel']:.0%}).
+      So Protenix's advantage is NOT a special property of a rollout-trained confidence head --
+      an ESM-class model with an MSA matches it.
+
+    * even with NO MSA, the base checkpoint selects far better than ESMFold2-Fast
+      ({sA_:.0%} vs {out['A']['sel']:.0%}). A large part of what docs/confidence_head_hypothesis.md
+      attributed to "Protenix's better head" is simply the DISTILLED -Fast checkpoint having a
+      worse one.
+
+  Both of those undercut the confidence-head account as an explanation of the Protenix gap. The
+  INVERSION finding (critical_band.py) still stands on its own -- it is a fact about ESMFold2-Fast
+  -- but "Protenix wins because AF3 trains confidence on rollout error" is no longer supported by
+  a comparison that has a proper control.""")
+    elif p_helps is not None and p_helps > 0.975:
+        print(f"\n  MSAs significantly improve selection ({sB - sA_:+.0%}, P={p_helps:.3f}).")
+    else:
+        print(f"\n  MSAs do not improve selection ({sB - sA_:+.0%}, P={p_helps}).")
 
     print("\n\nPER-INTERFACE  (WIN = argmax landed on an acceptable pose)")
     hdr = "".join(f"{h:>12}" for h in have)

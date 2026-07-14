@@ -21,9 +21,12 @@ cd /home/ebrahim/tts_abag
 
 NSEEDS="${NSEEDS:-8}"
 MSA_DEPTH="${MSA_DEPTH:-512}"
-MSA_GPUS="${MSA_GPUS:-1 2 3 4}"
-NOMSA_GPUS="${NOMSA_GPUS:-6 7}"
-CX="7txw 7zoz 8che 8fxv 8ido 8oni 8opr 8q6r 8qz3 8the 8ts0 8uky 8w84 8w90"
+MSA_GPUS="${MSA_GPUS:-1 2 3}"
+NOMSA_GPUS="${NOMSA_GPUS:-4 6 7}"
+# 8the/8ts0/8uky/8w84/8w90 dropped: base ESMFold2 (NOT the -Fast checkpoint) stalls on them --
+# both arms completed every complex up to 8the and then produced nothing for 20+ min at 100% GPU.
+# The remaining 9 fold in ~140s each and are the SAME set in both arms, so the contrast is clean.
+CX="7txw 7zoz 8che 8fxv 8ido 8oni 8opr 8q6r 8qz3"
 LOG=steer/experiments/logs/msa_ablation
 mkdir -p "$LOG"
 

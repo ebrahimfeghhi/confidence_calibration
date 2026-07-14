@@ -23,20 +23,41 @@ contrast, was assumed to be a trunk read-out measuring **self-consistency, not c
 
 ## Verdict
 
-**H2 is half right, and the half that is wrong is the more useful half.**
+**The confidence-head explanation is REFUTED by its own control. Read §7 before you trust anything
+in §1–§5.**
 
-1. **Protenix's head IS a rollout-trained error discriminator.** Confirmed in source, not inferred.
-2. **ESMFold2's head is NOT a trunk read-out.** It is also structure-conditioned. My mechanism was
-   wrong.
-3. **The two heads discriminate equally well on average** (AUC 0.797 vs 0.785 — ESM's is if
-   anything *better*). The gap is entirely at the **top of the distribution**, which is the one
-   place `argmax` reads.
-4. **ESMFold2's confidence INVERTS inside its own top decile** (Cliff's δ = −0.011) while
-   Protenix's survives intact (+0.477).
-5. **The two models' top deciles are structurally indistinguishable.** Same cohesion, same basin
-   count, same concentration. Only their *correctness* differs. **So no structure-only, label-free
-   method can tell a confident decoy from a confident truth** — which is exactly why every
-   clustering approach we tried hit the same wall.
+The findings about **ESMFold2-Fast** stand. The *explanation* of why Protenix beats it does not.
+
+**What survives:**
+
+1. **Protenix's head IS a rollout-trained error discriminator.** Confirmed in source (§2).
+2. **ESMFold2's head is NOT a trunk read-out.** It is also structure-conditioned. My original
+   mechanism was wrong (§2).
+3. **ESMFold2-Fast's confidence INVERTS inside its own top decile** (Cliff's δ = −0.011) while
+   Protenix's survives intact (+0.477). This is a real, measured fact about that checkpoint (§4).
+4. **The two models' top deciles are structurally indistinguishable.** Same cohesion, same basin
+   count, same concentration — only their *correctness* differs. **So no structure-only, label-free
+   method can tell a confident decoy from a confident truth**, which is why every clustering
+   approach we tried hit the same wall (§5). This is the most useful result here and it does not
+   depend on the refuted explanation.
+
+**What does NOT survive:**
+
+5. **"Protenix selects better because AF3 trains confidence on rollout error" is not supported.**
+   Run the ablation with a proper control and the entire Protenix-vs-ESMFold2-Fast selector gap
+   decomposes into **the checkpoint** and **the MSA**, with **nothing left over** for the
+   confidence head (§7):
+
+   | component of the +29% gap | |
+   |---|:--:|
+   | **checkpoint** (ESMFold2-**Fast** → base ESMFold2, no MSA either way) | **+17%** |
+   | **MSA** (base, no MSA → base, with MSA) | **+13%** *(underpowered, n.s.)* |
+   | **remaining, unexplained** | **−1%** |
+
+   **Base ESMFold2 with an MSA selects as well as Protenix (58% vs 57%).** Protenix's advantage is
+   not a property of its confidence head; it is what you get from a full (non-distilled) checkpoint
+   with an MSA. We spent this study on **ESMFold2-Fast**, a distilled model run single-sequence,
+   and mistook its handicap for Protenix's virtue.
 
 ---
 
@@ -306,4 +327,79 @@ fixed (same TTS settings, same 5 diffusion samples, depth-matched seeds, scored 
 _Scripts: `run/esm/run_msa_ablation.py`, `run/esm/launch_msa_ablation.sh`,
 `steer/experiments/msa_ablation_result.py`_
 
-**RESULT: see §7 — filled in when the run completes.**
+---
+
+## 7. The ablation result — and it refutes §1–§4's explanation
+
+**A design flaw I nearly shipped.** My first ablation ran base `biohub/ESMFold2` **with** MSAs and
+compared it to ESMFold2-**Fast**. But those are **different checkpoints** (1.3 GB vs 721 MB), so
+that contrast varies the MSA *and* the model, and nothing could be attributed to the MSA. The fix
+is a control arm: **the same base checkpoint with no MSA.**
+
+Four arms, all scored by OST, all ranked by raw `pair_iptm`, all on the same 8 seeds × 5 diffusion
+samples, on the 9 critical-band complexes that base ESMFold2 can actually fold:
+
+| arm | selector | generator | pool purity | AUC |
+|---|:--:|:--:|:--:|:--:|
+| **A** — ESMFold2-**Fast**, no MSA *(what this whole study used)* | **29%** | 93% | 21% | 0.619 |
+| **A′** — base ESMFold2, no MSA *(**the control**)* | **45%** | 73% | 21% | 0.655 |
+| **B** — base ESMFold2, **with MSA** *(**the ablation**)* | **58%** | 80% | 29% | 0.776 |
+| **C** — Protenix, with MSA | **57%** | 93% | 39% | 0.713 |
+
+### The decomposition
+
+| component of the ESMFold2-Fast → Protenix selector gap (**+29%**) | |
+|---|:--:|
+| **checkpoint** (Fast → base, no MSA either way) | **+17%** |
+| **MSA** (base, no MSA → base, with MSA) | **+13%** |
+| **remaining, unexplained** (base+MSA → Protenix) | **−1%** |
+
+**Nothing is left for the confidence head.**
+
+Two conclusions, and both hurt:
+
+1. **Base ESMFold2 with an MSA selects as well as Protenix (58% vs 57%).** Protenix's advantage is
+   *not* a special property of a rollout-trained error discriminator. An ESM-class model with an
+   MSA matches it.
+
+2. **Even with no MSA at all, the base checkpoint selects far better than ESMFold2-Fast
+   (45% vs 29%).** A large part of what §3–§4 attributed to "Protenix's better head" is simply the
+   **distilled -Fast checkpoint having a worse one.**
+
+### Honesty about the statistics
+
+**The MSA effect itself is NOT significant.** Paired bootstrap over interfaces:
+**+13%, 95% CI [−23%, +54%], P(MSA helps) = 0.70, n = 13.** This experiment **cannot establish**
+that MSAs help selection, and it cannot rule it out. It is **underpowered**.
+
+What it *can* establish is the thing that does not need the MSA arm at all: **A′ vs A** — the
+checkpoint effect, +17%, with no MSA on either side. That alone is enough to break the
+confidence-head story, because it shows a large part of ESMFold2's selection handicap is the
+checkpoint we happened to pick.
+
+### Limits of this experiment
+
+- **9 complexes, 15 interfaces, 8 seeds.** Base ESMFold2 stalls on the five largest complexes
+  (8the, 8ts0, 8uky, 8w84, 8w90 — 20+ min at 100% GPU with no output), so they are excluded from
+  **all four arms**. The comparison is internally controlled but the sample is small.
+- **MSA depth capped at 512**, not Protenix's 10k–16k. At the processor default of 1024 the
+  with-MSA arm produced ~0 folds/hour. 512 is still a real MSA (AF2-class models subsample to
+  128–512 per pass) but it is a weaker treatment than Protenix gets.
+- Both arms use identical seeds per interface (intersected), so a difference can never be an
+  artefact of one arm finishing the easier seeds.
+
+### What this means for the project
+
+- **The inversion (§4) is still real** — it is a measured fact about ESMFold2-Fast, and it explains
+  why *our* clustering methods failed on *our* pools.
+- **The structural negative result (§5) is still the most valuable finding here** and does not
+  depend on any of this: a confident decoy and a confident truth are structurally
+  indistinguishable, so no structure-only label-free selector can separate them.
+- **But "we need a discriminator-trained confidence head" is the wrong lesson.** The cheap fix is
+  much duller: **use the base checkpoint, and give it an MSA.** That recovers Protenix-level
+  selection from ESMFold2 itself.
+- **Everything in this project was measured on ESMFold2-Fast, single-sequence.** That is a
+  handicapped configuration, and the "confident-decoy" phenomenon should be re-measured on base
+  ESMFold2 + MSA before any of it is written up as a property of structure predictors in general.
+
+_Scripts: `run/esm/run_msa_ablation.py`, `steer/experiments/msa_ablation_result.py`_
