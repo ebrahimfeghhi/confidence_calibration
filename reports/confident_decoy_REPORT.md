@@ -157,12 +157,12 @@ Median over interfaces. "gap" = good − decoy@top-ipTM; **larger = goods fold b
 |---|---|---|---|---|
 | antibody whole-chain lDDT | 0.915 | 0.922 | 0.939 | +0.024 |
 | **paratope lDDT** | **0.614** | **0.760** | **0.926** | **+0.312** |
-| antigen whole-chain lDDT | 0.902 | 0.896 | 0.896 | −0.006 |
-| epitope lDDT | 0.879 | 0.898 | 0.906 | +0.027 |
+| antigen whole-chain lDDT | 0.884 | 0.896 | 0.896 | +0.012 |
+| epitope lDDT | 0.864 | 0.898 | 0.906 | +0.042 |
 | antibody whole-chain pLDDT | 0.869 | 0.854 | 0.911 | +0.042 |
-| paratope pLDDT | 0.792 | 0.691 | 0.930 | +0.138 |
-| antigen whole-chain pLDDT | 0.849 | 0.820 | 0.875 | +0.026 |
-| epitope pLDDT | 0.870 | 0.773 | 0.929 | +0.059 |
+| paratope pLDDT | 0.783 | 0.691 | 0.930 | +0.147 |
+| antigen whole-chain pLDDT | 0.832 | 0.820 | 0.875 | +0.043 |
+| epitope pLDDT | 0.857 | 0.773 | 0.929 | +0.073 |
 
 **The hypothesis is supported, in a specific and narrow form:**
 
@@ -170,21 +170,21 @@ Median over interfaces. "gap" = good − decoy@top-ipTM; **larger = goods fold b
    (+0.312) is **13× the antibody whole-chain gap** (+0.024). Decoy antibodies are globally well folded
    (0.915) but their binding loops are not (0.614). This is exactly the localisation the hypothesis
    predicts, and it rules out "goods are simply easier targets".
-2. **It is an ANTIBODY effect, not an antigen one.** Epitope gap is +0.027 and antigen whole-chain is
-   −0.006 — i.e. no antigen-side difference at all. The binding-site inaccuracy that tracks false
-   confidence sits on the paratope.
+2. **It is an ANTIBODY effect, not an antigen one.** Epitope gap is +0.042 and antigen whole-chain
+   +0.012 — small either way. The binding-site inaccuracy that tracks false confidence sits on the
+   paratope.
 3. **Within decoys, the correctly-docked pose has a better paratope** (0.760 vs 0.614). Paratope
    accuracy and docking correctness move together pose-by-pose, not just target-by-target.
 4. **The model is more confident about the paratope when it is wrong.** Paratope pLDDT is *higher* at
-   the top-ipTM (wrong) pose than at the best-DockQ (right) pose, 0.792 vs 0.691. Confidence is
+   the top-ipTM (wrong) pose than at the best-DockQ (right) pose, 0.783 vs 0.691. Confidence is
    anti-correlated with correctness exactly where the hypothesis says the error originates.
 
 ### Per-interface paratope lDDT
 
 | decoy | whole-chain | paratope @ top-ipTM | paratope @ best-DockQ |
 |---|---|---|---|
-| 8yxi_AC | 0.891 | 0.458 | 0.466 |
-| 8q3j_AC | 0.876 | 0.525 | 0.608 |
+| 8q3j_AC | 0.876 | 0.525 | 0.539 |
+| 8yxi_AC | 0.882 | 0.526 | 0.537 |
 | 8the_AB | 0.854 | 0.528 | 0.526 |
 | 8aok_AB | 0.843 | 0.565 | 0.702 |
 | 8av2_AC | 0.801 | 0.608 | 0.752 |
@@ -192,8 +192,8 @@ Median over interfaces. "gap" = good − decoy@top-ipTM; **larger = goods fold b
 | 7z2m_AK | 0.937 | 0.751 | 0.760 |
 | 7z2m_BK | 0.931 | 0.818 | 0.831 |
 | 8bf4_AB | 0.917 | 0.830 | 0.859 |
-| 8yxi_BC | 0.919 | 0.912 | 0.908 |
-| 8slb_AC | 0.960 | 0.928 | 0.932 |
+| 8yxi_BC | 0.911 | 0.911 | 0.902 |
+| 8slb_AC | 0.962 | 0.929 | 0.932 |
 
 | good | whole-chain | paratope @ top-ipTM |
 |---|---|---|
@@ -206,14 +206,14 @@ Median over interfaces. "gap" = good − decoy@top-ipTM; **larger = goods fold b
 | 8weo_AB | 0.941 | 0.925 |
 | 8c5h_AB | 0.925 | 0.927 |
 | 8hxq_AB | 0.913 | 0.934 |
-| 8qz3_AC | 0.957 | 0.940 |
+| 8qz3_AC | 0.958 | 0.940 |
 | 7xld_AB | 0.958 | 0.965 |
 | 8pih_AB | 0.970 | 0.977 |
 | 8q7o_AC | 0.966 | 0.978 |
 | 8w90_AB | 0.960 | 0.979 |
 
 **Overlap is real, so this is a tendency, not a clean separator.** 3 of 11 decoys have good paratopes
-(8yxi_BC 0.912, 8slb_AC 0.928) and one good has a poor one (9fww_AB 0.516). Medians differ sharply;
+(8yxi_BC 0.911, 8slb_AC 0.929, 8bf4_AB 0.830) and one good has a poor one (9fww_AB 0.516). Medians differ sharply;
 the distributions touch. n = 11 vs 14, no significance test run.
 
 ### Provenance
@@ -226,10 +226,98 @@ the distributions touch. n = 11 vs 14, no significance test run.
 ### Caveats
 
 - Excluded 5 peptide-antigen interfaces; conclusions cover domain antigens only.
-- Earlier version of this analysis handed OST the full model against a one-chain native, which mapped
-  the wrong predicted chain and returned lDDT ≈ 0.004. Fixed by matching the model chain by sequence and
-  comparing single-chain to single-chain. **Absurd values mean suspect the code first.**
+- **Two bugs were found and fixed in this analysis; the numbers above are post-fix.** (a) An earlier
+  version handed OST the full model against a one-chain native, which mapped the wrong predicted chain
+  and returned lDDT ≈ 0.004. (b) Pose selection read `dockq[0]` instead of matching the requested
+  interface, so PDBs contributing two interfaces (7z2m, 8slb, 8yxi) silently scored the same one twice.
+  Bug (b) affected a first published version of this table; the paratope gap was unchanged at +0.312,
+  antigen/epitope numbers moved slightly, and the per-interface rows for those PDBs changed.
 - Correlational. It does not establish that fixing the paratope fixes selection — though the native-template
   experiments (rescue 14/15 by collapsing the decoy's ipTM) point the same way.
+
+---
+
+## 3. Does good paratope folding mean a smaller confidence gap?
+
+§2 says bad paratope folding tracks false confidence. If that is causal, decoys whose paratope **is**
+well folded should be *closer* to ranking a correct pose first.
+
+**Confidence gap** = `pair_iptm(top pose) − pair_iptm(most confident acceptable pose)`, where
+acceptable = DockQ ≥ 0.23. A gap of 0 would mean the correct pose already ranks first.
+
+| interface | paratope lDDT | epitope lDDT | top ipTM | top DockQ | best-acceptable ipTM | best-acceptable DockQ | confidence gap |
+|---|---|---|---|---|---|---|---|
+| 8q3j_AC | 0.525 | 0.840 | 0.763 | 0.036 | 0.239 | 0.525 | +0.524 |
+| 8yxi_AC | 0.526 | 0.900 | 0.293 | 0.006 | 0.200 | 0.238 | +0.093 |
+| 8the_AB | 0.528 | 0.879 | 0.608 | 0.113 | 0.273 | 0.233 | +0.336 |
+| 8aok_AB | 0.565 | 0.864 | 0.749 | 0.112 | 0.724 | 0.681 | +0.025 |
+| 8av2_AC | 0.608 | 0.796 | 0.659 | 0.092 | 0.142 | 0.612 | +0.517 |
+| 8slb_AB | 0.614 | 0.843 | 0.601 | 0.012 | 0.304 | 0.349 | +0.297 |
+| 7z2m_AK | 0.751 | 0.925 | 0.370 | 0.051 | 0.321 | 0.320 | +0.049 |
+| 7z2m_BK | 0.818 | 0.935 | 0.400 | 0.034 | 0.389 | 0.261 | +0.011 |
+| 8bf4_AB | 0.830 | 0.776 | 0.857 | 0.014 | 0.845 | 0.695 | +0.012 |
+| 8yxi_BC | 0.911 | 0.775 | 0.281 | 0.009 | 0.192 | 0.491 | +0.088 |
+| **8slb_AC** | **0.929** | **0.937** | 0.584 | 0.010 | 0.288 | 0.254 | **+0.296** |
+
+**Yes — better paratope folding goes with a smaller confidence gap.**
+Pearson r = **−0.416** (n = 11). Split at paratope lDDT 0.75:
+
+| paratope | n | median confidence gap |
+|---|---|---|
+| poor (< 0.75) | 6 | **+0.317** |
+| good (≥ 0.75) | 5 | **+0.049** |
+
+A 6× difference in median gap. Where the paratope is well folded the correct pose is nearly tied with
+the selected one — those are near-misses a better ranker could flip. Where it is poorly folded the
+model is confidently, decisively wrong.
+
+### 3a. Deep dive: 8slb_AC — the exception
+
+8slb_AC has the **best paratope in the decoy set** (0.929) *and* a well-folded epitope (0.937), yet a
+large gap (+0.296) and a catastrophically wrong selected pose (DockQ 0.010).
+
+| pose | seed / sample | ipTM | DockQ |
+|---|---|---|---|
+| top-ipTM (what the model picks) | 101 / 1 | 0.584 | **0.010** |
+| most confident acceptable | 143 / 0 | 0.288 | 0.254 |
+| best DockQ in the pool | 122 / 0 | 0.197 | 0.655 |
+
+**Is the selected pose nearly right?** No. Pose-vs-pose DockQ between the selected pose and the most
+confident acceptable pose is **0.012**, and vs the best-DockQ pose **0.009**. These are *different
+binding modes*, not a near-miss — the selected pose is not a slightly-off version of the right answer.
+
+**Is it docking to the wrong epitope?** Yes, completely. Antigen residues contacted in the selected
+pose vs the native epitope:
+
+| | residues |
+|---|---|
+| native epitope | 9 |
+| predicted epitope (top-ipTM pose) | 6 |
+| **overlap** | **0** |
+| Jaccard | **0.000** |
+
+**So 8slb_AC is not a folding failure at all.** Both the paratope and the epitope are folded
+essentially correctly. The model takes two well-formed surfaces and confidently docks them at the
+**wrong patch** of the antigen — zero epitope overlap — and scores that arrangement 0.584 while the
+correct site scores 0.288.
+
+**What this means for the hypothesis.** The §2 mechanism (bad binding-site geometry → false
+confidence) explains the majority, but **is not the only route to a confident decoy**. 8slb_AC shows a
+second, independent failure mode: correct local structure, wrong *site selection*. A method that only
+improves fold quality would not fix this case. Note also that the ipTM ordering here is strongly
+anti-correlated with correctness — 0.584/0.010, 0.288/0.254, 0.197/0.655 — confidence decreases
+monotonically as DockQ increases across these three poses.
+
+### Provenance
+
+- **code:** `scripts/paratope_vs_gap.py` (gap table, correlation, and `--interface` deep dive)
+- **data:** `artifacts/paratope_vs_gap.json`, `artifacts/deepdive_8slb_AC.json`
+
+### Caveats
+
+- n = 11; r = −0.416 is a tendency, no significance test run.
+- Pose-vs-pose DockQ must be read at the ab–ag interface specifically. Taking `max()` over interfaces
+  reported the *other* interface for 8slb and inverted the conclusion to "same binding mode"; fixed.
+- Epitope overlap uses OST's native↔model alignment, so it depends on that alignment being right.
 
 ---
