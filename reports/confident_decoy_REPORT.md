@@ -321,3 +321,67 @@ monotonically as DockQ increases across these three poses.
 - Epitope overlap uses OST's native↔model alignment, so it depends on that alignment being right.
 
 ---
+
+## 4. Template sweep: what would you have to select folds by? (PROVISIONAL)
+
+**Question.** §2 showed binding-site fold accuracy *correlates* with whether selection succeeds. This
+tests it as an **intervention**: template both chains with a model-generated fold, vary only the
+criterion used to pick that fold, and see how many confident decoys get rescued.
+
+**Setup.** 7 arms × (15 decoy + 15 good) interfaces, **seeds 101–150 = 250 poses each**, 108 GPU jobs.
+Rescue rule identical everywhere: the top interface-`pair_iptm` pose has DockQ ≥ 0.23.
+"Goods preserved" is the safety check — a method that rescues decoys by breaking working cases is useless.
+
+### Results
+
+| arm | folds templated | type | decoys rescued | goods preserved |
+|---|---|---|---|---|
+| native50 | both chains, **native** | oracle | **12/15** | pending¹ |
+| **ifacelddt** | both, best **paratope/epitope lDDT** | oracle | **9/15** | 15/15 |
+| abonly | **antibody only**, native | oracle | 8/15 | 15/15 |
+| globallddt | both, best **whole-chain lDDT** | oracle | 6/15 | 15/15 |
+| agonly | **antigen only**, native | oracle | 4/15 | 15/15 |
+| ifaceplddt | both, best **paratope/epitope pLDDT** | oracle² | 1/15 | 15/15 |
+| **globalplddt** | both, best **whole-chain pLDDT** | **DEPLOYABLE** | **0/15** | 14/15 |
+
+¹ native50's goods were run separately (`safety_out`); scorer now finds them, not yet re-run.
+² **Not deployable.** pLDDT is model-internal, but the paratope/epitope regions are defined from the
+native complex, which is unknown at inference. Only `globalplddt` requires nothing but the prediction.
+
+### What it shows
+
+1. **Binding-site accuracy is the right thing to select on.** `ifacelddt` (9/15) beats `globallddt`
+   (6/15) — identical poses, identical templating machinery, only the criterion differs. It also beats
+   native-antibody templating (8/15) and closes most of the gap to the both-chains-native ceiling
+   (12/15), using only model-generated folds. This is §2's correlation reproduced as an intervention.
+2. **The model's own confidence cannot identify those folds.** Hold the region fixed and swap the
+   accuracy measure for the model's confidence over that same region: **9/15 → 1/15**. The information
+   needed is present in the pool and pLDDT does not carry it.
+3. **Nothing deployable works.** `globalplddt` 0/15, joining `pddag` 0/15 and Exp D 0/15 on the
+   corrected set — three independent attempts, same answer.
+4. **The antibody side dominates**: templating the native antibody alone (8/15) does twice as much as
+   the native antigen alone (4/15), consistent with §2's finding that the paratope, not the epitope,
+   separates decoys from goods.
+
+### Status: PROVISIONAL
+
+- **7z2m is incomplete in all four predicted-fold arms** (pools still filling at last scoring) and is
+  re-scored under its corrected `A–K`/`B–K` labels afterwards. Counts may move by ±1–2.
+- `8gho_AC` and `8q7o_AC` were partial when last scored; their jobs have since finished and they
+  re-score automatically (the scorer only skips a full 250-pose pool).
+- The `native50` goods column is blank — the ceiling arm's safety check is missing.
+- **Full MSA is not in this table.** It is the only other deployable intervention (3/15 on the older
+  set) and its predictions exist at seeds 101–150, but its scored results still use the pre-correction
+  7z2m label and include 8ux6.
+
+### Provenance
+
+- **code:** `scripts/fold_selection_table.py` (per-pose fold quality, all 4 criteria in one pass) →
+  `scripts/build_sweep_templates.py` (template construction) → `scripts/sweep_sched.py` (GPU
+  scheduling) → `scripts/score_sweep.py` (one scorer for all arms)
+- **data:** `artifacts/sweep_scores.json` (per-arm, per-interface), `artifacts/fold_selection_table.json`
+  (per-pose fold quality), `artifacts/sweep_jobs.json` (the 108 jobs)
+- **predictions:** `artifacts/sweep_out/<arm>/<pdb>_<arm>/seed_<101-150>/`, plus
+  `predictions/{native50_out,abonly_out,agonly_out,safety_out}/` for the native arms
+
+---
