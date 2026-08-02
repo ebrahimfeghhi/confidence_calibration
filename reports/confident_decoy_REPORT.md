@@ -42,7 +42,7 @@ Seeds differ because MSA rows are randomly subsampled at inference (row count dr
 
 ```bash
 ost compare-structures -m <pred>.cif -r <native>.cif -o <out>.json \
-    --fault-tolerant --min-pep-length 4 --dockq
+    --fault-tolerant --min-pep-length 4 --min-nuc-length 4 --dockq
 ```
 
 `pair_iptm` is read from each pose's `_summary_confidence_sample_*.json` at the OST-mapped model chains.
@@ -56,8 +56,8 @@ selection would reach.
 
 | interface | chains | contacts | n_ok | top ipTM | sel DockQ | best DockQ |
 |---|---|---|---|---|---|---|
-| 7z2m_AK † | A–K | 19 | 11 | 0.370 | 0.051 | 0.433 |
-| 7z2m_BK † | B–K | 31 | 77 | 0.400 | 0.034 | 0.384 |
+| 7z2m_AK † | A–K | 19 | 2 | 0.374 | 0.090 | 0.433 |
+| 7z2m_BK † | B–K | 31 | 71 | 0.406 | 0.027 | 0.384 |
 | 8aok_AB | A–B | 46 | 109 | 0.749 | 0.112 | 0.695 |
 | 8av2_AC | A–C | 55 | 1 | 0.659 | 0.092 | 0.612 |
 | 8bf4_AB | A–B | 51 | 22 | 0.857 | 0.014 | 0.723 |
@@ -87,10 +87,14 @@ acceptable pose.**
 > **A–K** and **B–K**, matching FoldBench's own one-row-per-(antibody chain, antigen) convention.
 > 7z2m remains a confident decoy either way; the fix makes it measure the right interface.
 >
-> Scored with **copy-optimal mapping**: the native is subset to the two interface chains and OST is given
-> the full model, so it matches the best-corresponding predicted copy. Without this, one fixed global
-> mapping ties each native copy to an arbitrary predicted copy and symmetry-equivalent interfaces
-> disagree (0.027 vs 0.236 for the same interaction).
+> **Scored by the standard protocol, not a bespoke one.** An earlier version of this report subset the
+> native to each interface pair and handed OST the full model ("copy-optimal mapping"). That is not the
+> procedure in `tts_abag/eval/eval_ost_foldbench.py`, and it was wrong: scoring A–K and B–K in separate
+> calls let OST choose a *different* predicted copy for each, so on 30 of 50 poses the two interfaces
+> measured different physical Fabs. Both are now read from **one** OST call on the full native assembly
+> vs the full model, under OST's own global chain mapping, extracted by name — so A–K and B–K always
+> describe the same predicted Fab. This changed 7z2m's numbers (AK acceptable poses 11 → 2, BK 77 → 71);
+> both remain confident decoys.
 >
 > **Audit of all 172 FoldBench ab–ag rows** (`scripts/foldbench_label_audit.py` →
 > `artifacts/foldbench_label_audit.json`): **7z2m is the only clear instance.** 16 rows have <10 contact
