@@ -389,3 +389,111 @@ native complex, which is unknown at inference. Only `globalplddt` requires nothi
   `predictions/{native50_out,abonly_out,agonly_out,safety_out}/` for the native arms
 
 ---
+
+## 5. Native-fold templating across the full benchmark (PROVISIONAL)
+
+**Setup change from §1–§4.** Earlier sections used an inherited 15-interface set assembled from a
+scores CSV that mixes seed ranges and whose selection criterion was never documented. This section
+re-derives the set from scratch: **every FoldBench antibody–antigen interface, all at seeds 101–150,
+one scoring protocol.**
+
+| status at seeds 101–150 | count |
+|---|---|
+| solved — ipTM picks an acceptable pose | 119 |
+| **confident decoy** — an acceptable pose exists, ipTM misses it | **28** |
+| **generation failure** — no acceptable pose anywhere in 250 | **19** |
+| not scored (labelled pair absent even after the isolated-pair fallback) | 6 |
+
+The experiment: template **both chains on the exact native fold** and re-score. Templates carry only
+intra-chain geometry (`multichain_mask`), so this fixes *folds* and says nothing about how chains are
+arranged — which makes it a clean probe of which bottleneck each interface actually has.
+
+### Outcome classes
+
+Rather than a bare pass/fail, each interface is classified by what templating did or did not repair:
+
+- **RESCUED** — selection now picks an acceptable pose.
+- **SELECTION-LIMITED** — coverage is healthy after templating (≥10% of poses acceptable) but ipTM
+  still picks a wrong one. Folds fixed, confidence not.
+- **COVERAGE-LIMITED** — even with native folds, <10% of poses are acceptable. The docking search,
+  not fold quality, is the wall.
+- **THIN** — fewer than 5 acceptable poses in the *free* run. These sit within sampling noise of the
+  decoy/generation-failure boundary and should not drive conclusions.
+
+### Results
+
+| | rescued | selection-limited | coverage-limited |
+|---|---|---|---|
+| **Run A — 28 confident decoys** | **19** | 2 | 7 |
+| **Run B — 15 generation failures scored** | **4** | 0 | 11 |
+
+Excluding THIN cases, Run A is **14/17**.
+
+**1. Most "selection failures" were really fold failures.** 19 of 28 decoys are rescued, often
+dramatically — `8yxi_AC` and `8fbw_AC` go from 7 and 11 acceptable poses to ~250; `8av2_AC` from 1 to
+250. Selected DockQ typically moves from ~0.1 to 0.72–0.97.
+
+**2. Only two genuine selection failures survive correct folds:**
+
+| interface | free n_ok | → native n_ok | selected DockQ | best available |
+|---|---|---|---|---|
+| 8fas_BC | 77 | **203** | 0.175 → **0.173** | 0.994 |
+| 7zau_AB | 32 | 5 | 0.004 → 0.011 | 0.787 |
+
+8fas is the repeat-register case from §2's follow-up: 81% of poses correct, and the model still picks
+a pose shifted by one `NANP` unit, because a register shift reproduces every local interface signal.
+
+**3. `8pn0_BE` is the cleanest recalibration result.** 155/250 poses were already acceptable in the
+free run and ipTM still selected 0.084. With native folds, coverage barely changes (140/250) but the
+selected pose jumps to **0.913** — the ranking is fixed without the pool improving. This is §3's
+mechanism (fold accuracy drives confidence calibration) isolated from any coverage effect.
+
+**4. "No acceptable pose" does NOT mean docking-limited.** Four interfaces with **zero** acceptable
+poses out of 250 gained a full pool from correct folds:
+
+| interface | free best DockQ | → native | selected DockQ |
+|---|---|---|---|
+| 8sfz_AD | 0.091 | **250 acceptable** | 0.893 |
+| 8udz_AD | 0.098 | 118 | 0.580 |
+| 8dn7_AC | 0.077 | 52 | 0.495 |
+| 8dn7_AF | 0.055 | 47 | 0.416 |
+
+So bad folds can prevent a correct pose from ever being *sampled*, not merely from being *selected*.
+The other 11 are unmoved — for those, perfect folds change the ceiling by ~0.01–0.09 and never cross
+threshold. `8im0_AB-2` is the extreme: ipTM **0.942**, best DockQ **0.016** free and **0.020**
+templated. Maximum confidence, no correct pose reachable even with exact folds.
+
+### Caveats
+
+- **PROVISIONAL:** `7zau_AB` (45/250 poses) and `8oud_AD` (160/250) were still generating at the time
+  of writing and re-score automatically. 7zau's selection-limited classification may change.
+- **4 interfaces excluded, not failed:** `7yv1_AB/AC` and `8vzo_AB/AC` — template construction failed
+  because a query chain matched no native chain, so there is no native arm for them at all.
+- **Two label warnings carried through.** `7z2m_AJ` (3 native contact residues) and `8udz_AC` (8) are
+  both counted as RESCUED, and both are the crystal-contact-suspect labels from §1. Under 7z2m's
+  corrected `A–K`/`B–K` labels it is *not* rescued. Whether to asterisk or exclude these is undecided.
+- Thin cases dominate Run B: every one of its 15 interfaces has <5 acceptable poses in the free run by
+  definition, so the 4/15 figure rests on small pools.
+
+### Provenance
+
+- **code:** `scripts/abag_all_101_150.py` (classification) → `scripts/build_native_templates.py`
+  (native templates for arbitrary pdbs) → `scripts/sweep_sched.py --jobs …` (GPU) →
+  `scripts/score_native_arm.py` (scoring) → `scripts/native_arm_summary.py` (failure-mode breakdown)
+- **data:** `artifacts/abag_all_101_150.json`, `artifacts/native_arm_scores.json`,
+  `artifacts/native_arm_summary.json`
+- **environment:** `artifacts/provenance/native_template_arm_*.json` — repo commits, checkpoint hash,
+  OpenStructure 2.8.0 / gemmi 0.6.7, the exact OST command, and sha256 of every analysis script
+
+### Gotchas found while running this
+
+- **Chain ids can contain hyphens.** `8im0` has a chain named `B-2`. That broke label parsing
+  (`"A-B-2".split("-")`), and Protenix's a3m parser rejects a hyphen in the template hit description —
+  the job ran for 8 h producing **zero** seeds while the scheduler recorded it as DONE. Fixed by
+  renaming chains to alphanumeric in the template copy, and the watchdog now alerts on any job that
+  runs but writes no seeds.
+- **Prefer the prediction directory with the most seeds in range, not the first that exists.**
+  `predictions/native50_out/` holds seeds 0–49 for 8fbw/8q3j/8yxi while their 101–150 runs are
+  elsewhere; taking the first match silently dropped 6 confident decoys from the tally.
+
+---
