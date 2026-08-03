@@ -6,7 +6,17 @@ Paths relative to `/home/ebrahim/confident_decoy_experiments/`. Started 2026-08-
 
 ---
 
-## 1. The benchmark: 15 confident decoys
+## 1. The benchmark: 15 confident decoys (SUPERSEDED by §5)
+
+> **Read §5 first for counts.** This 15-interface set was inherited from a scores CSV that mixes seed
+> ranges and whose selection criterion was never documented. §5 re-derives the benchmark from all 172
+> FoldBench antibody–antigen rows at one seed range under one protocol, giving **26 confident decoys**
+> and **19 generation failures**. That is the canonical set.
+>
+> This section is retained for three reasons: §2–§4 were run on these 15 interfaces; the per-interface
+> table below is more detailed than §5's; and it holds the corrected `7z2m` **A–K**/**B–K** rows, which
+> §5's set cannot contain because that derivation enumerates FoldBench's labels as given. The 15 and the
+> 26 overlap heavily but are **not** nested — do not add or compare them.
 
 A **confident decoy** is an antibody–antigen interface where the model's own confidence picks a wrong
 pose even though a right one is in the pool it generated. Over the pose pool, both must hold:
@@ -390,19 +400,33 @@ native complex, which is unknown at inference. Only `globalplddt` requires nothi
 
 ---
 
-## 5. Native-fold templating across the full benchmark (PROVISIONAL)
+## 5. Native-fold templating across the full benchmark
 
-**Setup change from §1–§4.** Earlier sections used an inherited 15-interface set assembled from a
-scores CSV that mixes seed ranges and whose selection criterion was never documented. This section
-re-derives the set from scratch: **every FoldBench antibody–antigen interface, all at seeds 101–150,
-one scoring protocol.**
+**This section defines the canonical interface set.** §1–§4 use an inherited 15-interface set
+assembled from a scores CSV that mixes seed ranges and whose selection criterion was never documented.
+That set is **superseded**: it is retained because §2–§4's analyses were run on it, but every count
+below re-derives the set from scratch — **every FoldBench antibody–antigen interface, all at seeds
+101–150, one scoring protocol.** Where the two disagree, this section wins.
 
-| status at seeds 101–150 | count |
-|---|---|
-| solved — ipTM picks an acceptable pose | 119 |
-| **confident decoy** — an acceptable pose exists, ipTM misses it | **28** |
-| **generation failure** — no acceptable pose anywhere in 250 | **19** |
-| not scored (labelled pair absent even after the isolated-pair fallback) | 6 |
+| status at seeds 101–150 | count | after exclusions ‡ |
+|---|---|---|
+| solved — ipTM picks an acceptable pose | 119 | 119 |
+| **confident decoy** — an acceptable pose exists, ipTM misses it | 28 | **26** |
+| **generation failure** — no acceptable pose anywhere in 250 | 19 | **19** |
+| not scored (labelled pair absent even after the isolated-pair fallback) | 6 | 6 |
+
+> **‡ Two interfaces excluded as mislabelled, not as failures.** `7z2m_AJ` (3 native contact residues)
+> and `8udz_AC` (8) are the crystal-contact suspects identified in §1's audit: in both cases FoldBench's
+> row pairs chains from *different copies* of the same complex, so the "interface" is a lattice contact.
+> Both were counted as RESCUED before exclusion, so removing them **lowers** the headline (20/28 → 18/26)
+> rather than flattering it.
+>
+> The exclusion removes the *row*, not the complex, and this matters for 7z2m: its real interfaces
+> **A–K** and **B–K** are genuine confident decoys (§1), but the 172-row derivation enumerates
+> FoldBench's labels as given and therefore contains only the bad `A–J` row. So 7z2m is absent from the
+> canonical 26 despite being a real member of the phenomenon — an undercount, and the reason §1's
+> corrected rows are kept rather than deleted. `8udz` remains represented through `8udz_AD`, a separate
+> interface the audit did not flag.
 
 The experiment: template **both chains on the exact native fold** and re-score. Templates carry only
 intra-chain geometry (`multichain_mask`), so this fixes *folds* and says nothing about how chains are
@@ -422,31 +446,40 @@ Rather than a bare pass/fail, each interface is classified by what templating di
 
 ### Results
 
+All 45 interfaces now have a complete native arm at 250 poses (the four that previously failed template
+construction — `7yv1_AB/AC`, `8vzo_AB/AC` — were fixed and are included; see Gotchas).
+
 | | rescued | selection-limited | coverage-limited |
 |---|---|---|---|
-| **Run A — 28 confident decoys** | **19** | 2 | 7 |
-| **Run B — 15 generation failures scored** | **4** | 0 | 11 |
+| **Run A — 26 confident decoys** | **18** (69%) | 1 | 7 |
+| **Run B — 19 generation failures** | **4** (21%) | 0 | 15 |
 
-Excluding THIN cases, Run A is **14/17**.
+Excluding THIN cases, Run A is **14/16**. Every Run B interface is THIN by definition.
 
-**1. Most "selection failures" were really fold failures.** 19 of 28 decoys are rescued, often
+**1. Most "selection failures" were really fold failures.** 18 of 26 decoys are rescued, often
 dramatically — `8yxi_AC` and `8fbw_AC` go from 7 and 11 acceptable poses to ~250; `8av2_AC` from 1 to
-250. Selected DockQ typically moves from ~0.1 to 0.72–0.97.
+250. Selected DockQ typically moves from ~0.1 to 0.72–0.99. **The single largest determinant of whether
+ipTM picks the right pose is whether the binding site was folded correctly.**
 
-**2. Only two genuine selection failures survive correct folds:**
+**2. Exactly one genuine selection failure survives correct folds.**
 
 | interface | free n_ok | → native n_ok | selected DockQ | best available |
 |---|---|---|---|---|
-| 8fas_BC | 77 | **203** | 0.175 → **0.173** | 0.994 |
-| 7zau_AB | 32 | 5 | 0.004 → 0.011 | 0.787 |
+| 8fas_BC | 77 | **203/250 (81%)** | 0.175 → **0.173** | 0.994 |
 
-8fas is the repeat-register case from §2's follow-up: 81% of poses correct, and the model still picks
-a pose shifted by one `NANP` unit, because a register shift reproduces every local interface signal.
+8fas is the repeat-register case from §2's follow-up: 81% of poses are correct, and the model still
+picks a pose shifted by one `NANP` unit, because a register shift reproduces every local interface
+signal. This is the only interface in the benchmark where fold quality is demonstrably not the
+bottleneck and confidence alone is at fault.
 
-**3. `8pn0_BE` is the cleanest recalibration result.** 155/250 poses were already acceptable in the
-free run and ipTM still selected 0.084. With native folds, coverage barely changes (140/250) but the
-selected pose jumps to **0.913** — the ranking is fixed without the pool improving. This is §3's
-mechanism (fold accuracy drives confidence calibration) isolated from any coverage effect.
+> **Correction.** An earlier draft listed `7zau_AB` as a second selection failure from a partial run
+> (5 acceptable poses, selected DockQ 0.011). On the completed run it is **RESCUED** — 23 acceptable
+> poses, selected DockQ **0.919**. The provisional number was read while the job was still generating.
+
+**3. `8pn0_BE` is the cleanest recalibration result.** 155/250 poses were already acceptable in the free
+run and ipTM still selected 0.084. With native folds the selected pose jumps to **0.913** — ranking
+fixed with essentially no change in what was available. This is §3's mechanism (fold accuracy drives
+confidence calibration) isolated from any coverage effect.
 
 **4. "No acceptable pose" does NOT mean docking-limited.** Four interfaces with **zero** acceptable
 poses out of 250 gained a full pool from correct folds:
@@ -463,25 +496,107 @@ The other 11 are unmoved — for those, perfect folds change the ceiling by ~0.0
 threshold. `8im0_AB-2` is the extreme: ipTM **0.942**, best DockQ **0.016** free and **0.020**
 templated. Maximum confidence, no correct pose reachable even with exact folds.
 
+### 5a. Are the 8 unrescued decoys really coverage-starved, or just under-sampled?
+
+Seven of the eight had 1–6 acceptable poses out of 250 (0.4–2.4%). At that rate, "1 acceptable pose"
+versus "0 acceptable poses" is close to a coin flip — and that is exactly the line between *confident
+decoy* and *generation failure*. Scoring the full free range already on disk (**755 poses**, seeds
+0–150, no GPU needed) tests whether the classification is a sampling artifact.
+
+| interface | acceptable, seeds 101–150 | acceptable, seeds 0–150 | best DockQ |
+|---|---|---|---|
+| 8be1_AC | 1/250 (0.4%) | 2/755 (0.3%) | 0.235 → 0.294 |
+| 8fas_BC | 77/250 (30.8%) | 246/755 (32.6%) | 0.987 → 0.987 |
+| 8ivx_AC | 4/250 (1.6%) | 19/755 (2.5%) | 0.333 → 0.362 |
+| 8oxw_AB | 2/250 (0.8%) | 3/755 (0.4%) | 0.298 → 0.298 |
+| 8oxw_AC | 2/250 (0.8%) | 3/755 (0.4%) | 0.275 → 0.275 |
+| 8oxx_AC | 1/250 (0.4%) | 1/755 (0.1%) | 0.343 → 0.343 |
+| 8ux6_AF | 1/250 (0.4%) | 6/755 (0.8%) | 0.246 → 0.355 |
+| 8vui_BC | 6/250 (2.4%) | 6/755 (0.8%) | 0.404 → 0.404 |
+
+**Coverage starvation is real, not an artifact.** Tripling the pool holds the acceptable rate at
+0.1–2.5% for all seven thin cases, and none crosses into "solved". The rates are stable, so these
+interfaces genuinely almost never produce a correct pose — the classification stands.
+
+### 5b. Does more sampling fix 8ivx and 8oxw? (matched free-vs-native, 755 poses)
+
+§5a deepened the *free* arm only, so those numbers cannot be compared against a 250-pose native arm.
+Extending **both** arms to seeds 0–150 makes the comparison matched:
+
+| interface | free acceptable | free selected | native acceptable | native selected | native best |
+|---|---|---|---|---|---|
+| 8ivx_AB | 1/755 (0.1%) | 0.005 | 3/755 (0.4%) | 0.009 | 0.460 |
+| 8ivx_AC | 19/755 (2.5%) | 0.007 | 7/755 (0.9%) | 0.019 | 0.334 |
+| 8oxw_AB | 3/755 (0.4%) | 0.019 | **27/745 (3.6%)** | 0.004 | **0.693** |
+| 8oxw_AC | 3/755 (0.4%) | 0.009 | **28/745 (3.8%)** | 0.004 | **0.623** |
+
+**8oxw separates generation from ranking cleanly.** Native folds multiply its acceptable poses ~9× and
+lift the ceiling from 0.28 to 0.69 — yet selection still lands on **0.004**, with 27 correct poses in
+the pool. Fixing the folds fixed the *generation* problem and left the *ranking* problem untouched.
+More seeds do not help either: the rate is flat across 755 poses. 8ivx shows no such gain.
+
+Note that `8ivx_AB` — classified a generation failure at 250 poses — has 1 acceptable pose at 755. The
+decoy/generation-failure boundary is genuinely porous for thin cases, which is why they are flagged.
+
+### 5c. Which folds does templating actually repair? (interface-local)
+
+The 19 generation failures split 4 rescued / 15 unmoved. An earlier comparison found the rescued group
+had *worse* whole-chain folds (median lDDT 0.885) than the unmoved group (0.931) and concluded that
+templating helps where there is fold error to correct. **That comparison used whole-chain lDDT, which
+8oxw showed is unsafe:** 8oxw's heavy chain scores 0.917 whole-chain but **0.711** across its 14
+paratope residues — averaging over 225 residues hid a large error in the only region that matters.
+
+Recomputing both groups interface-locally (lDDT restricted to residues within 5 Å of the partner):
+
+| group | chain | whole-chain lDDT | **interface lDDT** | n chains |
+|---|---|---|---|---|
+| **rescued** | heavy | 0.892 | **0.689** | 2 |
+| **rescued** | light | 0.919 | 0.848 | 2 |
+| **rescued** | antigen | 0.842 | 0.848 | 4 |
+| unmoved | heavy | 0.931 | **0.819** | 11 |
+| unmoved | light | 0.948 | 0.840 | 3 |
+| unmoved | antigen | 0.897 | 0.848 | 16 |
+
+The heavy-chain paratope is the discriminating quantity (0.689 rescued vs 0.819 unmoved), consistent
+with §2, where the decoy-vs-good paratope gap was +0.312 against a whole-chain gap of only +0.024.
+
+**Two honest limits on this table.** First, **n = 2** on the rescued side — a median over two chains is
+an anecdote, not a result; the direction agrees with §2's much larger sample, which is why it is
+reported at all. Second, the separation is weaker than the first few rows suggested: the unmoved heavy
+chains sit at 0.819, not the ~0.93 that `8dtn` and `8im0` alone imply. There is real overlap.
+
+**What does hold robustly:** interface-local lDDT is lower than whole-chain for *every* group, by
+0.03–0.20. Whole-chain fold quality systematically overstates how well the binding site is modelled,
+and any analysis resting on it — including the superseded 0.885-vs-0.931 comparison — is measuring the
+wrong region.
+
 ### Caveats
 
-- **PROVISIONAL:** `7zau_AB` (45/250 poses) and `8oud_AD` (160/250) were still generating at the time
-  of writing and re-score automatically. 7zau's selection-limited classification may change.
-- **4 interfaces excluded, not failed:** `7yv1_AB/AC` and `8vzo_AB/AC` — template construction failed
-  because a query chain matched no native chain, so there is no native arm for them at all.
-- **Two label warnings carried through.** `7z2m_AJ` (3 native contact residues) and `8udz_AC` (8) are
-  both counted as RESCUED, and both are the crystal-contact-suspect labels from §1. Under 7z2m's
-  corrected `A–K`/`B–K` labels it is *not* rescued. Whether to asterisk or exclude these is undecided.
-- Thin cases dominate Run B: every one of its 15 interfaces has <5 acceptable poses in the free run by
-  definition, so the 4/15 figure rests on small pools.
+- **Thin cases dominate Run B:** all 19 interfaces have <5 acceptable poses in the free run by
+  definition, so the 4/19 figure rests on small pools. §5a shows the thinness is real rather than a
+  sampling artifact, but the pools remain small.
+- **Run A's 18/26 includes 4 THIN rescues** (`7ucx_AC`, `8av2_AC`, `8yxi_BC`, `9jbq_AC`, each with 1–4
+  free acceptable poses). Excluding all THIN cases gives **14/16**.
+- **11 of the 15 unmoved generation failures remain unexplained.** Perfect folds move their ceiling by
+  ~0.01–0.09 and never cross threshold. `8im0_AB-2` is the extreme: ipTM **0.942**, best DockQ 0.016
+  free and 0.020 templated — maximum confidence, no reachable correct pose even with exact folds. Why
+  near-native folds still cannot dock is open.
+- **Native templating is not a deployable method.** It requires the answer. It is a probe that
+  partitions blame between folding and docking/ranking, nothing more.
 
 ### Provenance
 
 - **code:** `scripts/abag_all_101_150.py` (classification) → `scripts/build_native_templates.py`
   (native templates for arbitrary pdbs) → `scripts/sweep_sched.py --jobs …` (GPU) →
   `scripts/score_native_arm.py` (scoring) → `scripts/native_arm_summary.py` (failure-mode breakdown)
+- **code (§5a):** `scripts/deep_sample_failures.py` — free arm at seeds 0–150 for the 8 unrescued decoys
+- **code (§5b):** `scripts/deep_native_compare.py` — matched free-vs-native at 755 poses, 8ivx + 8oxw
+- **code (§5c):** `scripts/genfail_iface_folds.py` — whole-chain vs interface-local lDDT by group
+- **code (GPU split):** `scripts/split_seeds_run.sh` — splits one PDB's remaining seeds across GPUs
+  (turned 7zau's extension from ~11 h serial into ~2 h)
 - **data:** `artifacts/abag_all_101_150.json`, `artifacts/native_arm_scores.json`,
-  `artifacts/native_arm_summary.json`
+  `artifacts/native_arm_summary.json`, `artifacts/deep_sample_failures.json`,
+  `artifacts/deep_native_compare.json`, `artifacts/genfail_iface_folds.json`
 - **environment:** `artifacts/provenance/native_template_arm_*.json` — repo commits, checkpoint hash,
   OpenStructure 2.8.0 / gemmi 0.6.7, the exact OST command, and sha256 of every analysis script
 
@@ -493,7 +608,8 @@ also holds all 50 seeds at 101–150 was classified both ways and compared:
 
 **125 overlapping interfaces, 125 status agreements, 0 disagreements.**
 
-So the 28 decoys / 19 generation failures are not artifacts of the reimplementation. The 44 interfaces
+So the 28 decoys (26 after exclusions) / 19 generation failures are not artifacts of the
+reimplementation. The 44 interfaces
 the CSV does not cover at these seeds rest on this pipeline alone, but it is one verified against 125
 others. This is also the real justification for re-scoring everything rather than reading the 127
 already-covered interfaces off the CSV: the duplication bought a cross-check, plus the isolated-pair
@@ -509,5 +625,14 @@ fallback gap (8b7h) and per-interface contact counts, which the CSV does not rec
 - **Prefer the prediction directory with the most seeds in range, not the first that exists.**
   `predictions/native50_out/` holds seeds 0–49 for 8fbw/8q3j/8yxi while their 101–150 runs are
   elsewhere; taking the first match silently dropped 6 confident decoys from the tally.
+- **Sequence-match native chains by containment, not plain ratio.** `8vzo` chain D has 70 of 215
+  residues resolved, so `SequenceMatcher.ratio()` scores the *correct* native chain at 0.49 and the
+  match was rejected. Taking `max(ratio, longest-common-block / min-length)` fixes it. A query chain
+  with genuinely no native counterpart (e.g. `7yv1` q3, 11 residues, unresolved) is now left
+  un-templated instead of failing the whole PDB — this is what recovered `7yv1_AB/AC` and `8vzo_AB/AC`,
+  which an earlier draft reported as "excluded, template construction failed".
+- **A watchdog's status line is not proof a job is running.** The native-arm watchdog kept reporting
+  `scoring phase owns the pipeline / scored 195` for 90 minutes after every process had exited. The
+  number was a cached file count. Confirm against `/proc` and `nvidia-smi`, not the monitor's own text.
 
 ---
