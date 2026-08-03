@@ -485,6 +485,20 @@ templated. Maximum confidence, no correct pose reachable even with exact folds.
 - **environment:** `artifacts/provenance/native_template_arm_*.json` — repo commits, checkpoint hash,
   OpenStructure 2.8.0 / gemmi 0.6.7, the exact OST command, and sha256 of every analysis script
 
+### Validation against the reference scorer
+
+The classification above was produced by `scripts/abag_all_101_150.py`, a reimplementation. To check it
+is faithful, every interface for which the canonical CSV (written by `eval_ost_foldbench.py` itself)
+also holds all 50 seeds at 101–150 was classified both ways and compared:
+
+**125 overlapping interfaces, 125 status agreements, 0 disagreements.**
+
+So the 28 decoys / 19 generation failures are not artifacts of the reimplementation. The 44 interfaces
+the CSV does not cover at these seeds rest on this pipeline alone, but it is one verified against 125
+others. This is also the real justification for re-scoring everything rather than reading the 127
+already-covered interfaces off the CSV: the duplication bought a cross-check, plus the isolated-pair
+fallback gap (8b7h) and per-interface contact counts, which the CSV does not record.
+
 ### Gotchas found while running this
 
 - **Chain ids can contain hyphens.** `8im0` has a chain named `B-2`. That broke label parsing
