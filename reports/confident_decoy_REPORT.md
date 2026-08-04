@@ -639,8 +639,24 @@ fallback gap (8b7h) and per-interface contact counts, which the CSV does not rec
 
 ## 6. The `dockqdonor` arm: template from the pose that DOCKED correctly (METHODS; running)
 
-**Status: methods only.** Generation launched 2026-08-03 17:34, 26 jobs × 50 seeds on GPUs 0–3.
-No results yet. This section is written first so the protocol can be reviewed before any number exists.
+**Status: RUNNING.** Relaunched 2026-08-03 17:48 after a false start; 26 jobs × 50 seeds (1300 seeds)
+on GPUs 0–3. No results yet. This section was written before any number existed so the protocol could
+be reviewed independently of the outcome.
+
+> **This arm has a PRIOR, and it is not encouraging.** A per-PDB version of the same idea, `topdockq`,
+> was run on 2026-07-28 and scored **1/14** (only `8ux6_DF`); the companion `topiptm` arm — folds from
+> the top-ipTM *decoy* pose — scored **0/5** and was stopped early because the decoy's own fold
+> reinforces the decoy. Recorded conclusion: *the best-docked pose does not carry the best folds*
+> (fold and dock are decoupled), losing 7 of oracle's 8 rescues — `8bf4` got a 0.723-DockQ template and
+> came back at **0.003**. Data: `artifacts/scores/topdockq_scores.json`, `topdockq_picks.json`,
+> `topiptm_scores.json`; write-up in `RESULTS.md`.
+>
+> **I did not find this before building the arm**, and reported to the user that the idea was untested.
+> It was in `RESULTS.md` and in the project memory index the whole time. The run below proceeds anyway
+> because it differs in three ways — donors chosen **per interface** rather than per PDB (8 of 16
+> overlapping donors differ), **26 interfaces** rather than 15 (11 never tested), and the prior run was
+> stopped early with `7z2m` never scored — but it is an extension of a mostly-answered question, not a
+> new one. Expected landing zone is 1–3 of 26.
 
 ### Question
 
@@ -779,6 +795,23 @@ Its published 9/15 is on the §1 set; comparing 26 against 15 would not be like-
   pose carries no extra conformational information, *or* that whatever it carries is destroyed by
   templating a fold whose sub-Å accuracy matters (the mechanism behind `self-template fails`, where
   model-derived templates were net-harmful and only exact native folds worked).
+
+### Queued next (launched 2026-08-03 17:52): extending `ifacelddt` and `globallddt` to the 26
+
+Both arms exist only on the §1 15-decoy set. Extending them needs per-pose, per-chain fold quality for
+the 10 PDBs absent from `fold_selection_table.json` (`7ucx`, `7zau`, `8be1`, `8ivx`, `8oxw`, `8oxx`,
+`8pn0`, `8ux6`, `8vui`, `9jbq`). That computation is CPU/OST only and is running now alongside the GPU
+job — `scripts/fold_selection_table.py --pdbs ...` → `artifacts/fold_selection_table.json`, log at
+`artifacts/decoy_logs/foldtable_ext.log`.
+
+`interfaces_by_pdb()` in that script now takes the **union** of the original 15-decoy set and §5's
+canonical 26, so extending an arm cannot silently drop the older interfaces (the two sets are not
+nested — see §1's banner).
+
+**Open design decision, not yet made:** whether the extended arms run per **interface** (26 jobs/arm;
+interface residues defined for the interface under test; comparable to `dockqdonor`) or per **PDB**
+(20 jobs/arm; interface residues = union over a chain's interfaces; reproduces the design that gave
+9/15). Only the 6 two-interface PDBs differ. Not started — the GPUs are occupied by `dockqdonor`.
 
 ### Provenance
 
