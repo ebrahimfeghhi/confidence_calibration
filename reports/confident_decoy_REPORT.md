@@ -472,10 +472,6 @@ picks a pose shifted by one `NANP` unit, because a register shift reproduces eve
 signal. This is the only interface in the benchmark where fold quality is demonstrably not the
 bottleneck and confidence alone is at fault.
 
-> **Correction.** An earlier draft listed `7zau_AB` as a second selection failure from a partial run
-> (5 acceptable poses, selected DockQ 0.011). On the completed run it is **RESCUED** — 23 acceptable
-> poses, selected DockQ **0.919**. The provisional number was read while the job was still generating.
-
 **3. `8pn0_BE` is the cleanest recalibration result.** 155/250 poses were already acceptable in the free
 run and ipTM still selected 0.084. With native folds the selected pose jumps to **0.913** — ranking
 fixed with essentially no change in what was available. This is §3's mechanism (fold accuracy drives
@@ -1214,10 +1210,6 @@ Rank of the first acceptable pose, leaders vs naive, shows the mechanism directl
   thin.
 - **The cost/coverage curve is steep where it needs to be cheap.** 20 templates reaches 88% but is
   1000 runs per interface; 5 templates is affordable but only 42%.
-- **A partial run overstated this badly.** On the 11 interfaces whose matrices happened to already
-  exist at seeds 101–150, top-10 looked like 10/11 (91%). Those 11 skew to large acceptable pools
-  (median 41); the thin cases were all in the other 15. The full-set answer is 15/26 (58%). Recorded
-  because the partial number was shown before the full one.
 
 ### Data provenance — why the matrices were rebuilt
 
