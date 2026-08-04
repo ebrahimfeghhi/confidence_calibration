@@ -1,0 +1,2095 @@
+{
+ "expected": [
+  101,
+  150
+ ],
+ "alerts": [
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7ucx_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7ucx_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yv1_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yv1_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yxu_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yxu_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8a44_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8a44_AD_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8be1_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8dn7_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8dn7_AF_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8dtn_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fbw_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fbw_BC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8im0_AB-2_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ivx_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ivx_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oud_AD_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oxw_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oxw_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oxx_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oxx_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8q3j_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8q3j_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8r4u_AB_index.csv",
+   "detail": "seeds 0-48"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ts0_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ts0_BC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8udz_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8udz_AD_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8uky_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8uky_BC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ux6_AF_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ux6_DF_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vui_BC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vzo_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vzo_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8yxi_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8yxi_BC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8z8v_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_9jbq_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7ua2_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7uvs_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7uvs_BC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yv1_AB_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yv1_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yxu_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7z1x_AB_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7zoz_AB_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7zoz_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8a44_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8a44_AD_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8aok_AB_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8av2_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8be1_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8be3_AB_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8dcm_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8dcm_BC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8dtn_AB_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ivx_AB_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ivx_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_AE_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_AF_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_BE_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_BF_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oxx_AB_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oxx_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8q3j_AB_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8q3j_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8sgn_AC_index.csv",
+   "detail": "seeds 0-775"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8sgn_BC_index.csv",
+   "detail": "seeds 0-775"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8slb_AB_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8slb_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ts0_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ts0_BC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8uky_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8uky_BC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ux6_AF_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ux6_DF_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vui_BC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vvl_AB_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vvl_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vzo_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_AC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_AD_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_BC_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_BD_index.csv",
+   "detail": "seeds 0-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_9jbq_AC_index.csv",
+   "detail": "seeds 0-765"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7st5_BF_index.csv",
+   "detail": "seeds 7-368"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7txw_AC_index.csv",
+   "detail": "seeds 10-397"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7txw_BC_index.csv",
+   "detail": "seeds 6-390"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7ua2_AC_index.csv",
+   "detail": "seeds 9-1020"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7ucx_AB_index.csv",
+   "detail": "seeds 0-977"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7ucx_AC_index.csv",
+   "detail": "seeds 26-997"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7uvs_AC_index.csv",
+   "detail": "seeds 4-388"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7uvs_BC_index.csv",
+   "detail": "seeds 14-397"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7x8p_AB_index.csv",
+   "detail": "seeds 15-367"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7x8p_AC_index.csv",
+   "detail": "seeds 3-356"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7xld_AB_index.csv",
+   "detail": "seeds 20-411"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yds_AC_index.csv",
+   "detail": "seeds 9-419"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yv1_AB_index.csv",
+   "detail": "seeds 12-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yv1_AC_index.csv",
+   "detail": "seeds 8-1015"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yxu_AB_index.csv",
+   "detail": "seeds 25-1001"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yxu_AC_index.csv",
+   "detail": "seeds 34-1022"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7z1x_AB_index.csv",
+   "detail": "seeds 53-418"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7zoz_AB_index.csv",
+   "detail": "seeds 12-1010"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7zoz_AC_index.csv",
+   "detail": "seeds 1-1021"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8a44_AC_index.csv",
+   "detail": "seeds 7-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8a44_AD_index.csv",
+   "detail": "seeds 3-989"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8acf_AB_index.csv",
+   "detail": "seeds 6-329"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8acf_AD_index.csv",
+   "detail": "seeds 24-359"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ahn_AB_index.csv",
+   "detail": "seeds 16-414"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ahn_AC_index.csv",
+   "detail": "seeds 0-378"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8aok_AB_index.csv",
+   "detail": "seeds 26-997"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8aom_AB_index.csv",
+   "detail": "seeds 4-388"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8aon_AC_index.csv",
+   "detail": "seeds 5-356"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ath_AE_index.csv",
+   "detail": "seeds 18-963"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ath_AF_index.csv",
+   "detail": "seeds 22-1014"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8av2_AC_index.csv",
+   "detail": "seeds 12-995"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8b1a_AB_index.csv",
+   "detail": "seeds 17-407"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8be1_AC_index.csv",
+   "detail": "seeds 1-393"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8be2_AB_index.csv",
+   "detail": "seeds 2-393"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8be3_AB_index.csv",
+   "detail": "seeds 32-1012"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8byu_AC_index.csv",
+   "detail": "seeds 6-393"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8byu_BC_index.csv",
+   "detail": "seeds 0-381"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8c3l_AB_index.csv",
+   "detail": "seeds 2-329"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8c5h_AB_index.csv",
+   "detail": "seeds 0-355"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8che_AE_index.csv",
+   "detail": "seeds 3-358"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8che_BE_index.csv",
+   "detail": "seeds 10-352"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8d9z_AC_index.csv",
+   "detail": "seeds 3-351"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8d9z_BC_index.csv",
+   "detail": "seeds 5-333"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8dcm_AC_index.csv",
+   "detail": "seeds 31-1006"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8dcm_BC_index.csv",
+   "detail": "seeds 28-1006"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8dtn_AB_index.csv",
+   "detail": "seeds 3-1001"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8duz_AF_index.csv",
+   "detail": "seeds 9-327"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8e0e_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8f5i_AE_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8f5i_AF_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8f5n_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8f5n_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fas_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fas_BC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fbw_AC_index.csv",
+   "detail": "seeds 17-329"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fbw_BC_index.csv",
+   "detail": "seeds 3-329"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fdd_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fdd_BC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fdo_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fxv_AB_index.csv",
+   "detail": "seeds 2-328"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8g4p_AE_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8g4p_BE_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8gho_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8gy5_BC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8gye_AE_index.csv",
+   "detail": "seeds 0-92"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8gye_AF_index.csv",
+   "detail": "seeds 0-93"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8h3x_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8h63_AB_index.csv",
+   "detail": "seeds 1-308"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8hxq_AB_index.csv",
+   "detail": "seeds 3-316"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ido_AD_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8im0_AB-2_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ivx_AB_index.csv",
+   "detail": "seeds 3-1002"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ivx_AC_index.csv",
+   "detail": "seeds 8-1003"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8jeo_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8jeo_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8jyr_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8jyr_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_AE_index.csv",
+   "detail": "seeds 32-1010"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_AF_index.csv",
+   "detail": "seeds 50-1007"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_BE_index.csv",
+   "detail": "seeds 23-1010"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_BF_index.csv",
+   "detail": "seeds 1-1018"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8opr_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oxw_AB_index.csv",
+   "detail": "seeds 13-970"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oxw_AC_index.csv",
+   "detail": "seeds 30-989"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oxx_AB_index.csv",
+   "detail": "seeds 14-1006"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oxx_AC_index.csv",
+   "detail": "seeds 31-1006"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8pih_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8pmz_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8q3j_AB_index.csv",
+   "detail": "seeds 55-1008"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8q3j_AC_index.csv",
+   "detail": "seeds 3-1008"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8q6r_AD_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8q7o_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8qf4_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8qz3_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8rp8_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8rp8_BC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8s0l_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8sfz_AD_index.csv",
+   "detail": "seeds 0-48"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8sgn_AC_index.csv",
+   "detail": "seeds 12-757"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8sgn_BC_index.csv",
+   "detail": "seeds 32-756"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8slb_AB_index.csv",
+   "detail": "seeds 21-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8slb_AC_index.csv",
+   "detail": "seeds 16-1016"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8t59_AE_index.csv",
+   "detail": "seeds 8-316"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8t59_BE_index.csv",
+   "detail": "seeds 0-312"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tft_AC_index.csv",
+   "detail": "seeds 3-319"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tft_BC_index.csv",
+   "detail": "seeds 0-318"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8the_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tmz_AC_index.csv",
+   "detail": "seeds 0-317"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tmz_BC_index.csv",
+   "detail": "seeds 4-318"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8trs_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8trs_BC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ts0_AC_index.csv",
+   "detail": "seeds 47-1013"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ts0_BC_index.csv",
+   "detail": "seeds 44-1005"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tuz_AC_index.csv",
+   "detail": "seeds 9-306"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tuz_BC_index.csv",
+   "detail": "seeds 11-318"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8uky_AC_index.csv",
+   "detail": "seeds 16-1000"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8uky_BC_index.csv",
+   "detail": "seeds 37-1014"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8urf_AC_index.csv",
+   "detail": "seeds 5-1004"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8urf_BC_index.csv",
+   "detail": "seeds 17-990"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ux6_AF_index.csv",
+   "detail": "seeds 7-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ux6_DF_index.csv",
+   "detail": "seeds 13-1014"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8v52_AE_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8v52_AF_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vui_BC_index.csv",
+   "detail": "seeds 17-1006"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vvl_AB_index.csv",
+   "detail": "seeds 61-769"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vvl_AC_index.csv",
+   "detail": "seeds 0-741"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vyl_AF_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vyl_CF_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vzo_AB_index.csv",
+   "detail": "seeds 0-1019"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vzo_AC_index.csv",
+   "detail": "seeds 2-1023"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_AC_index.csv",
+   "detail": "seeds 7-1013"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_AD_index.csv",
+   "detail": "seeds 9-1008"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_BC_index.csv",
+   "detail": "seeds 5-979"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_BD_index.csv",
+   "detail": "seeds 23-1010"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w90_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8weo_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8yxi_AC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8yxi_BC_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8z8v_AB_index.csv",
+   "detail": "seeds 3-305"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8zp2_AB_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_9au1_CE_index.csv",
+   "detail": "seeds 0-49"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_9en2_AC_index.csv",
+   "detail": "seeds 1-758"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_9fww_AB_index.csv",
+   "detail": "seeds 2-974"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_9g2g_AC_index.csv",
+   "detail": "seeds 15-1014"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_9jbq_AC_index.csv",
+   "detail": "seeds 0-765"
+  }
+ ],
+ "ok": [
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7st5_BF_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7txw_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7txw_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7ua2_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7uvs_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7uvs_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7x8p_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7x8p_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7xld_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7yds_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7z1x_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7z2m_AJ_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7zau_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7zoz_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_7zoz_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8acf_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8acf_AD_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ahn_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ahn_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8aok_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8aom_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8aon_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ath_AE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ath_AF_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8av2_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8b1a_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8be2_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8be3_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8bf4_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8byu_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8byu_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8c3l_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8c5h_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8che_AE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8che_BE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8d9z_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8d9z_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8dcm_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8dcm_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8duz_AF_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8e0e_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8en5_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8et0_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8f5i_AE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8f5i_AF_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8f5n_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8f5n_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fas_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fas_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fdd_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fdd_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fdo_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fxv_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8fym_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8g4p_AE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8g4p_BE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8gho_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8gy5_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8gye_AE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8gye_AF_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8h3x_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8h63_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8hxq_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8ido_AD_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8j7t_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8j7t_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8jeo_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8jeo_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8jyr_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8jyr_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_AE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_AF_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_BE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8oni_BF_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8opr_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8pih_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8pmz_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8pn0_AE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8pn0_BE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8pyr_AD_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8pyr_CD_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8q6r_AD_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8q7o_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8qf4_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8qz3_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8rp8_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8rp8_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8s0l_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8sgn_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8sgn_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8slb_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8slb_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8t59_AE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8t59_BE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tft_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tft_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8the_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tmz_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tmz_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8trs_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8trs_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tuz_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8tuz_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8up2_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8up2_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8urf_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8urf_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8v52_AE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8v52_AF_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vvl_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vvl_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vyl_AF_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8vyl_CF_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_AD_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_BC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w84_BD_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8w90_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8weo_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8xnh_AF_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_8zp2_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_9au1_CE_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_9en2_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_9fww_AB_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "pose-pose matrix",
+   "name": "tts_abag shared: dockq_9g2g_AC_index.csv",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "arm scores",
+   "name": "dockqdonor_partial",
+   "detail": "12 interfaces, pose counts [250]"
+  },
+  {
+   "kind": "arm scores",
+   "name": "dockqdonor",
+   "detail": "25 interfaces, pose counts [250]"
+  },
+  {
+   "kind": "arm scores",
+   "name": "free_101_150",
+   "detail": "5 interfaces, pose counts []"
+  },
+  {
+   "kind": "arm scores",
+   "name": "native_arm",
+   "detail": "47 interfaces, pose counts [250]"
+  },
+  {
+   "kind": "arm scores",
+   "name": "oldtopdockq_recheck",
+   "detail": "1 interfaces, pose counts [250]"
+  },
+  {
+   "kind": "arm scores",
+   "name": "pddag",
+   "detail": "15 interfaces, pose counts []"
+  },
+  {
+   "kind": "arm scores",
+   "name": "relabel",
+   "detail": "9 interfaces, pose counts []"
+  },
+  {
+   "kind": "arm scores",
+   "name": "sweep",
+   "detail": "7 interfaces, pose counts []"
+  },
+  {
+   "kind": "arm scores",
+   "name": "topiptm26",
+   "detail": "17 interfaces, pose counts [250]"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/7ucx_AC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/7ucx_dockqdonor",
+   "detail": "seeds 101-119"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/7zau_AB_dockqdonor",
+   "detail": "seeds 101-117"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8aok_AB_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8aok_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8av2_AC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8be1_AC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8bf4_AB_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8che_AE_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8che_BE_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8fas_BC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8fas_dockqdonor",
+   "detail": "seeds 101-118"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8fbw_AC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8fbw_BC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8ivx_AC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8oxw_AB_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8oxw_AC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8oxx_AC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8pn0_BE_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8q3j_AB_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8q3j_AC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8slb_AB_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8slb_AC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8the_AB_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8ux6_AF_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8vui_BC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8yxi_AC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/8yxi_BC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/9jbq_AC_dockqdonor",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/dockqdonor/dockqdonor/9jbq_dockqdonor",
+   "detail": "seeds 101-113"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/7ucx_AC_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8aok_AB_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8av2_AC_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8che_AE_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8che_BE_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8fas_BC_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8fbw_AC_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8fbw_BC_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8ivx_AC_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8oxw_AB_topiptm26",
+   "detail": "seeds 101-149"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8oxw_AC_topiptm26",
+   "detail": "seeds 101-140"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8oxx_AC_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8q3j_AB_topiptm26",
+   "detail": "seeds 101-106"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8slb_AB_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8slb_AC_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8the_AB_topiptm26",
+   "detail": "seeds 101-118"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8ux6_AF_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8vui_BC_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8yxi_AC_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/8yxi_BC_topiptm26",
+   "detail": "seeds 101-150"
+  },
+  {
+   "kind": "predictions",
+   "name": "artifacts/sweep_out/topiptm26/topiptm26/9jbq_AC_topiptm26",
+   "detail": "seeds 101-150"
+  }
+ ]
+}

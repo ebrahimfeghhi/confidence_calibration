@@ -1160,3 +1160,98 @@ fails at 0/15, §4), and **whether ipTM stays comparable across N conditions** r
 here.
 
 ---
+
+## 11. Can a SHORT candidate list contain a correct pose? (leaders / NMS)
+
+**Motivation.** A template scheme cannot use every pose as its own template — that is 250 templates ×
+50 seeds per interface. It needs a shortlist of ~5–10. So: does a diversity-aware shortlist of the
+free run contain a correctly-docked pose?
+
+### Method — "leaders" = greedy non-maximum suppression
+
+Naive top-K by ipTM is the wrong shortlist, because a confident decoy is *precisely* a case where the
+model piles its top-confidence poses into one wrong basin; top-10 can be ten copies of it. Leaders
+suppresses redundancy:
+
+1. sort all 250 poses by interface `pair_iptm`, descending
+2. take the highest as **leader 1**
+3. **suppress** every pose in the same basin — pose-pose **DockQ ≥ 0.23**
+4. the highest surviving pose is leader 2; repeat
+
+Each leader is a structurally distinct binding mode, ranked by the model's confidence in it.
+Same-basin is **always pose-pose DockQ**, never ligand-RMSD (project convention).
+
+### Result — all 26 interfaces, free run, seeds 101–150
+
+| K | **leaders** | naive top-K by ipTM |
+|---|---|---|
+| 1 | 0/26 | 0/26 |
+| 3 | **8/26 (31%)** | 1/26 |
+| 5 | **11/26 (42%)** | 2/26 |
+| 10 | **15/26 (58%)** | 5/26 |
+| 20 | **23/26 (88%)** | 6/26 |
+
+K=1 is 0/26 by construction — these are confident decoys, so the top-ipTM pose is wrong by definition.
+The question is how fast diversity finds the right basin, and **leaders beats naive by 3–5× at every K**.
+
+Rank of the first acceptable pose, leaders vs naive, shows the mechanism directly:
+
+| interface | acceptable poses | leader rank | naive rank |
+|---|---|---|---|
+| 7ucx_AC | 1 / 250 | **3** | 123 |
+| 8fbw_AC | 11 | **2** | 64 |
+| 8fas_BC | 77 | **2** | 40 |
+| 8the_AB | 62 | **3** | 39 |
+| 8slb_AB | 65 | **5** | 30 |
+| 8q3j_AC | 19 | **13** | 82 |
+
+`7ucx_AC` is the extreme: **one** acceptable pose in 250, surfaced at leader rank 3.
+
+### Limits
+
+- **The failures are coverage-starved, not ranking failures.** `8be1_AC`, `8oxx_AC` and `9jbq_AC` have
+  exactly 1 acceptable pose in 250 and never surface it in the top 20. No shortlist fixes a pool that
+  thin.
+- **The cost/coverage curve is steep where it needs to be cheap.** 20 templates reaches 88% but is
+  1000 runs per interface; 5 templates is affordable but only 42%.
+- **A partial run overstated this badly.** On the 11 interfaces whose matrices happened to already
+  exist at seeds 101–150, top-10 looked like 10/11 (91%). Those 11 skew to large acceptable pools
+  (median 41); the thin cases were all in the other 15. The full-set answer is 15/26 (58%). Recorded
+  because the partial number was shown before the full one.
+
+### Data provenance — why the matrices were rebuilt
+
+`tts_abag/results/dockq_protenix/` is **half-migrated**: 11 of our 26 interfaces are on seeds 101–150
+there, the other 15 on seeds 0–49, with nothing in the filename to distinguish them. The two ranges
+disagree about the answer — `8vui_BC` has 0 acceptable poses at seeds 0–49 and 6 at 101–150; `8ux6_DF`
+is a confident decoy at 0–49 and not at 101–150. All 26 matrices were therefore rebuilt from **our**
+predictions and **our** OST scoring, and **the filename now carries the seed range**.
+
+`scripts/dockq_torch.py`'s own `build()` could not be reused: its `pose_list()` reads an ESMFold2-fast
+scoring CSV and `~/esm/foldbench_predictions/` paths, so it enumerates ESM poses, not Protenix ones.
+Only its `dockq_matrix()` kernel is predictor-agnostic (exact DockQ 2.1.3 on GPU), and that is what is
+reused.
+
+**Per-pose model chain pairs come from our cached OST runs**, not from the native chain letters: on
+multi-copy assemblies OST maps the native onto whichever model copy fits best, and that mapping
+changes per pose. Using native letters directly would score the wrong pair of molecules.
+
+### Checks that ran
+
+| check | result |
+|---|---|
+| builder aborts if a pose list's acceptable-count disagrees with `native_arm_scores.json` | 0 aborts / 26 |
+| every matrix on seeds 101–150 | 26/26 |
+| `leaders_topk.py` re-verifies seed range + count independently before use | 26/26 pass |
+| repo-wide seed-range audit (`audit_seed_ranges.py`) | **0 alerts on our artifacts**; 232 on the shared tts_abag dir |
+
+### Provenance
+
+- **code:** `scripts/pose_pose_dockq.py` (build matrices) → `scripts/leaders_topk.py` (NMS + top-K)
+- **code:** `scripts/audit_seed_ranges.py` (repo-wide seed-range alert),
+  `scripts/preflight.py` (raise-on-suspect input validation, importable by any analysis)
+- **data:** `artifacts/pose_pose_dockq/dockq_<interface>_seeds101-150.{npy,index.csv}` — 250×250 DockQ
+  matrix plus per-pose seed/sample/model-chains/ipTM/DockQ-vs-native
+- **data:** `artifacts/leaders_topk.json`, `artifacts/seed_range_audit.json`
+
+---

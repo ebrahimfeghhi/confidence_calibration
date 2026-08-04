@@ -98,12 +98,47 @@
    "pdb": "8ux6",
    "seeds_done": 50,
    "minutes": 63.3
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8ivx",
+   "seeds_done": 50,
+   "minutes": 76.1
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8oxw",
+   "seeds_done": 50,
+   "minutes": 89.3
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8oxw",
+   "seeds_done": 50,
+   "minutes": 89.6
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8q3j",
+   "seeds_done": 50,
+   "minutes": 106.3
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8the",
+   "seeds_done": 50,
+   "minutes": 149.3
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8q3j",
+   "seeds_done": 50,
+   "minutes": 106.3
   }
  ],
  "running": {
-  "0": "topiptm26/8ivx",
-  "1": "topiptm26/8oxw",
-  "2": "topiptm26/8oxw",
-  "3": "topiptm26/8the"
+  "2": "topiptm26/8be1",
+  "0": "topiptm26/8bf4",
+  "3": "topiptm26/8pn0"
  }
 }
