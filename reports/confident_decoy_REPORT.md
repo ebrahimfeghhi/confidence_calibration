@@ -1044,3 +1044,64 @@ Each arm is **validated before scoring** (§7), so a null arm cannot enter the t
   Select per interface.
 
 ---
+
+## 9. Naming glossary — what the old arm names actually mean
+
+Arms accumulated cryptic names (`Exp B`, `Exp C`, `Exp D`, `Exp D2`, `sposefv`, `pddag`) that say
+nothing about what they do. **Directory and file names are NOT being changed** — every result in this
+report links to paths containing them, and renaming would break that. This table is the alias layer.
+
+**Convention going forward:** `<donor-criterion><set-size>` — descriptive of the selection rule, since
+that is the only thing these arms vary. `dockqdonor`, `topiptm26`, `ifacelddt26`, `globallddt26` follow
+it; everything above predates it.
+
+### Template arms
+
+| name on disk | plain-English name | donor / fold source | selection rule | result | status |
+|---|---|---|---|---|---|
+| `native50` | native-both | ground-truth structure | n/a (exact) | 14/15 | ok |
+| `abonly` | native-antibody-only | ground truth, antibody chains only | n/a | 5/15 | ok, goods safe 15/15 |
+| `agonly` | native-antigen-only | ground truth, antigen chain only | n/a | 8/15 | ok |
+| `oracle` | best-fold-per-chain | free-run poses | best whole-chain lDDT vs native, mix-and-match | 8/15 | ok |
+| `globallddt` | whole-chain-lDDT donor | free-run poses | best whole-chain lDDT | 6/15 | ok |
+| `ifacelddt` | **paratope/epitope-lDDT donor** | free-run poses | best interface-local lDDT | **9/15** | ok |
+| `globalplddt` | whole-chain-pLDDT donor | free-run poses | best whole-chain pLDDT (**only deployable arm**) | 0/15 | ok |
+| `ifaceplddt` | paratope/epitope-pLDDT donor | free-run poses | best interface-local pLDDT | 1/15 | ok |
+| `expb` | isolation-fold self-template | chains folded **in isolation** | fixed, both chains | 2/15 | ok |
+| `expc` | **diverse self-template** | free-run complex pose from *matching* seed | seed *i* templated with baseline seed *i* — 50 distinct template sets per PDB | 2/15 | **13% null → provisional** |
+| `expd` | whole-chain-pLDDT self-template | free-run poses | best global `chain_pLDDT` per chain, fixed | 0/15 | ok |
+| `expd2` | same-pose-best-overall | free-run poses | both chains from one best-overall pose | ~0/15 | ok (rules out mix-and-match) |
+| `pddag` | pLDDT-antigen-only | free-run poses, **antigen only**, antibody left free | best mean-pLDDT antigen fold — deployable analogue of `agonly` | 0/15 | ok |
+| `sposefv` | **same-pose Fv** | free-run poses | oracle, but Fab H+L forced from the SAME pose | 2/8 | **VOID (§7)** |
+| `topiptm` | top-ipTM donor (the decoy's own fold) | free-run poses | best interface `pair_iptm` | 0/5 | **VOID (§7)** |
+| `topdockq` | best-docked donor, per PDB | free-run poses | best DockQ, one donor per PDB | 1/14 | **VOID (§7)** |
+| `dockqdonor` | best-docked donor, per interface | free-run poses | best DockQ **on the interface under test** | **9/25** | ok |
+| `topiptm26` | top-ipTM donor, per interface | free-run poses | best interface `pair_iptm` (re-run of the void `topiptm`) | running | — |
+| `ifacelddt26` | paratope/epitope-lDDT donor, 26-set | free-run poses | best interface-local lDDT | queued | — |
+| `globallddt26` | whole-chain-lDDT donor, 26-set | free-run poses | best whole-chain lDDT | queued | — |
+
+### Other terms
+
+| term | meaning |
+|---|---|
+| **confident decoy** | interface where the top-`pair_iptm` pose has DockQ < 0.23 while some pose in the same pool has DockQ ≥ 0.23 |
+| **generation failure** | no pose in 250 reaches DockQ ≥ 0.23 |
+| **rescue** | after intervention, the top-`pair_iptm` pose has DockQ ≥ 0.23 |
+| **coverage** | number of acceptable poses in the pool (a generation property) |
+| **selection / ranking** | which pose ipTM puts first (a confidence property) |
+| **THIN** | fewer than 5 acceptable poses in the free run — within sampling noise of the decoy/generation-failure boundary |
+| **oracle arm** | needs the native structure to choose the donor; measures a ceiling, not a shippable method |
+| **deployable arm** | uses only information available at inference (`globalplddt`, `pddag`, full-MSA) |
+| **donor** | the pose whose folds are copied into the template |
+| **null arm** | run whose templates never loaded (`Found 0 templates`) — measures an untemplated run (§7) |
+
+### Set sizes — do not mix
+
+| set | n | what |
+|---|---|---|
+| §1 set | 15 | inherited, mixed seed ranges; holds `7z2m` A–K/B–K corrected rows |
+| canonical decoys | 26 | §5 re-derivation, seeds 101–150, `7z2m_AJ` + `8udz_AC` excluded |
+| pass-1 arms | **25** | the 26 minus `7zau_AB`, deferred to pass 2 (§8) |
+| generation failures | 19 | zero acceptable poses at seeds 101–150 |
+
+---
