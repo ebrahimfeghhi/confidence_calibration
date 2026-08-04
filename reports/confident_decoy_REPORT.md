@@ -636,3 +636,177 @@ fallback gap (8b7h) and per-interface contact counts, which the CSV does not rec
   number was a cached file count. Confirm against `/proc` and `nvidia-smi`, not the monitor's own text.
 
 ---
+
+## 6. The `dockqdonor` arm: template from the pose that DOCKED correctly (METHODS; running)
+
+**Status: methods only.** Generation launched 2026-08-03 17:34, 26 jobs × 50 seeds on GPUs 0–3.
+No results yet. This section is written first so the protocol can be reviewed before any number exists.
+
+### Question
+
+§4's four predicted-fold arms all choose the donor pose by **fold quality** (whole-chain lDDT,
+interface lDDT, whole-chain pLDDT, interface pLDDT). None chooses by **DockQ**. This arm asks:
+
+> Take the pose that **docked correctly** but which ipTM ranked low. Feed its folds back as templates.
+> Does the model then find the right pose?
+
+The mechanism under test is CDR-H3 induced fit. H3 is the region where our folds are worst (§2, and
+the per-residue analysis: framework 0.94 vs H3 0.77), it has no canonical conformations and no MSA
+signal, and its conformation is **coupled to the bound pose**. A pose that docked correctly may
+therefore hold H3 near its bound conformation — information that a fold-accuracy criterion measured
+against the native does not specifically reward.
+
+**Templates carry no docking information.** `multichain_mask` means a template contributes only that
+chain's own backbone geometry. Nothing about how the donor arranged its chains is transferred; the
+model must still find the pose itself. This is the same property that makes §5's native-fold arm a
+clean probe.
+
+### Pre-check: is this redundant with `ifacelddt`? (no)
+
+If the best-DockQ pose were usually also the best-interface-lDDT pose, this arm would re-run an
+experiment we already have. Checked first, with no GPU, by comparing the two donors pose-for-pose over
+all 250 free-run poses:
+
+| | decoy interfaces (24 chains) | good interfaces (30 chains) |
+|---|---|---|
+| the two criteria pick the **same** donor | 5 (21%) | 3 (10%) |
+| interface lDDT given up by the DockQ donor (median) | **0.012** | 0.008 |
+| DockQ given up by the lDDT donor (median) | **0.291** | 0.037 |
+
+They disagree on 79% of decoy chains, and the trade is one-sided: choosing by DockQ costs essentially
+nothing in binding-site fold accuracy (0.012 lDDT), while choosing by lDDT costs 0.291 DockQ. The
+fold-best pose is often one that docked catastrophically — `8the` A (0.010), `8yxi` C (0.006), `8q3j` A
+(0.064), `8slb` C (0.021). So the two donors are near-matched on fold accuracy and differ mainly in
+whether their pose docked, which is what makes a rescue difference interpretable.
+
+- **code:** `scripts/dockq_vs_lddt_donor.py` · **data:** `artifacts/dockq_vs_lddt_donor.json`
+- Scope: ran on the §1 15-decoy set (24 chains), the set for which `fold_selection_table.json` exists.
+
+### Donor selection rule (exact)
+
+For **each of the 26 confident decoy interfaces** (§5's canonical set, `7z2m_AJ` and `8udz_AC`
+excluded):
+
+1. Read the DockQ of that interface for all 250 free-run poses (seeds 101–150 × 5 samples) from the
+   cached OST runs. The interface is matched **by chain name** in `dockq_interfaces`, never by
+   `dockq[0]`.
+2. Keep poses with **DockQ ≥ 0.23**.
+3. The donor is the **single pose with the highest DockQ** among those.
+4. **Every protein chain of the complex** is templated from that one pose — including chains not in
+   the interface under test (e.g. `8slb` chain C when testing A–B), so that all folds come from one
+   prediction and only one thing differs from the free run.
+
+One run per **interface**, not per PDB. The six PDBs with two decoy interfaces (`8che`, `8fbw`,
+`8oxw`, `8q3j`, `8slb`, `8yxi`) get two separate runs with different donors — e.g. `8yxi_AC` uses
+seed 135/sample 2 (DockQ 0.295) and `8yxi_BC` uses seed 140/sample 1 (DockQ 0.538).
+
+> **Two rejected designs, recorded because the first one was built and launched before being caught.**
+>
+> **Per-chain donors (wrong).** The first build selected a donor per chain, to match how `ifacelddt`
+> selects. That is a category error: lDDT and pLDDT have a value *per chain*, but **DockQ is a property
+> of an interface** and has no per-chain value. Forcing one required `max()` over every interface a
+> chain belonged to, which let an unrelated interface choose a shared chain's folds — when testing
+> `8yxi` A–C, chain C's donor had been picked by its score on B–C. It also produced **chimeric**
+> template sets in 6 of 20 complexes, mixing folds from different poses into a combination no single
+> prediction ever produced. Killed after ~10 min of GPU; no output scored.
+>
+> **Leaving non-interface chains un-templated (not chosen).** Considered for `8slb` C and similar.
+> Rejected because B and C are a paired Fab, so letting C fold freely could drag B, adding a second
+> difference from the free run.
+
+### Template construction
+
+Identical mechanics to §5's native arm and README 6.3, only the fold source differs:
+
+1. The donor pose's mmCIF is registered as a **fake-old** template under a fresh tid
+   (`release_date 2000-01-01`, so Protenix's date filter accepts it) in `/home/ebrahim/mmcif/`.
+2. For each protein chain, a **2-line a3m** points at the matching chain of that tid. The model chain
+   is matched to the query **by sequence**, since poses have no stable chain naming.
+3. **Two residues of the hit are mutated** (at L/3 and 2L/3) so Protenix treats the row as a template
+   rather than an MSA sequence.
+
+Native chain identities are resolved by **`label_asym_id`**, via a CIF-level reader (`native_seqs()`),
+not `gemmi.read_structure()`.
+
+Pre-launch verification (all passed): 75 a3m files, each referencing an existing registered mmCIF,
+query and hit of equal length, hit differing from the query, and **every job's template paths belonging
+to its own interface**; 26 jobs, 26 unique interfaces, 26 unique run names, with an assert in the
+builder that fails the build if any interface yields more than one job.
+
+### Generation
+
+Per job, issued by `scripts/sweep_sched.py` (one job per GPU, global queue, seed-level resume):
+
+```bash
+CUDA_VISIBLE_DEVICES=<0-3> LAYERNORM_TYPE=openfold OMP_NUM_THREADS=4 \
+OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 \
+.venv/bin/python runner/inference.py --model_name protenix-v2 \
+  --load_checkpoint_dir /home/ebrahim/checkpoint \
+  --input_json_path artifacts/sweep_tmpl/dockqdonor/<interface>.json \
+  --dump_dir artifacts/sweep_out/dockqdonor \
+  --seeds 101,...,150 \
+  --sample_diffusion.N_sample 5 --sample_diffusion.N_step 200 --use_template true
+```
+
+Seeds 101–150 × 5 samples = **250 poses per interface**, the same protocol as every other arm.
+
+### Scoring (planned)
+
+Unchanged from `tts_abag/eval/eval_ost_foldbench.py`: one OST call per pose, full native assembly vs
+full model, labelled interface extracted **by name**, isolated-pair fallback only on failure.
+
+```bash
+ost compare-structures -m <pred>.cif -r <native>.cif -o <out>.json \
+    --fault-tolerant --min-pep-length 4 --min-nuc-length 4 --dockq
+```
+
+Rescue rule identical to every other arm: the top interface-`pair_iptm` pose has **DockQ ≥ 0.23**.
+
+**`ifacelddt` will be re-scored on these same 26 interfaces before the two are tabulated together.**
+Its published 9/15 is on the §1 set; comparing 26 against 15 would not be like-for-like.
+
+### Caveats (read before interpreting any result)
+
+- **This is an ORACLE, not a deployable method.** Selecting the donor by DockQ requires the native
+  structure. Like `ifacelddt` and `native50`, it measures a ceiling and attributes blame — it is not a
+  method that could be shipped.
+- **10 of 26 donor pools are THIN** (<5 acceptable poses to choose from): `7ucx_AC`, `8av2_AC`,
+  `8be1_AC`, `8oxx_AC`, `8ux6_AF`, `9jbq_AC` (1 each), `8oxw_AB`, `8oxw_AC` (2), `8ivx_AC`,
+  `8yxi_BC` (4). For those the "best DockQ pose" is barely a selection at all, and several donors are
+  only marginally acceptable (`8ux6_AF` 0.246, `8be1_AC` 0.235). Median donor DockQ across all 26 is
+  0.51.
+- **A null result is ambiguous.** If this does not beat `ifacelddt`, it could mean the correctly-docked
+  pose carries no extra conformational information, *or* that whatever it carries is destroyed by
+  templating a fold whose sub-Å accuracy matters (the mechanism behind `self-template fails`, where
+  model-derived templates were net-harmful and only exact native folds worked).
+
+### Provenance
+
+- **code:** `scripts/dockq_vs_lddt_donor.py` (redundancy pre-check, no GPU) →
+  `scripts/build_dockq_templates.py` (donor selection + template construction) →
+  `scripts/sweep_sched.py --jobs artifacts/dockq_arm_jobs.json --out artifacts/sweep_out/dockqdonor
+  --logs artifacts/dockq_arm_logs --status artifacts/dockq_arm_status.json` (generation)
+- **data:** `artifacts/dockq_arm_donors.json` — per interface: donor seed/sample, donor DockQ, pool
+  size, per-chain model↔native chain mapping, template tid
+- **data:** `artifacts/dockq_arm_jobs.json` (26 jobs), `artifacts/dockq_arm_status.json` (live status)
+- **templates:** `artifacts/sweep_tmpl/dockqdonor/<interface>.json`,
+  `artifacts/sweep_a3m/dockqdonor_<interface>_q<N>.a3m`
+- **predictions:** `artifacts/sweep_out/dockqdonor/<pdb>_<chains>_dockqdonor/seed_<101-150>/`
+- **logs:** `artifacts/dockq_arm_logs/`, scheduler log `artifacts/decoy_logs/dockq_arm.log`
+
+### Gotchas found while building this
+
+- **A per-chain rule cannot be applied to a per-interface quantity.** See the rejected designs above.
+  This is the same `max()`-over-interfaces shape that once inverted the 8slb_AC conclusion.
+- **`label_asym_id` again.** The first build resolved native chains with `gemmi.read_structure()`
+  (auth naming) and so matched **no** labelled interface for 8bf4, 8che, 8fbw, 8slb, 8the and 8vui —
+  six of twenty complexes would have run with **every chain un-templated** while being reported as a
+  template arm. Visible only because whole complexes printed as `free-no-interface`.
+- **An edited loop can leave its own tail behind.** After rewriting the builder's loop, the old tail
+  still appended a second job per iteration — 52 jobs for 26 interfaces, each overwriting the other's
+  template JSON. Now caught by an assert on unique interfaces per job.
+- **The scheduler's log path keyed on `pdb`, not on the job.** With one job per interface, `8slb_AB`
+  and `8slb_AC` wrote to the same log and one silently overwrote the other. Output directories and
+  seed-level resume were unaffected (they key on `job['name']`). Fixed for subsequent runs.
+
+---
