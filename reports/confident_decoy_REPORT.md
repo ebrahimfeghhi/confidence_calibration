@@ -1247,3 +1247,48 @@ changes per pose. Using native letters directly would score the wrong pair of mo
 - **data:** `artifacts/leaders_topk.json`, `artifacts/seed_range_audit.json`
 
 ---
+
+## 12. Protenix cannot take multiple folds of the SAME chain as templates
+
+**Tested 2026-08-04, arm abandoned before producing results.** The plan was `duo2`: feed leader 1 (the
+decoy's fold) and leader 2 (an acceptable fold) *together*, two templates per chain, and ask whether
+the model prefers the correct one. It cannot be run as posed.
+
+**Protenix de-duplicates template hits by the template STRUCTURE's own sequence:**
+
+```python
+# template_utils.py:1044-1051  (inference path)
+seq_key = res.features["template_sequence"]
+if seq_key not in already_seen_seqs:
+    already_seen_seqs.add(seq_key); features.append(res.features)
+```
+
+and `template_sequence` is built from the template's residues, not from the a3m label
+(`out_seq[q_idx] = template_seq[t_idx]`, `template_utils.py:916`). Two *conformations of the same
+chain* therefore produce byte-identical `template_sequence`, and the second is always discarded.
+
+Multi-template support is designed for **different homologs** aligned to the query. "Several candidate
+folds of my antibody" is precisely the case it throws away. `max_templates` is 4 and `max_hits` is 4 at
+inference, so the cap is not the limit — the dedup is.
+
+**A second, independent dedup** sits earlier in the same function (`template_utils.py:1002-1008`) and
+keys on the a3m **label** string. Our template recipe changes two letters in the label to mark the row
+as a template rather than an MSA sequence; using the *same* two positions for every hit made the labels
+identical and collapsed them too. Giving each hit its own label positions fixes that one — but does not
+help, because the structure-level dedup then removes the duplicate anyway.
+
+**Consequence for the top-N template idea.** N candidate folds cannot be supplied in one run. The
+options are (a) N separate runs, pooled and ranked by ipTM — which §10 shows already beats the best
+single arm (9/16 vs 8/16) at N=2 — or (b) patch the dedup to key on
+`(template_sequence, template_domain_names)`, which would run the model in a configuration it was never
+trained for, so a null result would be uninterpretable.
+
+**How it was caught:** the `Found N templates` guard added in §7 reported `Found 1 templates` within 90
+seconds of launch, for an a3m containing 2 hits. Without it the arm would have run for hours and
+produced a plausible "multi-template changes nothing" result that was really a 1-template run.
+
+- **code:** `scripts/build_duo_templates.py` (kept, not run to completion)
+- **data:** `artifacts/duo2_donors.json` — the leader-1/leader-2 pairs it would have used
+- No scores exist for this arm; it was stopped after the guard fired.
+
+---

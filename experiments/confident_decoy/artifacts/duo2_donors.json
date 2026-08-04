@@ -1,0 +1,82 @@
+{
+ "8bf4_AB": {
+  "pdb": "8bf4",
+  "leader1": {
+   "seed": 131,
+   "sample": 0,
+   "dockq": 0.014,
+   "iptm": 0.857
+  },
+  "leader2": {
+   "seed": 120,
+   "sample": 4,
+   "dockq": 0.695,
+   "iptm": 0.845
+  },
+  "tids": [
+   "u128",
+   "u129"
+  ],
+  "n_chains": 3
+ },
+ "8fas_BC": {
+  "pdb": "8fas",
+  "leader1": {
+   "seed": 125,
+   "sample": 0,
+   "dockq": 0.175,
+   "iptm": 0.857
+  },
+  "leader2": {
+   "seed": 120,
+   "sample": 2,
+   "dockq": 0.92,
+   "iptm": 0.765
+  },
+  "tids": [
+   "u130",
+   "u131"
+  ],
+  "n_chains": 3
+ },
+ "8fbw_AC": {
+  "pdb": "8fbw",
+  "leader1": {
+   "seed": 123,
+   "sample": 4,
+   "dockq": 0.17,
+   "iptm": 0.632
+  },
+  "leader2": {
+   "seed": 111,
+   "sample": 0,
+   "dockq": 0.344,
+   "iptm": 0.545
+  },
+  "tids": [
+   "u132",
+   "u133"
+  ],
+  "n_chains": 3
+ },
+ "8pn0_BE": {
+  "pdb": "8pn0",
+  "leader1": {
+   "seed": 132,
+   "sample": 0,
+   "dockq": 0.084,
+   "iptm": 0.39
+  },
+  "leader2": {
+   "seed": 149,
+   "sample": 0,
+   "dockq": 0.424,
+   "iptm": 0.27
+  },
+  "tids": [
+   "u134",
+   "u135"
+  ],
+  "n_chains": 3
+ }
+}

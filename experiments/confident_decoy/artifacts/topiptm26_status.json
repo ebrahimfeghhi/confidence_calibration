@@ -134,10 +134,15 @@
    "pdb": "8q3j",
    "seeds_done": 50,
    "minutes": 106.3
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8be1",
+   "seeds_done": 50,
+   "minutes": 114.9
   }
  ],
  "running": {
-  "2": "topiptm26/8be1",
   "0": "topiptm26/8bf4",
   "3": "topiptm26/8pn0"
  }
