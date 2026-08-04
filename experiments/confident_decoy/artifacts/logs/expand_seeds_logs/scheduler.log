@@ -1,0 +1,10 @@
+18:25:03 expand-seeds scheduler start; pdbs=['7z2m', '8aok', '8av2', '8bf4', '8che', '8fas', '8slb', '8the']; seeds 0-100 -> +101/pdb on GPUs [0, 1, 2, 3] | {'7z2m': 50, '8aok': 50, '8av2': 50, '8bf4': 50, '8che': 50, '8fas': 50, '8slb': 50, '8the': 50}
+18:25:03 launched 7z2m on GPU0 | {'7z2m': 50, '8aok': 50, '8av2': 50, '8bf4': 50, '8che': 50, '8fas': 50, '8slb': 50, '8the': 50}
+18:25:03 launched 8aok on GPU1 | {'7z2m': 50, '8aok': 50, '8av2': 50, '8bf4': 50, '8che': 50, '8fas': 50, '8slb': 50, '8the': 50}
+18:25:03 launched 8av2 on GPU2 | {'7z2m': 50, '8aok': 50, '8av2': 50, '8bf4': 50, '8che': 50, '8fas': 50, '8slb': 50, '8the': 50}
+18:25:03 launched 8bf4 on GPU3 | {'7z2m': 50, '8aok': 50, '8av2': 50, '8bf4': 50, '8che': 50, '8fas': 50, '8slb': 50, '8the': 50}
+18:39:24 launched 8che on GPU1 | {'7z2m': 51, '8aok': 151, '8av2': 68, '8bf4': 53, '8che': 50, '8fas': 50, '8slb': 50, '8the': 50}
+19:39:48 launched 8fas on GPU2 | {'7z2m': 56, '8aok': 151, '8av2': 151, '8bf4': 67, '8che': 99, '8fas': 50, '8slb': 50, '8the': 50}
+20:16:10 launched 8slb on GPU2 | {'7z2m': 59, '8aok': 151, '8av2': 151, '8bf4': 75, '8che': 129, '8fas': 151, '8slb': 50, '8the': 50}
+20:42:12 launched 8the on GPU1 | {'7z2m': 61, '8aok': 151, '8av2': 151, '8bf4': 82, '8che': 151, '8fas': 151, '8slb': 82, '8the': 50}
+13:39:40 ALL_DONE expand-seeds scheduler | {'7z2m': 151, '8aok': 151, '8av2': 151, '8bf4': 151, '8che': 151, '8fas': 151, '8slb': 151, '8the': 151}

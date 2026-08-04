@@ -1,0 +1,74 @@
+{
+ "7z2m": {
+  "seed": 145,
+  "sample": 0,
+  "dockq": 0.608,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/7z2m/seed_145/predictions/7z2m_sample_0.cif"
+ },
+ "8aok": {
+  "seed": 124,
+  "sample": 0,
+  "dockq": 0.695,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8aok/seed_124/predictions/8aok_sample_0.cif"
+ },
+ "8av2": {
+  "seed": 124,
+  "sample": 1,
+  "dockq": 0.612,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8av2/seed_124/predictions/8av2_sample_1.cif"
+ },
+ "8bf4": {
+  "seed": 120,
+  "sample": 2,
+  "dockq": 0.723,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8bf4/seed_120/predictions/8bf4_sample_2.cif"
+ },
+ "8che": {
+  "seed": 137,
+  "sample": 3,
+  "dockq": 0.529,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8che/seed_137/predictions/8che_sample_3.cif"
+ },
+ "8fas": {
+  "seed": 149,
+  "sample": 4,
+  "dockq": 0.987,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8fas/seed_149/predictions/8fas_sample_4.cif"
+ },
+ "8fbw": {
+  "seed": 48,
+  "sample": 0,
+  "dockq": 0.272,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8fbw/seed_48/predictions/8fbw_sample_0.cif"
+ },
+ "8q3j": {
+  "seed": 23,
+  "sample": 3,
+  "dockq": 0.531,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8q3j/seed_23/predictions/8q3j_sample_3.cif"
+ },
+ "8slb": {
+  "seed": 122,
+  "sample": 0,
+  "dockq": 0.655,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8slb/seed_122/predictions/8slb_sample_0.cif"
+ },
+ "8the": {
+  "seed": 113,
+  "sample": 4,
+  "dockq": 0.514,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8the/seed_113/predictions/8the_sample_4.cif"
+ },
+ "8ux6": {
+  "seed": 17,
+  "sample": 4,
+  "dockq": 0.362,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8ux6/seed_17/predictions/8ux6_sample_4.cif"
+ },
+ "8yxi": {
+  "seed": 45,
+  "sample": 4,
+  "dockq": 0.352,
+  "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8yxi/seed_45/predictions/8yxi_sample_4.cif"
+ }
+}

@@ -1,0 +1,137 @@
+{
+ "rows": [
+  {
+   "interface": "8q3j_AC",
+   "pdb": "8q3j",
+   "paratope_lddt": 0.525,
+   "epitope_lddt": 0.84,
+   "top_iptm": 0.763,
+   "top_dockq": 0.036,
+   "best_ok_iptm": 0.239,
+   "best_ok_dockq": 0.525,
+   "iptm_gap": 0.524,
+   "n_acceptable": 19
+  },
+  {
+   "interface": "8yxi_AC",
+   "pdb": "8yxi",
+   "paratope_lddt": 0.526,
+   "epitope_lddt": 0.9,
+   "top_iptm": 0.293,
+   "top_dockq": 0.006,
+   "best_ok_iptm": 0.2,
+   "best_ok_dockq": 0.238,
+   "iptm_gap": 0.093,
+   "n_acceptable": 7
+  },
+  {
+   "interface": "8the_AB",
+   "pdb": "8the",
+   "paratope_lddt": 0.528,
+   "epitope_lddt": 0.879,
+   "top_iptm": 0.608,
+   "top_dockq": 0.113,
+   "best_ok_iptm": 0.273,
+   "best_ok_dockq": 0.233,
+   "iptm_gap": 0.336,
+   "n_acceptable": 62
+  },
+  {
+   "interface": "8aok_AB",
+   "pdb": "8aok",
+   "paratope_lddt": 0.565,
+   "epitope_lddt": 0.864,
+   "top_iptm": 0.749,
+   "top_dockq": 0.112,
+   "best_ok_iptm": 0.724,
+   "best_ok_dockq": 0.681,
+   "iptm_gap": 0.025,
+   "n_acceptable": 109
+  },
+  {
+   "interface": "8av2_AC",
+   "pdb": "8av2",
+   "paratope_lddt": 0.608,
+   "epitope_lddt": 0.796,
+   "top_iptm": 0.659,
+   "top_dockq": 0.092,
+   "best_ok_iptm": 0.142,
+   "best_ok_dockq": 0.612,
+   "iptm_gap": 0.517,
+   "n_acceptable": 1
+  },
+  {
+   "interface": "8slb_AB",
+   "pdb": "8slb",
+   "paratope_lddt": 0.614,
+   "epitope_lddt": 0.843,
+   "top_iptm": 0.601,
+   "top_dockq": 0.012,
+   "best_ok_iptm": 0.304,
+   "best_ok_dockq": 0.349,
+   "iptm_gap": 0.297,
+   "n_acceptable": 65
+  },
+  {
+   "interface": "7z2m_AK",
+   "pdb": "7z2m",
+   "paratope_lddt": 0.751,
+   "epitope_lddt": 0.925,
+   "top_iptm": 0.37,
+   "top_dockq": 0.051,
+   "best_ok_iptm": 0.321,
+   "best_ok_dockq": 0.32,
+   "iptm_gap": 0.049,
+   "n_acceptable": 11
+  },
+  {
+   "interface": "7z2m_BK",
+   "pdb": "7z2m",
+   "paratope_lddt": 0.818,
+   "epitope_lddt": 0.935,
+   "top_iptm": 0.4,
+   "top_dockq": 0.034,
+   "best_ok_iptm": 0.389,
+   "best_ok_dockq": 0.261,
+   "iptm_gap": 0.011,
+   "n_acceptable": 77
+  },
+  {
+   "interface": "8bf4_AB",
+   "pdb": "8bf4",
+   "paratope_lddt": 0.83,
+   "epitope_lddt": 0.776,
+   "top_iptm": 0.857,
+   "top_dockq": 0.014,
+   "best_ok_iptm": 0.845,
+   "best_ok_dockq": 0.695,
+   "iptm_gap": 0.012,
+   "n_acceptable": 22
+  },
+  {
+   "interface": "8yxi_BC",
+   "pdb": "8yxi",
+   "paratope_lddt": 0.911,
+   "epitope_lddt": 0.775,
+   "top_iptm": 0.281,
+   "top_dockq": 0.009,
+   "best_ok_iptm": 0.192,
+   "best_ok_dockq": 0.491,
+   "iptm_gap": 0.088,
+   "n_acceptable": 4
+  },
+  {
+   "interface": "8slb_AC",
+   "pdb": "8slb",
+   "paratope_lddt": 0.929,
+   "epitope_lddt": 0.937,
+   "top_iptm": 0.584,
+   "top_dockq": 0.01,
+   "best_ok_iptm": 0.288,
+   "best_ok_dockq": 0.254,
+   "iptm_gap": 0.296,
+   "n_acceptable": 41
+  }
+ ],
+ "pearson_r": -0.41574887631570057
+}

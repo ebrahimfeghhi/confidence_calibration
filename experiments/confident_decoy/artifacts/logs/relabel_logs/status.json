@@ -1,0 +1,12 @@
+{
+ "t": "10:20:28",
+ "msg": "ALL_DONE relabel scheduler",
+ "done": {
+  "8yxi_agonly": 50,
+  "8fbw_agonly": 50,
+  "8yxi_abonly": 50,
+  "8fbw_abonly": 50,
+  "8yxi_pddag": 50,
+  "8fbw_pddag": 50
+ }
+}

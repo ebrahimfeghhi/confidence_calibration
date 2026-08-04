@@ -1,0 +1,14 @@
+09:47:45 pddag scheduler start; pdbs=['8av2', '8yxi', '8fas', '8fbw', '8aok', '8bf4', '8the', '8q3j', '7z2m', '8che', '8slb', '8ux6']; seeds 101-150 on GPUs [0, 1, 2, 3] | {'8av2': 0, '8yxi': 0, '8fas': 0, '8fbw': 0, '8aok': 0, '8bf4': 0, '8the': 0, '8q3j': 0, '7z2m': 0, '8che': 0, '8slb': 0, '8ux6': 0}
+09:47:45 launched 8av2 on GPU1 | {'8av2': 0, '8yxi': 0, '8fas': 0, '8fbw': 0, '8aok': 0, '8bf4': 0, '8the': 0, '8q3j': 0, '7z2m': 0, '8che': 0, '8slb': 0, '8ux6': 0}
+09:47:45 launched 8yxi on GPU2 | {'8av2': 0, '8yxi': 0, '8fas': 0, '8fbw': 0, '8aok': 0, '8bf4': 0, '8the': 0, '8q3j': 0, '7z2m': 0, '8che': 0, '8slb': 0, '8ux6': 0}
+09:47:45 launched 8fas on GPU3 | {'8av2': 0, '8yxi': 0, '8fas': 0, '8fbw': 0, '8aok': 0, '8bf4': 0, '8the': 0, '8q3j': 0, '7z2m': 0, '8che': 0, '8slb': 0, '8ux6': 0}
+10:04:46 launched 8fbw on GPU3 | {'8av2': 22, '8yxi': 17, '8fas': 50, '8fbw': 0, '8aok': 0, '8bf4': 0, '8the': 0, '8q3j': 0, '7z2m': 0, '8che': 0, '8slb': 0, '8ux6': 0}
+10:24:27 launched 8aok on GPU1 | {'8av2': 50, '8yxi': 38, '8fas': 50, '8fbw': 13, '8aok': 0, '8bf4': 0, '8the': 0, '8q3j': 0, '7z2m': 0, '8che': 0, '8slb': 0, '8ux6': 0}
+10:31:07 launched 8bf4 on GPU1 | {'8av2': 50, '8yxi': 45, '8fas': 50, '8fbw': 18, '8aok': 50, '8bf4': 0, '8the': 0, '8q3j': 0, '7z2m': 0, '8che': 0, '8slb': 0, '8ux6': 0}
+10:35:48 launched 8the on GPU2 | {'8av2': 50, '8yxi': 50, '8fas': 50, '8fbw': 22, '8aok': 50, '8bf4': 0, '8the': 0, '8q3j': 0, '7z2m': 0, '8che': 0, '8slb': 0, '8ux6': 0}
+11:13:50 launched 8q3j on GPU3 | {'8av2': 50, '8yxi': 50, '8fas': 50, '8fbw': 50, '8aok': 50, '8bf4': 9, '8the': 12, '8q3j': 0, '7z2m': 0, '8che': 0, '8slb': 0, '8ux6': 0}
+13:00:17 launched 7z2m on GPU3 | {'8av2': 50, '8yxi': 50, '8fas': 50, '8fbw': 50, '8aok': 50, '8bf4': 35, '8the': 48, '8q3j': 50, '7z2m': 0, '8che': 0, '8slb': 0, '8ux6': 0}
+13:05:18 launched 8che on GPU2 | {'8av2': 50, '8yxi': 50, '8fas': 50, '8fbw': 50, '8aok': 50, '8bf4': 36, '8the': 50, '8q3j': 50, '7z2m': 0, '8che': 0, '8slb': 0, '8ux6': 0}
+13:39:40 launched 8slb on GPU0 | {'8av2': 50, '8yxi': 50, '8fas': 50, '8fbw': 50, '8aok': 50, '8bf4': 44, '8the': 50, '8q3j': 50, '7z2m': 3, '8che': 28, '8slb': 0, '8ux6': 0}
+14:02:22 launched 8ux6 on GPU1 | {'8av2': 50, '8yxi': 50, '8fas': 50, '8fbw': 50, '8aok': 50, '8bf4': 50, '8the': 50, '8q3j': 50, '7z2m': 5, '8che': 47, '8slb': 29, '8ux6': 0}
+22:31:01 ALL_DONE pddag scheduler | {'8av2': 50, '8yxi': 50, '8fas': 50, '8fbw': 50, '8aok': 50, '8bf4': 50, '8the': 50, '8q3j': 50, '7z2m': 50, '8che': 50, '8slb': 50, '8ux6': 50}

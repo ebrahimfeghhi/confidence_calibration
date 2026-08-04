@@ -1,0 +1,8 @@
+native50  7z2m_AK n=250 n_ok=  1 top_ipTM=0.239 sel_DockQ=0.199 best=0.252 still decoy
+native50  7z2m_BK n=250 n_ok= 48 top_ipTM=0.394 sel_DockQ=0.037 best=0.357 still decoy
+abonly    7z2m_AK n=250 n_ok=  2 top_ipTM=0.404 sel_DockQ=0.098 best=0.246 still decoy
+abonly    7z2m_BK n=250 n_ok= 56 top_ipTM=0.406 sel_DockQ=0.177 best=0.365 still decoy
+agonly    7z2m_AK n=250 n_ok=  2 top_ipTM=0.284 sel_DockQ=0.089 best=0.430 still decoy
+agonly    7z2m_BK n=250 n_ok= 76 top_ipTM=0.404 sel_DockQ=0.020 best=0.415 still decoy
+
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/7z2m_native_arms.json

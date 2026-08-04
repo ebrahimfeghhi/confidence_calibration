@@ -1,0 +1,81 @@
+{
+ "tag": "native_template_arm",
+ "host": "naboo",
+ "python": "3.12.3",
+ "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+ "repos": {
+  "FoldBench": {
+   "path": "/home/ebrahim/FoldBench",
+   "commit": "4273f6877d82bd0b2fa476d1b2f34d121cbccc70",
+   "branch": "main",
+   "remote": "https://github.com/BEAM-Labs/FoldBench.git",
+   "dirty_files": 113,
+   "head_subject": "Revert \"Add optional antigen-centered ABAG scoring\""
+  },
+  "Protenix": {
+   "path": "/home/ebrahim/Protenix",
+   "commit": "33af7a9376993820c752192dd59b14e88a83c7ac",
+   "branch": "main",
+   "remote": "https://github.com/ebrahimfeghhi/Protenix.git",
+   "dirty_files": 29,
+   "head_subject": "Clean up benchmark scripts and improve TTS evaluation pipeline"
+  },
+  "tts_abag": {
+   "path": "/home/ebrahim/tts_abag",
+   "commit": "f6c0655dca55f4e1a82d5cef56c8c4e4a0f027ec",
+   "branch": "reorg/declutter",
+   "remote": "https://github.com/ebrahimfeghhi/tts_abag.git",
+   "dirty_files": 37,
+   "head_subject": "Correct section 1: 7z2m rescored under the standard protocol"
+  }
+ },
+ "note_experiments_dir": "/home/ebrahim/confident_decoy_experiments is NOT version controlled",
+ "model": {
+  "checkpoint": {
+   "path": "/home/ebrahim/checkpoint/protenix-v2.pt",
+   "size_bytes": 1859785497,
+   "md5_first_64MB": "97b913184d55b5c8518d06f412f02bc6",
+   "mtime": 1780613676.0962076
+  },
+  "model_name": "protenix-v2"
+ },
+ "tools": {
+  "ost": "OpenStructure 2.8.0",
+  "python_pkgs": {
+   "gemmi": "0.6.7",
+   "numpy": "2.4.1"
+  }
+ },
+ "inputs": {
+  "targets_csv": "/home/ebrahim/FoldBench/targets/interface_antibody_antigen.csv",
+  "targets_csv_sha256_16": {
+   "../FoldBench/targets/interface_antibody_antigen.csv": "a66105766492357b"
+  },
+  "ground_truths_dir": "/home/ebrahim/FoldBench/examples/ground_truths",
+  "predictions_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template",
+  "seeds": "101-150",
+  "samples_per_seed": 5,
+  "poses_per_interface": 250
+ },
+ "definitions": {
+  "acceptable_pose": "DockQ >= 0.23 (CAPRI acceptable)",
+  "selection_rule": "pose with the highest interface pair_iptm",
+  "confident_decoy": "at least one acceptable pose exists AND the selected pose is not acceptable"
+ },
+ "scoring_protocol": {
+  "source": "tts_abag/eval/eval_ost_foldbench.py",
+  "command": "ost compare-structures -m <pose>.cif -r <pdb>-assembly1.cif -o out.json --fault-tolerant --min-pep-length 4 --min-nuc-length 4 --dockq",
+  "chain_mapping": "OST's own global mapping over the FULL native assembly vs the FULL model; the labelled interface is then extracted BY NAME from dockq_interfaces",
+  "never": "do not take dockq[0]; do not subset the native per interface pair"
+ },
+ "scripts_sha256_16": {
+  "scripts/abag_all_101_150.py": "40a4515b42019590",
+  "scripts/decoy_set.py": "7b1132378360ff20",
+  "scripts/fold_quality.py": "1613a10c9c546d68",
+  "scripts/fold_selection_table.py": "93a62f10428d2a5a",
+  "scripts/build_sweep_templates.py": "c430b02847687082",
+  "scripts/sweep_sched.py": "6c368c0e35b50c04",
+  "scripts/score_sweep.py": "c0fd00d3f77b4371",
+  "scripts/capture_provenance.py": "06ee1976a1bbf4a5"
+ }
+}

@@ -1,0 +1,54 @@
+2026-07-30 12:19:00,355 [/home/ebrahim/Protenix/runner/inference.py:627] INFO __main__: Using params for model protenix-v2: cycle=10, step=200
+2026-07-30 12:19:00,356 [/home/ebrahim/Protenix/runner/inference.py:648] INFO __main__: Inference by Protenix: model_size: 464M, with_feature: default, model_version: v2, dtype: bf16
+2026-07-30 12:19:01,410 [/home/ebrahim/Protenix/runner/inference.py:654] INFO __main__: Triangle kernels: multiplicative=cuequivariance, attention=cuequivariance
+2026-07-30 12:19:01,410 [/home/ebrahim/Protenix/runner/inference.py:658] INFO __main__: Optimization: shared_vars_cache=True, efficient_fusion=True, tf32=True
+2026-07-30 12:19:01,410 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: obsolete_pdbs_path already exists at /home/ebrahim/common/obsolete_to_successor.json
+2026-07-30 12:19:01,410 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: release_dates_path already exists at /home/ebrahim/common/release_date_cache.json
+2026-07-30 12:19:01,410 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Distributed environment: world size: 1, global rank: 0, local rank: 0
+2026-07-30 12:19:01,410 [/home/ebrahim/Protenix/runner/inference.py:98] INFO root: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-07-30 12:19:01,410 [/home/ebrahim/Protenix/runner/inference.py:127] INFO root: Finished environment initialization.
+2026-07-30 12:19:39,599 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Loading from /home/ebrahim/checkpoint/protenix-v2.pt, strict: True
+2026-07-30 12:19:40,153 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Sampled key: module.input_embedder.atom_attention_encoder.linear_no_bias_ref_pos.weight
+2026-07-30 12:19:40,215 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Finish loading checkpoint.
+2026-07-30 12:19:40,219 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Model parameters: 464.44M
+2026-07-30 12:19:40,222 [/home/ebrahim/Protenix/runner/inference.py:428] INFO __main__: Loading data from /home/ebrahim/Protenix/foldbench_abag/jsons/8ux6-final-updated.json
+2026-07-30 12:19:40,834 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8ux6...
+2026-07-30 12:19:43,832 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 12:19:46,002 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 12:19:47,851 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence DIQMTQSPSSLSASVGDRVTITCRASQSVSSAVAWYQQKPGKAPKLLIYSASSLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQYYYAPITFGQGTKVEIKRTVAAPSVFIFPPSDSQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGECGG
+2026-07-30 12:19:49,575 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence SEVQLVESGGGLVQPGGSLRLSCAASGFNISSSSIHWVRQAPGKGLEWVASISPYYSSTSYADSVKGRFTISADTSKNTAYLQMNSLRAEDTAVYYCARGPGYAMDYWGQGTLVTVSSASTKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDKKVEPKSC
+2026-07-30 12:19:50,474 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence GTGGGSLRGLDLSEEEVKKILDEIVKDPSDGELGLGDLSDP
+2026-07-30 12:19:51,517 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8ux6 [seed:101]: N_asym 16, N_token 966, N_atom 7148, N_msa 14938
+2026-07-30 12:21:09,282 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8ux6 [seed:101] succeeded. Model forward time: 77.77s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/fullmsa_out
+2026-07-30 12:21:09,307 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 101 completed in 88.47s.
+2026-07-30 12:21:09,307 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8ux6...
+2026-07-30 12:21:09,505 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 12:21:11,664 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 12:21:12,883 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence DIQMTQSPSSLSASVGDRVTITCRASQSVSSAVAWYQQKPGKAPKLLIYSASSLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQYYYAPITFGQGTKVEIKRTVAAPSVFIFPPSDSQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGECGG
+2026-07-30 12:21:13,580 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence SEVQLVESGGGLVQPGGSLRLSCAASGFNISSSSIHWVRQAPGKGLEWVASISPYYSSTSYADSVKGRFTISADTSKNTAYLQMNSLRAEDTAVYYCARGPGYAMDYWGQGTLVTVSSASTKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDKKVEPKSC
+2026-07-30 12:21:13,629 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence GTGGGSLRGLDLSEEEVKKILDEIVKDPSDGELGLGDLSDP
+2026-07-30 12:21:14,675 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8ux6 [seed:105]: N_asym 16, N_token 966, N_atom 7148, N_msa 14938
+2026-07-30 12:22:30,795 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8ux6 [seed:105] succeeded. Model forward time: 76.12s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/fullmsa_out
+2026-07-30 12:22:30,819 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 105 completed in 81.51s.
+2026-07-30 12:22:30,819 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8ux6...
+2026-07-30 12:22:31,022 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 12:22:33,252 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 12:22:34,031 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence DIQMTQSPSSLSASVGDRVTITCRASQSVSSAVAWYQQKPGKAPKLLIYSASSLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQYYYAPITFGQGTKVEIKRTVAAPSVFIFPPSDSQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGECGG
+2026-07-30 12:22:35,300 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence SEVQLVESGGGLVQPGGSLRLSCAASGFNISSSSIHWVRQAPGKGLEWVASISPYYSSTSYADSVKGRFTISADTSKNTAYLQMNSLRAEDTAVYYCARGPGYAMDYWGQGTLVTVSSASTKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDKKVEPKSC
+2026-07-30 12:22:35,348 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence GTGGGSLRGLDLSEEEVKKILDEIVKDPSDGELGLGDLSDP
+2026-07-30 12:22:36,301 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8ux6 [seed:109]: N_asym 16, N_token 966, N_atom 7148, N_msa 14938
+2026-07-30 12:23:52,452 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8ux6 [seed:109] succeeded. Model forward time: 76.15s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/fullmsa_out
+2026-07-30 12:23:52,472 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 109 completed in 81.65s.
+2026-07-30 12:23:52,473 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8ux6...
+2026-07-30 12:23:52,673 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 12:23:54,818 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 12:23:55,596 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence DIQMTQSPSSLSASVGDRVTITCRASQSVSSAVAWYQQKPGKAPKLLIYSASSLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQYYYAPITFGQGTKVEIKRTVAAPSVFIFPPSDSQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGECGG
+2026-07-30 12:23:56,297 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence SEVQLVESGGGLVQPGGSLRLSCAASGFNISSSSIHWVRQAPGKGLEWVASISPYYSSTSYADSVKGRFTISADTSKNTAYLQMNSLRAEDTAVYYCARGPGYAMDYWGQGTLVTVSSASTKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDKKVEPKSC
+2026-07-30 12:23:56,347 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence GTGGGSLRGLDLSEEEVKKILDEIVKDPSDGELGLGDLSDP
+2026-07-30 12:23:57,373 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8ux6 [seed:113]: N_asym 16, N_token 966, N_atom 7148, N_msa 14938
+2026-07-30 12:25:13,557 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8ux6 [seed:113] succeeded. Model forward time: 76.18s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/fullmsa_out
+2026-07-30 12:25:13,577 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 113 completed in 81.10s.
+2026-07-30 12:25:13,577 [/home/ebrahim/Protenix/runner/inference.py:534] INFO __main__: [Rank 0] Job completed in 332.74s.
+train scheduler 16.0
+inference scheduler 16.0
+Diffusion Module has 16.0

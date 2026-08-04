@@ -1,0 +1,7 @@
+26 jobs total; 0 already complete; 26 to run
+[17:48] GPU0 START dockqdonor/8aok (24 left)
+[17:48] GPU1 START dockqdonor/7ucx (23 left)
+[17:48] GPU2 START dockqdonor/8fas (22 left)
+[17:48] GPU3 START dockqdonor/9jbq (22 left)
+[17:54] GPU0 DONE  dockqdonor/8aok 0/50 seeds in 6.7 min (22 left)
+[17:54] GPU0 START dockqdonor/8vui (21 left)

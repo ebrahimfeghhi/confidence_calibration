@@ -1,0 +1,116 @@
+globallddt   7xld: q0:seed122/s2=0.923 q1:seed125/s3=0.962
+globallddt   7z2m: q0:seed104/s2=0.948 q1:seed142/s0=0.953 q2:seed128/s1=0.941
+globallddt   8aok: q0:seed114/s0=0.919 q1:seed140/s0=0.890
+globallddt   8aom: q0:seed109/s0=0.909 q1:seed124/s1=0.954
+globallddt   8av2: q0:seed133/s1=0.883 q1:seed149/s2=0.853
+globallddt   8be3: q0:seed123/s2=0.931 q1:seed107/s3=0.944
+globallddt   8bf4: q0:seed120/s1=0.922 q1:seed114/s1=0.905 q2:free
+globallddt   8c3l: q0:seed144/s4=0.896 q1:seed103/s4=0.918
+globallddt   8c5h: q0:seed109/s1=0.918 q1:seed107/s4=0.949
+globallddt   8che: q0:seed149/s0=0.956 q1:seed119/s0=0.938 q2:seed137/s3=0.654
+globallddt   8fas: q0:free q1:seed107/s4=0.966 q2:seed120/s2=0.984
+globallddt   8fbw: q0:seed115/s0=0.937 q1:free q2:seed115/s0=0.537
+globallddt   8gho: q0:seed124/s1=0.964 q1:free q2:seed142/s4=0.926
+globallddt   8hxq: q0:seed115/s1=0.918 q1:seed131/s2=0.840
+globallddt   8ido: q0:seed124/s1=0.929 q1:seed141/s0=0.898
+globallddt   8pih: q0:seed128/s1=0.947 q1:seed131/s4=0.974 q2:free
+globallddt   8q3j: q0:seed127/s0=0.849 q1:free q2:seed134/s0=0.896
+globallddt   8q7o: q0:seed133/s1=0.971 q1:seed103/s2=0.788
+globallddt   8qf4: q0:seed102/s1=0.955 q1:seed112/s1=0.882
+globallddt   8qz3: q0:seed139/s1=0.855 q1:seed127/s2=0.963
+globallddt   8slb: q0:seed101/s3=0.888 q1:seed122/s0=0.934 q2:seed113/s1=0.966
+globallddt   8the: q0:seed103/s2=0.912 q1:seed147/s3=0.886 q2:free
+globallddt   8w90: q0:seed137/s4=0.962 q1:seed129/s0=0.856
+globallddt   8weo: q0:seed123/s0=0.958 q1:seed118/s4=0.949
+globallddt   8yxi: q0:seed112/s0=0.898 q1:seed118/s2=0.926 q2:seed140/s2=0.933
+globallddt   9fww: q0:seed133/s3=0.926 q1:seed122/s2=0.852
+ifacelddt    7xld: q0:seed105/s0=0.907 q1:seed104/s4=0.968
+ifacelddt    7z2m: q0:seed102/s2=0.793 q1:seed128/s0=0.892 q2:seed128/s1=0.943
+ifacelddt    8aok: q0:seed150/s3=0.902 q1:seed140/s2=0.729
+ifacelddt    8aom: q0:seed133/s1=0.942 q1:seed124/s1=0.943
+ifacelddt    8av2: q0:seed104/s2=0.848 q1:seed124/s1=0.752
+ifacelddt    8be3: q0:seed123/s2=0.877 q1:seed110/s2=0.912
+ifacelddt    8bf4: q0:seed120/s2=0.859 q1:seed120/s4=0.827 q2:free
+ifacelddt    8c3l: q0:seed126/s2=0.949 q1:seed137/s2=0.923
+ifacelddt    8c5h: q0:seed139/s3=0.924 q1:seed139/s0=0.944
+ifacelddt    8che: q0:seed112/s3=0.976 q1:seed102/s3=0.918 q2:seed137/s3=0.648
+ifacelddt    8fas: q0:free q1:seed143/s1=0.997 q2:seed120/s2=0.979
+ifacelddt    8fbw: q0:seed109/s0=0.959 q1:free q2:seed115/s0=0.525
+ifacelddt    8gho: q0:seed116/s3=0.948 q1:free q2:seed133/s3=0.932
+ifacelddt    8hxq: q0:seed119/s1=0.940 q1:seed146/s1=0.843
+ifacelddt    8ido: q0:seed120/s2=0.927 q1:seed124/s1=0.839
+ifacelddt    8pih: q0:seed147/s0=0.965 q1:seed111/s2=0.980 q2:free
+ifacelddt    8q3j: q0:seed104/s3=0.871 q1:free q2:seed137/s4=0.669
+ifacelddt    8q7o: q0:seed130/s4=0.988 q1:seed128/s0=0.948
+ifacelddt    8qf4: q0:seed116/s1=0.937 q1:seed112/s1=0.892
+ifacelddt    8qz3: q0:seed107/s3=0.896 q1:seed137/s3=0.946
+ifacelddt    8slb: q0:seed117/s1=0.924 q1:seed122/s0=0.769 q2:seed127/s3=0.941
+ifacelddt    8the: q0:seed121/s1=0.896 q1:seed147/s2=0.644 q2:free
+ifacelddt    8w90: q0:seed137/s2=0.979 q1:seed137/s2=0.883
+ifacelddt    8weo: q0:seed143/s4=0.969 q1:seed118/s4=0.955
+ifacelddt    8yxi: q0:seed133/s0=0.590 q1:seed140/s3=0.927 q2:seed149/s0=0.954
+ifacelddt    9fww: q0:seed114/s0=0.930 q1:seed122/s2=0.556
+globalplddt  7xld: q0:seed110/s0=0.951 q1:seed110/s2=0.933
+globalplddt  7z2m: q0:seed102/s1=0.859 q1:seed102/s1=0.848 q2:seed101/s1=0.682
+globalplddt  8aok: q0:seed103/s2=0.938 q1:seed143/s1=0.938
+globalplddt  8aom: q0:seed113/s0=0.911 q1:seed141/s2=0.953
+globalplddt  8av2: q0:seed106/s0=0.879 q1:seed113/s1=0.842
+globalplddt  8be3: q0:seed127/s0=0.852 q1:seed142/s1=0.831
+globalplddt  8bf4: q0:seed119/s0=0.874 q1:seed147/s4=0.857 q2:free
+globalplddt  8c3l: q0:seed104/s4=0.862 q1:seed149/s3=0.910
+globalplddt  8c5h: q0:seed139/s0=0.908 q1:seed139/s2=0.918
+globalplddt  8che: q0:seed140/s3=0.907 q1:seed114/s2=0.903 q2:seed121/s1=0.443
+globalplddt  8fas: q0:free q1:seed143/s4=0.955 q2:seed125/s1=0.804
+globalplddt  8fbw: q0:seed129/s1=0.903 q1:free q2:seed129/s1=0.698
+globalplddt  8gho: q0:seed141/s2=0.956 q1:free q2:seed115/s1=0.912
+globalplddt  8hxq: q0:seed115/s1=0.917 q1:seed131/s1=0.820
+globalplddt  8ido: q0:seed112/s4=0.850 q1:seed142/s3=0.886
+globalplddt  8pih: q0:seed111/s4=0.913 q1:seed148/s4=0.957 q2:free
+globalplddt  8q3j: q0:seed114/s4=0.865 q1:free q2:seed110/s0=0.843
+globalplddt  8q7o: q0:seed120/s4=0.921 q1:seed112/s4=0.874
+globalplddt  8qf4: q0:seed106/s2=0.961 q1:seed104/s2=0.921
+globalplddt  8qz3: q0:seed114/s4=0.815 q1:seed137/s3=0.854
+globalplddt  8slb: q0:seed129/s3=0.840 q1:seed101/s0=0.898 q2:seed101/s1=0.935
+globalplddt  8the: q0:seed116/s0=0.868 q1:seed116/s3=0.870 q2:free
+globalplddt  8w90: q0:seed137/s1=0.810 q1:seed137/s0=0.831
+globalplddt  8weo: q0:seed145/s4=0.916 q1:seed110/s1=0.896
+globalplddt  8yxi: q0:seed103/s4=0.904 q1:seed103/s4=0.925 q2:seed146/s2=0.865
+globalplddt  9fww: q0:seed150/s0=0.918 q1:seed109/s1=0.882
+ifaceplddt   7xld: q0:seed101/s0=0.973 q1:seed104/s0=0.970
+ifaceplddt   7z2m: q0:seed102/s0=0.712 q1:seed102/s1=0.744 q2:seed133/s0=0.775
+ifaceplddt   8aok: q0:seed143/s1=0.934 q1:seed110/s0=0.880
+ifaceplddt   8aom: q0:seed128/s1=0.954 q1:seed141/s2=0.953
+ifaceplddt   8av2: q0:seed141/s4=0.861 q1:seed113/s0=0.792
+ifaceplddt   8be3: q0:seed127/s0=0.820 q1:seed101/s0=0.837
+ifaceplddt   8bf4: q0:seed119/s0=0.874 q1:seed121/s1=0.847 q2:free
+ifaceplddt   8c3l: q0:seed104/s3=0.944 q1:seed104/s3=0.956
+ifaceplddt   8c5h: q0:seed139/s0=0.951 q1:seed139/s1=0.915
+ifaceplddt   8che: q0:seed137/s4=0.875 q1:seed137/s2=0.870 q2:seed137/s2=0.460
+ifaceplddt   8fas: q0:free q1:seed125/s3=0.970 q2:seed125/s1=0.945
+ifaceplddt   8fbw: q0:seed129/s1=0.882 q1:free q2:seed129/s1=0.734
+ifaceplddt   8gho: q0:seed140/s2=0.959 q1:free q2:seed115/s1=0.950
+ifaceplddt   8hxq: q0:seed115/s1=0.955 q1:seed115/s0=0.840
+ifaceplddt   8ido: q0:seed112/s4=0.913 q1:seed124/s4=0.890
+ifaceplddt   8pih: q0:seed111/s1=0.964 q1:seed120/s4=0.962 q2:free
+ifaceplddt   8q3j: q0:seed114/s4=0.871 q1:free q2:seed114/s4=0.797
+ifaceplddt   8q7o: q0:seed120/s4=0.950 q1:seed128/s4=0.936
+ifaceplddt   8qf4: q0:seed112/s4=0.957 q1:seed102/s1=0.955
+ifaceplddt   8qz3: q0:seed127/s4=0.849 q1:seed137/s2=0.809
+ifaceplddt   8slb: q0:seed101/s2=0.885 q1:seed105/s1=0.780 q2:seed141/s4=0.864
+ifaceplddt   8the: q0:seed107/s3=0.832 q1:seed116/s0=0.742 q2:free
+ifaceplddt   8w90: q0:seed137/s1=0.876 q1:seed137/s1=0.855
+ifaceplddt   8weo: q0:seed105/s0=0.944 q1:seed125/s2=0.916
+ifaceplddt   8yxi: q0:seed135/s0=0.694 q1:seed149/s0=0.872 q2:seed146/s2=0.927
+ifaceplddt   9fww: q0:seed130/s4=0.906 q1:seed109/s0=0.758
+native50     8fbw: reused 8fbw-nativetmpl.json, a3m -> durable
+native50     8q3j: reused 8q3j-nativetmpl.json, a3m -> durable
+native50     8yxi: reused 8yxi-nativetmpl.json, a3m -> durable
+agonly       8q3j: reused 8q3j-agonly.json, a3m -> durable
+
+BUILD DONE: 108 jobs
+  agonly         1 jobs (1 decoy / 0 good)
+  globallddt    26 jobs (11 decoy / 15 good)
+  globalplddt   26 jobs (11 decoy / 15 good)
+  ifacelddt     26 jobs (11 decoy / 15 good)
+  ifaceplddt    26 jobs (11 decoy / 15 good)
+  native50       3 jobs (3 decoy / 0 good)

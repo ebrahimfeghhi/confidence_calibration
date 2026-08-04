@@ -1,0 +1,452 @@
+{
+ "7ucx_AC": {
+  "pdb": "7ucx",
+  "chains": [
+   "A",
+   "C"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 140,
+   "sample": 0,
+   "pair_iptm": 0.692,
+   "dockq": 0.155,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/7ucx",
+   "name": "7ucx"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 119,
+   "sample": 0,
+   "pair_iptm": 0.839,
+   "dockq": 0.871,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50/7ucx_native50",
+   "name": "7ucx_native50"
+  }
+ },
+ "7zau_AB": {
+  "pdb": "7zau",
+  "chains": [
+   "A",
+   "B"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 116,
+   "sample": 2,
+   "pair_iptm": 0.556,
+   "dockq": 0.004,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/7zau",
+   "name": "7zau"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 123,
+   "sample": 3,
+   "pair_iptm": 0.633,
+   "dockq": 0.919,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50/7zau_native50",
+   "name": "7zau_native50"
+  }
+ },
+ "8aok_AB": {
+  "pdb": "8aok",
+  "chains": [
+   "A",
+   "B"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 110,
+   "sample": 0,
+   "pair_iptm": 0.749,
+   "dockq": 0.112,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8aok",
+   "name": "8aok"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 140,
+   "sample": 2,
+   "pair_iptm": 0.889,
+   "dockq": 0.739,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/predictions/native50_out/8aok_nativetmpl",
+   "name": "8aok_nativetmpl"
+  }
+ },
+ "8av2_AC": {
+  "pdb": "8av2",
+  "chains": [
+   "A",
+   "C"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 113,
+   "sample": 0,
+   "pair_iptm": 0.659,
+   "dockq": 0.092,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8av2",
+   "name": "8av2"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 122,
+   "sample": 3,
+   "pair_iptm": 0.922,
+   "dockq": 0.878,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/predictions/native50_out/8av2_nativetmpl",
+   "name": "8av2_nativetmpl"
+  }
+ },
+ "8bf4_AB": {
+  "pdb": "8bf4",
+  "chains": [
+   "A",
+   "B"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 131,
+   "sample": 0,
+   "pair_iptm": 0.857,
+   "dockq": 0.014,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8bf4",
+   "name": "8bf4"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 126,
+   "sample": 0,
+   "pair_iptm": 0.855,
+   "dockq": 0.718,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/predictions/native50_out/8bf4_nativetmpl",
+   "name": "8bf4_nativetmpl"
+  }
+ },
+ "8che_AE": {
+  "pdb": "8che",
+  "chains": [
+   "A",
+   "E"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 124,
+   "sample": 0,
+   "pair_iptm": 0.45,
+   "dockq": 0.125,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8che",
+   "name": "8che"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 140,
+   "sample": 4,
+   "pair_iptm": 0.791,
+   "dockq": 0.959,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/predictions/native50_out/8che_nativetmpl",
+   "name": "8che_nativetmpl"
+  }
+ },
+ "8che_BE": {
+  "pdb": "8che",
+  "chains": [
+   "B",
+   "E"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 124,
+   "sample": 0,
+   "pair_iptm": 0.443,
+   "dockq": 0.087,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8che",
+   "name": "8che"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 140,
+   "sample": 0,
+   "pair_iptm": 0.775,
+   "dockq": 0.953,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/predictions/native50_out/8che_nativetmpl",
+   "name": "8che_nativetmpl"
+  }
+ },
+ "8fbw_AC": {
+  "pdb": "8fbw",
+  "chains": [
+   "A",
+   "C"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 123,
+   "sample": 4,
+   "pair_iptm": 0.632,
+   "dockq": 0.17,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8fbw",
+   "name": "8fbw"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 131,
+   "sample": 3,
+   "pair_iptm": 0.894,
+   "dockq": 0.78,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_out/native50/8fbw_native50",
+   "name": "8fbw_native50"
+  }
+ },
+ "8fbw_BC": {
+  "pdb": "8fbw",
+  "chains": [
+   "B",
+   "C"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 143,
+   "sample": 0,
+   "pair_iptm": 0.566,
+   "dockq": 0.21,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8fbw",
+   "name": "8fbw"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 131,
+   "sample": 3,
+   "pair_iptm": 0.813,
+   "dockq": 0.742,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_out/native50/8fbw_native50",
+   "name": "8fbw_native50"
+  }
+ },
+ "8pn0_BE": {
+  "pdb": "8pn0",
+  "chains": [
+   "B",
+   "E"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 132,
+   "sample": 0,
+   "pair_iptm": 0.39,
+   "dockq": 0.084,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8pn0",
+   "name": "8pn0"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 104,
+   "sample": 0,
+   "pair_iptm": 0.467,
+   "dockq": 0.913,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50/8pn0_native50",
+   "name": "8pn0_native50"
+  }
+ },
+ "8q3j_AB": {
+  "pdb": "8q3j",
+  "chains": [
+   "A",
+   "B"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 114,
+   "sample": 2,
+   "pair_iptm": 0.717,
+   "dockq": 0.035,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8q3j",
+   "name": "8q3j"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 139,
+   "sample": 1,
+   "pair_iptm": 0.851,
+   "dockq": 0.93,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_out/native50/8q3j_native50",
+   "name": "8q3j_native50"
+  }
+ },
+ "8q3j_AC": {
+  "pdb": "8q3j",
+  "chains": [
+   "A",
+   "C"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 114,
+   "sample": 2,
+   "pair_iptm": 0.763,
+   "dockq": 0.036,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8q3j",
+   "name": "8q3j"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 139,
+   "sample": 0,
+   "pair_iptm": 0.853,
+   "dockq": 0.826,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_out/native50/8q3j_native50",
+   "name": "8q3j_native50"
+  }
+ },
+ "8slb_AB": {
+  "pdb": "8slb",
+  "chains": [
+   "A",
+   "B"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 101,
+   "sample": 0,
+   "pair_iptm": 0.601,
+   "dockq": 0.012,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8slb",
+   "name": "8slb"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 128,
+   "sample": 0,
+   "pair_iptm": 0.812,
+   "dockq": 0.907,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/predictions/native50_out/8slb_nativetmpl",
+   "name": "8slb_nativetmpl"
+  }
+ },
+ "8slb_AC": {
+  "pdb": "8slb",
+  "chains": [
+   "A",
+   "C"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 101,
+   "sample": 1,
+   "pair_iptm": 0.584,
+   "dockq": 0.01,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8slb",
+   "name": "8slb"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 128,
+   "sample": 0,
+   "pair_iptm": 0.809,
+   "dockq": 0.875,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/predictions/native50_out/8slb_nativetmpl",
+   "name": "8slb_nativetmpl"
+  }
+ },
+ "8the_AB": {
+  "pdb": "8the",
+  "chains": [
+   "A",
+   "B"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 116,
+   "sample": 1,
+   "pair_iptm": 0.608,
+   "dockq": 0.113,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8the",
+   "name": "8the"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 145,
+   "sample": 1,
+   "pair_iptm": 0.622,
+   "dockq": 0.392,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/predictions/native50_out/8the_nativetmpl",
+   "name": "8the_nativetmpl"
+  }
+ },
+ "8yxi_AC": {
+  "pdb": "8yxi",
+  "chains": [
+   "A",
+   "C"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 101,
+   "sample": 0,
+   "pair_iptm": 0.293,
+   "dockq": 0.006,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8yxi",
+   "name": "8yxi"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 128,
+   "sample": 1,
+   "pair_iptm": 0.873,
+   "dockq": 0.804,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_out/native50/8yxi_native50",
+   "name": "8yxi_native50"
+  }
+ },
+ "8yxi_BC": {
+  "pdb": "8yxi",
+  "chains": [
+   "B",
+   "C"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 101,
+   "sample": 0,
+   "pair_iptm": 0.281,
+   "dockq": 0.009,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8yxi",
+   "name": "8yxi"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 128,
+   "sample": 0,
+   "pair_iptm": 0.892,
+   "dockq": 0.97,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_out/native50/8yxi_native50",
+   "name": "8yxi_native50"
+  }
+ },
+ "9jbq_AC": {
+  "pdb": "9jbq",
+  "chains": [
+   "A",
+   "C"
+  ],
+  "decoy": {
+   "arm": "free",
+   "seed": 120,
+   "sample": 2,
+   "pair_iptm": 0.498,
+   "dockq": 0.041,
+   "pred_dir": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/9jbq",
+   "name": "9jbq"
+  },
+  "good": {
+   "arm": "native",
+   "seed": 124,
+   "sample": 1,
+   "pair_iptm": 0.945,
+   "dockq": 0.99,
+   "pred_dir": "/home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50/9jbq_native50",
+   "name": "9jbq_native50"
+  }
+ }
+}

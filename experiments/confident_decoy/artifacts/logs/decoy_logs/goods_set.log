@@ -1,0 +1,19 @@
+7xld_AB    n=250 n_ok=248 top_ipTM=0.943 sel_DockQ=0.914 best_DockQ=0.945 selection OK
+8aom_AB    n=250 n_ok=250 top_ipTM=0.961 sel_DockQ=0.653 best_DockQ=0.923 selection OK
+8be3_AB    n=250 n_ok= 92 top_ipTM=0.526 sel_DockQ=0.595 best_DockQ=0.843 selection OK
+8c3l_AB    n=250 n_ok=250 top_ipTM=0.912 sel_DockQ=0.908 best_DockQ=0.929 selection OK
+8c5h_AB    n=250 n_ok= 16 top_ipTM=0.918 sel_DockQ=0.854 best_DockQ=0.866 selection OK
+8gho_AC    n=250 n_ok=250 top_ipTM=0.944 sel_DockQ=0.887 best_DockQ=0.941 selection OK
+8hxq_AB    n=250 n_ok= 80 top_ipTM=0.909 sel_DockQ=0.794 best_DockQ=0.863 selection OK
+8ido_AD    n=250 n_ok=225 top_ipTM=0.887 sel_DockQ=0.785 best_DockQ=0.890 selection OK
+8pih_AB    n=250 n_ok=232 top_ipTM=0.943 sel_DockQ=0.915 best_DockQ=0.951 selection OK
+8q7o_AC    n=250 n_ok=250 top_ipTM=0.924 sel_DockQ=0.857 best_DockQ=0.961 selection OK
+8qf4_AB    n=250 n_ok=249 top_ipTM=0.937 sel_DockQ=0.859 best_DockQ=0.937 selection OK
+8qz3_AC    n=250 n_ok=250 top_ipTM=0.705 sel_DockQ=0.859 best_DockQ=0.873 selection OK
+8w90_AB    n=250 n_ok= 66 top_ipTM=0.823 sel_DockQ=0.851 best_DockQ=0.870 selection OK
+8weo_AB    n=250 n_ok=250 top_ipTM=0.933 sel_DockQ=0.926 best_DockQ=0.940 selection OK
+9fww_AB    n=250 n_ok= 94 top_ipTM=0.522 sel_DockQ=0.586 best_DockQ=0.720 selection OK
+
+selection SUCCEEDS (DockQ >= 0.23) for 15/15 -> ['7xld_AB', '8aom_AB', '8be3_AB', '8c3l_AB', '8c5h_AB', '8gho_AC', '8hxq_AB', '8ido_AD', '8pih_AB', '8q7o_AC', '8qf4_AB', '8qz3_AC', '8w90_AB', '8weo_AB', '9fww_AB']
+0 confident decoys -> []
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/goods_set_101_150.json

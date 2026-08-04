@@ -1,0 +1,68 @@
+{
+ "native50": {
+  "7z2m_AK": {
+   "n": 250,
+   "n_ok": 1,
+   "top_pair_iptm": 0.239,
+   "sel_dockq": 0.199,
+   "best_dockq": 0.252,
+   "rescued": false,
+   "max_iptm_good": 0.111,
+   "max_iptm_bad": 0.239
+  },
+  "7z2m_BK": {
+   "n": 250,
+   "n_ok": 48,
+   "top_pair_iptm": 0.394,
+   "sel_dockq": 0.037,
+   "best_dockq": 0.357,
+   "rescued": false,
+   "max_iptm_good": 0.329,
+   "max_iptm_bad": 0.394
+  }
+ },
+ "abonly": {
+  "7z2m_AK": {
+   "n": 250,
+   "n_ok": 2,
+   "top_pair_iptm": 0.404,
+   "sel_dockq": 0.098,
+   "best_dockq": 0.246,
+   "rescued": false,
+   "max_iptm_good": 0.097,
+   "max_iptm_bad": 0.404
+  },
+  "7z2m_BK": {
+   "n": 250,
+   "n_ok": 56,
+   "top_pair_iptm": 0.406,
+   "sel_dockq": 0.177,
+   "best_dockq": 0.365,
+   "rescued": false,
+   "max_iptm_good": 0.392,
+   "max_iptm_bad": 0.406
+  }
+ },
+ "agonly": {
+  "7z2m_AK": {
+   "n": 250,
+   "n_ok": 2,
+   "top_pair_iptm": 0.284,
+   "sel_dockq": 0.089,
+   "best_dockq": 0.43,
+   "rescued": false,
+   "max_iptm_good": 0.158,
+   "max_iptm_bad": 0.284
+  },
+  "7z2m_BK": {
+   "n": 250,
+   "n_ok": 76,
+   "top_pair_iptm": 0.404,
+   "sel_dockq": 0.02,
+   "best_dockq": 0.415,
+   "rescued": false,
+   "max_iptm_good": 0.354,
+   "max_iptm_bad": 0.404
+  }
+ }
+}

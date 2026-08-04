@@ -1,0 +1,19 @@
+{
+ "total": 26,
+ "skipped": 0,
+ "queue": 26,
+ "finished": [
+  {
+   "run": "dockqdonor",
+   "pdb": "8aok",
+   "seeds_done": 0,
+   "minutes": 6.7
+  }
+ ],
+ "running": {
+  "1": "dockqdonor/7ucx",
+  "2": "dockqdonor/8fas",
+  "3": "dockqdonor/9jbq",
+  "0": "dockqdonor/8vui"
+ }
+}

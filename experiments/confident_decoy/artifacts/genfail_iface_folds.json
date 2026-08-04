@@ -1,0 +1,382 @@
+[
+ {
+  "interface": "7yv1_AB",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.897,
+  "iface": 0.875,
+  "drop": 0.022,
+  "n_res": 13
+ },
+ {
+  "interface": "7yv1_AB",
+  "rescued": false,
+  "chain": "B",
+  "role": "HEAVY",
+  "whole": 0.932,
+  "iface": 0.704,
+  "drop": 0.228,
+  "n_res": 13
+ },
+ {
+  "interface": "7yv1_AC",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.897,
+  "iface": 0.821,
+  "drop": 0.077,
+  "n_res": 4
+ },
+ {
+  "interface": "7yv1_AC",
+  "rescued": false,
+  "chain": "C",
+  "role": "LIGHT",
+  "whole": 0.968,
+  "iface": 0.84,
+  "drop": 0.128,
+  "n_res": 3
+ },
+ {
+  "interface": "8a44_AC",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.898,
+  "iface": 0.759,
+  "drop": 0.139,
+  "n_res": 18
+ },
+ {
+  "interface": "8a44_AC",
+  "rescued": false,
+  "chain": "C",
+  "role": "HEAVY",
+  "whole": 0.962,
+  "iface": 0.941,
+  "drop": 0.021,
+  "n_res": 19
+ },
+ {
+  "interface": "8a44_AD",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.898,
+  "iface": 0.587,
+  "drop": 0.311,
+  "n_res": 6
+ },
+ {
+  "interface": "8a44_AD",
+  "rescued": false,
+  "chain": "D",
+  "role": "LIGHT",
+  "whole": 0.948,
+  "iface": 0.884,
+  "drop": 0.064,
+  "n_res": 7
+ },
+ {
+  "interface": "8a67_AD",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.934,
+  "iface": 0.911,
+  "drop": 0.023,
+  "n_res": 13
+ },
+ {
+  "interface": "8a67_AD",
+  "rescued": false,
+  "chain": "D",
+  "role": "HEAVY",
+  "whole": 0.847,
+  "iface": 0.734,
+  "drop": 0.113,
+  "n_res": 16
+ },
+ {
+  "interface": "8dn7_AC",
+  "rescued": true,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.842,
+  "iface": 0.75,
+  "drop": 0.092,
+  "n_res": 25
+ },
+ {
+  "interface": "8dn7_AC",
+  "rescued": true,
+  "chain": "C",
+  "role": "HEAVY",
+  "whole": 0.926,
+  "iface": 0.691,
+  "drop": 0.235,
+  "n_res": 23
+ },
+ {
+  "interface": "8dn7_AF",
+  "rescued": true,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.842,
+  "iface": 0.772,
+  "drop": 0.07,
+  "n_res": 10
+ },
+ {
+  "interface": "8dn7_AF",
+  "rescued": true,
+  "chain": "F",
+  "role": "LIGHT",
+  "whole": 0.926,
+  "iface": 0.795,
+  "drop": 0.131,
+  "n_res": 7
+ },
+ {
+  "interface": "8dtn_AB",
+  "rescued": false,
+  "chain": "A",
+  "role": "HEAVY",
+  "whole": 0.931,
+  "iface": 0.911,
+  "drop": 0.02,
+  "n_res": 20
+ },
+ {
+  "interface": "8dtn_AB",
+  "rescued": false,
+  "chain": "B",
+  "role": "ANTIGEN",
+  "whole": 0.633,
+  "iface": 0.682,
+  "drop": -0.049,
+  "n_res": 12
+ },
+ {
+  "interface": "8im0_AB-2",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.97,
+  "iface": 0.926,
+  "drop": 0.044,
+  "n_res": 17
+ },
+ {
+  "interface": "8im0_AB-2",
+  "rescued": false,
+  "chain": "B-2",
+  "role": "HEAVY",
+  "whole": 0.959,
+  "iface": 0.946,
+  "drop": 0.013,
+  "n_res": 14
+ },
+ {
+  "interface": "8ivx_AB",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.939,
+  "iface": 0.921,
+  "drop": 0.018,
+  "n_res": 23
+ },
+ {
+  "interface": "8ivx_AB",
+  "rescued": false,
+  "chain": "B",
+  "role": "HEAVY",
+  "whole": 0.916,
+  "iface": 0.739,
+  "drop": 0.177,
+  "n_res": 19
+ },
+ {
+  "interface": "8oud_AD",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.806,
+  "iface": 0.746,
+  "drop": 0.06,
+  "n_res": 33
+ },
+ {
+  "interface": "8oud_AD",
+  "rescued": false,
+  "chain": "D",
+  "role": "HEAVY",
+  "whole": 0.887,
+  "iface": 0.819,
+  "drop": 0.068,
+  "n_res": 28
+ },
+ {
+  "interface": "8oxx_AB",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.95,
+  "iface": 0.936,
+  "drop": 0.014,
+  "n_res": 16
+ },
+ {
+  "interface": "8oxx_AB",
+  "rescued": false,
+  "chain": "B",
+  "role": "HEAVY",
+  "whole": 0.924,
+  "iface": 0.676,
+  "drop": 0.248,
+  "n_res": 11
+ },
+ {
+  "interface": "8sfz_AD",
+  "rescued": true,
+  "chain": "A",
+  "role": "HEAVY",
+  "whole": 0.858,
+  "iface": 0.686,
+  "drop": 0.172,
+  "n_res": 18
+ },
+ {
+  "interface": "8sfz_AD",
+  "rescued": true,
+  "chain": "D",
+  "role": "ANTIGEN",
+  "whole": 0.951,
+  "iface": 0.932,
+  "drop": 0.019,
+  "n_res": 18
+ },
+ {
+  "interface": "8udz_AD",
+  "rescued": true,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.734,
+  "iface": 0.923,
+  "drop": -0.189,
+  "n_res": 7
+ },
+ {
+  "interface": "8udz_AD",
+  "rescued": true,
+  "chain": "D",
+  "role": "LIGHT",
+  "whole": 0.913,
+  "iface": 0.901,
+  "drop": 0.012,
+  "n_res": 7
+ },
+ {
+  "interface": "8uky_AC",
+  "rescued": false,
+  "chain": "A",
+  "role": "LIGHT",
+  "whole": 0.923,
+  "iface": 0.794,
+  "drop": 0.129,
+  "n_res": 7
+ },
+ {
+  "interface": "8uky_AC",
+  "rescued": false,
+  "chain": "C",
+  "role": "ANTIGEN",
+  "whole": 0.592,
+  "iface": 0.444,
+  "drop": 0.148,
+  "n_res": 12
+ },
+ {
+  "interface": "8uky_BC",
+  "rescued": false,
+  "chain": "B",
+  "role": "HEAVY",
+  "whole": 0.94,
+  "iface": 0.925,
+  "drop": 0.015,
+  "n_res": 18
+ },
+ {
+  "interface": "8uky_BC",
+  "rescued": false,
+  "chain": "C",
+  "role": "ANTIGEN",
+  "whole": 0.592,
+  "iface": 0.512,
+  "drop": 0.08,
+  "n_res": 16
+ },
+ {
+  "interface": "8vzo_AB",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.829,
+  "iface": 0.799,
+  "drop": 0.03,
+  "n_res": 28
+ },
+ {
+  "interface": "8vzo_AB",
+  "rescued": false,
+  "chain": "B",
+  "role": "HEAVY",
+  "whole": 0.849,
+  "iface": 0.521,
+  "drop": 0.328,
+  "n_res": 20
+ },
+ {
+  "interface": "8vzo_AC",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.829,
+  "iface": 0.896,
+  "drop": -0.067,
+  "n_res": 1
+ },
+ {
+  "interface": "8vzo_AC",
+  "rescued": false,
+  "chain": "C",
+  "role": "ANTIGEN",
+  "whole": 0.928,
+  "iface": 0.955,
+  "drop": -0.027,
+  "n_res": 1
+ },
+ {
+  "interface": "8z8v_AB",
+  "rescued": false,
+  "chain": "A",
+  "role": "ANTIGEN",
+  "whole": 0.935,
+  "iface": 0.897,
+  "drop": 0.038,
+  "n_res": 15
+ },
+ {
+  "interface": "8z8v_AB",
+  "rescued": false,
+  "chain": "B",
+  "role": "HEAVY",
+  "whole": 0.946,
+  "iface": 0.942,
+  "drop": 0.004,
+  "n_res": 25
+ }
+]

@@ -1,0 +1,28 @@
+{
+ "interface": "8slb_AC",
+ "top": [
+  101,
+  1,
+  0.5837230086326599,
+  0.01
+ ],
+ "best_acceptable": [
+  143,
+  0,
+  0.2878686189651489,
+  0.254
+ ],
+ "best_dockq_pose": [
+  122,
+  0,
+  0.19729365408420563,
+  0.655
+ ],
+ "iptm_gap": 0.295854389667511,
+ "posepose_dockq_top_vs_bestok": 0.012,
+ "posepose_dockq_top_vs_bestdq": 0.009,
+ "native_epitope_n": 9,
+ "predicted_epitope_n": 6,
+ "epitope_overlap_n": 0,
+ "epitope_jaccard": 0.0
+}

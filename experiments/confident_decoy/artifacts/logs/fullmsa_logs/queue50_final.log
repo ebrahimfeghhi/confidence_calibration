@@ -1,0 +1,144 @@
+07:54:47 queue scheduler start; target N=50; 69 (pdb,seed) jobs to run | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 30, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:54:47 GPU0: start 8che seed 131  (queue left ~68) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 30, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:54:47 GPU1: start 8che seed 132  (queue left ~67) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 30, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:54:47 GPU2: start 8che seed 133  (queue left ~66) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 30, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:54:47 GPU3: start 8che seed 134  (queue left ~65) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 30, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:56:58 GPU3: done 8che seed 134 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 33, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:56:58 GPU3: start 8che seed 135  (queue left ~64) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 33, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:56:59 GPU2: done 8che seed 133 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 33, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:56:59 GPU2: start 8che seed 136  (queue left ~63) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 33, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:57:01 GPU1: done 8che seed 132 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 33, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:57:01 GPU1: start 8che seed 137  (queue left ~62) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 33, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:57:56 GPU0: done 8che seed 131 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 34, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:57:56 GPU0: start 8che seed 138  (queue left ~61) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 34, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:59:08 GPU3: done 8che seed 135 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 36, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:59:08 GPU3: start 8che seed 139  (queue left ~60) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 36, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:59:08 GPU2: done 8che seed 136 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 36, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:59:08 GPU2: start 8che seed 140  (queue left ~59) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 36, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:59:13 GPU1: done 8che seed 137 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 37, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:59:13 GPU1: start 8che seed 141  (queue left ~58) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 37, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:00:06 GPU0: done 8che seed 138 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 38, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:00:06 GPU0: start 8che seed 142  (queue left ~57) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 38, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:01:18 GPU2: done 8che seed 140 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 40, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:01:18 GPU2: start 8che seed 143  (queue left ~56) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 40, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:01:18 GPU3: done 8che seed 139 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 40, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:01:18 GPU3: start 8che seed 144  (queue left ~55) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 40, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:01:23 GPU1: done 8che seed 141 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 41, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:01:23 GPU1: start 8che seed 145  (queue left ~54) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 41, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:02:19 GPU0: done 8che seed 142 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 42, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:02:19 GPU0: start 8che seed 146  (queue left ~53) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 42, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:03:29 GPU2: done 8che seed 143 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 44, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:03:29 GPU2: start 8che seed 147  (queue left ~52) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 44, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:03:29 GPU3: done 8che seed 144 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 44, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:03:29 GPU3: start 8che seed 148  (queue left ~51) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 44, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:03:33 GPU1: done 8che seed 145 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 45, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:03:33 GPU1: start 8che seed 149  (queue left ~50) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 45, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:04:29 GPU0: done 8che seed 146 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 46, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:04:29 GPU0: start 8che seed 150  (queue left ~49) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 46, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:05:40 GPU2: done 8che seed 147 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 48, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:05:40 GPU2: start 8av2 seed 145  (queue left ~48) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 48, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:05:40 GPU3: done 8che seed 148 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 48, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:05:40 GPU3: start 8av2 seed 146  (queue left ~47) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 48, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:05:44 GPU1: done 8che seed 149 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 49, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:05:44 GPU1: start 8av2 seed 147  (queue left ~46) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 49, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:06:38 GPU0: done 8che seed 150 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:06:38 GPU0: start 8av2 seed 148  (queue left ~45) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 44, '8aok': 50, '8bf4': 7}
+08:07:17 GPU3: done 8av2 seed 146 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 46, '8aok': 50, '8bf4': 7}
+08:07:17 GPU3: start 8av2 seed 149  (queue left ~44) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 46, '8aok': 50, '8bf4': 7}
+08:07:18 GPU2: done 8av2 seed 145 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 46, '8aok': 50, '8bf4': 7}
+08:07:18 GPU2: start 8av2 seed 150  (queue left ~43) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 46, '8aok': 50, '8bf4': 7}
+08:07:21 GPU1: done 8av2 seed 147 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 47, '8aok': 50, '8bf4': 7}
+08:07:21 GPU1: start 8bf4 seed 108  (queue left ~42) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 47, '8aok': 50, '8bf4': 7}
+08:08:15 GPU0: done 8av2 seed 148 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 48, '8aok': 50, '8bf4': 7}
+08:08:15 GPU0: start 8bf4 seed 109  (queue left ~41) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 48, '8aok': 50, '8bf4': 7}
+08:08:54 GPU3: done 8av2 seed 149 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 7}
+08:08:54 GPU3: start 8bf4 seed 110  (queue left ~40) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 7}
+08:08:55 GPU2: done 8av2 seed 150 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 7}
+08:08:55 GPU2: start 8bf4 seed 111  (queue left ~39) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 7}
+08:12:35 GPU1: done 8bf4 seed 108 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 8}
+08:12:35 GPU1: start 8bf4 seed 112  (queue left ~38) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 8}
+08:13:29 GPU0: done 8bf4 seed 109 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 9}
+08:13:29 GPU0: start 8bf4 seed 113  (queue left ~37) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 9}
+08:14:08 GPU3: done 8bf4 seed 110 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 11}
+08:14:08 GPU3: start 8bf4 seed 114  (queue left ~36) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 11}
+08:14:08 GPU2: done 8bf4 seed 111 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 11}
+08:14:08 GPU2: start 8bf4 seed 115  (queue left ~35) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 11}
+08:17:48 GPU1: done 8bf4 seed 112 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 12}
+08:17:48 GPU1: start 8bf4 seed 116  (queue left ~34) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 12}
+08:18:44 GPU0: done 8bf4 seed 113 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 13}
+08:18:44 GPU0: start 8bf4 seed 117  (queue left ~33) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 13}
+08:19:21 GPU3: done 8bf4 seed 114 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 15}
+08:19:21 GPU3: start 8bf4 seed 118  (queue left ~32) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 15}
+08:19:22 GPU2: done 8bf4 seed 115 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 15}
+08:19:22 GPU2: start 8bf4 seed 119  (queue left ~31) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 15}
+08:23:02 GPU1: done 8bf4 seed 116 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 16}
+08:23:02 GPU1: start 8bf4 seed 120  (queue left ~30) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 16}
+08:23:58 GPU0: done 8bf4 seed 117 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 17}
+08:23:58 GPU0: start 8bf4 seed 121  (queue left ~29) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 17}
+08:24:35 GPU3: done 8bf4 seed 118 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 19}
+08:24:35 GPU3: start 8bf4 seed 122  (queue left ~28) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 19}
+08:24:35 GPU2: done 8bf4 seed 119 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 19}
+08:24:35 GPU2: start 8bf4 seed 123  (queue left ~27) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 19}
+08:28:15 GPU1: done 8bf4 seed 120 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 20}
+08:28:15 GPU1: start 8bf4 seed 124  (queue left ~26) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 20}
+08:29:12 GPU0: done 8bf4 seed 121 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 21}
+08:29:12 GPU0: start 8bf4 seed 125  (queue left ~25) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 21}
+08:29:49 GPU2: done 8bf4 seed 123 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 23}
+08:29:49 GPU2: start 8bf4 seed 126  (queue left ~24) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 23}
+08:29:49 GPU3: done 8bf4 seed 122 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 23}
+08:29:49 GPU3: start 8bf4 seed 127  (queue left ~23) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 23}
+08:33:29 GPU1: done 8bf4 seed 124 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 24}
+08:33:29 GPU1: start 8bf4 seed 128  (queue left ~22) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 24}
+08:34:26 GPU0: done 8bf4 seed 125 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 25}
+08:34:26 GPU0: start 8bf4 seed 129  (queue left ~21) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 25}
+08:35:03 GPU2: done 8bf4 seed 126 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 27}
+08:35:03 GPU2: start 8bf4 seed 130  (queue left ~20) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 27}
+08:35:03 GPU3: done 8bf4 seed 127 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 27}
+08:35:03 GPU3: start 8bf4 seed 131  (queue left ~19) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 27}
+08:38:44 GPU1: done 8bf4 seed 128 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 28}
+08:38:44 GPU1: start 8bf4 seed 132  (queue left ~18) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 28}
+08:39:40 GPU0: done 8bf4 seed 129 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 29}
+08:39:40 GPU0: start 8bf4 seed 133  (queue left ~17) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 29}
+08:40:16 GPU2: done 8bf4 seed 130 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 31}
+08:40:16 GPU2: start 8bf4 seed 134  (queue left ~16) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 31}
+08:40:17 GPU3: done 8bf4 seed 131 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 31}
+08:40:17 GPU3: start 8bf4 seed 135  (queue left ~15) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 31}
+08:43:56 GPU1: done 8bf4 seed 132 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 32}
+08:43:56 GPU1: start 8bf4 seed 136  (queue left ~14) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 32}
+08:44:54 GPU0: done 8bf4 seed 133 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 33}
+08:44:54 GPU0: start 8bf4 seed 137  (queue left ~13) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 33}
+08:45:30 GPU3: done 8bf4 seed 135 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 35}
+08:45:30 GPU3: start 8bf4 seed 138  (queue left ~12) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 35}
+08:45:31 GPU2: done 8bf4 seed 134 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 35}
+08:45:31 GPU2: start 8bf4 seed 139  (queue left ~11) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 35}
+08:49:09 GPU1: done 8bf4 seed 136 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 36}
+08:49:09 GPU1: start 8bf4 seed 140  (queue left ~10) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 36}
+08:50:08 GPU0: done 8bf4 seed 137 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 37}
+08:50:08 GPU0: start 8bf4 seed 141  (queue left ~9) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 37}
+08:50:43 GPU3: done 8bf4 seed 138 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 39}
+08:50:43 GPU3: start 8bf4 seed 142  (queue left ~8) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 39}
+08:50:44 GPU2: done 8bf4 seed 139 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 39}
+08:50:44 GPU2: start 8bf4 seed 143  (queue left ~7) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 39}
+08:54:21 GPU1: done 8bf4 seed 140 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 40}
+08:54:21 GPU1: start 8bf4 seed 144  (queue left ~6) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 40}
+08:55:23 GPU0: done 8bf4 seed 141 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 41}
+08:55:23 GPU0: start 8bf4 seed 145  (queue left ~5) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 41}
+08:55:56 GPU3: done 8bf4 seed 142 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 43}
+08:55:56 GPU3: start 8bf4 seed 146  (queue left ~4) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 43}
+08:55:57 GPU2: done 8bf4 seed 143 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 43}
+08:55:57 GPU2: start 8bf4 seed 147  (queue left ~3) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 43}
+08:59:33 GPU1: done 8bf4 seed 144 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 44}
+08:59:33 GPU1: start 8bf4 seed 148  (queue left ~2) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 44}
+09:00:37 GPU0: done 8bf4 seed 145 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 45}
+09:00:37 GPU0: start 8bf4 seed 149  (queue left ~1) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 45}
+09:01:09 GPU3: done 8bf4 seed 146 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 47}
+09:01:09 GPU3: start 8bf4 seed 150  (queue left ~0) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 47}
+09:01:09 GPU2: done 8bf4 seed 147 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 47}
+09:01:09 GPU2: queue empty, worker exiting | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 47}
+09:04:46 GPU1: done 8bf4 seed 148 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 48}
+09:04:46 GPU1: queue empty, worker exiting | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 48}
+09:05:51 GPU0: done 8bf4 seed 149 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 49}
+09:05:51 GPU0: queue empty, worker exiting | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 49}
+09:06:22 GPU3: done 8bf4 seed 150 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 50}
+09:06:22 GPU3: queue empty, worker exiting | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 50}
+09:06:22 ALL_DONE queue N=50 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 50, '8av2': 50, '8aok': 50, '8bf4': 50}

@@ -1,0 +1,108 @@
+7xld q0 chain A: 250 poses, 18 iface residues
+7xld q1 chain B: 250 poses, 14 iface residues
+--- 7xld done (2/26) ---
+7z2m q0 chain A: 250 poses, 8 iface residues
+7z2m q1 chain B: 250 poses, 14 iface residues
+7z2m q2 chain K: 250 poses, 25 iface residues
+--- 7z2m done (3/26) ---
+8aok: already done (2 chains)
+8aom q0 chain A: 250 poses, 22 iface residues
+8aom q1 chain B: 250 poses, 21 iface residues
+--- 8aom done (4/26) ---
+8av2 q0 chain A: 250 poses, 27 iface residues
+8av2 q1 chain C: 250 poses, 28 iface residues
+--- 8av2 done (5/26) ---
+8be3 q0 chain A: 250 poses, 16 iface residues
+8be3 q1 chain B: 250 poses, 16 iface residues
+--- 8be3 done (6/26) ---
+8bf4 q0 chain A: 250 poses, 25 iface residues
+8bf4 q1 chain B: 250 poses, 26 iface residues
+--- 8bf4 done (7/26) ---
+8c3l q0 chain A: 250 poses, 18 iface residues
+8c3l q1 chain B: 250 poses, 21 iface residues
+--- 8c3l done (8/26) ---
+8c5h q0 chain A: 250 poses, 22 iface residues
+8c5h q1 chain B: 250 poses, 20 iface residues
+--- 8c5h done (9/26) ---
+8che q0 chain A: 250 poses, 20 iface residues
+8che q1 chain B: 250 poses, 14 iface residues
+8che q2 chain E: 250 poses, 14 iface residues
+--- 8che done (10/26) ---
+8fas q1 chain B: 250 poses, 6 iface residues
+8fas q2 chain C: 250 poses, 5 iface residues
+--- 8fas done (11/26) ---
+8fbw q0 chain A: 250 poses, 21 iface residues
+8fbw q2 chain C: 250 poses, 10 iface residues
+--- 8fbw done (12/26) ---
+8gho q0 chain A: 250 poses, 14 iface residues
+8gho q2 chain C: 250 poses, 10 iface residues
+--- 8gho done (13/26) ---
+8hxq q0 chain A: 250 poses, 20 iface residues
+8hxq q1 chain B: 250 poses, 12 iface residues
+--- 8hxq done (14/26) ---
+8ido q0 chain A: 250 poses, 18 iface residues
+8ido q1 chain D: 250 poses, 16 iface residues
+--- 8ido done (15/26) ---
+8pih q0 chain A: 250 poses, 26 iface residues
+8pih q1 chain B: 250 poses, 21 iface residues
+--- 8pih done (16/26) ---
+8q3j q0 chain A: 250 poses, 18 iface residues
+8q3j q2 chain C: 250 poses, 16 iface residues
+--- 8q3j done (17/26) ---
+8q7o q0 chain A: 250 poses, 21 iface residues
+8q7o q1 chain C: 250 poses, 14 iface residues
+--- 8q7o done (18/26) ---
+8qf4 q0 chain A: 250 poses, 24 iface residues
+8qf4 q1 chain B: 250 poses, 27 iface residues
+--- 8qf4 done (19/26) ---
+8qz3 q0 chain A: 250 poses, 7 iface residues
+8qz3 q1 chain C: 250 poses, 10 iface residues
+--- 8qz3 done (20/26) ---
+8slb q0 chain A: 250 poses, 35 iface residues
+8slb q1 chain B: 250 poses, 17 iface residues
+8slb q2 chain C: 250 poses, 11 iface residues
+--- 8slb done (21/26) ---
+8the q0 chain A: 250 poses, 30 iface residues
+8the q1 chain B: 250 poses, 20 iface residues
+--- 8the done (22/26) ---
+8w90 q0 chain A: 250 poses, 20 iface residues
+8w90 q1 chain B: 250 poses, 20 iface residues
+--- 8w90 done (23/26) ---
+8weo q0 chain A: 250 poses, 25 iface residues
+8weo q1 chain B: 250 poses, 16 iface residues
+--- 8weo done (24/26) ---
+8yxi q0 chain A: 250 poses, 4 iface residues
+8yxi q1 chain B: 250 poses, 15 iface residues
+8yxi q2 chain C: 250 poses, 22 iface residues
+--- 8yxi done (25/26) ---
+9fww q0 chain A: 250 poses, 21 iface residues
+9fww q1 chain B: 250 poses, 16 iface residues
+--- 9fww done (26/26) ---
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/fold_selection_table.json
+7xld: already done (2 chains)
+7z2m: already done (3 chains)
+8aok: already done (2 chains)
+8aom: already done (2 chains)
+8av2: already done (2 chains)
+8be3: already done (2 chains)
+8bf4: already done (2 chains)
+8c3l: already done (2 chains)
+8c5h: already done (2 chains)
+8che: already done (3 chains)
+8fas: already done (2 chains)
+8fbw: already done (2 chains)
+8gho: already done (2 chains)
+8hxq: already done (2 chains)
+8ido: already done (2 chains)
+8pih: already done (2 chains)
+8q3j: already done (2 chains)
+8q7o: already done (2 chains)
+8qf4: already done (2 chains)
+8qz3: already done (2 chains)
+8slb: already done (3 chains)
+8the: already done (2 chains)
+8w90: already done (2 chains)
+8weo: already done (2 chains)
+8yxi: already done (3 chains)
+9fww: already done (2 chains)
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/fold_selection_table.json

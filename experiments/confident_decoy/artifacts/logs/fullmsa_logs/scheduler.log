@@ -1,0 +1,6 @@
+11:41:05 fullmsa scheduler start; pdbs=['7z2m', '8aok', '8av2', '8bf4', '8che', '8fas', '8fbw', '8q3j', '8slb', '8the', '8ux6', '8yxi'] | {'7z2m': 0, '8aok': 0, '8av2': 0, '8bf4': 0, '8che': 0, '8fas': 0, '8fbw': 0, '8q3j': 0, '8slb': 0, '8the': 0, '8ux6': 0, '8yxi': 0}
+11:41:05 launched 7z2m on GPU0 | {'7z2m': 0, '8aok': 0, '8av2': 0, '8bf4': 0, '8che': 0, '8fas': 0, '8fbw': 0, '8q3j': 0, '8slb': 0, '8the': 0, '8ux6': 0, '8yxi': 0}
+11:41:05 launched 8aok on GPU1 | {'7z2m': 0, '8aok': 0, '8av2': 0, '8bf4': 0, '8che': 0, '8fas': 0, '8fbw': 0, '8q3j': 0, '8slb': 0, '8the': 0, '8ux6': 0, '8yxi': 0}
+11:41:05 launched 8av2 on GPU2 | {'7z2m': 0, '8aok': 0, '8av2': 0, '8bf4': 0, '8che': 0, '8fas': 0, '8fbw': 0, '8q3j': 0, '8slb': 0, '8the': 0, '8ux6': 0, '8yxi': 0}
+11:41:05 launched 8bf4 on GPU3 | {'7z2m': 0, '8aok': 0, '8av2': 0, '8bf4': 0, '8che': 0, '8fas': 0, '8fbw': 0, '8q3j': 0, '8slb': 0, '8the': 0, '8ux6': 0, '8yxi': 0}
+11:49:05 launched 8che on GPU1 | {'7z2m': 0, '8aok': 50, '8av2': 9, '8bf4': 1, '8che': 0, '8fas': 0, '8fbw': 0, '8q3j': 0, '8slb': 0, '8the': 0, '8ux6': 0, '8yxi': 0}

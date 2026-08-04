@@ -1,0 +1,65 @@
+[
+ {
+  "iface": "7ucx_AC",
+  "pdb": "7ucx",
+  "c1": "A",
+  "c2": "C",
+  "contacts": 17
+ },
+ {
+  "iface": "7yv1_AB",
+  "pdb": "7yv1",
+  "c1": "A",
+  "c2": "B",
+  "contacts": 26
+ },
+ {
+  "iface": "7zau_AB",
+  "pdb": "7zau",
+  "c1": "A",
+  "c2": "B",
+  "contacts": 49
+ },
+ {
+  "iface": "8be1_AC",
+  "pdb": "8be1",
+  "c1": "A",
+  "c2": "C",
+  "contacts": 28
+ },
+ {
+  "iface": "8ivx_AB",
+  "pdb": "8ivx",
+  "c1": "A",
+  "c2": "B",
+  "contacts": 42
+ },
+ {
+  "iface": "8ivx_AC",
+  "pdb": "8ivx",
+  "c1": "A",
+  "c2": "C",
+  "contacts": 15
+ },
+ {
+  "iface": "8pn0_BE",
+  "pdb": "8pn0",
+  "c1": "B",
+  "c2": "E",
+  "contacts": 10
+ },
+ {
+  "iface": "8ux6_AF",
+  "pdb": "8ux6",
+  "c1": "A",
+  "c2": "F",
+  "contacts": 21
+ },
+ {
+  "iface": "9jbq_AC",
+  "pdb": "9jbq",
+  "c1": "A",
+  "c2": "C",
+  "contacts": 27
+ }
+]

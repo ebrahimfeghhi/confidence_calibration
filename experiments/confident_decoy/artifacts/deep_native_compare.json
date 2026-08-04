@@ -1,0 +1,82 @@
+{
+ "8ivx_AB": {
+  "free": {
+   "n": 755,
+   "n_acceptable": 1,
+   "frac": 0.0013,
+   "top_pair_iptm": 0.74,
+   "sel_dockq": 0.005,
+   "best_dockq": 0.236,
+   "rescued": false
+  },
+  "native": {
+   "n": 755,
+   "n_acceptable": 3,
+   "frac": 0.004,
+   "top_pair_iptm": 0.551,
+   "sel_dockq": 0.009,
+   "best_dockq": 0.46,
+   "rescued": false
+  }
+ },
+ "8ivx_AC": {
+  "free": {
+   "n": 755,
+   "n_acceptable": 19,
+   "frac": 0.0252,
+   "top_pair_iptm": 0.773,
+   "sel_dockq": 0.007,
+   "best_dockq": 0.362,
+   "rescued": false
+  },
+  "native": {
+   "n": 755,
+   "n_acceptable": 7,
+   "frac": 0.0093,
+   "top_pair_iptm": 0.573,
+   "sel_dockq": 0.019,
+   "best_dockq": 0.334,
+   "rescued": false
+  }
+ },
+ "8oxw_AB": {
+  "free": {
+   "n": 755,
+   "n_acceptable": 3,
+   "frac": 0.004,
+   "top_pair_iptm": 0.708,
+   "sel_dockq": 0.019,
+   "best_dockq": 0.298,
+   "rescued": false
+  },
+  "native": {
+   "n": 745,
+   "n_acceptable": 27,
+   "frac": 0.0362,
+   "top_pair_iptm": 0.768,
+   "sel_dockq": 0.004,
+   "best_dockq": 0.693,
+   "rescued": false
+  }
+ },
+ "8oxw_AC": {
+  "free": {
+   "n": 755,
+   "n_acceptable": 3,
+   "frac": 0.004,
+   "top_pair_iptm": 0.671,
+   "sel_dockq": 0.009,
+   "best_dockq": 0.275,
+   "rescued": false
+  },
+  "native": {
+   "n": 745,
+   "n_acceptable": 28,
+   "frac": 0.0376,
+   "top_pair_iptm": 0.735,
+   "sel_dockq": 0.004,
+   "best_dockq": 0.623,
+   "rescued": false
+  }
+ }
+}

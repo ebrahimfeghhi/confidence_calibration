@@ -1,0 +1,13 @@
+7ucx_AC    n=250 n_ok=  1 top_ipTM=0.692 sel_DockQ=0.155 best_DockQ=0.269 CONFIDENT DECOY
+7yv1_AB    n=250 n_ok=  0 top_ipTM=0.436 sel_DockQ=0.082 best_DockQ=0.119 no acceptable pose
+7zau_AB    n=250 n_ok= 32 top_ipTM=0.556 sel_DockQ=0.004 best_DockQ=0.435 CONFIDENT DECOY
+8be1_AC    n=250 n_ok=  1 top_ipTM=0.398 sel_DockQ=0.022 best_DockQ=0.235 CONFIDENT DECOY
+8ivx_AB    n=250 n_ok=  0 top_ipTM=0.740 sel_DockQ=0.005 best_DockQ=0.144 no acceptable pose
+8ivx_AC    n=250 n_ok=  4 top_ipTM=0.773 sel_DockQ=0.007 best_DockQ=0.333 CONFIDENT DECOY
+8pn0_BE    n=250 n_ok=155 top_ipTM=0.390 sel_DockQ=0.084 best_DockQ=0.741 CONFIDENT DECOY
+8ux6_AF    n=250 n_ok=  1 top_ipTM=0.370 sel_DockQ=0.157 best_DockQ=0.246 CONFIDENT DECOY
+9jbq_AC    n=250 n_ok=  1 top_ipTM=0.498 sel_DockQ=0.041 best_DockQ=0.584 CONFIDENT DECOY
+
+selection SUCCEEDS (DockQ >= 0.23) for 0/9 -> []
+7 confident decoys -> ['7ucx_AC', '7zau_AB', '8be1_AC', '8ivx_AC', '8pn0_BE', '8ux6_AF', '9jbq_AC']
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/extra_set_101_150.json

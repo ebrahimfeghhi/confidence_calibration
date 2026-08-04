@@ -1,0 +1,433 @@
+{
+ "N": 4,
+ "dockq": [
+  {
+   "interface": "8av2_AC",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.54,
+   "sel_dockq": 0.08,
+   "best_dockq": 0.103,
+   "rescued": false
+  },
+  {
+   "interface": "8yxi_BC",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.21,
+   "sel_dockq": 0.063,
+   "best_dockq": 0.065,
+   "rescued": false
+  },
+  {
+   "interface": "8fas_BC",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.799,
+   "sel_dockq": 0.171,
+   "best_dockq": 0.667,
+   "rescued": false
+  },
+  {
+   "interface": "8yxi_AC",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.216,
+   "sel_dockq": 0.019,
+   "best_dockq": 0.019,
+   "rescued": false
+  },
+  {
+   "interface": "8fbw_AC",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.61,
+   "sel_dockq": 0.184,
+   "best_dockq": 0.231,
+   "rescued": false
+  },
+  {
+   "interface": "8aok_AB",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.58,
+   "sel_dockq": 0.044,
+   "best_dockq": 0.487,
+   "rescued": false
+  },
+  {
+   "interface": "8bf4_AB",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.247,
+   "sel_dockq": 0.005,
+   "best_dockq": 0.554,
+   "rescued": false
+  },
+  {
+   "interface": "8the_AB",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.459,
+   "sel_dockq": 0.109,
+   "best_dockq": 0.421,
+   "rescued": false
+  },
+  {
+   "interface": "8q3j_AC",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.482,
+   "sel_dockq": 0.121,
+   "best_dockq": 0.75,
+   "rescued": false
+  },
+  {
+   "interface": "7z2m_AJ",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.276,
+   "sel_dockq": 0.352,
+   "best_dockq": 0.562,
+   "rescued": true
+  },
+  {
+   "interface": "8che_BE",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.46,
+   "sel_dockq": 0.458,
+   "best_dockq": 0.486,
+   "rescued": true
+  },
+  {
+   "interface": "8che_AE",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.444,
+   "sel_dockq": 0.09,
+   "best_dockq": 0.428,
+   "rescued": false
+  },
+  {
+   "interface": "8slb_AB",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.328,
+   "sel_dockq": 0.057,
+   "best_dockq": 0.392,
+   "rescued": false
+  },
+  {
+   "interface": "8ux6_DF",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.36,
+   "sel_dockq": 0.075,
+   "best_dockq": 0.18,
+   "rescued": false
+  },
+  {
+   "interface": "8slb_AC",
+   "n_poses": 20,
+   "sel_pair_iptm": 0.297,
+   "sel_dockq": 0.022,
+   "best_dockq": 0.289,
+   "rescued": false
+  }
+ ],
+ "fold": [
+  {
+   "pdb": "7z2m",
+   "qidx": 0,
+   "role": "ANTIBODY",
+   "chain": "A",
+   "n": 20,
+   "best_lddt": 0.947,
+   "mean_lddt": 0.941
+  },
+  {
+   "pdb": "7z2m",
+   "qidx": 1,
+   "role": "ANTIBODY",
+   "chain": "B",
+   "n": 20,
+   "best_lddt": 0.946,
+   "mean_lddt": 0.933
+  },
+  {
+   "pdb": "7z2m",
+   "qidx": 2,
+   "role": "ANTIGEN",
+   "chain": "K",
+   "n": 20,
+   "best_lddt": 0.937,
+   "mean_lddt": 0.907
+  },
+  {
+   "pdb": "8aok",
+   "qidx": 0,
+   "role": "ANTIGEN",
+   "chain": "A",
+   "n": 20,
+   "best_lddt": 0.902,
+   "mean_lddt": 0.891
+  },
+  {
+   "pdb": "8aok",
+   "qidx": 1,
+   "role": "ANTIBODY",
+   "chain": "B",
+   "n": 20,
+   "best_lddt": 0.867,
+   "mean_lddt": 0.851
+  },
+  {
+   "pdb": "8av2",
+   "qidx": 0,
+   "role": "ANTIGEN",
+   "chain": "A",
+   "n": 20,
+   "best_lddt": 0.864,
+   "mean_lddt": 0.846
+  },
+  {
+   "pdb": "8av2",
+   "qidx": 1,
+   "role": "ANTIBODY",
+   "chain": "C",
+   "n": 20,
+   "best_lddt": 0.827,
+   "mean_lddt": 0.797
+  },
+  {
+   "pdb": "8bf4",
+   "qidx": 0,
+   "role": "ANTIBODY",
+   "chain": "D",
+   "n": 20,
+   "best_lddt": 0.915,
+   "mean_lddt": 0.904
+  },
+  {
+   "pdb": "8bf4",
+   "qidx": 1,
+   "role": "ANTIGEN",
+   "chain": "F",
+   "n": 20,
+   "best_lddt": 0.9,
+   "mean_lddt": 0.895
+  },
+  {
+   "pdb": "8bf4",
+   "qidx": 2,
+   "role": "ANTIBODY",
+   "chain": "E",
+   "n": 20,
+   "best_lddt": 0.934,
+   "mean_lddt": 0.926
+  },
+  {
+   "pdb": "8che",
+   "qidx": 0,
+   "role": "ANTIBODY",
+   "chain": "H",
+   "n": 20,
+   "best_lddt": 0.951,
+   "mean_lddt": 0.942
+  },
+  {
+   "pdb": "8che",
+   "qidx": 1,
+   "role": "ANTIBODY",
+   "chain": "L",
+   "n": 20,
+   "best_lddt": 0.934,
+   "mean_lddt": 0.925
+  },
+  {
+   "pdb": "8che",
+   "qidx": 2,
+   "role": "ANTIGEN",
+   "chain": "C",
+   "n": 20,
+   "best_lddt": 0.58,
+   "mean_lddt": 0.402
+  },
+  {
+   "pdb": "8fas",
+   "qidx": 0,
+   "role": "ANTIBODY",
+   "chain": "A",
+   "n": 20,
+   "best_lddt": 0.968,
+   "mean_lddt": 0.951
+  },
+  {
+   "pdb": "8fas",
+   "qidx": 1,
+   "role": "ANTIBODY",
+   "chain": "B",
+   "n": 20,
+   "best_lddt": 0.965,
+   "mean_lddt": 0.95
+  },
+  {
+   "pdb": "8fas",
+   "qidx": 2,
+   "role": "ANTIGEN",
+   "chain": "C",
+   "n": 20,
+   "best_lddt": 0.79,
+   "mean_lddt": 0.631
+  },
+  {
+   "pdb": "8fbw",
+   "qidx": 0,
+   "role": "ANTIBODY",
+   "chain": "C",
+   "n": 20,
+   "best_lddt": 0.932,
+   "mean_lddt": 0.919
+  },
+  {
+   "pdb": "8fbw",
+   "qidx": 1,
+   "role": "ANTIBODY",
+   "chain": "D",
+   "n": 20,
+   "best_lddt": 0.946,
+   "mean_lddt": 0.933
+  },
+  {
+   "pdb": "8fbw",
+   "qidx": 2,
+   "role": "ANTIGEN",
+   "chain": "E",
+   "n": 20,
+   "best_lddt": 0.355,
+   "mean_lddt": 0.333
+  },
+  {
+   "pdb": "8q3j",
+   "qidx": 0,
+   "role": "ANTIGEN",
+   "chain": "A",
+   "n": 20,
+   "best_lddt": 0.864,
+   "mean_lddt": 0.86
+  },
+  {
+   "pdb": "8q3j",
+   "qidx": 1,
+   "role": "ANTIBODY",
+   "chain": "B",
+   "n": 20,
+   "best_lddt": 0.938,
+   "mean_lddt": 0.924
+  },
+  {
+   "pdb": "8q3j",
+   "qidx": 2,
+   "role": "ANTIBODY",
+   "chain": "C",
+   "n": 20,
+   "best_lddt": 0.919,
+   "mean_lddt": 0.903
+  },
+  {
+   "pdb": "8slb",
+   "qidx": 0,
+   "role": "ANTIGEN",
+   "chain": "A",
+   "n": 20,
+   "best_lddt": 0.882,
+   "mean_lddt": 0.878
+  },
+  {
+   "pdb": "8slb",
+   "qidx": 1,
+   "role": "ANTIBODY",
+   "chain": "H",
+   "n": 20,
+   "best_lddt": 0.931,
+   "mean_lddt": 0.921
+  },
+  {
+   "pdb": "8slb",
+   "qidx": 2,
+   "role": "ANTIBODY",
+   "chain": "L",
+   "n": 20,
+   "best_lddt": 0.965,
+   "mean_lddt": 0.959
+  },
+  {
+   "pdb": "8the",
+   "qidx": 0,
+   "role": "ANTIGEN",
+   "chain": "A",
+   "n": 20,
+   "best_lddt": 0.911,
+   "mean_lddt": 0.907
+  },
+  {
+   "pdb": "8the",
+   "qidx": 1,
+   "role": "ANTIBODY",
+   "chain": "H",
+   "n": 20,
+   "best_lddt": 0.883,
+   "mean_lddt": 0.861
+  },
+  {
+   "pdb": "8the",
+   "qidx": 2,
+   "role": "ANTIBODY",
+   "chain": "L",
+   "n": 20,
+   "best_lddt": 0.92,
+   "mean_lddt": 0.904
+  },
+  {
+   "pdb": "8ux6",
+   "qidx": 0,
+   "role": "ANTIBODY",
+   "chain": "C",
+   "n": 20,
+   "best_lddt": 0.937,
+   "mean_lddt": 0.933
+  },
+  {
+   "pdb": "8ux6",
+   "qidx": 1,
+   "role": "ANTIBODY",
+   "chain": "D",
+   "n": 20,
+   "best_lddt": 0.944,
+   "mean_lddt": 0.937
+  },
+  {
+   "pdb": "8ux6",
+   "qidx": 2,
+   "role": "ANTIGEN",
+   "chain": "F",
+   "n": 20,
+   "best_lddt": 0.865,
+   "mean_lddt": 0.798
+  },
+  {
+   "pdb": "8yxi",
+   "qidx": 0,
+   "role": "ANTIBODY",
+   "chain": "C",
+   "n": 20,
+   "best_lddt": 0.892,
+   "mean_lddt": 0.884
+  },
+  {
+   "pdb": "8yxi",
+   "qidx": 1,
+   "role": "ANTIBODY",
+   "chain": "B",
+   "n": 20,
+   "best_lddt": 0.923,
+   "mean_lddt": 0.916
+  },
+  {
+   "pdb": "8yxi",
+   "qidx": 2,
+   "role": "ANTIGEN",
+   "chain": "A",
+   "n": 20,
+   "best_lddt": 0.927,
+   "mean_lddt": 0.919
+  }
+ ]
+}

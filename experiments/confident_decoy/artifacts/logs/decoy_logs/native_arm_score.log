@@ -1,0 +1,99 @@
+[ 1/33] 7ucx_AC      confident_decoy     free_best=0.269 -> native n_ok= 16 sel=0.871 best=0.983 RESCUED
+[ 2/33] 7yv1: NO native50 predictions yet
+[ 3/33] 7z2m_AJ      confident_decoy     free_best=0.608 -> native n_ok= 33 sel=0.436 best=0.538 RESCUED
+[ 4/33] 7zau: NO native50 predictions yet
+[ 5/33] 8a44_AC      no_acceptable_pose  free_best=0.038 -> native n_ok=  0 sel=0.019 best=0.036 -
+[ 5/33] 8a44_AD      no_acceptable_pose  free_best=0.019 -> native n_ok=  0 sel=0.016 best=0.017 -
+[ 6/33] 8a67_AD      no_acceptable_pose  free_best=0.157 -> native n_ok=  0 sel=0.073 best=0.171 -
+[ 7/33] 8aok_AB      confident_decoy     free_best=0.695 -> native n_ok=222 sel=0.739 best=0.796 RESCUED
+[ 8/33] 8av2_AC      confident_decoy     free_best=0.612 -> native n_ok=250 sel=0.878 best=0.954 RESCUED
+[ 9/33] 8be1: NO native50 predictions yet
+[10/33] 8bf4_AB      confident_decoy     free_best=0.723 -> native n_ok=115 sel=0.718 best=0.764 RESCUED
+[11/33] 8che_AE      confident_decoy     free_best=0.438 -> native n_ok=119 sel=0.959 best=0.977 RESCUED
+[11/33] 8che_BE      confident_decoy     free_best=0.529 -> native n_ok=120 sel=0.953 best=0.961 RESCUED
+[12/33] 8dn7: NO native50 predictions yet
+[13/33] 8dtn_AB      no_acceptable_pose  free_best=0.136 -> native n_ok=  0 sel=0.026 best=0.224 -
+[14/33] 8fas_BC      confident_decoy     free_best=0.987 -> native n_ok=203 sel=0.173 best=0.994 -
+Traceback (most recent call last):
+  File "/home/ebrahim/confident_decoy_experiments/scripts/score_native_arm.py", line 122, in <module>
+    if all(res.get(f"{pdb}_{c1}{c2}", {}).get("n", 0) >= len(SEEDS) * len(SAMPLES)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/confident_decoy_experiments/scripts/score_native_arm.py", line 123, in <genexpr>
+    for c1, c2 in pairs):
+        ^^^^^^
+ValueError: too many values to unpack (expected 2)
+[ 2/33] 7yv1: NO native50 predictions yet
+[ 4/33] 7zau: NO native50 predictions yet
+[ 9/33] 8be1_AC      confident_decoy     free_best=0.235 -> native n_ok=  0 sel=0.061 best=0.137 -
+[12/33] 8dn7_AC      no_acceptable_pose  free_best=0.077 -> native n_ok=  0 sel=0.008 best=0.074 -
+[12/33] 8dn7_AF      no_acceptable_pose  free_best=0.055 -> native n_ok=  0 sel=0.011 best=0.053 -
+[16/33] 8im0: NO native50 predictions yet
+[17/33] 8ivx_AB      no_acceptable_pose  free_best=0.144 -> native n_ok=  0 sel=0.009 best=0.138 -
+[17/33] 8ivx_AC      confident_decoy     free_best=0.333 -> native n_ok=  2 sel=0.019 best=0.257 -
+[18/33] 8oud: NO native50 predictions yet
+[19/33] 8oxw_AB      confident_decoy     free_best=0.298 -> native n_ok= 12 sel=0.004 best=0.676 -
+[19/33] 8oxw_AC      confident_decoy     free_best=0.275 -> native n_ok= 13 sel=0.004 best=0.550 -
+[20/33] 8oxx_AB      no_acceptable_pose  free_best=0.162 -> native n_ok=  0 sel=0.014 best=0.134 -
+[20/33] 8oxx_AC      confident_decoy     free_best=0.343 -> native n_ok=  0 sel=0.039 best=0.190 -
+[21/33] 8pn0: NO native50 predictions yet
+[23/33] 8sfz_AD      no_acceptable_pose  free_best=0.091 -> native n_ok=160 sel=0.864 best=0.934 RESCUED
+[24/33] 8slb_AB      confident_decoy     free_best=0.462 -> native n_ok=145 sel=0.907 best=0.945 RESCUED
+[24/33] 8slb_AC      confident_decoy     free_best=0.655 -> native n_ok= 99 sel=0.875 best=0.967 RESCUED
+[25/33] 8the_AB      confident_decoy     free_best=0.514 -> native n_ok=152 sel=0.392 best=0.604 RESCUED
+[26/33] 8udz: NO native50 predictions yet
+[27/33] 8uky_AC      no_acceptable_pose  free_best=0.044 -> native n_ok=  0 sel=0.019 best=0.086 -
+[27/33] 8uky_BC      no_acceptable_pose  free_best=0.054 -> native n_ok=  0 sel=0.023 best=0.055 -
+[28/33] 8ux6_AF      confident_decoy     free_best=0.246 -> native n_ok=  3 sel=0.086 best=0.270 -
+[29/33] 8vui_BC      confident_decoy     free_best=0.404 -> native n_ok=  1 sel=0.023 best=0.376 -
+[30/33] 8vzo: NO native50 predictions yet
+[32/33] 8z8v_AB      no_acceptable_pose  free_best=0.084 -> native n_ok=  0 sel=0.027 best=0.120 -
+[33/33] 9jbq_AC      confident_decoy     free_best=0.584 -> native n_ok= 14 sel=0.990 best=0.990 RESCUED
+
+=== NATIVE TEMPLATE ARM ===
+RUN A: confident decoys          rescued 11 / 19 scored
+RUN B: generation failures       rescued  1 / 12 scored
+                                 gained >=1 acceptable pose: 1 / 12
+
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/native_arm_scores.json
+[ 2/33] 7yv1: NO native50 predictions yet
+[ 4/33] 7zau: NO native50 predictions yet
+[ 9/33] 8be1_AC      confident_decoy     free_best=0.235 -> native n_ok=  0 sel=0.061 best=0.137 -
+[12/33] 8dn7_AC      no_acceptable_pose  free_best=0.077 -> native n_ok= 52 sel=0.495 best=0.593 RESCUED
+[12/33] 8dn7_AF      no_acceptable_pose  free_best=0.055 -> native n_ok= 47 sel=0.416 best=0.427 RESCUED
+[15/33] 8fbw_AC      confident_decoy     free_best=0.434 -> native n_ok=249 sel=0.780 best=0.873 RESCUED
+[15/33] 8fbw_BC      confident_decoy     free_best=0.510 -> native n_ok=250 sel=0.742 best=0.858 RESCUED
+[16/33] 8im0: NO native50 predictions yet
+[18/33] 8oud_AD      no_acceptable_pose  free_best=0.157 -> native n_ok=  0 sel=0.004 best=0.072 -
+[21/33] 8pn0_BE      confident_decoy     free_best=0.741 -> native n_ok=140 sel=0.913 best=0.939 RESCUED
+[22/33] 8q3j_AB      confident_decoy     free_best=0.705 -> native n_ok= 51 sel=0.930 best=0.930 RESCUED
+[22/33] 8q3j_AC      confident_decoy     free_best=0.531 -> native n_ok= 49 sel=0.826 best=0.924 RESCUED
+[23/33] 8sfz_AD      no_acceptable_pose  free_best=0.091 -> native n_ok=250 sel=0.893 best=0.934 RESCUED
+[26/33] 8udz_AC      confident_decoy     free_best=0.239 -> native n_ok= 64 sel=0.780 best=0.941 RESCUED
+[26/33] 8udz_AD      no_acceptable_pose  free_best=0.098 -> native n_ok= 64 sel=0.617 best=0.693 RESCUED
+[27/33] 8uky_AC      no_acceptable_pose  free_best=0.044 -> native n_ok=  0 sel=0.018 best=0.086 -
+[27/33] 8uky_BC      no_acceptable_pose  free_best=0.054 -> native n_ok=  0 sel=0.022 best=0.074 -
+[30/33] 8vzo: NO native50 predictions yet
+[31/33] 8yxi_AC      confident_decoy     free_best=0.295 -> native n_ok=250 sel=0.804 best=0.884 RESCUED
+[31/33] 8yxi_BC      confident_decoy     free_best=0.538 -> native n_ok=250 sel=0.970 best=0.982 RESCUED
+
+=== NATIVE TEMPLATE ARM ===
+RUN A: confident decoys          rescued 19 / 27 scored
+RUN B: generation failures       rescued  4 / 14 scored
+                                 gained >=1 acceptable pose: 4 / 14
+
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/native_arm_scores.json
+[ 2/33] 7yv1: NO native50 predictions yet
+[ 4/33] 7zau_AB      confident_decoy     free_best=0.435 -> native n_ok=  5 sel=0.011 best=0.787 -
+[16/33] 8im0_AB-2    no_acceptable_pose  free_best=0.016 -> native n_ok=  0 sel=0.013 best=0.020 -
+[18/33] 8oud_AD      no_acceptable_pose  free_best=0.157 -> native n_ok=  0 sel=0.005 best=0.132 -
+[21/33] 8pn0_BE      confident_decoy     free_best=0.741 -> native n_ok=250 sel=0.913 best=0.939 RESCUED
+[26/33] 8udz_AC      confident_decoy     free_best=0.239 -> native n_ok=115 sel=0.796 best=0.941 RESCUED
+[26/33] 8udz_AD      no_acceptable_pose  free_best=0.098 -> native n_ok=118 sel=0.580 best=0.693 RESCUED
+[30/33] 8vzo: NO native50 predictions yet
+
+=== NATIVE TEMPLATE ARM ===
+RUN A: confident decoys          rescued 19 / 28 scored
+RUN B: generation failures       rescued  4 / 15 scored
+                                 gained >=1 acceptable pose: 4 / 15
+
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/native_arm_scores.json

@@ -1,0 +1,74 @@
+27 jobs on GPUs ['0', '1', '2', '3']
+  free   8bf4               seed 131  8bf4-final-updated.json   [8bf4_AB:decoy]
+  free   8fbw               seed 123  8fbw-final-updated.json   [8fbw_AC:decoy]
+  free   8fbw               seed 143  8fbw-final-updated.json   [8fbw_BC:decoy]
+  free   8yxi               seed 101  8yxi-final-updated.json   [8yxi_AC:decoy, 8yxi_BC:decoy]
+  free   8the               seed 116  8the-final-updated.json   [8the_AB:decoy]
+  free   8av2               seed 113  8av2-final-updated.json   [8av2_AC:decoy]
+  native 8bf4_nativetmpl    seed 126  8bf4-nativetmpl.json   [8bf4_AB:good]
+  native 8the_nativetmpl    seed 145  8the-nativetmpl.json   [8the_AB:good]
+  native 8yxi_native50      seed 128  8yxi.json   [8yxi_AC:good, 8yxi_BC:good]
+  free   8slb               seed 101  8slb-final-updated.json   [8slb_AB:decoy, 8slb_AC:decoy]
+  native 8fbw_native50      seed 131  8fbw.json   [8fbw_AC:good, 8fbw_BC:good]
+  free   8pn0               seed 132  8pn0-final-updated.json   [8pn0_BE:decoy]
+  free   8q3j               seed 114  8q3j-final-updated.json   [8q3j_AB:decoy, 8q3j_AC:decoy]
+  free   9jbq               seed 120  9jbq-final-updated.json   [9jbq_AC:decoy]
+  free   8che               seed 124  8che-final-updated.json   [8che_AE:decoy, 8che_BE:decoy]
+  free   7ucx               seed 140  7ucx-final-updated.json   [7ucx_AC:decoy]
+  native 8slb_nativetmpl    seed 128  8slb-nativetmpl.json   [8slb_AB:good, 8slb_AC:good]
+  native 8pn0_native50      seed 104  8pn0-native50.json   [8pn0_BE:good]
+  native 8av2_nativetmpl    seed 122  8av2-nativetmpl.json   [8av2_AC:good]
+  free   7zau               seed 116  7zau-final-updated.json   [7zau_AB:decoy]
+  native 8q3j_native50      seed 139  8q3j.json   [8q3j_AB:good, 8q3j_AC:good]
+  native 9jbq_native50      seed 124  9jbq-native50.json   [9jbq_AC:good]
+  free   8aok               seed 110  8aok-final-updated.json   [8aok_AB:decoy]
+  native 8che_nativetmpl    seed 140  8che-nativetmpl.json   [8che_AE:good, 8che_BE:good]
+  native 7ucx_native50      seed 119  7ucx-native50.json   [7ucx_AC:good]
+  native 7zau_native50      seed 123  7zau-native50.json   [7zau_AB:good]
+  native 8aok_nativetmpl    seed 140  8aok-nativetmpl.json   [8aok_AB:good]
+[gpu0] START 8bf4|free|131
+[gpu1] START 8fbw|free|123
+[gpu2] START 8fbw|free|143
+[gpu3] START 8yxi|free|101
+[gpu3] DONE  8yxi|free|101  112s
+[gpu3] START 8the|free|116
+[gpu1] DONE  8fbw|free|123  139s
+[gpu1] START 8av2|free|113
+[gpu2] DONE  8fbw|free|143  140s
+[gpu2] START 8bf4_nativetmpl|native|126
+[gpu1] DONE  8av2|free|113  95s
+[gpu1] START 8the_nativetmpl|native|145
+[gpu0] DONE  8bf4|free|131  323s
+[gpu0] START 8yxi_native50|native|128
+[gpu3] DONE  8the|free|116  240s
+[gpu3] START 8slb|free|101
+[gpu0] DONE  8yxi_native50|native|128  110s
+[gpu0] START 8fbw_native50|native|131
+[gpu3] DONE  8slb|free|101  98s
+[gpu3] START 8pn0|free|132
+[gpu2] DONE  8bf4_nativetmpl|native|126  321s
+[gpu2] START 8q3j|free|114
+[gpu1] DONE  8the_nativetmpl|native|145  239s
+[gpu1] START 9jbq|free|120
+[gpu1] DONE  9jbq|free|120  78s
+[gpu1] START 8che|free|124
+[gpu0] DONE  8fbw_native50|native|131  137s
+[gpu0] START 7ucx|free|140
+[gpu0] DONE  7ucx|free|140  69s
+[gpu0] START 8slb_nativetmpl|native|128
+[gpu2] DONE  8q3j|free|114  185s
+[gpu2] START 8pn0_native50|native|104
+[gpu1] DONE  8che|free|124  125s
+[gpu1] START 8av2_nativetmpl|native|122
+[gpu0] DONE  8slb_nativetmpl|native|128  100s
+[gpu0] START 7zau|free|116
+[gpu1] DONE  8av2_nativetmpl|native|122  95s
+[gpu1] START 8q3j_native50|native|139
+[gpu3] DONE  8pn0|free|132  330s
+[gpu3] START 9jbq_native50|native|124
+[gpu3] DONE  9jbq_native50|native|124  80s
+[gpu3] START 8aok|free|110
+[gpu3] DONE  8aok|free|110  56s
+[gpu3] START 8che_nativetmpl|native|140
+[gpu1] DONE  8q3j_native50|native|139  186s
+[gpu1] START 7ucx_native50|native|119

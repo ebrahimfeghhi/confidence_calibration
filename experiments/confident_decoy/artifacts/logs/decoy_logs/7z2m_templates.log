@@ -1,0 +1,8 @@
+abonly    7z2m_AK n=250 n_ok= 18 topIpTM=0.410 selDockQ=0.125 best=0.431 still decoy
+abonly    7z2m_BK n=250 n_ok= 67 topIpTM=0.409 selDockQ=0.181 best=0.368 still decoy
+agonly    7z2m_AK n=250 n_ok= 15 topIpTM=0.347 selDockQ=0.157 best=0.448 still decoy
+agonly    7z2m_BK n=250 n_ok= 82 topIpTM=0.345 selDockQ=0.206 best=0.415 still decoy
+native50  7z2m_AK n=250 n_ok= 18 topIpTM=0.347 selDockQ=0.058 best=0.445 still decoy
+native50  7z2m_BK n=250 n_ok= 55 topIpTM=0.389 selDockQ=0.062 best=0.384 still decoy
+
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/7z2m_template_scores.json

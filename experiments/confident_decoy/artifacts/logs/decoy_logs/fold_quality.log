@@ -1,0 +1,50 @@
+decoy 7z2m_AK    Ab[g=0.937 para=0.751] Ag[g=0.928 epi=0.925]
+decoy 7z2m_BK    Ab[g=0.931 para=0.818] Ag[g=0.928 epi=0.935]
+decoy 8aok_AB    Ab[g=0.843 para=0.565] Ag[g=0.891 epi=0.864]
+decoy 8av2_AC    Ab[g=0.801 para=0.608] Ag[g=0.837 epi=0.796]
+decoy 8bf4_AB    Ab[g=0.917 para=0.83] Ag[g=0.902 epi=0.776]
+SKIP 8che_AE: peptide antigen (15 res) - excluded by design
+SKIP 8che_BE: peptide antigen (15 res) - excluded by design
+SKIP 8fas_BC: peptide antigen (11 res) - excluded by design
+SKIP 8fbw_AC: peptide antigen (16 res) - excluded by design
+decoy 8q3j_AC    Ab[g=0.876 para=0.525] Ag[g=0.833 epi=0.84]
+decoy 8slb_AB    Ab[g=0.915 para=0.614] Ag[g=0.884 epi=0.843]
+decoy 8slb_AC    Ab[g=0.962 para=0.929] Ag[g=0.881 epi=0.937]
+decoy 8the_AB    Ab[g=0.854 para=0.528] Ag[g=0.904 epi=0.879]
+decoy 8yxi_AC    Ab[g=0.882 para=0.526] Ag[g=0.807 epi=0.9]
+decoy 8yxi_BC    Ab[g=0.911 para=0.911] Ag[g=0.807 epi=0.775]
+good  8hxq_AB    Ab[g=0.913 para=0.934] Ag[g=0.79 epi=0.788]
+good  8c3l_AB    Ab[g=0.909 para=0.92] Ag[g=0.869 epi=0.931]
+good  8qf4_AB    Ab[g=0.952 para=0.918] Ag[g=0.871 epi=0.878]
+good  9fww_AB    Ab[g=0.836 para=0.516] Ag[g=0.914 epi=0.912]
+good  8q7o_AC    Ab[g=0.966 para=0.978] Ag[g=0.763 epi=0.933]
+good  8c5h_AB    Ab[g=0.925 para=0.927] Ag[g=0.898 epi=0.918]
+SKIP 8gho_AC: peptide antigen (17 res) - excluded by design
+good  8w90_AB    Ab[g=0.96 para=0.979] Ag[g=0.855 epi=0.878]
+good  8be3_AB    Ab[g=0.917 para=0.87] Ag[g=0.942 epi=0.895]
+good  8weo_AB    Ab[g=0.941 para=0.925] Ag[g=0.938 epi=0.963]
+good  7xld_AB    Ab[g=0.958 para=0.965] Ag[g=0.91 epi=0.88]
+good  8aom_AB    Ab[g=0.937 para=0.884] Ag[g=0.894 epi=0.9]
+good  8ido_AD    Ab[g=0.863 para=0.763] Ag[g=0.921 epi=0.921]
+good  8pih_AB    Ab[g=0.97 para=0.977] Ag[g=0.922 epi=0.962]
+good  8qz3_AC    Ab[g=0.958 para=0.94] Ag[g=0.828 epi=0.893]
+
+=== MEDIANS (domain antigens only) ===
+metric                      decoy@topIpTM  decoy@bestDockQ  good@topIpTM  good-decoy
+antibody whole lDDT                 0.911            0.920         0.939      +0.028
+PARATOPE lDDT                       0.614            0.760         0.926      +0.312
+antigen whole lDDT                  0.884            0.896         0.896      +0.012
+EPITOPE lDDT                        0.864            0.898         0.906      +0.042
+antibody whole pLDDT                0.869            0.854         0.911      +0.042
+PARATOPE pLDDT                      0.783            0.691         0.930      +0.147
+antigen whole pLDDT                 0.832            0.820         0.875      +0.043
+EPITOPE pLDDT                       0.857            0.773         0.929      +0.073
+
+n: decoy=11 good=14
+skipped 5
+  8che_AE: peptide antigen (15 res) - excluded by design
+  8che_BE: peptide antigen (15 res) - excluded by design
+  8fas_BC: peptide antigen (11 res) - excluded by design
+  8fbw_AC: peptide antigen (16 res) - excluded by design
+  8gho_AC: peptide antigen (17 res) - excluded by design
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/fold_quality.json

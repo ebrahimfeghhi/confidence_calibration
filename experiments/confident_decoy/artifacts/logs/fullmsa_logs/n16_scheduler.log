@@ -1,0 +1,10 @@
+12:16:35 N=16 seed-parallel scheduler start; order=['8fas', '8ux6', '8fbw', '8q3j', '7z2m', '8slb', '8yxi', '8che', '8av2', '8aok', '8bf4', '8the'] | {'8fas': 0, '8ux6': 0, '8fbw': 0, '8q3j': 0, '7z2m': 2, '8slb': 0, '8yxi': 0, '8che': 16, '8av2': 16, '8aok': 16, '8bf4': 7, '8the': 0}
+12:16:35 8fas: launched 16 seeds across 4 GPUs | {'8fas': 0, '8ux6': 0, '8fbw': 0, '8q3j': 0, '7z2m': 2, '8slb': 0, '8yxi': 0, '8che': 16, '8av2': 16, '8aok': 16, '8bf4': 7, '8the': 0}
+12:18:58 8fas: DONE N=16 (16/16 on disk) | {'8fas': 16, '8ux6': 0, '8fbw': 0, '8q3j': 0, '7z2m': 2, '8slb': 0, '8yxi': 0, '8che': 16, '8av2': 16, '8aok': 16, '8bf4': 7, '8the': 0}
+12:18:58 8ux6: launched 16 seeds across 4 GPUs | {'8fas': 16, '8ux6': 0, '8fbw': 0, '8q3j': 0, '7z2m': 2, '8slb': 0, '8yxi': 0, '8che': 16, '8av2': 16, '8aok': 16, '8bf4': 7, '8the': 0}
+12:25:16 8ux6: DONE N=16 (16/16 on disk) | {'8fas': 16, '8ux6': 16, '8fbw': 0, '8q3j': 0, '7z2m': 2, '8slb': 0, '8yxi': 0, '8che': 16, '8av2': 16, '8aok': 16, '8bf4': 7, '8the': 0}
+12:25:16 8fbw: launched 16 seeds across 4 GPUs | {'8fas': 16, '8ux6': 16, '8fbw': 0, '8q3j': 0, '7z2m': 2, '8slb': 0, '8yxi': 0, '8che': 16, '8av2': 16, '8aok': 16, '8bf4': 7, '8the': 0}
+12:32:01 8fbw: DONE N=16 (16/16 on disk) | {'8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 0, '7z2m': 2, '8slb': 0, '8yxi': 0, '8che': 16, '8av2': 16, '8aok': 16, '8bf4': 7, '8the': 0}
+12:32:01 8q3j: launched 16 seeds across 4 GPUs | {'8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 0, '7z2m': 2, '8slb': 0, '8yxi': 0, '8che': 16, '8av2': 16, '8aok': 16, '8bf4': 7, '8the': 0}
+12:41:52 8q3j: DONE N=16 (16/16 on disk) | {'8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '7z2m': 2, '8slb': 0, '8yxi': 0, '8che': 16, '8av2': 16, '8aok': 16, '8bf4': 7, '8the': 0}
+12:41:52 7z2m: launched 14 seeds across 4 GPUs | {'8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '7z2m': 2, '8slb': 0, '8yxi': 0, '8che': 16, '8av2': 16, '8aok': 16, '8bf4': 7, '8the': 0}

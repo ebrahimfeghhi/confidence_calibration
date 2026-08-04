@@ -1,0 +1,20 @@
+7z2m_AK    n=250 n_ok=  2 top_ipTM=0.374 sel_DockQ=0.090 best_DockQ=0.433 CONFIDENT DECOY
+7z2m_BK    n=250 n_ok= 71 top_ipTM=0.406 sel_DockQ=0.027 best_DockQ=0.384 CONFIDENT DECOY
+8aok_AB    n=250 n_ok=109 top_ipTM=0.749 sel_DockQ=0.112 best_DockQ=0.695 CONFIDENT DECOY
+8av2_AC    n=250 n_ok=  1 top_ipTM=0.659 sel_DockQ=0.092 best_DockQ=0.612 CONFIDENT DECOY
+8bf4_AB    n=250 n_ok= 22 top_ipTM=0.857 sel_DockQ=0.014 best_DockQ=0.723 CONFIDENT DECOY
+8che_AE    n=250 n_ok= 25 top_ipTM=0.450 sel_DockQ=0.125 best_DockQ=0.438 CONFIDENT DECOY
+8che_BE    n=250 n_ok= 24 top_ipTM=0.443 sel_DockQ=0.087 best_DockQ=0.529 CONFIDENT DECOY
+8fas_BC    n=250 n_ok= 77 top_ipTM=0.857 sel_DockQ=0.175 best_DockQ=0.987 CONFIDENT DECOY
+8fbw_AC    n=250 n_ok= 11 top_ipTM=0.632 sel_DockQ=0.170 best_DockQ=0.434 CONFIDENT DECOY
+8q3j_AC    n=250 n_ok= 19 top_ipTM=0.763 sel_DockQ=0.036 best_DockQ=0.531 CONFIDENT DECOY
+8slb_AB    n=250 n_ok= 65 top_ipTM=0.601 sel_DockQ=0.012 best_DockQ=0.462 CONFIDENT DECOY
+8slb_AC    n=250 n_ok= 41 top_ipTM=0.584 sel_DockQ=0.010 best_DockQ=0.655 CONFIDENT DECOY
+8the_AB    n=250 n_ok= 62 top_ipTM=0.608 sel_DockQ=0.113 best_DockQ=0.514 CONFIDENT DECOY
+8ux6_DF    n=250 n_ok= 10 top_ipTM=0.377 sel_DockQ=0.254 best_DockQ=0.320 selection OK
+8yxi_AC    n=250 n_ok=  7 top_ipTM=0.293 sel_DockQ=0.006 best_DockQ=0.295 CONFIDENT DECOY
+8yxi_BC    n=250 n_ok=  4 top_ipTM=0.281 sel_DockQ=0.009 best_DockQ=0.538 CONFIDENT DECOY
+
+selection SUCCEEDS (DockQ >= 0.23) for 1/16 -> ['8ux6_DF']
+15 confident decoys -> ['7z2m_AK', '7z2m_BK', '8aok_AB', '8av2_AC', '8bf4_AB', '8che_AE', '8che_BE', '8fas_BC', '8fbw_AC', '8q3j_AC', '8slb_AB', '8slb_AC', '8the_AB', '8yxi_AC', '8yxi_BC']
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/decoy_set_101_150.json

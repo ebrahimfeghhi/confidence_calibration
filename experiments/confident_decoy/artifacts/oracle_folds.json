@@ -1,0 +1,264 @@
+{
+ "8av2": {
+  "0": {
+   "lddt": 0.884,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8av2/seed_133/predictions/8av2_sample_1.cif",
+   "model_chain": "A",
+   "seed": 133,
+   "sample": 1
+  },
+  "1": {
+   "lddt": 0.853,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8av2/seed_149/predictions/8av2_sample_2.cif",
+   "model_chain": "C",
+   "seed": 149,
+   "sample": 2
+  }
+ },
+ "8yxi": {
+  "0": {
+   "lddt": 0.898,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8yxi/seed_112/predictions/8yxi_sample_0.cif",
+   "model_chain": "A",
+   "seed": 112,
+   "sample": 0
+  },
+  "1": {
+   "lddt": 0.928,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8yxi/seed_118/predictions/8yxi_sample_2.cif",
+   "model_chain": "B",
+   "seed": 118,
+   "sample": 2
+  },
+  "2": {
+   "lddt": 0.933,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8yxi/seed_140/predictions/8yxi_sample_2.cif",
+   "model_chain": "C",
+   "seed": 140,
+   "sample": 2
+  }
+ },
+ "8fas": {
+  "0": {
+   "lddt": 0.972,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8fas/seed_125/predictions/8fas_sample_4.cif",
+   "model_chain": "A",
+   "seed": 125,
+   "sample": 4
+  },
+  "1": {
+   "lddt": 0.966,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8fas/seed_107/predictions/8fas_sample_4.cif",
+   "model_chain": "B",
+   "seed": 107,
+   "sample": 4
+  },
+  "2": {
+   "lddt": 0.984,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8fas/seed_120/predictions/8fas_sample_2.cif",
+   "model_chain": "C",
+   "seed": 120,
+   "sample": 2
+  }
+ },
+ "8fbw": {
+  "0": {
+   "lddt": 0.937,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8fbw/seed_115/predictions/8fbw_sample_0.cif",
+   "model_chain": "A",
+   "seed": 115,
+   "sample": 0
+  },
+  "1": {
+   "lddt": 0.946,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8fbw/seed_110/predictions/8fbw_sample_4.cif",
+   "model_chain": "C",
+   "seed": 110,
+   "sample": 4
+  },
+  "2": {
+   "lddt": 0.537,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8fbw/seed_115/predictions/8fbw_sample_0.cif",
+   "model_chain": "E",
+   "seed": 115,
+   "sample": 0
+  }
+ },
+ "8aok": {
+  "0": {
+   "lddt": 0.919,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8aok/seed_114/predictions/8aok_sample_0.cif",
+   "model_chain": "A",
+   "seed": 114,
+   "sample": 0
+  },
+  "1": {
+   "lddt": 0.891,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8aok/seed_118/predictions/8aok_sample_3.cif",
+   "model_chain": "B",
+   "seed": 118,
+   "sample": 3
+  }
+ },
+ "8bf4": {
+  "0": {
+   "lddt": 0.922,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8bf4/seed_120/predictions/8bf4_sample_1.cif",
+   "model_chain": "A",
+   "seed": 120,
+   "sample": 1
+  },
+  "1": {
+   "lddt": 0.907,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8bf4/seed_119/predictions/8bf4_sample_4.cif",
+   "model_chain": "C",
+   "seed": 119,
+   "sample": 4
+  },
+  "2": {
+   "lddt": 0.941,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8bf4/seed_122/predictions/8bf4_sample_1.cif",
+   "model_chain": "E",
+   "seed": 122,
+   "sample": 1
+  }
+ },
+ "8the": {
+  "0": {
+   "lddt": 0.915,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8the/seed_132/predictions/8the_sample_1.cif",
+   "model_chain": "A",
+   "seed": 132,
+   "sample": 1
+  },
+  "1": {
+   "lddt": 0.886,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8the/seed_147/predictions/8the_sample_3.cif",
+   "model_chain": "B",
+   "seed": 147,
+   "sample": 3
+  },
+  "2": {
+   "lddt": 0.925,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8the/seed_149/predictions/8the_sample_0.cif",
+   "model_chain": "C",
+   "seed": 149,
+   "sample": 0
+  }
+ },
+ "8q3j": {
+  "0": {
+   "lddt": 0.849,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8q3j/seed_127/predictions/8q3j_sample_0.cif",
+   "model_chain": "A",
+   "seed": 127,
+   "sample": 0
+  },
+  "1": {
+   "lddt": 0.948,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8q3j/seed_113/predictions/8q3j_sample_4.cif",
+   "model_chain": "C",
+   "seed": 113,
+   "sample": 4
+  },
+  "2": {
+   "lddt": 0.898,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8q3j/seed_119/predictions/8q3j_sample_2.cif",
+   "model_chain": "E",
+   "seed": 119,
+   "sample": 2
+  }
+ },
+ "7z2m": {
+  "0": {
+   "lddt": 0.952,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/7z2m/seed_119/predictions/7z2m_sample_4.cif",
+   "model_chain": "A",
+   "seed": 119,
+   "sample": 4
+  },
+  "1": {
+   "lddt": 0.953,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/7z2m/seed_142/predictions/7z2m_sample_0.cif",
+   "model_chain": "E",
+   "seed": 142,
+   "sample": 0
+  },
+  "2": {
+   "lddt": 0.889,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/7z2m/seed_134/predictions/7z2m_sample_1.cif",
+   "model_chain": "I",
+   "seed": 134,
+   "sample": 1
+  }
+ },
+ "8che": {
+  "0": {
+   "lddt": 0.956,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8che/seed_149/predictions/8che_sample_0.cif",
+   "model_chain": "A",
+   "seed": 149,
+   "sample": 0
+  },
+  "1": {
+   "lddt": 0.938,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8che/seed_119/predictions/8che_sample_0.cif",
+   "model_chain": "C",
+   "seed": 119,
+   "sample": 0
+  },
+  "2": {
+   "lddt": 0.654,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8che/seed_137/predictions/8che_sample_3.cif",
+   "model_chain": "E",
+   "seed": 137,
+   "sample": 3
+  }
+ },
+ "8slb": {
+  "0": {
+   "lddt": 0.896,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8slb/seed_104/predictions/8slb_sample_4.cif",
+   "model_chain": "A",
+   "seed": 104,
+   "sample": 4
+  },
+  "1": {
+   "lddt": 0.934,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8slb/seed_122/predictions/8slb_sample_0.cif",
+   "model_chain": "B",
+   "seed": 122,
+   "sample": 0
+  },
+  "2": {
+   "lddt": 0.966,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8slb/seed_113/predictions/8slb_sample_1.cif",
+   "model_chain": "C",
+   "seed": 113,
+   "sample": 1
+  }
+ },
+ "8ux6": {
+  "0": {
+   "lddt": 0.944,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8ux6/seed_134/predictions/8ux6_sample_0.cif",
+   "model_chain": "A",
+   "seed": 134,
+   "sample": 0
+  },
+  "1": {
+   "lddt": 0.95,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8ux6/seed_116/predictions/8ux6_sample_4.cif",
+   "model_chain": "C",
+   "seed": 116,
+   "sample": 4
+  },
+  "2": {
+   "lddt": 0.908,
+   "cif": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8ux6/seed_150/predictions/8ux6_sample_0.cif",
+   "model_chain": "E",
+   "seed": 150,
+   "sample": 0
+  }
+ }
+}

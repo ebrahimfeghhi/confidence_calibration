@@ -1,0 +1,368 @@
+2026-07-30 08:23:22,155 [/home/ebrahim/Protenix/runner/inference.py:627] INFO __main__: Using params for model protenix-v2: cycle=10, step=200
+2026-07-30 08:23:22,155 [/home/ebrahim/Protenix/runner/inference.py:648] INFO __main__: Inference by Protenix: model_size: 464M, with_feature: default, model_version: v2, dtype: bf16
+2026-07-30 08:23:23,491 [/home/ebrahim/Protenix/runner/inference.py:654] INFO __main__: Triangle kernels: multiplicative=cuequivariance, attention=cuequivariance
+2026-07-30 08:23:23,491 [/home/ebrahim/Protenix/runner/inference.py:658] INFO __main__: Optimization: shared_vars_cache=True, efficient_fusion=True, tf32=True
+2026-07-30 08:23:23,492 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: obsolete_pdbs_path already exists at /home/ebrahim/common/obsolete_to_successor.json
+2026-07-30 08:23:23,492 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: release_dates_path already exists at /home/ebrahim/common/release_date_cache.json
+2026-07-30 08:23:23,492 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Distributed environment: world size: 1, global rank: 0, local rank: 0
+2026-07-30 08:23:23,492 [/home/ebrahim/Protenix/runner/inference.py:98] INFO root: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [1]
+2026-07-30 08:23:23,492 [/home/ebrahim/Protenix/runner/inference.py:127] INFO root: Finished environment initialization.
+2026-07-30 08:24:01,085 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Loading from /home/ebrahim/checkpoint/protenix-v2.pt, strict: True
+2026-07-30 08:24:01,917 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Sampled key: module.input_embedder.atom_attention_encoder.linear_no_bias_ref_pos.weight
+2026-07-30 08:24:01,978 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Finish loading checkpoint.
+2026-07-30 08:24:01,982 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Model parameters: 464.44M
+2026-07-30 08:24:01,986 [/home/ebrahim/Protenix/runner/inference.py:428] INFO __main__: Loading data from /home/ebrahim/confident_decoy_experiments/artifacts/relabel_tmpl/8fbw-agonly.json
+2026-07-30 08:24:02,597 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:24:05,644 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:24:07,796 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:24:07,948 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:24:08,979 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:101]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:25:29,065 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:101] succeeded. Model forward time: 80.09s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:25:29,095 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 101 completed in 86.50s.
+2026-07-30 08:25:29,096 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:25:29,295 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:25:31,378 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:25:31,383 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:25:32,483 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:102]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:26:51,185 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:102] succeeded. Model forward time: 78.70s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:26:51,217 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 102 completed in 82.12s.
+2026-07-30 08:26:51,217 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:26:51,421 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:26:53,546 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:26:53,552 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:26:54,640 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:103]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:28:13,105 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:103] succeeded. Model forward time: 78.47s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:28:13,136 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 103 completed in 81.92s.
+2026-07-30 08:28:13,137 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:28:13,340 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:28:15,429 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:28:15,435 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:28:16,527 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:104]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:29:35,063 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:104] succeeded. Model forward time: 78.54s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:29:35,095 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 104 completed in 81.96s.
+2026-07-30 08:29:35,095 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:29:35,299 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:29:37,412 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:29:37,420 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:29:38,476 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:105]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:30:58,622 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:105] succeeded. Model forward time: 80.15s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:30:58,656 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 105 completed in 83.56s.
+2026-07-30 08:30:58,657 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:30:58,857 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:31:00,978 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:31:00,985 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:31:02,060 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:106]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:32:19,399 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:106] succeeded. Model forward time: 77.34s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:32:19,445 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 106 completed in 80.79s.
+2026-07-30 08:32:19,446 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:32:19,645 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:32:21,751 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:32:21,756 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:32:22,813 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:107]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:33:40,842 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:107] succeeded. Model forward time: 78.03s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:33:40,879 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 107 completed in 81.43s.
+2026-07-30 08:33:40,880 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:33:41,082 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:33:43,168 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:33:43,175 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:33:44,264 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:108]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:35:00,571 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:108] succeeded. Model forward time: 76.31s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:35:00,602 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 108 completed in 79.72s.
+2026-07-30 08:35:00,603 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:35:00,805 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:35:02,923 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:35:02,928 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:35:04,059 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:109]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:36:23,869 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:109] succeeded. Model forward time: 79.81s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:36:23,896 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 109 completed in 83.29s.
+2026-07-30 08:36:23,897 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:36:24,101 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:36:26,204 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:36:26,211 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:36:27,325 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:110]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:37:44,545 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:110] succeeded. Model forward time: 77.22s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:37:44,572 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 110 completed in 80.68s.
+2026-07-30 08:37:44,573 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:37:44,776 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:37:46,860 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:37:46,865 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:37:47,992 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:111]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:39:06,135 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:111] succeeded. Model forward time: 78.14s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:39:06,162 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 111 completed in 81.59s.
+2026-07-30 08:39:06,163 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:39:06,366 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:39:08,481 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:39:08,489 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:39:09,638 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:112]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:40:28,334 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:112] succeeded. Model forward time: 78.70s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:40:28,360 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 112 completed in 82.20s.
+2026-07-30 08:40:28,361 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:40:28,564 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:40:30,674 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:40:30,679 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:40:31,865 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:113]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:41:47,378 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:113] succeeded. Model forward time: 75.51s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:41:47,404 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 113 completed in 79.04s.
+2026-07-30 08:41:47,405 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:41:47,608 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:41:49,707 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:41:49,715 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:41:50,866 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:114]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:43:07,762 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:114] succeeded. Model forward time: 76.90s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:43:07,793 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 114 completed in 80.39s.
+2026-07-30 08:43:07,793 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:43:07,990 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:43:10,116 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:43:10,121 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:43:11,227 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:115]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:44:30,252 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:115] succeeded. Model forward time: 79.03s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:44:30,276 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 115 completed in 82.48s.
+2026-07-30 08:44:30,276 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:44:30,472 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:44:32,602 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:44:32,608 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:44:33,715 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:116]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:45:51,412 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:116] succeeded. Model forward time: 77.70s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:45:51,442 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 116 completed in 81.17s.
+2026-07-30 08:45:51,443 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:45:51,640 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:45:53,800 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:45:53,807 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:45:54,919 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:117]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:47:12,098 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:117] succeeded. Model forward time: 77.18s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:47:12,125 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 117 completed in 80.68s.
+2026-07-30 08:47:12,126 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:47:12,326 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:47:14,480 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:47:14,485 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:47:15,575 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:118]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:48:32,555 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:118] succeeded. Model forward time: 76.98s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:48:32,583 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 118 completed in 80.46s.
+2026-07-30 08:48:32,584 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:48:32,783 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:48:34,916 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:48:34,924 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:48:36,018 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:119]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:49:54,843 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:119] succeeded. Model forward time: 78.82s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:49:54,869 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 119 completed in 82.29s.
+2026-07-30 08:49:54,870 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:49:55,067 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:49:57,181 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:49:57,187 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:49:58,335 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:120]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:51:17,251 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:120] succeeded. Model forward time: 78.92s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:51:17,277 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 120 completed in 82.41s.
+2026-07-30 08:51:17,278 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:51:17,478 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:51:19,578 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:51:19,583 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:51:20,742 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:121]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:52:40,397 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:121] succeeded. Model forward time: 79.66s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:52:40,425 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 121 completed in 83.15s.
+2026-07-30 08:52:40,425 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:52:40,626 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:52:42,724 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:52:42,731 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:52:43,876 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:122]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:54:01,981 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:122] succeeded. Model forward time: 78.10s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:54:02,006 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 122 completed in 81.58s.
+2026-07-30 08:54:02,007 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:54:02,206 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:54:04,351 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:54:04,357 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:54:05,461 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:123]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:55:23,950 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:123] succeeded. Model forward time: 78.49s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:55:23,975 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 123 completed in 81.97s.
+2026-07-30 08:55:23,976 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:55:24,175 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:55:26,311 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:55:26,319 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:55:27,416 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:124]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:56:44,792 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:124] succeeded. Model forward time: 77.38s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:56:44,818 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 124 completed in 80.84s.
+2026-07-30 08:56:44,818 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:56:45,353 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:56:47,501 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:56:47,507 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:56:48,610 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:125]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:58:06,027 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:125] succeeded. Model forward time: 77.42s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:58:06,053 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 125 completed in 81.23s.
+2026-07-30 08:58:06,053 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:58:06,255 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:58:08,397 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:58:08,402 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:58:09,505 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:126]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 08:59:28,031 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:126] succeeded. Model forward time: 78.53s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 08:59:28,059 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 126 completed in 82.01s.
+2026-07-30 08:59:28,060 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 08:59:28,254 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 08:59:30,388 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 08:59:30,395 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 08:59:31,550 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:127]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:00:49,227 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:127] succeeded. Model forward time: 77.68s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:00:49,252 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 127 completed in 81.19s.
+2026-07-30 09:00:49,253 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:00:49,453 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:00:51,585 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:00:51,592 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:00:52,726 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:128]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:02:09,619 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:128] succeeded. Model forward time: 76.89s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:02:09,644 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 128 completed in 80.39s.
+2026-07-30 09:02:09,644 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:02:09,843 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:02:11,928 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:02:11,933 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:02:13,110 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:129]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:03:30,991 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:129] succeeded. Model forward time: 77.88s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:03:31,017 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 129 completed in 81.37s.
+2026-07-30 09:03:31,017 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:03:31,218 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:03:33,364 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:03:33,370 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:03:34,508 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:130]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:04:53,252 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:130] succeeded. Model forward time: 78.74s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:04:53,278 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 130 completed in 82.26s.
+2026-07-30 09:04:53,279 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:04:53,472 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:04:55,619 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:04:55,624 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:04:56,776 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:131]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:06:12,088 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:131] succeeded. Model forward time: 75.31s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:06:12,114 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 131 completed in 78.83s.
+2026-07-30 09:06:12,114 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:06:12,311 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:06:14,449 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:06:14,456 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:06:15,620 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:132]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:07:33,638 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:132] succeeded. Model forward time: 78.02s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:07:33,663 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 132 completed in 81.55s.
+2026-07-30 09:07:33,663 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:07:33,862 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:07:36,026 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:07:36,031 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:07:37,173 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:133]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:08:56,274 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:133] succeeded. Model forward time: 79.10s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:08:56,301 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 133 completed in 82.64s.
+2026-07-30 09:08:56,302 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:08:56,500 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:08:58,640 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:08:58,645 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:08:59,791 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:134]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:10:18,028 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:134] succeeded. Model forward time: 78.24s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:10:18,057 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 134 completed in 81.76s.
+2026-07-30 09:10:18,057 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:10:18,257 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:10:20,406 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:10:20,412 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:10:21,558 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:135]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:11:40,406 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:135] succeeded. Model forward time: 78.85s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:11:40,431 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 135 completed in 82.37s.
+2026-07-30 09:11:40,431 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:11:40,624 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:11:42,739 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:11:42,746 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:11:43,947 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:136]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:13:03,232 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:136] succeeded. Model forward time: 79.29s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:13:03,258 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 136 completed in 82.83s.
+2026-07-30 09:13:03,258 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:13:03,460 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:13:05,678 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:13:05,684 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:13:07,064 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:137]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:14:24,736 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:137] succeeded. Model forward time: 77.67s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:14:24,761 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 137 completed in 81.50s.
+2026-07-30 09:14:24,761 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:14:24,956 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:14:27,101 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:14:27,106 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:14:28,284 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:138]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:15:45,008 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:138] succeeded. Model forward time: 76.72s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:15:45,032 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 138 completed in 80.27s.
+2026-07-30 09:15:45,033 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:15:45,233 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:15:47,375 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:15:47,381 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:15:48,586 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:139]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:17:06,989 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:139] succeeded. Model forward time: 78.40s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:17:07,015 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 139 completed in 81.98s.
+2026-07-30 09:17:07,015 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:17:07,210 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:17:09,357 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:17:09,363 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:17:10,519 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:140]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:18:28,226 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:140] succeeded. Model forward time: 77.71s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:18:28,253 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 140 completed in 81.24s.
+2026-07-30 09:18:28,254 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:18:28,455 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:18:30,620 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:18:30,625 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:18:31,787 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:141]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:19:51,458 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:141] succeeded. Model forward time: 79.67s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:19:51,485 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 141 completed in 83.23s.
+2026-07-30 09:19:51,485 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:19:51,680 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:19:53,803 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:19:53,810 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:19:54,994 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:142]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:21:10,615 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:142] succeeded. Model forward time: 75.62s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:21:10,643 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 142 completed in 79.16s.
+2026-07-30 09:21:10,643 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:21:10,845 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:21:12,963 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:21:12,970 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:21:14,138 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:143]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:22:32,047 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:143] succeeded. Model forward time: 77.91s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:22:32,074 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 143 completed in 81.43s.
+2026-07-30 09:22:32,075 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:22:32,271 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:22:34,365 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:22:34,370 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:22:35,540 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:144]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:23:51,231 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:144] succeeded. Model forward time: 75.69s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:23:51,258 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 144 completed in 79.18s.
+2026-07-30 09:23:51,259 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:23:51,460 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:23:53,626 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:23:53,632 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:23:54,771 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:145]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:25:14,183 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:145] succeeded. Model forward time: 79.41s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:25:14,208 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 145 completed in 82.95s.
+2026-07-30 09:25:14,209 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:25:14,409 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:25:16,544 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:25:16,549 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:25:17,696 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:146]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:26:35,863 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:146] succeeded. Model forward time: 78.17s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:26:35,887 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 146 completed in 81.68s.
+2026-07-30 09:26:35,888 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:26:36,089 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:26:38,227 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:26:38,234 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:26:39,384 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:147]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:27:56,404 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:147] succeeded. Model forward time: 77.02s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:27:56,425 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 147 completed in 80.54s.
+2026-07-30 09:27:56,426 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:27:56,627 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:27:58,773 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:27:58,781 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:27:59,914 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:148]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:29:17,993 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:148] succeeded. Model forward time: 78.08s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:29:18,018 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 148 completed in 81.59s.
+2026-07-30 09:29:18,018 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:29:18,216 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:29:20,361 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:29:20,368 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:29:21,508 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:149]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:30:39,816 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:149] succeeded. Model forward time: 78.31s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:30:39,834 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 149 completed in 81.82s.
+2026-07-30 09:30:39,835 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8fbw_agonly...
+2026-07-30 09:30:40,037 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-30 09:30:42,197 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-30 09:30:42,201 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence LKSDKKIEYNETWYSRD
+2026-07-30 09:30:43,347 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8fbw_agonly [seed:150]: N_asym 9, N_token 1018, N_atom 7082, N_msa 15145
+2026-07-30 09:31:59,348 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8fbw_agonly [seed:150] succeeded. Model forward time: 76.00s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/relabel_out
+2026-07-30 09:31:59,372 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 150 completed in 79.54s.
+2026-07-30 09:31:59,372 [/home/ebrahim/Protenix/runner/inference.py:534] INFO __main__: [Rank 0] Job completed in 4076.78s.
+train scheduler 16.0
+inference scheduler 16.0
+Diffusion Module has 16.0

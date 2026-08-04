@@ -1,0 +1,2 @@
+DONE: 8bf4 scored — full-MSA N=50 complete for all 15 interfaces
+{'interface': '8bf4_AB', 'n_poses': 250, 'sel_pair_iptm': 0.816, 'sel_dockq': 0.014, 'best_dockq': 0.702, 'rescued': False}

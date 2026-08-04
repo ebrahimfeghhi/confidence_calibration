@@ -1,0 +1,60 @@
+[12:48] 8/12 pdbs at N>=4: {'7z2m': 2, '8aok': 50, '8av2': 44, '8bf4': 7, '8che': 20, '8fas': 16, '8fbw': 16, '8q3j': 16, '8slb': 0, '8the': 0, '8ux6': 16, '8yxi': 0}
+[12:53] 8/12 pdbs at N>=4: {'7z2m': 2, '8aok': 50, '8av2': 44, '8bf4': 7, '8che': 20, '8fas': 16, '8fbw': 16, '8q3j': 16, '8slb': 0, '8the': 0, '8ux6': 16, '8yxi': 0}
+[12:58] 8/12 pdbs at N>=4: {'7z2m': 2, '8aok': 50, '8av2': 44, '8bf4': 7, '8che': 20, '8fas': 16, '8fbw': 16, '8q3j': 16, '8slb': 0, '8the': 0, '8ux6': 16, '8yxi': 0}
+[13:03] 10/12 pdbs at N>=4: {'7z2m': 4, '8aok': 50, '8av2': 44, '8bf4': 7, '8che': 20, '8fas': 16, '8fbw': 16, '8q3j': 16, '8slb': 4, '8the': 0, '8ux6': 16, '8yxi': 0}
+[13:08] 11/12 pdbs at N>=4: {'7z2m': 4, '8aok': 50, '8av2': 44, '8bf4': 7, '8che': 20, '8fas': 16, '8fbw': 16, '8q3j': 16, '8slb': 4, '8the': 0, '8ux6': 16, '8yxi': 4}
+
+ALL AT N=4
+
+DOCKQ 8av2_AC    n= 20 sel_ipTM=0.540 sel_DockQ=0.080 best=0.103 -
+DOCKQ 8yxi_BC    n= 20 sel_ipTM=0.210 sel_DockQ=0.063 best=0.065 -
+DOCKQ 8fas_BC    n= 20 sel_ipTM=0.799 sel_DockQ=0.171 best=0.667 -
+DOCKQ 8yxi_AC    n= 20 sel_ipTM=0.216 sel_DockQ=0.019 best=0.019 -
+DOCKQ 8fbw_AC    n= 20 sel_ipTM=0.610 sel_DockQ=0.184 best=0.231 -
+DOCKQ 8aok_AB    n= 20 sel_ipTM=0.580 sel_DockQ=0.044 best=0.487 -
+DOCKQ 8bf4_AB    n= 20 sel_ipTM=0.247 sel_DockQ=0.005 best=0.554 -
+DOCKQ 8the_AB    n= 20 sel_ipTM=0.459 sel_DockQ=0.109 best=0.421 -
+DOCKQ 8q3j_AC    n= 20 sel_ipTM=0.482 sel_DockQ=0.121 best=0.750 -
+DOCKQ 7z2m_AJ    n= 20 sel_ipTM=0.276 sel_DockQ=0.352 best=0.562 RESCUED
+DOCKQ 8che_BE    n= 20 sel_ipTM=0.460 sel_DockQ=0.458 best=0.486 RESCUED
+DOCKQ 8che_AE    n= 20 sel_ipTM=0.444 sel_DockQ=0.090 best=0.428 -
+DOCKQ 8slb_AB    n= 20 sel_ipTM=0.328 sel_DockQ=0.057 best=0.392 -
+DOCKQ 8ux6_DF    n= 20 sel_ipTM=0.360 sel_DockQ=0.075 best=0.180 -
+DOCKQ 8slb_AC    n= 20 sel_ipTM=0.297 sel_DockQ=0.022 best=0.289 -
+FOLD 7z2m q0 ANTIBODY n= 20 best=0.947 mean=0.941
+FOLD 7z2m q1 ANTIBODY n= 20 best=0.946 mean=0.933
+FOLD 7z2m q2 ANTIGEN  n= 20 best=0.937 mean=0.907
+FOLD 8aok q0 ANTIGEN  n= 20 best=0.902 mean=0.891
+FOLD 8aok q1 ANTIBODY n= 20 best=0.867 mean=0.851
+FOLD 8av2 q0 ANTIGEN  n= 20 best=0.864 mean=0.846
+FOLD 8av2 q1 ANTIBODY n= 20 best=0.827 mean=0.797
+FOLD 8bf4 q0 ANTIBODY n= 20 best=0.915 mean=0.904
+FOLD 8bf4 q1 ANTIGEN  n= 20 best=0.900 mean=0.895
+FOLD 8bf4 q2 ANTIBODY n= 20 best=0.934 mean=0.926
+FOLD 8che q0 ANTIBODY n= 20 best=0.951 mean=0.942
+FOLD 8che q1 ANTIBODY n= 20 best=0.934 mean=0.925
+FOLD 8che q2 ANTIGEN  n= 20 best=0.580 mean=0.402
+FOLD 8fas q0 ANTIBODY n= 20 best=0.968 mean=0.951
+FOLD 8fas q1 ANTIBODY n= 20 best=0.965 mean=0.950
+FOLD 8fas q2 ANTIGEN  n= 20 best=0.790 mean=0.631
+FOLD 8fbw q0 ANTIBODY n= 20 best=0.932 mean=0.919
+FOLD 8fbw q1 ANTIBODY n= 20 best=0.946 mean=0.933
+FOLD 8fbw q2 ANTIGEN  n= 20 best=0.355 mean=0.333
+FOLD 8q3j q0 ANTIGEN  n= 20 best=0.864 mean=0.860
+FOLD 8q3j q1 ANTIBODY n= 20 best=0.938 mean=0.924
+FOLD 8q3j q2 ANTIBODY n= 20 best=0.919 mean=0.903
+FOLD 8slb q0 ANTIGEN  n= 20 best=0.882 mean=0.878
+FOLD 8slb q1 ANTIBODY n= 20 best=0.931 mean=0.921
+FOLD 8slb q2 ANTIBODY n= 20 best=0.965 mean=0.959
+FOLD 8the q0 ANTIGEN  n= 20 best=0.911 mean=0.907
+FOLD 8the q1 ANTIBODY n= 20 best=0.883 mean=0.861
+FOLD 8the q2 ANTIBODY n= 20 best=0.920 mean=0.904
+FOLD 8ux6 q0 ANTIBODY n= 20 best=0.937 mean=0.933
+FOLD 8ux6 q1 ANTIBODY n= 20 best=0.944 mean=0.937
+FOLD 8ux6 q2 ANTIGEN  n= 20 best=0.865 mean=0.798
+FOLD 8yxi q0 ANTIBODY n= 20 best=0.892 mean=0.884
+FOLD 8yxi q1 ANTIBODY n= 20 best=0.923 mean=0.916
+FOLD 8yxi q2 ANTIGEN  n= 20 best=0.927 mean=0.919
+
+RESCUED 2/15 -> ['7z2m_AJ', '8che_BE']
+WROTE fullmsa_n4_report.json

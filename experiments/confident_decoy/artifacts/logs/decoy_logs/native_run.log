@@ -1,0 +1,6 @@
+=== [17:52] native arm: GPU runs ===
+[05:05] GPU2 DONE  native50/8oud 50/50 seeds in 415.6 min (0 left)
+[07:12] GPU3 DONE  native50/7zau 23/50 seeds in 466.7 min (0 left)
+
+ALL DONE. 20 jobs run; 2 INCOMPLETE: [('native50', '8im0', 0), ('native50', '7zau', 23)]
+=== [07:12] NATIVE ARM GENERATION COMPLETE ===

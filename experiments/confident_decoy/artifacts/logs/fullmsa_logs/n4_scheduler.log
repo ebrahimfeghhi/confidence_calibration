@@ -1,0 +1,6 @@
+12:47:56 N=4 seed-parallel scheduler start; order=['7z2m', '8slb', '8yxi', '8the', '8fas', '8ux6', '8fbw', '8q3j', '8che', '8av2', '8aok', '8bf4'] | {'7z2m': 2, '8slb': 0, '8yxi': 0, '8the': 0, '8fas': 4, '8ux6': 4, '8fbw': 4, '8q3j': 4, '8che': 4, '8av2': 4, '8aok': 4, '8bf4': 4}
+12:47:56 7z2m: launched 2 seeds across 2 GPUs | {'7z2m': 2, '8slb': 0, '8yxi': 0, '8the': 0, '8fas': 4, '8ux6': 4, '8fbw': 4, '8q3j': 4, '8che': 4, '8av2': 4, '8aok': 4, '8bf4': 4}
+13:00:32 7z2m: DONE N=4 (4/4 on disk) | {'7z2m': 4, '8slb': 0, '8yxi': 0, '8the': 0, '8fas': 4, '8ux6': 4, '8fbw': 4, '8q3j': 4, '8che': 4, '8av2': 4, '8aok': 4, '8bf4': 4}
+13:00:32 8slb: launched 4 seeds across 4 GPUs | {'7z2m': 4, '8slb': 0, '8yxi': 0, '8the': 0, '8fas': 4, '8ux6': 4, '8fbw': 4, '8q3j': 4, '8che': 4, '8av2': 4, '8aok': 4, '8bf4': 4}
+13:02:16 8slb: DONE N=4 (4/4 on disk) | {'7z2m': 4, '8slb': 4, '8yxi': 0, '8the': 0, '8fas': 4, '8ux6': 4, '8fbw': 4, '8q3j': 4, '8che': 4, '8av2': 4, '8aok': 4, '8bf4': 4}
+13:02:16 8yxi: launched 4 seeds across 4 GPUs | {'7z2m': 4, '8slb': 4, '8yxi': 0, '8the': 0, '8fas': 4, '8ux6': 4, '8fbw': 4, '8q3j': 4, '8che': 4, '8av2': 4, '8aok': 4, '8bf4': 4}

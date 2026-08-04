@@ -1,0 +1,43 @@
+[ 25/113] 8b7h: confident_decoy=28  no_acceptable_pose=18  not_scored=2  solved=118
+[ 37/113] 8dtn: confident_decoy=28  no_acceptable_pose=19  not_scored=2  solved=118
+[ 42/113] 8evd: confident_decoy=28  no_acceptable_pose=19  not_scored=3  solved=118
+[ 45/113] 8f60: confident_decoy=28  no_acceptable_pose=19  not_scored=4  solved=119
+[ 90/113] 8ts0: confident_decoy=28  no_acceptable_pose=19  not_scored=6  solved=119
+
+=== FINAL, seeds 101-150, all FoldBench ab-ag interfaces ===
+  confident_decoy        28
+  no_acceptable_pose     19
+  not_scored             6
+  solved                 119
+
+confident decoys (28):
+  7ucx_AC      contacts=  17 n_ok=  1 top_ipTM=0.692 sel=0.155 best=0.269
+  7z2m_AJ      contacts=   3 n_ok= 47 top_ipTM=0.337 sel=0.039 best=0.608   <-- interface only 3 contact residues
+  7zau_AB      contacts=  49 n_ok= 32 top_ipTM=0.556 sel=0.004 best=0.435
+  8aok_AB      contacts=  46 n_ok=109 top_ipTM=0.749 sel=0.112 best=0.695
+  8av2_AC      contacts=  55 n_ok=  1 top_ipTM=0.659 sel=0.092 best=0.612
+  8be1_AC      contacts=  28 n_ok=  1 top_ipTM=0.398 sel=0.022 best=0.235
+  8bf4_AB      contacts=  51 n_ok= 22 top_ipTM=0.857 sel=0.014 best=0.723
+  8che_AE      contacts=  32 n_ok= 25 top_ipTM=0.450 sel=0.125 best=0.438
+  8che_BE      contacts=  24 n_ok= 24 top_ipTM=0.443 sel=0.087 best=0.529
+  8fas_BC      contacts=  11 n_ok= 77 top_ipTM=0.857 sel=0.175 best=0.987
+  8fbw_AC      contacts=  31 n_ok= 11 top_ipTM=0.632 sel=0.170 best=0.434
+  8fbw_BC      contacts=  10 n_ok=116 top_ipTM=0.566 sel=0.210 best=0.510
+  8ivx_AC      contacts=  15 n_ok=  4 top_ipTM=0.773 sel=0.007 best=0.333
+  8oxw_AB      contacts=  32 n_ok=  2 top_ipTM=0.610 sel=0.019 best=0.298
+  8oxw_AC      contacts=  32 n_ok=  2 top_ipTM=0.589 sel=0.009 best=0.275
+  8oxx_AC      contacts=  20 n_ok=  1 top_ipTM=0.432 sel=0.003 best=0.343
+  8pn0_BE      contacts=  10 n_ok=155 top_ipTM=0.390 sel=0.084 best=0.741
+  8q3j_AB      contacts=  25 n_ok= 24 top_ipTM=0.717 sel=0.035 best=0.705
+  8q3j_AC      contacts=  34 n_ok= 19 top_ipTM=0.763 sel=0.036 best=0.531
+  8slb_AB      contacts=  46 n_ok= 65 top_ipTM=0.601 sel=0.012 best=0.462
+  8slb_AC      contacts=  20 n_ok= 41 top_ipTM=0.584 sel=0.010 best=0.655
+  8the_AB      contacts=  50 n_ok= 62 top_ipTM=0.608 sel=0.113 best=0.514
+  8udz_AC      contacts=   8 n_ok=  1 top_ipTM=0.633 sel=0.005 best=0.239   <-- interface only 8 contact residues
+  8ux6_AF      contacts=  21 n_ok=  1 top_ipTM=0.370 sel=0.157 best=0.246
+  8vui_BC      contacts=  14 n_ok=  6 top_ipTM=0.695 sel=0.034 best=0.404
+  8yxi_AC      contacts=  13 n_ok=  7 top_ipTM=0.293 sel=0.006 best=0.295
+  8yxi_BC      contacts=  31 n_ok=  4 top_ipTM=0.281 sel=0.009 best=0.538
+  9jbq_AC      contacts=  27 n_ok=  1 top_ipTM=0.498 sel=0.041 best=0.584
+
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/abag_all_101_150.json

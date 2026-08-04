@@ -1,0 +1,281 @@
+[
+ {
+  "pdb": "7ucx",
+  "arm": "free",
+  "seed": 140,
+  "name": "7ucx",
+  "interfaces": [
+   "7ucx_AC:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/7ucx-final-updated.json"
+ },
+ {
+  "pdb": "7ucx",
+  "arm": "native",
+  "seed": 119,
+  "name": "7ucx_native50",
+  "interfaces": [
+   "7ucx_AC:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/native_tmpl/7ucx-native50.json"
+ },
+ {
+  "pdb": "7zau",
+  "arm": "free",
+  "seed": 116,
+  "name": "7zau",
+  "interfaces": [
+   "7zau_AB:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/7zau-final-updated.json"
+ },
+ {
+  "pdb": "7zau",
+  "arm": "native",
+  "seed": 123,
+  "name": "7zau_native50",
+  "interfaces": [
+   "7zau_AB:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/native_tmpl/7zau-native50.json"
+ },
+ {
+  "pdb": "8aok",
+  "arm": "free",
+  "seed": 110,
+  "name": "8aok",
+  "interfaces": [
+   "8aok_AB:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/8aok-final-updated.json"
+ },
+ {
+  "pdb": "8aok",
+  "arm": "native",
+  "seed": 140,
+  "name": "8aok_nativetmpl",
+  "interfaces": [
+   "8aok_AB:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/native_a3m_all/8aok-nativetmpl.json"
+ },
+ {
+  "pdb": "8av2",
+  "arm": "free",
+  "seed": 113,
+  "name": "8av2",
+  "interfaces": [
+   "8av2_AC:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/8av2-final-updated.json"
+ },
+ {
+  "pdb": "8av2",
+  "arm": "native",
+  "seed": 122,
+  "name": "8av2_nativetmpl",
+  "interfaces": [
+   "8av2_AC:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/native_a3m_all/8av2-nativetmpl.json"
+ },
+ {
+  "pdb": "8bf4",
+  "arm": "free",
+  "seed": 131,
+  "name": "8bf4",
+  "interfaces": [
+   "8bf4_AB:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/8bf4-final-updated.json"
+ },
+ {
+  "pdb": "8bf4",
+  "arm": "native",
+  "seed": 126,
+  "name": "8bf4_nativetmpl",
+  "interfaces": [
+   "8bf4_AB:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/native_a3m_all/8bf4-nativetmpl.json"
+ },
+ {
+  "pdb": "8che",
+  "arm": "free",
+  "seed": 124,
+  "name": "8che",
+  "interfaces": [
+   "8che_AE:decoy",
+   "8che_BE:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/8che-final-updated.json"
+ },
+ {
+  "pdb": "8che",
+  "arm": "native",
+  "seed": 140,
+  "name": "8che_nativetmpl",
+  "interfaces": [
+   "8che_AE:good",
+   "8che_BE:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/native_a3m_all/8che-nativetmpl.json"
+ },
+ {
+  "pdb": "8fbw",
+  "arm": "free",
+  "seed": 123,
+  "name": "8fbw",
+  "interfaces": [
+   "8fbw_AC:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/8fbw-final-updated.json"
+ },
+ {
+  "pdb": "8fbw",
+  "arm": "native",
+  "seed": 131,
+  "name": "8fbw_native50",
+  "interfaces": [
+   "8fbw_AC:good",
+   "8fbw_BC:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/native50/8fbw.json"
+ },
+ {
+  "pdb": "8fbw",
+  "arm": "free",
+  "seed": 143,
+  "name": "8fbw",
+  "interfaces": [
+   "8fbw_BC:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/8fbw-final-updated.json"
+ },
+ {
+  "pdb": "8pn0",
+  "arm": "free",
+  "seed": 132,
+  "name": "8pn0",
+  "interfaces": [
+   "8pn0_BE:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/8pn0-final-updated.json"
+ },
+ {
+  "pdb": "8pn0",
+  "arm": "native",
+  "seed": 104,
+  "name": "8pn0_native50",
+  "interfaces": [
+   "8pn0_BE:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/native_tmpl/8pn0-native50.json"
+ },
+ {
+  "pdb": "8q3j",
+  "arm": "free",
+  "seed": 114,
+  "name": "8q3j",
+  "interfaces": [
+   "8q3j_AB:decoy",
+   "8q3j_AC:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/8q3j-final-updated.json"
+ },
+ {
+  "pdb": "8q3j",
+  "arm": "native",
+  "seed": 139,
+  "name": "8q3j_native50",
+  "interfaces": [
+   "8q3j_AB:good",
+   "8q3j_AC:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/native50/8q3j.json"
+ },
+ {
+  "pdb": "8slb",
+  "arm": "free",
+  "seed": 101,
+  "name": "8slb",
+  "interfaces": [
+   "8slb_AB:decoy",
+   "8slb_AC:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/8slb-final-updated.json"
+ },
+ {
+  "pdb": "8slb",
+  "arm": "native",
+  "seed": 128,
+  "name": "8slb_nativetmpl",
+  "interfaces": [
+   "8slb_AB:good",
+   "8slb_AC:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/native_a3m_all/8slb-nativetmpl.json"
+ },
+ {
+  "pdb": "8the",
+  "arm": "free",
+  "seed": 116,
+  "name": "8the",
+  "interfaces": [
+   "8the_AB:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/8the-final-updated.json"
+ },
+ {
+  "pdb": "8the",
+  "arm": "native",
+  "seed": 145,
+  "name": "8the_nativetmpl",
+  "interfaces": [
+   "8the_AB:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/native_a3m_all/8the-nativetmpl.json"
+ },
+ {
+  "pdb": "8yxi",
+  "arm": "free",
+  "seed": 101,
+  "name": "8yxi",
+  "interfaces": [
+   "8yxi_AC:decoy",
+   "8yxi_BC:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/8yxi-final-updated.json"
+ },
+ {
+  "pdb": "8yxi",
+  "arm": "native",
+  "seed": 128,
+  "name": "8yxi_native50",
+  "interfaces": [
+   "8yxi_AC:good",
+   "8yxi_BC:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/native50/8yxi.json"
+ },
+ {
+  "pdb": "9jbq",
+  "arm": "free",
+  "seed": 120,
+  "name": "9jbq",
+  "interfaces": [
+   "9jbq_AC:decoy"
+  ],
+  "input_json": "/home/ebrahim/Protenix/foldbench_abag/jsons/9jbq-final-updated.json"
+ },
+ {
+  "pdb": "9jbq",
+  "arm": "native",
+  "seed": 124,
+  "name": "9jbq_native50",
+  "interfaces": [
+   "9jbq_AC:good"
+  ],
+  "input_json": "/home/ebrahim/confident_decoy_experiments/artifacts/native_tmpl/9jbq-native50.json"
+ }
+]

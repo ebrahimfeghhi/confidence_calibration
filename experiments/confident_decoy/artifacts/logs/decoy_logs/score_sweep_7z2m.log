@@ -1,0 +1,28 @@
+native50     decoy 7z2m_AK    n=250 top=0.239 sel=0.199 -
+native50     decoy 7z2m_BK    n=250 top=0.394 sel=0.037 -
+abonly       decoy 7z2m_AK    n=250 top=0.404 sel=0.098 -
+abonly       decoy 7z2m_BK    n=250 top=0.406 sel=0.177 -
+agonly       decoy 7z2m_AK    n=250 top=0.284 sel=0.089 -
+agonly       decoy 7z2m_BK    n=250 top=0.404 sel=0.020 -
+globallddt   decoy 7z2m_AK    n=215 top=0.349 sel=0.150 -
+globallddt   decoy 7z2m_BK    n=215 top=0.442 sel=0.256 RESCUED
+globallddt   good  8gho_AC    n= 65 top=0.939 sel=0.909 RESCUED
+ifacelddt    decoy 7z2m_AK    n=145 top=0.344 sel=0.111 -
+ifacelddt    decoy 7z2m_BK    n=145 top=0.420 sel=0.255 RESCUED
+ifacelddt    good  8q7o_AC    n=215 top=0.919 sel=0.899 RESCUED
+globalplddt  decoy 7z2m_AK    n=120 top=0.348 sel=0.085 -
+globalplddt  decoy 7z2m_BK    n=120 top=0.367 sel=0.181 -
+globalplddt  good  8q7o_AC    n=185 top=0.915 sel=0.847 RESCUED
+ifaceplddt   decoy 7z2m_AK    n=105 top=0.188 sel=0.140 -
+ifaceplddt   decoy 7z2m_BK    n=105 top=0.338 sel=0.265 RESCUED
+ifaceplddt   good  8q7o_AC    n=120 top=0.915 sel=0.835 RESCUED
+
+run           decoys rescued  goods preserved
+native50           12 / 15           0 / 0   
+abonly              8 / 15          15 / 15  
+agonly              4 / 15          15 / 15  
+globallddt          6 / 15          15 / 15  
+ifacelddt           9 / 15          15 / 15  
+globalplddt         0 / 15          14 / 15  
+ifaceplddt          1 / 15          15 / 15  
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/sweep_scores.json

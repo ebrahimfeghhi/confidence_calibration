@@ -1,0 +1,20 @@
+INCR[relabel] scorer started: 9 (run,interface) targets
+RESULT[relabel] agonly 8yxi_BC  : sel_DockQ=0.029 pair_iptm=0.306 -> not-rescued  (prior[buggy]=RESCUED*) [1/9]   <<< FLIPPED: was rescued with the WRONG (heavy) chain => antibody-driven
+RESULT[relabel] agonly 8yxi_AC  : sel_DockQ=0.015 pair_iptm=0.335 -> not-rescued  (prior[buggy]=RESCUED*) [2/9]   <<< FLIPPED: was rescued with the WRONG (heavy) chain => antibody-driven
+RESULT[relabel] abonly 8yxi_BC  : sel_DockQ=0.939 pair_iptm=0.889 -> RESCUED      (prior[buggy]=no) [3/9]   <<< NEW rescue after label fix
+RESULT[relabel] abonly 8yxi_AC  : sel_DockQ=0.789 pair_iptm=0.864 -> RESCUED      (prior[buggy]=no) [4/9]   <<< NEW rescue after label fix
+RESULT[relabel] agonly 8fbw_AC  : sel_DockQ=0.764 pair_iptm=0.873 -> RESCUED      (prior[buggy]=RESCUED*) [5/9]
+RESULT[relabel] abonly 8fbw_AC  : sel_DockQ=0.586 pair_iptm=0.763 -> RESCUED      (prior[buggy]=no) [6/9]   <<< NEW rescue after label fix
+RESULT[relabel] pddag  8yxi_BC  : sel_DockQ=0.072 pair_iptm=0.372 -> not-rescued  (prior[buggy]=no) [7/9]
+RESULT[relabel] pddag  8yxi_AC  : sel_DockQ=0.148 pair_iptm=0.341 -> not-rescued  (prior[buggy]=no) [8/9]
+RESULT[relabel] pddag  8fbw_AC  : sel_DockQ=0.173 pair_iptm=0.707 -> not-rescued  (prior[buggy]=no) [9/9]
+ALL_DONE[relabel]: 9/9
+  abonly:8fbw_AC     DockQ=0.586 RESCUED  prior=no
+  abonly:8yxi_AC     DockQ=0.789 RESCUED  prior=no
+  abonly:8yxi_BC     DockQ=0.939 RESCUED  prior=no
+  agonly:8fbw_AC     DockQ=0.764 RESCUED  prior=RESCUED*
+  agonly:8yxi_AC     DockQ=0.015 -        prior=RESCUED*
+  agonly:8yxi_BC     DockQ=0.029 -        prior=RESCUED*
+  pddag:8fbw_AC      DockQ=0.173 -        prior=no
+  pddag:8yxi_AC      DockQ=0.148 -        prior=no
+  pddag:8yxi_BC      DockQ=0.072 -        prior=no

@@ -1,0 +1,128 @@
+{
+ "total": 20,
+ "skipped": 0,
+ "queue": 20,
+ "finished": [
+  {
+   "run": "native50",
+   "pdb": "8im0",
+   "seeds_done": 0,
+   "minutes": 1.2
+  },
+  {
+   "run": "native50",
+   "pdb": "7ucx",
+   "seeds_done": 50,
+   "minutes": 16.8
+  },
+  {
+   "run": "native50",
+   "pdb": "9jbq",
+   "seeds_done": 50,
+   "minutes": 24.2
+  },
+  {
+   "run": "native50",
+   "pdb": "8dtn",
+   "seeds_done": 50,
+   "minutes": 27.4
+  },
+  {
+   "run": "native50",
+   "pdb": "8vui",
+   "seeds_done": 50,
+   "minutes": 36.1
+  },
+  {
+   "run": "native50",
+   "pdb": "8z8v",
+   "seeds_done": 50,
+   "minutes": 33.9
+  },
+  {
+   "run": "native50",
+   "pdb": "8a67",
+   "seeds_done": 50,
+   "minutes": 42.6
+  },
+  {
+   "run": "native50",
+   "pdb": "8a44",
+   "seeds_done": 50,
+   "minutes": 47.1
+  },
+  {
+   "run": "native50",
+   "pdb": "8oxx",
+   "seeds_done": 50,
+   "minutes": 63.0
+  },
+  {
+   "run": "native50",
+   "pdb": "8ux6",
+   "seeds_done": 50,
+   "minutes": 63.2
+  },
+  {
+   "run": "native50",
+   "pdb": "8ivx",
+   "seeds_done": 50,
+   "minutes": 76.2
+  },
+  {
+   "run": "native50",
+   "pdb": "8oxw",
+   "seeds_done": 50,
+   "minutes": 89.4
+  },
+  {
+   "run": "native50",
+   "pdb": "8sfz",
+   "seeds_done": 50,
+   "minutes": 108.8
+  },
+  {
+   "run": "native50",
+   "pdb": "8uky",
+   "seeds_done": 50,
+   "minutes": 114.5
+  },
+  {
+   "run": "native50",
+   "pdb": "8be1",
+   "seeds_done": 50,
+   "minutes": 114.8
+  },
+  {
+   "run": "native50",
+   "pdb": "8dn7",
+   "seeds_done": 50,
+   "minutes": 169.3
+  },
+  {
+   "run": "native50",
+   "pdb": "8udz",
+   "seeds_done": 50,
+   "minutes": 229.9
+  },
+  {
+   "run": "native50",
+   "pdb": "8pn0",
+   "seeds_done": 50,
+   "minutes": 217.3
+  },
+  {
+   "run": "native50",
+   "pdb": "8oud",
+   "seeds_done": 50,
+   "minutes": 415.6
+  },
+  {
+   "run": "native50",
+   "pdb": "7zau",
+   "seeds_done": 23,
+   "minutes": 466.7
+  }
+ ],
+ "running": {}
+}

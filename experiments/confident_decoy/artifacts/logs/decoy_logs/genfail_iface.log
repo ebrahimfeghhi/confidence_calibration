@@ -1,0 +1,48 @@
+interface    resc chain  role       whole   iface    drop  n_res
+7yv1_AB         - A      ANTIGEN    0.897   0.875  +0.022     13
+7yv1_AB         - B      HEAVY      0.932   0.704  +0.228     13
+7yv1_AC         - A      ANTIGEN    0.897   0.821  +0.077      4
+7yv1_AC         - C      LIGHT      0.968   0.840  +0.128      3
+8a44_AC         - A      ANTIGEN    0.898   0.759  +0.139     18
+8a44_AC         - C      HEAVY      0.962   0.941  +0.021     19
+8a44_AD         - A      ANTIGEN    0.898   0.587  +0.311      6
+8a44_AD         - D      LIGHT      0.948   0.884  +0.064      7
+8a67_AD         - A      ANTIGEN    0.934   0.911  +0.023     13
+8a67_AD         - D      HEAVY      0.847   0.734  +0.113     16
+8dn7_AC       YES A      ANTIGEN    0.842   0.750  +0.092     25
+8dn7_AC       YES C      HEAVY      0.926   0.691  +0.235     23
+8dn7_AF       YES A      ANTIGEN    0.842   0.772  +0.070     10
+8dn7_AF       YES F      LIGHT      0.926   0.795  +0.131      7
+8dtn_AB         - A      HEAVY      0.931   0.911  +0.020     20
+8dtn_AB         - B      ANTIGEN    0.633   0.682  -0.049     12
+8im0_AB-2       - A      ANTIGEN    0.970   0.926  +0.044     17
+8im0_AB-2       - B-2    HEAVY      0.959   0.946  +0.013     14
+8ivx_AB         - A      ANTIGEN    0.939   0.921  +0.018     23
+8ivx_AB         - B      HEAVY      0.916   0.739  +0.177     19
+8oud_AD         - A      ANTIGEN    0.806   0.746  +0.060     33
+8oud_AD         - D      HEAVY      0.887   0.819  +0.068     28
+8oxx_AB         - A      ANTIGEN    0.950   0.936  +0.014     16
+8oxx_AB         - B      HEAVY      0.924   0.676  +0.248     11
+8sfz_AD       YES A      HEAVY      0.858   0.686  +0.172     18
+8sfz_AD       YES D      ANTIGEN    0.951   0.932  +0.019     18
+8udz_AD       YES A      ANTIGEN    0.734   0.923  -0.189      7
+8udz_AD       YES D      LIGHT      0.913   0.901  +0.012      7
+8uky_AC         - A      LIGHT      0.923   0.794  +0.129      7
+8uky_AC         - C      ANTIGEN    0.592   0.444  +0.148     12
+8uky_BC         - B      HEAVY      0.940   0.925  +0.015     18
+8uky_BC         - C      ANTIGEN    0.592   0.512  +0.080     16
+8vzo_AB         - A      ANTIGEN    0.829   0.799  +0.030     28
+8vzo_AB         - B      HEAVY      0.849   0.521  +0.328     20
+8vzo_AC         - A      ANTIGEN    0.829   0.896  -0.067      1
+8vzo_AC         - C      ANTIGEN    0.928   0.955  -0.027      1
+8z8v_AB         - A      ANTIGEN    0.935   0.897  +0.038     15
+8z8v_AB         - B      HEAVY      0.946   0.942  +0.004     25
+
+  RESCUED by folds   HEAVY    n= 2  whole 0.892   interface 0.689   drop +0.203
+  RESCUED by folds   LIGHT    n= 2  whole 0.919   interface 0.848   drop +0.072
+  RESCUED by folds   ANTIGEN  n= 4  whole 0.842   interface 0.848   drop +0.045
+  unmoved by folds   HEAVY    n=11  whole 0.931   interface 0.819   drop +0.068
+  unmoved by folds   LIGHT    n= 3  whole 0.948   interface 0.840   drop +0.128
+  unmoved by folds   ANTIGEN  n=16  whole 0.897   interface 0.848   drop +0.034
+
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/genfail_iface_folds.json

@@ -1,0 +1,22 @@
+2026-08-03 17:12:39,218 [/home/ebrahim/Protenix/runner/inference.py:627] INFO __main__: Using params for model protenix-v2: cycle=10, step=200
+2026-08-03 17:12:39,219 [/home/ebrahim/Protenix/runner/inference.py:648] INFO __main__: Inference by Protenix: model_size: 464M, with_feature: default, model_version: v2, dtype: bf16
+2026-08-03 17:12:39,535 [/home/ebrahim/Protenix/runner/inference.py:654] INFO __main__: Triangle kernels: multiplicative=cuequivariance, attention=cuequivariance
+2026-08-03 17:12:39,535 [/home/ebrahim/Protenix/runner/inference.py:658] INFO __main__: Optimization: shared_vars_cache=True, efficient_fusion=True, tf32=True
+2026-08-03 17:12:39,535 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Distributed environment: world size: 1, global rank: 0, local rank: 0
+2026-08-03 17:12:39,535 [/home/ebrahim/Protenix/runner/inference.py:98] INFO root: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-08-03 17:12:39,535 [/home/ebrahim/Protenix/runner/inference.py:127] INFO root: Finished environment initialization.
+2026-08-03 17:13:18,477 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Loading from /home/ebrahim/checkpoint/protenix-v2.pt, strict: True
+2026-08-03 17:13:19,103 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Sampled key: module.input_embedder.atom_attention_encoder.linear_no_bias_ref_pos.weight
+2026-08-03 17:13:19,166 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Finish loading checkpoint.
+2026-08-03 17:13:19,170 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Model parameters: 464.44M
+2026-08-03 17:13:19,173 [/home/ebrahim/Protenix/runner/inference.py:428] INFO __main__: Loading data from /home/ebrahim/Protenix/foldbench_abag/jsons/7ucx-final-updated.json
+2026-08-03 17:13:19,174 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 7ucx...
+2026-08-03 17:13:22,160 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 17:13:23,188 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 17:13:23,417 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 7ucx [seed:140]: N_asym 3, N_token 462, N_atom 3549, N_msa 12854
+2026-08-03 17:13:44,066 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 7ucx [seed:140] succeeded. Model forward time: 20.65s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pae_out/free
+2026-08-03 17:13:44,079 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 140 completed in 24.90s.
+2026-08-03 17:13:44,079 [/home/ebrahim/Protenix/runner/inference.py:534] INFO __main__: [Rank 0] Job completed in 24.91s.
+train scheduler 16.0
+inference scheduler 16.0
+Diffusion Module has 16.0

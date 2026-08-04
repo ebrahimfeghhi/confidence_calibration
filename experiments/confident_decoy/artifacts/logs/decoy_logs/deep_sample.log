@@ -1,0 +1,11 @@
+8be1_AC     seeds 101-150:   1/250 (0.4%)   ->  FULL:   2/755 (0.3%)   best 0.235->0.294   still a decoy
+8fas_BC     seeds 101-150:  77/250 (30.8%)   ->  FULL: 246/755 (32.6%)   best 0.987->0.987   still a decoy
+8ivx_AC     seeds 101-150:   4/250 (1.6%)   ->  FULL:  19/755 (2.5%)   best 0.333->0.362   still a decoy
+8oxw_AB     seeds 101-150:   2/250 (0.8%)   ->  FULL:   3/755 (0.4%)   best 0.298->0.298   still a decoy
+8oxw_AC     seeds 101-150:   2/250 (0.8%)   ->  FULL:   3/755 (0.4%)   best 0.275->0.275   still a decoy
+8oxx_AC     seeds 101-150:   1/250 (0.4%)   ->  FULL:   1/755 (0.1%)   best 0.343->0.343   still a decoy
+8ux6_AF     seeds 101-150:   1/250 (0.4%)   ->  FULL:   6/755 (0.8%)   best 0.246->0.355   still a decoy
+8vui_BC     seeds 101-150:   6/250 (2.4%)   ->  FULL:   6/755 (0.8%)   best 0.404->0.404   still a decoy
+
+0/8 have ZERO acceptable poses over the full free range -> they are generation failures, not selection failures
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/deep_sample_failures.json

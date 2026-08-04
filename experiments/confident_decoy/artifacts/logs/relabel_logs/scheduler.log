@@ -1,0 +1,8 @@
+08:23:20 relabel scheduler start; jobs=['8yxi_agonly', '8fbw_agonly', '8yxi_abonly', '8fbw_abonly', '8yxi_pddag', '8fbw_pddag'] | {'8yxi_agonly': 0, '8fbw_agonly': 0, '8yxi_abonly': 0, '8fbw_abonly': 0, '8yxi_pddag': 0, '8fbw_pddag': 0}
+08:23:20 launched 8yxi_agonly on GPU0 | {'8yxi_agonly': 0, '8fbw_agonly': 0, '8yxi_abonly': 0, '8fbw_abonly': 0, '8yxi_pddag': 0, '8fbw_pddag': 0}
+08:23:20 launched 8fbw_agonly on GPU1 | {'8yxi_agonly': 0, '8fbw_agonly': 0, '8yxi_abonly': 0, '8fbw_abonly': 0, '8yxi_pddag': 0, '8fbw_pddag': 0}
+08:23:20 launched 8yxi_abonly on GPU2 | {'8yxi_agonly': 0, '8fbw_agonly': 0, '8yxi_abonly': 0, '8fbw_abonly': 0, '8yxi_pddag': 0, '8fbw_pddag': 0}
+08:23:20 launched 8fbw_abonly on GPU3 | {'8yxi_agonly': 0, '8fbw_agonly': 0, '8yxi_abonly': 0, '8fbw_abonly': 0, '8yxi_pddag': 0, '8fbw_pddag': 0}
+09:11:23 launched 8yxi_pddag on GPU0 | {'8yxi_agonly': 50, '8fbw_agonly': 34, '8yxi_abonly': 50, '8fbw_abonly': 34, '8yxi_pddag': 0, '8fbw_pddag': 0}
+09:11:23 launched 8fbw_pddag on GPU2 | {'8yxi_agonly': 50, '8fbw_agonly': 34, '8yxi_abonly': 50, '8fbw_abonly': 34, '8yxi_pddag': 0, '8fbw_pddag': 0}
+10:20:28 ALL_DONE relabel scheduler | {'8yxi_agonly': 50, '8fbw_agonly': 50, '8yxi_abonly': 50, '8fbw_abonly': 50, '8yxi_pddag': 50, '8fbw_pddag': 50}

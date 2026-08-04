@@ -1,0 +1,27 @@
+2026-07-31 08:45:32,655 [/home/ebrahim/Protenix/runner/inference.py:627] INFO __main__: Using params for model protenix-v2: cycle=10, step=200
+2026-07-31 08:45:32,656 [/home/ebrahim/Protenix/runner/inference.py:648] INFO __main__: Inference by Protenix: model_size: 464M, with_feature: default, model_version: v2, dtype: bf16
+2026-07-31 08:45:33,002 [/home/ebrahim/Protenix/runner/inference.py:654] INFO __main__: Triangle kernels: multiplicative=cuequivariance, attention=cuequivariance
+2026-07-31 08:45:33,002 [/home/ebrahim/Protenix/runner/inference.py:658] INFO __main__: Optimization: shared_vars_cache=True, efficient_fusion=True, tf32=True
+2026-07-31 08:45:33,002 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: obsolete_pdbs_path already exists at /home/ebrahim/common/obsolete_to_successor.json
+2026-07-31 08:45:33,002 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: release_dates_path already exists at /home/ebrahim/common/release_date_cache.json
+2026-07-31 08:45:33,002 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Distributed environment: world size: 1, global rank: 0, local rank: 0
+2026-07-31 08:45:33,002 [/home/ebrahim/Protenix/runner/inference.py:98] INFO root: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [3]
+2026-07-31 08:45:33,002 [/home/ebrahim/Protenix/runner/inference.py:127] INFO root: Finished environment initialization.
+2026-07-31 08:46:10,539 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Loading from /home/ebrahim/checkpoint/protenix-v2.pt, strict: True
+2026-07-31 08:46:11,162 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Sampled key: module.input_embedder.atom_attention_encoder.linear_no_bias_ref_pos.weight
+2026-07-31 08:46:11,226 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Finish loading checkpoint.
+2026-07-31 08:46:11,230 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Model parameters: 464.44M
+2026-07-31 08:46:11,234 [/home/ebrahim/Protenix/runner/inference.py:428] INFO __main__: Loading data from /home/ebrahim/Protenix/foldbench_abag/jsons/8bf4-final-updated.json
+2026-07-31 08:46:11,841 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8bf4...
+2026-07-31 08:46:15,012 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-31 08:46:17,510 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-31 08:46:18,904 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence QVQLQESGGGLVQAGGSLRLSCAASGFTLGYYAIGWFRQAPGKEREEVSCINASGGSTFYEDSVKGRFTISRDNAKNTVFLQMNRLKPEDTAVYYCAAACEVVAVGYWGQGTQVTVSAHHHHHH
+2026-07-31 08:46:20,421 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence LRSPLPAAFTANGTHLQHLARDPTTGTLYVGATNFLFQLSPGLQLEAVVSTGPVNDSRDCLPPVIPDECPQAQPTNNPNQLLLVSPEALVVCGSVHQGICELRSLGQIRQLLLRPERPGDTQYVAANDPAVSTVGLVAQGLVGEPLLFVGRGYTSRGVGGGIPPITTRALRPPDPQAAFSYEETAKLAVGRLSEYSHHFVSAFVRGASAYFLFLRRDLKAPSRAFRAYVSRVCLQDQHYYSYVELPLACQGGRYGLIQAAAVATSKEVARGDVLFAAFSSVAPPTVDWPLSASTGASGTSVLCAFPLDEVDQLANYTRDACYTREGRAENGTKVADIAYDVLSDCAQLPVDTPDAFPCGSDHTPSPMVSCVPLEATPILELPGVQLTAVAVTMEDGHTIAFLGDSQGQLHRVYLGPGRSAAPYSKQSIQPGSPVNRDLTFDGTFEHLYVATQTTLVKVPVAPCAQHLDCDSCLAHRDPYCGWCVLLGRCSRRSECSRDQGPEQWLWSFQPELGCLRKHHHHHH
+2026-07-31 08:46:20,916 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 4 templates for sequence QVQLQESGGGLVQPGGSLRLSCAASGFRLDYYAIGWFRQAPGKEREGVLCISSSGGSINYADSVKGRFTISRDNAKNTVYLQMNSLKPEDTAVYYCGASSYNTQRAECYGMDYWGKGTQVTVSAHHHHHH
+2026-07-31 08:46:23,893 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8bf4 [seed:138]: N_asym 14, N_token 1653, N_atom 11933, N_msa 12665
+2026-07-31 08:50:40,985 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8bf4 [seed:138] succeeded. Model forward time: 257.09s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/fullmsa_out
+2026-07-31 08:50:41,029 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 138 completed in 269.19s.
+2026-07-31 08:50:41,029 [/home/ebrahim/Protenix/runner/inference.py:534] INFO __main__: [Rank 0] Job completed in 269.19s.
+train scheduler 16.0
+inference scheduler 16.0
+Diffusion Module has 16.0

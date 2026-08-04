@@ -1,0 +1,368 @@
+2026-07-29 13:05:19,859 [/home/ebrahim/Protenix/runner/inference.py:627] INFO __main__: Using params for model protenix-v2: cycle=10, step=200
+2026-07-29 13:05:19,860 [/home/ebrahim/Protenix/runner/inference.py:648] INFO __main__: Inference by Protenix: model_size: 464M, with_feature: default, model_version: v2, dtype: bf16
+2026-07-29 13:05:20,252 [/home/ebrahim/Protenix/runner/inference.py:654] INFO __main__: Triangle kernels: multiplicative=cuequivariance, attention=cuequivariance
+2026-07-29 13:05:20,252 [/home/ebrahim/Protenix/runner/inference.py:658] INFO __main__: Optimization: shared_vars_cache=True, efficient_fusion=True, tf32=True
+2026-07-29 13:05:20,252 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: obsolete_pdbs_path already exists at /home/ebrahim/common/obsolete_to_successor.json
+2026-07-29 13:05:20,252 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: release_dates_path already exists at /home/ebrahim/common/release_date_cache.json
+2026-07-29 13:05:20,252 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Distributed environment: world size: 1, global rank: 0, local rank: 0
+2026-07-29 13:05:20,252 [/home/ebrahim/Protenix/runner/inference.py:98] INFO root: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [2]
+2026-07-29 13:05:20,252 [/home/ebrahim/Protenix/runner/inference.py:127] INFO root: Finished environment initialization.
+2026-07-29 13:05:58,307 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Loading from /home/ebrahim/checkpoint/protenix-v2.pt, strict: True
+2026-07-29 13:05:58,825 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Sampled key: module.input_embedder.atom_attention_encoder.linear_no_bias_ref_pos.weight
+2026-07-29 13:05:58,887 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Finish loading checkpoint.
+2026-07-29 13:05:58,891 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Model parameters: 464.44M
+2026-07-29 13:05:58,895 [/home/ebrahim/Protenix/runner/inference.py:428] INFO __main__: Loading data from /home/ebrahim/confident_decoy_experiments/artifacts/pddag_tmpl/8che-pddag.json
+2026-07-29 13:05:59,495 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:06:02,540 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:06:04,533 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:06:04,684 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:06:05,659 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:101]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:07:15,399 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:101] succeeded. Model forward time: 69.74s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:07:15,422 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 101 completed in 75.93s.
+2026-07-29 13:07:15,423 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:07:15,643 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:07:17,690 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:07:17,697 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:07:18,750 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:102]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:08:25,984 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:102] succeeded. Model forward time: 67.23s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:08:26,007 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 102 completed in 70.58s.
+2026-07-29 13:08:26,008 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:08:26,206 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:08:28,244 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:08:28,251 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:08:29,309 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:103]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:09:36,328 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:103] succeeded. Model forward time: 67.02s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:09:36,349 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 103 completed in 70.34s.
+2026-07-29 13:09:36,350 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:09:36,545 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:09:38,588 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:09:38,595 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:09:39,672 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:104]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:10:46,488 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:104] succeeded. Model forward time: 66.82s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:10:46,511 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 104 completed in 70.16s.
+2026-07-29 13:10:46,511 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:10:46,706 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:10:48,730 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:10:48,736 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:10:49,813 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:105]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:11:56,316 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:105] succeeded. Model forward time: 66.50s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:11:56,338 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 105 completed in 69.83s.
+2026-07-29 13:11:56,338 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:11:56,529 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:11:58,560 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:11:58,566 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:11:59,499 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:106]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:13:05,695 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:106] succeeded. Model forward time: 66.20s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:13:05,714 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 106 completed in 69.38s.
+2026-07-29 13:13:05,714 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:13:05,908 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:13:07,884 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:13:07,891 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:13:08,889 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:107]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:14:15,169 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:107] succeeded. Model forward time: 66.28s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:14:15,193 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 107 completed in 69.48s.
+2026-07-29 13:14:15,194 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:14:15,382 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:14:17,401 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:14:17,407 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:14:18,372 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:108]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:15:25,158 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:108] succeeded. Model forward time: 66.79s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:15:25,179 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 108 completed in 69.99s.
+2026-07-29 13:15:25,180 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:15:25,372 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:15:27,347 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:15:27,353 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:15:28,347 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:109]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:16:36,134 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:109] succeeded. Model forward time: 67.79s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:16:36,191 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 109 completed in 71.01s.
+2026-07-29 13:16:36,191 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:16:36,388 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:16:38,387 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:16:38,393 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:16:39,402 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:110]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:17:46,489 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:110] succeeded. Model forward time: 67.09s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:17:46,511 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 110 completed in 70.32s.
+2026-07-29 13:17:46,512 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:17:46,699 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:17:48,746 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:17:48,752 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:17:49,766 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:111]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:18:57,145 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:111] succeeded. Model forward time: 67.38s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:18:57,168 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 111 completed in 70.66s.
+2026-07-29 13:18:57,169 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:18:57,363 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:18:59,374 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:18:59,381 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:19:00,418 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:112]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:20:07,831 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:112] succeeded. Model forward time: 67.41s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:20:07,853 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 112 completed in 70.68s.
+2026-07-29 13:20:07,853 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:20:08,047 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:20:10,045 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:20:10,051 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:20:11,111 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:113]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:21:19,486 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:113] succeeded. Model forward time: 68.38s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:21:19,511 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 113 completed in 71.66s.
+2026-07-29 13:21:19,512 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:21:19,707 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:21:21,698 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:21:21,704 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:21:22,761 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:114]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:22:32,086 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:114] succeeded. Model forward time: 69.33s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:22:32,108 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 114 completed in 72.60s.
+2026-07-29 13:22:32,108 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:22:32,297 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:22:34,328 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:22:34,334 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:22:35,353 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:115]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:23:43,647 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:115] succeeded. Model forward time: 68.30s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:23:43,672 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 115 completed in 71.56s.
+2026-07-29 13:23:43,673 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:23:44,216 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:23:46,206 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:23:46,212 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:23:47,195 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:116]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:24:53,715 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:116] succeeded. Model forward time: 66.52s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:24:53,736 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 116 completed in 70.06s.
+2026-07-29 13:24:53,736 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:24:53,925 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:24:55,958 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:24:55,964 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:24:57,040 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:117]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:26:04,532 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:117] succeeded. Model forward time: 67.49s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:26:04,552 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 117 completed in 70.82s.
+2026-07-29 13:26:04,553 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:26:04,747 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:26:06,809 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:26:06,815 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:26:07,881 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:118]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:27:15,785 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:118] succeeded. Model forward time: 67.90s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:27:15,809 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 118 completed in 71.26s.
+2026-07-29 13:27:15,809 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:27:16,000 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:27:18,028 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:27:18,035 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:27:19,099 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:119]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:28:26,983 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:119] succeeded. Model forward time: 67.88s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:28:27,000 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 119 completed in 71.19s.
+2026-07-29 13:28:27,001 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:28:27,194 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:28:29,233 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:28:29,240 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:28:30,297 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:120]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:29:38,316 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:120] succeeded. Model forward time: 68.02s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:29:38,336 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 120 completed in 71.34s.
+2026-07-29 13:29:38,337 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:29:38,529 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:29:40,562 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:29:40,568 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:29:41,619 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:121]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:30:48,910 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:121] succeeded. Model forward time: 67.29s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:30:48,931 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 121 completed in 70.59s.
+2026-07-29 13:30:48,931 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:30:49,122 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:30:51,152 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:30:51,158 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:30:52,228 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:122]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:31:58,872 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:122] succeeded. Model forward time: 66.64s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:31:58,892 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 122 completed in 69.96s.
+2026-07-29 13:31:58,893 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:31:59,085 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:32:01,137 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:32:01,144 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:32:02,194 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:123]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:33:08,831 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:123] succeeded. Model forward time: 66.64s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:33:08,849 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 123 completed in 69.96s.
+2026-07-29 13:33:08,850 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:33:09,047 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:33:11,057 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:33:11,063 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:33:12,097 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:124]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:34:18,838 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:124] succeeded. Model forward time: 66.74s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:34:18,858 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 124 completed in 70.01s.
+2026-07-29 13:34:18,859 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:34:19,053 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:34:21,056 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:34:21,063 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:34:22,106 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:125]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:35:29,447 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:125] succeeded. Model forward time: 67.34s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:35:29,467 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 125 completed in 70.61s.
+2026-07-29 13:35:29,467 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:35:29,664 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:35:31,665 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:35:31,671 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:35:32,699 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:126]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:36:40,112 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:126] succeeded. Model forward time: 67.41s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:36:40,130 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 126 completed in 70.66s.
+2026-07-29 13:36:40,130 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:36:40,326 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:36:42,325 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:36:42,332 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:36:43,365 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:127]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:37:50,975 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:127] succeeded. Model forward time: 67.61s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:37:50,989 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 127 completed in 70.86s.
+2026-07-29 13:37:50,989 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:37:51,178 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:37:53,205 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:37:53,212 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:37:54,206 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:128]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:39:01,342 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:128] succeeded. Model forward time: 67.14s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:39:01,366 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 128 completed in 70.38s.
+2026-07-29 13:39:01,367 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:39:01,560 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:39:03,545 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:39:03,551 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:39:04,533 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:129]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:40:12,015 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:129] succeeded. Model forward time: 67.48s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:40:12,034 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 129 completed in 70.67s.
+2026-07-29 13:40:12,034 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:40:12,229 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:40:14,274 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:40:14,280 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:40:15,315 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:130]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:41:23,654 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:130] succeeded. Model forward time: 68.34s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:41:23,678 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 130 completed in 71.64s.
+2026-07-29 13:41:23,678 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:41:23,874 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:41:25,929 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:41:25,935 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:41:26,960 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:131]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:42:34,213 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:131] succeeded. Model forward time: 67.25s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:42:34,236 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 131 completed in 70.56s.
+2026-07-29 13:42:34,236 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:42:34,430 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:42:36,463 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:42:36,469 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:42:37,543 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:132]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:43:44,387 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:132] succeeded. Model forward time: 66.84s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:43:44,408 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 132 completed in 70.17s.
+2026-07-29 13:43:44,408 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:43:44,598 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:43:46,627 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:43:46,633 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:43:47,698 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:133]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:44:55,469 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:133] succeeded. Model forward time: 67.77s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:44:55,492 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 133 completed in 71.08s.
+2026-07-29 13:44:55,493 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:44:55,685 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:44:57,729 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:44:57,737 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:44:58,823 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:134]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:46:05,172 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:134] succeeded. Model forward time: 66.35s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:46:05,222 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 134 completed in 69.73s.
+2026-07-29 13:46:05,222 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:46:05,415 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:46:07,442 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:46:07,448 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:46:08,407 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:135]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:47:16,397 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:135] succeeded. Model forward time: 67.99s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:47:16,421 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 135 completed in 71.20s.
+2026-07-29 13:47:16,422 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:47:16,616 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:47:18,645 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:47:18,652 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:47:19,670 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:136]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:48:27,370 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:136] succeeded. Model forward time: 67.70s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:48:27,394 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 136 completed in 70.97s.
+2026-07-29 13:48:27,394 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:48:27,590 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:48:29,638 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:48:29,644 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:48:30,648 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:137]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:49:38,683 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:137] succeeded. Model forward time: 68.04s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:49:38,704 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 137 completed in 71.31s.
+2026-07-29 13:49:38,704 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:49:38,900 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:49:40,897 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:49:40,903 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:49:41,962 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:138]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:50:48,195 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:138] succeeded. Model forward time: 66.23s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:50:48,212 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 138 completed in 69.51s.
+2026-07-29 13:50:48,212 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:50:48,402 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:50:50,438 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:50:50,445 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:50:51,446 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:139]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:51:58,769 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:139] succeeded. Model forward time: 67.32s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:51:58,786 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 139 completed in 70.57s.
+2026-07-29 13:51:58,786 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:51:58,981 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:52:01,011 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:52:01,017 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:52:02,043 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:140]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:53:07,948 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:140] succeeded. Model forward time: 65.90s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:53:07,968 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 140 completed in 69.18s.
+2026-07-29 13:53:07,968 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:53:08,163 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:53:10,193 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:53:10,199 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:53:11,199 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:141]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:54:17,981 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:141] succeeded. Model forward time: 66.78s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:54:17,999 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 141 completed in 70.03s.
+2026-07-29 13:54:17,999 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:54:18,195 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:54:20,231 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:54:20,237 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:54:21,241 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:142]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:55:29,451 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:142] succeeded. Model forward time: 68.21s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:55:29,471 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 142 completed in 71.47s.
+2026-07-29 13:55:29,471 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:55:29,667 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:55:31,701 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:55:31,708 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:55:32,743 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:143]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:56:39,230 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:143] succeeded. Model forward time: 66.49s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:56:39,249 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 143 completed in 69.78s.
+2026-07-29 13:56:39,249 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:56:39,444 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:56:41,482 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:56:41,489 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:56:42,490 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:144]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:57:48,234 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:144] succeeded. Model forward time: 65.74s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:57:48,254 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 144 completed in 69.00s.
+2026-07-29 13:57:48,254 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:57:48,450 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:57:50,478 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:57:50,484 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:57:51,526 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:145]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 13:59:00,610 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:145] succeeded. Model forward time: 69.08s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 13:59:00,630 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 145 completed in 72.38s.
+2026-07-29 13:59:00,630 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 13:59:00,825 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 13:59:02,877 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 13:59:02,884 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 13:59:03,971 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:146]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 14:00:09,886 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:146] succeeded. Model forward time: 65.92s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 14:00:09,904 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 146 completed in 69.27s.
+2026-07-29 14:00:09,904 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 14:00:10,099 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 14:00:12,108 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 14:00:12,115 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 14:00:13,166 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:147]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 14:01:20,711 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:147] succeeded. Model forward time: 67.54s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 14:01:20,728 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 147 completed in 70.82s.
+2026-07-29 14:01:20,729 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 14:01:20,918 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 14:01:22,920 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 14:01:22,926 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 14:01:23,975 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:148]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 14:02:31,949 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:148] succeeded. Model forward time: 67.97s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 14:02:31,973 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 148 completed in 71.24s.
+2026-07-29 14:02:31,974 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 14:02:32,168 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 14:02:34,188 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 14:02:34,194 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 14:02:35,246 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:149]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 14:03:41,968 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:149] succeeded. Model forward time: 66.72s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 14:03:41,988 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 149 completed in 70.01s.
+2026-07-29 14:03:41,989 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8che_pddag...
+2026-07-29 14:03:42,183 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-07-29 14:03:44,204 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-07-29 14:03:44,211 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence EEEEETHKIGSLAENAFSDPAGSANPLEPSQDEKSIP
+2026-07-29 14:03:45,283 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8che_pddag [seed:150]: N_asym 6, N_token 942, N_atom 7172, N_msa 13822
+2026-07-29 14:04:52,407 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8che_pddag [seed:150] succeeded. Model forward time: 67.12s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/pddag_out
+2026-07-29 14:04:52,425 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 150 completed in 70.44s.
+2026-07-29 14:04:52,426 [/home/ebrahim/Protenix/runner/inference.py:534] INFO __main__: [Rank 0] Job completed in 3532.93s.
+train scheduler 16.0
+inference scheduler 16.0
+Diffusion Module has 16.0

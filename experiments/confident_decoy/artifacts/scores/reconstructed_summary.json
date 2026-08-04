@@ -1,0 +1,22 @@
+{
+ "sposefv": {
+  "scored": 8,
+  "rescued": 2,
+  "hits": [
+   "8yxi_AC",
+   "8yxi_BC"
+  ]
+ },
+ "topdockq": {
+  "scored": 14,
+  "rescued": 1,
+  "hits": [
+   "8ux6_DF"
+  ]
+ },
+ "topiptm": {
+  "scored": 5,
+  "rescued": 0,
+  "hits": []
+ }
+}

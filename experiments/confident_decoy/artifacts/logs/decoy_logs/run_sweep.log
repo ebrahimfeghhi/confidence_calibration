@@ -1,0 +1,14 @@
+=== [10:14] PHASE 1: wait for fold_selection_table (27 pdbs) ===
+phase1 complete: 26/27 pdbs
+phase1 short -> rerunning once to fill gaps
+phase1 after retry: 26/27
+=== [10:30] PHASE 2: build templates ===
+
+BUILD DONE: 108 jobs
+  agonly         1 jobs (1 decoy / 0 good)
+  globallddt    26 jobs (11 decoy / 15 good)
+  globalplddt   26 jobs (11 decoy / 15 good)
+  ifacelddt     26 jobs (11 decoy / 15 good)
+  ifaceplddt    26 jobs (11 decoy / 15 good)
+  native50       3 jobs (3 decoy / 0 good)
+=== [10:30] PHASE 3: GPU runs (GPUs 0-3) ===

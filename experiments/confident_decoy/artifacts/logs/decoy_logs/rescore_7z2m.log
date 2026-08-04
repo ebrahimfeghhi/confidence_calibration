@@ -1,0 +1,16 @@
+dropped 0 stale 7z2m entries
+=== rescoring 7z2m under protocol ===
+native50     decoy 7z2m_AK    n=250 top=0.239 sel=0.199 -
+native50     decoy 7z2m_BK    n=250 top=0.394 sel=0.037 -
+abonly       decoy 7z2m_AK    n=250 top=0.404 sel=0.098 -
+abonly       decoy 7z2m_BK    n=250 top=0.406 sel=0.177 -
+agonly       decoy 7z2m_AK    n=250 top=0.284 sel=0.089 -
+agonly       decoy 7z2m_BK    n=250 top=0.404 sel=0.020 -
+globallddt   decoy 7z2m_AK    n=215 top=0.349 sel=0.150 -
+globallddt   decoy 7z2m_BK    n=215 top=0.442 sel=0.256 RESCUED
+ifacelddt    decoy 7z2m_AK    n=145 top=0.344 sel=0.111 -
+ifacelddt    decoy 7z2m_BK    n=145 top=0.420 sel=0.255 RESCUED
+globalplddt  decoy 7z2m_AK    n=120 top=0.348 sel=0.085 -
+globalplddt  decoy 7z2m_BK    n=120 top=0.367 sel=0.181 -
+ifaceplddt   decoy 7z2m_AK    n=105 top=0.188 sel=0.140 -
+ifaceplddt   decoy 7z2m_BK    n=105 top=0.338 sel=0.265 RESCUED

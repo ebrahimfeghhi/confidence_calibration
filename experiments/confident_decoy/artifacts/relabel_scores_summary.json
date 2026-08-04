@@ -1,0 +1,87 @@
+{
+ "scored": 9,
+ "total": 9,
+ "per_target": {
+  "agonly:8yxi_BC": {
+   "run": "agonly",
+   "interface": "8yxi_BC",
+   "sel_dockq": 0.029,
+   "sel_pair_iptm": 0.3058769702911377,
+   "n_poses": 250,
+   "rescued": false,
+   "prior_buggy_label": "RESCUED*"
+  },
+  "agonly:8yxi_AC": {
+   "run": "agonly",
+   "interface": "8yxi_AC",
+   "sel_dockq": 0.015,
+   "sel_pair_iptm": 0.335388720035553,
+   "n_poses": 250,
+   "rescued": false,
+   "prior_buggy_label": "RESCUED*"
+  },
+  "abonly:8yxi_BC": {
+   "run": "abonly",
+   "interface": "8yxi_BC",
+   "sel_dockq": 0.939,
+   "sel_pair_iptm": 0.8888511061668396,
+   "n_poses": 250,
+   "rescued": true,
+   "prior_buggy_label": "no"
+  },
+  "abonly:8yxi_AC": {
+   "run": "abonly",
+   "interface": "8yxi_AC",
+   "sel_dockq": 0.789,
+   "sel_pair_iptm": 0.8642702102661133,
+   "n_poses": 250,
+   "rescued": true,
+   "prior_buggy_label": "no"
+  },
+  "agonly:8fbw_AC": {
+   "run": "agonly",
+   "interface": "8fbw_AC",
+   "sel_dockq": 0.764,
+   "sel_pair_iptm": 0.8728111386299133,
+   "n_poses": 250,
+   "rescued": true,
+   "prior_buggy_label": "RESCUED*"
+  },
+  "abonly:8fbw_AC": {
+   "run": "abonly",
+   "interface": "8fbw_AC",
+   "sel_dockq": 0.586,
+   "sel_pair_iptm": 0.7626255750656128,
+   "n_poses": 250,
+   "rescued": true,
+   "prior_buggy_label": "no"
+  },
+  "pddag:8yxi_BC": {
+   "run": "pddag",
+   "interface": "8yxi_BC",
+   "sel_dockq": 0.072,
+   "sel_pair_iptm": 0.3724893629550934,
+   "n_poses": 250,
+   "rescued": false,
+   "prior_buggy_label": "no"
+  },
+  "pddag:8yxi_AC": {
+   "run": "pddag",
+   "interface": "8yxi_AC",
+   "sel_dockq": 0.148,
+   "sel_pair_iptm": 0.34051284193992615,
+   "n_poses": 250,
+   "rescued": false,
+   "prior_buggy_label": "no"
+  },
+  "pddag:8fbw_AC": {
+   "run": "pddag",
+   "interface": "8fbw_AC",
+   "sel_dockq": 0.173,
+   "sel_pair_iptm": 0.7072930932044983,
+   "n_poses": 250,
+   "rescued": false,
+   "prior_buggy_label": "no"
+  }
+ }
+}

@@ -1,0 +1,21 @@
+audited 172 rows; skipped 0
+
+SUSPECT (labeled pair < 10 contact residues): 16
+  8tuz B-C: 8 res | multi-copy=False -> no better partner found
+  8fdd B-C: 8 res | multi-copy=False -> no better partner found
+  7yv1 A-C: 7 res | multi-copy=False -> no better partner found
+  8gye A-F: 8 res | multi-copy=False -> no better partner found
+  8ath A-F: 9 res | multi-copy=False -> no better partner found
+  7z2m A-J: 3 res | multi-copy=True -> correct partner A-K (19 res)
+  8vzo A-C: 2 res | multi-copy=False -> no better partner found
+  8vyl A-F: 9 res | multi-copy=True -> correct partner A-E (0 res)
+  8udz A-C: 8 res | multi-copy=True -> correct partner A-E (18 res)
+  8fym A-C: 3 res | multi-copy=False -> no better partner found
+  8urf A-C: 5 res | multi-copy=False -> no better partner found
+  8oni B-E: 2 res | multi-copy=False -> no better partner found
+  8oni A-E: 4 res | multi-copy=False -> no better partner found
+  8b7h A-C: 7 res | multi-copy=True -> correct partner A-C-2 (4 res)
+  8w84 B-C: 8 res | multi-copy=False -> no better partner found
+  8w84 B-D: 6 res | multi-copy=False -> no better partner found
+
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/foldbench_label_audit.json

@@ -1,0 +1,605 @@
+{
+ "8av2_AC": {
+  "pdb": "8av2",
+  "c1": "A",
+  "c2": "C",
+  "tid": "nt06",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "A",
+    "seqlen": 198
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "C",
+    "seqlen": 141
+   }
+  ],
+  "chosen_seeds": [
+   124,
+   101,
+   102,
+   103
+  ],
+  "baseline_dockq": {
+   "124": 0.612,
+   "101": 0.115,
+   "102": 0.094,
+   "103": 0.084
+  },
+  "n_good_seeds": 1,
+  "n_bad_seeds": 49,
+  "total_seeds": 50
+ },
+ "8yxi_BC": {
+  "pdb": "8yxi",
+  "c1": "B",
+  "c2": "C",
+  "tid": "nt18",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "C",
+    "seqlen": 222
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "B",
+    "seqlen": 212
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "A",
+    "seqlen": 347
+   }
+  ],
+  "chosen_seeds": [
+   45,
+   0,
+   1,
+   2
+  ],
+  "baseline_dockq": {
+   "45": 0.352,
+   "0": 0.007,
+   "1": 0.01,
+   "2": 0.111
+  },
+  "n_good_seeds": 2,
+  "n_bad_seeds": 48,
+  "total_seeds": 50
+ },
+ "8fas_BC": {
+  "pdb": "8fas",
+  "c1": "B",
+  "c2": "C",
+  "tid": "nt10",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "A",
+    "seqlen": 223
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "B",
+    "seqlen": 219
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "C",
+    "seqlen": 20
+   }
+  ],
+  "chosen_seeds": [
+   149,
+   101,
+   102,
+   105
+  ],
+  "baseline_dockq": {
+   "149": 0.987,
+   "101": 0.175,
+   "102": 0.208,
+   "105": 0.206
+  },
+  "n_good_seeds": 27,
+  "n_bad_seeds": 23,
+  "total_seeds": 50
+ },
+ "8yxi_AC": {
+  "pdb": "8yxi",
+  "c1": "A",
+  "c2": "C",
+  "tid": "nt18",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "C",
+    "seqlen": 222
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "B",
+    "seqlen": 212
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "A",
+    "seqlen": 347
+   }
+  ],
+  "chosen_seeds": [
+   30,
+   0,
+   1,
+   2
+  ],
+  "baseline_dockq": {
+   "30": 0.301,
+   "0": 0.006,
+   "1": 0.007,
+   "2": 0.048
+  },
+  "n_good_seeds": 3,
+  "n_bad_seeds": 47,
+  "total_seeds": 50
+ },
+ "8fbw_AC": {
+  "pdb": "8fbw",
+  "c1": "A",
+  "c2": "C",
+  "tid": "nt11",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "C",
+    "seqlen": 231
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "D",
+    "seqlen": 216
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "E",
+    "seqlen": 17
+   }
+  ],
+  "chosen_seeds": [
+   48,
+   0,
+   1,
+   2
+  ],
+  "baseline_dockq": {
+   "48": 0.272,
+   "0": 0.206,
+   "1": 0.211,
+   "2": 0.202
+  },
+  "n_good_seeds": 1,
+  "n_bad_seeds": 49,
+  "total_seeds": 50
+ },
+ "8aok_AB": {
+  "pdb": "8aok",
+  "c1": "A",
+  "c2": "B",
+  "tid": "nt05",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "A",
+    "seqlen": 117
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "B",
+    "seqlen": 128
+   }
+  ],
+  "chosen_seeds": [
+   124,
+   101,
+   102,
+   103
+  ],
+  "baseline_dockq": {
+   "124": 0.695,
+   "101": 0.12,
+   "102": 0.22,
+   "103": 0.162
+  },
+  "n_good_seeds": 31,
+  "n_bad_seeds": 19,
+  "total_seeds": 50
+ },
+ "8bf4_AB": {
+  "pdb": "8bf4",
+  "c1": "A",
+  "c2": "B",
+  "tid": "nt08",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "D",
+    "seqlen": 124
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "F",
+    "seqlen": 523
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "E",
+    "seqlen": 130
+   }
+  ],
+  "chosen_seeds": [
+   120,
+   101,
+   102,
+   103
+  ],
+  "baseline_dockq": {
+   "120": 0.723,
+   "101": 0.014,
+   "102": 0.014,
+   "103": 0.007
+  },
+  "n_good_seeds": 6,
+  "n_bad_seeds": 44,
+  "total_seeds": 50
+ },
+ "8the_AB": {
+  "pdb": "8the",
+  "c1": "A",
+  "c2": "B",
+  "tid": "nt16",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "A",
+    "seqlen": 777
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "H",
+    "seqlen": 238
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "L",
+    "seqlen": 215
+   }
+  ],
+  "chosen_seeds": [
+   113,
+   101,
+   102,
+   105
+  ],
+  "baseline_dockq": {
+   "113": 0.514,
+   "101": 0.131,
+   "102": 0.021,
+   "105": 0.112
+  },
+  "n_good_seeds": 32,
+  "n_bad_seeds": 18,
+  "total_seeds": 50
+ },
+ "8q3j_AC": {
+  "pdb": "8q3j",
+  "c1": "A",
+  "c2": "C",
+  "tid": "nt14",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "A",
+    "seqlen": 152
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "B",
+    "seqlen": 223
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "C",
+    "seqlen": 241
+   }
+  ],
+  "chosen_seeds": [
+   23,
+   0,
+   1,
+   2
+  ],
+  "baseline_dockq": {
+   "23": 0.531,
+   "0": 0.072,
+   "1": 0.049,
+   "2": 0.125
+  },
+  "n_good_seeds": 11,
+  "n_bad_seeds": 39,
+  "total_seeds": 50
+ },
+ "7z2m_AJ": {
+  "pdb": "7z2m",
+  "c1": "A",
+  "c2": "J",
+  "tid": "nt03",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "E",
+    "seqlen": 214
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "B",
+    "seqlen": 225
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "J",
+    "seqlen": 122
+   }
+  ],
+  "chosen_seeds": [
+   145,
+   101,
+   102,
+   103
+  ],
+  "baseline_dockq": {
+   "145": 0.608,
+   "101": 0.055,
+   "102": 0.111,
+   "103": 0.042
+  },
+  "n_good_seeds": 32,
+  "n_bad_seeds": 18,
+  "total_seeds": 50
+ },
+ "8che_BE": {
+  "pdb": "8che",
+  "c1": "B",
+  "c2": "E",
+  "tid": "nt09",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "H",
+    "seqlen": 215
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "L",
+    "seqlen": 219
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "C",
+    "seqlen": 37
+   }
+  ],
+  "chosen_seeds": [
+   137,
+   101,
+   103,
+   104
+  ],
+  "baseline_dockq": {
+   "137": 0.529,
+   "101": 0.112,
+   "103": 0.202,
+   "104": 0.176
+  },
+  "n_good_seeds": 19,
+  "n_bad_seeds": 31,
+  "total_seeds": 50
+ },
+ "8che_AE": {
+  "pdb": "8che",
+  "c1": "A",
+  "c2": "E",
+  "tid": "nt09",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "H",
+    "seqlen": 215
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "L",
+    "seqlen": 219
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "C",
+    "seqlen": 37
+   }
+  ],
+  "chosen_seeds": [
+   112,
+   101,
+   102,
+   104
+  ],
+  "baseline_dockq": {
+   "112": 0.438,
+   "101": 0.153,
+   "102": 0.201,
+   "104": 0.206
+  },
+  "n_good_seeds": 18,
+  "n_bad_seeds": 32,
+  "total_seeds": 50
+ },
+ "8slb_AB": {
+  "pdb": "8slb",
+  "c1": "A",
+  "c2": "B",
+  "tid": "nt15",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "A",
+    "seqlen": 288
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "H",
+    "seqlen": 240
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "L",
+    "seqlen": 215
+   }
+  ],
+  "chosen_seeds": [
+   122,
+   101,
+   103,
+   105
+  ],
+  "baseline_dockq": {
+   "122": 0.462,
+   "101": 0.013,
+   "103": 0.197,
+   "105": 0.013
+  },
+  "n_good_seeds": 31,
+  "n_bad_seeds": 19,
+  "total_seeds": 50
+ },
+ "8ux6_DF": {
+  "pdb": "8ux6",
+  "c1": "D",
+  "c2": "F",
+  "tid": "nt17",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "C",
+    "seqlen": 216
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "D",
+    "seqlen": 221
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "F",
+    "seqlen": 41
+   }
+  ],
+  "chosen_seeds": [
+   17,
+   0,
+   1,
+   2
+  ],
+  "baseline_dockq": {
+   "17": 0.362,
+   "0": 0.171,
+   "1": 0.165,
+   "2": 0.168
+  },
+  "n_good_seeds": 14,
+  "n_bad_seeds": 36,
+  "total_seeds": 50
+ },
+ "8slb_AC": {
+  "pdb": "8slb",
+  "c1": "A",
+  "c2": "C",
+  "tid": "nt15",
+  "chain_map": [
+   {
+    "qidx": 0,
+    "model_chain": "A",
+    "native_letter": "A",
+    "seqlen": 288
+   },
+   {
+    "qidx": 1,
+    "model_chain": "B",
+    "native_letter": "H",
+    "seqlen": 240
+   },
+   {
+    "qidx": 2,
+    "model_chain": "C",
+    "native_letter": "L",
+    "seqlen": 215
+   }
+  ],
+  "chosen_seeds": [
+   122,
+   101,
+   102,
+   105
+  ],
+  "baseline_dockq": {
+   "122": 0.655,
+   "101": 0.011,
+   "102": 0.184,
+   "105": 0.011
+  },
+  "n_good_seeds": 26,
+  "n_bad_seeds": 24,
+  "total_seeds": 50
+ }
+}

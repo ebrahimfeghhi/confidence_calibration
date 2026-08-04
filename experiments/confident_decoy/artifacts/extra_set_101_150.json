@@ -1,0 +1,125 @@
+{
+ "set": "extra",
+ "seeds": "101-150",
+ "dockq_threshold": 0.23,
+ "decoys": [
+  "7ucx_AC",
+  "7zau_AB",
+  "8be1_AC",
+  "8ivx_AC",
+  "8pn0_BE",
+  "8ux6_AF",
+  "9jbq_AC"
+ ],
+ "selection_ok": [],
+ "per_interface": {
+  "7ucx_AC": {
+   "pdb": "7ucx",
+   "chains": "A-C",
+   "n_poses": 250,
+   "n_acceptable": 1,
+   "top_pair_iptm": 0.692,
+   "sel_dockq": 0.155,
+   "best_dockq": 0.269,
+   "contact_residues": 17,
+   "confident_decoy": true,
+   "selection_ok": false
+  },
+  "7yv1_AB": {
+   "pdb": "7yv1",
+   "chains": "A-B",
+   "n_poses": 250,
+   "n_acceptable": 0,
+   "top_pair_iptm": 0.436,
+   "sel_dockq": 0.082,
+   "best_dockq": 0.119,
+   "contact_residues": 26,
+   "confident_decoy": false,
+   "selection_ok": false
+  },
+  "7zau_AB": {
+   "pdb": "7zau",
+   "chains": "A-B",
+   "n_poses": 250,
+   "n_acceptable": 32,
+   "top_pair_iptm": 0.556,
+   "sel_dockq": 0.004,
+   "best_dockq": 0.435,
+   "contact_residues": 49,
+   "confident_decoy": true,
+   "selection_ok": false
+  },
+  "8be1_AC": {
+   "pdb": "8be1",
+   "chains": "A-C",
+   "n_poses": 250,
+   "n_acceptable": 1,
+   "top_pair_iptm": 0.398,
+   "sel_dockq": 0.022,
+   "best_dockq": 0.235,
+   "contact_residues": 28,
+   "confident_decoy": true,
+   "selection_ok": false
+  },
+  "8ivx_AB": {
+   "pdb": "8ivx",
+   "chains": "A-B",
+   "n_poses": 250,
+   "n_acceptable": 0,
+   "top_pair_iptm": 0.74,
+   "sel_dockq": 0.005,
+   "best_dockq": 0.144,
+   "contact_residues": 42,
+   "confident_decoy": false,
+   "selection_ok": false
+  },
+  "8ivx_AC": {
+   "pdb": "8ivx",
+   "chains": "A-C",
+   "n_poses": 250,
+   "n_acceptable": 4,
+   "top_pair_iptm": 0.773,
+   "sel_dockq": 0.007,
+   "best_dockq": 0.333,
+   "contact_residues": 15,
+   "confident_decoy": true,
+   "selection_ok": false
+  },
+  "8pn0_BE": {
+   "pdb": "8pn0",
+   "chains": "B-E",
+   "n_poses": 250,
+   "n_acceptable": 155,
+   "top_pair_iptm": 0.39,
+   "sel_dockq": 0.084,
+   "best_dockq": 0.741,
+   "contact_residues": 10,
+   "confident_decoy": true,
+   "selection_ok": false
+  },
+  "8ux6_AF": {
+   "pdb": "8ux6",
+   "chains": "A-F",
+   "n_poses": 250,
+   "n_acceptable": 1,
+   "top_pair_iptm": 0.37,
+   "sel_dockq": 0.157,
+   "best_dockq": 0.246,
+   "contact_residues": 21,
+   "confident_decoy": true,
+   "selection_ok": false
+  },
+  "9jbq_AC": {
+   "pdb": "9jbq",
+   "chains": "A-C",
+   "n_poses": 250,
+   "n_acceptable": 1,
+   "top_pair_iptm": 0.498,
+   "sel_dockq": 0.041,
+   "best_dockq": 0.584,
+   "contact_residues": 27,
+   "confident_decoy": true,
+   "selection_ok": false
+  }
+ }
+}

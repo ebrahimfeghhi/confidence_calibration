@@ -1,0 +1,80 @@
+[12:01] watchdog start (every 30 min)
+[12:01] OK  jobs 8/108, seeds 478/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[12:31] OK  jobs 8/108, seeds 486/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[13:01] OK  jobs 8/108, seeds 498/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[13:31] OK  jobs 8/108, seeds 510/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[14:01] OK  jobs 8/108, seeds 518/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[14:31] OK  jobs 8/108, seeds 530/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[15:01] OK  jobs 8/108, seeds 542/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[15:31] OK  jobs 16/108, seeds 1036/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[16:01] ALERT GPUs in use outside 0-3: [4]
+[16:01] OK  jobs 28/108, seeds 1696/5400, cores 4, gpus [0, 1, 2, 3, 4], scored 0
+[16:02] watchdog start (every 30 min)
+Traceback (most recent call last):
+  File "/home/ebrahim/confident_decoy_experiments/scripts/sweep_watchdog.py", line 123, in <module>
+    idx = uuid2idx.get(u)
+          ^^^^^^^^
+NameError: name 'uuid2idx' is not defined
+[16:03] watchdog start (every 30 min)
+[16:03] ALERT GPU3 shared with nhadidi (32552 MiB) -- 7z2m needs ~92 GB there
+[16:03] OK  jobs 29/108, seeds 1720/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[16:33] ALERT GPU3 shared with nhadidi (32552 MiB) -- 7z2m needs ~92 GB there
+[16:33] OK  jobs 39/108, seeds 2128/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[16:33] watchdog start (every 30 min)
+[16:33] ALERT GPU3 now shared with nhadidi (32552 MiB) -- big jobs will be routed elsewhere by the scheduler's memory check
+[16:33] OK  jobs 39/108, seeds 2131/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[17:03] ACTION killed 4 orphan inference proc(s) ['3778', '9201', '4177314', '4182678'] (GPU-memory / OOM risk; seeds are preserved)
+[17:03] OK  jobs 43/108, seeds 2398/5400, cores 0, gpus [0, 1, 2, 3], scored 0
+[17:05] watchdog start (every 30 min)
+[17:05] ALERT GPU3 now shared with nhadidi (32552 MiB) -- big jobs will be routed elsewhere by the scheduler's memory check
+[17:05] OK  jobs 43/108, seeds 2406/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[17:35] ACTION GPU3 freed by nhadidi -- big jobs can use it again
+[17:35] OK  jobs 47/108, seeds 2651/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[18:05] OK  jobs 51/108, seeds 2847/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[18:35] OK  jobs 54/108, seeds 3021/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[19:05] OK  jobs 56/108, seeds 3156/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[19:35] OK  jobs 59/108, seeds 3293/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[20:05] OK  jobs 63/108, seeds 3439/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[20:35] OK  jobs 64/108, seeds 3572/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[21:05] OK  jobs 67/108, seeds 3686/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[21:35] OK  jobs 69/108, seeds 3783/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[22:05] OK  jobs 71/108, seeds 3872/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[22:35] OK  jobs 73/108, seeds 3965/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[23:05] OK  jobs 75/108, seeds 4065/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[23:35] OK  jobs 78/108, seeds 4167/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[00:05] OK  jobs 79/108, seeds 4267/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[00:35] OK  jobs 82/108, seeds 4366/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[01:05] OK  jobs 83/108, seeds 4456/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[01:35] OK  jobs 86/108, seeds 4528/5400, cores 4, gpus [0, 2, 3], scored 0
+[02:05] OK  jobs 86/108, seeds 4568/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[02:35] OK  jobs 86/108, seeds 4608/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[03:05] OK  jobs 86/108, seeds 4649/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[03:35] OK  jobs 87/108, seeds 4690/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[04:05] OK  jobs 90/108, seeds 4736/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[04:35] OK  jobs 90/108, seeds 4794/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[05:05] OK  jobs 90/108, seeds 4851/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[05:35] OK  jobs 91/108, seeds 4908/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[06:05] OK  jobs 94/108, seeds 4954/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[06:35] OK  jobs 94/108, seeds 4996/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[07:05] OK  jobs 95/108, seeds 5038/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[07:35] OK  jobs 96/108, seeds 5070/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[08:05] OK  jobs 97/108, seeds 5099/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[08:35] OK  jobs 97/108, seeds 5123/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[09:05] OK  jobs 97/108, seeds 5146/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[09:35] OK  jobs 98/108, seeds 5168/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[10:05] OK  jobs 98/108, seeds 5187/5400, cores 4, gpus [0, 1, 2, 3], scored 0
+[10:35] ALERT measured 113 cores > budget 64
+[10:35] OK  jobs 99/108, seeds 5205/5400, cores 113, gpus [0, 1, 2, 3], scored 26
+[10:36] watchdog start (every 30 min)
+[10:36] OK  jobs 99/108, seeds 5205/5400, cores 90, gpus [0, 1, 2, 3], scored 27
+[11:06] OK  jobs 100/108, seeds 5220/5400, cores 80, gpus [0, 1, 2, 3], scored 159
+[11:36] OK  jobs 100/108, seeds 5230/5400, cores 8, gpus [0, 1, 2, 3], scored 195
+[12:06] OK  jobs 100/108, seeds 5240/5400, cores 9, gpus [0, 1, 2, 3], scored 195
+[12:36] OK  jobs 100/108, seeds 5252/5400, cores 8, gpus [0, 1, 2, 3], scored 195
+[13:06] OK  jobs 101/108, seeds 5261/5400, cores 7, gpus [0, 1, 2], scored 195
+[13:36] OK  jobs 101/108, seeds 5269/5400, cores 6, gpus [0, 1, 2], scored 195
+[14:06] OK  jobs 104/108, seeds 5338/5400, cores 8, gpus [0, 1, 2, 3], scored 195
+[14:36] OK  jobs 105/108, seeds 5368/5400, cores 6, gpus [0, 1, 2], scored 195
+[15:06] OK  jobs 105/108, seeds 5376/5400, cores 6, gpus [0, 1, 2], scored 195
+[15:36] OK  jobs 105/108, seeds 5384/5400, cores 6, gpus [0, 1, 2], scored 195
+[16:06] OK  jobs 106/108, seeds 5389/5400, cores 4, gpus [0, 2], scored 195

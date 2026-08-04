@@ -1,0 +1,27 @@
+run                     #ifaces  rescued  in decoy set  documented  flag
+abonly_goods_scores          15       15             0        None
+abonly_scores                15        5             5           8  <== MISMATCH vs documented 8
+agonly_full_scores           30       23             7        None
+agonly_scores                13        8             7           6  <== MISMATCH vs documented 6
+expb_scores                  15        2             2           2
+expc_good_scores             15       15             0        None
+expc_scores                  15        2             2           2
+expd_scores                  15        0             0           0
+native50_scores              15       14            13          14  <== MISMATCH vs documented 14
+native_scores                 0        0             0        None
+oracle_scores                15        8             8           8
+safety_scores                15       15             0        None
+sposefv_scores                8        2             2        None
+topdockq_scores              14        1             1        None
+topiptm_scores                5        0             0        None
+
+--- rescue sets within the 15-interface decoy set ---
+abonly_scores           5: ['8aok_AB', '8av2_AC', '8q3j_AC', '8slb_AB', '8slb_AC']
+agonly_scores           7: ['8bf4_AB', '8che_AE', '8che_BE', '8fbw_AC', '8ux6_DF', '8yxi_AC', '8yxi_BC']
+native50_scores        13: ['8aok_AB', '8av2_AC', '8bf4_AB', '8che_AE', '8che_BE', '8fbw_AC', '8q3j_AC', '8slb_AB', '8slb_AC', '8the_AB', '8ux6_DF', '8yxi_AC', '8yxi_BC']
+oracle_scores           8: ['8bf4_AB', '8che_AE', '8che_BE', '8fas_BC', '8fbw_AC', '8q3j_AC', '8ux6_DF', '8yxi_BC']
+
+abonly & agonly overlap: EMPTY (disjoint)
+union 12 / neither: ['7z2m_AK', '7z2m_BK', '8fas_BC', '8the_AB']
+
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/retally_templates.json

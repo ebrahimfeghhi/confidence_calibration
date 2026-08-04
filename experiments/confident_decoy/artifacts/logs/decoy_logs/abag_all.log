@@ -1,0 +1,151 @@
+[  1/113] 7st5: solved=1
+[  2/113] 7txw: solved=3
+[  3/113] 7ua2: solved=4
+[  4/113] 7ucx: confident_decoy=1  solved=5
+[  5/113] 7uvs: confident_decoy=1  solved=7
+[  6/113] 7x8p: confident_decoy=1  solved=9
+[  7/113] 7xld: confident_decoy=1  solved=10
+[  8/113] 7yds: confident_decoy=1  solved=11
+[  9/113] 7yv1: confident_decoy=1  no_acceptable_pose=2  solved=11
+[ 10/113] 7yxu: confident_decoy=1  no_acceptable_pose=2  solved=13
+[ 11/113] 7z1x: confident_decoy=1  no_acceptable_pose=2  solved=14
+[ 12/113] 7z2m: confident_decoy=2  no_acceptable_pose=2  solved=14
+[ 13/113] 7zau: confident_decoy=3  no_acceptable_pose=2  solved=14
+[ 14/113] 7zoz: confident_decoy=3  no_acceptable_pose=2  solved=16
+[ 15/113] 8a44: confident_decoy=3  no_acceptable_pose=4  solved=16
+[ 16/113] 8a67: confident_decoy=3  no_acceptable_pose=5  solved=16
+[ 17/113] 8acf: confident_decoy=3  no_acceptable_pose=5  solved=18
+[ 18/113] 8ahn: confident_decoy=3  no_acceptable_pose=5  solved=20
+[ 19/113] 8aok: confident_decoy=4  no_acceptable_pose=5  solved=20
+[ 20/113] 8aom: confident_decoy=4  no_acceptable_pose=5  solved=21
+[ 21/113] 8aon: confident_decoy=4  no_acceptable_pose=5  solved=22
+[ 22/113] 8ath: confident_decoy=4  no_acceptable_pose=5  solved=24
+[ 23/113] 8av2: confident_decoy=5  no_acceptable_pose=5  solved=24
+[ 24/113] 8b1a: confident_decoy=5  no_acceptable_pose=5  solved=25
+[ 25/113] 8b7h: confident_decoy=5  no_acceptable_pose=5  not_scored=2  solved=25
+[ 26/113] 8be1: confident_decoy=6  no_acceptable_pose=5  not_scored=2  solved=25
+[ 27/113] 8be2: confident_decoy=6  no_acceptable_pose=5  not_scored=2  solved=26
+[ 28/113] 8be3: confident_decoy=6  no_acceptable_pose=5  not_scored=2  solved=27
+[ 29/113] 8bf4: confident_decoy=7  no_acceptable_pose=5  not_scored=2  solved=27
+[ 30/113] 8byu: confident_decoy=7  no_acceptable_pose=5  not_scored=2  solved=29
+[ 31/113] 8c3l: confident_decoy=7  no_acceptable_pose=5  not_scored=2  solved=30
+[ 32/113] 8c5h: confident_decoy=7  no_acceptable_pose=5  not_scored=2  solved=31
+[ 33/113] 8che: confident_decoy=9  no_acceptable_pose=5  not_scored=2  solved=31
+[ 34/113] 8d9z: confident_decoy=9  no_acceptable_pose=5  not_scored=2  solved=33
+[ 35/113] 8dcm: confident_decoy=9  no_acceptable_pose=5  not_scored=2  solved=35
+[ 36/113] 8dn7: confident_decoy=9  no_acceptable_pose=7  not_scored=2  solved=35
+[ 37/113] 8dtn: confident_decoy=9  no_acceptable_pose=7  not_scored=3  solved=35
+[ 38/113] 8duz: confident_decoy=9  no_acceptable_pose=7  not_scored=3  solved=36
+[ 39/113] 8e0e: confident_decoy=9  no_acceptable_pose=7  not_scored=3  solved=37
+[ 40/113] 8en5: confident_decoy=9  no_acceptable_pose=7  not_scored=3  solved=38
+[ 41/113] 8et0: confident_decoy=9  no_acceptable_pose=7  not_scored=3  solved=39
+[ 42/113] 8evd: confident_decoy=9  no_acceptable_pose=7  not_scored=4  solved=39
+[ 43/113] 8f5i: confident_decoy=9  no_acceptable_pose=7  not_scored=4  solved=41
+[ 44/113] 8f5n: confident_decoy=9  no_acceptable_pose=7  not_scored=4  solved=43
+[ 45/113] 8f60: confident_decoy=9  no_acceptable_pose=7  not_scored=6  solved=43
+[ 46/113] 8fas: confident_decoy=10  no_acceptable_pose=7  not_scored=6  solved=44
+[ 47/113] 8fbw: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=44
+[ 48/113] 8fdd: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=46
+[ 49/113] 8fdo: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=47
+[ 50/113] 8fxv: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=48
+[ 51/113] 8fym: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=49
+[ 52/113] 8g4p: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=51
+[ 53/113] 8gho: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=52
+[ 54/113] 8gy5: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=53
+[ 55/113] 8gye: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=55
+[ 56/113] 8h3x: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=56
+[ 57/113] 8h63: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=57
+[ 58/113] 8hxq: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=58
+[ 59/113] 8ido: confident_decoy=12  no_acceptable_pose=7  not_scored=6  solved=59
+[ 60/113] 8im0: confident_decoy=12  no_acceptable_pose=8  not_scored=6  solved=59
+[ 61/113] 8ivx: confident_decoy=13  no_acceptable_pose=9  not_scored=6  solved=59
+[ 62/113] 8j7t: confident_decoy=13  no_acceptable_pose=9  not_scored=6  solved=61
+[ 63/113] 8jeo: confident_decoy=13  no_acceptable_pose=9  not_scored=6  solved=63
+[ 64/113] 8jyr: confident_decoy=13  no_acceptable_pose=9  not_scored=6  solved=65
+[ 65/113] 8oni: confident_decoy=13  no_acceptable_pose=9  not_scored=6  solved=69
+[ 66/113] 8opr: confident_decoy=13  no_acceptable_pose=9  not_scored=6  solved=70
+[ 67/113] 8oud: confident_decoy=13  no_acceptable_pose=10  not_scored=6  solved=70
+[ 68/113] 8oxw: confident_decoy=15  no_acceptable_pose=10  not_scored=6  solved=70
+[ 69/113] 8oxx: confident_decoy=16  no_acceptable_pose=11  not_scored=6  solved=70
+[ 70/113] 8pih: confident_decoy=16  no_acceptable_pose=11  not_scored=6  solved=71
+[ 71/113] 8pmz: confident_decoy=16  no_acceptable_pose=11  not_scored=6  solved=72
+[ 72/113] 8pn0: confident_decoy=17  no_acceptable_pose=11  not_scored=6  solved=73
+[ 73/113] 8pyr: confident_decoy=17  no_acceptable_pose=11  not_scored=6  solved=75
+[ 74/113] 8q3j: confident_decoy=19  no_acceptable_pose=11  not_scored=6  solved=75
+[ 75/113] 8q6r: confident_decoy=19  no_acceptable_pose=11  not_scored=6  solved=76
+[ 76/113] 8q7o: confident_decoy=19  no_acceptable_pose=11  not_scored=6  solved=77
+[ 77/113] 8qf4: confident_decoy=19  no_acceptable_pose=11  not_scored=6  solved=78
+[ 78/113] 8qz3: confident_decoy=19  no_acceptable_pose=11  not_scored=6  solved=79
+[ 79/113] 8r4u: confident_decoy=19  no_acceptable_pose=11  not_scored=6  solved=80
+[ 80/113] 8rp8: confident_decoy=19  no_acceptable_pose=11  not_scored=6  solved=82
+[ 81/113] 8s0l: confident_decoy=19  no_acceptable_pose=11  not_scored=6  solved=83
+[ 82/113] 8sfz: confident_decoy=19  no_acceptable_pose=12  not_scored=6  solved=83
+[ 83/113] 8sgn: confident_decoy=19  no_acceptable_pose=12  not_scored=6  solved=85
+[ 84/113] 8slb: confident_decoy=21  no_acceptable_pose=12  not_scored=6  solved=85
+[ 85/113] 8t59: confident_decoy=21  no_acceptable_pose=12  not_scored=6  solved=87
+[ 86/113] 8tft: confident_decoy=21  no_acceptable_pose=12  not_scored=6  solved=89
+[ 87/113] 8the: confident_decoy=22  no_acceptable_pose=12  not_scored=6  solved=89
+[ 88/113] 8tmz: confident_decoy=22  no_acceptable_pose=12  not_scored=6  solved=91
+[ 89/113] 8trs: confident_decoy=22  no_acceptable_pose=12  not_scored=6  solved=93
+[ 90/113] 8ts0: confident_decoy=22  no_acceptable_pose=12  not_scored=8  solved=93
+[ 91/113] 8tuz: confident_decoy=22  no_acceptable_pose=12  not_scored=8  solved=95
+[ 92/113] 8udz: confident_decoy=23  no_acceptable_pose=13  not_scored=8  solved=95
+[ 93/113] 8uky: confident_decoy=23  no_acceptable_pose=15  not_scored=8  solved=95
+[ 94/113] 8up2: confident_decoy=23  no_acceptable_pose=15  not_scored=8  solved=97
+[ 95/113] 8urf: confident_decoy=23  no_acceptable_pose=15  not_scored=8  solved=99
+[ 96/113] 8ux6: confident_decoy=24  no_acceptable_pose=15  not_scored=8  solved=100
+[ 97/113] 8v52: confident_decoy=24  no_acceptable_pose=15  not_scored=8  solved=102
+[ 98/113] 8vui: confident_decoy=25  no_acceptable_pose=15  not_scored=8  solved=102
+[ 99/113] 8vvl: confident_decoy=25  no_acceptable_pose=15  not_scored=8  solved=104
+[100/113] 8vyl: confident_decoy=25  no_acceptable_pose=15  not_scored=8  solved=106
+[101/113] 8vzo: confident_decoy=25  no_acceptable_pose=17  not_scored=8  solved=106
+[102/113] 8w84: confident_decoy=25  no_acceptable_pose=17  not_scored=8  solved=110
+[103/113] 8w90: confident_decoy=25  no_acceptable_pose=17  not_scored=8  solved=111
+[104/113] 8weo: confident_decoy=25  no_acceptable_pose=17  not_scored=8  solved=112
+[105/113] 8xnh: confident_decoy=25  no_acceptable_pose=17  not_scored=8  solved=113
+[106/113] 8yxi: confident_decoy=27  no_acceptable_pose=17  not_scored=8  solved=113
+[107/113] 8z8v: confident_decoy=27  no_acceptable_pose=18  not_scored=8  solved=113
+[108/113] 8zp2: confident_decoy=27  no_acceptable_pose=18  not_scored=8  solved=114
+[109/113] 9au1: confident_decoy=27  no_acceptable_pose=18  not_scored=8  solved=115
+[110/113] 9en2: confident_decoy=27  no_acceptable_pose=18  not_scored=8  solved=116
+[111/113] 9fww: confident_decoy=27  no_acceptable_pose=18  not_scored=8  solved=117
+[112/113] 9g2g: confident_decoy=27  no_acceptable_pose=18  not_scored=8  solved=118
+[113/113] 9jbq: confident_decoy=28  no_acceptable_pose=18  not_scored=8  solved=118
+
+=== FINAL, seeds 101-150, all FoldBench ab-ag interfaces ===
+  confident_decoy        28
+  no_acceptable_pose     18
+  not_scored             8
+  solved                 118
+
+confident decoys (28):
+  7ucx_AC      contacts=  17 n_ok=  1 top_ipTM=0.692 sel=0.155 best=0.269
+  7z2m_AJ      contacts=   3 n_ok= 47 top_ipTM=0.337 sel=0.039 best=0.608   <-- interface only 3 contact residues
+  7zau_AB      contacts=  49 n_ok= 32 top_ipTM=0.556 sel=0.004 best=0.435
+  8aok_AB      contacts=  46 n_ok=109 top_ipTM=0.749 sel=0.112 best=0.695
+  8av2_AC      contacts=  55 n_ok=  1 top_ipTM=0.659 sel=0.092 best=0.612
+  8be1_AC      contacts=  28 n_ok=  1 top_ipTM=0.398 sel=0.022 best=0.235
+  8bf4_AB      contacts=  51 n_ok= 22 top_ipTM=0.857 sel=0.014 best=0.723
+  8che_AE      contacts=  32 n_ok= 25 top_ipTM=0.450 sel=0.125 best=0.438
+  8che_BE      contacts=  24 n_ok= 24 top_ipTM=0.443 sel=0.087 best=0.529
+  8fas_BC      contacts=  11 n_ok= 77 top_ipTM=0.857 sel=0.175 best=0.987
+  8fbw_AC      contacts=  31 n_ok= 11 top_ipTM=0.632 sel=0.170 best=0.434
+  8fbw_BC      contacts=  10 n_ok=116 top_ipTM=0.566 sel=0.210 best=0.510
+  8ivx_AC      contacts=  15 n_ok=  4 top_ipTM=0.773 sel=0.007 best=0.333
+  8oxw_AB      contacts=  32 n_ok=  2 top_ipTM=0.610 sel=0.019 best=0.298
+  8oxw_AC      contacts=  32 n_ok=  2 top_ipTM=0.589 sel=0.009 best=0.275
+  8oxx_AC      contacts=  20 n_ok=  1 top_ipTM=0.432 sel=0.003 best=0.343
+  8pn0_BE      contacts=  10 n_ok=155 top_ipTM=0.390 sel=0.084 best=0.741
+  8q3j_AB      contacts=  25 n_ok= 24 top_ipTM=0.717 sel=0.035 best=0.705
+  8q3j_AC      contacts=  34 n_ok= 19 top_ipTM=0.763 sel=0.036 best=0.531
+  8slb_AB      contacts=  46 n_ok= 65 top_ipTM=0.601 sel=0.012 best=0.462
+  8slb_AC      contacts=  20 n_ok= 41 top_ipTM=0.584 sel=0.010 best=0.655
+  8the_AB      contacts=  50 n_ok= 62 top_ipTM=0.608 sel=0.113 best=0.514
+  8udz_AC      contacts=   8 n_ok=  1 top_ipTM=0.633 sel=0.005 best=0.239   <-- interface only 8 contact residues
+  8ux6_AF      contacts=  21 n_ok=  1 top_ipTM=0.370 sel=0.157 best=0.246
+  8vui_BC      contacts=  14 n_ok=  6 top_ipTM=0.695 sel=0.034 best=0.404
+  8yxi_AC      contacts=  13 n_ok=  7 top_ipTM=0.293 sel=0.006 best=0.295
+  8yxi_BC      contacts=  31 n_ok=  4 top_ipTM=0.281 sel=0.009 best=0.538
+  9jbq_AC      contacts=  27 n_ok=  1 top_ipTM=0.498 sel=0.041 best=0.584
+
+WROTE /home/ebrahim/confident_decoy_experiments/artifacts/abag_all_101_150.json

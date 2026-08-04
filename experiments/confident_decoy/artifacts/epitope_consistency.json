@@ -1,0 +1,134 @@
+{
+ "7st5_BF": {
+  "group": "solved (control)",
+  "self_consistency": 0.919,
+  "native_overlap": 0.863,
+  "n_poses": 16
+ },
+ "7txw_AC": {
+  "group": "solved (control)",
+  "self_consistency": 0.356,
+  "native_overlap": 0.076,
+  "n_poses": 14
+ },
+ "7txw_BC": {
+  "group": "solved (control)",
+  "self_consistency": 0.339,
+  "native_overlap": 0.016,
+  "n_poses": 16
+ },
+ "7ua2_AC": {
+  "group": "solved (control)",
+  "self_consistency": 0.848,
+  "native_overlap": 0.665,
+  "n_poses": 16
+ },
+ "7ucx_AB": {
+  "group": "solved (control)",
+  "self_consistency": 0.694,
+  "native_overlap": 0.505,
+  "n_poses": 16
+ },
+ "7uvs_AC": {
+  "group": "solved (control)",
+  "self_consistency": 0.544,
+  "native_overlap": 0.707,
+  "n_poses": 16
+ },
+ "7ucx_AC": {
+  "group": "confident decoy",
+  "self_consistency": 0.309,
+  "native_overlap": 0.163,
+  "n_poses": 16
+ },
+ "7z2m_AJ": {
+  "group": "confident decoy",
+  "self_consistency": 0.135,
+  "native_overlap": 0.077,
+  "n_poses": 13
+ },
+ "7zau_AB": {
+  "group": "confident decoy",
+  "self_consistency": 0.132,
+  "native_overlap": 0.223,
+  "n_poses": 16
+ },
+ "8aok_AB": {
+  "group": "confident decoy",
+  "self_consistency": 0.634,
+  "native_overlap": 0.513,
+  "n_poses": 16
+ },
+ "8av2_AC": {
+  "group": "confident decoy",
+  "self_consistency": 0.273,
+  "native_overlap": 0.163,
+  "n_poses": 15
+ },
+ "8be1_AC": {
+  "group": "confident decoy",
+  "self_consistency": 0.141,
+  "native_overlap": 0.063,
+  "n_poses": 15
+ },
+ "8dn7_AC": {
+  "group": "gen-failure, rescued by folds",
+  "self_consistency": 0.378,
+  "native_overlap": 0.011,
+  "n_poses": 10
+ },
+ "8dn7_AF": {
+  "group": "gen-failure, rescued by folds",
+  "self_consistency": 0.333,
+  "native_overlap": 0.0,
+  "n_poses": 5
+ },
+ "8sfz_AD": {
+  "group": "gen-failure, rescued by folds",
+  "self_consistency": 0.385,
+  "native_overlap": 0.127,
+  "n_poses": 16
+ },
+ "8udz_AD": {
+  "group": "gen-failure, rescued by folds",
+  "self_consistency": 0.08,
+  "native_overlap": 0.01,
+  "n_poses": 14
+ },
+ "7yv1_AB": {
+  "group": "gen-failure, unmoved by folds",
+  "self_consistency": 0.396,
+  "native_overlap": 0.113,
+  "n_poses": 16
+ },
+ "7yv1_AC": {
+  "group": "gen-failure, unmoved by folds",
+  "self_consistency": 0.129,
+  "native_overlap": 0.023,
+  "n_poses": 15
+ },
+ "8a44_AC": {
+  "group": "gen-failure, unmoved by folds",
+  "self_consistency": 0.257,
+  "native_overlap": 0.034,
+  "n_poses": 16
+ },
+ "8a44_AD": {
+  "group": "gen-failure, unmoved by folds",
+  "self_consistency": 0.221,
+  "native_overlap": 0.192,
+  "n_poses": 16
+ },
+ "8a67_AD": {
+  "group": "gen-failure, unmoved by folds",
+  "self_consistency": 0.152,
+  "native_overlap": 0.052,
+  "n_poses": 15
+ },
+ "8dtn_AB": {
+  "group": "gen-failure, unmoved by folds",
+  "self_consistency": 0.222,
+  "native_overlap": 0.352,
+  "n_poses": 16
+ }
+}

@@ -1,0 +1,133 @@
+{
+    "reference_chains": [
+        "A",
+        "B",
+        "C"
+    ],
+    "model_chains": [
+        "A",
+        "B",
+        "C"
+    ],
+    "chem_groups": [
+        [
+            "A"
+        ],
+        [
+            "B"
+        ],
+        [
+            "C"
+        ]
+    ],
+    "chem_mapping": [
+        [
+            "A"
+        ],
+        [
+            "B"
+        ],
+        [
+            "C"
+        ]
+    ],
+    "chain_mapping": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+    },
+    "aln": [
+        ">reference:A\nMGSSHHHHHHSSGRENLYFQGHMEEKRLSAKKGLPPGTLVYTGKYREDFEIEVMNYSIEEFREFKTTDVESVLPFRDSSTPTWINITGIHRTDVVQRVGEFFGIHPLVLEDILNVHQRPKVEFFENYVFIVLKMFTYDKNLHELESEQVSLILTKNCVLMFQEKIGDVFDPVRERIRYNRGIIRKKRADYLLYSLIDALVDDYFVLLEKIDDEIDVLEEEVLERPEKETVQRTHQLKRNLVELRKTIWPLREVLSSLYRDVPPLIEKETVPYFRDVYDHTIQIADTVE\n>model:A\nMGSSHHHHHHSSGRENLYFQGHMEEKRLSAKKGLPPGTLVYTGKYREDFEIEVMNYSIEEFREFKTTDVESVLPFRDSSTPTWINITGIHRTDVVQRVGEFFGIHPLVLEDILNVHQRPKVEFFENYVFIVLKMFTYDKNLHELESEQVSLILTKNCVLMFQEKIGDVFDPVRERIRYNRGIIRKKRADYLLYSLIDALVDDYFVLLEKIDDEIDVLEEEVLERPEKETVQRTHQLKRNLVELRKTIWPLREVLSSLYRDVPPLIEKETVPYFRDVYDHTIQIADTVE",
+        ">reference:B\nEISEVQLVESGGGLVQPGGSLRLSCAASGFNIYYSSIHWVRQAPGKGLEWVASIYSYSGYTSYADSVKGRFTISADTSKNTAYLQMNSLRAEDTAVYYCARSFYVFKRGTKYPYYNYPAMDYWGQGTLVTVFNQIKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDKKVEPKSCDKTHT\n>model:B\nEISEVQLVESGGGLVQPGGSLRLSCAASGFNIYYSSIHWVRQAPGKGLEWVASIYSYSGYTSYADSVKGRFTISADTSKNTAYLQMNSLRAEDTAVYYCARSFYVFKRGTKYPYYNYPAMDYWGQGTLVTVFNQIKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDKKVEPKSCDKTHT",
+        ">reference:C\nSDIQMTQSPSSLSASVGDRVTITCRASQSVSSAVAWYQQKPGKAPKLLIYSASSLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQSYYKPITFGQGTKVEIKRTVAAPSVFIFPPSDSQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGEC\n>model:C\nSDIQMTQSPSSLSASVGDRVTITCRASQSVSSAVAWYQQKPGKAPKLLIYSASSLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQSYYKPITFGQGTKVEIKRTVAAPSVFIFPPSDSQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGEC"
+    ],
+    "inconsistent_residues": [],
+    "dockq_reference_interfaces": [
+        [
+            "A",
+            "B"
+        ],
+        [
+            "A",
+            "C"
+        ],
+        [
+            "B",
+            "C"
+        ]
+    ],
+    "dockq_interfaces": [
+        [
+            "A",
+            "B",
+            "A",
+            "B"
+        ],
+        [
+            "A",
+            "C",
+            "A",
+            "C"
+        ],
+        [
+            "B",
+            "C",
+            "B",
+            "C"
+        ]
+    ],
+    "dockq": [
+        0.011,
+        0.012,
+        0.768
+    ],
+    "fnat": [
+        0.0,
+        0.0,
+        0.883
+    ],
+    "fnonnat": [
+        1.0,
+        1.0,
+        0.097
+    ],
+    "irmsd": [
+        15.687,
+        11.183,
+        1.59
+    ],
+    "lrmsd": [
+        53.242,
+        61.546,
+        1.926
+    ],
+    "nnat": [
+        57,
+        8,
+        137
+    ],
+    "nmdl": [
+        36,
+        11,
+        134
+    ],
+    "dockq_ave": 0.264,
+    "dockq_wave": 0.524,
+    "dockq_ave_full": 0.264,
+    "dockq_wave_full": 0.524,
+    "model": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8slb/seed_101/predictions/8slb_sample_1.cif",
+    "reference": "/home/ebrahim/Protenix/foldbench_abag/predictions_template/8slb/seed_143/predictions/8slb_sample_0.cif",
+    "fault_tolerant": true,
+    "model_biounit": null,
+    "reference_biounit": null,
+    "residue_number_alignment": false,
+    "enforce_consistency": false,
+    "cad_exec": null,
+    "usalign_exec": null,
+    "lddt_no_stereochecks": false,
+    "min_pep_length": 4,
+    "min_nuc_length": 4,
+    "lddt_add_mdl_contacts": false,
+    "dockq_capri_peptide": false,
+    "status": "SUCCESS"
+}

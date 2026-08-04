@@ -1,0 +1,718 @@
+2026-08-03 02:11:42,944 [/home/ebrahim/Protenix/runner/inference.py:627] INFO __main__: Using params for model protenix-v2: cycle=10, step=200
+2026-08-03 02:11:42,944 [/home/ebrahim/Protenix/runner/inference.py:648] INFO __main__: Inference by Protenix: model_size: 464M, with_feature: default, model_version: v2, dtype: bf16
+2026-08-03 02:11:43,319 [/home/ebrahim/Protenix/runner/inference.py:654] INFO __main__: Triangle kernels: multiplicative=cuequivariance, attention=cuequivariance
+2026-08-03 02:11:43,319 [/home/ebrahim/Protenix/runner/inference.py:658] INFO __main__: Optimization: shared_vars_cache=True, efficient_fusion=True, tf32=True
+2026-08-03 02:11:43,319 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: obsolete_pdbs_path already exists at /home/ebrahim/common/obsolete_to_successor.json
+2026-08-03 02:11:43,319 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: release_dates_path already exists at /home/ebrahim/common/release_date_cache.json
+2026-08-03 02:11:43,319 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Distributed environment: world size: 1, global rank: 0, local rank: 0
+2026-08-03 02:11:43,320 [/home/ebrahim/Protenix/runner/inference.py:98] INFO root: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-08-03 02:11:43,320 [/home/ebrahim/Protenix/runner/inference.py:127] INFO root: Finished environment initialization.
+2026-08-03 02:12:21,791 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Loading from /home/ebrahim/checkpoint/protenix-v2.pt, strict: True
+2026-08-03 02:12:22,419 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Sampled key: module.input_embedder.atom_attention_encoder.linear_no_bias_ref_pos.weight
+2026-08-03 02:12:22,481 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Finish loading checkpoint.
+2026-08-03 02:12:22,485 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Model parameters: 464.44M
+2026-08-03 02:12:22,489 [/home/ebrahim/Protenix/runner/inference.py:428] INFO __main__: Loading data from /home/ebrahim/confident_decoy_experiments/artifacts/native_tmpl/8im0-native50.json
+2026-08-03 02:12:23,089 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:12:26,055 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:12:26,449 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:12:26,523 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:12:26,565 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:12:26,698 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:101]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:12:40,986 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:101] succeeded. Model forward time: 14.29s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:12:40,998 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 101 completed in 17.91s.
+2026-08-03 02:12:40,998 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:12:41,095 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:12:41,467 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:12:41,467 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:12:41,467 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:12:41,602 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:102]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:12:53,533 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:102] succeeded. Model forward time: 11.93s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:12:53,543 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 102 completed in 12.55s.
+2026-08-03 02:12:53,543 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:12:53,628 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:12:54,007 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:12:54,008 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:12:54,008 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:12:54,147 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:103]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:13:06,498 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:103] succeeded. Model forward time: 12.35s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:13:06,515 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 103 completed in 12.97s.
+2026-08-03 02:13:06,515 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:13:06,597 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:13:06,976 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:13:06,977 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:13:06,977 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:13:07,120 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:104]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:13:19,414 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:104] succeeded. Model forward time: 12.29s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:13:19,429 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 104 completed in 12.91s.
+2026-08-03 02:13:19,429 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:13:19,512 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:13:19,895 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:13:19,896 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:13:19,896 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:13:20,039 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:105]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:13:32,320 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:105] succeeded. Model forward time: 12.28s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:13:32,337 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 105 completed in 12.91s.
+2026-08-03 02:13:32,337 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:13:32,419 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:13:32,794 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:13:32,795 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:13:32,795 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:13:32,922 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:106]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:13:45,218 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:106] succeeded. Model forward time: 12.30s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:13:45,233 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 106 completed in 12.90s.
+2026-08-03 02:13:45,233 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:13:45,315 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:13:45,692 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:13:45,693 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:13:45,693 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:13:45,819 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:107]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:13:58,441 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:107] succeeded. Model forward time: 12.62s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:13:58,456 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 107 completed in 13.22s.
+2026-08-03 02:13:58,456 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:13:58,538 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:13:58,903 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:13:58,904 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:13:58,904 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:13:59,042 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:108]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:14:11,325 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:108] succeeded. Model forward time: 12.28s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:14:11,338 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 108 completed in 12.88s.
+2026-08-03 02:14:11,338 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:14:11,420 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:14:11,794 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:14:11,794 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:14:11,794 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:14:11,931 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:109]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:14:24,197 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:109] succeeded. Model forward time: 12.27s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:14:24,208 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 109 completed in 12.87s.
+2026-08-03 02:14:24,208 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:14:24,290 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:14:24,654 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:14:24,655 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:14:24,655 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:14:24,797 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:110]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:14:37,089 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:110] succeeded. Model forward time: 12.29s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:14:37,099 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 110 completed in 12.89s.
+2026-08-03 02:14:37,099 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:14:37,181 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:14:37,550 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:14:37,550 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:14:37,550 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:14:37,690 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:111]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:14:49,600 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:111] succeeded. Model forward time: 11.91s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:14:49,612 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 111 completed in 12.51s.
+2026-08-03 02:14:49,612 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:14:49,694 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:14:50,068 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:14:50,068 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:14:50,068 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:14:50,213 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:112]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:15:02,830 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:112] succeeded. Model forward time: 12.62s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:15:02,843 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 112 completed in 13.23s.
+2026-08-03 02:15:02,843 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:15:02,925 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:15:03,294 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:15:03,295 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:15:03,295 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:15:03,435 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:113]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:15:15,401 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:113] succeeded. Model forward time: 11.97s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:15:15,410 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 113 completed in 12.57s.
+2026-08-03 02:15:15,410 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:15:15,492 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:15:15,863 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:15:15,863 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:15:15,863 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:15:16,008 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:114]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:15:28,497 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:114] succeeded. Model forward time: 12.49s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:15:28,505 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 114 completed in 13.10s.
+2026-08-03 02:15:28,506 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:15:28,587 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:15:28,960 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:15:28,960 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:15:28,961 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:15:29,097 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:115]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:15:41,254 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:115] succeeded. Model forward time: 12.16s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:15:41,264 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 115 completed in 12.76s.
+2026-08-03 02:15:41,264 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:15:41,346 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:15:41,710 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:15:41,711 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:15:41,711 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:15:41,848 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:116]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:15:53,912 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:116] succeeded. Model forward time: 12.06s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:15:53,924 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 116 completed in 12.66s.
+2026-08-03 02:15:53,925 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:15:54,006 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:15:54,373 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:15:54,374 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:15:54,374 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:15:54,514 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:117]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:16:06,704 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:117] succeeded. Model forward time: 12.19s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:16:06,713 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 117 completed in 12.79s.
+2026-08-03 02:16:06,713 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:16:06,795 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:16:07,163 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:16:07,164 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:16:07,164 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:16:07,306 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:118]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:16:19,657 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:118] succeeded. Model forward time: 12.35s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:16:19,665 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 118 completed in 12.95s.
+2026-08-03 02:16:19,666 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:16:19,748 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:16:20,114 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:16:20,114 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:16:20,115 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:16:20,249 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:119]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:16:32,729 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:119] succeeded. Model forward time: 12.48s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:16:32,740 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 119 completed in 13.07s.
+2026-08-03 02:16:32,741 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:16:32,822 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:16:33,190 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:16:33,191 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:16:33,191 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:16:33,331 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:120]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:16:45,692 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:120] succeeded. Model forward time: 12.36s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:16:45,701 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 120 completed in 12.96s.
+2026-08-03 02:16:45,702 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:16:45,783 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:16:46,149 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:16:46,149 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:16:46,150 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:16:46,289 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:121]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:16:58,579 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:121] succeeded. Model forward time: 12.29s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:16:58,589 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 121 completed in 12.89s.
+2026-08-03 02:16:58,589 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:16:58,673 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:16:59,045 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:16:59,045 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:16:59,046 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:16:59,186 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:122]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:17:11,489 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:122] succeeded. Model forward time: 12.30s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:17:11,499 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 122 completed in 12.91s.
+2026-08-03 02:17:11,499 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:17:11,581 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:17:11,945 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:17:11,945 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:17:11,945 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:17:12,089 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:123]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:17:23,945 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:123] succeeded. Model forward time: 11.86s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:17:23,957 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 123 completed in 12.46s.
+2026-08-03 02:17:23,957 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:17:24,039 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:17:24,406 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:17:24,407 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:17:24,407 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:17:24,550 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:124]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:17:36,785 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:124] succeeded. Model forward time: 12.24s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:17:36,798 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 124 completed in 12.84s.
+2026-08-03 02:17:36,798 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:17:36,879 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:17:37,248 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:17:37,248 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:17:37,249 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:17:37,390 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:125]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:17:49,527 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:125] succeeded. Model forward time: 12.14s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:17:49,536 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 125 completed in 12.74s.
+2026-08-03 02:17:49,536 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:17:49,618 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:17:49,995 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:17:49,996 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:17:49,996 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:17:50,144 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:126]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:18:02,520 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:126] succeeded. Model forward time: 12.38s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:18:02,532 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 126 completed in 13.00s.
+2026-08-03 02:18:02,532 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:18:02,614 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:18:02,987 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:18:02,988 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:18:02,988 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:18:03,135 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:127]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:18:15,007 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:127] succeeded. Model forward time: 11.87s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:18:15,020 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 127 completed in 12.49s.
+2026-08-03 02:18:15,020 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:18:15,102 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:18:15,466 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:18:15,467 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:18:15,467 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:18:15,603 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:128]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:18:27,823 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:128] succeeded. Model forward time: 12.22s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:18:27,833 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 128 completed in 12.81s.
+2026-08-03 02:18:27,834 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:18:27,915 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:18:28,280 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:18:28,281 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:18:28,281 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:18:28,418 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:129]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:18:40,890 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:129] succeeded. Model forward time: 12.47s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:18:40,898 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 129 completed in 13.06s.
+2026-08-03 02:18:40,899 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:18:40,982 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:18:41,355 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:18:41,355 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:18:41,355 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:18:41,498 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:130]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:18:53,627 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:130] succeeded. Model forward time: 12.13s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:18:53,636 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 130 completed in 12.74s.
+2026-08-03 02:18:53,637 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:18:53,719 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:18:54,085 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:18:54,086 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:18:54,086 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:18:54,223 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:131]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:19:06,347 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:131] succeeded. Model forward time: 12.12s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:19:06,357 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 131 completed in 12.72s.
+2026-08-03 02:19:06,357 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:19:06,439 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:19:06,800 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:19:06,800 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:19:06,801 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:19:06,930 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:132]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:19:19,120 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:132] succeeded. Model forward time: 12.19s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:19:19,128 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 132 completed in 12.77s.
+2026-08-03 02:19:19,129 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:19:19,210 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:19:19,581 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:19:19,581 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:19:19,581 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:19:19,717 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:133]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:19:31,761 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:133] succeeded. Model forward time: 12.04s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:19:31,772 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 133 completed in 12.64s.
+2026-08-03 02:19:31,773 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:19:31,856 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:19:32,225 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:19:32,225 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:19:32,225 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:19:32,363 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:134]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:19:44,675 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:134] succeeded. Model forward time: 12.31s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:19:44,684 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 134 completed in 12.91s.
+2026-08-03 02:19:44,684 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:19:44,767 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:19:45,134 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:19:45,135 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:19:45,135 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:19:45,277 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:135]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:19:57,484 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:135] succeeded. Model forward time: 12.21s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:19:57,494 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 135 completed in 12.81s.
+2026-08-03 02:19:57,494 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:19:57,577 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:19:57,950 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:19:57,950 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:19:57,950 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:19:58,092 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:136]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:20:10,182 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:136] succeeded. Model forward time: 12.09s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:20:10,190 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 136 completed in 12.70s.
+2026-08-03 02:20:10,190 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:20:10,272 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:20:10,654 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:20:10,654 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:20:10,655 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:20:10,791 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:137]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:20:23,046 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:137] succeeded. Model forward time: 12.26s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:20:23,054 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 137 completed in 12.86s.
+2026-08-03 02:20:23,055 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:20:23,137 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:20:23,511 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:20:23,512 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:20:23,512 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:20:23,656 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:138]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:20:35,308 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:138] succeeded. Model forward time: 11.65s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:20:35,317 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 138 completed in 12.26s.
+2026-08-03 02:20:35,318 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:20:35,400 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:20:35,763 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:20:35,764 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:20:35,764 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:20:35,904 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:139]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:20:48,419 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:139] succeeded. Model forward time: 12.52s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:20:48,428 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 139 completed in 13.11s.
+2026-08-03 02:20:48,428 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:20:48,510 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:20:48,885 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:20:48,885 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:20:48,886 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:20:49,026 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:140]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:21:01,479 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:140] succeeded. Model forward time: 12.45s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:21:01,487 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 140 completed in 13.06s.
+2026-08-03 02:21:01,488 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:21:01,569 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:21:01,946 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:21:01,946 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:21:01,947 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:21:02,083 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:141]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:21:14,316 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:141] succeeded. Model forward time: 12.23s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:21:14,326 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 141 completed in 12.84s.
+2026-08-03 02:21:14,326 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:21:14,408 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:21:14,787 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:21:14,787 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:21:14,788 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:21:14,926 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:142]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:21:27,383 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:142] succeeded. Model forward time: 12.46s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:21:27,392 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 142 completed in 13.07s.
+2026-08-03 02:21:27,393 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:21:27,475 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:21:27,852 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:21:27,853 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:21:27,853 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:21:27,993 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:143]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:21:40,327 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:143] succeeded. Model forward time: 12.33s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:21:40,336 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 143 completed in 12.94s.
+2026-08-03 02:21:40,336 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:21:40,418 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:21:40,796 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:21:40,797 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:21:40,797 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:21:40,930 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:144]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:21:53,507 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:144] succeeded. Model forward time: 12.58s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:21:53,518 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 144 completed in 13.18s.
+2026-08-03 02:21:53,518 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:21:53,601 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:21:53,977 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:21:53,978 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:21:53,978 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:21:54,114 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:145]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:22:06,519 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:145] succeeded. Model forward time: 12.41s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:22:06,527 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 145 completed in 13.01s.
+2026-08-03 02:22:06,528 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:22:06,610 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:22:06,985 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:22:06,986 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:22:06,986 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:22:07,125 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:146]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:22:19,579 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:146] succeeded. Model forward time: 12.45s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:22:19,586 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 146 completed in 13.06s.
+2026-08-03 02:22:19,587 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:22:19,670 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:22:20,043 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:22:20,044 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:22:20,044 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:22:20,179 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:147]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:22:32,714 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:147] succeeded. Model forward time: 12.53s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:22:32,722 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 147 completed in 13.14s.
+2026-08-03 02:22:32,722 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:22:32,805 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:22:33,170 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:22:33,171 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:22:33,171 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:22:33,298 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:148]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:22:45,396 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:148] succeeded. Model forward time: 12.10s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:22:45,405 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 148 completed in 12.68s.
+2026-08-03 02:22:45,405 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:22:45,487 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:22:45,853 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:22:45,854 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:22:45,854 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:22:45,984 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:149]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:22:58,370 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:149] succeeded. Model forward time: 12.39s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:22:58,379 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 149 completed in 12.97s.
+2026-08-03 02:22:58,380 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-03 02:22:58,461 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-03 02:22:58,829 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-03 02:22:58,830 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-03 02:22:58,830 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 0 templates for sequence GSAQVQLVESGGGLVQAGGSLRLSCAVSGRPFSEYNLGWFRQAPGKEREFVARIRSSGTTVYTDSVKGRFSASRDNAKNMGYLQLNSLEPEDTAVYYCAMSRVDTDSPAFYDYWGQGTQVTVSTPRS
+2026-08-03 02:22:58,974 [/home/ebrahim/Protenix/runner/inference.py:478] INFO __main__: [Rank 0 (1/1)] 8im0_native50 [seed:150]: N_asym 2, N_token 384, N_atom 2856, N_msa 10199
+2026-08-03 02:23:10,988 [/home/ebrahim/Protenix/runner/inference.py:502] INFO __main__: [Rank 0] 8im0_native50 [seed:150] succeeded. Model forward time: 12.01s. Results saved to /home/ebrahim/confident_decoy_experiments/artifacts/native_run_out/native50
+2026-08-03 02:23:10,997 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 150 completed in 12.62s.
+2026-08-03 02:23:10,997 [/home/ebrahim/Protenix/runner/inference.py:534] INFO __main__: [Rank 0] Job completed in 647.91s.
+train scheduler 16.0
+inference scheduler 16.0
+Diffusion Module has 16.0

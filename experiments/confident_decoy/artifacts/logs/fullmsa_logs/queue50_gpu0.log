@@ -1,0 +1,628 @@
+14:26:41 queue scheduler start; target N=50; 382 (pdb,seed) jobs to run | {'7z2m': 21, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+14:26:41 GPU0: start 7z2m seed 122  (queue left ~381) | {'7z2m': 21, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+14:39:15 GPU0: done 7z2m seed 122 | {'7z2m': 22, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+14:39:15 GPU0: start 7z2m seed 123  (queue left ~380) | {'7z2m': 22, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+14:51:53 GPU0: done 7z2m seed 123 | {'7z2m': 23, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+14:51:53 GPU0: start 7z2m seed 124  (queue left ~379) | {'7z2m': 23, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+15:04:39 GPU0: done 7z2m seed 124 | {'7z2m': 24, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+15:04:39 GPU0: start 7z2m seed 125  (queue left ~378) | {'7z2m': 24, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+15:17:20 GPU0: done 7z2m seed 125 | {'7z2m': 25, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+15:17:20 GPU0: start 7z2m seed 126  (queue left ~377) | {'7z2m': 25, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+15:29:59 GPU0: done 7z2m seed 126 | {'7z2m': 26, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+15:29:59 GPU0: start 7z2m seed 127  (queue left ~376) | {'7z2m': 26, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+15:42:37 GPU0: done 7z2m seed 127 | {'7z2m': 27, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+15:42:37 GPU0: start 7z2m seed 128  (queue left ~375) | {'7z2m': 27, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+15:55:12 GPU0: done 7z2m seed 128 | {'7z2m': 28, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+15:55:12 GPU0: start 7z2m seed 129  (queue left ~374) | {'7z2m': 28, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+16:07:49 GPU0: done 7z2m seed 129 | {'7z2m': 29, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+16:07:49 GPU0: start 7z2m seed 130  (queue left ~373) | {'7z2m': 29, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+16:20:27 GPU0: done 7z2m seed 130 | {'7z2m': 30, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+16:20:27 GPU0: start 7z2m seed 131  (queue left ~372) | {'7z2m': 30, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+16:33:06 GPU0: done 7z2m seed 131 | {'7z2m': 31, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+16:33:06 GPU0: start 7z2m seed 132  (queue left ~371) | {'7z2m': 31, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+16:45:44 GPU0: done 7z2m seed 132 | {'7z2m': 32, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+16:45:44 GPU0: start 7z2m seed 133  (queue left ~370) | {'7z2m': 32, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+16:58:21 GPU0: done 7z2m seed 133 | {'7z2m': 33, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+16:58:21 GPU0: start 7z2m seed 134  (queue left ~369) | {'7z2m': 33, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+17:10:58 GPU0: done 7z2m seed 134 | {'7z2m': 34, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+17:10:58 GPU0: start 7z2m seed 135  (queue left ~368) | {'7z2m': 34, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+17:23:35 GPU0: done 7z2m seed 135 | {'7z2m': 35, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+17:23:35 GPU0: start 7z2m seed 136  (queue left ~367) | {'7z2m': 35, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+17:36:11 GPU0: done 7z2m seed 136 | {'7z2m': 36, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+17:36:11 GPU0: start 7z2m seed 137  (queue left ~366) | {'7z2m': 36, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+17:48:47 GPU0: done 7z2m seed 137 | {'7z2m': 37, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+17:48:47 GPU0: start 7z2m seed 138  (queue left ~365) | {'7z2m': 37, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+18:01:24 GPU0: done 7z2m seed 138 | {'7z2m': 38, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+18:01:24 GPU0: start 7z2m seed 139  (queue left ~364) | {'7z2m': 38, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+18:14:03 GPU0: done 7z2m seed 139 | {'7z2m': 39, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+18:14:03 GPU0: start 7z2m seed 140  (queue left ~363) | {'7z2m': 39, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+18:26:41 GPU0: done 7z2m seed 140 | {'7z2m': 40, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+18:26:41 GPU0: start 7z2m seed 141  (queue left ~362) | {'7z2m': 40, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+18:39:17 GPU0: done 7z2m seed 141 | {'7z2m': 41, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+18:39:17 GPU0: start 7z2m seed 142  (queue left ~361) | {'7z2m': 41, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+18:51:54 GPU0: done 7z2m seed 142 | {'7z2m': 42, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+18:51:54 GPU0: start 7z2m seed 143  (queue left ~360) | {'7z2m': 42, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+19:04:31 GPU0: done 7z2m seed 143 | {'7z2m': 43, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+19:04:31 GPU0: start 7z2m seed 144  (queue left ~359) | {'7z2m': 43, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+19:17:08 GPU0: done 7z2m seed 144 | {'7z2m': 44, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+19:17:08 GPU0: start 7z2m seed 145  (queue left ~358) | {'7z2m': 44, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+19:29:44 GPU0: done 7z2m seed 145 | {'7z2m': 45, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+19:29:44 GPU0: start 7z2m seed 146  (queue left ~357) | {'7z2m': 45, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+19:42:22 GPU0: done 7z2m seed 146 | {'7z2m': 46, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+19:42:22 GPU0: start 7z2m seed 147  (queue left ~356) | {'7z2m': 46, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+19:54:59 GPU0: done 7z2m seed 147 | {'7z2m': 47, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+19:54:59 GPU0: start 7z2m seed 148  (queue left ~355) | {'7z2m': 47, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:07:36 GPU0: done 7z2m seed 148 | {'7z2m': 48, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:07:36 GPU0: start 7z2m seed 149  (queue left ~354) | {'7z2m': 48, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:20:12 GPU0: done 7z2m seed 149 | {'7z2m': 49, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:20:12 GPU0: start 7z2m seed 150  (queue left ~353) | {'7z2m': 49, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:34:11 GPU0: done 7z2m seed 150 | {'7z2m': 50, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:34:11 GPU0: start 8slb seed 105  (queue left ~352) | {'7z2m': 50, '8slb': 4, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:36:10 GPU0: done 8slb seed 105 | {'7z2m': 50, '8slb': 5, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:36:10 GPU0: start 8slb seed 106  (queue left ~351) | {'7z2m': 50, '8slb': 5, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:38:07 GPU0: done 8slb seed 106 | {'7z2m': 50, '8slb': 6, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:38:07 GPU0: start 8slb seed 107  (queue left ~350) | {'7z2m': 50, '8slb': 6, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:39:54 GPU0: done 8slb seed 107 | {'7z2m': 50, '8slb': 7, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:39:54 GPU0: start 8slb seed 108  (queue left ~349) | {'7z2m': 50, '8slb': 7, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:41:52 GPU0: done 8slb seed 108 | {'7z2m': 50, '8slb': 8, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:41:52 GPU0: start 8slb seed 109  (queue left ~348) | {'7z2m': 50, '8slb': 8, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:43:45 GPU0: done 8slb seed 109 | {'7z2m': 50, '8slb': 9, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:43:45 GPU0: start 8slb seed 110  (queue left ~347) | {'7z2m': 50, '8slb': 9, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:45:31 GPU0: done 8slb seed 110 | {'7z2m': 50, '8slb': 10, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:45:31 GPU0: start 8slb seed 111  (queue left ~346) | {'7z2m': 50, '8slb': 10, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:47:38 GPU0: done 8slb seed 111 | {'7z2m': 50, '8slb': 11, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:47:38 GPU0: start 8slb seed 112  (queue left ~345) | {'7z2m': 50, '8slb': 11, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:49:34 GPU0: done 8slb seed 112 | {'7z2m': 50, '8slb': 12, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:49:34 GPU0: start 8slb seed 113  (queue left ~344) | {'7z2m': 50, '8slb': 12, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:51:29 GPU0: done 8slb seed 113 | {'7z2m': 50, '8slb': 13, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:51:29 GPU0: start 8slb seed 114  (queue left ~343) | {'7z2m': 50, '8slb': 13, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:53:26 GPU0: done 8slb seed 114 | {'7z2m': 50, '8slb': 14, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:53:26 GPU0: start 8slb seed 115  (queue left ~342) | {'7z2m': 50, '8slb': 14, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:55:13 GPU0: done 8slb seed 115 | {'7z2m': 50, '8slb': 15, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:55:13 GPU0: start 8slb seed 116  (queue left ~341) | {'7z2m': 50, '8slb': 15, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:57:11 GPU0: done 8slb seed 116 | {'7z2m': 50, '8slb': 16, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:57:11 GPU0: start 8slb seed 117  (queue left ~340) | {'7z2m': 50, '8slb': 16, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:58:57 GPU0: done 8slb seed 117 | {'7z2m': 50, '8slb': 17, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+20:58:57 GPU0: start 8slb seed 118  (queue left ~339) | {'7z2m': 50, '8slb': 17, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:01:04 GPU0: done 8slb seed 118 | {'7z2m': 50, '8slb': 18, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:01:04 GPU0: start 8slb seed 119  (queue left ~338) | {'7z2m': 50, '8slb': 18, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:02:54 GPU0: done 8slb seed 119 | {'7z2m': 50, '8slb': 19, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:02:54 GPU0: start 8slb seed 120  (queue left ~337) | {'7z2m': 50, '8slb': 19, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:04:56 GPU0: done 8slb seed 120 | {'7z2m': 50, '8slb': 20, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:04:56 GPU0: start 8slb seed 121  (queue left ~336) | {'7z2m': 50, '8slb': 20, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:06:56 GPU0: done 8slb seed 121 | {'7z2m': 50, '8slb': 21, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:06:56 GPU0: start 8slb seed 122  (queue left ~335) | {'7z2m': 50, '8slb': 21, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:08:51 GPU0: done 8slb seed 122 | {'7z2m': 50, '8slb': 22, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:08:51 GPU0: start 8slb seed 123  (queue left ~334) | {'7z2m': 50, '8slb': 22, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:10:36 GPU0: done 8slb seed 123 | {'7z2m': 50, '8slb': 23, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:10:36 GPU0: start 8slb seed 124  (queue left ~333) | {'7z2m': 50, '8slb': 23, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:12:22 GPU0: done 8slb seed 124 | {'7z2m': 50, '8slb': 24, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:12:22 GPU0: start 8slb seed 125  (queue left ~332) | {'7z2m': 50, '8slb': 24, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:14:08 GPU0: done 8slb seed 125 | {'7z2m': 50, '8slb': 25, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:14:08 GPU0: start 8slb seed 126  (queue left ~331) | {'7z2m': 50, '8slb': 25, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:15:54 GPU0: done 8slb seed 126 | {'7z2m': 50, '8slb': 26, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:15:54 GPU0: start 8slb seed 127  (queue left ~330) | {'7z2m': 50, '8slb': 26, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:17:40 GPU0: done 8slb seed 127 | {'7z2m': 50, '8slb': 27, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:17:40 GPU0: start 8slb seed 128  (queue left ~329) | {'7z2m': 50, '8slb': 27, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:19:26 GPU0: done 8slb seed 128 | {'7z2m': 50, '8slb': 28, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:19:26 GPU0: start 8slb seed 129  (queue left ~328) | {'7z2m': 50, '8slb': 28, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:21:11 GPU0: done 8slb seed 129 | {'7z2m': 50, '8slb': 29, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:21:11 GPU0: start 8slb seed 130  (queue left ~327) | {'7z2m': 50, '8slb': 29, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:22:58 GPU0: done 8slb seed 130 | {'7z2m': 50, '8slb': 30, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:22:58 GPU0: start 8slb seed 131  (queue left ~326) | {'7z2m': 50, '8slb': 30, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:24:44 GPU0: done 8slb seed 131 | {'7z2m': 50, '8slb': 31, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:24:44 GPU0: start 8slb seed 132  (queue left ~325) | {'7z2m': 50, '8slb': 31, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:26:33 GPU0: done 8slb seed 132 | {'7z2m': 50, '8slb': 32, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:26:33 GPU0: start 8slb seed 133  (queue left ~324) | {'7z2m': 50, '8slb': 32, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:28:18 GPU0: done 8slb seed 133 | {'7z2m': 50, '8slb': 33, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:28:18 GPU0: start 8slb seed 134  (queue left ~323) | {'7z2m': 50, '8slb': 33, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:30:05 GPU0: done 8slb seed 134 | {'7z2m': 50, '8slb': 34, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:30:05 GPU0: start 8slb seed 135  (queue left ~322) | {'7z2m': 50, '8slb': 34, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:31:50 GPU0: done 8slb seed 135 | {'7z2m': 50, '8slb': 35, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:31:50 GPU0: start 8slb seed 136  (queue left ~321) | {'7z2m': 50, '8slb': 35, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:33:35 GPU0: done 8slb seed 136 | {'7z2m': 50, '8slb': 36, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:33:35 GPU0: start 8slb seed 137  (queue left ~320) | {'7z2m': 50, '8slb': 36, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:35:22 GPU0: done 8slb seed 137 | {'7z2m': 50, '8slb': 37, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:35:22 GPU0: start 8slb seed 138  (queue left ~319) | {'7z2m': 50, '8slb': 37, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:37:07 GPU0: done 8slb seed 138 | {'7z2m': 50, '8slb': 38, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:37:07 GPU0: start 8slb seed 139  (queue left ~318) | {'7z2m': 50, '8slb': 38, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:38:52 GPU0: done 8slb seed 139 | {'7z2m': 50, '8slb': 39, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:38:52 GPU0: start 8slb seed 140  (queue left ~317) | {'7z2m': 50, '8slb': 39, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:40:37 GPU0: done 8slb seed 140 | {'7z2m': 50, '8slb': 40, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:40:37 GPU0: start 8slb seed 141  (queue left ~316) | {'7z2m': 50, '8slb': 40, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:42:22 GPU0: done 8slb seed 141 | {'7z2m': 50, '8slb': 41, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:42:22 GPU0: start 8slb seed 142  (queue left ~315) | {'7z2m': 50, '8slb': 41, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:44:07 GPU0: done 8slb seed 142 | {'7z2m': 50, '8slb': 42, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:44:07 GPU0: start 8slb seed 143  (queue left ~314) | {'7z2m': 50, '8slb': 42, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:45:52 GPU0: done 8slb seed 143 | {'7z2m': 50, '8slb': 43, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:45:52 GPU0: start 8slb seed 144  (queue left ~313) | {'7z2m': 50, '8slb': 43, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:47:37 GPU0: done 8slb seed 144 | {'7z2m': 50, '8slb': 44, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:47:37 GPU0: start 8slb seed 145  (queue left ~312) | {'7z2m': 50, '8slb': 44, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:49:22 GPU0: done 8slb seed 145 | {'7z2m': 50, '8slb': 45, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:49:22 GPU0: start 8slb seed 146  (queue left ~311) | {'7z2m': 50, '8slb': 45, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:51:06 GPU0: done 8slb seed 146 | {'7z2m': 50, '8slb': 46, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:51:06 GPU0: start 8slb seed 147  (queue left ~310) | {'7z2m': 50, '8slb': 46, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:52:52 GPU0: done 8slb seed 147 | {'7z2m': 50, '8slb': 47, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:52:52 GPU0: start 8slb seed 148  (queue left ~309) | {'7z2m': 50, '8slb': 47, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:54:36 GPU0: done 8slb seed 148 | {'7z2m': 50, '8slb': 48, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:54:36 GPU0: start 8slb seed 149  (queue left ~308) | {'7z2m': 50, '8slb': 48, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:56:21 GPU0: done 8slb seed 149 | {'7z2m': 50, '8slb': 49, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:56:21 GPU0: start 8slb seed 150  (queue left ~307) | {'7z2m': 50, '8slb': 49, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:58:05 GPU0: done 8slb seed 150 | {'7z2m': 50, '8slb': 50, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:58:05 GPU0: start 8yxi seed 105  (queue left ~306) | {'7z2m': 50, '8slb': 50, '8yxi': 4, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:59:59 GPU0: done 8yxi seed 105 | {'7z2m': 50, '8slb': 50, '8yxi': 5, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+21:59:59 GPU0: start 8yxi seed 106  (queue left ~305) | {'7z2m': 50, '8slb': 50, '8yxi': 5, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:01:53 GPU0: done 8yxi seed 106 | {'7z2m': 50, '8slb': 50, '8yxi': 6, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:01:53 GPU0: start 8yxi seed 107  (queue left ~304) | {'7z2m': 50, '8slb': 50, '8yxi': 6, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:03:48 GPU0: done 8yxi seed 107 | {'7z2m': 50, '8slb': 50, '8yxi': 7, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:03:48 GPU0: start 8yxi seed 108  (queue left ~303) | {'7z2m': 50, '8slb': 50, '8yxi': 7, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:05:42 GPU0: done 8yxi seed 108 | {'7z2m': 50, '8slb': 50, '8yxi': 8, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:05:42 GPU0: start 8yxi seed 109  (queue left ~302) | {'7z2m': 50, '8slb': 50, '8yxi': 8, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:07:36 GPU0: done 8yxi seed 109 | {'7z2m': 50, '8slb': 50, '8yxi': 9, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:07:36 GPU0: start 8yxi seed 110  (queue left ~301) | {'7z2m': 50, '8slb': 50, '8yxi': 9, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:09:29 GPU0: done 8yxi seed 110 | {'7z2m': 50, '8slb': 50, '8yxi': 10, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:09:29 GPU0: start 8yxi seed 111  (queue left ~300) | {'7z2m': 50, '8slb': 50, '8yxi': 10, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:11:23 GPU0: done 8yxi seed 111 | {'7z2m': 50, '8slb': 50, '8yxi': 11, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:11:23 GPU0: start 8yxi seed 112  (queue left ~299) | {'7z2m': 50, '8slb': 50, '8yxi': 11, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:13:17 GPU0: done 8yxi seed 112 | {'7z2m': 50, '8slb': 50, '8yxi': 12, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:13:17 GPU0: start 8yxi seed 113  (queue left ~298) | {'7z2m': 50, '8slb': 50, '8yxi': 12, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:15:12 GPU0: done 8yxi seed 113 | {'7z2m': 50, '8slb': 50, '8yxi': 13, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:15:12 GPU0: start 8yxi seed 114  (queue left ~297) | {'7z2m': 50, '8slb': 50, '8yxi': 13, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:17:06 GPU0: done 8yxi seed 114 | {'7z2m': 50, '8slb': 50, '8yxi': 14, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:17:06 GPU0: start 8yxi seed 115  (queue left ~296) | {'7z2m': 50, '8slb': 50, '8yxi': 14, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:19:00 GPU0: done 8yxi seed 115 | {'7z2m': 50, '8slb': 50, '8yxi': 15, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:19:00 GPU0: start 8yxi seed 116  (queue left ~295) | {'7z2m': 50, '8slb': 50, '8yxi': 15, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:20:53 GPU0: done 8yxi seed 116 | {'7z2m': 50, '8slb': 50, '8yxi': 16, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:20:53 GPU0: start 8yxi seed 117  (queue left ~294) | {'7z2m': 50, '8slb': 50, '8yxi': 16, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:22:46 GPU0: done 8yxi seed 117 | {'7z2m': 50, '8slb': 50, '8yxi': 17, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:22:46 GPU0: start 8yxi seed 118  (queue left ~293) | {'7z2m': 50, '8slb': 50, '8yxi': 17, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:24:40 GPU0: done 8yxi seed 118 | {'7z2m': 50, '8slb': 50, '8yxi': 18, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:24:40 GPU0: start 8yxi seed 119  (queue left ~292) | {'7z2m': 50, '8slb': 50, '8yxi': 18, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:26:33 GPU0: done 8yxi seed 119 | {'7z2m': 50, '8slb': 50, '8yxi': 19, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:26:33 GPU0: start 8yxi seed 120  (queue left ~291) | {'7z2m': 50, '8slb': 50, '8yxi': 19, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:28:27 GPU0: done 8yxi seed 120 | {'7z2m': 50, '8slb': 50, '8yxi': 20, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:28:27 GPU0: start 8yxi seed 121  (queue left ~290) | {'7z2m': 50, '8slb': 50, '8yxi': 20, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:30:20 GPU0: done 8yxi seed 121 | {'7z2m': 50, '8slb': 50, '8yxi': 21, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:30:20 GPU0: start 8yxi seed 122  (queue left ~289) | {'7z2m': 50, '8slb': 50, '8yxi': 21, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:32:13 GPU0: done 8yxi seed 122 | {'7z2m': 50, '8slb': 50, '8yxi': 22, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:32:13 GPU0: start 8yxi seed 123  (queue left ~288) | {'7z2m': 50, '8slb': 50, '8yxi': 22, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:34:07 GPU0: done 8yxi seed 123 | {'7z2m': 50, '8slb': 50, '8yxi': 23, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:34:07 GPU0: start 8yxi seed 124  (queue left ~287) | {'7z2m': 50, '8slb': 50, '8yxi': 23, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:36:00 GPU0: done 8yxi seed 124 | {'7z2m': 50, '8slb': 50, '8yxi': 24, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:36:00 GPU0: start 8yxi seed 125  (queue left ~286) | {'7z2m': 50, '8slb': 50, '8yxi': 24, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:37:53 GPU0: done 8yxi seed 125 | {'7z2m': 50, '8slb': 50, '8yxi': 25, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:37:53 GPU0: start 8yxi seed 126  (queue left ~285) | {'7z2m': 50, '8slb': 50, '8yxi': 25, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:39:47 GPU0: done 8yxi seed 126 | {'7z2m': 50, '8slb': 50, '8yxi': 26, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:39:47 GPU0: start 8yxi seed 127  (queue left ~284) | {'7z2m': 50, '8slb': 50, '8yxi': 26, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:41:41 GPU0: done 8yxi seed 127 | {'7z2m': 50, '8slb': 50, '8yxi': 27, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:41:41 GPU0: start 8yxi seed 128  (queue left ~283) | {'7z2m': 50, '8slb': 50, '8yxi': 27, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:43:35 GPU0: done 8yxi seed 128 | {'7z2m': 50, '8slb': 50, '8yxi': 28, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:43:35 GPU0: start 8yxi seed 129  (queue left ~282) | {'7z2m': 50, '8slb': 50, '8yxi': 28, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:45:28 GPU0: done 8yxi seed 129 | {'7z2m': 50, '8slb': 50, '8yxi': 29, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:45:28 GPU0: start 8yxi seed 130  (queue left ~281) | {'7z2m': 50, '8slb': 50, '8yxi': 29, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:47:21 GPU0: done 8yxi seed 130 | {'7z2m': 50, '8slb': 50, '8yxi': 30, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:47:21 GPU0: start 8yxi seed 131  (queue left ~280) | {'7z2m': 50, '8slb': 50, '8yxi': 30, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:49:15 GPU0: done 8yxi seed 131 | {'7z2m': 50, '8slb': 50, '8yxi': 31, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:49:15 GPU0: start 8yxi seed 132  (queue left ~279) | {'7z2m': 50, '8slb': 50, '8yxi': 31, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:51:08 GPU0: done 8yxi seed 132 | {'7z2m': 50, '8slb': 50, '8yxi': 32, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:51:08 GPU0: start 8yxi seed 133  (queue left ~278) | {'7z2m': 50, '8slb': 50, '8yxi': 32, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:53:03 GPU0: done 8yxi seed 133 | {'7z2m': 50, '8slb': 50, '8yxi': 33, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:53:03 GPU0: start 8yxi seed 134  (queue left ~277) | {'7z2m': 50, '8slb': 50, '8yxi': 33, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:54:56 GPU0: done 8yxi seed 134 | {'7z2m': 50, '8slb': 50, '8yxi': 34, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:54:56 GPU0: start 8yxi seed 135  (queue left ~276) | {'7z2m': 50, '8slb': 50, '8yxi': 34, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:56:50 GPU0: done 8yxi seed 135 | {'7z2m': 50, '8slb': 50, '8yxi': 35, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:56:50 GPU0: start 8yxi seed 136  (queue left ~275) | {'7z2m': 50, '8slb': 50, '8yxi': 35, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:58:44 GPU0: done 8yxi seed 136 | {'7z2m': 50, '8slb': 50, '8yxi': 36, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+22:58:44 GPU0: start 8yxi seed 137  (queue left ~274) | {'7z2m': 50, '8slb': 50, '8yxi': 36, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:00:37 GPU0: done 8yxi seed 137 | {'7z2m': 50, '8slb': 50, '8yxi': 37, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:00:37 GPU0: start 8yxi seed 138  (queue left ~273) | {'7z2m': 50, '8slb': 50, '8yxi': 37, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:02:30 GPU0: done 8yxi seed 138 | {'7z2m': 50, '8slb': 50, '8yxi': 38, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:02:30 GPU0: start 8yxi seed 139  (queue left ~272) | {'7z2m': 50, '8slb': 50, '8yxi': 38, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:04:23 GPU0: done 8yxi seed 139 | {'7z2m': 50, '8slb': 50, '8yxi': 39, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:04:23 GPU0: start 8yxi seed 140  (queue left ~271) | {'7z2m': 50, '8slb': 50, '8yxi': 39, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:06:16 GPU0: done 8yxi seed 140 | {'7z2m': 50, '8slb': 50, '8yxi': 40, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:06:16 GPU0: start 8yxi seed 141  (queue left ~270) | {'7z2m': 50, '8slb': 50, '8yxi': 40, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:08:10 GPU0: done 8yxi seed 141 | {'7z2m': 50, '8slb': 50, '8yxi': 41, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:08:10 GPU0: start 8yxi seed 142  (queue left ~269) | {'7z2m': 50, '8slb': 50, '8yxi': 41, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:10:03 GPU0: done 8yxi seed 142 | {'7z2m': 50, '8slb': 50, '8yxi': 42, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:10:03 GPU0: start 8yxi seed 143  (queue left ~268) | {'7z2m': 50, '8slb': 50, '8yxi': 42, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:11:57 GPU0: done 8yxi seed 143 | {'7z2m': 50, '8slb': 50, '8yxi': 43, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:11:57 GPU0: start 8yxi seed 144  (queue left ~267) | {'7z2m': 50, '8slb': 50, '8yxi': 43, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:13:50 GPU0: done 8yxi seed 144 | {'7z2m': 50, '8slb': 50, '8yxi': 44, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:13:50 GPU0: start 8yxi seed 145  (queue left ~266) | {'7z2m': 50, '8slb': 50, '8yxi': 44, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:15:44 GPU0: done 8yxi seed 145 | {'7z2m': 50, '8slb': 50, '8yxi': 45, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:15:44 GPU0: start 8yxi seed 146  (queue left ~265) | {'7z2m': 50, '8slb': 50, '8yxi': 45, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:17:38 GPU0: done 8yxi seed 146 | {'7z2m': 50, '8slb': 50, '8yxi': 46, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:17:38 GPU0: start 8yxi seed 147  (queue left ~264) | {'7z2m': 50, '8slb': 50, '8yxi': 46, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:19:31 GPU0: done 8yxi seed 147 | {'7z2m': 50, '8slb': 50, '8yxi': 47, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:19:31 GPU0: start 8yxi seed 148  (queue left ~263) | {'7z2m': 50, '8slb': 50, '8yxi': 47, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:21:27 GPU0: done 8yxi seed 148 | {'7z2m': 50, '8slb': 50, '8yxi': 48, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:21:27 GPU0: start 8yxi seed 149  (queue left ~262) | {'7z2m': 50, '8slb': 50, '8yxi': 48, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:23:21 GPU0: done 8yxi seed 149 | {'7z2m': 50, '8slb': 50, '8yxi': 49, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:23:21 GPU0: start 8yxi seed 150  (queue left ~261) | {'7z2m': 50, '8slb': 50, '8yxi': 49, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:25:14 GPU0: done 8yxi seed 150 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:25:14 GPU0: start 8the seed 105  (queue left ~260) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 4, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:29:15 GPU0: done 8the seed 105 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 5, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:29:15 GPU0: start 8the seed 106  (queue left ~259) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 5, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:33:16 GPU0: done 8the seed 106 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 6, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:33:16 GPU0: start 8the seed 107  (queue left ~258) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 6, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:37:17 GPU0: done 8the seed 107 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 7, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:37:17 GPU0: start 8the seed 108  (queue left ~257) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 7, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:41:19 GPU0: done 8the seed 108 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 8, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:41:19 GPU0: start 8the seed 109  (queue left ~256) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 8, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:45:20 GPU0: done 8the seed 109 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 9, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:45:20 GPU0: start 8the seed 110  (queue left ~255) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 9, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:49:22 GPU0: done 8the seed 110 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 10, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:49:22 GPU0: start 8the seed 111  (queue left ~254) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 10, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:53:23 GPU0: done 8the seed 111 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 11, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:53:23 GPU0: start 8the seed 112  (queue left ~253) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 11, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:57:24 GPU0: done 8the seed 112 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 12, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+23:57:24 GPU0: start 8the seed 113  (queue left ~252) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 12, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:01:26 GPU0: done 8the seed 113 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 13, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:01:26 GPU0: start 8the seed 114  (queue left ~251) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 13, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:05:27 GPU0: done 8the seed 114 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 14, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:05:27 GPU0: start 8the seed 115  (queue left ~250) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 14, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:09:28 GPU0: done 8the seed 115 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 15, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:09:28 GPU0: start 8the seed 116  (queue left ~249) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 15, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:13:30 GPU0: done 8the seed 116 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 16, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:13:30 GPU0: start 8the seed 117  (queue left ~248) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 16, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:17:31 GPU0: done 8the seed 117 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 17, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:17:31 GPU0: start 8the seed 118  (queue left ~247) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 17, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:21:33 GPU0: done 8the seed 118 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 18, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:21:33 GPU0: start 8the seed 119  (queue left ~246) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 18, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:25:34 GPU0: done 8the seed 119 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 19, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:25:34 GPU0: start 8the seed 120  (queue left ~245) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 19, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:29:35 GPU0: done 8the seed 120 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 20, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:29:35 GPU0: start 8the seed 121  (queue left ~244) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 20, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:33:36 GPU0: done 8the seed 121 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 21, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:33:36 GPU0: start 8the seed 122  (queue left ~243) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 21, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:37:37 GPU0: done 8the seed 122 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 22, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:37:37 GPU0: start 8the seed 123  (queue left ~242) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 22, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:41:38 GPU0: done 8the seed 123 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 23, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:41:38 GPU0: start 8the seed 124  (queue left ~241) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 23, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:45:39 GPU0: done 8the seed 124 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 24, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:45:39 GPU0: start 8the seed 125  (queue left ~240) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 24, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:49:40 GPU0: done 8the seed 125 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 25, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:49:40 GPU0: start 8the seed 126  (queue left ~239) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 25, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:53:43 GPU0: done 8the seed 126 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 26, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:53:43 GPU0: start 8the seed 127  (queue left ~238) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 26, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:57:44 GPU0: done 8the seed 127 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 27, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+00:57:44 GPU0: start 8the seed 128  (queue left ~237) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 27, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:01:45 GPU0: done 8the seed 128 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 28, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:01:45 GPU0: start 8the seed 129  (queue left ~236) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 28, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:05:46 GPU0: done 8the seed 129 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 29, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:05:46 GPU0: start 8the seed 130  (queue left ~235) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 29, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:09:47 GPU0: done 8the seed 130 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 30, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:09:47 GPU0: start 8the seed 131  (queue left ~234) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 30, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:13:47 GPU0: done 8the seed 131 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 31, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:13:47 GPU0: start 8the seed 132  (queue left ~233) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 31, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:17:48 GPU0: done 8the seed 132 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 32, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:17:48 GPU0: start 8the seed 133  (queue left ~232) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 32, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:21:49 GPU0: done 8the seed 133 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 33, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:21:49 GPU0: start 8the seed 134  (queue left ~231) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 33, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:25:50 GPU0: done 8the seed 134 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 34, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:25:50 GPU0: start 8the seed 135  (queue left ~230) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 34, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:29:51 GPU0: done 8the seed 135 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 35, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:29:51 GPU0: start 8the seed 136  (queue left ~229) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 35, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:33:52 GPU0: done 8the seed 136 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 36, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:33:52 GPU0: start 8the seed 137  (queue left ~228) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 36, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:37:52 GPU0: done 8the seed 137 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 37, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:37:52 GPU0: start 8the seed 138  (queue left ~227) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 37, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:41:53 GPU0: done 8the seed 138 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 38, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:41:53 GPU0: start 8the seed 139  (queue left ~226) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 38, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:45:54 GPU0: done 8the seed 139 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 39, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:45:54 GPU0: start 8the seed 140  (queue left ~225) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 39, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:49:54 GPU0: done 8the seed 140 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 40, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:49:54 GPU0: start 8the seed 141  (queue left ~224) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 40, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:53:55 GPU0: done 8the seed 141 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 41, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:53:55 GPU0: start 8the seed 142  (queue left ~223) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 41, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:57:56 GPU0: done 8the seed 142 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 42, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+01:57:56 GPU0: start 8the seed 143  (queue left ~222) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 42, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:01:56 GPU0: done 8the seed 143 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 43, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:01:56 GPU0: start 8the seed 144  (queue left ~221) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 43, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:05:57 GPU0: done 8the seed 144 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 44, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:05:57 GPU0: start 8the seed 145  (queue left ~220) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 44, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:09:58 GPU0: done 8the seed 145 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 45, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:09:58 GPU0: start 8the seed 146  (queue left ~219) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 45, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:13:59 GPU0: done 8the seed 146 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 46, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:13:59 GPU0: start 8the seed 147  (queue left ~218) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 46, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:18:00 GPU0: done 8the seed 147 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 47, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:18:00 GPU0: start 8the seed 148  (queue left ~217) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 47, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:22:01 GPU0: done 8the seed 148 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 48, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:22:01 GPU0: start 8the seed 149  (queue left ~216) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 48, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:26:02 GPU0: done 8the seed 149 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 49, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:26:02 GPU0: start 8the seed 150  (queue left ~215) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 49, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:30:03 GPU0: done 8the seed 150 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:30:03 GPU0: start 8fas seed 117  (queue left ~214) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 16, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:31:18 GPU0: done 8fas seed 117 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 17, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:31:18 GPU0: start 8fas seed 118  (queue left ~213) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 17, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:32:34 GPU0: done 8fas seed 118 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 18, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:32:34 GPU0: start 8fas seed 119  (queue left ~212) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 18, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:33:49 GPU0: done 8fas seed 119 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 19, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:33:49 GPU0: start 8fas seed 120  (queue left ~211) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 19, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:35:04 GPU0: done 8fas seed 120 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 20, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:35:04 GPU0: start 8fas seed 121  (queue left ~210) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 20, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:36:19 GPU0: done 8fas seed 121 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 21, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:36:19 GPU0: start 8fas seed 122  (queue left ~209) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 21, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:37:35 GPU0: done 8fas seed 122 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 22, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:37:35 GPU0: start 8fas seed 123  (queue left ~208) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 22, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:38:50 GPU0: done 8fas seed 123 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 23, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:38:50 GPU0: start 8fas seed 124  (queue left ~207) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 23, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:40:04 GPU0: done 8fas seed 124 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 24, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:40:04 GPU0: start 8fas seed 125  (queue left ~206) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 24, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:41:19 GPU0: done 8fas seed 125 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 25, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:41:19 GPU0: start 8fas seed 126  (queue left ~205) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 25, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:42:34 GPU0: done 8fas seed 126 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 26, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:42:34 GPU0: start 8fas seed 127  (queue left ~204) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 26, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:43:49 GPU0: done 8fas seed 127 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 27, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:43:49 GPU0: start 8fas seed 128  (queue left ~203) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 27, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:45:03 GPU0: done 8fas seed 128 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 28, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:45:03 GPU0: start 8fas seed 129  (queue left ~202) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 28, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:46:18 GPU0: done 8fas seed 129 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 29, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:46:18 GPU0: start 8fas seed 130  (queue left ~201) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 29, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:47:33 GPU0: done 8fas seed 130 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 30, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:47:33 GPU0: start 8fas seed 131  (queue left ~200) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 30, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:48:48 GPU0: done 8fas seed 131 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 31, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:48:48 GPU0: start 8fas seed 132  (queue left ~199) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 31, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:50:03 GPU0: done 8fas seed 132 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 32, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:50:03 GPU0: start 8fas seed 133  (queue left ~198) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 32, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:51:18 GPU0: done 8fas seed 133 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 33, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:51:18 GPU0: start 8fas seed 134  (queue left ~197) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 33, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:52:33 GPU0: done 8fas seed 134 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 34, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:52:33 GPU0: start 8fas seed 135  (queue left ~196) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 34, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:53:48 GPU0: done 8fas seed 135 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 35, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:53:48 GPU0: start 8fas seed 136  (queue left ~195) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 35, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:55:03 GPU0: done 8fas seed 136 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 36, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:55:03 GPU0: start 8fas seed 137  (queue left ~194) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 36, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:56:18 GPU0: done 8fas seed 137 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 37, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:56:18 GPU0: start 8fas seed 138  (queue left ~193) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 37, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:57:32 GPU0: done 8fas seed 138 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 38, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:57:32 GPU0: start 8fas seed 139  (queue left ~192) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 38, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:58:47 GPU0: done 8fas seed 139 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 39, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+02:58:47 GPU0: start 8fas seed 140  (queue left ~191) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 39, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:00:02 GPU0: done 8fas seed 140 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 40, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:00:02 GPU0: start 8fas seed 141  (queue left ~190) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 40, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:01:17 GPU0: done 8fas seed 141 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 41, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:01:17 GPU0: start 8fas seed 142  (queue left ~189) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 41, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:02:32 GPU0: done 8fas seed 142 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 42, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:02:32 GPU0: start 8fas seed 143  (queue left ~188) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 42, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:03:47 GPU0: done 8fas seed 143 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 43, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:03:47 GPU0: start 8fas seed 144  (queue left ~187) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 43, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:05:02 GPU0: done 8fas seed 144 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 44, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:05:02 GPU0: start 8fas seed 145  (queue left ~186) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 44, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:06:17 GPU0: done 8fas seed 145 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 45, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:06:17 GPU0: start 8fas seed 146  (queue left ~185) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 45, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:07:31 GPU0: done 8fas seed 146 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 46, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:07:31 GPU0: start 8fas seed 147  (queue left ~184) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 46, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:08:46 GPU0: done 8fas seed 147 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 47, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:08:46 GPU0: start 8fas seed 148  (queue left ~183) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 47, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:10:01 GPU0: done 8fas seed 148 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 48, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:10:01 GPU0: start 8fas seed 149  (queue left ~182) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 48, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:11:15 GPU0: done 8fas seed 149 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 49, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:11:15 GPU0: start 8fas seed 150  (queue left ~181) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 49, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:12:31 GPU0: done 8fas seed 150 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:12:31 GPU0: start 8ux6 seed 117  (queue left ~180) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 16, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:14:45 GPU0: done 8ux6 seed 117 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 17, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:14:45 GPU0: start 8ux6 seed 118  (queue left ~179) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 17, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:16:59 GPU0: done 8ux6 seed 118 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 18, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:16:59 GPU0: start 8ux6 seed 119  (queue left ~178) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 18, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:19:13 GPU0: done 8ux6 seed 119 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 19, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:19:13 GPU0: start 8ux6 seed 120  (queue left ~177) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 19, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:21:27 GPU0: done 8ux6 seed 120 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 20, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:21:27 GPU0: start 8ux6 seed 121  (queue left ~176) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 20, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:23:41 GPU0: done 8ux6 seed 121 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 21, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:23:41 GPU0: start 8ux6 seed 122  (queue left ~175) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 21, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:25:56 GPU0: done 8ux6 seed 122 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 22, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:25:56 GPU0: start 8ux6 seed 123  (queue left ~174) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 22, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:28:10 GPU0: done 8ux6 seed 123 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 23, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:28:10 GPU0: start 8ux6 seed 124  (queue left ~173) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 23, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:30:23 GPU0: done 8ux6 seed 124 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 24, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:30:23 GPU0: start 8ux6 seed 125  (queue left ~172) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 24, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:32:37 GPU0: done 8ux6 seed 125 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 25, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:32:37 GPU0: start 8ux6 seed 126  (queue left ~171) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 25, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:34:50 GPU0: done 8ux6 seed 126 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 26, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:34:50 GPU0: start 8ux6 seed 127  (queue left ~170) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 26, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:37:03 GPU0: done 8ux6 seed 127 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 27, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:37:03 GPU0: start 8ux6 seed 128  (queue left ~169) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 27, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:39:16 GPU0: done 8ux6 seed 128 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 28, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:39:16 GPU0: start 8ux6 seed 129  (queue left ~168) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 28, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:41:30 GPU0: done 8ux6 seed 129 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 29, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:41:30 GPU0: start 8ux6 seed 130  (queue left ~167) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 29, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:43:43 GPU0: done 8ux6 seed 130 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 30, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:43:43 GPU0: start 8ux6 seed 131  (queue left ~166) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 30, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:45:56 GPU0: done 8ux6 seed 131 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 31, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:45:56 GPU0: start 8ux6 seed 132  (queue left ~165) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 31, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:48:10 GPU0: done 8ux6 seed 132 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 32, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:48:10 GPU0: start 8ux6 seed 133  (queue left ~164) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 32, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:50:23 GPU0: done 8ux6 seed 133 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 33, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:50:23 GPU0: start 8ux6 seed 134  (queue left ~163) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 33, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:52:36 GPU0: done 8ux6 seed 134 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 34, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:52:36 GPU0: start 8ux6 seed 135  (queue left ~162) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 34, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:54:49 GPU0: done 8ux6 seed 135 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 35, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:54:49 GPU0: start 8ux6 seed 136  (queue left ~161) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 35, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:57:03 GPU0: done 8ux6 seed 136 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 36, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:57:03 GPU0: start 8ux6 seed 137  (queue left ~160) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 36, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:59:16 GPU0: done 8ux6 seed 137 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 37, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+03:59:16 GPU0: start 8ux6 seed 138  (queue left ~159) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 37, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:01:30 GPU0: done 8ux6 seed 138 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 38, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:01:30 GPU0: start 8ux6 seed 139  (queue left ~158) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 38, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:03:43 GPU0: done 8ux6 seed 139 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 39, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:03:43 GPU0: start 8ux6 seed 140  (queue left ~157) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 39, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:05:57 GPU0: done 8ux6 seed 140 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 40, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:05:57 GPU0: start 8ux6 seed 141  (queue left ~156) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 40, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:08:10 GPU0: done 8ux6 seed 141 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 41, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:08:10 GPU0: start 8ux6 seed 142  (queue left ~155) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 41, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:10:24 GPU0: done 8ux6 seed 142 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 42, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:10:24 GPU0: start 8ux6 seed 143  (queue left ~154) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 42, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:12:37 GPU0: done 8ux6 seed 143 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 43, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:12:37 GPU0: start 8ux6 seed 144  (queue left ~153) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 43, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:14:51 GPU0: done 8ux6 seed 144 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 44, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:14:51 GPU0: start 8ux6 seed 145  (queue left ~152) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 44, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:17:04 GPU0: done 8ux6 seed 145 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 45, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:17:04 GPU0: start 8ux6 seed 146  (queue left ~151) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 45, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:19:17 GPU0: done 8ux6 seed 146 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 46, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:19:17 GPU0: start 8ux6 seed 147  (queue left ~150) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 46, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:21:31 GPU0: done 8ux6 seed 147 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 47, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:21:31 GPU0: start 8ux6 seed 148  (queue left ~149) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 47, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:23:44 GPU0: done 8ux6 seed 148 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 48, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:23:44 GPU0: start 8ux6 seed 149  (queue left ~148) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 48, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:25:58 GPU0: done 8ux6 seed 149 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 49, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:25:58 GPU0: start 8ux6 seed 150  (queue left ~147) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 49, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:28:11 GPU0: done 8ux6 seed 150 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:28:11 GPU0: start 8fbw seed 117  (queue left ~146) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 16, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:30:31 GPU0: done 8fbw seed 117 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 17, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:30:31 GPU0: start 8fbw seed 118  (queue left ~145) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 17, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:32:51 GPU0: done 8fbw seed 118 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 18, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:32:51 GPU0: start 8fbw seed 119  (queue left ~144) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 18, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:35:10 GPU0: done 8fbw seed 119 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 19, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:35:10 GPU0: start 8fbw seed 120  (queue left ~143) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 19, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:37:30 GPU0: done 8fbw seed 120 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 20, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:37:30 GPU0: start 8fbw seed 121  (queue left ~142) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 20, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:39:50 GPU0: done 8fbw seed 121 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 21, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:39:50 GPU0: start 8fbw seed 122  (queue left ~141) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 21, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:42:10 GPU0: done 8fbw seed 122 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 22, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:42:10 GPU0: start 8fbw seed 123  (queue left ~140) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 22, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:44:30 GPU0: done 8fbw seed 123 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 23, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:44:30 GPU0: start 8fbw seed 124  (queue left ~139) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 23, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:46:50 GPU0: done 8fbw seed 124 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 24, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:46:50 GPU0: start 8fbw seed 125  (queue left ~138) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 24, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:49:10 GPU0: done 8fbw seed 125 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 25, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:49:10 GPU0: start 8fbw seed 126  (queue left ~137) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 25, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:51:30 GPU0: done 8fbw seed 126 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 26, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:51:30 GPU0: start 8fbw seed 127  (queue left ~136) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 26, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:53:50 GPU0: done 8fbw seed 127 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 27, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:53:50 GPU0: start 8fbw seed 128  (queue left ~135) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 27, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:56:10 GPU0: done 8fbw seed 128 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 28, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:56:10 GPU0: start 8fbw seed 129  (queue left ~134) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 28, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:58:30 GPU0: done 8fbw seed 129 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 29, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+04:58:30 GPU0: start 8fbw seed 130  (queue left ~133) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 29, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:00:49 GPU0: done 8fbw seed 130 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 30, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:00:49 GPU0: start 8fbw seed 131  (queue left ~132) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 30, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:03:09 GPU0: done 8fbw seed 131 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 31, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:03:09 GPU0: start 8fbw seed 132  (queue left ~131) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 31, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:05:29 GPU0: done 8fbw seed 132 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 32, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:05:29 GPU0: start 8fbw seed 133  (queue left ~130) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 32, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:07:49 GPU0: done 8fbw seed 133 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 33, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:07:49 GPU0: start 8fbw seed 134  (queue left ~129) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 33, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:10:09 GPU0: done 8fbw seed 134 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 34, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:10:09 GPU0: start 8fbw seed 135  (queue left ~128) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 34, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:12:29 GPU0: done 8fbw seed 135 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 35, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:12:29 GPU0: start 8fbw seed 136  (queue left ~127) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 35, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:14:48 GPU0: done 8fbw seed 136 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 36, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:14:48 GPU0: start 8fbw seed 137  (queue left ~126) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 36, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:17:06 GPU0: done 8fbw seed 137 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 37, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:17:06 GPU0: start 8fbw seed 138  (queue left ~125) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 37, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:19:25 GPU0: done 8fbw seed 138 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 38, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:19:25 GPU0: start 8fbw seed 139  (queue left ~124) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 38, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:21:44 GPU0: done 8fbw seed 139 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 39, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:21:44 GPU0: start 8fbw seed 140  (queue left ~123) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 39, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:24:03 GPU0: done 8fbw seed 140 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 40, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:24:03 GPU0: start 8fbw seed 141  (queue left ~122) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 40, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:26:23 GPU0: done 8fbw seed 141 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 41, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:26:23 GPU0: start 8fbw seed 142  (queue left ~121) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 41, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:28:43 GPU0: done 8fbw seed 142 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 42, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:28:43 GPU0: start 8fbw seed 143  (queue left ~120) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 42, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:31:02 GPU0: done 8fbw seed 143 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 43, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:31:02 GPU0: start 8fbw seed 144  (queue left ~119) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 43, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:33:22 GPU0: done 8fbw seed 144 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 44, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:33:22 GPU0: start 8fbw seed 145  (queue left ~118) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 44, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:35:41 GPU0: done 8fbw seed 145 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 45, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:35:41 GPU0: start 8fbw seed 146  (queue left ~117) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 45, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:38:00 GPU0: done 8fbw seed 146 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 46, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:38:00 GPU0: start 8fbw seed 147  (queue left ~116) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 46, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:40:20 GPU0: done 8fbw seed 147 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 47, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:40:20 GPU0: start 8fbw seed 148  (queue left ~115) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 47, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:42:40 GPU0: done 8fbw seed 148 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 48, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:42:40 GPU0: start 8fbw seed 149  (queue left ~114) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 48, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:44:59 GPU0: done 8fbw seed 149 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 49, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:44:59 GPU0: start 8fbw seed 150  (queue left ~113) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 49, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:47:18 GPU0: done 8fbw seed 150 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:47:18 GPU0: start 8q3j seed 117  (queue left ~112) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 16, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:50:24 GPU0: done 8q3j seed 117 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 17, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:50:24 GPU0: start 8q3j seed 118  (queue left ~111) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 17, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:53:30 GPU0: done 8q3j seed 118 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 18, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:53:30 GPU0: start 8q3j seed 119  (queue left ~110) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 18, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:56:36 GPU0: done 8q3j seed 119 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 19, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:56:36 GPU0: start 8q3j seed 120  (queue left ~109) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 19, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:59:42 GPU0: done 8q3j seed 120 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 20, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+05:59:42 GPU0: start 8q3j seed 121  (queue left ~108) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 20, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:02:48 GPU0: done 8q3j seed 121 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 21, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:02:48 GPU0: start 8q3j seed 122  (queue left ~107) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 21, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:05:53 GPU0: done 8q3j seed 122 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 22, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:05:53 GPU0: start 8q3j seed 123  (queue left ~106) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 22, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:08:59 GPU0: done 8q3j seed 123 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 23, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:08:59 GPU0: start 8q3j seed 124  (queue left ~105) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 23, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:12:05 GPU0: done 8q3j seed 124 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 24, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:12:05 GPU0: start 8q3j seed 125  (queue left ~104) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 24, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:15:11 GPU0: done 8q3j seed 125 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 25, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:15:11 GPU0: start 8q3j seed 126  (queue left ~103) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 25, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:18:16 GPU0: done 8q3j seed 126 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 26, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:18:16 GPU0: start 8q3j seed 127  (queue left ~102) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 26, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:21:23 GPU0: done 8q3j seed 127 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 27, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:21:23 GPU0: start 8q3j seed 128  (queue left ~101) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 27, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:24:28 GPU0: done 8q3j seed 128 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 28, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:24:28 GPU0: start 8q3j seed 129  (queue left ~100) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 28, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:27:34 GPU0: done 8q3j seed 129 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 29, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:27:34 GPU0: start 8q3j seed 130  (queue left ~99) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 29, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:30:39 GPU0: done 8q3j seed 130 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 30, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:30:39 GPU0: start 8q3j seed 131  (queue left ~98) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 30, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:33:45 GPU0: done 8q3j seed 131 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 31, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:33:45 GPU0: start 8q3j seed 132  (queue left ~97) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 31, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:36:51 GPU0: done 8q3j seed 132 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 32, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:36:51 GPU0: start 8q3j seed 133  (queue left ~96) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 32, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:39:56 GPU0: done 8q3j seed 133 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 33, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:39:56 GPU0: start 8q3j seed 134  (queue left ~95) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 33, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:43:02 GPU0: done 8q3j seed 134 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 34, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:43:02 GPU0: start 8q3j seed 135  (queue left ~94) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 34, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:46:08 GPU0: done 8q3j seed 135 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 35, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:46:08 GPU0: start 8q3j seed 136  (queue left ~93) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 35, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:49:14 GPU0: done 8q3j seed 136 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 36, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:49:14 GPU0: start 8q3j seed 137  (queue left ~92) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 36, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:52:20 GPU0: done 8q3j seed 137 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 37, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:52:20 GPU0: start 8q3j seed 138  (queue left ~91) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 37, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:55:26 GPU0: done 8q3j seed 138 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 38, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:55:26 GPU0: start 8q3j seed 139  (queue left ~90) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 38, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:58:31 GPU0: done 8q3j seed 139 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 39, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+06:58:31 GPU0: start 8q3j seed 140  (queue left ~89) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 39, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:01:37 GPU0: done 8q3j seed 140 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 40, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:01:37 GPU0: start 8q3j seed 141  (queue left ~88) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 40, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:04:43 GPU0: done 8q3j seed 141 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 41, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:04:43 GPU0: start 8q3j seed 142  (queue left ~87) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 41, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:07:48 GPU0: done 8q3j seed 142 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 42, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:07:48 GPU0: start 8q3j seed 143  (queue left ~86) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 42, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:10:54 GPU0: done 8q3j seed 143 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 43, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:10:54 GPU0: start 8q3j seed 144  (queue left ~85) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 43, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:14:00 GPU0: done 8q3j seed 144 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 44, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:14:00 GPU0: start 8q3j seed 145  (queue left ~84) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 44, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:17:06 GPU0: done 8q3j seed 145 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 45, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:17:06 GPU0: start 8q3j seed 146  (queue left ~83) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 45, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:20:12 GPU0: done 8q3j seed 146 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 46, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:20:12 GPU0: start 8q3j seed 147  (queue left ~82) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 46, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:23:18 GPU0: done 8q3j seed 147 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 47, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:23:18 GPU0: start 8q3j seed 148  (queue left ~81) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 47, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:26:24 GPU0: done 8q3j seed 148 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 48, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:26:24 GPU0: start 8q3j seed 149  (queue left ~80) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 48, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:29:30 GPU0: done 8q3j seed 149 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 49, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:29:30 GPU0: start 8q3j seed 150  (queue left ~79) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 49, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:32:35 GPU0: done 8q3j seed 150 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:32:35 GPU0: start 8che seed 121  (queue left ~78) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 20, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:34:46 GPU0: done 8che seed 121 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 21, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:34:46 GPU0: start 8che seed 122  (queue left ~77) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 21, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:36:57 GPU0: done 8che seed 122 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 22, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:36:57 GPU0: start 8che seed 123  (queue left ~76) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 22, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:39:08 GPU0: done 8che seed 123 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 23, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:39:08 GPU0: start 8che seed 124  (queue left ~75) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 23, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:41:19 GPU0: done 8che seed 124 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 24, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:41:19 GPU0: start 8che seed 125  (queue left ~74) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 24, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:43:30 GPU0: done 8che seed 125 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 25, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:43:30 GPU0: start 8che seed 126  (queue left ~73) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 25, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:45:41 GPU0: done 8che seed 126 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 26, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:45:41 GPU0: start 8che seed 127  (queue left ~72) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 26, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:47:52 GPU0: done 8che seed 127 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 27, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:47:52 GPU0: start 8che seed 128  (queue left ~71) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 27, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:50:03 GPU0: done 8che seed 128 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 28, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:50:03 GPU0: start 8che seed 129  (queue left ~70) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 28, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:52:14 GPU0: done 8che seed 129 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 29, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:52:14 GPU0: start 8che seed 130  (queue left ~69) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 29, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:54:25 GPU0: done 8che seed 130 | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 30, '8av2': 44, '8aok': 50, '8bf4': 7}
+07:54:25 GPU0: start 8che seed 131  (queue left ~68) | {'7z2m': 50, '8slb': 50, '8yxi': 50, '8the': 50, '8fas': 50, '8ux6': 50, '8fbw': 50, '8q3j': 50, '8che': 30, '8av2': 44, '8aok': 50, '8bf4': 7}

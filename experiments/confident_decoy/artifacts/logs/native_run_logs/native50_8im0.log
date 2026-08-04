@@ -1,0 +1,1468 @@
+2026-08-02 17:52:17,352 [/home/ebrahim/Protenix/runner/inference.py:627] INFO __main__: Using params for model protenix-v2: cycle=10, step=200
+2026-08-02 17:52:17,352 [/home/ebrahim/Protenix/runner/inference.py:648] INFO __main__: Inference by Protenix: model_size: 464M, with_feature: default, model_version: v2, dtype: bf16
+2026-08-02 17:52:18,420 [/home/ebrahim/Protenix/runner/inference.py:654] INFO __main__: Triangle kernels: multiplicative=cuequivariance, attention=cuequivariance
+2026-08-02 17:52:18,420 [/home/ebrahim/Protenix/runner/inference.py:658] INFO __main__: Optimization: shared_vars_cache=True, efficient_fusion=True, tf32=True
+2026-08-02 17:52:18,420 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: obsolete_pdbs_path already exists at /home/ebrahim/common/obsolete_to_successor.json
+2026-08-02 17:52:18,420 [/home/ebrahim/Protenix/runner/inference.py:336] INFO __main__: release_dates_path already exists at /home/ebrahim/common/release_date_cache.json
+2026-08-02 17:52:18,420 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Distributed environment: world size: 1, global rank: 0, local rank: 0
+2026-08-02 17:52:18,420 [/home/ebrahim/Protenix/runner/inference.py:98] INFO root: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-08-02 17:52:18,420 [/home/ebrahim/Protenix/runner/inference.py:127] INFO root: Finished environment initialization.
+2026-08-02 17:52:57,350 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Loading from /home/ebrahim/checkpoint/protenix-v2.pt, strict: True
+2026-08-02 17:52:58,053 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Sampled key: module.input_embedder.atom_attention_encoder.linear_no_bias_ref_pos.weight
+2026-08-02 17:52:58,114 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Finish loading checkpoint.
+2026-08-02 17:52:58,119 [/home/ebrahim/Protenix/runner/inference.py:246] INFO __main__: Model parameters: 464.44M
+2026-08-02 17:52:58,122 [/home/ebrahim/Protenix/runner/inference.py:428] INFO __main__: Loading data from /home/ebrahim/confident_decoy_experiments/artifacts/native_tmpl/8im0-native50.json
+2026-08-02 17:52:58,739 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:01,677 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:02,066 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:02,167 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:02,171 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:02,171 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 101 completed in 3.43s.
+2026-08-02 17:53:02,171 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:02,254 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:02,616 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:02,624 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:02,628 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:02,628 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 102 completed in 0.46s.
+2026-08-02 17:53:02,628 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:02,716 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:03,088 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:03,097 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:03,101 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:03,101 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 103 completed in 0.47s.
+2026-08-02 17:53:03,101 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:03,184 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:03,550 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:03,557 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:03,561 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:03,562 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 104 completed in 0.46s.
+2026-08-02 17:53:03,562 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:03,644 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:04,007 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:04,016 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:04,018 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:04,019 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 105 completed in 0.46s.
+2026-08-02 17:53:04,019 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:04,102 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:04,467 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:04,474 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:04,477 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:04,477 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 106 completed in 0.46s.
+2026-08-02 17:53:04,478 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:04,560 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:04,928 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:04,935 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:04,938 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:04,939 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 107 completed in 0.46s.
+2026-08-02 17:53:04,939 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:05,023 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:05,394 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:05,402 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:05,406 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:05,407 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 108 completed in 0.47s.
+2026-08-02 17:53:05,407 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:05,491 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:05,860 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:05,868 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:05,872 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:05,872 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 109 completed in 0.47s.
+2026-08-02 17:53:05,872 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:05,957 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:06,327 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:06,334 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:06,336 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:06,336 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 110 completed in 0.46s.
+2026-08-02 17:53:06,337 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:06,420 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:06,788 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:06,796 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:06,799 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:06,799 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 111 completed in 0.46s.
+2026-08-02 17:53:06,799 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:06,882 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:07,252 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:07,261 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:07,266 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:07,267 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 112 completed in 0.47s.
+2026-08-02 17:53:07,267 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:07,352 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:07,738 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:07,746 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:07,752 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:07,752 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 113 completed in 0.49s.
+2026-08-02 17:53:07,752 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:07,835 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:08,204 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:08,212 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:08,216 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:08,216 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 114 completed in 0.46s.
+2026-08-02 17:53:08,217 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:08,301 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:08,677 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:08,685 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:08,689 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:08,689 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 115 completed in 0.47s.
+2026-08-02 17:53:08,690 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:08,773 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:09,154 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:09,162 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:09,166 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:09,166 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 116 completed in 0.48s.
+2026-08-02 17:53:09,166 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:09,255 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:09,637 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:09,645 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:09,648 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:09,648 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 117 completed in 0.48s.
+2026-08-02 17:53:09,648 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:09,731 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:10,100 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:10,108 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:10,111 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:10,111 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 118 completed in 0.46s.
+2026-08-02 17:53:10,112 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:10,196 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:10,565 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:10,573 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:10,578 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:10,578 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 119 completed in 0.47s.
+2026-08-02 17:53:10,579 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:10,662 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:11,035 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:11,043 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:11,047 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:11,047 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 120 completed in 0.47s.
+2026-08-02 17:53:11,048 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:11,132 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:11,506 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:11,514 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:11,519 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:11,519 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 121 completed in 0.47s.
+2026-08-02 17:53:11,519 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:11,603 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:11,982 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:11,990 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:11,996 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:11,996 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 122 completed in 0.48s.
+2026-08-02 17:53:11,996 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:12,081 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:12,459 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:12,466 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:12,471 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:12,471 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 123 completed in 0.48s.
+2026-08-02 17:53:12,472 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:12,556 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:12,930 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:12,938 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:12,943 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:12,943 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 124 completed in 0.47s.
+2026-08-02 17:53:12,944 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:13,280 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:13,662 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:13,670 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:13,676 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:13,676 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 125 completed in 0.73s.
+2026-08-02 17:53:13,676 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:13,759 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:14,126 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:14,133 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:14,138 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:14,138 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 126 completed in 0.46s.
+2026-08-02 17:53:14,138 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:14,221 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:14,589 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:14,596 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:14,601 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:14,601 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 127 completed in 0.46s.
+2026-08-02 17:53:14,601 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:14,684 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:15,059 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:15,067 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:15,072 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:15,072 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 128 completed in 0.47s.
+2026-08-02 17:53:15,072 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:15,156 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:15,525 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:15,533 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:15,537 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:15,537 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 129 completed in 0.46s.
+2026-08-02 17:53:15,537 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:15,621 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:15,989 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:15,997 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:16,001 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:16,001 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 130 completed in 0.46s.
+2026-08-02 17:53:16,002 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:16,085 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:16,458 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:16,465 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:16,469 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:16,469 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 131 completed in 0.47s.
+2026-08-02 17:53:16,470 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:16,553 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:16,924 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:16,932 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:16,937 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:16,937 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 132 completed in 0.47s.
+2026-08-02 17:53:16,938 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:17,021 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:17,393 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:17,400 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:17,405 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:17,405 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 133 completed in 0.47s.
+2026-08-02 17:53:17,405 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:17,488 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:17,856 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:17,864 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:17,868 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:17,868 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 134 completed in 0.46s.
+2026-08-02 17:53:17,869 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:17,952 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:18,326 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:18,333 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:18,337 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:18,337 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 135 completed in 0.47s.
+2026-08-02 17:53:18,337 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:18,421 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:18,791 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:18,799 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:18,804 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:18,805 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 136 completed in 0.47s.
+2026-08-02 17:53:18,805 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:18,887 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:19,256 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:19,264 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:19,269 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:19,269 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 137 completed in 0.46s.
+2026-08-02 17:53:19,269 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:19,353 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:19,722 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:19,730 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:19,735 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:19,735 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 138 completed in 0.47s.
+2026-08-02 17:53:19,735 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:19,818 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:20,189 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:20,197 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:20,202 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:20,202 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 139 completed in 0.47s.
+2026-08-02 17:53:20,202 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:20,287 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:20,666 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:20,674 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:20,677 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:20,677 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 140 completed in 0.48s.
+2026-08-02 17:53:20,678 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:20,760 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:21,124 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:21,131 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:21,135 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:21,135 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 141 completed in 0.46s.
+2026-08-02 17:53:21,135 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:21,218 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:21,587 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:21,595 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:21,599 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:21,599 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 142 completed in 0.46s.
+2026-08-02 17:53:21,599 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:21,683 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:22,051 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:22,059 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:22,063 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:22,063 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 143 completed in 0.46s.
+2026-08-02 17:53:22,063 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:22,146 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:22,515 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:22,523 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:22,527 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:22,527 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 144 completed in 0.46s.
+2026-08-02 17:53:22,528 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:22,611 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:22,981 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:22,989 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:22,993 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:22,993 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 145 completed in 0.47s.
+2026-08-02 17:53:22,994 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:23,076 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:23,447 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:23,455 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:23,462 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:23,462 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 146 completed in 0.47s.
+2026-08-02 17:53:23,462 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:23,546 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:23,917 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:23,925 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:23,930 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:23,931 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 147 completed in 0.47s.
+2026-08-02 17:53:23,931 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:24,015 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:24,388 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:24,394 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:24,399 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:24,399 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 148 completed in 0.47s.
+2026-08-02 17:53:24,399 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:24,483 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:24,856 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:24,864 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:24,869 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:24,869 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 149 completed in 0.47s.
+2026-08-02 17:53:24,870 [/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py:283] INFO protenix.data.inference.infer_dataloader: Featurizing 8im0_native50...
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue PHE(71) and residue CH6(72). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+/home/ebrahim/Protenix/protenix/data/inference/json_parser.py:146: UserWarning: No C-N or O3'-P bond between residue CH6(72) and residue SER(73). 
+all leaving atoms will be removed for both residues.
+  warnings.warn(
+2026-08-02 17:53:24,954 [/home/ebrahim/Protenix/protenix/data/constraint/constraint_featurizer.py:392] INFO protenix.data.constraint.constraint_featurizer: Loaded constraint feature: #atom contact:0 #contact:0 #pocket:0
+2026-08-02 17:53:25,323 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:692] INFO protenix.data.template.template_featurizer: Calling InferenceTemplateFeaturizer.make_template_feature
+2026-08-02 17:53:25,331 [/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py:745] INFO protenix.data.template.template_featurizer: Found 1 templates for sequence GMVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEGTQTAKLKVTKGGPLPFAWDILSPQFXSKAYVKHPADIPDYLKLSFPEGFKWERVMNFEDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALKGEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERAEGRHSTGGMDELYK
+2026-08-02 17:53:25,335 [/home/ebrahim/Protenix/runner/inference.py:469] ERROR __main__: Data error for 8im0_native50: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native:
+Traceback (most recent call last):
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 285, in __getitem__
+    data, atom_array, _ = self.process_one(
+                          ^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/inference/infer_dataloader.py", line 180, in process_one
+    template_features = InferenceTemplateFeaturizer.make_template_feature(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_featurizer.py", line 731, in make_template_feature
+    hits = HmmsearchA3MParser.parse(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 684, in parse
+    meta = HmmsearchA3MParser._parse_description(h_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ebrahim/Protenix/protenix/data/template/template_parser.py", line 741, in _parse_description
+    raise ValueError(f"Could not parse hmmsearch description: {desc}")
+ValueError: Could not parse hmmsearch description: v017_B-2/1-127 [subseq from] mol:protein length:127  native
+
+2026-08-02 17:53:25,335 [/home/ebrahim/Protenix/runner/inference.py:522] INFO __main__: [Rank 0] Seed 150 completed in 0.47s.
+2026-08-02 17:53:25,335 [/home/ebrahim/Protenix/runner/inference.py:534] INFO __main__: [Rank 0] Job completed in 26.60s.
+train scheduler 16.0
+inference scheduler 16.0
+Diffusion Module has 16.0

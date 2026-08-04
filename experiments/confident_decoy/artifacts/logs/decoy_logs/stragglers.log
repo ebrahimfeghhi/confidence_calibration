@@ -1,0 +1,9 @@
+[13:37] GPU3 START globallddt/8gho (37 seeds)
+[13:53] GPU3 DONE  globallddt/8gho 50/50
+[13:53] GPU3 START ifacelddt/8q7o (7 seeds)
+[13:57] GPU3 DONE  ifacelddt/8q7o 50/50
+[13:57] GPU3 START globalplddt/8q7o (13 seeds)
+[14:03] GPU3 DONE  globalplddt/8q7o 50/50
+[14:03] GPU3 START ifaceplddt/8q7o (26 seeds)
+[14:15] GPU3 DONE  ifaceplddt/8q7o 50/50
+STRAGGLERS DONE
