@@ -1,0 +1,11 @@
+[
+ {
+  "run": "topdockq_out",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "name": "8bf4_topdockq",
+  "json": "",
+  "seeds": [],
+  "set": "decoy"
+ }
+]

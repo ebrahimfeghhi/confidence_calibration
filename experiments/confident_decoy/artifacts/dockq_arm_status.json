@@ -8,12 +8,153 @@
    "pdb": "8aok",
    "seeds_done": 0,
    "minutes": 6.7
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "7ucx",
+   "seeds_done": 0,
+   "minutes": 16.8
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8fas",
+   "seeds_done": 0,
+   "minutes": 17.0
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "9jbq",
+   "seeds_done": 0,
+   "minutes": 24.2
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8vui",
+   "seeds_done": 0,
+   "minutes": 36.1
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8av2",
+   "seeds_done": 0,
+   "minutes": 36.7
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8slb",
+   "seeds_done": 0,
+   "minutes": 38.5
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8slb",
+   "seeds_done": 0,
+   "minutes": 38.5
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8yxi",
+   "seeds_done": 0,
+   "minutes": 47.9
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8yxi",
+   "seeds_done": 0,
+   "minutes": 47.9
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8oxx",
+   "seeds_done": 0,
+   "minutes": 63.0
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8fbw",
+   "seeds_done": 0,
+   "minutes": 69.1
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8fbw",
+   "seeds_done": 49,
+   "minutes": 69.1
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8che",
+   "seeds_done": 47,
+   "minutes": 59.7
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8che",
+   "seeds_done": 33,
+   "minutes": 59.7
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8ux6",
+   "seeds_done": 20,
+   "minutes": 63.3
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8ivx",
+   "seeds_done": 0,
+   "minutes": 76.3
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8oxw",
+   "seeds_done": 0,
+   "minutes": 89.3
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8oxw",
+   "seeds_done": 0,
+   "minutes": 89.4
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8q3j",
+   "seeds_done": 0,
+   "minutes": 106.3
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8the",
+   "seeds_done": 0,
+   "minutes": 149.4
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8q3j",
+   "seeds_done": 0,
+   "minutes": 106.2
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8be1",
+   "seeds_done": 0,
+   "minutes": 114.8
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8bf4",
+   "seeds_done": 0,
+   "minutes": 211.3
+  },
+  {
+   "run": "dockqdonor",
+   "pdb": "8pn0",
+   "seeds_done": 0,
+   "minutes": 217.8
   }
  ],
  "running": {
-  "1": "dockqdonor/7ucx",
-  "2": "dockqdonor/8fas",
-  "3": "dockqdonor/9jbq",
-  "0": "dockqdonor/8vui"
+  "1": "dockqdonor/7zau"
  }
 }

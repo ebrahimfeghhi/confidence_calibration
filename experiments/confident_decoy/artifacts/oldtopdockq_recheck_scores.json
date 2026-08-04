@@ -1,0 +1,15 @@
+{
+ "8bf4_AB": {
+  "pdb": "8bf4",
+  "arm": "oldtopdockq_recheck",
+  "n": 250,
+  "n_acceptable": 4,
+  "top_pair_iptm": 0.403,
+  "sel_dockq": 0.003,
+  "best_dockq": 0.588,
+  "rescued": false,
+  "free_n_acceptable": 22,
+  "free_sel_dockq": 0.014,
+  "free_best_dockq": 0.723
+ }
+}

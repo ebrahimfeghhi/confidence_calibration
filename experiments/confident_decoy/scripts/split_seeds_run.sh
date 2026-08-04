@@ -6,7 +6,8 @@
 set -u
 EXP=/home/ebrahim/confident_decoy_experiments
 PDB=$1; JSON=$2; NAME=$3; LO=$4; HI=$5; shift 5; GPUS=("$@")
-OUT=$EXP/artifacts/native_run_out/native50
+# OUT_DIR lets this serve any arm, not just native50 (dockqdonor writes elsewhere).
+OUT=${OUT_DIR:-$EXP/artifacts/native_run_out/native50}
 TODO=$(python3 -c "
 import os
 D='$OUT/$NAME'
