@@ -8,12 +8,102 @@
    "pdb": "8aok",
    "seeds_done": 50,
    "minutes": 1.5
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "7ucx",
+   "seeds_done": 50,
+   "minutes": 11.7
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8fas",
+   "seeds_done": 50,
+   "minutes": 11.8
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "9jbq",
+   "seeds_done": 50,
+   "minutes": 19.1
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8vui",
+   "seeds_done": 50,
+   "minutes": 35.9
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "minutes": 36.6
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8slb",
+   "seeds_done": 50,
+   "minutes": 38.4
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8slb",
+   "seeds_done": 50,
+   "minutes": 38.4
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8yxi",
+   "seeds_done": 50,
+   "minutes": 47.8
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8yxi",
+   "seeds_done": 50,
+   "minutes": 47.8
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8oxx",
+   "seeds_done": 50,
+   "minutes": 63.0
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8fbw",
+   "seeds_done": 50,
+   "minutes": 69.0
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8fbw",
+   "seeds_done": 50,
+   "minutes": 69.1
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8che",
+   "seeds_done": 50,
+   "minutes": 59.7
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8che",
+   "seeds_done": 50,
+   "minutes": 59.7
+  },
+  {
+   "run": "topiptm26",
+   "pdb": "8ux6",
+   "seeds_done": 50,
+   "minutes": 63.3
   }
  ],
  "running": {
-  "1": "topiptm26/7ucx",
-  "2": "topiptm26/8fas",
-  "3": "topiptm26/9jbq",
-  "0": "topiptm26/8vui"
+  "0": "topiptm26/8ivx",
+  "1": "topiptm26/8oxw",
+  "2": "topiptm26/8oxw",
+  "3": "topiptm26/8the"
  }
 }

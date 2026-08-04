@@ -1105,3 +1105,58 @@ it; everything above predates it.
 | generation failures | 19 | zero acceptable poses at seeds 101–150 |
 
 ---
+
+## 10. Can ipTM arbitrate BETWEEN template conditions?
+
+**Status: PROVISIONAL — 16 of 25 interfaces; re-run at 25 when the arms complete.**
+
+If a good template raises confidence in the correct pose more than a decoy template raises it in the
+wrong one, then ipTM can choose *between* template conditions: generate under several candidate
+templates, pool the poses, take the highest ipTM. That is a route to a deployable method, since it
+needs no knowledge of which template was the good one.
+
+### Result
+
+Among the 8 interfaces `dockqdonor` rescues, its (correct) top-ipTM pose out-confidences
+`topiptm26`'s (decoy) top-ipTM pose in **7 of 8**:
+
+| | median top-`pair_iptm` |
+|---|---|
+| good pose, dockqdonor template | 0.754 |
+| decoy pose, topiptm26 template | 0.620 |
+| **decoy pose, FREE run (no template)** | **0.812** |
+
+**Merging the two templated pools and ranking by ipTM alone yields an acceptable pose on 9/16 —
+better than either arm alone** (dockqdonor 8/16, topiptm26 2/16). The gain is `8yxi_AC` and `8yxi_BC`,
+where `topiptm26` wins on ipTM by a large margin (−0.384, −0.532) *and* is correct (0.371, 0.935):
+confidence identified which template condition to trust precisely where the docked-donor arm failed.
+
+### The calibration limit — why this is not simply "pool everything"
+
+The **free-run decoy has the highest median ipTM of the three (0.812)**. ipTM is therefore *not* a
+globally comparable scale: pooling untemplated with templated poses would re-select the original decoy
+and undo the whole effect. The supported claim is narrower — **conditioned on a template, ipTM ranks
+the resulting pose sensibly**, and pooling is defensible only across template conditions, like with
+like.
+
+Known false positive: `8fas_BC`, where `topiptm26` wins ipTM (0.919 vs 0.808) and is wrong (0.175).
+`8slb_AC` is the one rescued case where the decoy narrowly out-scores the good pose (0.571 vs 0.557,
+margin 0.014) despite a DockQ gap of 0.887 vs 0.009.
+
+### Provenance
+
+- **code:** `scripts/cross_arm_iptm.py`
+- **data:** `artifacts/cross_arm_iptm.json` — per interface: both arms' top-ipTM and selected DockQ,
+  the free-run decoy's ipTM, the margin, the pooled winner, and whether the pooled pick is acceptable
+- **inputs:** `artifacts/dockqdonor_scores.json`, `artifacts/topiptm26_scores.json`,
+  `artifacts/native_arm_scores.json`
+
+### Open (user's proposal, not yet designed)
+
+Generate under the top-N candidate templates and select over the pooled poses. Two questions must be
+settled before it is a method: **how templates are ranked without the answer** (every donor criterion
+tested so far — DockQ, interface lDDT, whole-chain lDDT — is an oracle; only pLDDT is deployable and it
+fails at 0/15, §4), and **whether ipTM stays comparable across N conditions** rather than the 2 tested
+here.
+
+---
