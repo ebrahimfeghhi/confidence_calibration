@@ -1,3 +1,24 @@
+> ## ⚠️ CORRECTION 2026-08-04 — THREE ARMS IN THIS FILE ARE VOID
+>
+> `topdockq` (1/14), `topiptm` (0/5) and `sposefv` (2/8) **never loaded their templates.** Their run
+> logs show `Found 0 templates` on every chain-load (1601, 451 and 1205 respectively). They measured
+> UNTEMPLATED runs; their numbers say nothing about the ideas they were built to test.
+>
+> **Conclusion #5 below — "all 'which single pose's fold' ideas FAIL; mix-and-match oracle is the
+> ceiling" — rests entirely on those three arms and is therefore UNSUPPORTED.**
+>
+> Re-running the DockQ-donor idea with working templates (`dockqdonor`, per interface, canonical 26)
+> gives **9/25 rescued**, not 1/14. See `configs/dockqdonor_decoys.yaml` and report §6.
+>
+> Verified unaffected (templates loaded on every chain): `oracle` (1550), `abonly` (850-1052),
+> `agonly` (1450), `native50` (1700), Exp B (1700). Exp C is 13% null and its 2/15 should be treated
+> as provisional. Audit: `scripts/validate_run.py --logs-only <logdir>`.
+>
+> Root cause not fully established; the shared, mutable `/home/ebrahim/common/release_date_cache.json`
+> (each builder rewrites the whole dict, so a concurrent builder can drop another's entry and make the
+> date filter reject the template) is the leading candidate. Guard added: `score_arm.py` now refuses
+> to score an arm whose templates never loaded.
+
 # Confident-Decoy Rescue — Results (session 2026-07-27/28)
 
 Durable summary of all runs. Raw per-pose scores in `artifacts/scores/`; per-run configs in

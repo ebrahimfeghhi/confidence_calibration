@@ -18,7 +18,7 @@ Usage:
       --jobs artifacts/dockq_arm_jobs.json --out artifacts/sweep_out/dockqdonor
 Writes: artifacts/<arm>_scores.json  (+ OST cache under artifacts/<arm>_ost/)
 """
-import argparse, json, os, subprocess, sys
+import argparse, glob, json, os, subprocess, sys
 from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -29,7 +29,36 @@ ap.add_argument("--arm", required=True)
 ap.add_argument("--jobs", required=True)
 ap.add_argument("--out", required=True)
 ap.add_argument("--workers", type=int, default=12)
+ap.add_argument("--logs", default=None, help="run log dir; template loading is verified from it")
+ap.add_argument("--no-template-check", action="store_true", help="skip the guard (untemplated arms)")
 A = ap.parse_args()
+
+def assert_templates_loaded(logdir):
+    """Refuse to score an arm whose templates never loaded.
+
+    topdockq/topiptm/sposefv each ran a full week of GPU logging 'Found 0 templates' on EVERY chain,
+    were scored without complaint, and produced the conclusion 'all single-pose-fold ideas fail' --
+    from three untemplated runs. A null template arm still emits 250 plausible poses, so nothing
+    downstream can notice. This is the cheapest possible guard against repeating that.
+    """
+    logs = glob.glob(f"{logdir}/*.log") if logdir else []
+    if not logs:
+        print(f"WARNING: no logs at {logdir} -- template loading UNVERIFIED", flush=True); return
+    n0 = n1 = 0
+    for f in logs:
+        t = open(f, errors="ignore").read()
+        n0 += t.count("Found 0 templates"); n1 += t.count("Found 1 templates")
+    if n0 and not n1:
+        sys.exit(f"REFUSING TO SCORE {A.arm}: templates NEVER loaded ({n0} chain-loads, all "
+                 f"'Found 0'). This arm measured an untemplated run. Fix the templates and re-run.")
+    if n0 > 0.05 * (n0 + n1):
+        sys.exit(f"REFUSING TO SCORE {A.arm}: {n0}/{n0+n1} chain-loads found no template "
+                 f"({100*n0/(n0+n1):.0f}%). Rerun with --force-partial only if that is expected.")
+    print(f"template check: {n1} loaded, {n0} null -- OK", flush=True)
+
+
+if not A.no_template_check:
+    assert_templates_loaded(A.logs)
 
 CACHE = f"{EXP}/artifacts/{A.arm}_ost"; os.makedirs(CACHE, exist_ok=True)
 OUTJ = f"{EXP}/artifacts/{A.arm}_scores.json"
