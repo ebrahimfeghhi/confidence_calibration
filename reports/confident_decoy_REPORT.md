@@ -637,11 +637,10 @@ fallback gap (8b7h) and per-interface contact counts, which the CSV does not rec
 
 ---
 
-## 6. The `dockqdonor` arm: template from the pose that DOCKED correctly (METHODS; running)
+## 6. The `dockqdonor` arm: template from the pose that DOCKED correctly — 9/25
 
-**Status: RUNNING.** Relaunched 2026-08-03 17:48 after a false start; 26 jobs × 50 seeds (1300 seeds)
-on GPUs 0–3. No results yet. This section was written before any number existed so the protocol could
-be reviewed independently of the outcome.
+**Status: RESULT — 9/25 rescued.** Methods below were written before any number existed. `7zau_AB`
+is deferred to pass 2 (see §8), so this arm reports n=25.
 
 > **This arm has a PRIOR, and it is not encouraging.** A per-PDB version of the same idea, `topdockq`,
 > was run on 2026-07-28 and scored **1/14** (only `8ux6_DF`); the companion `topiptm` arm — folds from
@@ -651,12 +650,10 @@ be reviewed independently of the outcome.
 > came back at **0.003**. Data: `artifacts/scores/topdockq_scores.json`, `topdockq_picks.json`,
 > `topiptm_scores.json`; write-up in `RESULTS.md`.
 >
-> **I did not find this before building the arm**, and reported to the user that the idea was untested.
-> It was in `RESULTS.md` and in the project memory index the whole time. The run below proceeds anyway
-> because it differs in three ways — donors chosen **per interface** rather than per PDB (8 of 16
-> overlapping donors differ), **26 interfaces** rather than 15 (11 never tested), and the prior run was
-> stopped early with `7z2m` never scored — but it is an extension of a mostly-answered question, not a
-> new one. Expected landing zone is 1–3 of 26.
+> **RESOLVED 2026-08-04 — the prior was not merely wrong, it was VOID.** `topdockq` logged
+> **`Found 0 templates`** on all 1601 chain-loads: its templates never loaded and it measured an
+> UNTEMPLATED run. So did `topiptm` (451) and `sposefv` (1205). The prediction of "1–3 of 26" was
+> anchored to a null measurement. Full audit and the guard now preventing recurrence: **§7**.
 
 ### Question
 
@@ -781,6 +778,71 @@ Rescue rule identical to every other arm: the top interface-`pair_iptm` pose has
 **`ifacelddt` will be re-scored on these same 26 interfaces before the two are tabulated together.**
 Its published 9/15 is on the §1 set; comparing 26 against 15 would not be like-for-like.
 
+### Results — 9/25 rescued
+
+`donor` = DockQ of the pose whose folds were used. `acceptable` = poses with DockQ ≥ 0.23, free → arm.
+`selected` = DockQ of the top-`pair_iptm` pose, free → arm (this decides rescue). `best` = ceiling.
+
+| interface | donor | acceptable | selected | best | |
+|---|---|---|---|---|---|
+| 8che_BE | 0.529 | 24 → 163 | 0.087 → 0.958 | 0.958 | **RESCUED** |
+| 8slb_AC | 0.655 | 41 → 129 | 0.01 → 0.887 | 0.892 | **RESCUED** |
+| 8vui_BC | 0.404 | 6 → 17 | 0.034 → 0.75 | 0.766 | **RESCUED** |
+| 8slb_AB | 0.462 | 65 → 148 | 0.012 → 0.734 | 0.806 | **RESCUED** |
+| 8bf4_AB | 0.723 | 22 → 142 | 0.014 → 0.675 | 0.75 | **RESCUED** |
+| 8av2_AC | 0.612 | 1 → 26 | 0.092 → 0.672 | 0.696 | **RESCUED** |
+| 8aok_AB | 0.695 | 109 → 221 | 0.112 → 0.664 | 0.707 | **RESCUED** |
+| 8fbw_AC | 0.434 | 11 → 212 | 0.17 → 0.645 | 0.656 | **RESCUED** |
+| 8fbw_BC | 0.51 | 116 → 212 | 0.21 → 0.539 | 0.717 | **RESCUED** |
+| 8fas_BC | 0.987 | 77 → 118 | 0.175 → 0.169 | 0.991 |  |
+| 7ucx_AC | 0.269 | 1 → 4 | 0.155 → 0.161 | 0.279 |  |
+| 8the_AB | 0.514 | 62 → 12 | 0.113 → 0.139 | 0.449 |  |
+| 8che_AE | 0.438 | 25 → 69 | 0.125 → 0.121 | 0.568 |  |
+| 8ux6_AF | 0.246 | 1 → 0 | 0.157 → 0.117 | 0.228 |  |
+| 8q3j_AB | 0.705 | 24 → 129 | 0.035 → 0.069 | 0.751 |  |
+| 8q3j_AC | 0.531 | 19 → 95 | 0.036 → 0.055 | 0.532 |  |
+| 9jbq_AC | 0.584 | 1 → 1 | 0.041 → 0.037 | 0.519 |  |
+| 8pn0_BE | 0.741 | 155 → 179 | 0.084 → 0.025 | 0.79 |  |
+| 8yxi_BC | 0.538 | 4 → 7 | 0.009 → 0.025 | 0.476 |  |
+| 8oxw_AB | 0.298 | 2 → 2 | 0.019 → 0.019 | 0.525 |  |
+| 8yxi_AC | 0.295 | 7 → 3 | 0.006 → 0.017 | 0.293 |  |
+| 8be1_AC | 0.235 | 1 → 1 | 0.022 → 0.015 | 0.238 |  |
+| 8ivx_AC | 0.333 | 4 → 6 | 0.007 → 0.009 | 0.489 |  |
+| 8oxw_AC | 0.275 | 2 → 5 | 0.009 → 0.008 | 0.474 |  |
+| 8oxx_AC | 0.343 | 1 → 0 | 0.003 → 0.003 | 0.137 |  |
+
+**1. The dominant effect is COVERAGE, not ranking.** Acceptable poses rise almost everywhere, often by
+an order of magnitude: `8fbw_AC` 11→212, `8che_BE` 24→163, `8bf4_AB` 22→142, `8slb_AB` 65→148.
+Templating from a correctly-docked pose changes what the model *generates*. This contradicts the
+earlier conclusion (from the self-templating work) that generation is saturated and the problem is
+purely selection.
+
+**2. Coverage does not guarantee rescue.** `8q3j_AB` gains 105 acceptable poses and still selects
+0.069 with 0.751 available; `8q3j_AC` and `8pn0_BE` likewise. `8pn0_BE` gets *worse* (0.084 → 0.025)
+while gaining poses. Those are pure ranking failures with a healthy pool.
+
+**3. Templating is not free.** `8the_AB` loses coverage (62 → 12) and `8oxx_AC` goes 1 → 0.
+
+**4. The output is not a copy of the donor.** 14 of 25 interfaces produce a pose BETTER than the donor
+they were templated from — `8che_BE` 0.529 → 0.958, `8slb_AB` 0.462 → 0.806, `8vui_BC` 0.404 → 0.766.
+If templates leaked the donor's docking arrangement, outputs would cluster at or below the donor.
+Confirmed at the code level: `multichain_mask = (asym_id[:,None] == asym_id[None,:])` is applied to the
+distogram, the pseudo-beta mask and the unit vectors (`protenix/model/modules/pairformer.py:1062–1076`),
+so every geometric template feature is zeroed across chains.
+
+**5. `8fas_BC` is unrescued in every arm** — 118 acceptable poses, selects 0.169 with 0.991 available.
+The register-shift case from §2.
+
+### Robustness checks run on this arm
+
+| check | result |
+|---|---|
+| templates actually loaded | **4098 loaded, 0 null** (`validate_run.py`) |
+| donor docking leaked into the model? | no — mask verified in code; 14/25 beat their donor |
+| chain matching correct | verified on 8bf4/8aok/8slb/8av2 |
+| interface extracted by name, standard OST protocol | yes |
+| full 250-pose pools | yes, all 25 |
+
 ### Caveats (read before interpreting any result)
 
 - **This is an ORACLE, not a deployable method.** Selecting the donor by DockQ requires the native
@@ -841,5 +903,144 @@ interface residues defined for the interface under test; comparable to `dockqdon
 - **The scheduler's log path keyed on `pdb`, not on the job.** With one job per interface, `8slb_AB`
   and `8slb_AC` wrote to the same log and one silently overwrote the other. Output directories and
   seed-level resume were unaffected (they key on `job['name']`). Fixed for subsequent runs.
+
+---
+
+## 7. Template-loading audit: three earlier arms measured nothing
+
+**Discovered 2026-08-04**, when `dockqdonor`'s 9/25 conflicted with a recorded prior of 1/14 for the
+same idea. The prior turned out not to be wrong but **void**.
+
+### What happened
+
+`topdockq` (reported 1/14), `topiptm` (0/5) and `sposefv` (2/8) each logged **`Found 0 templates`** on
+every chain-load. Their templates never loaded; they measured **untemplated** runs.
+
+| arm | reported | chain-loads with a template | without | verdict |
+|---|---|---|---|---|
+| topdockq | 1/14 | 0 | 1601 | **VOID** |
+| topiptm | 0/5 | 0 | 451 | **VOID** |
+| sposefv | 2/8 | 0 | 1205 | **VOID** |
+| oracle | 8/15 | 1550 | 0 | ok |
+| abonly | 5/15 | 850–1052 | 0 | ok |
+| agonly | 8/15 | 1450 | 0 | ok |
+| native50 | 14/15 | 450–1700 | 0 | ok |
+| globallddt | 6/15 | 2481 | 0 | ok |
+| **ifacelddt** | **9/15** | **2739** | 0 | **ok** |
+| globalplddt | 0/15 | 2742 | 0 | ok |
+| ifaceplddt | 1/15 | 2642 | 0 | ok |
+| Exp B | — | 1700 | 0 | ok |
+| Exp C | 2/15 | 2851 | 449 (13%) | **provisional** |
+
+### What it invalidates
+
+`RESULTS.md` conclusion #5 — *"all 'which single pose's fold' ideas FAIL; mix-and-match oracle is the
+ceiling"* — rests **entirely** on the three void arms and is **retracted**. So is `topiptm`'s
+"the decoy's own fold reinforces the decoy". `oracle`'s 8/15 is no longer known to be a ceiling:
+`dockqdonor` reaches 9/25 by a criterion `oracle` never tested.
+
+**§4 is unaffected.** All four of its arms are clean, so its conclusions stand: interface-local
+accuracy beats whole-chain (9/15 vs 6/15); swapping accuracy for the model's own confidence collapses
+it (9/15 → 1/15); and the only deployable arm, `globalplddt`, genuinely fails at 0/15.
+
+### Why it went unnoticed for a week
+
+A null template arm still emits 250 plausible poses. The scheduler saw clean exits, the scorer saw
+full pools, and the numbers looked reasonable. **Plausible output is not evidence that the intervention
+applied.** Everything else was verified identical between the two `8bf4` runs — donor pose
+(seed 120/sample 2), chain assignment (A→A, C→C, E→E), input JSON, a3m contents, checkpoint, seeds,
+`N_sample`/`N_step`/`--use_template` — and re-scoring the old poses with the current scorer reproduced
+4/250 exactly, proving the difference was in generation, not scoring. Only the log line settled it.
+
+### Suspected cause
+
+`/home/ebrahim/common/release_date_cache.json` is shared and mutable, and every builder rewrites the
+whole dict. A builder running concurrently can drop another's tid entry, after which Protenix's
+release-date filter silently rejects the template. The three void arms were built by ad-hoc scripts in
+an ephemeral `/tmp` scratchpad, in parallel, on the same day; the clean arms were built by
+`build_sweep_templates.py` in this repo. Not proven — recorded as the leading hypothesis.
+Mitigation for future builders: per-run cache files, or read-modify-write under a lock.
+
+### The guard (added, and verified in both directions)
+
+- **code:** `scripts/validate_run.py` — checks (1) every chain-load logged `Found 1 templates`,
+  (2) seeds complete, (3) output non-trivial, (4) every referenced a3m exists, is well-formed, names a
+  registered mmCIF, and has a hit differing from the query. That last one matters: an **unmutated hit
+  is read as an MSA row, not a template**.
+- **code:** `scripts/score_arm.py` — **refuses to score** an arm that is all-null or >5% null.
+- Verified: **FAIL** on `topdockq` (150 null loads); **PASS** on `dockqdonor` (4098 loaded, 0 null).
+- Audit any arm: `python scripts/validate_run.py --logs-only <logdir>`
+
+---
+
+## 8. The comparison programme: four arms on the same 25 interfaces
+
+`dockqdonor` alone cannot separate *"the folds of a correctly-docked pose help"* from *"any
+self-consistent fold helps"*. Three further arms make that separable. All use the identical pipeline —
+one run per interface, all chains templated from the selected donor, 250 poses, same rescue rule — and
+differ **only** in how the donor is chosen.
+
+| arm | donor chosen by | asks | status |
+|---|---|---|---|
+| `dockqdonor` | best **DockQ** on the interface | do docking-correct folds help? | **9/25** |
+| `topiptm26` | best **interface pair_iptm** (= the decoy itself) | does the model's own wrong belief reinforce itself? | running |
+| `ifacelddt26` | best **paratope/epitope lDDT** | is it just binding-site fold accuracy? | queued |
+| `globallddt26` | best **whole-chain lDDT** | is it just global fold accuracy? | queued |
+
+`ifacelddt26` is the key control: its §4 predecessor is verified clean at 9/15, so if `dockqdonor`
+beats it on the same 25, docking-correct folds carry something interface lDDT does not reward — the
+CDR-H3-induced-fit hypothesis. `topiptm26` is its mirror: the donor is the wrong pose the model already
+believes in.
+
+### Predictions, recorded before the results exist
+
+- **`topiptm26`** — two opposed outcomes, both plausible, written into `configs/topiptm26_decoys.yaml`
+  before launch: (A) *level the field* — forcing every seed onto the decoy's fold removes its fold
+  advantage and the decoy's edge shrinks; (B) *reinforce the decoy* — the fold is shaped to fit the
+  wrong epitope, so the wrong dock becomes more satisfying. If `topiptm26` **also** rescues, the
+  `dockqdonor` effect is "any self-consistent fold helps" and is not about docking-correctness.
+- The earlier `topiptm` 0/5 was read as evidence for (B). It is void (§7), so this is untested.
+
+### Pass structure
+
+**Pass 1 — 25 interfaces per arm.** `7zau_AB` is deferred: it is the largest complex in the set
+(N_token 2520, ~90 GB/GPU, ~20 min/seed against 6–20 min for an entire 50-seed job elsewhere). Left in
+the queue it holds three GPUs idle for hours and blocks every later arm for one data point. All arms
+therefore report **n = 25** and are mutually comparable, but **not** comparable to §4's n = 15.
+
+**Pass 2 — `7zau_AB` for all four arms together** (`artifacts/pass2_7zau_jobs.json`), making every arm
+n = 26. `dockqdonor` resumes from 17 banked seeds.
+
+Each arm is **validated before scoring** (§7), so a null arm cannot enter the table.
+
+### Provenance
+
+- **code (build):** `scripts/build_dockq_templates.py`, `scripts/build_topiptm_templates.py`,
+  `scripts/build_lddt_arms.py`
+- **code (run):** `scripts/sweep_sched.py --jobs artifacts/<arm>_jobs25.json --out <ABSOLUTE path>`
+  — the path must be absolute: inference runs with `cwd=/home/ebrahim/Protenix`, so a relative `--out`
+  resolves against *that* directory and the scheduler then reports `0/50 seeds` for jobs that succeeded
+- **code (orchestrate):** `scripts/run_queue2.sh` — pass 1 then pass 2, one arm at a time, validate then
+  score after each
+- **code (validate/score):** `scripts/validate_run.py`, `scripts/score_arm.py --arm <arm> --logs <dir>`
+- **configs:** `configs/dockqdonor_decoys.yaml`, `configs/topiptm26_decoys.yaml`,
+  `configs/topdockq_decoys_RETRO.yaml`
+- **data:** `artifacts/<arm>_donors.json` (donor seed/sample/criterion per interface),
+  `artifacts/<arm>_jobs25.json`, `artifacts/<arm>_scores.json`, `artifacts/<arm>_status.json`
+- **predictions:** `artifacts/sweep_out/<arm>/<arm>/<name>/seed_<101-150>/predictions/`
+- **logs:** `artifacts/<arm>_logs/`, scheduler `artifacts/decoy_logs/<arm>.log`, queue
+  `artifacts/decoy_logs/run_queue2.log`
+
+### Gotchas from this programme
+
+- **A relative `--out` silently writes into the Protenix tree** (inference runs with a different cwd),
+  after which the scheduler reports `0/50 seeds` for jobs that actually succeeded. Use absolute paths.
+- **`nohup … &` inside a foreground tool call is not detached.** The `7zau` 4-way split was killed when
+  its parent tool call timed out, because the children shared its process group. Use `setsid`.
+- **A monitor counting files at the wrong path reports a stall that isn't real** — verify progress
+  against the path the writer actually uses, not the one you intended.
+- **`DockQ` has no per-chain value.** A per-chain donor rule forces `max()` over a chain's interfaces
+  and lets an unrelated interface pick a shared chain's folds; it also produces chimeric template sets.
+  Select per interface.
 
 ---

@@ -12,19 +12,6 @@
   "free_sel_dockq": 0.155,
   "free_best_dockq": 0.269
  },
- "7zau_AB": {
-  "pdb": "7zau",
-  "arm": "dockqdonor",
-  "n": 85,
-  "n_acceptable": 5,
-  "top_pair_iptm": 0.457,
-  "sel_dockq": 0.005,
-  "best_dockq": 0.454,
-  "rescued": false,
-  "free_n_acceptable": 32,
-  "free_sel_dockq": 0.004,
-  "free_best_dockq": 0.435
- },
  "8aok_AB": {
   "pdb": "8aok",
   "arm": "dockqdonor",
