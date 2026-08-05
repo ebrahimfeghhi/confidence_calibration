@@ -1,163 +1,182 @@
 {
- "total": 26,
+ "total": 25,
  "skipped": 0,
- "queue": 26,
+ "queue": 25,
  "finished": [
-  {
-   "run": "ifacelddt26",
-   "pdb": "8aok",
-   "seeds_done": 0,
-   "minutes": 1.2
-  },
   {
    "run": "ifacelddt26",
    "pdb": "8fas",
    "seeds_done": 0,
-   "minutes": 1.7
+   "seeds_wanted": 50,
+   "minutes": 0.9
   },
   {
    "run": "ifacelddt26",
-   "pdb": "7ucx",
+   "pdb": "8aok",
    "seeds_done": 0,
-   "minutes": 1.7
+   "seeds_wanted": 50,
+   "minutes": 1.4
   },
   {
    "run": "ifacelddt26",
    "pdb": "9jbq",
    "seeds_done": 0,
-   "minutes": 1.8
+   "seeds_wanted": 50,
+   "minutes": 1.9
+  },
+  {
+   "run": "ifacelddt26",
+   "pdb": "7ucx",
+   "seeds_done": 0,
+   "seeds_wanted": 50,
+   "minutes": 2.1
   },
   {
    "run": "ifacelddt26",
    "pdb": "8vui",
    "seeds_done": 0,
-   "minutes": 2.1
+   "seeds_wanted": 50,
+   "minutes": 2.2
   },
   {
    "run": "ifacelddt26",
    "pdb": "8av2",
    "seeds_done": 0,
-   "minutes": 1.6
-  },
-  {
-   "run": "ifacelddt26",
-   "pdb": "8slb",
-   "seeds_done": 0,
-   "minutes": 2.4
-  },
-  {
-   "run": "ifacelddt26",
-   "pdb": "8slb",
-   "seeds_done": 0,
-   "minutes": 2.4
+   "seeds_wanted": 50,
+   "minutes": 1.9
   },
   {
    "run": "ifacelddt26",
    "pdb": "8yxi",
    "seeds_done": 0,
-   "minutes": 2.0
+   "seeds_wanted": 50,
+   "minutes": 0.8
   },
   {
    "run": "ifacelddt26",
-   "pdb": "8yxi",
+   "pdb": "8slb",
    "seeds_done": 0,
-   "minutes": 2.0
+   "seeds_wanted": 50,
+   "minutes": 2.3
+  },
+  {
+   "run": "ifacelddt26",
+   "pdb": "8slb",
+   "seeds_done": 0,
+   "seeds_wanted": 50,
+   "minutes": 2.4
   },
   {
    "run": "ifacelddt26",
    "pdb": "8oxx",
    "seeds_done": 0,
-   "minutes": 2.4
+   "seeds_wanted": 50,
+   "minutes": 0.8
+  },
+  {
+   "run": "ifacelddt26",
+   "pdb": "8yxi",
+   "seeds_done": 0,
+   "seeds_wanted": 50,
+   "minutes": 2.1
   },
   {
    "run": "ifacelddt26",
    "pdb": "8fbw",
    "seeds_done": 0,
-   "minutes": 2.9
-  },
-  {
-   "run": "ifacelddt26",
-   "pdb": "8che",
-   "seeds_done": 0,
-   "minutes": 2.7
+   "seeds_wanted": 50,
+   "minutes": 3.1
   },
   {
    "run": "ifacelddt26",
    "pdb": "8fbw",
    "seeds_done": 0,
-   "minutes": 2.8
+   "seeds_wanted": 50,
+   "minutes": 3.2
   },
   {
    "run": "ifacelddt26",
    "pdb": "8che",
    "seeds_done": 0,
-   "minutes": 2.7
+   "seeds_wanted": 50,
+   "minutes": 3.0
   },
   {
    "run": "ifacelddt26",
-   "pdb": "8ux6",
+   "pdb": "8che",
    "seeds_done": 0,
+   "seeds_wanted": 50,
    "minutes": 2.9
   },
   {
    "run": "ifacelddt26",
-   "pdb": "8ivx",
-   "seeds_done": 0,
-   "minutes": 2.8
-  },
-  {
-   "run": "ifacelddt26",
    "pdb": "8oxw",
    "seeds_done": 0,
-   "minutes": 2.7
-  },
-  {
-   "run": "ifacelddt26",
-   "pdb": "8oxw",
-   "seeds_done": 0,
-   "minutes": 2.7
+   "seeds_wanted": 50,
+   "minutes": 0.8
   },
   {
    "run": "ifacelddt26",
    "pdb": "8the",
    "seeds_done": 0,
-   "minutes": 3.0
+   "seeds_wanted": 50,
+   "minutes": 0.8
+  },
+  {
+   "run": "ifacelddt26",
+   "pdb": "8ux6",
+   "seeds_done": 0,
+   "seeds_wanted": 50,
+   "minutes": 3.1
+  },
+  {
+   "run": "ifacelddt26",
+   "pdb": "8ivx",
+   "seeds_done": 0,
+   "seeds_wanted": 50,
+   "minutes": 3.1
+  },
+  {
+   "run": "ifacelddt26",
+   "pdb": "8oxw",
+   "seeds_done": 0,
+   "seeds_wanted": 50,
+   "minutes": 2.7
   },
   {
    "run": "ifacelddt26",
    "pdb": "8q3j",
    "seeds_done": 0,
-   "minutes": 3.3
+   "seeds_wanted": 50,
+   "minutes": 3.4
   },
   {
    "run": "ifacelddt26",
    "pdb": "8q3j",
    "seeds_done": 0,
-   "minutes": 3.3
+   "seeds_wanted": 50,
+   "minutes": 3.5
   },
   {
    "run": "ifacelddt26",
    "pdb": "8be1",
    "seeds_done": 0,
-   "minutes": 2.9
+   "seeds_wanted": 50,
+   "minutes": 3.2
   },
   {
    "run": "ifacelddt26",
    "pdb": "8bf4",
    "seeds_done": 0,
+   "seeds_wanted": 50,
    "minutes": 3.4
   },
   {
    "run": "ifacelddt26",
    "pdb": "8pn0",
    "seeds_done": 0,
+   "seeds_wanted": 50,
    "minutes": 3.5
-  },
-  {
-   "run": "ifacelddt26",
-   "pdb": "7zau",
-   "seeds_done": 0,
-   "minutes": 4.5
   }
  ],
  "running": {}

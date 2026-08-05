@@ -101,8 +101,15 @@ def check_jobs(jobs, out):
             elif len(L[1]) != len(L[3]):
                 missing_tmpl.append(f"{p}: query/hit length mismatch")
             elif L[1] == L[3]:
-                missing_tmpl.append(f"{p}: hit not mutated -- Protenix reads it as an MSA row, "
+                missing_tmpl.append(f"{p}: hit not labelled -- Protenix reads it as an MSA row, "
                                     f"NOT a template")
+            elif len(m.group(1)) != 4:
+                # Protenix requires a 4-char PDB-style template id; anything else raises
+                # "Invalid hit name format" and yields Found 0 templates -- a silently untemplated
+                # run. This is what voided topdockq/topiptm/sposefv (4-digit counters overflowed
+                # past q999 to 5 chars).
+                missing_tmpl.append(f"{p}: template id '{m.group(1)}' is {len(m.group(1))} chars, "
+                                    f"must be exactly 4 -- Protenix will reject it")
     if incomplete:
         fatal.append(f"{len(incomplete)} jobs incomplete: {incomplete[:6]}")
     if missing_tmpl:

@@ -1,0 +1,7266 @@
+[
+ {
+  "run": "leader20",
+  "pdb": "7ucx",
+  "interface": "7ucx_AC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7ucx_AC_L01.json",
+  "name": "7ucx_AC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7ucx",
+  "interface": "7ucx_AC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7ucx_AC_L02.json",
+  "name": "7ucx_AC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7ucx",
+  "interface": "7ucx_AC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7ucx_AC_L03.json",
+  "name": "7ucx_AC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L01.json",
+  "name": "7zau_AB_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L02.json",
+  "name": "7zau_AB_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L03.json",
+  "name": "7zau_AB_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L04.json",
+  "name": "7zau_AB_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L05.json",
+  "name": "7zau_AB_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L06.json",
+  "name": "7zau_AB_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L07.json",
+  "name": "7zau_AB_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L08.json",
+  "name": "7zau_AB_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L09.json",
+  "name": "7zau_AB_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L10.json",
+  "name": "7zau_AB_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L11.json",
+  "name": "7zau_AB_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L12.json",
+  "name": "7zau_AB_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L13.json",
+  "name": "7zau_AB_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L14.json",
+  "name": "7zau_AB_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L15.json",
+  "name": "7zau_AB_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L16.json",
+  "name": "7zau_AB_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L17.json",
+  "name": "7zau_AB_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L18.json",
+  "name": "7zau_AB_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L19.json",
+  "name": "7zau_AB_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "7zau",
+  "interface": "7zau_AB",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/7zau_AB_L20.json",
+  "name": "7zau_AB_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8aok",
+  "interface": "8aok_AB",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8aok_AB_L01.json",
+  "name": "8aok_AB_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8aok",
+  "interface": "8aok_AB",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8aok_AB_L02.json",
+  "name": "8aok_AB_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8aok",
+  "interface": "8aok_AB",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8aok_AB_L03.json",
+  "name": "8aok_AB_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8aok",
+  "interface": "8aok_AB",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8aok_AB_L04.json",
+  "name": "8aok_AB_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8aok",
+  "interface": "8aok_AB",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8aok_AB_L05.json",
+  "name": "8aok_AB_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8aok",
+  "interface": "8aok_AB",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8aok_AB_L06.json",
+  "name": "8aok_AB_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8aok",
+  "interface": "8aok_AB",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8aok_AB_L07.json",
+  "name": "8aok_AB_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8aok",
+  "interface": "8aok_AB",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8aok_AB_L08.json",
+  "name": "8aok_AB_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L01.json",
+  "name": "8av2_AC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L02.json",
+  "name": "8av2_AC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L03.json",
+  "name": "8av2_AC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L04.json",
+  "name": "8av2_AC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L05.json",
+  "name": "8av2_AC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L06.json",
+  "name": "8av2_AC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L07.json",
+  "name": "8av2_AC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L08.json",
+  "name": "8av2_AC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L09.json",
+  "name": "8av2_AC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L10.json",
+  "name": "8av2_AC_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L11.json",
+  "name": "8av2_AC_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L12.json",
+  "name": "8av2_AC_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L13.json",
+  "name": "8av2_AC_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L14.json",
+  "name": "8av2_AC_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L15.json",
+  "name": "8av2_AC_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L16.json",
+  "name": "8av2_AC_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L17.json",
+  "name": "8av2_AC_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L18.json",
+  "name": "8av2_AC_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L19.json",
+  "name": "8av2_AC_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8av2",
+  "interface": "8av2_AC",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8av2_AC_L20.json",
+  "name": "8av2_AC_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L01.json",
+  "name": "8be1_AC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L02.json",
+  "name": "8be1_AC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L03.json",
+  "name": "8be1_AC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L04.json",
+  "name": "8be1_AC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L05.json",
+  "name": "8be1_AC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L06.json",
+  "name": "8be1_AC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L07.json",
+  "name": "8be1_AC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L08.json",
+  "name": "8be1_AC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L09.json",
+  "name": "8be1_AC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L10.json",
+  "name": "8be1_AC_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L11.json",
+  "name": "8be1_AC_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L12.json",
+  "name": "8be1_AC_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L13.json",
+  "name": "8be1_AC_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L14.json",
+  "name": "8be1_AC_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L15.json",
+  "name": "8be1_AC_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L16.json",
+  "name": "8be1_AC_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L17.json",
+  "name": "8be1_AC_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L18.json",
+  "name": "8be1_AC_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L19.json",
+  "name": "8be1_AC_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8be1",
+  "interface": "8be1_AC",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8be1_AC_L20.json",
+  "name": "8be1_AC_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L01.json",
+  "name": "8bf4_AB_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L02.json",
+  "name": "8bf4_AB_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L03.json",
+  "name": "8bf4_AB_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L04.json",
+  "name": "8bf4_AB_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L05.json",
+  "name": "8bf4_AB_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L06.json",
+  "name": "8bf4_AB_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L07.json",
+  "name": "8bf4_AB_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L08.json",
+  "name": "8bf4_AB_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L09.json",
+  "name": "8bf4_AB_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L10.json",
+  "name": "8bf4_AB_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L11.json",
+  "name": "8bf4_AB_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L12.json",
+  "name": "8bf4_AB_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L13.json",
+  "name": "8bf4_AB_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L14.json",
+  "name": "8bf4_AB_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L15.json",
+  "name": "8bf4_AB_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L16.json",
+  "name": "8bf4_AB_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L17.json",
+  "name": "8bf4_AB_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L18.json",
+  "name": "8bf4_AB_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L19.json",
+  "name": "8bf4_AB_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8bf4",
+  "interface": "8bf4_AB",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8bf4_AB_L20.json",
+  "name": "8bf4_AB_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L01.json",
+  "name": "8che_AE_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L02.json",
+  "name": "8che_AE_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L03.json",
+  "name": "8che_AE_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L04.json",
+  "name": "8che_AE_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L05.json",
+  "name": "8che_AE_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L06.json",
+  "name": "8che_AE_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L07.json",
+  "name": "8che_AE_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L08.json",
+  "name": "8che_AE_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L09.json",
+  "name": "8che_AE_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L10.json",
+  "name": "8che_AE_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L11.json",
+  "name": "8che_AE_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L12.json",
+  "name": "8che_AE_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L13.json",
+  "name": "8che_AE_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L14.json",
+  "name": "8che_AE_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L15.json",
+  "name": "8che_AE_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L16.json",
+  "name": "8che_AE_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L17.json",
+  "name": "8che_AE_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L18.json",
+  "name": "8che_AE_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L19.json",
+  "name": "8che_AE_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_AE",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_AE_L20.json",
+  "name": "8che_AE_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L01.json",
+  "name": "8che_BE_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L02.json",
+  "name": "8che_BE_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L03.json",
+  "name": "8che_BE_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L04.json",
+  "name": "8che_BE_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L05.json",
+  "name": "8che_BE_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L06.json",
+  "name": "8che_BE_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L07.json",
+  "name": "8che_BE_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L08.json",
+  "name": "8che_BE_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L09.json",
+  "name": "8che_BE_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L10.json",
+  "name": "8che_BE_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L11.json",
+  "name": "8che_BE_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L12.json",
+  "name": "8che_BE_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L13.json",
+  "name": "8che_BE_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L14.json",
+  "name": "8che_BE_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L15.json",
+  "name": "8che_BE_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L16.json",
+  "name": "8che_BE_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L17.json",
+  "name": "8che_BE_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L18.json",
+  "name": "8che_BE_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L19.json",
+  "name": "8che_BE_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8che",
+  "interface": "8che_BE",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8che_BE_L20.json",
+  "name": "8che_BE_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fas",
+  "interface": "8fas_BC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fas_BC_L01.json",
+  "name": "8fas_BC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fas",
+  "interface": "8fas_BC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fas_BC_L02.json",
+  "name": "8fas_BC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fas",
+  "interface": "8fas_BC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fas_BC_L03.json",
+  "name": "8fas_BC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fas",
+  "interface": "8fas_BC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fas_BC_L04.json",
+  "name": "8fas_BC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fas",
+  "interface": "8fas_BC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fas_BC_L05.json",
+  "name": "8fas_BC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fas",
+  "interface": "8fas_BC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fas_BC_L06.json",
+  "name": "8fas_BC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fas",
+  "interface": "8fas_BC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fas_BC_L07.json",
+  "name": "8fas_BC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_AC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_AC_L01.json",
+  "name": "8fbw_AC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_AC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_AC_L02.json",
+  "name": "8fbw_AC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_AC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_AC_L03.json",
+  "name": "8fbw_AC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_AC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_AC_L04.json",
+  "name": "8fbw_AC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_AC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_AC_L05.json",
+  "name": "8fbw_AC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_AC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_AC_L06.json",
+  "name": "8fbw_AC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_AC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_AC_L07.json",
+  "name": "8fbw_AC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_BC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_BC_L01.json",
+  "name": "8fbw_BC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_BC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_BC_L02.json",
+  "name": "8fbw_BC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_BC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_BC_L03.json",
+  "name": "8fbw_BC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_BC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_BC_L04.json",
+  "name": "8fbw_BC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_BC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_BC_L05.json",
+  "name": "8fbw_BC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_BC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_BC_L06.json",
+  "name": "8fbw_BC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_BC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_BC_L07.json",
+  "name": "8fbw_BC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_BC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_BC_L08.json",
+  "name": "8fbw_BC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8fbw",
+  "interface": "8fbw_BC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8fbw_BC_L09.json",
+  "name": "8fbw_BC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L01.json",
+  "name": "8ivx_AC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L02.json",
+  "name": "8ivx_AC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L03.json",
+  "name": "8ivx_AC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L04.json",
+  "name": "8ivx_AC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L05.json",
+  "name": "8ivx_AC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L06.json",
+  "name": "8ivx_AC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L07.json",
+  "name": "8ivx_AC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L08.json",
+  "name": "8ivx_AC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L09.json",
+  "name": "8ivx_AC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L10.json",
+  "name": "8ivx_AC_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L11.json",
+  "name": "8ivx_AC_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L12.json",
+  "name": "8ivx_AC_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L13.json",
+  "name": "8ivx_AC_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L14.json",
+  "name": "8ivx_AC_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L15.json",
+  "name": "8ivx_AC_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L16.json",
+  "name": "8ivx_AC_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L17.json",
+  "name": "8ivx_AC_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L18.json",
+  "name": "8ivx_AC_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L19.json",
+  "name": "8ivx_AC_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ivx",
+  "interface": "8ivx_AC",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ivx_AC_L20.json",
+  "name": "8ivx_AC_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L01.json",
+  "name": "8oxw_AB_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L02.json",
+  "name": "8oxw_AB_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L03.json",
+  "name": "8oxw_AB_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L04.json",
+  "name": "8oxw_AB_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L05.json",
+  "name": "8oxw_AB_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L06.json",
+  "name": "8oxw_AB_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L07.json",
+  "name": "8oxw_AB_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L08.json",
+  "name": "8oxw_AB_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L09.json",
+  "name": "8oxw_AB_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L10.json",
+  "name": "8oxw_AB_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L11.json",
+  "name": "8oxw_AB_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L12.json",
+  "name": "8oxw_AB_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L13.json",
+  "name": "8oxw_AB_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L14.json",
+  "name": "8oxw_AB_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L15.json",
+  "name": "8oxw_AB_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L16.json",
+  "name": "8oxw_AB_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L17.json",
+  "name": "8oxw_AB_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L18.json",
+  "name": "8oxw_AB_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L19.json",
+  "name": "8oxw_AB_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AB",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AB_L20.json",
+  "name": "8oxw_AB_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L01.json",
+  "name": "8oxw_AC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L02.json",
+  "name": "8oxw_AC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L03.json",
+  "name": "8oxw_AC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L04.json",
+  "name": "8oxw_AC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L05.json",
+  "name": "8oxw_AC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L06.json",
+  "name": "8oxw_AC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L07.json",
+  "name": "8oxw_AC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L08.json",
+  "name": "8oxw_AC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L09.json",
+  "name": "8oxw_AC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L10.json",
+  "name": "8oxw_AC_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L11.json",
+  "name": "8oxw_AC_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L12.json",
+  "name": "8oxw_AC_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L13.json",
+  "name": "8oxw_AC_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L14.json",
+  "name": "8oxw_AC_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L15.json",
+  "name": "8oxw_AC_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L16.json",
+  "name": "8oxw_AC_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L17.json",
+  "name": "8oxw_AC_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L18.json",
+  "name": "8oxw_AC_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L19.json",
+  "name": "8oxw_AC_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxw",
+  "interface": "8oxw_AC",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxw_AC_L20.json",
+  "name": "8oxw_AC_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L01.json",
+  "name": "8oxx_AC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L02.json",
+  "name": "8oxx_AC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L03.json",
+  "name": "8oxx_AC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L04.json",
+  "name": "8oxx_AC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L05.json",
+  "name": "8oxx_AC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L06.json",
+  "name": "8oxx_AC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L07.json",
+  "name": "8oxx_AC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L08.json",
+  "name": "8oxx_AC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L09.json",
+  "name": "8oxx_AC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L10.json",
+  "name": "8oxx_AC_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L11.json",
+  "name": "8oxx_AC_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L12.json",
+  "name": "8oxx_AC_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L13.json",
+  "name": "8oxx_AC_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L14.json",
+  "name": "8oxx_AC_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L15.json",
+  "name": "8oxx_AC_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L16.json",
+  "name": "8oxx_AC_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L17.json",
+  "name": "8oxx_AC_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L18.json",
+  "name": "8oxx_AC_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L19.json",
+  "name": "8oxx_AC_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8oxx",
+  "interface": "8oxx_AC",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8oxx_AC_L20.json",
+  "name": "8oxx_AC_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L01.json",
+  "name": "8pn0_BE_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L02.json",
+  "name": "8pn0_BE_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L03.json",
+  "name": "8pn0_BE_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L04.json",
+  "name": "8pn0_BE_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L05.json",
+  "name": "8pn0_BE_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L06.json",
+  "name": "8pn0_BE_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L07.json",
+  "name": "8pn0_BE_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L08.json",
+  "name": "8pn0_BE_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L09.json",
+  "name": "8pn0_BE_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L10.json",
+  "name": "8pn0_BE_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L11.json",
+  "name": "8pn0_BE_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L12.json",
+  "name": "8pn0_BE_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L13.json",
+  "name": "8pn0_BE_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L14.json",
+  "name": "8pn0_BE_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L15.json",
+  "name": "8pn0_BE_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L16.json",
+  "name": "8pn0_BE_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L17.json",
+  "name": "8pn0_BE_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L18.json",
+  "name": "8pn0_BE_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L19.json",
+  "name": "8pn0_BE_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8pn0",
+  "interface": "8pn0_BE",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8pn0_BE_L20.json",
+  "name": "8pn0_BE_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L01.json",
+  "name": "8q3j_AB_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L02.json",
+  "name": "8q3j_AB_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L03.json",
+  "name": "8q3j_AB_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L04.json",
+  "name": "8q3j_AB_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L05.json",
+  "name": "8q3j_AB_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L06.json",
+  "name": "8q3j_AB_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L07.json",
+  "name": "8q3j_AB_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L08.json",
+  "name": "8q3j_AB_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L09.json",
+  "name": "8q3j_AB_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L10.json",
+  "name": "8q3j_AB_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L11.json",
+  "name": "8q3j_AB_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L12.json",
+  "name": "8q3j_AB_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L13.json",
+  "name": "8q3j_AB_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L14.json",
+  "name": "8q3j_AB_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L15.json",
+  "name": "8q3j_AB_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L16.json",
+  "name": "8q3j_AB_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L17.json",
+  "name": "8q3j_AB_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L18.json",
+  "name": "8q3j_AB_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L19.json",
+  "name": "8q3j_AB_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AB",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AB_L20.json",
+  "name": "8q3j_AB_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L01.json",
+  "name": "8q3j_AC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L02.json",
+  "name": "8q3j_AC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L03.json",
+  "name": "8q3j_AC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L04.json",
+  "name": "8q3j_AC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L05.json",
+  "name": "8q3j_AC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L06.json",
+  "name": "8q3j_AC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L07.json",
+  "name": "8q3j_AC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L08.json",
+  "name": "8q3j_AC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L09.json",
+  "name": "8q3j_AC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L10.json",
+  "name": "8q3j_AC_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L11.json",
+  "name": "8q3j_AC_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L12.json",
+  "name": "8q3j_AC_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L13.json",
+  "name": "8q3j_AC_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L14.json",
+  "name": "8q3j_AC_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L15.json",
+  "name": "8q3j_AC_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L16.json",
+  "name": "8q3j_AC_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L17.json",
+  "name": "8q3j_AC_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L18.json",
+  "name": "8q3j_AC_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L19.json",
+  "name": "8q3j_AC_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8q3j",
+  "interface": "8q3j_AC",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8q3j_AC_L20.json",
+  "name": "8q3j_AC_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L01.json",
+  "name": "8slb_AB_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L02.json",
+  "name": "8slb_AB_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L03.json",
+  "name": "8slb_AB_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L04.json",
+  "name": "8slb_AB_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L05.json",
+  "name": "8slb_AB_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L06.json",
+  "name": "8slb_AB_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L07.json",
+  "name": "8slb_AB_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L08.json",
+  "name": "8slb_AB_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L09.json",
+  "name": "8slb_AB_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L10.json",
+  "name": "8slb_AB_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L11.json",
+  "name": "8slb_AB_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L12.json",
+  "name": "8slb_AB_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L13.json",
+  "name": "8slb_AB_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L14.json",
+  "name": "8slb_AB_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L15.json",
+  "name": "8slb_AB_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L16.json",
+  "name": "8slb_AB_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L17.json",
+  "name": "8slb_AB_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L18.json",
+  "name": "8slb_AB_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L19.json",
+  "name": "8slb_AB_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AB",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AB_L20.json",
+  "name": "8slb_AB_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L01.json",
+  "name": "8slb_AC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L02.json",
+  "name": "8slb_AC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L03.json",
+  "name": "8slb_AC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L04.json",
+  "name": "8slb_AC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L05.json",
+  "name": "8slb_AC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L06.json",
+  "name": "8slb_AC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L07.json",
+  "name": "8slb_AC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L08.json",
+  "name": "8slb_AC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L09.json",
+  "name": "8slb_AC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L10.json",
+  "name": "8slb_AC_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L11.json",
+  "name": "8slb_AC_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L12.json",
+  "name": "8slb_AC_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L13.json",
+  "name": "8slb_AC_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L14.json",
+  "name": "8slb_AC_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L15.json",
+  "name": "8slb_AC_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L16.json",
+  "name": "8slb_AC_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L17.json",
+  "name": "8slb_AC_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L18.json",
+  "name": "8slb_AC_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L19.json",
+  "name": "8slb_AC_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8slb",
+  "interface": "8slb_AC",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8slb_AC_L20.json",
+  "name": "8slb_AC_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L01.json",
+  "name": "8the_AB_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L02.json",
+  "name": "8the_AB_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L03.json",
+  "name": "8the_AB_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L04.json",
+  "name": "8the_AB_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L05.json",
+  "name": "8the_AB_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L06.json",
+  "name": "8the_AB_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L07.json",
+  "name": "8the_AB_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L08.json",
+  "name": "8the_AB_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L09.json",
+  "name": "8the_AB_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L10.json",
+  "name": "8the_AB_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L11.json",
+  "name": "8the_AB_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L12.json",
+  "name": "8the_AB_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L13.json",
+  "name": "8the_AB_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L14.json",
+  "name": "8the_AB_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L15.json",
+  "name": "8the_AB_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L16.json",
+  "name": "8the_AB_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L17.json",
+  "name": "8the_AB_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L18.json",
+  "name": "8the_AB_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L19.json",
+  "name": "8the_AB_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8the",
+  "interface": "8the_AB",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8the_AB_L20.json",
+  "name": "8the_AB_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L01.json",
+  "name": "8ux6_AF_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L02.json",
+  "name": "8ux6_AF_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L03.json",
+  "name": "8ux6_AF_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L04.json",
+  "name": "8ux6_AF_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L05.json",
+  "name": "8ux6_AF_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L06.json",
+  "name": "8ux6_AF_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L07.json",
+  "name": "8ux6_AF_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L08.json",
+  "name": "8ux6_AF_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L09.json",
+  "name": "8ux6_AF_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L10.json",
+  "name": "8ux6_AF_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L11.json",
+  "name": "8ux6_AF_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L12.json",
+  "name": "8ux6_AF_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L13.json",
+  "name": "8ux6_AF_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L14.json",
+  "name": "8ux6_AF_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L15.json",
+  "name": "8ux6_AF_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L16.json",
+  "name": "8ux6_AF_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L17.json",
+  "name": "8ux6_AF_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L18.json",
+  "name": "8ux6_AF_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L19.json",
+  "name": "8ux6_AF_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8ux6",
+  "interface": "8ux6_AF",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8ux6_AF_L20.json",
+  "name": "8ux6_AF_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L01.json",
+  "name": "8vui_BC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L02.json",
+  "name": "8vui_BC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L03.json",
+  "name": "8vui_BC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L04.json",
+  "name": "8vui_BC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L05.json",
+  "name": "8vui_BC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L06.json",
+  "name": "8vui_BC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L07.json",
+  "name": "8vui_BC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L08.json",
+  "name": "8vui_BC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L09.json",
+  "name": "8vui_BC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L10.json",
+  "name": "8vui_BC_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L11.json",
+  "name": "8vui_BC_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L12.json",
+  "name": "8vui_BC_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L13.json",
+  "name": "8vui_BC_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L14.json",
+  "name": "8vui_BC_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L15.json",
+  "name": "8vui_BC_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L16.json",
+  "name": "8vui_BC_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L17.json",
+  "name": "8vui_BC_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L18.json",
+  "name": "8vui_BC_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L19.json",
+  "name": "8vui_BC_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8vui",
+  "interface": "8vui_BC",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8vui_BC_L20.json",
+  "name": "8vui_BC_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L01.json",
+  "name": "8yxi_AC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L02.json",
+  "name": "8yxi_AC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L03.json",
+  "name": "8yxi_AC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L04.json",
+  "name": "8yxi_AC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L05.json",
+  "name": "8yxi_AC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L06.json",
+  "name": "8yxi_AC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L07.json",
+  "name": "8yxi_AC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L08.json",
+  "name": "8yxi_AC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L09.json",
+  "name": "8yxi_AC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L10.json",
+  "name": "8yxi_AC_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L11.json",
+  "name": "8yxi_AC_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L12.json",
+  "name": "8yxi_AC_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L13.json",
+  "name": "8yxi_AC_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L14.json",
+  "name": "8yxi_AC_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L15.json",
+  "name": "8yxi_AC_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L16.json",
+  "name": "8yxi_AC_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L17.json",
+  "name": "8yxi_AC_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L18.json",
+  "name": "8yxi_AC_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L19.json",
+  "name": "8yxi_AC_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_AC",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_AC_L20.json",
+  "name": "8yxi_AC_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L01.json",
+  "name": "8yxi_BC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L02.json",
+  "name": "8yxi_BC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L03.json",
+  "name": "8yxi_BC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L04.json",
+  "name": "8yxi_BC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L05.json",
+  "name": "8yxi_BC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L06.json",
+  "name": "8yxi_BC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L07.json",
+  "name": "8yxi_BC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L08.json",
+  "name": "8yxi_BC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L09.json",
+  "name": "8yxi_BC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L10.json",
+  "name": "8yxi_BC_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L11.json",
+  "name": "8yxi_BC_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L12.json",
+  "name": "8yxi_BC_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L13.json",
+  "name": "8yxi_BC_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L14.json",
+  "name": "8yxi_BC_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L15.json",
+  "name": "8yxi_BC_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L16.json",
+  "name": "8yxi_BC_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L17.json",
+  "name": "8yxi_BC_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L18.json",
+  "name": "8yxi_BC_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L19.json",
+  "name": "8yxi_BC_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "8yxi",
+  "interface": "8yxi_BC",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/8yxi_BC_L20.json",
+  "name": "8yxi_BC_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 1,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L01.json",
+  "name": "9jbq_AC_L01",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 2,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L02.json",
+  "name": "9jbq_AC_L02",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 3,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L03.json",
+  "name": "9jbq_AC_L03",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 4,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L04.json",
+  "name": "9jbq_AC_L04",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 5,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L05.json",
+  "name": "9jbq_AC_L05",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 6,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L06.json",
+  "name": "9jbq_AC_L06",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 7,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L07.json",
+  "name": "9jbq_AC_L07",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 8,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L08.json",
+  "name": "9jbq_AC_L08",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 9,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L09.json",
+  "name": "9jbq_AC_L09",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 10,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L10.json",
+  "name": "9jbq_AC_L10",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 11,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L11.json",
+  "name": "9jbq_AC_L11",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 12,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L12.json",
+  "name": "9jbq_AC_L12",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 13,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L13.json",
+  "name": "9jbq_AC_L13",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 14,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L14.json",
+  "name": "9jbq_AC_L14",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 15,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L15.json",
+  "name": "9jbq_AC_L15",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 16,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L16.json",
+  "name": "9jbq_AC_L16",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 17,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L17.json",
+  "name": "9jbq_AC_L17",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 18,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L18.json",
+  "name": "9jbq_AC_L18",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 19,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L19.json",
+  "name": "9jbq_AC_L19",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ },
+ {
+  "run": "leader20",
+  "pdb": "9jbq",
+  "interface": "9jbq_AC",
+  "leader_rank": 20,
+  "json": "/home/ebrahim/confident_decoy_experiments/artifacts/sweep_tmpl/leader20/9jbq_AC_L20.json",
+  "name": "9jbq_AC_L20",
+  "seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "set": "decoy"
+ }
+]

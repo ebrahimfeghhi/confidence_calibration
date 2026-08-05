@@ -948,14 +948,22 @@ applied.** Everything else was verified identical between the two `8bf4` runs �
 `N_sample`/`N_step`/`--use_template` — and re-scoring the old poses with the current scorer reproduced
 4/250 exactly, proving the difference was in generation, not scoring. Only the log line settled it.
 
-### Suspected cause
+### Root cause — CONFIRMED 2026-08-04
 
-`/home/ebrahim/common/release_date_cache.json` is shared and mutable, and every builder rewrites the
-whole dict. A builder running concurrently can drop another's tid entry, after which Protenix's
-release-date filter silently rejects the template. The three void arms were built by ad-hoc scripts in
-an ephemeral `/tmp` scratchpad, in parallel, on the same day; the clean arms were built by
-`build_sweep_templates.py` in this repo. Not proven — recorded as the leading hypothesis.
-Mitigation for future builders: per-run cache files, or read-modify-write under a lock.
+**The template ids were 5 characters.** Protenix requires a 4-character PDB-style id: its a3m hit
+parser raises `Invalid hit name format: <id>_<chain>`, the hit is dropped, and the run logs
+`Found 0 templates`.
+
+The three void arms used a 4-digit counter — `topdockq` started at `tc=[1600]`, so every id was
+`q1600`+ — while `oracle`, built the same day by the same author with `tc=[900]`, produced `q900`…
+`q999` and worked. The counter simply overflowed past four characters.
+
+Found by reproducing the failure on CPU: feeding a `leader20` a3m (ids `g0001`+) straight to
+`TemplateHitFeaturizer.get_templates` returned `errors: ['Invalid hit name format: g0024_A']`.
+
+*An earlier version of this section blamed the shared, mutable `release_date_cache.json`. That was
+wrong — the cache entries were present and correct.* `scripts/run_health.py --preflight` and
+`validate_run.py` now both reject any template id that is not exactly 4 characters.
 
 ### The guard (added, and verified in both directions)
 
@@ -1290,5 +1298,71 @@ produced a plausible "multi-template changes nothing" result that was really a 1
 - **code:** `scripts/build_duo_templates.py` (kept, not run to completion)
 - **data:** `artifacts/duo2_donors.json` — the leader-1/leader-2 pairs it would have used
 - No scores exist for this arm; it was stopped after the guard fired.
+
+---
+
+## 13. `leader20`: the first fully deployable scheme (RUNNING)
+
+**Status: generating.** 454 jobs × 5 seeds = 2,270 seeds, 26 interfaces, launched 2026-08-04.
+Methods recorded before any result exists.
+
+### The method
+
+Nothing in it uses the native structure. The native is used **only to score the final answer**, never
+to produce it.
+
+1. free run, 250 poses (seeds 101–150) — already available
+2. **leaders**: greedy NMS on interface `pair_iptm`, same-basin = pose-pose DockQ ≥ 0.23
+3. take the **top 20 leaders**; template each one **separately** (one template per run)
+4. **5 seeds** per template → up to 20 × 5 × 5 = 500 poses per interface
+5. pool them all; the **highest interface `pair_iptm` pose is the method's answer**
+
+Every other arm that works is an oracle — `dockqdonor` picks its donor by DockQ, `ifacelddt` by lDDT
+against the native, `native50` uses the answer itself. The only previously tested deployable arm,
+`globalplddt`, scores 0/15.
+
+### Why 5 seeds and not 50
+
+Sub-sampling the completed `dockqdonor` arm (`scripts/seed_efficiency.py`) shows the expected number
+of interfaces rescued is **flat from ~3 seeds**: 8.3 at K=1, 9.2 at K=5, 9.5 at K=10, 9.0 at K=50. For
+five interfaces the rescue probability *falls* as seeds increase — `8q3j_AB` 0.71 → 0.00 — because more
+sampling within one condition lets the model find a wrong pose it likes even better. Wide-and-shallow is
+cheaper and possibly better than narrow-and-deep.
+
+**50 seeds is still required to benchmark a single condition** (~3.7 of 25 per-interface verdicts churn
+at K=5), but this method's output is one pooled answer per interface, not a per-condition verdict.
+
+### Why one template per run
+
+Protenix cannot accept several folds of the same chain at once — it de-duplicates template hits by the
+template structure's own sequence (§12).
+
+### Expected ceiling
+
+Top-20 leaders contain a correct pose on **23/26 (88%)** (§11), but templating on the *oracle* best-docked
+pose rescues only **9/25 (36%)** (§6). So the shortlist is not the binding constraint — conversion is.
+Rough expectation **30–35%**; the conversion rate is exactly what this arm measures.
+
+### Provenance
+
+- **code:** `scripts/build_leader_templates.py` → `scripts/run_health.py --preflight` →
+  `scripts/sweep_sched.py` → `scripts/score_leader20.py` (pooled scoring) with
+  `scripts/leader20_watcher.sh` scoring interfaces as their templates complete
+- **health:** `scripts/run_health.py --watch --interval 1800` for the run's lifetime
+- **data:** `artifacts/leader20_jobs.json` (454 jobs), `artifacts/leader20_index.json` (per-interface
+  leader list with seed/sample/ipTM/DockQ and whether each leader is acceptable),
+  `artifacts/leader20_scores.json` (pooled result per interface)
+- **predictions:** `artifacts/sweep_out/leader20/leader20/<pdb>_<chains>_L<rank>/seed_<101-105>/`
+
+### Three bugs caught before any result — and the checks now preventing them
+
+| bug | effect | guard |
+|---|---|---|
+| scheduler ignored `job["seeds"]`, used hardcoded 50 | 22,700 seeds instead of 2,270 (10×) | `run_health.py --preflight` checks seed count per job |
+| template ids 5 chars (`g0001`) | `Invalid hit name format` → `Found 0 templates` → untemplated run | preflight + `validate_run.py` reject non-4-char ids |
+| `obj["name"]` never set | all 20 templates of a pdb wrote to ONE directory, overwriting; scheduler logged `0/5 seeds` | preflight checks `json["name"] == job["name"]` and name uniqueness |
+
+All three produced *plausible output*: poses existed, the scheduler exited cleanly, numbers looked
+reasonable. The second is also the confirmed root cause of the void arms in §7.
 
 ---

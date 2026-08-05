@@ -1,0 +1,452 @@
+[
+ {
+  "interface": "7ucx_AC",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.035,
+   "2": 0.01,
+   "3": 0.005,
+   "5": 0.005,
+   "10": 0.0,
+   "25": 0.0,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 3,
+  "frac_seeds_with_acceptable": 0.06,
+  "donor_seed": 138,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8aok_AB",
+  "rescued_at_50": true,
+  "prob_by_k": {
+   "1": 0.85,
+   "2": 0.845,
+   "3": 0.855,
+   "5": 0.905,
+   "10": 0.95,
+   "25": 1.0,
+   "50": 1.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 48,
+  "frac_seeds_with_acceptable": 0.96,
+  "donor_seed": 124,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8av2_AC",
+  "rescued_at_50": true,
+  "prob_by_k": {
+   "1": 0.09,
+   "2": 0.205,
+   "3": 0.24,
+   "5": 0.47,
+   "10": 0.77,
+   "25": 0.99,
+   "50": 1.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 6,
+  "frac_seeds_with_acceptable": 0.12,
+  "donor_seed": 124,
+  "donor_seed_produced_acceptable": false
+ },
+ {
+  "interface": "8be1_AC",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0,
+   "5": 0.0,
+   "10": 0.0,
+   "25": 0.0,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 1,
+  "frac_seeds_with_acceptable": 0.02,
+  "donor_seed": 142,
+  "donor_seed_produced_acceptable": false
+ },
+ {
+  "interface": "8bf4_AB",
+  "rescued_at_50": true,
+  "prob_by_k": {
+   "1": 0.53,
+   "2": 0.8,
+   "3": 0.875,
+   "5": 0.945,
+   "10": 0.995,
+   "25": 1.0,
+   "50": 1.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 29,
+  "frac_seeds_with_acceptable": 0.58,
+  "donor_seed": 120,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8che_AE",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.455,
+   "2": 0.345,
+   "3": 0.34,
+   "5": 0.355,
+   "10": 0.24,
+   "25": 0.11,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 38,
+  "frac_seeds_with_acceptable": 0.76,
+  "donor_seed": 112,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8che_BE",
+  "rescued_at_50": true,
+  "prob_by_k": {
+   "1": 0.6,
+   "2": 0.855,
+   "3": 0.925,
+   "5": 0.995,
+   "10": 1.0,
+   "25": 1.0,
+   "50": 1.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 38,
+  "frac_seeds_with_acceptable": 0.76,
+  "donor_seed": 137,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8fas_BC",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.44,
+   "2": 0.56,
+   "3": 0.455,
+   "5": 0.4,
+   "10": 0.325,
+   "25": 0.225,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 27,
+  "frac_seeds_with_acceptable": 0.54,
+  "donor_seed": 149,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8fbw_AC",
+  "rescued_at_50": true,
+  "prob_by_k": {
+   "1": 0.945,
+   "2": 0.99,
+   "3": 1.0,
+   "5": 1.0,
+   "10": 1.0,
+   "25": 1.0,
+   "50": 1.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 50,
+  "frac_seeds_with_acceptable": 1.0,
+  "donor_seed": 115,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8fbw_BC",
+  "rescued_at_50": true,
+  "prob_by_k": {
+   "1": 1.0,
+   "2": 1.0,
+   "3": 1.0,
+   "5": 1.0,
+   "10": 1.0,
+   "25": 1.0,
+   "50": 1.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 50,
+  "frac_seeds_with_acceptable": 1.0,
+  "donor_seed": 115,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8ivx_AC",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0,
+   "5": 0.0,
+   "10": 0.0,
+   "25": 0.0,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 6,
+  "frac_seeds_with_acceptable": 0.12,
+  "donor_seed": 116,
+  "donor_seed_produced_acceptable": false
+ },
+ {
+  "interface": "8oxw_AB",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0,
+   "5": 0.0,
+   "10": 0.0,
+   "25": 0.0,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 2,
+  "frac_seeds_with_acceptable": 0.04,
+  "donor_seed": 104,
+  "donor_seed_produced_acceptable": false
+ },
+ {
+  "interface": "8oxw_AC",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.05,
+   "2": 0.015,
+   "3": 0.0,
+   "5": 0.0,
+   "10": 0.0,
+   "25": 0.0,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 5,
+  "frac_seeds_with_acceptable": 0.1,
+  "donor_seed": 131,
+  "donor_seed_produced_acceptable": false
+ },
+ {
+  "interface": "8oxx_AC",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0,
+   "5": 0.0,
+   "10": 0.0,
+   "25": 0.0,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 0,
+  "frac_seeds_with_acceptable": 0.0,
+  "donor_seed": 136,
+  "donor_seed_produced_acceptable": false
+ },
+ {
+  "interface": "8pn0_BE",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.595,
+   "2": 0.54,
+   "3": 0.485,
+   "5": 0.3,
+   "10": 0.13,
+   "25": 0.02,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 50,
+  "frac_seeds_with_acceptable": 1.0,
+  "donor_seed": 126,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8q3j_AB",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.71,
+   "2": 0.71,
+   "3": 0.81,
+   "5": 0.67,
+   "10": 0.515,
+   "25": 0.19,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 43,
+  "frac_seeds_with_acceptable": 0.86,
+  "donor_seed": 137,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8q3j_AC",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.385,
+   "2": 0.27,
+   "3": 0.24,
+   "5": 0.17,
+   "10": 0.17,
+   "25": 0.06,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 43,
+  "frac_seeds_with_acceptable": 0.86,
+  "donor_seed": 102,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8slb_AB",
+  "rescued_at_50": true,
+  "prob_by_k": {
+   "1": 0.77,
+   "2": 0.815,
+   "3": 0.76,
+   "5": 0.805,
+   "10": 0.97,
+   "25": 1.0,
+   "50": 1.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 41,
+  "frac_seeds_with_acceptable": 0.82,
+  "donor_seed": 122,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8slb_AC",
+  "rescued_at_50": true,
+  "prob_by_k": {
+   "1": 0.71,
+   "2": 0.73,
+   "3": 0.715,
+   "5": 0.79,
+   "10": 0.89,
+   "25": 1.0,
+   "50": 1.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 39,
+  "frac_seeds_with_acceptable": 0.78,
+  "donor_seed": 122,
+  "donor_seed_produced_acceptable": true
+ },
+ {
+  "interface": "8the_AB",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0,
+   "5": 0.0,
+   "10": 0.0,
+   "25": 0.0,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 9,
+  "frac_seeds_with_acceptable": 0.18,
+  "donor_seed": 113,
+  "donor_seed_produced_acceptable": false
+ },
+ {
+  "interface": "8ux6_AF",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0,
+   "5": 0.0,
+   "10": 0.0,
+   "25": 0.0,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 0,
+  "frac_seeds_with_acceptable": 0.0,
+  "donor_seed": 113,
+  "donor_seed_produced_acceptable": false
+ },
+ {
+  "interface": "8vui_BC",
+  "rescued_at_50": true,
+  "prob_by_k": {
+   "1": 0.115,
+   "2": 0.15,
+   "3": 0.22,
+   "5": 0.34,
+   "10": 0.48,
+   "25": 0.845,
+   "50": 1.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 5,
+  "frac_seeds_with_acceptable": 0.1,
+  "donor_seed": 132,
+  "donor_seed_produced_acceptable": false
+ },
+ {
+  "interface": "8yxi_AC",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0,
+   "5": 0.0,
+   "10": 0.0,
+   "25": 0.0,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 3,
+  "frac_seeds_with_acceptable": 0.06,
+  "donor_seed": 135,
+  "donor_seed_produced_acceptable": false
+ },
+ {
+  "interface": "8yxi_BC",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.01,
+   "2": 0.08,
+   "3": 0.06,
+   "5": 0.06,
+   "10": 0.035,
+   "25": 0.0,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 4,
+  "frac_seeds_with_acceptable": 0.08,
+  "donor_seed": 140,
+  "donor_seed_produced_acceptable": false
+ },
+ {
+  "interface": "9jbq_AC",
+  "rescued_at_50": false,
+  "prob_by_k": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0,
+   "5": 0.0,
+   "10": 0.0,
+   "25": 0.0,
+   "50": 0.0
+  },
+  "n_seeds": 50,
+  "n_seeds_with_acceptable": 1,
+  "frac_seeds_with_acceptable": 0.02,
+  "donor_seed": 104,
+  "donor_seed_produced_acceptable": false
+ }
+]

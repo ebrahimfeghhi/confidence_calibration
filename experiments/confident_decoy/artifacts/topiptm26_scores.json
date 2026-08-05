@@ -297,5 +297,31 @@
   "free_n_acceptable": 1,
   "free_sel_dockq": 0.022,
   "free_best_dockq": 0.235
+ },
+ "8bf4_AB": {
+  "pdb": "8bf4",
+  "arm": "topiptm26",
+  "n": 250,
+  "n_acceptable": 0,
+  "top_pair_iptm": 0.855,
+  "sel_dockq": 0.014,
+  "best_dockq": 0.014,
+  "rescued": false,
+  "free_n_acceptable": 22,
+  "free_sel_dockq": 0.014,
+  "free_best_dockq": 0.723
+ },
+ "8pn0_BE": {
+  "pdb": "8pn0",
+  "arm": "topiptm26",
+  "n": 250,
+  "n_acceptable": 124,
+  "top_pair_iptm": 0.477,
+  "sel_dockq": 0.045,
+  "best_dockq": 0.757,
+  "rescued": false,
+  "free_n_acceptable": 155,
+  "free_sel_dockq": 0.084,
+  "free_best_dockq": 0.741
  }
 }

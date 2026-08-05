@@ -32,17 +32,26 @@ os.makedirs(OUT, exist_ok=True); os.makedirs(LOGD, exist_ok=True)
 jobs = json.load(open(_A.jobs))
 
 
+def job_seeds(job):
+    """The seeds THIS job asks for, falling back to the global range.
+
+    Arms differ: the template sweep and the 26-set arms use 50 seeds (101-150), but `leader20` runs
+    20 templates x 5 seeds per interface. Ignoring job["seeds"] and using the global list silently
+    ran 10x the intended work (454 jobs x 50 seeds instead of x5)."""
+    return job.get("seeds") or SEEDS
+
+
 def missing_seeds(job):
     """Seeds with no complete output yet. Passing only these to inference makes a restart cheap --
     without it, killing the scheduler throws away every partially-finished job."""
     d = f"{OUT}/{job['run']}/{job['name']}"
-    return [s for s in SEEDS
+    return [s for s in job_seeds(job)
             if not os.path.exists(
                 f"{d}/seed_{s}/predictions/{job['name']}_summary_confidence_sample_4.json")]
 
 
 def done(job):
-    return len(SEEDS) - len(missing_seeds(job))
+    return len(job_seeds(job)) - len(missing_seeds(job))
 
 
 def cost(job):
@@ -61,7 +70,7 @@ def cost(job):
 # whose interface labels were wrong anyway -- outstanding at the end. Longest-first locked all four
 # GPUs on 7z2m for ~10 h and produced nothing else in the meantime.
 lock = threading.Lock()
-queue = sorted([j for j in jobs if done(j) < len(SEEDS)], key=cost)
+queue = sorted([j for j in jobs if done(j) < len(job_seeds(j))], key=cost)
 skipped = len(jobs) - len(queue)
 print(f"{len(jobs)} jobs total; {skipped} already complete; {len(queue)} to run", flush=True)
 state = {"total": len(jobs), "skipped": skipped, "queue": len(queue), "finished": [], "running": {}}
@@ -117,7 +126,10 @@ def worker(gpu):
         # 8slb_AB and 8slb_AC are two jobs of the same pdb and a pdb-keyed log silently overwrites one
         # with the other. Output dirs and missing_seeds() already key on job['name'], so only the log
         # was affected.
-        log = f"{LOGD}/{job['run']}_{job.get('interface', job['pdb'])}.log"
+        # Key the log on job['name'] -- the only field unique per job. Keying on the interface
+        # collided across leader20's 20 templates per interface: each job truncated the previous
+        # one's log, so per-template template-loading could not be verified at all.
+        log = f"{LOGD}/{job['run']}_{job.get('name', job.get('interface', job['pdb']))}.log"
         env = dict(os.environ, CUDA_VISIBLE_DEVICES=str(gpu), LAYERNORM_TYPE="openfold",
                    OMP_NUM_THREADS="4", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1",
                    NUMEXPR_NUM_THREADS="1", VECLIB_MAXIMUM_THREADS="1")
@@ -135,11 +147,12 @@ def worker(gpu):
         n = done(job)
         with lock:
             state["finished"].append({"run": job["run"], "pdb": job["pdb"], "seeds_done": n,
+                                      "seeds_wanted": len(job_seeds(job)),
                                       "minutes": round((time.time() - t0) / 60, 1)})
             state["running"].pop(str(gpu), None)
             save()
         print(f"[{time.strftime('%H:%M')}] GPU{gpu} DONE  {job['run']}/{job['pdb']} "
-              f"{n}/50 seeds in {(time.time()-t0)/60:.1f} min ({len(queue)} left)", flush=True)
+              f"{n}/{len(job_seeds(job))} seeds in {(time.time()-t0)/60:.1f} min ({len(queue)} left)", flush=True)
 
 
 ths = [threading.Thread(target=worker, args=(g,), daemon=False) for g in GPUS]
@@ -147,6 +160,6 @@ ths = [threading.Thread(target=worker, args=(g,), daemon=False) for g in GPUS]
 [t.join() for t in ths]
 state["running"] = {}
 save()
-inc = [f for f in state["finished"] if f["seeds_done"] < len(SEEDS)]
+inc = [f for f in state["finished"] if f["seeds_done"] < f.get("seeds_wanted", len(SEEDS))]
 print(f"\nALL DONE. {len(state['finished'])} jobs run; {len(inc)} INCOMPLETE: "
       f"{[(f['run'], f['pdb'], f['seeds_done']) for f in inc]}")
