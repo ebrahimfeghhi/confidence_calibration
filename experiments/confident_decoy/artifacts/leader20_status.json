@@ -86,12 +86,2938 @@
    "seeds_done": 5,
    "seeds_wanted": 5,
    "minutes": 2.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fas",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fas",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "9jbq",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 3.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8vui",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.8
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 4.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8slb",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 10.8
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 10.8
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 10.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 5.6
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8yxi",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 14.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 14.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8fbw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 6.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ux6",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 7.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8ivx",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 8.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.8
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.8
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.8
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.8
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.8
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.8
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.8
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.8
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8oxw",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 9.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8the",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 15.7
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8q3j",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 11.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8be1",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 12.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 21.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 21.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 21.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 21.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 21.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 21.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8bf4",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 21.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.4
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
+  },
+  {
+   "run": "leader20",
+   "pdb": "8pn0",
+   "seeds_done": 5,
+   "seeds_wanted": 5,
+   "minutes": 22.5
   }
  ],
  "running": {
-  "2": "leader20/8fas",
-  "1": "leader20/8fas",
-  "0": "leader20/9jbq",
-  "3": "leader20/9jbq"
+  "0": "leader20/7zau",
+  "3": "leader20/7zau",
+  "2": "leader20/7zau",
+  "1": "leader20/7zau"
  }
 }

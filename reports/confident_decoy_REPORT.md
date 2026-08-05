@@ -1366,3 +1366,125 @@ All three produced *plausible output*: poses existed, the scheduler exited clean
 reasonable. The second is also the confirmed root cause of the void arms in §7.
 
 ---
+
+## 14. `leader20` results, and what the four arms actually do
+
+**`leader20` = 3/25.** The deployable scheme (top-20 leaders as templates, 5 seeds each, pooled by
+ipTM) rescues 3 interfaces. `7zau_AB` was stopped before completing, so the denominator is 25.
+
+| arm | rescued | needs the native? |
+|---|---|---|
+| free run, no template | 0/25 | — (0 by construction) |
+| **leader20** | **3/25** | **no — fully deployable** |
+| topiptm26 (decoy's own fold) | 2/25 | no |
+| dockqdonor (best-DockQ donor) | 9/25 | yes |
+| native50 (exact fold) | 17/25 | yes |
+
+### Best DockQ produced anywhere in each arm's pool
+
+**Bold = that arm rescued the interface** (its top-`pair_iptm` pose was acceptable).
+
+|interface  |free |leader20 |dockqdonor|native   |
+|-----------|-----|---------|----------|---------|
+|7ucx_AC    |0.269|0.204    |0.279     |**0.983**|
+|8aok_AB    |0.695|**0.704**|**0.707** |**0.796**|
+|8av2_AC    |0.612|0.265    |**0.696** |**0.954**|
+|8be1_AC    |0.235|0.293    |0.238     |0.137    |
+|8bf4_AB    |0.723|0.727    |**0.750** |**0.764**|
+|8che_AE    |0.438|0.552    |0.568     |**0.977**|
+|8che_BE    |0.529|0.571    |**0.958** |**0.961**|
+|8fas_BC    |0.987|0.991    |0.991     |0.994    |
+|8fbw_AC    |0.434|0.350    |**0.656** |**0.873**|
+|8fbw_BC    |0.510|**0.658**|**0.717** |**0.858**|
+|8ivx_AC    |0.333|0.481    |0.489     |0.257    |
+|8oxw_AB    |0.298|0.369    |0.525     |0.676    |
+|8oxw_AC    |0.275|0.369    |0.474     |0.550    |
+|8oxx_AC    |0.343|0.437    |0.137     |0.190    |
+|8pn0_BE    |0.741|**0.730**|0.790     |**0.939**|
+|8q3j_AB    |0.705|0.749    |0.751     |**0.930**|
+|8q3j_AC    |0.531|0.562    |0.532     |**0.924**|
+|8slb_AB    |0.462|0.447    |**0.806** |**0.945**|
+|8slb_AC    |0.655|0.562    |**0.892** |**0.967**|
+|8the_AB    |0.514|0.479    |0.449     |**0.604**|
+|8ux6_AF    |0.246|0.304    |0.228     |0.270    |
+|8vui_BC    |0.404|0.725    |**0.766** |0.376    |
+|8yxi_AC    |0.295|0.308    |0.293     |**0.884**|
+|8yxi_BC    |0.538|0.605    |0.476     |**0.982**|
+|9jbq_AC    |0.584|0.592    |0.519     |**0.990**|
+|**median** |0.510|0.552    |0.568     |**0.884**|
+|**rescued**|0/25 |**3/25** |**9/25**  |**17/25**|
+
+Native holds the highest ceiling on **20/25** and is the only arm reaching 0.9+ routinely. `leader20`
+and `dockqdonor` both move the free run's 0.510 median only to ~0.55–0.57. Four interfaces — `8be1_AC`,
+`8ivx_AC`, `8oxx_AC`, `8vui_BC` — are cases where the *exact native* template does WORSE than the free
+run, the residual "even native breaks some cases" effect from §5.
+
+**A high ceiling does not imply rescue.** `8q3j_AB` reaches 0.751 under `dockqdonor` and is not
+rescued; `8pn0_BE` reaches 0.790 and is not; yet `leader20` rescues `8pn0_BE` from a *lower* ceiling of
+0.730. Selection is doing work independent of the ceiling.
+
+### Why `dockqdonor` beats `leader20` — it is not the ceiling, and not confidence recalibration
+
+Four measurements, each on poses already generated:
+
+**1. ipTM at matched DockQ is unchanged by templating.** Binning poses by DockQ and comparing free
+against templated, pooled over the 9 interfaces `dockqdonor` rescues:
+
+| DockQ bin | free ipTM | templated ipTM | delta |
+|---|---|---|---|
+| 0.00–0.10 | 0.274 | 0.276 | +0.002 |
+| 0.23–0.40 | 0.377 | 0.346 | −0.031 |
+| 0.60–1.01 | 0.720 | 0.705 | −0.015 |
+
+No systematic lift. Templating does **not** make the model more confident in a pose of given quality;
+it changes which poses exist. (`scripts/iptm_at_matched_dockq.py`)
+
+**2. The decoy is diluted, not suppressed.** Across the 9 rescues, the decoy region's median ipTM moves
+**−0.021** and its max **−0.049**; on several interfaces the decoy max *rises*. What collapses is decoy
+population — `8aok_AB` 141 → 29 poses, `8fbw_AC` 239 → 38. This differs from the native arm, which does
+collapse the decoy's confidence outright (§5's mechanism).
+
+**3. But dilution alone cannot be the story — ipTM has no location bias, it has a TAIL asymmetry.**
+In the free run, median (correct − decoy) ipTM is **−0.002**, and correct poses score higher on 8/17.
+Yet max decoy exceeds max correct on **14/17**, sometimes hugely: `8q3j_AB` correct max 0.245 vs decoy
+0.717; `8ivx_AC` 0.136 vs 0.773. Correct poses cluster tightly at low ipTM while decoys have a heavy
+right tail.
+
+**4. The resolution: ipTM only separates poses above DockQ ≈ 0.6.** `8aok_AB`'s free run puts 112 of
+250 poses in the 0.10–0.23 band, which carries the highest median ipTM of any bin (0.551, max 0.749),
+while its 9 poses above 0.60 have median 0.719. Templating collapses that band to 11 poses and inflates
+0.60+ from 9 to 50 — the ceiling barely moves (0.695 → 0.707) but the argmax flips from DockQ 0.112 to
+0.664.
+
+**So a good template wins by pushing correct poses past ~0.6 DockQ, where ipTM becomes informative.**
+`leader20`'s templates cap out at a median ceiling of 0.552, so its correct poses never enter that band
+— its pooled max ipTM on `8che_BE` is 0.485 against correct poses at 0.431.
+
+### Pooling arms
+
+| pool | rescued |
+|---|---|
+| dockqdonor alone | 9/25 |
+| dockqdonor + leader20 (21 templates) | **8/25** |
+| + native (22 templates) | **17/25** — equals native alone |
+
+Adding 20 leader templates to `dockqdonor` **lost 2 rescues** (`8slb_AB`, `8slb_AC`): decoy-fold
+templates produced poses at ipTM 0.713 / 0.641 with DockQ **0.020 / 0.010**, out-confidencing correct
+poses. Native, being stronger, survives the same contamination and loses only `8the_AB`.
+
+**So pooling is safe if and only if the pool contains a template strong enough to dominate the
+contaminants.** Breadth adds both the chance of a good template and the chance of a confidently-wrong
+pose; at native quality the first wins, at leader quality the second does.
+
+### Provenance
+
+- **code:** `scripts/build_leader_templates.py` → `scripts/score_leader20.py` (pooled) →
+  `scripts/leader20_table.py` (arm comparison)
+- **code (diagnostics):** `scripts/leader20_diag.py` (good-pose count vs ipTM gap),
+  `scripts/iptm_at_matched_dockq.py`, `scripts/pool_leader20_dockqdonor.py`,
+  `scripts/pool_with_native.py`, `scripts/donor_vs_bestleader.py`, `scripts/seed_efficiency.py`
+- **data:** `artifacts/leader20_scores.json`, `leader20_index.json`, `leader20_diagnosis.json`,
+  `leader20_comparison.json`, `iptm_at_matched_dockq.json`, `pooled_leader20_dockqdonor.json`,
+  `pool_with_native.json`, `donor_vs_bestleader.json`, `dockqdonor_seed_efficiency.json`
+
+---

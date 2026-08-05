@@ -131,8 +131,13 @@ def watch():
             done += len(glob.glob(f"{d}/seed_*/predictions/{j['name']}_summary_confidence_sample_4.json"))
         # "ERR" is Protenix's own error directory (runner/inference.py sets dump_dir/ERR), not a
         # stray output. Its NAME is expected; its CONTENTS are not -- anything in it means jobs failed.
+        # Only flag dirs belonging to THIS run's interfaces. An output tree is often shared with a
+        # larger arm (the 8av2 deep run reuses leader20's tree so its 5 finished seeds are resumed),
+        # and treating every other arm's directory as a name collision is a false alarm.
+        mine = {j.get("interface", j["pdb"]) for j in jobs}
         stray = [os.path.basename(d) for d in glob.glob(f"{A.out}/{jobs[0]['run']}/*")
-                 if os.path.basename(d) not in want and os.path.basename(d) != "ERR"]
+                 if os.path.basename(d) not in want and os.path.basename(d) != "ERR"
+                 and any(os.path.basename(d).startswith(m) for m in mine)]
         err_dir = f"{A.out}/{jobs[0]['run']}/ERR"
         n_err = len(glob.glob(f"{err_dir}/*")) if os.path.isdir(err_dir) else 0
         c = cores()
@@ -140,6 +145,31 @@ def watch():
                     if "inference.py" in (open(f"{p}/cmdline", errors="ignore").read()
                                           if os.path.exists(f"{p}/cmdline") else ""))
         total = sum(len(j.get("seeds") or []) for j in jobs)
+        # --- REAL RESULTS in every health line, not just liveness ---
+        scored = rescued = 0; ifaces_total = len({j["interface"] for j in jobs}) if "interface" in jobs[0] else 0
+        recent = ""
+        sf = A.jobs.replace("_jobs.json", "_scores.json")
+        if os.path.exists(sf):
+            try:
+                d = json.load(open(sf))
+                scored = len(d)
+                rescued = sum(1 for v in d.values() if v.get("method_rescued", v.get("rescued")))
+                last = list(d.items())[-3:]
+                recent = " | ".join(f"{k} {v.get('free_sel_dockq')}->{v.get('method_dockq', v.get('sel_dockq'))}"
+                                    f"{'*' if v.get('method_rescued', v.get('rescued')) else ''}"
+                                    for k, v in last)
+            except Exception:
+                pass
+        # how many interfaces have all their templates finished (i.e. are scorable now)
+        by_if = collections.defaultdict(list)
+        for j in jobs:
+            by_if[j.get("interface", j["pdb"])].append(j)
+        ready = 0
+        for lab, js in by_if.items():
+            if all(len(glob.glob(f"{A.out}/{j['run']}/{j['name']}/seed_*/predictions/"
+                                 f"{j['name']}_summary_confidence_sample_4.json")) >= len(j.get("seeds") or [])
+                   for j in js):
+                ready += 1
         msgs = []
         if n1 == 0 and n0 > 0:
             msgs.append(f"ALERT templates NEVER loading ({n0} null) -- UNTEMPLATED run")
@@ -164,8 +194,11 @@ def watch():
         if msgs:
             for m in msgs: print(f"[{stamp}] {m}", flush=True)
         else:
-            print(f"[{stamp}] OK seeds {done}/{total}, templates {n1} loaded / {n0} null, "
-                  f"{alive} procs, {c:.0f} cores", flush=True)
+            print(f"[{stamp}] OK seeds {done}/{total} | interfaces complete {ready}/{len(by_if)}, "
+                  f"SCORED {scored} RESCUED {rescued} | templates {n1} loaded/{n0} null | "
+                  f"{alive} procs {c:.0f} cores", flush=True)
+            if recent:
+                print(f"[{stamp}] latest: {recent}", flush=True)
         if alive == 0 and done >= total:
             print(f"[{stamp}] COMPLETE {done}/{total} seeds", flush=True); break
         time.sleep(A.interval)
