@@ -1,0 +1,652 @@
+[
+ {
+  "interface": "7ucx_AC",
+  "pdb": "7ucx",
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 138,
+   "sample": 2,
+   "dockq": 0.269,
+   "ab_global": 0.941,
+   "paratope": 0.971,
+   "ag_global": 0.503,
+   "epitope": 0.516
+  },
+  "topiptm": {
+   "seed": 140,
+   "sample": 0,
+   "dockq": 0.155,
+   "ab_global": 0.936,
+   "paratope": 0.958,
+   "ag_global": 0.409,
+   "epitope": 0.418
+  }
+ },
+ {
+  "interface": "7zau_AB",
+  "pdb": "7zau",
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 132,
+   "sample": 3,
+   "dockq": 0.435,
+   "ab_global": 0.822,
+   "paratope": 0.543,
+   "ag_global": 0.889,
+   "epitope": 0.927
+  },
+  "topiptm": {
+   "seed": 116,
+   "sample": 2,
+   "dockq": 0.004,
+   "ab_global": 0.844,
+   "paratope": 0.633,
+   "ag_global": 0.892,
+   "epitope": 0.923
+  }
+ },
+ {
+  "interface": "8aok_AB",
+  "pdb": "8aok",
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 124,
+   "sample": 0,
+   "dockq": 0.695,
+   "ab_global": 0.883,
+   "paratope": 0.702,
+   "ag_global": 0.895,
+   "epitope": 0.863
+  },
+  "topiptm": {
+   "seed": 110,
+   "sample": 0,
+   "dockq": 0.112,
+   "ab_global": 0.843,
+   "paratope": 0.565,
+   "ag_global": 0.891,
+   "epitope": 0.864
+  }
+ },
+ {
+  "interface": "8av2_AC",
+  "pdb": "8av2",
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 124,
+   "sample": 1,
+   "dockq": 0.612,
+   "ab_global": 0.85,
+   "paratope": 0.752,
+   "ag_global": 0.861,
+   "epitope": 0.832
+  },
+  "topiptm": {
+   "seed": 113,
+   "sample": 0,
+   "dockq": 0.092,
+   "ab_global": 0.801,
+   "paratope": 0.608,
+   "ag_global": 0.837,
+   "epitope": 0.796
+  }
+ },
+ {
+  "interface": "8be1_AC",
+  "pdb": "8be1",
+  "antibody_chain": "A",
+  "antigen_chain": "C",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 142,
+   "sample": 4,
+   "dockq": 0.235,
+   "ab_global": 0.919,
+   "paratope": 0.666,
+   "ag_global": 0.929,
+   "epitope": 0.882
+  },
+  "topiptm": {
+   "seed": 110,
+   "sample": 0,
+   "dockq": 0.022,
+   "ab_global": 0.935,
+   "paratope": 0.768,
+   "ag_global": 0.918,
+   "epitope": 0.93
+  }
+ },
+ {
+  "interface": "8bf4_AB",
+  "pdb": "8bf4",
+  "antibody_chain": "A",
+  "antigen_chain": "B",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 120,
+   "sample": 2,
+   "dockq": 0.723,
+   "ab_global": 0.922,
+   "paratope": 0.859,
+   "ag_global": 0.901,
+   "epitope": 0.814
+  },
+  "topiptm": {
+   "seed": 131,
+   "sample": 0,
+   "dockq": 0.014,
+   "ab_global": 0.917,
+   "paratope": 0.83,
+   "ag_global": 0.902,
+   "epitope": 0.776
+  }
+ },
+ {
+  "interface": "8che_AE",
+  "pdb": "8che",
+  "antibody_chain": "A",
+  "antigen_chain": "E",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 112,
+   "sample": 2,
+   "dockq": 0.438,
+   "ab_global": 0.938,
+   "paratope": 0.889,
+   "ag_global": 0.547,
+   "epitope": 0.55
+  },
+  "topiptm": {
+   "seed": 124,
+   "sample": 0,
+   "dockq": 0.125,
+   "ab_global": 0.945,
+   "paratope": 0.922,
+   "ag_global": 0.439,
+   "epitope": 0.461
+  }
+ },
+ {
+  "interface": "8che_BE",
+  "pdb": "8che",
+  "antibody_chain": "B",
+  "antigen_chain": "E",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 137,
+   "sample": 3,
+   "dockq": 0.529,
+   "ab_global": 0.936,
+   "paratope": 0.908,
+   "ag_global": 0.654,
+   "epitope": 0.665
+  },
+  "topiptm": {
+   "seed": 124,
+   "sample": 0,
+   "dockq": 0.087,
+   "ab_global": 0.927,
+   "paratope": 0.857,
+   "ag_global": 0.439,
+   "epitope": 0.458
+  }
+ },
+ {
+  "interface": "8fas_BC",
+  "pdb": "8fas",
+  "antibody_chain": "B",
+  "antigen_chain": "C",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 149,
+   "sample": 4,
+   "dockq": 0.987,
+   "ab_global": 0.962,
+   "paratope": 0.995,
+   "ag_global": 0.983,
+   "epitope": 0.975
+  },
+  "topiptm": {
+   "seed": 125,
+   "sample": 0,
+   "dockq": 0.175,
+   "ab_global": 0.95,
+   "paratope": 0.988,
+   "ag_global": 0.605,
+   "epitope": 0.608
+  }
+ },
+ {
+  "interface": "8fbw_AC",
+  "pdb": "8fbw",
+  "antibody_chain": "A",
+  "antigen_chain": "C",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 115,
+   "sample": 0,
+   "dockq": 0.434,
+   "ab_global": 0.937,
+   "paratope": 0.952,
+   "ag_global": 0.537,
+   "epitope": 0.525
+  },
+  "topiptm": {
+   "seed": 123,
+   "sample": 4,
+   "dockq": 0.17,
+   "ab_global": 0.903,
+   "paratope": 0.907,
+   "ag_global": 0.331,
+   "epitope": 0.344
+  }
+ },
+ {
+  "interface": "8fbw_BC",
+  "pdb": "8fbw",
+  "antibody_chain": "B",
+  "antigen_chain": "C",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 115,
+   "sample": 0,
+   "dockq": 0.51,
+   "ab_global": 0.939,
+   "paratope": 0.906,
+   "ag_global": 0.537,
+   "epitope": 0.564
+  },
+  "topiptm": {
+   "seed": 143,
+   "sample": 0,
+   "dockq": 0.21,
+   "ab_global": 0.937,
+   "paratope": 0.872,
+   "ag_global": 0.342,
+   "epitope": 0.402
+  }
+ },
+ {
+  "interface": "8ivx_AC",
+  "pdb": "8ivx",
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 116,
+   "sample": 4,
+   "dockq": 0.333,
+   "ab_global": 0.914,
+   "paratope": 0.871,
+   "ag_global": 0.935,
+   "epitope": 0.919
+  },
+  "topiptm": {
+   "seed": 132,
+   "sample": 0,
+   "dockq": 0.007,
+   "ab_global": 0.906,
+   "paratope": 0.739,
+   "ag_global": 0.943,
+   "epitope": 0.917
+  }
+ },
+ {
+  "interface": "8oxw_AB",
+  "pdb": "8oxw",
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 104,
+   "sample": 2,
+   "dockq": 0.298,
+   "ab_global": 0.933,
+   "paratope": 0.811,
+   "ag_global": 0.954,
+   "epitope": 0.933
+  },
+  "topiptm": {
+   "seed": 110,
+   "sample": 1,
+   "dockq": 0.019,
+   "ab_global": 0.917,
+   "paratope": 0.706,
+   "ag_global": 0.946,
+   "epitope": 0.901
+  }
+ },
+ {
+  "interface": "8oxw_AC",
+  "pdb": "8oxw",
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 131,
+   "sample": 1,
+   "dockq": 0.275,
+   "ab_global": 0.959,
+   "paratope": 0.957,
+   "ag_global": 0.955,
+   "epitope": 0.909
+  },
+  "topiptm": {
+   "seed": 110,
+   "sample": 3,
+   "dockq": 0.009,
+   "ab_global": 0.96,
+   "paratope": 0.945,
+   "ag_global": 0.948,
+   "epitope": 0.886
+  }
+ },
+ {
+  "interface": "8oxx_AC",
+  "pdb": "8oxx",
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 136,
+   "sample": 4,
+   "dockq": 0.343,
+   "ab_global": 0.961,
+   "paratope": 0.968,
+   "ag_global": 0.953,
+   "epitope": 0.914
+  },
+  "topiptm": {
+   "seed": 138,
+   "sample": 1,
+   "dockq": 0.003,
+   "ab_global": 0.959,
+   "paratope": 0.963,
+   "ag_global": 0.948,
+   "epitope": 0.908
+  }
+ },
+ {
+  "interface": "8pn0_BE",
+  "pdb": "8pn0",
+  "antibody_chain": "B",
+  "antigen_chain": "E",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 126,
+   "sample": 4,
+   "dockq": 0.741,
+   "ab_global": 0.922,
+   "paratope": 0.933,
+   "ag_global": 0.976,
+   "epitope": 0.984
+  },
+  "topiptm": {
+   "seed": 132,
+   "sample": 0,
+   "dockq": 0.084,
+   "ab_global": 0.892,
+   "paratope": 0.906,
+   "ag_global": 0.948,
+   "epitope": 0.719
+  }
+ },
+ {
+  "interface": "8q3j_AB",
+  "pdb": "8q3j",
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 137,
+   "sample": 2,
+   "dockq": 0.705,
+   "ab_global": 0.936,
+   "paratope": 0.803,
+   "ag_global": 0.847,
+   "epitope": 0.786
+  },
+  "topiptm": {
+   "seed": 114,
+   "sample": 2,
+   "dockq": 0.035,
+   "ab_global": 0.933,
+   "paratope": 0.74,
+   "ag_global": 0.833,
+   "epitope": 0.775
+  }
+ },
+ {
+  "interface": "8q3j_AC",
+  "pdb": "8q3j",
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 102,
+   "sample": 4,
+   "dockq": 0.531,
+   "ab_global": 0.879,
+   "paratope": 0.539,
+   "ag_global": 0.832,
+   "epitope": 0.86
+  },
+  "topiptm": {
+   "seed": 114,
+   "sample": 2,
+   "dockq": 0.036,
+   "ab_global": 0.876,
+   "paratope": 0.525,
+   "ag_global": 0.833,
+   "epitope": 0.84
+  }
+ },
+ {
+  "interface": "8slb_AB",
+  "pdb": "8slb",
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 122,
+   "sample": 0,
+   "dockq": 0.462,
+   "ab_global": 0.934,
+   "paratope": 0.769,
+   "ag_global": 0.881,
+   "epitope": 0.898
+  },
+  "topiptm": {
+   "seed": 101,
+   "sample": 0,
+   "dockq": 0.012,
+   "ab_global": 0.915,
+   "paratope": 0.614,
+   "ag_global": 0.884,
+   "epitope": 0.843
+  }
+ },
+ {
+  "interface": "8slb_AC",
+  "pdb": "8slb",
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 122,
+   "sample": 0,
+   "dockq": 0.655,
+   "ab_global": 0.966,
+   "paratope": 0.932,
+   "ag_global": 0.881,
+   "epitope": 0.953
+  },
+  "topiptm": {
+   "seed": 101,
+   "sample": 1,
+   "dockq": 0.01,
+   "ab_global": 0.962,
+   "paratope": 0.929,
+   "ag_global": 0.881,
+   "epitope": 0.937
+  }
+ },
+ {
+  "interface": "8the_AB",
+  "pdb": "8the",
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 113,
+   "sample": 4,
+   "dockq": 0.514,
+   "ab_global": 0.857,
+   "paratope": 0.526,
+   "ag_global": 0.91,
+   "epitope": 0.885
+  },
+  "topiptm": {
+   "seed": 116,
+   "sample": 1,
+   "dockq": 0.113,
+   "ab_global": 0.854,
+   "paratope": 0.528,
+   "ag_global": 0.904,
+   "epitope": 0.879
+  }
+ },
+ {
+  "interface": "8ux6_AF",
+  "pdb": "8ux6",
+  "antibody_chain": "A",
+  "antigen_chain": "F",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 113,
+   "sample": 3,
+   "dockq": 0.246,
+   "ab_global": 0.934,
+   "paratope": 0.935,
+   "ag_global": 0.836,
+   "epitope": 0.834
+  },
+  "topiptm": {
+   "seed": 116,
+   "sample": 0,
+   "dockq": 0.157,
+   "ab_global": 0.933,
+   "paratope": 0.937,
+   "ag_global": 0.867,
+   "epitope": 0.897
+  }
+ },
+ {
+  "interface": "8vui_BC",
+  "pdb": "8vui",
+  "antibody_chain": "B",
+  "antigen_chain": "C",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 132,
+   "sample": 3,
+   "dockq": 0.404,
+   "ab_global": 0.955,
+   "paratope": 0.869,
+   "ag_global": 0.898,
+   "epitope": 0.891
+  },
+  "topiptm": {
+   "seed": 144,
+   "sample": 0,
+   "dockq": 0.034,
+   "ab_global": 0.959,
+   "paratope": 0.923,
+   "ag_global": 0.906,
+   "epitope": 0.912
+  }
+ },
+ {
+  "interface": "8yxi_AC",
+  "pdb": "8yxi",
+  "antibody_chain": "A",
+  "antigen_chain": "C",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 135,
+   "sample": 2,
+   "dockq": 0.295,
+   "ab_global": 0.886,
+   "paratope": 0.537,
+   "ag_global": 0.923,
+   "epitope": 0.935
+  },
+  "topiptm": {
+   "seed": 101,
+   "sample": 0,
+   "dockq": 0.006,
+   "ab_global": 0.882,
+   "paratope": 0.526,
+   "ag_global": 0.807,
+   "epitope": 0.9
+  }
+ },
+ {
+  "interface": "8yxi_BC",
+  "pdb": "8yxi",
+  "antibody_chain": "B",
+  "antigen_chain": "C",
+  "ab_role": "LIGHT",
+  "dockqdonor": {
+   "seed": 140,
+   "sample": 1,
+   "dockq": 0.538,
+   "ab_global": 0.92,
+   "paratope": 0.902,
+   "ag_global": 0.926,
+   "epitope": 0.946
+  },
+  "topiptm": {
+   "seed": 101,
+   "sample": 0,
+   "dockq": 0.009,
+   "ab_global": 0.911,
+   "paratope": 0.911,
+   "ag_global": 0.807,
+   "epitope": 0.775
+  }
+ },
+ {
+  "interface": "9jbq_AC",
+  "pdb": "9jbq",
+  "antibody_chain": "A",
+  "antigen_chain": "C",
+  "ab_role": "HEAVY",
+  "dockqdonor": {
+   "seed": 104,
+   "sample": 3,
+   "dockq": 0.584,
+   "ab_global": 0.926,
+   "paratope": 0.765,
+   "ag_global": 0.94,
+   "epitope": 0.949
+  },
+  "topiptm": {
+   "seed": 120,
+   "sample": 2,
+   "dockq": 0.041,
+   "ab_global": 0.926,
+   "paratope": 0.784,
+   "ag_global": 0.937,
+   "epitope": 0.957
+  }
+ }
+]

@@ -33,12 +33,14 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--min-templates", type=int, default=20,
                 help="only score an interface once this many template runs are complete")
 ap.add_argument("--workers", type=int, default=10)
+ap.add_argument("--jobs", default=None, help="jobs file; default the 5-seed leader20 set")
+ap.add_argument("--out-suffix", default="", help="write to artifacts/leader20_scores<suffix>.json")
 A = ap.parse_args()
 
 OUT = f"{EXP}/artifacts/sweep_out/leader20/leader20"
 CACHE = f"{EXP}/artifacts/leader20_ost"; os.makedirs(CACHE, exist_ok=True)
-OUTJ = f"{EXP}/artifacts/leader20_scores.json"
-jobs = json.load(open(f"{EXP}/artifacts/leader20_jobs.json"))
+OUTJ = f"{EXP}/artifacts/leader20_scores{A.out_suffix}.json"
+jobs = json.load(open(A.jobs if A.jobs else f"{EXP}/artifacts/leader20_jobs.json"))
 index = json.load(open(f"{EXP}/artifacts/leader20_index.json"))
 free = json.load(open(f"{EXP}/artifacts/native_arm_scores.json"))
 

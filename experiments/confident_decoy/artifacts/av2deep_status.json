@@ -58,12 +58,91 @@
    "seeds_done": 50,
    "seeds_wanted": 50,
    "minutes": 33.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.2
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.1
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.3
+  },
+  {
+   "run": "leader20",
+   "pdb": "8av2",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 33.2
   }
  ],
- "running": {
-  "1": "leader20/8av2",
-  "2": "leader20/8av2",
-  "0": "leader20/8av2",
-  "3": "leader20/8av2"
- }
+ "running": {}
 }

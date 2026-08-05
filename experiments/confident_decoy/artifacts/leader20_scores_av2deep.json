@@ -1,0 +1,20 @@
+{
+ "8av2_AC": {
+  "pdb": "8av2",
+  "n_templates": 20,
+  "n_poses": 5000,
+  "method_iptm": 0.851,
+  "method_dockq": 0.663,
+  "method_rescued": true,
+  "winning_leader": 13,
+  "winning_seed": 123,
+  "winning_sample": 3,
+  "best_available": 0.705,
+  "n_acceptable": 47,
+  "frac_acceptable": 0.0094,
+  "shortlist_contained_good_pose": true,
+  "free_n_acceptable": 1,
+  "free_sel_dockq": 0.092,
+  "free_best_dockq": 0.612
+ }
+}

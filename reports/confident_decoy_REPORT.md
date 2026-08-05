@@ -1488,3 +1488,176 @@ pose; at native quality the first wins, at leader quality the second does.
   `pool_with_native.json`, `donor_vs_bestleader.json`, `dockqdonor_seed_efficiency.json`
 
 ---
+
+## 15. Donor fold quality: best-DockQ vs top-ipTM donors
+
+The two donor folds compared against the native, for every confident-decoy interface. `dockqdonor`'s
+donor is the pose with the best DockQ; `topiptm`'s is the top-`pair_iptm` pose (the decoy itself).
+Chain roles from `fold_quality.kind()`; interface residues are those of the interface under test only
+(no union across a chain's interfaces).
+
+### lDDT (superposition-free)
+
+|interface|donor|DockQ|Ab global lDDT|paratope lDDT|Ag global lDDT|epitope lDDT|
+|---|---|---|---|---|---|---|
+|7ucx_AC|dockqdonor|0.269|0.941|0.971|0.503|0.516|
+||topiptm|0.155|0.936|0.958|0.409|0.418|
+|7zau_AB|dockqdonor|0.435|0.822|0.543|0.889|0.927|
+||topiptm|0.004|0.844|0.633|0.892|0.923|
+|8aok_AB|dockqdonor|0.695|0.883|0.702|0.895|0.863|
+||topiptm|0.112|0.843|0.565|0.891|0.864|
+|8av2_AC|dockqdonor|0.612|0.850|0.752|0.861|0.832|
+||topiptm|0.092|0.801|0.608|0.837|0.796|
+|8be1_AC|dockqdonor|0.235|0.919|0.666|0.929|0.882|
+||topiptm|0.022|0.935|0.768|0.918|0.930|
+|8bf4_AB|dockqdonor|0.723|0.922|0.859|0.901|0.814|
+||topiptm|0.014|0.917|0.830|0.902|0.776|
+|8che_AE|dockqdonor|0.438|0.938|0.889|0.547|0.550|
+||topiptm|0.125|0.945|0.922|0.439|0.461|
+|8che_BE|dockqdonor|0.529|0.936|0.908|0.654|0.665|
+||topiptm|0.087|0.927|0.857|0.439|0.458|
+|8fas_BC|dockqdonor|0.987|0.962|0.995|0.983|0.975|
+||topiptm|0.175|0.950|0.988|0.605|0.608|
+|8fbw_AC|dockqdonor|0.434|0.937|0.952|0.537|0.525|
+||topiptm|0.170|0.903|0.907|0.331|0.344|
+|8fbw_BC|dockqdonor|0.510|0.939|0.906|0.537|0.564|
+||topiptm|0.210|0.937|0.872|0.342|0.402|
+|8ivx_AC|dockqdonor|0.333|0.914|0.871|0.935|0.919|
+||topiptm|0.007|0.906|0.739|0.943|0.917|
+|8oxw_AB|dockqdonor|0.298|0.933|0.811|0.954|0.933|
+||topiptm|0.019|0.917|0.706|0.946|0.901|
+|8oxw_AC|dockqdonor|0.275|0.959|0.957|0.955|0.909|
+||topiptm|0.009|0.960|0.945|0.948|0.886|
+|8oxx_AC|dockqdonor|0.343|0.961|0.968|0.953|0.914|
+||topiptm|0.003|0.959|0.963|0.948|0.908|
+|8pn0_BE|dockqdonor|0.741|0.922|0.933|0.976|0.984|
+||topiptm|0.084|0.892|0.906|0.948|0.719|
+|8q3j_AB|dockqdonor|0.705|0.936|0.803|0.847|0.786|
+||topiptm|0.035|0.933|0.740|0.833|0.775|
+|8q3j_AC|dockqdonor|0.531|0.879|0.539|0.832|0.860|
+||topiptm|0.036|0.876|0.525|0.833|0.840|
+|8slb_AB|dockqdonor|0.462|0.934|0.769|0.881|0.898|
+||topiptm|0.012|0.915|0.614|0.884|0.843|
+|8slb_AC|dockqdonor|0.655|0.966|0.932|0.881|0.953|
+||topiptm|0.010|0.962|0.929|0.881|0.937|
+|8the_AB|dockqdonor|0.514|0.857|0.526|0.910|0.885|
+||topiptm|0.113|0.854|0.528|0.904|0.879|
+|8ux6_AF|dockqdonor|0.246|0.934|0.935|0.836|0.834|
+||topiptm|0.157|0.933|0.937|0.867|0.897|
+|8vui_BC|dockqdonor|0.404|0.955|0.869|0.898|0.891|
+||topiptm|0.034|0.959|0.923|0.906|0.912|
+|8yxi_AC|dockqdonor|0.295|0.886|0.537|0.923|0.935|
+||topiptm|0.006|0.882|0.526|0.807|0.900|
+|8yxi_BC|dockqdonor|0.538|0.920|0.902|0.926|0.946|
+||topiptm|0.009|0.911|0.911|0.807|0.775|
+|9jbq_AC|dockqdonor|0.584|0.926|0.765|0.940|0.949|
+||topiptm|0.041|0.926|0.784|0.937|0.957|
+|**median**|dockqdonor|0.486|0.933|0.870|0.897|0.888|
+||topiptm|0.036|0.921|0.843|0.883|0.853|
+
+Median differences are small — Ab global +0.012, paratope +0.027, Ag global +0.014, epitope +0.035 —
+against a donor DockQ difference of 0.486 vs 0.036. On 6 interfaces the top-ipTM donor is *better*
+folded than the best-docked one (`8be1_AC`, `8ux6_AF`, `8vui_BC`, `9jbq_AC`, and on the paratope
+`7zau_AB`, `8yxi_BC`).
+
+- **code:** `scripts/donor_fold_table.py` · **data:** `artifacts/donor_fold_table.json`
+
+### Sharper metrics: framework-aligned CDR-H3 RMSD, and CA accuracy at contact residues
+
+lDDT is superposition-free and distance-distribution based, so it can forgive a rigid displacement or
+a rotated loop. Two metrics that do not:
+
+1. **CDR-H3 backbone RMSD after FRAMEWORK alignment** — superpose the model heavy chain onto the native
+   on VH framework CA atoms only (all VH residues except H3, VH end = H3 end + 15), then measure H3 CA
+   RMSD. H3 definition and framework/H3 split reuse `scripts/h3_rmsd.py` (C…WG.G motif).
+2. **CA RMSD restricted to actual contact residues** — superpose the model chain onto the native chain
+   on all CA, then measure RMSD over exactly the residues within 5 Å of the partner in the native
+   complex, per chain.
+
+|interface|donor|DockQ|CDR-H3 RMSD (Å)|framework RMSD (Å)|paratope CA RMSD (Å)|epitope CA RMSD (Å)|
+|---|---|---|---|---|---|---|
+|7ucx_AC|dockqdonor|0.269|—|—|3.07|3.90|
+||topiptm|0.155|—|—|3.23|4.15|
+|7zau_AB|dockqdonor|0.435|4.18|0.84|2.87|1.35|
+||topiptm|0.004|4.97|0.95|3.66|1.36|
+|8aok_AB|dockqdonor|0.695|2.27|1.00|2.29|0.62|
+||topiptm|0.112|5.68|1.27|4.76|0.60|
+|8av2_AC|dockqdonor|0.612|2.06|1.07|1.68|1.20|
+||topiptm|0.092|5.50|1.27|3.74|2.29|
+|8be1_AC|dockqdonor|0.235|3.29|0.33|2.86|1.13|
+||topiptm|0.022|3.28|0.31|2.83|1.13|
+|8bf4_AB|dockqdonor|0.723|0.53|0.85|0.96|1.36|
+||topiptm|0.014|0.97|0.88|1.17|2.01|
+|8che_AE|dockqdonor|0.438|0.49|0.39|1.86|3.33|
+||topiptm|0.125|0.94|0.35|1.44|4.79|
+|8che_BE|dockqdonor|0.529|—|—|0.39|3.75|
+||topiptm|0.087|—|—|0.73|4.59|
+|8fas_BC|dockqdonor|0.987|—|—|0.60|2.02|
+||topiptm|0.175|—|—|1.12|0.15|
+|8fbw_AC|dockqdonor|0.434|0.85|0.39|2.95|4.19|
+||topiptm|0.170|1.17|1.37|7.05|5.84|
+|8fbw_BC|dockqdonor|0.510|—|—|2.23|2.70|
+||topiptm|0.210|—|—|2.34|6.62|
+|8ivx_AC|dockqdonor|0.333|—|—|4.58|0.55|
+||topiptm|0.007|—|—|4.72|0.46|
+|8oxw_AB|dockqdonor|0.298|1.11|0.39|1.07|0.41|
+||topiptm|0.019|3.45|0.40|3.14|0.67|
+|8oxw_AC|dockqdonor|0.275|—|—|1.06|0.46|
+||topiptm|0.009|—|—|0.54|0.54|
+|8oxx_AC|dockqdonor|0.343|—|—|0.89|0.68|
+||topiptm|0.003|—|—|0.71|0.52|
+|8pn0_BE|dockqdonor|0.741|—|—|1.68|0.24|
+||topiptm|0.084|—|—|5.68|0.25|
+|8q3j_AB|dockqdonor|0.705|—|—|0.58|1.19|
+||topiptm|0.035|—|—|1.45|1.28|
+|8q3j_AC|dockqdonor|0.531|5.34|0.41|4.24|0.66|
+||topiptm|0.036|6.70|0.46|5.47|0.80|
+|8slb_AB|dockqdonor|0.462|1.67|0.71|1.49|1.24|
+||topiptm|0.012|10.94|0.80|9.66|2.54|
+|8slb_AC|dockqdonor|0.655|—|—|0.46|0.66|
+||topiptm|0.010|—|—|0.61|0.81|
+|8the_AB|dockqdonor|0.514|5.02|1.09|4.08|0.87|
+||topiptm|0.113|9.44|1.11|8.05|1.07|
+|8ux6_AF|dockqdonor|0.246|—|—|1.37|1.33|
+||topiptm|0.157|—|—|2.02|1.08|
+|8vui_BC|dockqdonor|0.404|—|—|2.11|1.02|
+||topiptm|0.034|—|—|0.28|0.55|
+|8yxi_AC|dockqdonor|0.295|8.14|0.52|7.40|0.46|
+||topiptm|0.006|6.43|0.48|6.75|0.48|
+|8yxi_BC|dockqdonor|0.538|—|—|0.77|0.51|
+||topiptm|0.009|—|—|0.72|1.65|
+|9jbq_AC|dockqdonor|0.584|4.25|0.52|2.38|0.59|
+||topiptm|0.041|3.20|0.56|2.17|0.53|
+|**median**|dockqdonor|0.486|2.27|0.52|1.77|1.07|
+||topiptm|0.036|4.97|0.80|2.58|1.07|
+
+**Summary of medians**
+
+| metric | dockqdonor | topiptm | difference | n |
+|---|---|---|---|---|
+| **CDR-H3 RMSD (Å)** | **2.27** | **4.97** | **+2.70** | 13 |
+| framework RMSD (Å) | 0.52 | 0.80 | +0.28 | 13 |
+| **paratope CA RMSD (Å)** | **1.77** | **2.58** | +0.82 | 26 |
+| epitope CA RMSD (Å) | 1.07 | 1.07 | −0.00 | 26 |
+
+`dockqdonor` is better on CDR-H3 RMSD in **10/13**, on paratope CA RMSD in 18/26, on epitope CA RMSD
+in 18/26.
+
+By the conventions recorded in `h3_rmsd.py` (≤1.5 Å near-native, 1.5–3 Å approximate, >3–4 Å wrong
+loop), the median `dockqdonor` donor falls in the "approximate" band and the median `topiptm` donor in
+the "wrong loop" band.
+
+**The two metric families disagree about where the difference sits.** lDDT put a small gap on both
+paratope (+0.027) and epitope (+0.035). Under RMSD the paratope gap is +0.82 Å and the **epitope gap
+is zero** (1.07 vs 1.07). H3, which lDDT does not isolate, shows the largest separation of anything
+measured here.
+
+Caveats: H3 is measurable on 13 of 26 interfaces (a heavy chain must be in the interface and the
+C…WG.G motif must be found); the framework RMSD difference of +0.28 Å means the two donors' alignments
+are not equally tight, so part of the H3 gap could reflect alignment quality rather than loop
+placement; n = 13 for the H3 rows.
+
+- **code:** `scripts/donor_h3_contact.py` · **data:** `artifacts/donor_h3_contact.json`
+- reuses the H3 definition and framework/H3 split from `scripts/h3_rmsd.py`
+
+---
