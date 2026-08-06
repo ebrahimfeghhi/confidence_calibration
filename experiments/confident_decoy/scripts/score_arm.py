@@ -99,9 +99,23 @@ def run_pose(a):
     return None
 
 
+def n_seeds_done(job):
+    """Complete seeds for this job, so a PARTIAL pool is never scored as if it were final.
+    Without this, an interface part-way through generation enters the table with n<250 and a
+    selected pose drawn from a fraction of the pool (observed: 8fas_BC scored at n=75 of 250)."""
+    d = f"{OUT}/{job['run']}/{job['name']}"
+    return sum(1 for s in (job.get("seeds") or SEEDS)
+               if os.path.exists(f"{d}/seed_{s}/predictions/"
+                                 f"{job['name']}_summary_confidence_sample_4.json"))
+
+
 res = json.load(open(OUTJ)) if os.path.exists(OUTJ) else {}
 for job in jobs:
     lab = job["interface"]
+    want = len(job.get("seeds") or SEEDS)
+    if n_seeds_done(job) < want:
+        print(f"{lab:12} {n_seeds_done(job)}/{want} seeds -- skipping until complete", flush=True)
+        continue
     tasks = [(job, s, k) for s in SEEDS for k in SAMPLES]
     with ThreadPoolExecutor(A.workers) as ex:
         got = [g for g in ex.map(run_pose, tasks) if g]

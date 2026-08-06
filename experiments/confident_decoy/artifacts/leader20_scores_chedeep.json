@@ -1,0 +1,20 @@
+{
+ "8che_BE": {
+  "pdb": "8che",
+  "n_templates": 20,
+  "n_poses": 5000,
+  "method_iptm": 0.563,
+  "method_dockq": 0.162,
+  "method_rescued": false,
+  "winning_leader": 19,
+  "winning_seed": 139,
+  "winning_sample": 2,
+  "best_available": 0.671,
+  "n_acceptable": 706,
+  "frac_acceptable": 0.1412,
+  "shortlist_contained_good_pose": true,
+  "free_n_acceptable": 24,
+  "free_sel_dockq": 0.087,
+  "free_best_dockq": 0.529
+ }
+}

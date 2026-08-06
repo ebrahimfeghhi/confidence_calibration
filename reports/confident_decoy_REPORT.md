@@ -1738,3 +1738,101 @@ in-scope 13.
   `scripts/h3_rmsd.py`) · **data:** `artifacts/donor_h3_contact.json`
 
 ---
+
+## 16. `paratopedonor`: rank the donor by PARATOPE FOLD instead of by DockQ
+
+**Status: 21 of 22 scored** — `7zau_AB` still generating. Methods were written before results
+(`configs/paratopedonor_decoys.yaml`).
+
+### The question
+
+`dockqdonor` ranks candidate donors by **DockQ** — how well that pose *docked*. This arm ranks them by
+how well the pose's **paratope is folded**: CA RMSD over the antibody chain's native contact residues
+after whole-chain superposition, the metric that separated the `dockqdonor` and `topiptm` donors in §15
+(1.77 vs 2.58 Å) where interface lDDT barely did (0.870 vs 0.843).
+
+Templates transfer fold and not docking (`multichain_mask`), so if binding-site fold accuracy is what
+makes a template work, ranking on it directly should beat `dockqdonor`'s 9/25.
+
+The two criteria pick **different poses on 22 of 26** interfaces, and the paratope-ranked donors are
+about twice as accurate at the paratope — median **0.89 Å vs 1.77 Å**.
+
+**4 interfaces skipped** (`8bf4_AB`, `8che_BE`, `8slb_AB`, `8the_AB`): their paratope-best pose *is*
+`dockqdonor`'s donor, so that arm's result transfers directly.
+
+Both arms are **ORACLES** — paratope RMSD needs the native both to define contact residues and to
+measure accuracy.
+
+### Result
+
+|interface|donor paratope RMSD (para / dq)|paratopedonor selected|n_ok|dockqdonor selected|n_ok|
+|---|---|---|---|---|---|
+|7ucx_AC|0.43 / 3.07|0.158|0|0.161|4|
+|8aok_AB|2.11 / 2.29|**0.638**|247|**0.664**|221|
+|8av2_AC|1.52 / 1.68|0.034|1|**0.672**|26|
+|8be1_AC|0.85 / 2.86|0.021|2|0.015|1|
+|8che_AE|0.69 / 1.86|0.139|32|0.121|69|
+|8fas_BC|0.47 / 0.60|**0.960**|232|0.169|118|
+|8fbw_AC|2.08 / 2.95|0.150|11|**0.645**|212|
+|8fbw_BC|0.89 / 2.23|0.190|14|**0.539**|212|
+|8ivx_AC|1.56 / 4.58|0.010|0|0.009|6|
+|8oxw_AB|1.02 / 1.07|0.028|3|0.019|2|
+|8oxw_AC|0.34 / 1.06|0.004|3|0.008|5|
+|8oxx_AC|0.30 / 0.89|0.003|0|0.003|0|
+|8pn0_BE|0.89 / 1.68|0.061|173|0.025|179|
+|8q3j_AB|0.51 / 0.58|0.066|17|0.069|129|
+|8q3j_AC|2.86 / 4.24|0.058|2|0.055|95|
+|8slb_AC|0.33 / 0.46|0.009|47|**0.887**|129|
+|8ux6_AF|0.45 / 1.37|0.108|1|0.117|0|
+|8vui_BC|0.25 / 2.11|0.025|9|**0.750**|17|
+|8yxi_AC|4.73 / 7.40|0.017|7|0.017|3|
+|8yxi_BC|0.46 / 0.77|0.009|10|0.025|7|
+|9jbq_AC|1.34 / 2.38|0.038|3|0.037|1|
+|**rescued**| |**2/21**| |**6/21**| |
+
+median acceptable poses: paratopedonor 7, dockqdonor 17
+
+**Ranking the donor by paratope fold is worse than ranking it by DockQ: 2/21 vs 6/21**, on identical
+machinery, identical seed counts, one template per interface, only the ranking criterion differing.
+
+**The better-folded donor usually generates FEWER correct poses.** Median acceptable poses 7 vs 17,
+and the gap is extreme on the interfaces `dockqdonor` rescues:
+
+| interface | paratope RMSD (para / dq) | acceptable poses (para / dq) | outcome |
+|---|---|---|---|
+| 8fbw_AC | **2.08** / 2.95 Å | 11 / **212** | dq rescues |
+| 8fbw_BC | **0.89** / 2.23 Å | 14 / **212** | dq rescues |
+| 8slb_AC | **0.33** / 0.46 Å | 47 / **129** | dq rescues |
+| 8av2_AC | **1.52** / 1.68 Å | 1 / **26** | dq rescues |
+| 8vui_BC | **0.25** / 2.11 Å | 9 / **17** | dq rescues |
+| 8q3j_AC | 2.86 / **4.24** Å | 2 / **95** | neither |
+
+In every one of those the paratope-ranked donor is the better-folded of the pair (`8vui_BC` by 8×) and
+produces an order of magnitude fewer acceptable poses.
+
+**The one interface where it wins is the standing exception.** `8fas_BC` — the register-shift case that
+`dockqdonor` (0.169), `topiptm26` (0.175), `leader20` (0.212) and **native50** (0.173) all fail, despite
+every one of them holding a 0.98+ pose in its pool — is rescued here at **0.960 with 232/250 acceptable
+poses**. Its donor's paratope RMSD is 0.466 Å against a pool median of 3.283 Å.
+
+*Caveat on that case:* `8fas_BC`'s paratope is only **6 residues**, so the selection criterion rests on
+6 CA atoms there.
+
+### Provenance
+
+- **code:** `scripts/find_paratope_donors.py` (donor search, gemmi only, no OST/GPU) →
+  `scripts/build_paratope_templates.py` → `scripts/run_health.py --preflight` →
+  `scripts/sweep_sched.py` → `scripts/score_arm.py --arm paratopedonor`
+- **config:** `configs/paratopedonor_decoys.yaml` (method + prediction recorded before results)
+- **data:** `artifacts/paratope_donor_picks.json` (donor seed/sample, its paratope RMSD, and the pool
+  median for context), `artifacts/paratope_arm_jobs.json`, `artifacts/paratopedonor_scores.json`
+- **predictions:** `artifacts/sweep_out/paratopedonor/paratopedonor/<name>/seed_<101-150>/`
+
+### Scoring bug found and fixed during this arm
+
+`score_arm.py` scored whatever poses existed rather than waiting for all 50 seeds, so four interfaces
+entered the table from partial pools — `8fas_BC` was first scored at **75 of 250 poses** and reported as
+a completed result. It now refuses to score an interface until its seed count is complete, and the four
+partial rows were dropped and re-scored. `8fas_BC`'s value held at the full pool (0.927 → 0.960).
+
+---

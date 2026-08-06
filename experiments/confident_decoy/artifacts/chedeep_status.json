@@ -114,12 +114,35 @@
    "seeds_done": 50,
    "seeds_wanted": 50,
    "minutes": 53.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 53.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 54.0
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 53.9
+  },
+  {
+   "run": "leader20",
+   "pdb": "8che",
+   "seeds_done": 50,
+   "seeds_wanted": 50,
+   "minutes": 54.0
   }
  ],
- "running": {
-  "1": "leader20/8che",
-  "0": "leader20/8che",
-  "2": "leader20/8che",
-  "3": "leader20/8che"
- }
+ "running": {}
 }

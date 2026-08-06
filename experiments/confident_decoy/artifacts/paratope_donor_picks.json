@@ -1,0 +1,392 @@
+{
+ "7ucx_AC": {
+  "pdb": "7ucx",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "seed": 122,
+  "sample": 4,
+  "paratope_rmsd": 0.426,
+  "n_poses": 250,
+  "n_paratope_res": 11,
+  "median_paratope_rmsd": 3.201
+ },
+ "7zau_AB": {
+  "pdb": "7zau",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "seed": 109,
+  "sample": 3,
+  "paratope_rmsd": 1.305,
+  "n_poses": 250,
+  "n_paratope_res": 19,
+  "median_paratope_rmsd": 3.027
+ },
+ "8aok_AB": {
+  "pdb": "8aok",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "seed": 140,
+  "sample": 3,
+  "paratope_rmsd": 2.109,
+  "n_poses": 250,
+  "n_paratope_res": 23,
+  "median_paratope_rmsd": 4.382
+ },
+ "8av2_AC": {
+  "pdb": "8av2",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "seed": 149,
+  "sample": 2,
+  "paratope_rmsd": 1.517,
+  "n_poses": 250,
+  "n_paratope_res": 28,
+  "median_paratope_rmsd": 3.642
+ },
+ "8be1_AC": {
+  "pdb": "8be1",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "antibody_chain": "A",
+  "antigen_chain": "C",
+  "seed": 129,
+  "sample": 0,
+  "paratope_rmsd": 0.848,
+  "n_poses": 250,
+  "n_paratope_res": 16,
+  "median_paratope_rmsd": 2.456
+ },
+ "8bf4_AB": {
+  "pdb": "8bf4",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "antibody_chain": "A",
+  "antigen_chain": "B",
+  "seed": 120,
+  "sample": 2,
+  "paratope_rmsd": 0.957,
+  "n_poses": 250,
+  "n_paratope_res": 25,
+  "median_paratope_rmsd": 1.147
+ },
+ "8che_AE": {
+  "pdb": "8che",
+  "interface": [
+   "A",
+   "E"
+  ],
+  "antibody_chain": "A",
+  "antigen_chain": "E",
+  "seed": 112,
+  "sample": 4,
+  "paratope_rmsd": 0.689,
+  "n_poses": 250,
+  "n_paratope_res": 20,
+  "median_paratope_rmsd": 1.22
+ },
+ "8che_BE": {
+  "pdb": "8che",
+  "interface": [
+   "B",
+   "E"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "E",
+  "seed": 137,
+  "sample": 3,
+  "paratope_rmsd": 0.391,
+  "n_poses": 250,
+  "n_paratope_res": 14,
+  "median_paratope_rmsd": 0.636
+ },
+ "8fas_BC": {
+  "pdb": "8fas",
+  "interface": [
+   "B",
+   "C"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "C",
+  "seed": 147,
+  "sample": 1,
+  "paratope_rmsd": 0.466,
+  "n_poses": 250,
+  "n_paratope_res": 6,
+  "median_paratope_rmsd": 3.283
+ },
+ "8fbw_AC": {
+  "pdb": "8fbw",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "antibody_chain": "A",
+  "antigen_chain": "C",
+  "seed": 131,
+  "sample": 4,
+  "paratope_rmsd": 2.083,
+  "n_poses": 250,
+  "n_paratope_res": 21,
+  "median_paratope_rmsd": 4.629
+ },
+ "8fbw_BC": {
+  "pdb": "8fbw",
+  "interface": [
+   "B",
+   "C"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "C",
+  "seed": 131,
+  "sample": 4,
+  "paratope_rmsd": 0.886,
+  "n_poses": 250,
+  "n_paratope_res": 5,
+  "median_paratope_rmsd": 3.01
+ },
+ "8ivx_AC": {
+  "pdb": "8ivx",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "seed": 122,
+  "sample": 1,
+  "paratope_rmsd": 1.565,
+  "n_poses": 250,
+  "n_paratope_res": 8,
+  "median_paratope_rmsd": 4.605
+ },
+ "8oxw_AB": {
+  "pdb": "8oxw",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "seed": 136,
+  "sample": 2,
+  "paratope_rmsd": 1.02,
+  "n_poses": 250,
+  "n_paratope_res": 14,
+  "median_paratope_rmsd": 3.165
+ },
+ "8oxw_AC": {
+  "pdb": "8oxw",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "seed": 111,
+  "sample": 2,
+  "paratope_rmsd": 0.344,
+  "n_poses": 250,
+  "n_paratope_res": 17,
+  "median_paratope_rmsd": 0.805
+ },
+ "8oxx_AC": {
+  "pdb": "8oxx",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "seed": 132,
+  "sample": 0,
+  "paratope_rmsd": 0.3,
+  "n_poses": 250,
+  "n_paratope_res": 11,
+  "median_paratope_rmsd": 0.633
+ },
+ "8pn0_BE": {
+  "pdb": "8pn0",
+  "interface": [
+   "B",
+   "E"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "E",
+  "seed": 119,
+  "sample": 0,
+  "paratope_rmsd": 0.893,
+  "n_poses": 250,
+  "n_paratope_res": 5,
+  "median_paratope_rmsd": 3.885
+ },
+ "8q3j_AB": {
+  "pdb": "8q3j",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "seed": 143,
+  "sample": 1,
+  "paratope_rmsd": 0.51,
+  "n_poses": 250,
+  "n_paratope_res": 11,
+  "median_paratope_rmsd": 1.682
+ },
+ "8q3j_AC": {
+  "pdb": "8q3j",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "seed": 137,
+  "sample": 4,
+  "paratope_rmsd": 2.86,
+  "n_poses": 250,
+  "n_paratope_res": 16,
+  "median_paratope_rmsd": 4.442
+ },
+ "8slb_AB": {
+  "pdb": "8slb",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "seed": 122,
+  "sample": 0,
+  "paratope_rmsd": 1.492,
+  "n_poses": 250,
+  "n_paratope_res": 17,
+  "median_paratope_rmsd": 5.928
+ },
+ "8slb_AC": {
+  "pdb": "8slb",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "antibody_chain": "C",
+  "antigen_chain": "A",
+  "seed": 111,
+  "sample": 2,
+  "paratope_rmsd": 0.327,
+  "n_poses": 250,
+  "n_paratope_res": 11,
+  "median_paratope_rmsd": 0.878
+ },
+ "8the_AB": {
+  "pdb": "8the",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "A",
+  "seed": 113,
+  "sample": 4,
+  "paratope_rmsd": 4.085,
+  "n_poses": 250,
+  "n_paratope_res": 20,
+  "median_paratope_rmsd": 7.453
+ },
+ "8ux6_AF": {
+  "pdb": "8ux6",
+  "interface": [
+   "A",
+   "F"
+  ],
+  "antibody_chain": "A",
+  "antigen_chain": "F",
+  "seed": 105,
+  "sample": 4,
+  "paratope_rmsd": 0.452,
+  "n_poses": 250,
+  "n_paratope_res": 13,
+  "median_paratope_rmsd": 2.018
+ },
+ "8vui_BC": {
+  "pdb": "8vui",
+  "interface": [
+   "B",
+   "C"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "C",
+  "seed": 122,
+  "sample": 2,
+  "paratope_rmsd": 0.252,
+  "n_poses": 250,
+  "n_paratope_res": 7,
+  "median_paratope_rmsd": 0.89
+ },
+ "8yxi_AC": {
+  "pdb": "8yxi",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "antibody_chain": "A",
+  "antigen_chain": "C",
+  "seed": 119,
+  "sample": 1,
+  "paratope_rmsd": 4.727,
+  "n_poses": 250,
+  "n_paratope_res": 4,
+  "median_paratope_rmsd": 7.593
+ },
+ "8yxi_BC": {
+  "pdb": "8yxi",
+  "interface": [
+   "B",
+   "C"
+  ],
+  "antibody_chain": "B",
+  "antigen_chain": "C",
+  "seed": 138,
+  "sample": 4,
+  "paratope_rmsd": 0.459,
+  "n_poses": 250,
+  "n_paratope_res": 15,
+  "median_paratope_rmsd": 0.808
+ },
+ "9jbq_AC": {
+  "pdb": "9jbq",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "antibody_chain": "A",
+  "antigen_chain": "C",
+  "seed": 129,
+  "sample": 2,
+  "paratope_rmsd": 1.337,
+  "n_poses": 250,
+  "n_paratope_res": 14,
+  "median_paratope_rmsd": 2.243
+ }
+}
