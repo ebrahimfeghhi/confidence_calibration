@@ -110,9 +110,28 @@ for lab in sorted(set(dq)&set(ti)):
     ag=[c for c in (c1,c2) if roles[c]=='ANTIGEN']
     if len(ag)!=1: continue
     ag=ag[0]; ab=[c for c in (c1,c2) if c!=ag][0]
-    rec={'interface':lab,'ab_role':roles[ab]}
+    # H3 lives on the HEAVY chain. On 13 of 26 interfaces the antibody chain under test is the LIGHT
+    # chain, so H3 is absent from it -- but the complex always contains a heavy chain. Measure H3 on
+    # the Fab's heavy chain: the heavy chain with the most native contacts to the tested antibody
+    # chain (H and L are paired and adjacent), falling back to the tested chain if it is itself heavy.
+    hv = ab if roles[ab]=='HEAVY' else None
+    if hv is None:
+        D=native_chains(pdb); cands=[]
+        for c,(X,I) in D.items():
+            if c in (c1,c2): continue
+            sq="".join(TLC[r.name] for r in nat_res(pdb,c)) if True else ""
+            if len(sq)<90 or kind(sq)!='HEAVY': continue
+            XA,_=D[ab]
+            n=int((np.linalg.norm(XA[:,None,:]-X[None,:,:],axis=-1)<5.0).sum())
+            cands.append((n,c))
+        if cands: hv=max(cands)[1]
+    rec={'interface':lab,'ab_role':roles[ab],'h3_chain':hv,
+         'h3_chain_is_tested':bool(hv==ab)}
     for nm,src in (('dockqdonor',d),('topiptm',t)):
-        h3,cr_ab,n_ab,fw=metrics(pdb,ab,ag,src['seed'],src['sample'])
+        _,cr_ab,n_ab,_=metrics(pdb,ab,ag,src['seed'],src['sample'])
+        h3=fw=None
+        if hv:
+            h3,_,_,fw=metrics(pdb,hv,ag,src['seed'],src['sample'])
         _,cr_ag,n_ag,_=metrics(pdb,ag,ab,src['seed'],src['sample'])
         rec[nm]={'dockq':src.get('donor_dockq'),'h3_rmsd':round(h3,3) if h3 else None,
                  'fw_rmsd':round(fw,3) if fw else None,

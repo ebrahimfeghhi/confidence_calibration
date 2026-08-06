@@ -2,10 +2,12 @@
  {
   "interface": "7ucx_AC",
   "ab_role": "LIGHT",
+  "h3_chain": "B",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.269,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 0.754,
+   "fw_rmsd": 0.513,
    "paratope_ca_rmsd": 3.071,
    "epitope_ca_rmsd": 3.899,
    "n_paratope": 11,
@@ -13,8 +15,8 @@
   },
   "topiptm": {
    "dockq": 0.155,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 0.877,
+   "fw_rmsd": 0.408,
    "paratope_ca_rmsd": 3.235,
    "epitope_ca_rmsd": 4.151,
    "n_paratope": 11,
@@ -24,6 +26,8 @@
  {
   "interface": "7zau_AB",
   "ab_role": "HEAVY",
+  "h3_chain": "B",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.435,
    "h3_rmsd": 4.18,
@@ -46,6 +50,8 @@
  {
   "interface": "8aok_AB",
   "ab_role": "HEAVY",
+  "h3_chain": "B",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.695,
    "h3_rmsd": 2.272,
@@ -68,6 +74,8 @@
  {
   "interface": "8av2_AC",
   "ab_role": "HEAVY",
+  "h3_chain": "C",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.612,
    "h3_rmsd": 2.057,
@@ -90,6 +98,8 @@
  {
   "interface": "8be1_AC",
   "ab_role": "HEAVY",
+  "h3_chain": "A",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.235,
    "h3_rmsd": 3.287,
@@ -112,6 +122,8 @@
  {
   "interface": "8bf4_AB",
   "ab_role": "HEAVY",
+  "h3_chain": "A",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.723,
    "h3_rmsd": 0.526,
@@ -134,6 +146,8 @@
  {
   "interface": "8che_AE",
   "ab_role": "HEAVY",
+  "h3_chain": "A",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.438,
    "h3_rmsd": 0.486,
@@ -156,10 +170,12 @@
  {
   "interface": "8che_BE",
   "ab_role": "LIGHT",
+  "h3_chain": "A",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.529,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 0.689,
+   "fw_rmsd": 0.272,
    "paratope_ca_rmsd": 0.391,
    "epitope_ca_rmsd": 3.755,
    "n_paratope": 14,
@@ -167,8 +183,8 @@
   },
   "topiptm": {
    "dockq": 0.087,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 0.945,
+   "fw_rmsd": 0.349,
    "paratope_ca_rmsd": 0.734,
    "epitope_ca_rmsd": 4.587,
    "n_paratope": 14,
@@ -178,10 +194,12 @@
  {
   "interface": "8fas_BC",
   "ab_role": "LIGHT",
+  "h3_chain": "A",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.987,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 0.296,
+   "fw_rmsd": 0.599,
    "paratope_ca_rmsd": 0.605,
    "epitope_ca_rmsd": 2.021,
    "n_paratope": 6,
@@ -189,8 +207,8 @@
   },
   "topiptm": {
    "dockq": 0.175,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 0.304,
+   "fw_rmsd": 0.642,
    "paratope_ca_rmsd": 1.12,
    "epitope_ca_rmsd": 0.151,
    "n_paratope": 6,
@@ -200,6 +218,8 @@
  {
   "interface": "8fbw_AC",
   "ab_role": "HEAVY",
+  "h3_chain": "A",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.434,
    "h3_rmsd": 0.848,
@@ -222,10 +242,12 @@
  {
   "interface": "8fbw_BC",
   "ab_role": "LIGHT",
+  "h3_chain": "A",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.51,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 0.848,
+   "fw_rmsd": 0.386,
    "paratope_ca_rmsd": 2.229,
    "epitope_ca_rmsd": 2.696,
    "n_paratope": 5,
@@ -233,8 +255,8 @@
   },
   "topiptm": {
    "dockq": 0.21,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 1.48,
+   "fw_rmsd": 0.543,
    "paratope_ca_rmsd": 2.343,
    "epitope_ca_rmsd": 6.617,
    "n_paratope": 5,
@@ -244,10 +266,12 @@
  {
   "interface": "8ivx_AC",
   "ab_role": "LIGHT",
+  "h3_chain": "B",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.333,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 4.486,
+   "fw_rmsd": 0.636,
    "paratope_ca_rmsd": 4.576,
    "epitope_ca_rmsd": 0.551,
    "n_paratope": 8,
@@ -255,8 +279,8 @@
   },
   "topiptm": {
    "dockq": 0.007,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 4.189,
+   "fw_rmsd": 0.619,
    "paratope_ca_rmsd": 4.72,
    "epitope_ca_rmsd": 0.46,
    "n_paratope": 8,
@@ -266,6 +290,8 @@
  {
   "interface": "8oxw_AB",
   "ab_role": "HEAVY",
+  "h3_chain": "B",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.298,
    "h3_rmsd": 1.111,
@@ -288,10 +314,12 @@
  {
   "interface": "8oxw_AC",
   "ab_role": "LIGHT",
+  "h3_chain": "B",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.275,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 2.13,
+   "fw_rmsd": 0.355,
    "paratope_ca_rmsd": 1.06,
    "epitope_ca_rmsd": 0.463,
    "n_paratope": 17,
@@ -299,8 +327,8 @@
   },
   "topiptm": {
    "dockq": 0.009,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 3.468,
+   "fw_rmsd": 0.374,
    "paratope_ca_rmsd": 0.54,
    "epitope_ca_rmsd": 0.535,
    "n_paratope": 17,
@@ -310,10 +338,12 @@
  {
   "interface": "8oxx_AC",
   "ab_role": "LIGHT",
+  "h3_chain": "B",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.343,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 3.439,
+   "fw_rmsd": 0.563,
    "paratope_ca_rmsd": 0.886,
    "epitope_ca_rmsd": 0.678,
    "n_paratope": 11,
@@ -321,8 +351,8 @@
   },
   "topiptm": {
    "dockq": 0.003,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 4.169,
+   "fw_rmsd": 0.527,
    "paratope_ca_rmsd": 0.707,
    "epitope_ca_rmsd": 0.523,
    "n_paratope": 11,
@@ -332,10 +362,12 @@
  {
   "interface": "8pn0_BE",
   "ab_role": "LIGHT",
+  "h3_chain": "A",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.741,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 3.296,
+   "fw_rmsd": 0.717,
    "paratope_ca_rmsd": 1.675,
    "epitope_ca_rmsd": 0.24,
    "n_paratope": 5,
@@ -343,8 +375,8 @@
   },
   "topiptm": {
    "dockq": 0.084,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 2.083,
+   "fw_rmsd": 1.029,
    "paratope_ca_rmsd": 5.676,
    "epitope_ca_rmsd": 0.246,
    "n_paratope": 5,
@@ -354,10 +386,12 @@
  {
   "interface": "8q3j_AB",
   "ab_role": "LIGHT",
+  "h3_chain": "C",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.705,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 5.26,
+   "fw_rmsd": 0.438,
    "paratope_ca_rmsd": 0.58,
    "epitope_ca_rmsd": 1.186,
    "n_paratope": 11,
@@ -365,8 +399,8 @@
   },
   "topiptm": {
    "dockq": 0.035,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 6.695,
+   "fw_rmsd": 0.461,
    "paratope_ca_rmsd": 1.452,
    "epitope_ca_rmsd": 1.28,
    "n_paratope": 11,
@@ -376,6 +410,8 @@
  {
   "interface": "8q3j_AC",
   "ab_role": "HEAVY",
+  "h3_chain": "C",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.531,
    "h3_rmsd": 5.337,
@@ -398,6 +434,8 @@
  {
   "interface": "8slb_AB",
   "ab_role": "HEAVY",
+  "h3_chain": "B",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.462,
    "h3_rmsd": 1.672,
@@ -420,10 +458,12 @@
  {
   "interface": "8slb_AC",
   "ab_role": "LIGHT",
+  "h3_chain": "B",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.655,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 1.672,
+   "fw_rmsd": 0.709,
    "paratope_ca_rmsd": 0.461,
    "epitope_ca_rmsd": 0.664,
    "n_paratope": 11,
@@ -431,8 +471,8 @@
   },
   "topiptm": {
    "dockq": 0.01,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 11.096,
+   "fw_rmsd": 0.799,
    "paratope_ca_rmsd": 0.611,
    "epitope_ca_rmsd": 0.81,
    "n_paratope": 11,
@@ -442,6 +482,8 @@
  {
   "interface": "8the_AB",
   "ab_role": "HEAVY",
+  "h3_chain": "B",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.514,
    "h3_rmsd": 5.021,
@@ -464,10 +506,12 @@
  {
   "interface": "8ux6_AF",
   "ab_role": "LIGHT",
+  "h3_chain": "D",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.246,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 0.997,
+   "fw_rmsd": 0.431,
    "paratope_ca_rmsd": 1.368,
    "epitope_ca_rmsd": 1.333,
    "n_paratope": 13,
@@ -475,8 +519,8 @@
   },
   "topiptm": {
    "dockq": 0.157,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 3.01,
+   "fw_rmsd": 0.545,
    "paratope_ca_rmsd": 2.025,
    "epitope_ca_rmsd": 1.076,
    "n_paratope": 13,
@@ -486,10 +530,12 @@
  {
   "interface": "8vui_BC",
   "ab_role": "LIGHT",
+  "h3_chain": "A",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.404,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 0.226,
+   "fw_rmsd": 0.661,
    "paratope_ca_rmsd": 2.106,
    "epitope_ca_rmsd": 1.017,
    "n_paratope": 7,
@@ -497,8 +543,8 @@
   },
   "topiptm": {
    "dockq": 0.034,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 0.245,
+   "fw_rmsd": 0.649,
    "paratope_ca_rmsd": 0.277,
    "epitope_ca_rmsd": 0.554,
    "n_paratope": 7,
@@ -508,6 +554,8 @@
  {
   "interface": "8yxi_AC",
   "ab_role": "HEAVY",
+  "h3_chain": "A",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.295,
    "h3_rmsd": 8.145,
@@ -530,10 +578,12 @@
  {
   "interface": "8yxi_BC",
   "ab_role": "LIGHT",
+  "h3_chain": "A",
+  "h3_chain_is_tested": false,
   "dockqdonor": {
    "dockq": 0.538,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 8.743,
+   "fw_rmsd": 0.531,
    "paratope_ca_rmsd": 0.771,
    "epitope_ca_rmsd": 0.51,
    "n_paratope": 15,
@@ -541,8 +591,8 @@
   },
   "topiptm": {
    "dockq": 0.009,
-   "h3_rmsd": null,
-   "fw_rmsd": null,
+   "h3_rmsd": 6.426,
+   "fw_rmsd": 0.484,
    "paratope_ca_rmsd": 0.716,
    "epitope_ca_rmsd": 1.65,
    "n_paratope": 15,
@@ -552,6 +602,8 @@
  {
   "interface": "9jbq_AC",
   "ab_role": "HEAVY",
+  "h3_chain": "A",
+  "h3_chain_is_tested": true,
   "dockqdonor": {
    "dockq": 0.584,
    "h3_rmsd": 4.254,

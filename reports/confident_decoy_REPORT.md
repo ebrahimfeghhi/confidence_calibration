@@ -1661,3 +1661,80 @@ placement; n = 13 for the H3 rows.
 - reuses the H3 definition and framework/H3 split from `scripts/h3_rmsd.py`
 
 ---
+
+### RMSD-based donor fold quality (preferred over lDDT for this comparison)
+
+Paratope CA RMSD is defined on **all 26** interfaces and needs no chain-role special case, so it is the
+primary fold metric here. CDR-H3 RMSD is shown **only for the 13 interfaces where the heavy chain is
+the antibody chain in the tested interface** — on the other 13 the tested chain is the light chain,
+which has no H3.
+
+`\*` = that arm rescued the interface. **Bold** = lower (better) RMSD of the pair.
+
+|interface|paratope RMSD dq|paratope RMSD topiptm|CDR-H3 RMSD dq|CDR-H3 RMSD topiptm|
+|---|---|---|---|---|
+|7ucx_AC|**3.07**|3.23|—|—|
+|7zau_AB|**2.87**|3.66|**4.18**|4.97|
+|8aok_AB|**2.29\***|4.76|**2.27\***|5.68|
+|8av2_AC|**1.68\***|3.74|**2.06\***|5.50|
+|8be1_AC|2.86|2.83|3.29|3.28|
+|8bf4_AB|**0.96\***|1.17|**0.53\***|0.97|
+|8che_AE|1.86|1.44|**0.49**|0.94|
+|8che_BE|**0.39\***|0.73|—|—|
+|8fas_BC|**0.60**|1.12|—|—|
+|8fbw_AC|**2.95\***|7.05|**0.85\***|1.17|
+|8fbw_BC|**2.23\***|2.34|—|—|
+|8ivx_AC|**4.58**|4.72|—|—|
+|8oxw_AB|**1.07**|3.14|**1.11**|3.45|
+|8oxw_AC|1.06|0.54|—|—|
+|8oxx_AC|0.89|0.71|—|—|
+|8pn0_BE|**1.68**|5.68|—|—|
+|8q3j_AB|**0.58**|1.45|—|—|
+|8q3j_AC|**4.24**|5.47|**5.34**|6.70|
+|8slb_AB|**1.49\***|9.66|**1.67\***|10.94|
+|8slb_AC|**0.46\***|0.61|—|—|
+|8the_AB|**4.08**|8.05|**5.02**|9.44|
+|8ux6_AF|**1.37**|2.02|—|—|
+|8vui_BC|2.11\*|0.28|—|—|
+|8yxi_AC|7.40|6.75\*|8.14|6.43\*|
+|8yxi_BC|0.77|0.72\*|—|—|
+|9jbq_AC|2.38|2.17|4.25|3.20|
+|**median**|**1.77**|2.58|**2.27**|4.97|
+|**better on**|**18/26**| |**10/13**| |
+|**rescued**|9/25| |2/25| |
+
+**Why RMSD and not lDDT.** On the same donor poses the two metrics agree only moderately
+(Spearman +0.557 on the paratope gap) and disagree in both directions:
+
+| | paratope lDDT | paratope RMSD |
+|---|---|---|
+| 8the_AB | 0.526 vs 0.528 — indistinguishable | **4.08 vs 8.05 Å** |
+| 8pn0_BE | 0.933 vs 0.906 (+0.027) | **1.68 vs 5.68 Å** |
+| 8ivx_AC | 0.871 vs 0.739 (**+0.132**) | 4.58 vs 4.72 Å (+0.14) |
+| 8be1_AC | 0.666 vs 0.768 (**−0.102**) | 2.86 vs 2.83 Å (−0.03) |
+
+lDDT scores each distance pair against tolerance bins topping out at 4 Å, so once a pair is wrong by
+more than that it contributes zero — being wrong by 8 Å scores the same as being wrong by 5 Å. That is
+why `8the_AB`'s two donors are indistinguishable by lDDT (0.526 vs 0.528) while one is twice as far off
+in absolute position. RMSD has no ceiling. Conversely lDDT rewards locally-correct geometry that RMSD
+is blind to, which is why `8ivx_AC` and `8be1_AC` separate under lDDT and not under RMSD.
+
+*(An earlier draft of this section explained the difference as lDDT tolerating a rotated loop. That is
+wrong — lDDT includes distances to the rest of the chain within its 15 Å inclusion radius, so it does
+penalise displacement. The actual difference is the saturating tolerance scale.)*
+
+**Rescue is not predicted by absolute RMSD.** `8slb_AC` rescues at paratope 0.46 Å; `8the_AB` fails at
+4.08 Å while still being the better of its pair; `8ivx_AC` fails at 4.58 Å. Of `dockqdonor`'s 9
+rescues, 8 have the better paratope RMSD — the exception is `8vui_BC` (2.11 vs 0.28 Å).
+
+**Scope note on CDR-H3.** Restricting to the 13 in-scope interfaces gives a gap of **2.27 vs 4.97 Å**
+(better on 10/13). Measuring H3 instead on the Fab's heavy chain even when that chain is not in the
+tested interface extends coverage to 26 and gives **2.09 vs 3.46 Å** (better on 20/26) — a different
+quantity, not a correction, and it also removes a framework-alignment confound present at n=13
+(0.28 Å gap vs 0.03 Å). Both are in `artifacts/donor_h3_contact.json`; the table above uses the
+in-scope 13.
+
+- **code:** `scripts/donor_h3_contact.py` (H3 definition and framework/H3 split reused from
+  `scripts/h3_rmsd.py`) · **data:** `artifacts/donor_h3_contact.json`
+
+---
