@@ -1,0 +1,66 @@
+id: sposefv_decoys_2026-07-28
+created: 2026-07-28
+status: running
+
+motivation: |
+  Ablation of the oracle_decoys run: does forcing a Fab's heavy+light chains to come from
+  the SAME free-run pose (self-consistent VH-VL pairing) change rescue vs the oracle's
+  mix-and-match (H and L each from their own best-lDDT pose, which happened 9/9 Fabs)?
+  Rationale: CDR-H3 conformation is physically coupled to VH-VL packing, so an
+  individually-best H fold may carry an H3 inconsistent with a differently-sourced L.
+  Fold-level pre-check (paratope lDDT of mix vs same-pose picks) showed same-pose is ~equal
+  or marginally WORSE (mean paratope d = -0.006, better 1/10, worse 5/10) and costs only
+  ~0.002 global lDDT/chain -- so prediction is ~8/15 (unchanged from oracle). This run is the
+  empirical confirmation the user requested.
+
+hypothesis: same-pose H+L reproduces oracle's 8/15 (pairing not encoded in per-chain templates)
+
+set: decoys
+interfaces: {file: artifacts/meta.json, n: 15}
+
+method:
+  template_chains: both
+  free_chains: none
+  fold_source: predicted_freerun
+  template_selection: best_lddt_to_native, BUT Fab H+L forced to the single pose maximizing
+    joint (mean H,L) lDDT; VHH antibody + antigen unchanged from oracle_decoys (mix-and-match)
+  fixed_or_varying: fixed
+  derivation: |
+    build_sposefv_folds.py -> oracle_folds_samepose.json (9 Fabs: H+L from joint-best pose;
+    3 VHH: antibody = oracle pick; antigens = oracle pick). build_sposefv_tmpl.py cifconv's them.
+    Only the 9 Fab antibody chains differ from oracle_decoys; the 3 VHH pdbs are identical to oracle.
+
+generation:
+  seeds: "101-150"
+  n_sample: 5
+  n_step: 200
+  use_template: true
+  model: protenix-v2
+  checkpoint: /home/ebrahim/checkpoint
+  gpus: [0, 1, 2, 3]        # 7z2m (huge) auto-split 4-way across 0-3
+
+provenance:
+  base_json: /home/ebrahim/Protenix/foldbench_abag/jsons/{pdb}-final-updated.json
+  folds: oracle_folds_samepose.json (in workdir)
+  same_pose_picks: 8yxi seed140, 8fas 138, 8bf4 122, 8the 132, 8q3j 104, 7z2m 142, 8che 135, 8slb 122, 8ux6 101
+
+baselines: {free: "0/15", expd_bestplddt: "0/15", oracle_mixmatch: "8/15", native: "14/15"}
+
+scoring:
+  selection_rule: "top interface-pair_iptm pose's DockQ >= 0.23"
+  scored_from: sposefv_scores.json
+
+workdir: /tmp/claude-1003/-home-ebrahim/c8e90e24-d694-4d7c-9a01-363182c820e2/scratchpad/selftmpl
+pipeline:
+  - name: build_folds
+    cmd: ["/home/ebrahim/Protenix/.venv/bin/python", "scripts/build_sposefv_folds.py"]
+  - name: build_tmpl
+    cmd: ["/home/ebrahim/Protenix/.venv/bin/python", "scripts/build_sposefv_tmpl.py"]
+  - name: run
+    cmd: ["/home/ebrahim/Protenix/.venv/bin/python", "scripts/sposefv_run.py"]
+
+result:
+  metric: rescued
+  value: null
+  per_interface: null
+  compare_to_oracle: null

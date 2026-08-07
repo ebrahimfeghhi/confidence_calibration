@@ -1,0 +1,67 @@
+id: topiptm_decoys_2026-07-28
+created: 2026-07-28
+status: running
+
+motivation: |
+  Template with the fold from the confident decoy itself — i.e. the single pose (across the
+  250: seeds 101-150 x 5) with the highest antibody-antigen interface ipTM. All chains
+  (antibody + antigen) taken from that one top-ipTM pose, used as a fixed template for all 50
+  generation seeds. Two competing hypotheses (user):
+    A) LEVEL THE FIELD: if the decoy's high ipTM is partly because its fold is uniquely
+       self-consistent, forcing every seed to use that fold removes the fold advantage ->
+       seeds compete on docking alone -> decoy's edge may shrink.
+    B) REINFORCE THE DECOY: if the top-ipTM pose's fold is specifically shaped to fit the
+       wrong epitope, templating it makes the wrong dock even more geometrically satisfying
+       -> decoy gets MORE confident -> worse.
+  This was the ORIGINAL Exp D design (top-ipTM) but was switched to pLDDT on the assumption
+  of (B) and never actually run. All 12 top-ipTM poses are confident decoys (DockQ<0.23).
+
+hypothesis: unknown — decomposes whether the decoy's confidence is fold-carried (A) or dock-carried (B)
+
+set: decoys
+interfaces: {file: artifacts/meta.json, n: 15}
+
+method:
+  template_chains: both
+  free_chains: none
+  fold_source: predicted_freerun
+  template_selection: single pose maximizing antibody-antigen interface pair_iptm over seeds
+    101-150 (the confident decoy's OWN fold); all chains from that one pose; fixed
+  fixed_or_varying: fixed
+  derivation: |
+    topiptm_picks.json (per pdb: top ab-ag chain_pair_iptm pose over 250, computed from the
+    predictions_template summary_confidence jsons + cached chain mappings in ost_oracle).
+    build_topiptm.py cifconv's all chains from that pose into one template.
+
+generation:
+  seeds: "101-150"
+  n_sample: 5
+  n_step: 200
+  use_template: true
+  model: protenix-v2
+  checkpoint: /home/ebrahim/checkpoint
+  gpus: [4, 5]        # 7z2m split 2-way; runs in parallel with sposefv on 0-3
+
+provenance:
+  base_json: /home/ebrahim/Protenix/foldbench_abag/jsons/{pdb}-final-updated.json
+  top_iptm_poses: 8av2 s113, 8yxi 119, 8fas 125, 8fbw 101, 8aok 110, 8bf4 131, 8the 116, 8q3j 114, 7z2m 101, 8che 124, 8slb 101, 8ux6 109
+
+baselines: {free: "0/15", expd_bestplddt: "0/15", oracle_bestlddt: "8/15", native: "14/15"}
+
+scoring:
+  selection_rule: "top interface-pair_iptm pose's DockQ >= 0.23"
+  scored_from: topiptm_scores.json
+
+workdir: /tmp/claude-1003/-home-ebrahim/c8e90e24-d694-4d7c-9a01-363182c820e2/scratchpad/selftmpl
+pipeline:
+  - name: pick
+    cmd: ["python3", "-c", "print('picks precomputed -> topiptm_picks.json')"]
+  - name: build
+    cmd: ["/home/ebrahim/Protenix/.venv/bin/python", "scripts/build_topiptm.py"]
+  - name: run
+    cmd: ["/home/ebrahim/Protenix/.venv/bin/python", "scripts/topiptm_run.py"]
+
+result:
+  metric: rescued
+  value: null
+  notes: null

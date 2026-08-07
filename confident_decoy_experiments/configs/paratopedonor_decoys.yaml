@@ -1,0 +1,53 @@
+id: paratopedonor_decoys_2026-08-05
+created: 2026-08-05
+status: running
+
+motivation: |
+  dockqdonor ranks candidate donors by DockQ -- how well the pose DOCKED. This ranks them by how well
+  the pose's PARATOPE is FOLDED. The two criteria pick different poses on 22 of 26 interfaces, and the
+  paratope-ranked donors are about twice as accurate at the paratope (median CA RMSD 0.89 A vs 1.77 A).
+  Templates transfer fold and not docking (multichain_mask), so if fold accuracy at the binding site is
+  what makes a template work, this arm should beat dockqdonor's 9/25.
+
+  Motivated by report §15: paratope CA RMSD separated the dockqdonor and topiptm donors (1.77 vs
+  2.58 A) where interface lDDT barely did (0.870 vs 0.843).
+
+set: decoys (canonical 26 minus the 4 whose paratope-best pose IS dockqdonor's donor)
+
+method:
+  run_granularity: one run per interface, 22 jobs
+  template_chains: ALL protein chains, from one donor pose
+  fold_source: predicted_freerun (predictions_template, seeds 101-150)
+  template_selection: |
+    the free-run pose minimising PARATOPE CA RMSD to native -- CA RMSD over the antibody chain's
+    residues within 5 A of the antigen in the native complex, after whole-chain superposition.
+    Computed over all 250 poses by scripts/find_paratope_donors.py (gemmi only, no OST, no GPU).
+  skipped: |
+    8bf4_AB, 8che_BE, 8slb_AB, 8the_AB -- their paratope-best pose is the SAME pose dockqdonor uses,
+    so that arm's results transfer directly and re-running would be wasted GPU.
+  seeds: 101-150 x N_sample 5 = 250 poses
+  inference: N_step 200, --use_template true
+  rescue_rule: top interface pair_iptm pose has DockQ >= 0.23
+
+ORACLE: yes -- paratope RMSD requires the native structure both to define the contact residues and to
+  measure accuracy. Like dockqdonor and native50 this measures a ceiling, not a shippable method.
+
+code:
+  find_donors: scripts/find_paratope_donors.py
+  build: scripts/build_paratope_templates.py
+  preflight: scripts/run_health.py --preflight --jobs artifacts/paratope_arm_jobs.json --seeds 50
+  generate: scripts/sweep_sched.py --jobs artifacts/paratope_arm_jobs.json
+  score: scripts/score_arm.py --arm paratopedonor (per interface, as each completes)
+  health: scripts/run_health.py --watch --interval 1800
+data:
+  donors: artifacts/paratope_donor_picks.json  (seed/sample, paratope RMSD, pool median)
+  jobs: artifacts/paratope_arm_jobs.json
+  scores: artifacts/paratopedonor_scores.json
+  predictions: artifacts/sweep_out/paratopedonor/paratopedonor/<name>/seed_<101-150>/
+
+comparison: dockqdonor on the SAME interfaces -- identical machinery, identical seed count, one
+  template per interface; only the donor-ranking criterion differs.
+
+prediction_recorded_before_results: |
+  Unknown. If binding-site fold accuracy is what makes a template work, this should beat 9/25. If the
+  donor's DOCKING matters beyond its fold, it should not.
