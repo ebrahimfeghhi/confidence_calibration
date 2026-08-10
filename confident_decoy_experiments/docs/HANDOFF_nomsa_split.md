@@ -44,10 +44,29 @@ All are referenced by **absolute path**, so they must exist locally:
 
 `PROTENIX_ROOT_DIR` defaults to `$HOME`, which is why the last two live there.
 
-**If the donor mmCIFs or their release-date entries are missing**, don't try to regenerate them — say
-so. There is a 6.6 MB self-contained package at `/home/ebrahim/nomsa_handoff/` on the origin box
-(6 template mmCIFs + a3ms + inputs + a standalone `setup_and_run.sh` that installs them and runs
-everything). Use that instead.
+### 2a. If the arm metadata is missing (it is not in git by default — 87 GB of artifacts are not tracked)
+
+`artifacts/` is run output and is untracked, so a fresh clone will NOT have `dockq_arm_jobs.json`,
+`dockq_arm_donors.json`, `dockqdonor_scores.json` or `sweep_tmpl/dockqdonor/*.json`. You do **not**
+need the 87 GB — only ~185 KB of metadata, which IS committed:
+
+```bash
+bash confident_decoy_experiments/handoff/nomsa_metadata/install.sh
+```
+
+It copies 3 metadata JSONs, 26 template JSONs and 75 template a3m files into
+`/home/ebrahim/confident_decoy_experiments/artifacts/` (override with `DEST=...`), then verifies that
+every `templatesPath` in those JSONs resolves. `cp -n` is used throughout, so it will not overwrite
+anything you already have.
+
+Note the `pairedMsaPath` / `unpairedMsaPath` entries in those JSONs still point at the origin box's MSA
+files. That is harmless: `nomsa_donors.py` **rewrites both to a 1-sequence a3m it generates locally**
+and never reads the originals — which is exactly why the 43 GB MSA prep is not needed.
+
+**If the donor mmCIFs or their release-date entries are missing** (they were present on the first
+machine we tried), don't regenerate them — say so. There is a 6.6 MB self-contained package at
+`/home/ebrahim/nomsa_handoff/` on the origin box with the 6 template mmCIFs, a3ms, inputs and a
+standalone `setup_and_run.sh`.
 
 ## 3. Run
 

@@ -1,0 +1,467 @@
+{
+ "7ucx_AC": {
+  "pdb": "7ucx",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "seed": 138,
+  "sample": 2,
+  "donor_dockq": 0.269,
+  "n_acceptable": 1,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d162"
+ },
+ "7zau_AB": {
+  "pdb": "7zau",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "seed": 132,
+  "sample": 3,
+  "donor_dockq": 0.435,
+  "n_acceptable": 32,
+  "n_chains_templated": 2,
+  "chains": {
+   "q0": "A",
+   "q1": "B"
+  },
+  "tid": "d163"
+ },
+ "8aok_AB": {
+  "pdb": "8aok",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "seed": 124,
+  "sample": 0,
+  "donor_dockq": 0.695,
+  "n_acceptable": 109,
+  "n_chains_templated": 2,
+  "chains": {
+   "q0": "A",
+   "q1": "B"
+  },
+  "tid": "d164"
+ },
+ "8av2_AC": {
+  "pdb": "8av2",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "seed": 124,
+  "sample": 1,
+  "donor_dockq": 0.612,
+  "n_acceptable": 1,
+  "n_chains_templated": 2,
+  "chains": {
+   "q0": "A",
+   "q1": "C"
+  },
+  "tid": "d165"
+ },
+ "8be1_AC": {
+  "pdb": "8be1",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "seed": 142,
+  "sample": 4,
+  "donor_dockq": 0.235,
+  "n_acceptable": 1,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d166"
+ },
+ "8bf4_AB": {
+  "pdb": "8bf4",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "seed": 120,
+  "sample": 2,
+  "donor_dockq": 0.723,
+  "n_acceptable": 22,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d167"
+ },
+ "8che_AE": {
+  "pdb": "8che",
+  "interface": [
+   "A",
+   "E"
+  ],
+  "seed": 112,
+  "sample": 2,
+  "donor_dockq": 0.438,
+  "n_acceptable": 25,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "E"
+  },
+  "tid": "d168"
+ },
+ "8che_BE": {
+  "pdb": "8che",
+  "interface": [
+   "B",
+   "E"
+  ],
+  "seed": 137,
+  "sample": 3,
+  "donor_dockq": 0.529,
+  "n_acceptable": 24,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "E"
+  },
+  "tid": "d169"
+ },
+ "8fas_BC": {
+  "pdb": "8fas",
+  "interface": [
+   "B",
+   "C"
+  ],
+  "seed": 149,
+  "sample": 4,
+  "donor_dockq": 0.987,
+  "n_acceptable": 77,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d170"
+ },
+ "8fbw_AC": {
+  "pdb": "8fbw",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "seed": 115,
+  "sample": 0,
+  "donor_dockq": 0.434,
+  "n_acceptable": 11,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d171"
+ },
+ "8fbw_BC": {
+  "pdb": "8fbw",
+  "interface": [
+   "B",
+   "C"
+  ],
+  "seed": 115,
+  "sample": 0,
+  "donor_dockq": 0.51,
+  "n_acceptable": 116,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d172"
+ },
+ "8ivx_AC": {
+  "pdb": "8ivx",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "seed": 116,
+  "sample": 4,
+  "donor_dockq": 0.333,
+  "n_acceptable": 4,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d173"
+ },
+ "8oxw_AB": {
+  "pdb": "8oxw",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "seed": 104,
+  "sample": 2,
+  "donor_dockq": 0.298,
+  "n_acceptable": 2,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d174"
+ },
+ "8oxw_AC": {
+  "pdb": "8oxw",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "seed": 131,
+  "sample": 1,
+  "donor_dockq": 0.275,
+  "n_acceptable": 2,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d175"
+ },
+ "8oxx_AC": {
+  "pdb": "8oxx",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "seed": 136,
+  "sample": 4,
+  "donor_dockq": 0.343,
+  "n_acceptable": 1,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d176"
+ },
+ "8pn0_BE": {
+  "pdb": "8pn0",
+  "interface": [
+   "B",
+   "E"
+  ],
+  "seed": 126,
+  "sample": 4,
+  "donor_dockq": 0.741,
+  "n_acceptable": 155,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "G",
+   "q1": "B",
+   "q2": "D"
+  },
+  "tid": "d177"
+ },
+ "8q3j_AB": {
+  "pdb": "8q3j",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "seed": 137,
+  "sample": 2,
+  "donor_dockq": 0.705,
+  "n_acceptable": 24,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d178"
+ },
+ "8q3j_AC": {
+  "pdb": "8q3j",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "seed": 102,
+  "sample": 4,
+  "donor_dockq": 0.531,
+  "n_acceptable": 19,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d179"
+ },
+ "8slb_AB": {
+  "pdb": "8slb",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "seed": 122,
+  "sample": 0,
+  "donor_dockq": 0.462,
+  "n_acceptable": 65,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d180"
+ },
+ "8slb_AC": {
+  "pdb": "8slb",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "seed": 122,
+  "sample": 0,
+  "donor_dockq": 0.655,
+  "n_acceptable": 41,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d181"
+ },
+ "8the_AB": {
+  "pdb": "8the",
+  "interface": [
+   "A",
+   "B"
+  ],
+  "seed": 113,
+  "sample": 4,
+  "donor_dockq": 0.514,
+  "n_acceptable": 62,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d182"
+ },
+ "8ux6_AF": {
+  "pdb": "8ux6",
+  "interface": [
+   "A",
+   "F"
+  ],
+  "seed": 113,
+  "sample": 3,
+  "donor_dockq": 0.246,
+  "n_acceptable": 1,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "D",
+   "q2": "F"
+  },
+  "tid": "d183"
+ },
+ "8vui_BC": {
+  "pdb": "8vui",
+  "interface": [
+   "B",
+   "C"
+  ],
+  "seed": 132,
+  "sample": 3,
+  "donor_dockq": 0.404,
+  "n_acceptable": 6,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d184"
+ },
+ "8yxi_AC": {
+  "pdb": "8yxi",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "seed": 135,
+  "sample": 2,
+  "donor_dockq": 0.295,
+  "n_acceptable": 7,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d185"
+ },
+ "8yxi_BC": {
+  "pdb": "8yxi",
+  "interface": [
+   "B",
+   "C"
+  ],
+  "seed": 140,
+  "sample": 1,
+  "donor_dockq": 0.538,
+  "n_acceptable": 4,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d186"
+ },
+ "9jbq_AC": {
+  "pdb": "9jbq",
+  "interface": [
+   "A",
+   "C"
+  ],
+  "seed": 104,
+  "sample": 3,
+  "donor_dockq": 0.584,
+  "n_acceptable": 1,
+  "n_chains_templated": 3,
+  "chains": {
+   "q0": "A",
+   "q1": "B",
+   "q2": "C"
+  },
+  "tid": "d187"
+ }
+}
