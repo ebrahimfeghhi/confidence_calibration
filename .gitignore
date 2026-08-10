@@ -46,3 +46,7 @@ results/cluster_sweep/*
 !results/cluster_sweep/clusters.json.gz
 !results/dockq_full/index_csvs.tar.gz
 !results/figures/
+
+# vendored Protenix copy: byte-compiled files only, the source itself IS tracked
+confident_decoy_experiments/vendor/**/__pycache__/
+confident_decoy_experiments/vendor/**/*.pyc

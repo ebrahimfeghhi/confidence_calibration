@@ -42,7 +42,8 @@ ap.add_argument("--cells", default="A,B,C,D,E,F")
 A = ap.parse_args()
 
 ART = f"{EXP}/artifacts"
-TREE = "/home/ebrahim/Protenix_unmask"
+TREE = os.environ.get("PROTENIX_UNMASK_TREE",
+        "/home/ebrahim/tts_abag/confident_decoy_experiments/vendor/Protenix_unmask")
 PY = "/home/ebrahim/Protenix/.venv/bin/python"
 SEEDS = "137,108,130,250,332,832,1036,1040,1074,1076"
 JSON_MSA = f"{ART}/sweep_tmpl/allpose8che/8che_allpose_137_3.json"
