@@ -50,3 +50,10 @@ results/cluster_sweep/*
 # vendored Protenix copy: byte-compiled files only, the source itself IS tracked
 confident_decoy_experiments/vendor/**/__pycache__/
 confident_decoy_experiments/vendor/**/*.pyc
+
+# confident-decoy run output: ~103 GB of predictions and scored artifacts.
+# Lives INSIDE the repo (moved 2026-08-10) so everything the project produces is
+# under tts_abag, but is not tracked. /home/ebrahim/confident_decoy_experiments/
+# holds symlinks here so absolute paths in old logs and configs still resolve.
+confident_decoy_experiments/artifacts/
+confident_decoy_experiments/predictions/

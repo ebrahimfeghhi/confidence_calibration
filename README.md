@@ -9,10 +9,36 @@ sample with OST/DockQ → **plot** the scaling curves and per-interface results.
 The eval/plot/analysis code is model-agnostic — it reads a generic
 `<complex>/seed_N/predictions/` layout, so it works on either model's output.
 
-> **This repo holds scripts only.** Predictions, ground truths, checkpoints and
-> input JSONs live in the original model repos / data dirs. All of those
-> locations are centralized in [`paths.py`](paths.py) — edit that one file (or
-> set the matching env vars) if anything moves.
+## ⚠️ Where things go — read this before creating any file
+
+**Everything this project produces lives inside this repo.** Scripts, configs, docs,
+notes, run output, vendored third-party code, handoff bundles. Do not create project
+files at `/home/ebrahim/` top level or leave them in `/tmp`.
+
+**Large outputs go in the repo too — and get gitignored.** "Too big to track" is not a
+reason to store something outside the repo. Put it in the right directory, add a
+`.gitignore` entry, and note it. Currently gitignored:
+
+| path | size | what |
+|---|---|---|
+| `confident_decoy_experiments/artifacts/` | ~91 GB | scored results, OST caches, sweep output |
+| `confident_decoy_experiments/predictions/` | ~12 GB | prediction trees |
+
+Moving data here is cheap: on one filesystem `mv` is an instant metadata operation even
+for 100 GB (`df --output=source` to check). **Leave a symlink at the old path** so
+absolute paths baked into running jobs, old logs and configs keep resolving —
+`/home/ebrahim/confident_decoy_experiments/{artifacts,predictions}` are symlinks here for
+exactly that reason, and the move was done while a job was actively writing.
+
+Paths are centralized — edit [`paths.py`](paths.py) and
+[`confident_decoy_experiments/paths.py`](confident_decoy_experiments/paths.py) (or set the
+matching env vars) rather than hardcoding in individual scripts.
+
+**Working across machines:** a fresh clone has code and docs but none of the gitignored
+output. Small metadata needed to run elsewhere is committed under
+`confident_decoy_experiments/handoff/` — see
+[`docs/HANDOFF_nomsa_split.md`](confident_decoy_experiments/docs/HANDOFF_nomsa_split.md)
+for the pattern. Checkpoints and the model repos are external and not tracked.
 
 > **Steering experiment:** the active work is label-free **distogram-repulsion steering**
 > in [`steer/`](steer/README.md) — push ESMFold2 out of confident *wrong* antibody–antigen
