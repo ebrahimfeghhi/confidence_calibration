@@ -1,8 +1,9 @@
 # HANDOFF — 250-donor × 10-seed sweeps on 4 complexes, MSA on then MSA off
 
-**Written 2026-08-10. Target: naboo (7 free GPUs).** Assumes naboo has the same data as the origin
-box (`foldbench_abag/` prep + predictions, `$HOME/mmcif`, `$HOME/common`, checkpoint). Verify in step 2
-before building anything.
+**Written 2026-08-10 on naboo (the origin box). Target: alderaan (7 free GPUs).** Assumes alderaan has
+the same data as naboo (`foldbench_abag/` prep + predictions, `$HOME/mmcif`, `$HOME/common`, checkpoint). Verify in step 2 before
+building anything — alderaan was missing `artifacts/` metadata and the donor release-date entries last
+night, so do not assume.
 
 ---
 
@@ -78,8 +79,8 @@ ls -d /home/ebrahim/checkpoint $HOME/mmcif $HOME/common/release_date_cache.json
 ```
 
 Each pdb needs **51 free seed dirs** (101–150 plus seed_150 counted twice by that glob — 50 distinct is
-correct) and a non-empty `msa/`. On the origin box the payload is msa 26–87 MB and predictions
-260–450 MB per pdb, 1.7 GB for all four.
+correct) and a non-empty `msa/`. On naboo the payload is msa 26–87 MB and predictions 260–450 MB per pdb, **1.7 GB for all four**. If
+any of it is absent on alderaan, say so — it has to be copied from naboo, not regenerated.
 
 **If anything is missing, stop and say so — do not regenerate it.** The free predictions are the donor
 source; regenerating them would produce a different pool and the run would not be comparable to 8che.
@@ -98,7 +99,7 @@ $PY scripts/build_allpose_generic.py --pdb 8av2 --run allpose8av210 --tid-prefix
 $PY scripts/build_allpose_generic.py --pdb 8slb --run allpose8slb10 --tid-prefix k --seeds 10
 ```
 
-Prefixes `f j e k` are unused on the origin box (`p`=8che, `b`=8bf4, `d`=dockqdonor, `h`=hillclimb are
+Prefixes `f j e k` are unused on naboo (`p`=8che, `b`=8bf4, `d`=dockqdonor, `h`=hillclimb are
 taken). The builder asserts each id is 4 chars and not already in `$HOME/mmcif`; if it aborts on a
 collision, pick another from `m n r x` and say which you used.
 
