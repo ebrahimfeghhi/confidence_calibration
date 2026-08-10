@@ -45,6 +45,8 @@ ap.add_argument("--subset", default="rescued", choices=["rescued", "failed", "al
 ap.add_argument("--n-seeds", type=int, default=10)
 ap.add_argument("--rng", type=int, default=0)
 ap.add_argument("--build-only", action="store_true")
+ap.add_argument("--only", default="", help="comma list of run names to run "
+                    "(e.g. splitting the sweep across machines); default all")
 A = ap.parse_args()
 
 ART = f"{EXP}/artifacts"
@@ -119,6 +121,12 @@ def _tokens(jp):
 # runs), so 8pn0+8bf4 alone are a third of the total. Ordering by cost banks most interfaces early
 # instead of leaving 20 of them behind one giant.
 built.sort(key=lambda b: _tokens(b["json"]))
+if A.only:
+    keep = {x.strip() for x in A.only.split(",") if x.strip()}
+    missing = keep - {b["name"] for b in built}
+    assert not missing, f"--only names not found: {sorted(missing)}"
+    built = [b for b in built if b["name"] in keep]
+    print(f"--only: restricted to {len(built)} runs")
 json.dump(built, open(f"{ART}/nomsa_donors_jobs.json", "w"), indent=1)
 print(f"\n{len(built)} runs covering {sum(len(b['ifaces']) for b in built)} interfaces")
 if A.build_only:
