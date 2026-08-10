@@ -4,12 +4,21 @@ Centralized paths for the confident_decoy_experiments project.
 Mirrors the convention in tts_abag/paths.py: env-var-overridable Path
 constants, defaulting to existing on-disk locations.
 
-Phase 2 DONE (2026-08-10): artifacts/ (91G) and predictions/ (12G) now live
-INSIDE this repo. Everything the project produces is under tts_abag.
-/home/ebrahim/confident_decoy_experiments/{artifacts,predictions} are left as
-SYMLINKS to here, so the absolute paths baked into old logs, configs and
-running jobs still resolve. Both are gitignored -- the repo tracks code and
-docs, not 100G of run output.
+Phase 2 (2026-08-10): artifacts/ and predictions/ belong INSIDE this repo, and
+are gitignored -- the repo tracks code and docs, not 100G of run output.
+
+PER-MACHINE: the move is a local filesystem operation, so a clone elsewhere has
+the data wherever that machine put it. These defaults therefore RESOLVE AT
+IMPORT rather than assuming: repo-local if it exists, else the pre-move
+standalone root, else repo-local (so a fresh machine gets the intended layout).
+Override explicitly with CDE_ARTIFACTS_DIR / CDE_PREDICTIONS_DIR.
+
+On the origin box the data is in the repo and
+/home/ebrahim/confident_decoy_experiments/{artifacts,predictions} are SYMLINKS
+back to it, so absolute paths baked into old logs, configs and running jobs keep
+resolving. That symlink layout is an origin-box detail, NOT a guarantee
+elsewhere -- alderaan had the real directory at the old path and nothing in the
+repo, which the resolver below handles.
 """
 
 import os
@@ -31,15 +40,34 @@ def _path(env_var: str, default: Path) -> Path:
 SCRIPTS_DIR = _path("CDE_SCRIPTS_DIR", REPO_ROOT / "scripts")
 CONFIGS_DIR = _path("CDE_CONFIGS_DIR", REPO_ROOT / "configs")
 
-# --- Data (moved into the repo 2026-08-10) ----------------------------------
-ARTIFACTS_DIR = _path("CDE_ARTIFACTS_DIR", REPO_ROOT / "artifacts")
-PREDICTIONS_DIR = _path("CDE_PREDICTIONS_DIR", REPO_ROOT / "predictions")
+# --- Data (repo-local by intent, resolved per machine) ----------------------
+def _resolve_data(env_var: str, name: str) -> Path:
+    """Repo-local if present, else the pre-move root, else repo-local.
+
+    The Phase 2 move is per-machine, so hardcoding either location breaks the
+    other. Explicit env var always wins.
+    """
+    val = os.environ.get(env_var)
+    if val:
+        return Path(val).expanduser()
+    in_repo = REPO_ROOT / name
+    if in_repo.exists():
+        return in_repo
+    legacy = _OLD_EXP_ROOT / name
+    if legacy.exists():
+        return legacy
+    return in_repo
+
+
+ARTIFACTS_DIR = _resolve_data("CDE_ARTIFACTS_DIR", "artifacts")
+PREDICTIONS_DIR = _resolve_data("CDE_PREDICTIONS_DIR", "predictions")
 
 # --- Backwards-compat aliases ------------------------------------------------
 # Scripts historically did `EXP = "/home/ebrahim/confident_decoy_experiments"`
-# and built every subpath off that one root. With Phase 2 done, EXP and
-# CODE_ROOT have collapsed back into a single root: this repo.
-EXP = REPO_ROOT
+# and built every subpath off that one root as f"{EXP}/artifacts/...". EXP must
+# therefore point at whichever root actually HOLDS artifacts/ on this machine,
+# which is the repo once Phase 2 has been done here and the old root otherwise.
+EXP = ARTIFACTS_DIR.parent
 CODE_ROOT = REPO_ROOT
 
 
