@@ -74,14 +74,15 @@ def pose(a):
     return got or None
 
 
-tasks = [(j, j["seeds"][0], k) for j in jobs for k in SAMPLES]
+tasks = [(j, s, k) for j in jobs for s in j["seeds"] for k in SAMPLES]
 with ThreadPoolExecutor(A.workers) as ex:
     res = list(ex.map(pose, tasks))
 
-byjob = {}
+byjob, byseed = {}, {}
 for (j, s, k), r in zip(tasks, res):
     if r:
         byjob.setdefault(j["name"], []).append(r)
+        byseed.setdefault(j["name"], {}).setdefault(s, []).append(r)
 
 # the donor's own DockQ on each interface, from the free-run cache
 donor_dq = {}
@@ -103,24 +104,39 @@ for j in jobs:
     ps = byjob.get(j["name"], [])
     if not ps:
         continue
+    sd = byseed.get(j["name"], {})
     row = {"name": j["name"], "donor_seed": j["donor_seed"], "donor_sample": j["donor_sample"],
-           "run_seed": j["seeds"][0], "n_out": len(ps)}
+           "run_seed": j["seeds"][0], "seeds": list(j["seeds"]),
+           "n_seeds_done": len(sd), "n_seeds_declared": len(j["seeds"]), "n_out": len(ps)}
     for lab in IFACES:
         v = [p[lab] for p in ps if lab in p]
         if not v:
             continue
         dq = sorted(x[1] for x in v)
+        # per-seed: each seed's own 5 poses -> its best, and what ipTM would pick within that seed
+        per = {}
+        for s, pl in sorted(sd.items()):
+            w = [p[lab] for p in pl if lab in p]
+            if w:
+                per[str(s)] = {"max": round(max(x[1] for x in w), 3),
+                               "sel": round(max(w, key=lambda x: x[0])[1], 3),
+                               "sel_iptm": round(max(x[0] for x in w), 3), "n": len(w)}
         row[lab] = {
             "donor_dockq": round(donor_dq.get((j["donor_seed"], j["donor_sample"]), {}).get(lab, float("nan")), 3),
             "out_max": round(max(dq), 3), "out_median": round(dq[len(dq) // 2], 3),
             "out_sel": round(max(v, key=lambda x: x[0])[1], 3),
             "sel_iptm": round(max(x[0] for x in v), 3),
-            "frac_acceptable": round(sum(1 for x in dq if x >= THRESH) / len(dq), 3)}
+            "frac_acceptable": round(sum(1 for x in dq if x >= THRESH) / len(dq), 3),
+            "per_seed": per}
     rows.append(row)
 
 json.dump({"run": RUN, "n_donors": len(rows), "n_poses": sum(r["n_out"] for r in rows),
            "rows": rows}, open(f"{EXP}/artifacts/{RUN}_scores.json", "w"), indent=1)
+full = sum(1 for r in rows if r["n_seeds_done"] == r["n_seeds_declared"])
 print(f"{RUN}: {len(rows)} donors, {sum(r['n_out'] for r in rows)} poses scored, 0 null templates")
+print(f"  seed completeness: {full}/{len(rows)} donors have all {rows[0]['n_seeds_declared']} seeds "
+      f"(PARTIAL RUN -- numbers below are provisional)" if full < len(rows) else
+      f"  seed completeness: all {len(rows)} donors complete")
 for lab in IFACES:
     v = [r[lab] for r in rows if lab in r]
     print(f"\n  {lab}:  best out_max over all donors {max(x['out_max'] for x in v):.3f} | "

@@ -1,0 +1,67 @@
+# allpose8bf410 -- the 250x10 template sweep replicated on a SECOND interface
+# Launched 2026-08-09.
+#
+# WHY. allpose8che10 established the method on 8che: 2500 templated seeds return DockQ 0.957 in pool
+# and 0.924 by pooled ipTM, where 2500 free seeds return 0.630 / 0.064. Every claim about the method
+# rests on that ONE interface. This replicates the identical design on 8bf4_AB to test whether the
+# sweep reliably finds a good donor when one exists on an interface the method was NOT developed on.
+#
+# WHY 8bf4_AB SPECIFICALLY. A good donor is known to exist there:
+#   free (50 seeds): selected DockQ 0.014, best in pool 0.723, top_pair_iptm 0.857  -> confident decoy
+#   dockqdonor (oracle donor, 50 seeds): 0.675  RESCUED
+#   native50 (exact native folds):       0.718  RESCUED
+#   good-donor per-seed hit rate: 0.58 (29/50 seeds clear 0.23)
+# So the question is purely "does the label-free sweep find it", not "does a findable donor exist".
+
+run: allpose8bf410
+pdb: 8bf4
+interface: 8bf4_AB          # native A-B -> model A-C (verified from the arm's OST output, BY NAME)
+model: protenix-v2
+checkpoint: /home/ebrahim/checkpoint
+N_step: 200
+N_sample: 5
+gpus: [7]                   # GPUs 0-6 are john's; 7 was idle at launch
+
+design:
+  donors: 250               # every pose of the 50-seed free pool (seeds 101-150 x samples 0-4)
+  seeds_per_donor: 10       # donor's OWN seed + 9 random from 101-1100, per donor, rng=0
+  total: 2500 seeds / 12500 poses
+  templates: all 3 protein chains templated from the single donor pose
+  cross_chain_info: none    # multichain_mask zeroes cross-chain template features
+                            # (pairformer.py:1062-1076) -- donors carry intra-chain folds only
+  selection: highest pair_iptm over all poses. No labels anywhere.
+
+  # Identical to allpose8che10 in every respect except pdb and template ids, so the two arms are
+  # directly comparable. Builder is build_allpose_generic.py (allpose8che10's builder generalised
+  # past its hardcoded 8che); the 8che arm's numbers are unchanged by that refactor since its
+  # jobs/templates already exist on disk and were not rebuilt.
+
+guards:
+  template_ids: b000-b249, asserted 4 chars and absent from /home/ebrahim/mmcif before use
+                # Protenix rejects non-4-char ids -> `Found 0 templates` -> a silently UNTEMPLATED
+                # run that still emits plausible poses. Three arms were scored and believed this way.
+  preflight: run_health.py --preflight PASSED before launch (250 jobs, 250 unique names)
+  watcher: run_health.py --watch --interval 1800 for the run's life; audits template loading
+  chain_ids: native chains identified by label_asym_id (differs from auth_asym_id for 8bf4)
+  a3m_hit: 2 mutated residues so the hit differs from the query, else it is read as an MSA row
+
+cost:
+  ~52 h wall-clock on a single GPU at the measured 12.5 min per 10-seed arm.
+  On 4 GPUs it was ~13 h for the 8che arm; only GPU 7 is free here.
+
+baselines_to_compare_against:
+  free_8bf4_AB_50seed: selected 0.014, best in pool 0.723
+  dockqdonor_8bf4_AB:  selected 0.675 (oracle donor)
+  native50_8bf4_AB:    selected 0.718 (upper bound)
+  # A budget-matched 2500-seed FREE run does not exist for 8bf4 -- unlike 8che, where freedeep8che
+  # provides it. Any "same budget" claim here needs that run first, or must be stated as absent.
+
+outputs:
+  predictions: artifacts/sweep_out/allpose8bf410/
+  jobs:        artifacts/allpose8bf410_jobs.json
+  donors:      artifacts/allpose8bf410_donors.json
+  scores:      artifacts/allpose8bf410_scores.json   (score_allpose.py --run allpose8bf410)
+  sched_log:   artifacts/allpose8bf410_sched.log
+  health_log:  artifacts/allpose8bf410_health.log
+
+code: scripts/build_allpose_generic.py, scripts/sweep_sched.py, scripts/score_allpose.py

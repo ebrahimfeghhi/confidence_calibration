@@ -1,0 +1,62 @@
+# hillclimb8che -- iterative ipTM hill-climb on 8che
+# Launched 2026-08-08. Specified by the user 2026-08-07 (night).
+#
+# HYPOTHESIS (user's): current sampling is memoryless -- run N learns nothing from run N-1.
+# Templating localises the search around the template's fold, so climbing on ipTM should walk the
+# pool toward better folds using no labels at all.
+
+run: hillclimb8che
+pdb: 8che
+interfaces: [8che_AE, 8che_BE]      # both are canonical confident decoys
+model: protenix-v2
+checkpoint: /home/ebrahim/checkpoint
+N_step: 200
+N_sample: 5
+gpus: [0, 1, 2, 3]
+
+schedule:
+  rounds: 40
+  seeds_per_round: 25
+  round_0: 25 free seeds, no injected template (natural hmmsearch templates + full MSA kept)
+  round_1_to_39: 5 parents x 5 seeds each
+  total: 1000 seeds / 5000 poses
+
+selection:
+  signal: mean(pair_iptm[A,E], pair_iptm[B,E])
+  pool: cumulative -- every pose generated so far competes
+  rule: plain top-5 by ipTM, NO diversity filter
+  labels_used: none. DockQ is computed every round for the log only and never enters selection.
+
+  # User chose PLAIN over an NMS-filtered variant deliberately, to test the idea as stated.
+  # Cumulative was chosen on the measurement that once a near-native pose exists ipTM ranks it above
+  # the decoy (allpose8che10: near-native 0.68-0.73 vs the confident decoy 0.44-0.53). The decoy can
+  # still dominate early rounds; the round log is what exposes that.
+
+seeds:
+  stream: random.Random(0).sample(range(1, 100000), 1000)
+  unique_within_experiment: true
+  disjoint_from_earlier_8che_runs: false     # user's explicit call; round 0 overlap gives a
+                                             # reproducibility check against the existing free pool
+
+baselines_at_matched_budget:
+  free8che_complete:   2500 seeds / 12500 poses -- best BE 0.630, poses >0.85 = 0, ipTM pick 0.064
+  allpose8che10:       2500 seeds / 12500 poses -- best BE 0.957, ipTM pick 0.924
+  # NOTE hillclimb is 1000 seeds / 5000 poses -- 40% of those budgets, not matched. Any comparison
+  # must either subsample the baselines or state the budget gap.
+
+guards:
+  template_ids: h000-h195, asserted 4 chars (Protenix rejects other lengths -> `Found 0 templates`)
+  null_template_audit: every templated round greps its logs; ANY hit aborts the run
+  seed_completeness: round aborts unless all 25 seeds produced sample_4 confidence JSONs
+  chain_order: model chain order asserted == [A,B,C,D,E,F] once per round, else abort
+               (chain_pair_iptm is indexed by chain letter; a reorder would rank the wrong interface)
+  round_0_natural_templates: asserted to still point at hmmsearch.a3m
+
+outputs:
+  predictions: artifacts/sweep_out/hillclimb8che/
+  pool:        artifacts/hillclimb8che_pool.json     # every pose: ipTM + DockQ + parent
+  trajectory:  artifacts/hillclimb8che_rounds.json   # per round: parents chosen, pool best, ipTM pick
+  ost_cache:   artifacts/hillclimb8che_ost/
+  driver_log:  artifacts/hillclimb8che.log
+
+code: scripts/hillclimb8che.py
