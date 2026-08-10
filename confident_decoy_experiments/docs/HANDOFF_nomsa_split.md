@@ -54,7 +54,8 @@ need the 87 GB — only ~185 KB of metadata, which IS committed:
 bash confident_decoy_experiments/handoff/nomsa_metadata/install.sh
 ```
 
-It copies 3 metadata JSONs, 26 template JSONs and 75 template a3m files into
+It copies 3 metadata JSONs, 26 template JSONs, 75 template a3m files **and the release-date entries
+for the 26 injected donor templates** into
 `/home/ebrahim/confident_decoy_experiments/artifacts/` (override with `DEST=...`), then verifies that
 every `templatesPath` in those JSONs resolves. `cp -n` is used throughout, so it will not overwrite
 anything you already have.
@@ -63,7 +64,20 @@ Note the `pairedMsaPath` / `unpairedMsaPath` entries in those JSONs still point 
 files. That is harmless: `nomsa_donors.py` **rewrites both to a 1-sequence a3m it generates locally**
 and never reads the originals — which is exactly why the 43 GB MSA prep is not needed.
 
-**If the donor mmCIFs or their release-date entries are missing** (they were present on the first
+> **2026-08-10 — this bit a second machine.** The first version of this bundle shipped the mmCIFs and
+> a3ms but NOT the release-date entries. Protenix filters every template hit through a release-date
+> lookup (`template_utils.py:369`); a donor mmCIF that is present but absent from
+> `release_date_cache.json` is rejected as date-unknown and **silently skipped**. Both GPUs logged
+> `Found 0 templates` on every chain load and folded with no template while looking perfectly healthy
+> — 100% utilisation, seeds accumulating, no error. ~50 min of 2 GPUs lost. `install.sh` now merges
+> those entries and fails loudly if any donor mmCIF is absent.
+>
+> **If a previous attempt ran untemplated, DELETE its output before rerunning.** The script skips
+> seeds that already have output, so a corrected rerun would treat the garbage as done and keep it.
+> `nomsa_donors.py` now refuses to resume over a run whose log contains `Found 0 templates` and
+> prints the exact `rm -rf` to run.
+
+**If the donor mmCIFs are missing entirely** (they were present on the first
 machine we tried), don't regenerate them — say so. There is a 6.6 MB self-contained package at
 `/home/ebrahim/nomsa_handoff/` on the origin box with the 6 template mmCIFs, a3ms, inputs and a
 standalone `setup_and_run.sh`.

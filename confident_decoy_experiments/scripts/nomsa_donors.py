@@ -159,6 +159,18 @@ for b in built:
     env = dict(os.environ, CUDA_VISIBLE_DEVICES=A.gpu, LAYERNORM_TYPE="openfold",
                OMP_NUM_THREADS="4", OPENBLAS_NUM_THREADS="1", MKL_NUM_THREADS="1",
                NUMEXPR_NUM_THREADS="1", VECLIB_MAXIMUM_THREADS="1")
+    # RESUME POISONING GUARD. Seeds with existing output are skipped -- so if a PREVIOUS attempt ran
+    # untemplated (the classic `Found 0 templates`, e.g. a donor mmCIF missing from
+    # release_date_cache.json), a corrected rerun would treat that garbage as done and keep it. Cost a
+    # second machine 49 wasted seeds on 2026-08-10. Refuse to resume over a poisoned run.
+    if os.path.exists(logf) and glob.glob(f"{out}/*/seed_*/predictions/*_summary_confidence_sample_4.json"):
+        nulls = sum(1 for l in open(logf, errors="ignore") if "Found 0 templates" in l)
+        if nulls:
+            raise SystemExit(
+                "ABORT " + b["name"] + ": its existing log has " + str(nulls) +
+                " 'Found 0 templates' lines, so the seeds already on disk are UNTEMPLATED.\n"
+                "  Resume would silently keep them. Delete first:\n"
+                "    rm -rf " + out + " " + logf)
     todo = [x for x in b["seeds"]
             if not glob.glob(f"{out}/*/seed_{x}/predictions/*_summary_confidence_sample_4.json")]
     if not todo:

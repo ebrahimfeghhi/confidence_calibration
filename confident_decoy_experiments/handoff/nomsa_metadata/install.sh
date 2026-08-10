@@ -13,6 +13,32 @@ echo "  metadata : $(ls "$DEST"/dockq_arm_jobs.json "$DEST"/dockq_arm_donors.jso
 echo "  templates: $(ls "$DEST"/sweep_tmpl/dockqdonor/*.json | wc -l)"
 echo "  a3m      : $(ls "$DEST"/sweep_a3m/*.a3m | wc -l)"
 echo
+echo "merging release dates for the injected donor templates ..."
+# THE FAILURE THIS EXISTS TO PREVENT: Protenix filters every template hit through a release-date
+# lookup (template_utils.py:369). A donor mmCIF that is present but absent from
+# release_date_cache.json is rejected as date-unknown and SILENTLY skipped -- the run logs
+# `Found 0 templates` and folds with no template while looking completely healthy. This cost a
+# second machine ~50 min of 2 GPUs on 2026-08-10 because the first version of this bundle shipped
+# the mmCIFs and a3ms but not these entries.
+python3 - "$(cd "$(dirname "$0")" && pwd)" <<'PYEOF2'
+import json, os, sys
+pkg = sys.argv[1]
+root = os.environ.get("PROTENIX_ROOT_DIR", os.path.expanduser("~"))
+f = os.path.join(root, "common", "release_date_cache.json")
+os.makedirs(os.path.dirname(f), exist_ok=True)
+cache = json.load(open(f)) if os.path.exists(f) else {}
+new = json.load(open(os.path.join(pkg, "release_date_entries.json")))
+added = [k for k in new if k not in cache]
+cache.update(new)
+json.dump(cache, open(f, "w"))
+print(f"  release_date_cache: +{len(added)} entries ({len(cache)} total) -> {f}")
+missing_cif = [k for k in new if not os.path.exists(os.path.join(root, "mmcif", k + ".cif"))]
+if missing_cif:
+    print(f"  WARNING: {len(missing_cif)} donor mmCIFs absent from {root}/mmcif: {missing_cif}")
+    sys.exit(1)
+print(f"  all {len(new)} donor mmCIFs present in {root}/mmcif")
+PYEOF2
+
 echo "verifying every referenced path resolves ..."
 python3 - "$DEST" <<'PYEOF'
 import json, glob, os, sys
