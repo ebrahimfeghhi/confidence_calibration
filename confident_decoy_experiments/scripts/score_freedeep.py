@@ -13,7 +13,7 @@ Protocol identical to the rest of the project (one OST call per pose, full nativ
 --fault-tolerant --min-pep-length 4 --min-nuc-length 4 --dockq, interface matched BY NAME).
 
 Usage:  /home/ebrahim/Protenix/.venv/bin/python scripts/score_freedeep.py [--workers 20]
-Writes: artifacts/freedeep8che_scores.json
+Writes: artifacts/<run>_scores.json
 """
 import argparse, json, os, subprocess, sys
 from concurrent.futures import ThreadPoolExecutor
@@ -23,12 +23,27 @@ from decoy_set import EXP, PRED, OST, ENV, GT, SAMPLES, THRESH
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--workers", type=int, default=20)
+# Generalised past the hardcoded 8che so the compute-matched free baseline can be scored for every
+# complex in the set. Protocol below is unchanged.
+ap.add_argument("--pdb", default="8che")
+ap.add_argument("--run", default=None, help="run name; defaults to freedeep<pdb>")
+ap.add_argument("--ifaces", default="8che_AE:A:E,8che_BE:B:E",
+                help="comma-separated label:chain1:chain2")
+ap.add_argument("--prior", default=None,
+                help="optional artifacts/<file>.json of already-scored seeds 0-150 to pool with. "
+                     "Only 8che has one (free_extra_8che.json); without it the NEW block is "
+                     "reported alone and the pooled-total fields are simply absent.")
+ap.add_argument("--cores", default="0-63", help="taskset core list for OST")
 A = ap.parse_args()
-PDB = "8che"
-IFACES = {"8che_AE": ("A", "E"), "8che_BE": ("B", "E")}
-OUT = f"{EXP}/artifacts/sweep_out/freedeep8che/freedeep8che"
-CACHE = f"{EXP}/artifacts/freedeep8che_ost"; os.makedirs(CACHE, exist_ok=True)
-jobs = json.load(open(f"{EXP}/artifacts/freedeep8che_jobs.json"))
+PDB = A.pdb
+RUN = A.run or f"freedeep{PDB}"
+IFACES = {}
+for _spec in A.ifaces.split(","):
+    _lab, _c1, _c2 = _spec.split(":")
+    IFACES[_lab] = (_c1, _c2)
+OUT = f"{EXP}/artifacts/sweep_out/{RUN}/{RUN}"
+CACHE = f"{EXP}/artifacts/{RUN}_ost"; os.makedirs(CACHE, exist_ok=True)
+jobs = json.load(open(f"{EXP}/artifacts/{RUN}_jobs.json"))
 
 
 def pose(a):
@@ -38,7 +53,7 @@ def pose(a):
         return None
     o = f"{CACHE}/{s}_{k}.json"
     if not (os.path.exists(o) and os.path.getsize(o)):
-        subprocess.run(["taskset", "-c", "0-63", OST, "compare-structures", "-m", cif,
+        subprocess.run(["taskset", "-c", A.cores, OST, "compare-structures", "-m", cif,
                         "-r", f"{GT}/{PDB}-assembly1.cif", "-o", o, "--fault-tolerant",
                         "--min-pep-length", "4", "--min-nuc-length", "4", "--dockq"],
                        env=ENV, capture_output=True, timeout=900)
@@ -65,8 +80,10 @@ with ThreadPoolExecutor(A.workers) as ex:
     new = [r for r in ex.map(pose, tasks) if r]
 print(f"NEW seeds scored: {len(new)} poses (of {len(tasks)} slots; run may still be generating)\n")
 
-prior = json.load(open(f"{EXP}/artifacts/free_extra_8che.json")) if \
-    os.path.exists(f"{EXP}/artifacts/free_extra_8che.json") else {}
+_pf = f"{EXP}/artifacts/{A.prior}" if A.prior else None
+prior = json.load(open(_pf)) if (_pf and os.path.exists(_pf)) else {}
+if A.prior and not prior:
+    print(f"WARNING: prior {A.prior} not found -- reporting the NEW block only", flush=True)
 out = {}
 for lab in IFACES:
     v = [r[lab] for r in new if lab in r]
@@ -104,5 +121,5 @@ for lab in IFACES:
               f">=0.6 {rec['total_n_06']:4d} | >=0.85 {rec['total_n_085']:4d} "
               f"| top-ipTM selects {rec['total_sel_dockq']:.3f}")
     print()
-json.dump(out, open(f"{EXP}/artifacts/freedeep8che_scores.json", "w"), indent=1)
-print(f"WROTE {EXP}/artifacts/freedeep8che_scores.json")
+json.dump(out, open(f"{EXP}/artifacts/{RUN}_scores.json", "w"), indent=1)
+print(f"WROTE {EXP}/artifacts/{RUN}_scores.json")

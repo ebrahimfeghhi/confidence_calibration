@@ -57,3 +57,8 @@ confident_decoy_experiments/vendor/**/*.pyc
 # holds symlinks here so absolute paths in old logs and configs still resolve.
 confident_decoy_experiments/artifacts/
 confident_decoy_experiments/predictions/
+
+# confident-decoy ops: keep the watcher/runner SCRIPTS, never their logs (xfer.log alone is 48 MB)
+confident_decoy_experiments/ops/*.log
+# 17 MB of release_date_cache backups pulled from naboo before it was retired -- data, not code
+confident_decoy_experiments/handoff/naboo_pull/

@@ -29,13 +29,29 @@ from decoy_set import EXP, OST, ENV, GT, SAMPLES, THRESH
 ap = argparse.ArgumentParser()
 ap.add_argument("--run", default="allpose8che")
 ap.add_argument("--workers", type=int, default=16)
+# The arm used to be 8che-only. The 4-complex sweep runs the same design on other pdbs, so the
+# pdb and its labelled interfaces are now arguments -- the SCORING PROTOCOL below is unchanged.
+ap.add_argument("--pdb", default="8che", help="pdb id; ground truth is <GT>/<pdb>-assembly1.cif")
+ap.add_argument("--ifaces", default="8che_AE:A:E,8che_BE:B:E",
+                help="comma-separated label:chain1:chain2 (chains are label_asym_id, as OST reports)")
+ap.add_argument("--cores", default="0-63", help="taskset core list for OST (shared box: keep <=64)")
+# Where the DONORS' own free-run DockQ comes from. The 15-decoy interfaces are cached in
+# decoy_set_ost; interfaces from the 'extra' set (e.g. 9jbq_AC) are in extra_set_ost. Both use the
+# same <iface>_<seed>_<sample>.json naming, so only the directory differs.
+ap.add_argument("--donor-cache", default="decoy_set_ost",
+                help="artifacts/ subdir holding the free-pool OST scores for these interfaces")
 A = ap.parse_args()
 
 RUN = A.run
 OUT = f"{EXP}/artifacts/sweep_out/{RUN}/{RUN}"
 CACHE = f"{EXP}/artifacts/{RUN}_ost"; os.makedirs(CACHE, exist_ok=True)
 jobs = json.load(open(f"{EXP}/artifacts/{RUN}_jobs.json"))
-IFACES = {"8che_AE": ("A", "E"), "8che_BE": ("B", "E")}
+IFACES = {}
+for _spec in A.ifaces.split(","):
+    _lab, _c1, _c2 = _spec.split(":")
+    IFACES[_lab] = (_c1, _c2)
+if not IFACES:
+    sys.exit("--ifaces produced no interfaces")
 
 nulls = len([1 for f in glob.glob(f"{EXP}/artifacts/{RUN}_logs/*.log")
              for l in open(f, errors="ignore") if "Found 0 templates" in l])
@@ -52,8 +68,8 @@ def pose(a):
         return None
     o = f"{CACHE}/{name}_{s}_{k}.json"
     if not (os.path.exists(o) and os.path.getsize(o)):
-        subprocess.run(["taskset", "-c", "0-63", OST, "compare-structures", "-m", cif,
-                        "-r", f"{GT}/8che-assembly1.cif", "-o", o, "--fault-tolerant",
+        subprocess.run(["taskset", "-c", A.cores, OST, "compare-structures", "-m", cif,
+                        "-r", f"{GT}/{A.pdb}-assembly1.cif", "-o", o, "--fault-tolerant",
                         "--min-pep-length", "4", "--min-nuc-length", "4", "--dockq"],
                        env=ENV, capture_output=True, timeout=900)
     try:
@@ -87,7 +103,7 @@ for (j, s, k), r in zip(tasks, res):
 # the donor's own DockQ on each interface, from the free-run cache
 donor_dq = {}
 for lab, (c1, c2) in IFACES.items():
-    for f in glob.glob(f"{EXP}/artifacts/decoy_set_ost/{lab}_*.json"):
+    for f in glob.glob(f"{EXP}/artifacts/{A.donor_cache}/{lab}_*.json"):
         try:
             d = json.load(open(f))
         except Exception:

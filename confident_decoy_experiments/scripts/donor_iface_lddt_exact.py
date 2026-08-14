@@ -89,37 +89,8 @@ def chain_lddt(pdb, ch, seed, sample, idx, tag):
     return g, (st.mean(vals) if vals else None)
 
 
-rows = []
-print(f"{'interface':11} {'group':16} {'chain':6} {'whole':>7} {'iface(exact)':>13} {'n_res':>6}")
-for lab in sorted(set(dq) & set(don)):
-    d = don[lab]; pdb = d["pdb"]; c1, c2 = d["interface"]
-    grp = ("both" if dq[lab]["rescued"] and nat[lab]["rescued"] else
-           "native_only" if nat[lab]["rescued"] else
-           "dockqdonor_only" if dq[lab]["rescued"] else "neither")
-    per_chain = {}
-    for ch, partner in ((c1, c2), (c2, c1)):
-        try:
-            idx = iface_idx_pair(pdb, ch, partner)
-        except Exception as e:
-            print(f"{lab:11} {ch}: iface idx failed ({e})"); continue
-        if not idx:
-            continue
-        g, il = chain_lddt(pdb, ch, d["seed"], d["sample"], idx, f"{lab}_{ch}")
-        if il is None:
-            continue
-        per_chain[ch] = {"whole": round(g, 3) if g else None,
-                         "iface_exact": round(il, 3), "n_iface_res": len(idx)}
-        print(f"{lab:11} {grp:16} {ch:6} {g if g else 0:7.3f} {il:13.3f} {len(idx):6d}", flush=True)
-    if per_chain:
-        rows.append({"interface": lab, "pdb": pdb, "group": grp,
-                     "donor_seed": d["seed"], "donor_sample": d["sample"],
-                     "donor_dockq": d["donor_dockq"], "chains": per_chain,
-                     "min_iface_exact": round(min(v["iface_exact"] for v in per_chain.values()), 3),
-                     "mean_iface_exact": round(st.mean(v["iface_exact"] for v in per_chain.values()), 3),
-                     "dockqdonor_rescued": dq[lab]["rescued"], "native_rescued": nat[lab]["rescued"]})
-        json.dump(rows, open(OUTJ, "w"), indent=1)
-
-
+# Guarded so this module can be IMPORTED for its verified chain_lddt()/iface_idx_pair() helpers
+# (see donor_fold_quality_allpose.py) without executing the dockqdonor sweep below.
 def spear(x, y):
     def rk(v):
         o = sorted(range(len(v)), key=lambda i: v[i]); r = [0.0] * len(v)
@@ -131,19 +102,55 @@ def spear(x, y):
     return num / den if den else 0.0
 
 
-print("\ngroup medians, EXACT per-interface lDDT (min across the interface's two chains):")
-for g in ("both", "native_only", "dockqdonor_only", "neither"):
-    v = [r for r in rows if r["group"] == g]
-    if v:
-        print(f"  {g:16} n={len(v):2d}  {st.median(r['min_iface_exact'] for r in v):.3f}")
 
-able = [r for r in rows if r["native_rescued"]]
-if able:
-    b = [r for r in able if r["dockqdonor_rescued"]]; f = [r for r in able if not r["dockqdonor_rescued"]]
-    print(f"\nRestricted to the {len(able)} native-rescuable interfaces:")
-    print(f"  dockqdonor rescues  n={len(b):2d}  exact iface lDDT {st.median(r['min_iface_exact'] for r in b):.3f}")
-    print(f"  dockqdonor fails    n={len(f):2d}  exact iface lDDT {st.median(r['min_iface_exact'] for r in f):.3f}")
-    y = [1.0 if r["dockqdonor_rescued"] else 0.0 for r in able]
-    print(f"  spearman(exact iface lDDT, rescued | native-rescuable) = "
-          f"{spear([r['min_iface_exact'] for r in able], y):+.3f}   (union-based was +0.257)")
-print(f"\nWROTE {OUTJ}")
+def _main():
+  rows = []
+  print(f"{'interface':11} {'group':16} {'chain':6} {'whole':>7} {'iface(exact)':>13} {'n_res':>6}")
+  for lab in sorted(set(dq) & set(don)):
+      d = don[lab]; pdb = d["pdb"]; c1, c2 = d["interface"]
+      grp = ("both" if dq[lab]["rescued"] and nat[lab]["rescued"] else
+             "native_only" if nat[lab]["rescued"] else
+             "dockqdonor_only" if dq[lab]["rescued"] else "neither")
+      per_chain = {}
+      for ch, partner in ((c1, c2), (c2, c1)):
+          try:
+              idx = iface_idx_pair(pdb, ch, partner)
+          except Exception as e:
+              print(f"{lab:11} {ch}: iface idx failed ({e})"); continue
+          if not idx:
+              continue
+          g, il = chain_lddt(pdb, ch, d["seed"], d["sample"], idx, f"{lab}_{ch}")
+          if il is None:
+              continue
+          per_chain[ch] = {"whole": round(g, 3) if g else None,
+                           "iface_exact": round(il, 3), "n_iface_res": len(idx)}
+          print(f"{lab:11} {grp:16} {ch:6} {g if g else 0:7.3f} {il:13.3f} {len(idx):6d}", flush=True)
+      if per_chain:
+          rows.append({"interface": lab, "pdb": pdb, "group": grp,
+                       "donor_seed": d["seed"], "donor_sample": d["sample"],
+                       "donor_dockq": d["donor_dockq"], "chains": per_chain,
+                       "min_iface_exact": round(min(v["iface_exact"] for v in per_chain.values()), 3),
+                       "mean_iface_exact": round(st.mean(v["iface_exact"] for v in per_chain.values()), 3),
+                       "dockqdonor_rescued": dq[lab]["rescued"], "native_rescued": nat[lab]["rescued"]})
+          json.dump(rows, open(OUTJ, "w"), indent=1)
+
+  print("\ngroup medians, EXACT per-interface lDDT (min across the interface's two chains):")
+  for g in ("both", "native_only", "dockqdonor_only", "neither"):
+      v = [r for r in rows if r["group"] == g]
+      if v:
+          print(f"  {g:16} n={len(v):2d}  {st.median(r['min_iface_exact'] for r in v):.3f}")
+
+  able = [r for r in rows if r["native_rescued"]]
+  if able:
+      b = [r for r in able if r["dockqdonor_rescued"]]; f = [r for r in able if not r["dockqdonor_rescued"]]
+      print(f"\nRestricted to the {len(able)} native-rescuable interfaces:")
+      print(f"  dockqdonor rescues  n={len(b):2d}  exact iface lDDT {st.median(r['min_iface_exact'] for r in b):.3f}")
+      print(f"  dockqdonor fails    n={len(f):2d}  exact iface lDDT {st.median(r['min_iface_exact'] for r in f):.3f}")
+      y = [1.0 if r["dockqdonor_rescued"] else 0.0 for r in able]
+      print(f"  spearman(exact iface lDDT, rescued | native-rescuable) = "
+            f"{spear([r['min_iface_exact'] for r in able], y):+.3f}   (union-based was +0.257)")
+  print(f"\nWROTE {OUTJ}")
+
+
+if __name__ == "__main__":
+    _main()

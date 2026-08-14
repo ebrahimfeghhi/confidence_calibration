@@ -45,6 +45,8 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--pdb", required=True)
 ap.add_argument("--run", required=True)
 ap.add_argument("--tid-prefix", required=True, help="1 char; tids become <p>000-<p>249 (4 chars)")
+ap.add_argument("--tid-start", type=int, default=0,
+                help="offset for the numeric part; lets one prefix serve two arms (see above)")
 ap.add_argument("--seeds", type=int, default=10)
 ap.add_argument("--pool-lo", type=int, default=101)
 ap.add_argument("--pool-hi", type=int, default=1100)
@@ -52,6 +54,9 @@ ap.add_argument("--rng", type=int, default=0)
 A = ap.parse_args()
 
 assert len(A.tid_prefix) == 1, "tid prefix must be exactly 1 character (tids must total 4)"
+# Only 8 first-characters remain unused in $HOME/mmcif (a g l q s t x 0), fewer than the complexes
+# left to run. --tid-start offsets the numbering so one prefix serves two arms without collision:
+# a000-a249 for one, a250-a499 for the next. Still exactly 4 characters, which Protenix requires.
 PDB, RUN = A.pdb, A.run
 JDIR = "/home/ebrahim/Protenix/foldbench_abag/jsons"
 TMPL = f"{EXP}/artifacts/sweep_tmpl/{RUN}"
@@ -72,7 +77,7 @@ for n, (s, k) in enumerate([(s, k) for s in SEEDS for k in SAMPLES]):
     if not os.path.exists(cif):
         skipped.append(f"seed{s}/s{k}: cif missing"); continue
 
-    tid = f"{A.tid_prefix}{n:03d}"                       # 4 chars EXACTLY -- see docstring
+    tid = f"{A.tid_prefix}{A.tid_start + n:03d}"          # 4 chars EXACTLY -- see docstring
     assert len(tid) == 4, f"template id {tid!r} is not 4 characters"
     assert tid not in TAKEN, f"template id {tid} already registered in /home/ebrahim/mmcif"
     TAKEN.add(tid)
@@ -132,7 +137,7 @@ nch = {d["n_chains_templated"] for d in donors.values()}
 assert len(nch) == 1, f"jobs templated different numbers of chains: {nch}"
 tot = len(jobs) * A.seeds
 print(f"BUILT {len(jobs)} donor jobs x {A.seeds} seeds = {tot} seeds ({tot * 5} poses)")
-print(f"   all templating {nch.pop()} chains; tids {A.tid_prefix}000-{A.tid_prefix}{len(jobs)-1:03d}")
+print(f"   all templating {nch.pop()} chains; tids {A.tid_prefix}{A.tid_start:03d}-{A.tid_prefix}{A.tid_start+len(jobs)-1:03d}")
 print(f"   seeds per donor = own + {A.seeds-1} random from {A.pool_lo}-{A.pool_hi} (rng={A.rng})")
 print(f"   example: {jobs[0]['name']} donor_seed {jobs[0]['donor_seed']} -> {jobs[0]['seeds']}")
 if skipped:
