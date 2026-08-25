@@ -20,7 +20,16 @@ GPUS=${GPUS:-5,7,4,3}          # pinned, never derived from ps (an empty value s
 NSAMPLE=5
 
 want() { $PY -c "import json;print(sum(len(j['seeds']) for j in json.load(open('$A/$1_jobs.json'))))" 2>/dev/null; }
-have() { find "$A/sweep_out/$1" -name '*_summary_confidence_sample_4.json' 2>/dev/null | wc -l; }
+# Count finished seeds in EITHER location. score_watcher rsyncs each completed arm from $A into the
+# repo before scoring, so a scored arm exists twice; the old copy is then deletable to reclaim disk.
+# Counting only $A would make a deleted-but-complete arm look unfinished and the chain would RE-RUN
+# it. Mirrors score_watcher.sh:seeds_done(), which already takes the max of both.
+have() {
+    local a b
+    a=$(find "$A/sweep_out/$1" -name '*_summary_confidence_sample_4.json' 2>/dev/null | wc -l)
+    b=$(find "$REPO/artifacts/sweep_out/$1" -name '*_summary_confidence_sample_4.json' 2>/dev/null | wc -l)
+    [ "$a" -gt "$b" ] && echo "$a" || echo "$b"
+}
 
 echo "### chain started $(date +%H:%M) on GPUs $GPUS (queue re-read every arm)"
 while true; do
@@ -36,9 +45,16 @@ while true; do
         echo "### ALL ARMS COMPLETE $(date +%H:%M)"; exit 0
     fi
 
-    echo "### START $NEXT $(date +%H:%M)  ($NH/$NW seeds already done)"
+    # Per-arm inference flags, keyed on the arm name so the condition is declared in one place.
+    # *fullmsa -> stop MSA row subsampling (stock draws rows uniformly each trunk pass).
+    EXTRA=""
+    case "$NEXT" in
+        *fullmsa) EXTRA="--data.msa.min_size.test 16384" ;;
+    esac
+    echo "### START $NEXT $(date +%H:%M)  ($NH/$NW seeds already done)${EXTRA:+  [extra: $EXTRA]}"
     $PY "$REPO/scripts/sweep_sched.py" --jobs "$A/${NEXT}_jobs.json" --out "$A/sweep_out/$NEXT" \
-        --logs "$A/${NEXT}_logs" --status "$A/${NEXT}_status.json" --gpus "$GPUS" --n-sample "$NSAMPLE"
+        --logs "$A/${NEXT}_logs" --status "$A/${NEXT}_status.json" --gpus "$GPUS" --n-sample "$NSAMPLE" \
+        --extra-args "$EXTRA"
     echo "### DONE $NEXT $(date +%H:%M)"
 
     # guard against a spin loop if an arm can never reach its declared seed count

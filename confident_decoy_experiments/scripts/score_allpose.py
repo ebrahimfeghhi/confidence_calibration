@@ -68,10 +68,22 @@ def pose(a):
         return None
     o = f"{CACHE}/{name}_{s}_{k}.json"
     if not (os.path.exists(o) and os.path.getsize(o)):
-        subprocess.run(["taskset", "-c", A.cores, OST, "compare-structures", "-m", cif,
-                        "-r", f"{GT}/{A.pdb}-assembly1.cif", "-o", o, "--fault-tolerant",
-                        "--min-pep-length", "4", "--min-nuc-length", "4", "--dockq"],
-                       env=ENV, capture_output=True, timeout=900)
+        base = ["taskset", "-c", A.cores, OST, "compare-structures", "-m", cif,
+                "-r", f"{GT}/{A.pdb}-assembly1.cif", "-o", o, "--fault-tolerant",
+                "--min-pep-length", "4", "--min-nuc-length", "4", "--dockq"]
+        subprocess.run(base, env=ENV, capture_output=True, timeout=900)
+        # OST's automatic chain mapper crashes on some natives with
+        # "IndexError: arrays used as indices must be of integer (or boolean) type", writing a
+        # FAILURE json with no dockq. Every one of allpose8dtn5's 6250 poses failed this way and the
+        # arm scored 0 donors twice before this was diagnosed. eval/eval_ost_foldbench.py:run_ost
+        # already handles it by retrying with an explicit identity map; mirror that here.
+        try:
+            _st = json.load(open(o)).get("status") if os.path.getsize(o) else "FAILURE"
+        except Exception:
+            _st = "FAILURE"
+        if _st != "SUCCESS":
+            subprocess.run(base + ["-c", "A:A", "B:B", "C:C"],
+                           env=ENV, capture_output=True, timeout=900)
     try:
         d = json.load(open(o))
         M = json.load(open(f"{OUT}/{name}/seed_{s}/predictions/"

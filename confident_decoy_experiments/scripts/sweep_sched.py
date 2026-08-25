@@ -24,6 +24,10 @@ _ap.add_argument("--jobs", default=f"{EXP}/artifacts/sweep_jobs.json")
 _ap.add_argument("--out", default=f"{EXP}/artifacts/sweep_out")
 _ap.add_argument("--logs", default=f"{EXP}/artifacts/sweep_logs")
 _ap.add_argument("--status", default=f"{EXP}/artifacts/sweep_status.json")
+# Passthrough for one-off inference flags (e.g. full MSA: --data.msa.min_size.test 16384).
+# Kept as a single string so the arm's exact condition is visible in ps output and in the log.
+_ap.add_argument("--extra-args", default="",
+                 help="extra flags appended verbatim to the inference command")
 _ap.add_argument("--n-sample", type=int, default=5,
                  help="diffusion samples per seed. MUST match the completion probe below: an arm run "
                       "at N_sample=1 writes only sample_0, so a hardcoded sample_4 probe would mark "
@@ -148,7 +152,15 @@ def worker(gpu):
                "--seeds", ",".join(map(str, todo)),
                "--sample_diffusion.N_sample", str(NSAMPLE),
                "--sample_diffusion.N_step", "200",
+               # Decode ALL diffusion samples in one batched pass. configs_base.py:123 defaults
+               # diffusion_chunk_size to 4, which splits N_sample=5 into two sequential chunks (4+1);
+               # setting it to N_sample gives a single chunk. Measured phase split at N_cycle=10,
+               # N_sample=5: trunk 20-215 s vs diffusion 8-47 s, so this only touches the smaller of
+               # the two phases -- do not expect a large end-to-end win.
+               "--diffusion_chunk_size", str(NSAMPLE),
                "--use_template", "true"]
+        if _A.extra_args:
+            cmd += _A.extra_args.split()
         t0 = time.time()
         print(f"[{time.strftime('%H:%M')}] GPU{gpu} START {job['run']}/{job['pdb']} "
               f"({len(queue)} left)", flush=True)

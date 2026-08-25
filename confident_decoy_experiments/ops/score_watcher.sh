@@ -68,10 +68,29 @@ ARMS=(
   "allpose8the5|8the|8the_AB:A:B|abag_all_ost|allpose"
   "allpose8udz5|8udz|8udz_AC:A:C,8udz_AD:A:D|abag_all_ost|allpose"
   "allpose7zau5|7zau|7zau_AB:A:B|abag_all_ost|allpose"
+  # UNTEMPLATED 1024-seed arms extending each train complex's free pool. type=free so the
+  # allpose "Found 0 templates" gate does NOT apply -- these use the base FoldBench json,
+  # whose natural hmmsearch search legitimately returns none for some chains.
+  "free1k8dtn|8dtn|8dtn_AB:A:B||free"
+  "free1k8z8v|8z8v|8z8v_AB:A:B||free"
+  "free1k8a44|8a44|8a44_AC:A:C,8a44_AD:A:D||free"
+  "free1k8vzo|8vzo|8vzo_AB:A:B,8vzo_AC:A:C||free"
+  "free1k8ivx|8ivx|8ivx_AB:A:B,8ivx_AC:A:C||free"
+  "free1k8oxw|8oxw|8oxw_AB:A:B,8oxw_AC:A:C||free"
+  "free1k8sfz|8sfz|8sfz_AD:A:D||free"
+  "free1k8the|8the|8the_AB:A:B||free"
+  "free1k8udz|8udz|8udz_AC:A:C,8udz_AD:A:D||free"
+  "free1k7zau|7zau|7zau_AB:A:B||free"
 )
 
 QUEUE=$REPO/ops/run_queue.txt
 THRESH=0.23
+# Auto-queueing a no-MSA twin is OFF for the 250x5 train round. Every train arm still gets SCORED and
+# its verdict logged; only the automatic follow-up run is suppressed. Reason: the twins are built at
+# 250x10, and most train arms are confident decoys that will trip THRESH, so leaving this on would
+# silently append ~9 arms x 2500 seeds (~3x the approved compute) to the GPU queue.
+# Re-enable for a single watcher run with:  AUTO_NOMSA=1 bash ops/score_watcher.sh
+AUTO_NOMSA=${AUTO_NOMSA:-0}
 
 say() { echo "[$(date +%m-%d\ %H:%M:%S)] $*" | tee -a "$LOG"; }
 
@@ -82,6 +101,7 @@ say() { echo "[$(date +%m-%d\ %H:%M:%S)] $*" | tee -a "$LOG"; }
 maybe_queue_nomsa() {
     local RUN=$1
     case "$RUN" in *nomsa) return 0;; esac
+    # Gate is here, not at the call site, so the verdict below is still computed and logged.
     [ -f "$NEW/${RUN}_scores.json" ] || return 0
 
     local verdict
@@ -108,6 +128,10 @@ PYEOF
         FAIL*) ;;
         *) return 0;;
     esac
+    if [ "$AUTO_NOMSA" != "1" ]; then
+        say "$RUN: selection failed, but AUTO_NOMSA=0 -- NOT queueing ${RUN}nomsa (250x5 train round)"
+        return 0
+    fi
 
     if grep -qx "${RUN}nomsa" "$QUEUE"; then
         say "$RUN: ${RUN}nomsa already queued"; return 0
@@ -133,7 +157,11 @@ seeds_done() {  # $1 = run; count in whichever root has more
     [ "$a" -gt "$b" ] && echo "$a" || echo "$b"
 }
 
-scoring_running() { pgrep -u "$(id -un)" -f score_allpose >/dev/null 2>&1; }
+# Match the INTERPRETER RUNNING THE SCRIPT, not any command line containing the string. The bare
+# pattern also matched `tee ops/score_allpose8a445.log`, so a finished scoring job left a lingering
+# tee/pane that looked like a running scorer forever -- the watcher then refused to score anything
+# else and sat printing "another scoring job is running" for hours while arms piled up unscored.
+scoring_running() { pgrep -u "$(id -un)" -f "python.*scripts/score_allpose\.py" >/dev/null 2>&1; }
 
 say "score watcher started (every $((INTERVAL/60)) min, one arm at a time)"
 

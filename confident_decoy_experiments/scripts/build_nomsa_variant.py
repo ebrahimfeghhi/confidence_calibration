@@ -63,10 +63,18 @@ for j in jobs:
 json.dump(out, open(f"{ART}/{NEW}_jobs.json", "w"), indent=1)
 assert len(out) == len(jobs), "job count changed"
 assert len({x["name"] for x in out}) == len(out), "duplicate job name -- outputs would collide"
-nch = {x["chains_nomsa"] for x in out}
-assert len(nch) == 1, f"jobs rewrote different numbers of chains: {nch}"
+# Chain count must be constant WITHIN a pdb, not across the arm. A single-complex arm (250 donors of
+# one pdb) trivially satisfies both, but a multi-complex arm like nativetmpl spans 2-, 3- and 4-chain
+# complexes, where a global check would fail on correct input. Grouping by pdb keeps the real
+# guarantee -- that no job silently lost a chain -- without the false alarm.
+by_pdb = {}
+for x in out:
+    by_pdb.setdefault(x.get("pdb", "?"), set()).add(x["chains_nomsa"])
+bad = {p: v for p, v in by_pdb.items() if len(v) != 1}
+assert not bad, f"jobs rewrote different numbers of chains within a pdb: {bad}"
+nch = {n for v in by_pdb.values() for n in v}
 tot = sum(len(x["seeds"]) for x in out)
 print(f"BUILT {NEW}: {len(out)} donor jobs x {len(out[0]['seeds'])} seeds = {tot} seeds "
-      f"({tot * 5} poses), {nch.pop()} chains set to single-sequence")
+      f"({tot * 5} poses), chains/pdb set to single-sequence: {sorted(nch)}")
 print(f"   templates reused from {A.run} (same mmCIF ids, no new ids minted)")
 print(f"   -> {ART}/{NEW}_jobs.json")
