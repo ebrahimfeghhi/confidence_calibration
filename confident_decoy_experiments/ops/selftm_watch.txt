@@ -1,0 +1,8 @@
+[08-26 16:07:17] selftm wave1: 0/100 arms left, workers=8
+[08-26 16:07:18] selftm wave2: 2/145 arms left
+[08-26 16:07:19]   !! foreign process on a GPU: john
+[08-26 16:07:19]   !! foreign process on a GPU: kao
+[08-26 16:07:19]   !! foreign process on a GPU: john
+[08-26 16:07:19]   !! foreign process on a GPU: john
+[08-26 16:07:19]   !! foreign process on a GPU: john
+[08-26 16:07:19] cores=21 disk=6.7T

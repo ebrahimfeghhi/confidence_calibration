@@ -32,7 +32,44 @@ from decoy_set import OST, ENV, GT, EXP, PRED, SEEDS, SAMPLES, THRESH, contact_r
 TARGETS = "/home/ebrahim/FoldBench/targets/interface_antibody_antigen.csv"
 CACHE = f"{EXP}/artifacts/abag_all_ost"
 OUTJ = f"{EXP}/artifacts/abag_all_101_150.json"
-NWORK = 16            # with taskset 0-71 this measures ~80 cores (hard cap 100)
+# NWORK x OST's own internal threads is what actually lands on the box. 16 workers on cores 0-71
+# coincided with load 189, over the 188 ceiling this box must stay under, so both the worker count
+# and the core set are env-tunable and default lower now.
+NWORK = int(os.environ.get("ABAG_NWORK", "8"))
+TASKSET = os.environ.get("ABAG_TASKSET", "0-31")
+
+# --- optional widening: score EVERY pose on disk, not just seeds 101-150 -------------------------
+# Many complexes have 755-1495 poses generated but only 250 scored, because SEEDS is fixed at
+# range(101,151). Deep free-run poses also live under artifacts/sweep_out/freedeep<pdb>/**, a
+# different root from PRED. --all-seeds discovers both. Same OST call, same CACHE, so previously
+# scored poses are reused and only the new ones cost anything.
+import argparse, glob as _glob, re as _re
+_ap = argparse.ArgumentParser()
+_ap.add_argument("--complexes", default="", help="comma-separated pdb ids (default: all)")
+_ap.add_argument("--all-seeds", action="store_true", help="score every pose found on disk")
+_ap.add_argument("--out", default="", help="override output json")
+_A, _ = _ap.parse_known_args()
+
+_EXTRA_ROOTS = [f"{EXP}/artifacts/sweep_out/freedeep{{pdb}}"]
+
+
+def pose_paths(pdb):
+    """{(seed, sample): cif} for every free-run pose of `pdb` across all known roots."""
+    out = {}
+    for c in _glob.glob(f"{PRED}/{pdb}/seed_*/predictions/{pdb}_sample_*.cif"):
+        m = _re.search(r"seed_(\d+)/predictions/.*_sample_(\d+)\.cif$", c)
+        if m:
+            out[(int(m.group(1)), int(m.group(2)))] = c
+    for root in _EXTRA_ROOTS:
+        for c in _glob.glob(f"{root.format(pdb=pdb)}/**/seed_*/predictions/*_sample_*.cif",
+                            recursive=True):
+            m = _re.search(r"seed_(\d+)/predictions/.*_sample_(\d+)\.cif$", c)
+            if m:
+                out.setdefault((int(m.group(1)), int(m.group(2))), c)
+    return out
+
+
+_POSE_INDEX = {}
 os.makedirs(CACHE, exist_ok=True)
 
 by_pdb = collections.defaultdict(list)
@@ -68,7 +105,7 @@ def isolated_pair_dockq(pdb, c1, c2, cif, tag):
                 _subset(f"{GT}/{pdb}-assembly1.cif", ns, {c1, c2})
             except Exception:
                 return None
-            subprocess.run(["taskset", "-c", "0-71", OST, "compare-structures", "-m", ms, "-r", ns,
+            subprocess.run(["taskset", "-c", TASKSET, OST, "compare-structures", "-m", ms, "-r", ns,
                             "-o", o, "--fault-tolerant", "--min-pep-length", "4",
                             "--min-nuc-length", "4", "--dockq"],
                            env=ENV, capture_output=True, timeout=900)
@@ -83,12 +120,13 @@ def isolated_pair_dockq(pdb, c1, c2, cif, tag):
 def run_pose(a):
     """One OST call for a pose; returns {(c1,c2): (pair_iptm, dockq)} for every labelled interface."""
     pdb, s, k = a
-    cif = f"{PRED}/{pdb}/seed_{s}/predictions/{pdb}_sample_{k}.cif"
+    cif = _POSE_INDEX.get(pdb, {}).get((s, k)) or \
+        f"{PRED}/{pdb}/seed_{s}/predictions/{pdb}_sample_{k}.cif"
     if not os.path.exists(cif):
         return {}
     o = f"{CACHE}/{pdb}_{s}_{k}.json"
     if not (os.path.exists(o) and os.path.getsize(o)):
-        subprocess.run(["taskset", "-c", "0-71", OST, "compare-structures", "-m", cif,
+        subprocess.run(["taskset", "-c", TASKSET, OST, "compare-structures", "-m", cif,
                         "-r", f"{GT}/{pdb}-assembly1.cif", "-o", o,
                         "--fault-tolerant", "--min-pep-length", "4", "--min-nuc-length", "4",
                         "--dockq"], env=ENV, capture_output=True, timeout=900)
@@ -122,12 +160,22 @@ def run_pose(a):
     return out
 
 
+if _A.out:
+    OUTJ = _A.out
 res = json.load(open(OUTJ)) if os.path.exists(OUTJ) else {}
 pdbs = sorted(by_pdb)
+if _A.complexes:
+    want = set(_A.complexes.split(","))
+    pdbs = [p for p in pdbs if p in want]
 for n, pdb in enumerate(pdbs, 1):
-    if any(f"{pdb}_" in k for k in res):
+    if not _A.all_seeds and any(f"{pdb}_" in k for k in res):
         continue
-    jobs = [(pdb, s, k) for s in SEEDS for k in SAMPLES]
+    if _A.all_seeds:
+        _POSE_INDEX[pdb] = pose_paths(pdb)
+        jobs = [(pdb, _s, _k) for _s, _k in sorted(_POSE_INDEX[pdb])]
+        print(f"  {pdb}: {len(jobs)} poses on disk", flush=True)
+    else:
+        jobs = [(pdb, s, k) for s in SEEDS for k in SAMPLES]
     with ThreadPoolExecutor(NWORK) as ex:
         got = list(ex.map(run_pose, jobs))
     for c1, c2 in by_pdb[pdb]:

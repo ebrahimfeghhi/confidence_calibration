@@ -1,0 +1,13 @@
+[08-28 07:55:07] unif: arms_left=22 workers=0
+[08-28 07:55:07] !! unif has no workers but 22 arms remain
+[08-28 07:55:08] stage=d50  arms_left=0  workers=0
+[08-28 07:55:09] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 07:55:09] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 07:55:09] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 07:55:09] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 07:55:09] !! foreign process on a GPU: user=john pid=3765719
+[08-28 07:55:09] !! foreign process on a GPU: user=john pid=3855813
+[08-28 07:55:09] !! foreign process on a GPU: user=john pid=3765810
+[08-28 07:55:09] !! foreign process on a GPU: user=john pid=3883923
+[08-28 07:55:09] cores=17  errors=0
+0  disk=6.9T free

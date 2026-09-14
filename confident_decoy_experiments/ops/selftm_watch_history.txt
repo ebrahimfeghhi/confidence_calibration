@@ -1,0 +1,814 @@
+[08-25 20:23:42] selftm wave1: 19/20 arms left, workers=5
+[08-25 20:23:43]   !! foreign process on a GPU: kao
+[08-25 20:23:43]   !! foreign process on a GPU: kao
+[08-25 20:23:43]   !! ARM WITH <5 TEMPLATES: /home/ebrahim/tts_abag/confident_decoy_experiments/artifacts/selftm_7yxu_logs/selftm_7yxu_selftm.log /home/ebrahim/tts_abag/confident_decoy_experiments/artifacts/selftm_8av2_logs/selftm_8av2_selftm.log /home/ebrahim/tts_abag/confident_decoy_experiments/artifacts/selftm_8c5h_logs/selftm_8c5h_selftm.log 
+awk: cmd. line:1: {s+=$1} END {printf \"%.0f\", s/100}
+awk: cmd. line:1:                     ^ backslash not last character on line
+[08-25 20:23:44] cores= disk=6.8T
+[08-25 20:33:51] selftm wave1: 100/100 arms left, workers=5
+[08-25 20:33:52]   !! foreign process on a GPU: john
+[08-25 20:33:53]   !! foreign process on a GPU: john
+[08-25 20:33:53]   !! foreign process on a GPU: john
+[08-25 20:33:53]   !! foreign process on a GPU: john
+[08-25 20:33:53]   !! foreign process on a GPU: kao
+[08-25 20:33:53]   !! foreign process on a GPU: kao
+[08-25 20:33:53] cores=4 disk=6.8T
+[08-25 20:43:53] selftm wave1: 96/100 arms left, workers=5
+[08-25 20:43:54]   !! foreign process on a GPU: john
+[08-25 20:43:54]   !! foreign process on a GPU: john
+[08-25 20:43:54]   !! foreign process on a GPU: john
+[08-25 20:43:54]   !! foreign process on a GPU: john
+[08-25 20:43:54]   !! foreign process on a GPU: kao
+[08-25 20:43:54] cores=4 disk=6.8T
+[08-25 20:53:54] selftm wave1: 96/100 arms left, workers=5
+[08-25 20:53:56]   !! foreign process on a GPU: john
+[08-25 20:53:56]   !! foreign process on a GPU: john
+[08-25 20:53:56]   !! foreign process on a GPU: john
+[08-25 20:53:56]   !! foreign process on a GPU: john
+[08-25 20:53:56]   !! foreign process on a GPU: kao
+[08-25 20:53:56] cores=4 disk=6.8T
+[08-25 21:03:56] selftm wave1: 90/100 arms left, workers=5
+[08-25 21:03:57]   !! foreign process on a GPU: john
+[08-25 21:03:57]   !! foreign process on a GPU: john
+[08-25 21:03:57]   !! foreign process on a GPU: john
+[08-25 21:03:57]   !! foreign process on a GPU: john
+[08-25 21:03:57]   !! foreign process on a GPU: kao
+[08-25 21:03:57] cores=4 disk=6.8T
+[08-25 21:13:58] selftm wave1: 86/100 arms left, workers=5
+[08-25 21:13:59]   !! foreign process on a GPU: john
+[08-25 21:13:59]   !! foreign process on a GPU: john
+[08-25 21:13:59]   !! foreign process on a GPU: john
+[08-25 21:13:59]   !! foreign process on a GPU: john
+[08-25 21:13:59]   !! foreign process on a GPU: kao
+[08-25 21:13:59] cores=6 disk=6.8T
+[08-25 21:23:59] selftm wave1: 84/100 arms left, workers=5
+[08-25 21:24:00]   !! foreign process on a GPU: john
+[08-25 21:24:00]   !! foreign process on a GPU: john
+[08-25 21:24:00]   !! foreign process on a GPU: john
+[08-25 21:24:00]   !! foreign process on a GPU: john
+[08-25 21:24:01]   !! foreign process on a GPU: kao
+[08-25 21:24:01] cores=4 disk=6.8T
+[08-25 21:34:01] selftm wave1: 81/100 arms left, workers=5
+[08-25 21:34:02]   !! foreign process on a GPU: john
+[08-25 21:34:02]   !! foreign process on a GPU: john
+[08-25 21:34:02]   !! foreign process on a GPU: john
+[08-25 21:34:02]   !! foreign process on a GPU: john
+[08-25 21:34:02]   !! foreign process on a GPU: kao
+[08-25 21:34:02] cores=4 disk=6.8T
+[08-25 21:44:02] selftm wave1: 80/100 arms left, workers=4
+[08-25 21:44:03]   !! foreign process on a GPU: john
+[08-25 21:44:03]   !! foreign process on a GPU: john
+[08-25 21:44:03]   !! foreign process on a GPU: john
+[08-25 21:44:04]   !! foreign process on a GPU: john
+[08-25 21:44:04]   !! foreign process on a GPU: kao
+[08-25 21:44:04] cores=3 disk=6.8T
+[08-25 21:54:04] selftm wave1: 80/100 arms left, workers=4
+[08-25 21:54:05]   !! foreign process on a GPU: john
+[08-25 21:54:05]   !! foreign process on a GPU: john
+[08-25 21:54:05]   !! foreign process on a GPU: john
+[08-25 21:54:05]   !! foreign process on a GPU: john
+[08-25 21:54:05]   !! foreign process on a GPU: kao
+[08-25 21:54:05] cores=3 disk=6.8T
+[08-25 22:04:06] selftm wave1: 77/100 arms left, workers=4
+[08-25 22:04:07]   !! foreign process on a GPU: john
+[08-25 22:04:07]   !! foreign process on a GPU: john
+[08-25 22:04:07]   !! foreign process on a GPU: john
+[08-25 22:04:07]   !! foreign process on a GPU: john
+[08-25 22:04:07]   !! foreign process on a GPU: kao
+[08-25 22:04:07] cores=3 disk=6.8T
+[08-25 22:14:07] selftm wave1: 75/100 arms left, workers=4
+[08-25 22:14:08]   !! foreign process on a GPU: john
+[08-25 22:14:09]   !! foreign process on a GPU: john
+[08-25 22:14:09]   !! foreign process on a GPU: john
+[08-25 22:14:09]   !! foreign process on a GPU: john
+[08-25 22:14:09]   !! foreign process on a GPU: kao
+[08-25 22:14:09] cores=3 disk=6.8T
+[08-25 22:24:09] selftm wave1: 70/100 arms left, workers=4
+[08-25 22:24:10]   !! foreign process on a GPU: john
+[08-25 22:24:10]   !! foreign process on a GPU: john
+[08-25 22:24:10]   !! foreign process on a GPU: john
+[08-25 22:24:10]   !! foreign process on a GPU: john
+[08-25 22:24:10]   !! foreign process on a GPU: kao
+[08-25 22:24:10] cores=3 disk=6.8T
+[08-25 22:34:11] selftm wave1: 69/100 arms left, workers=4
+[08-25 22:34:12]   !! foreign process on a GPU: john
+[08-25 22:34:12]   !! foreign process on a GPU: john
+[08-25 22:34:12]   !! foreign process on a GPU: john
+[08-25 22:34:12]   !! foreign process on a GPU: john
+[08-25 22:34:12]   !! foreign process on a GPU: kao
+[08-25 22:34:12] cores=3 disk=6.8T
+[08-25 22:44:12] selftm wave1: 67/100 arms left, workers=4
+[08-25 22:44:13]   !! foreign process on a GPU: john
+[08-25 22:44:13]   !! foreign process on a GPU: john
+[08-25 22:44:13]   !! foreign process on a GPU: john
+[08-25 22:44:13]   !! foreign process on a GPU: john
+[08-25 22:44:13]   !! foreign process on a GPU: kao
+[08-25 22:44:14] cores=3 disk=6.8T
+[08-25 22:54:14] selftm wave1: 66/100 arms left, workers=4
+[08-25 22:54:15]   !! foreign process on a GPU: john
+[08-25 22:54:15]   !! foreign process on a GPU: john
+[08-25 22:54:15]   !! foreign process on a GPU: john
+[08-25 22:54:15]   !! foreign process on a GPU: john
+[08-25 22:54:15]   !! foreign process on a GPU: kao
+[08-25 22:54:15] cores=6 disk=6.8T
+[08-25 23:04:15] selftm wave1: 64/100 arms left, workers=4
+[08-25 23:04:17]   !! foreign process on a GPU: john
+[08-25 23:04:17]   !! foreign process on a GPU: john
+[08-25 23:04:17]   !! foreign process on a GPU: john
+[08-25 23:04:17]   !! foreign process on a GPU: john
+[08-25 23:04:17]   !! foreign process on a GPU: kao
+[08-25 23:04:17] cores=3 disk=6.8T
+[08-25 23:14:17] selftm wave1: 62/100 arms left, workers=4
+[08-25 23:14:18]   !! foreign process on a GPU: john
+[08-25 23:14:18]   !! foreign process on a GPU: john
+[08-25 23:14:18]   !! foreign process on a GPU: john
+[08-25 23:14:18]   !! foreign process on a GPU: john
+[08-25 23:14:19]   !! foreign process on a GPU: kao
+[08-25 23:14:19] cores=3 disk=6.8T
+[08-25 23:24:19] selftm wave1: 58/100 arms left, workers=4
+[08-25 23:24:20]   !! foreign process on a GPU: john
+[08-25 23:24:20]   !! foreign process on a GPU: john
+[08-25 23:24:20]   !! foreign process on a GPU: john
+[08-25 23:24:20]   !! foreign process on a GPU: john
+[08-25 23:24:20]   !! foreign process on a GPU: kao
+[08-25 23:24:20] cores=3 disk=6.8T
+[08-25 23:34:21] selftm wave1: 55/100 arms left, workers=4
+[08-25 23:34:22]   !! foreign process on a GPU: john
+[08-25 23:34:22]   !! foreign process on a GPU: john
+[08-25 23:34:22]   !! foreign process on a GPU: john
+[08-25 23:34:22]   !! foreign process on a GPU: john
+[08-25 23:34:22]   !! foreign process on a GPU: kao
+[08-25 23:34:22] cores=3 disk=6.8T
+[08-25 23:44:22] selftm wave1: 52/100 arms left, workers=4
+[08-25 23:44:23]   !! foreign process on a GPU: john
+[08-25 23:44:23]   !! foreign process on a GPU: john
+[08-25 23:44:23]   !! foreign process on a GPU: john
+[08-25 23:44:23]   !! foreign process on a GPU: john
+[08-25 23:44:23]   !! foreign process on a GPU: kao
+[08-25 23:44:24] cores=3 disk=6.8T
+[08-25 23:54:24] selftm wave1: 52/100 arms left, workers=4
+[08-25 23:54:25]   !! foreign process on a GPU: john
+[08-25 23:54:25]   !! foreign process on a GPU: john
+[08-25 23:54:25]   !! foreign process on a GPU: john
+[08-25 23:54:25]   !! foreign process on a GPU: john
+[08-25 23:54:25]   !! foreign process on a GPU: kao
+[08-25 23:54:25] cores=3 disk=6.7T
+[08-26 00:04:25] selftm wave1: 49/100 arms left, workers=4
+[08-26 00:04:27]   !! foreign process on a GPU: john
+[08-26 00:04:27]   !! foreign process on a GPU: john
+[08-26 00:04:27]   !! foreign process on a GPU: john
+[08-26 00:04:27]   !! foreign process on a GPU: john
+[08-26 00:04:27]   !! foreign process on a GPU: kao
+[08-26 00:04:27] cores=3 disk=6.7T
+[08-26 00:14:27] selftm wave1: 46/100 arms left, workers=4
+[08-26 00:14:28]   !! foreign process on a GPU: john
+[08-26 00:14:28]   !! foreign process on a GPU: john
+[08-26 00:14:28]   !! foreign process on a GPU: john
+[08-26 00:14:28]   !! foreign process on a GPU: john
+[08-26 00:14:28]   !! foreign process on a GPU: kao
+[08-26 00:14:29] cores=3 disk=6.7T
+[08-26 00:24:29] selftm wave1: 43/100 arms left, workers=4
+[08-26 00:24:30]   !! foreign process on a GPU: john
+[08-26 00:24:30]   !! foreign process on a GPU: john
+[08-26 00:24:30]   !! foreign process on a GPU: john
+[08-26 00:24:30]   !! foreign process on a GPU: john
+[08-26 00:24:30]   !! foreign process on a GPU: kao
+[08-26 00:24:30] cores=3 disk=6.7T
+[08-26 00:34:31] selftm wave1: 40/100 arms left, workers=4
+[08-26 00:34:32]   !! foreign process on a GPU: john
+[08-26 00:34:32]   !! foreign process on a GPU: john
+[08-26 00:34:32]   !! foreign process on a GPU: john
+[08-26 00:34:32]   !! foreign process on a GPU: john
+[08-26 00:34:32]   !! foreign process on a GPU: kao
+[08-26 00:34:32] cores=3 disk=6.7T
+[08-26 00:44:32] selftm wave1: 40/100 arms left, workers=4
+[08-26 00:44:33]   !! foreign process on a GPU: john
+[08-26 00:44:33]   !! foreign process on a GPU: john
+[08-26 00:44:34]   !! foreign process on a GPU: john
+[08-26 00:44:34]   !! foreign process on a GPU: john
+[08-26 00:44:34]   !! foreign process on a GPU: kao
+[08-26 00:44:34] cores=3 disk=6.7T
+[08-26 00:54:34] selftm wave1: 40/100 arms left, workers=4
+[08-26 00:54:35]   !! foreign process on a GPU: john
+[08-26 00:54:35]   !! foreign process on a GPU: john
+[08-26 00:54:35]   !! foreign process on a GPU: john
+[08-26 00:54:35]   !! foreign process on a GPU: john
+[08-26 00:54:35]   !! foreign process on a GPU: kao
+[08-26 00:54:35] cores=7 disk=6.7T
+[08-26 01:04:36] selftm wave1: 40/100 arms left, workers=4
+[08-26 01:04:36]   started selftmw0 on gpu0
+[08-26 01:04:36]   started selftmw1 on gpu1
+[08-26 01:04:36]   started selftmw2 on gpu2
+[08-26 01:04:36]   started selftmw3 on gpu3
+[08-26 01:04:36]   !! gpu0 IDLE
+[08-26 01:04:36]   !! gpu1 IDLE
+[08-26 01:04:37]   !! gpu2 IDLE
+[08-26 01:04:37]   !! gpu3 IDLE
+[08-26 01:04:37]   !! foreign process on a GPU: kao
+[08-26 01:04:37] cores=3 disk=6.7T
+[08-26 01:14:37] selftm wave1: 39/100 arms left, workers=8
+[08-26 01:14:38]   !! foreign process on a GPU: kao
+[08-26 01:14:38] cores=7 disk=6.7T
+[08-26 01:24:39] selftm wave1: 37/100 arms left, workers=8
+[08-26 01:24:40]   !! foreign process on a GPU: kao
+[08-26 01:24:40] cores=7 disk=6.7T
+[08-26 01:34:40] selftm wave1: 32/100 arms left, workers=8
+[08-26 01:34:41]   !! foreign process on a GPU: kao
+[08-26 01:34:41] cores=7 disk=6.7T
+[08-26 01:44:41] selftm wave1: 27/100 arms left, workers=8
+[08-26 01:44:42]   !! foreign process on a GPU: kao
+[08-26 01:44:43] cores=7 disk=6.7T
+[08-26 01:54:43] selftm wave1: 20/100 arms left, workers=8
+[08-26 01:54:44]   !! foreign process on a GPU: kao
+[08-26 01:54:44] cores=7 disk=6.7T
+[08-26 02:04:44] selftm wave1: 15/100 arms left, workers=8
+[08-26 02:04:45]   !! foreign process on a GPU: kao
+[08-26 02:04:45] cores=7 disk=6.7T
+[08-26 02:14:46] selftm wave1: 14/100 arms left, workers=8
+[08-26 02:14:47]   !! foreign process on a GPU: kao
+[08-26 02:14:47] cores=7 disk=6.7T
+[08-26 02:24:47] selftm wave1: 9/100 arms left, workers=8
+[08-26 02:24:48]   !! foreign process on a GPU: kao
+[08-26 02:24:48] cores=7 disk=6.7T
+[08-26 02:34:48] selftm wave1: 3/100 arms left, workers=8
+[08-26 02:34:48]   !! gpu0 IDLE
+[08-26 02:34:49]   !! gpu1 IDLE
+[08-26 02:34:49]   !! gpu3 IDLE
+[08-26 02:34:49]   !! foreign process on a GPU: kao
+[08-26 02:34:49] cores=3 disk=6.7T
+[08-26 02:44:50] selftm wave1: 0/100 arms left, workers=8
+[08-26 02:44:50] wave1 done -- stage1 wave2: 29/29 complexes left
+[08-26 02:44:50]   started s1bw0 on gpu0
+[08-26 02:44:50]   started s1bw1 on gpu1
+[08-26 02:44:50]   started s1bw2 on gpu2
+[08-26 02:44:50]   started s1bw3 on gpu3
+[08-26 02:44:50]   !! gpu0 IDLE
+[08-26 02:44:50]   !! gpu1 IDLE
+[08-26 02:44:50]   !! gpu2 IDLE
+[08-26 02:44:51]   !! gpu3 IDLE
+[08-26 02:44:51]   !! foreign process on a GPU: kao
+[08-26 02:44:51] cores=4 disk=6.7T
+[08-26 02:54:51] selftm wave1: 0/100 arms left, workers=8
+[08-26 02:54:51] wave1 done -- stage1 wave2: 10/29 complexes left
+[08-26 02:54:52]   !! foreign process on a GPU: kao
+[08-26 02:54:52] cores=4 disk=6.7T
+[08-26 03:04:53] selftm wave1: 0/100 arms left, workers=8
+[08-26 03:04:53] wave1 done -- stage1 wave2: 1/29 complexes left
+[08-26 03:04:53]   !! gpu0 IDLE
+[08-26 03:04:53]   !! gpu1 IDLE
+[08-26 03:04:53]   !! gpu2 IDLE
+[08-26 03:04:54]   !! foreign process on a GPU: kao
+[08-26 03:04:54] cores=4 disk=6.7T
+[08-26 03:14:54] selftm wave1: 0/100 arms left, workers=8
+[08-26 03:14:54] stage1 wave2 done -- building self-templates (ids 8300+)
+built 145 arms (29 complexes x 5 donors) x 10 seeds = 1450 seeds total
+  template ids 8700-8844
+[08-26 03:15:10]   !! gpu0 IDLE
+[08-26 03:15:10]   !! gpu1 IDLE
+[08-26 03:15:11]   !! gpu2 IDLE
+[08-26 03:15:11]   !! gpu3 IDLE
+[08-26 03:15:11]   !! foreign process on a GPU: kao
+[08-26 03:15:11] cores=0 disk=6.7T
+[08-26 03:25:11] selftm wave1: 0/100 arms left, workers=8
+[08-26 03:25:11] selftm wave2: 145/145 arms left
+[08-26 03:25:12]   started selftm2w0 on gpu0
+[08-26 03:25:12]   started selftm2w1 on gpu1
+[08-26 03:25:12]   started selftm2w2 on gpu2
+[08-26 03:25:12]   started selftm2w3 on gpu3
+[08-26 03:25:12]   !! gpu0 IDLE
+[08-26 03:25:12]   !! gpu1 IDLE
+[08-26 03:25:13]   !! gpu2 IDLE
+[08-26 03:25:13]   !! gpu3 IDLE
+[08-26 03:25:13]   !! foreign process on a GPU: kao
+[08-26 03:25:13] cores=4 disk=6.7T
+[08-26 03:35:13] selftm wave1: 0/100 arms left, workers=8
+[08-26 03:35:13] selftm wave2: 145/145 arms left
+[08-26 03:35:15]   !! foreign process on a GPU: kao
+[08-26 03:35:15] cores=4 disk=6.7T
+[08-26 03:45:15] selftm wave1: 0/100 arms left, workers=8
+[08-26 03:45:15] selftm wave2: 141/145 arms left
+[08-26 03:45:15]   !! gpu0 IDLE
+[08-26 03:45:16]   !! gpu2 IDLE
+[08-26 03:45:16]   !! gpu3 IDLE
+[08-26 03:45:16]   !! foreign process on a GPU: kao
+[08-26 03:45:16] cores=4 disk=6.7T
+[08-26 03:55:16] selftm wave1: 0/100 arms left, workers=8
+[08-26 03:55:17] selftm wave2: 138/145 arms left
+[08-26 03:55:18]   !! foreign process on a GPU: kao
+[08-26 03:55:18] cores=4 disk=6.7T
+[08-26 04:05:18] selftm wave1: 0/100 arms left, workers=8
+[08-26 04:05:18] selftm wave2: 132/145 arms left
+[08-26 04:05:19]   !! gpu2 IDLE
+[08-26 04:05:19]   !! gpu3 IDLE
+[08-26 04:05:19]   !! foreign process on a GPU: kao
+[08-26 04:05:19] cores=4 disk=6.7T
+[08-26 04:15:20] selftm wave1: 0/100 arms left, workers=8
+[08-26 04:15:20] selftm wave2: 130/145 arms left
+[08-26 04:15:21]   !! foreign process on a GPU: kao
+[08-26 04:15:21] cores=4 disk=6.7T
+[08-26 04:25:21] selftm wave1: 0/100 arms left, workers=8
+[08-26 04:25:22] selftm wave2: 130/145 arms left
+[08-26 04:25:23]   !! foreign process on a GPU: kao
+[08-26 04:25:23] cores=4 disk=6.7T
+[08-26 04:35:23] selftm wave1: 0/100 arms left, workers=8
+[08-26 04:35:23] selftm wave2: 128/145 arms left
+[08-26 04:35:25]   !! foreign process on a GPU: kao
+[08-26 04:35:25] cores=4 disk=6.7T
+[08-26 04:45:25] selftm wave1: 0/100 arms left, workers=8
+[08-26 04:45:25] selftm wave2: 124/145 arms left
+[08-26 04:45:26]   !! foreign process on a GPU: kao
+[08-26 04:45:27] cores=4 disk=6.7T
+[08-26 04:55:27] selftm wave1: 0/100 arms left, workers=8
+[08-26 04:55:27] selftm wave2: 121/145 arms left
+[08-26 04:55:28]   !! foreign process on a GPU: kao
+[08-26 04:55:28] cores=4 disk=6.7T
+[08-26 05:05:28] selftm wave1: 0/100 arms left, workers=8
+[08-26 05:05:29] selftm wave2: 117/145 arms left
+[08-26 05:05:30]   !! foreign process on a GPU: kao
+[08-26 05:05:30] cores=4 disk=6.7T
+[08-26 05:15:30] selftm wave1: 0/100 arms left, workers=8
+[08-26 05:15:30] selftm wave2: 111/145 arms left
+[08-26 05:15:31]   !! gpu2 IDLE
+[08-26 05:15:32]   !! foreign process on a GPU: kao
+[08-26 05:15:32] cores=4 disk=6.7T
+[08-26 05:25:32] selftm wave1: 0/100 arms left, workers=8
+[08-26 05:25:32] selftm wave2: 100/145 arms left
+[08-26 05:25:33]   !! foreign process on a GPU: kao
+[08-26 05:25:33] cores=4 disk=6.7T
+[08-26 05:35:34] selftm wave1: 0/100 arms left, workers=8
+[08-26 05:35:34] selftm wave2: 96/145 arms left
+[08-26 05:35:35]   !! foreign process on a GPU: kao
+[08-26 05:35:35] cores=4 disk=6.7T
+[08-26 05:45:35] selftm wave1: 0/100 arms left, workers=8
+[08-26 05:45:36] selftm wave2: 95/145 arms left
+[08-26 05:45:37]   !! foreign process on a GPU: kao
+[08-26 05:45:37] cores=4 disk=6.7T
+[08-26 05:55:37] selftm wave1: 0/100 arms left, workers=8
+[08-26 05:55:37] selftm wave2: 95/145 arms left
+[08-26 05:55:39]   !! foreign process on a GPU: kao
+[08-26 05:55:39] cores=7 disk=6.7T
+[08-26 06:05:39] selftm wave1: 0/100 arms left, workers=8
+[08-26 06:05:39] selftm wave2: 95/145 arms left
+[08-26 06:05:40]   !! foreign process on a GPU: kao
+[08-26 06:05:40] cores=6 disk=6.7T
+[08-26 06:15:41] selftm wave1: 0/100 arms left, workers=8
+[08-26 06:15:41] selftm wave2: 92/145 arms left
+[08-26 06:15:42]   !! foreign process on a GPU: kao
+[08-26 06:15:42] cores=4 disk=6.7T
+[08-26 06:25:42] selftm wave1: 0/100 arms left, workers=8
+[08-26 06:25:43] selftm wave2: 88/145 arms left
+[08-26 06:25:44]   !! foreign process on a GPU: kao
+[08-26 06:25:44] cores=4 disk=6.7T
+[08-26 06:35:44] selftm wave1: 0/100 arms left, workers=8
+[08-26 06:35:44] selftm wave2: 83/145 arms left
+[08-26 06:35:46]   !! foreign process on a GPU: kao
+[08-26 06:35:46] cores=4 disk=6.7T
+[08-26 06:45:46] selftm wave1: 0/100 arms left, workers=8
+[08-26 06:45:46] selftm wave2: 81/145 arms left
+[08-26 06:45:47]   !! foreign process on a GPU: kao
+[08-26 06:45:47] cores=6 disk=6.7T
+[08-26 06:55:48] selftm wave1: 0/100 arms left, workers=8
+[08-26 06:55:48] selftm wave2: 77/145 arms left
+[08-26 06:55:49]   !! foreign process on a GPU: kao
+[08-26 06:55:49] cores=6 disk=6.7T
+[08-26 07:05:49] selftm wave1: 0/100 arms left, workers=8
+[08-26 07:05:49] selftm wave2: 68/145 arms left
+[08-26 07:05:50]   !! gpu0 IDLE
+[08-26 07:05:50]   !! gpu3 IDLE
+[08-26 07:05:51]   !! foreign process on a GPU: kao
+[08-26 07:05:51] cores=64 disk=6.7T
+[08-26 07:15:51] selftm wave1: 0/100 arms left, workers=8
+[08-26 07:15:51] selftm wave2: 65/145 arms left
+[08-26 07:15:52]   !! foreign process on a GPU: kao
+[08-26 07:15:52]   !! foreign process on a GPU: john
+[08-26 07:15:52] cores=72 disk=6.7T
+[08-26 07:25:53] selftm wave1: 0/100 arms left, workers=8
+[08-26 07:25:53] selftm wave2: 65/145 arms left
+[08-26 07:25:54]   !! foreign process on a GPU: kao
+[08-26 07:25:54] cores=4 disk=6.7T
+[08-26 07:35:54] selftm wave1: 0/100 arms left, workers=8
+[08-26 07:35:55] selftm wave2: 65/145 arms left
+[08-26 07:35:56]   !! foreign process on a GPU: kao
+[08-26 07:35:56] cores=4 disk=6.7T
+[08-26 07:45:56] selftm wave1: 0/100 arms left, workers=8
+[08-26 07:45:56] selftm wave2: 65/145 arms left
+[08-26 07:45:57]   !! foreign process on a GPU: kao
+[08-26 07:45:58] cores=4 disk=6.7T
+[08-26 07:55:58] selftm wave1: 0/100 arms left, workers=8
+[08-26 07:55:58] selftm wave2: 65/145 arms left
+[08-26 07:55:59]   !! foreign process on a GPU: kao
+[08-26 07:55:59] cores=6 disk=6.7T
+[08-26 08:05:59] selftm wave1: 0/100 arms left, workers=8
+[08-26 08:06:00] selftm wave2: 62/145 arms left
+[08-26 08:06:00]   !! gpu1 IDLE
+[08-26 08:06:00]   !! gpu2 IDLE
+[08-26 08:06:00]   !! foreign process on a GPU: john
+[08-26 08:06:01]   !! foreign process on a GPU: kao
+[08-26 08:06:01]   !! foreign process on a GPU: john
+[08-26 08:06:01]   !! foreign process on a GPU: john
+[08-26 08:06:01]   !! foreign process on a GPU: john
+[08-26 08:06:01] cores=4 disk=6.7T
+[08-26 08:16:01] selftm wave1: 0/100 arms left, workers=8
+[08-26 08:16:01] selftm wave2: 61/145 arms left
+[08-26 08:16:02]   !! foreign process on a GPU: john
+[08-26 08:16:02]   !! foreign process on a GPU: kao
+[08-26 08:16:02]   !! foreign process on a GPU: john
+[08-26 08:16:02]   !! foreign process on a GPU: john
+[08-26 08:16:02]   !! foreign process on a GPU: john
+[08-26 08:16:02] cores=4 disk=6.7T
+[08-26 08:26:03] selftm wave1: 0/100 arms left, workers=8
+[08-26 08:26:03] selftm wave2: 58/145 arms left
+[08-26 08:26:04]   !! foreign process on a GPU: john
+[08-26 08:26:04]   !! foreign process on a GPU: kao
+[08-26 08:26:04]   !! foreign process on a GPU: john
+[08-26 08:26:04]   !! foreign process on a GPU: john
+[08-26 08:26:04]   !! foreign process on a GPU: john
+[08-26 08:26:04] cores=4 disk=6.7T
+[08-26 08:36:04] selftm wave1: 0/100 arms left, workers=8
+[08-26 08:36:04] selftm wave2: 57/145 arms left
+[08-26 08:36:05]   !! foreign process on a GPU: john
+[08-26 08:36:05]   !! foreign process on a GPU: kao
+[08-26 08:36:05]   !! foreign process on a GPU: john
+[08-26 08:36:06]   !! foreign process on a GPU: john
+[08-26 08:36:06]   !! foreign process on a GPU: john
+[08-26 08:36:06] cores=4 disk=6.7T
+[08-26 08:46:06] selftm wave1: 0/100 arms left, workers=8
+[08-26 08:46:06] selftm wave2: 53/145 arms left
+[08-26 08:46:07]   !! foreign process on a GPU: john
+[08-26 08:46:07]   !! foreign process on a GPU: kao
+[08-26 08:46:07]   !! foreign process on a GPU: john
+[08-26 08:46:07]   !! foreign process on a GPU: john
+[08-26 08:46:07]   !! foreign process on a GPU: john
+[08-26 08:46:07] cores=4 disk=6.7T
+[08-26 08:56:07] selftm wave1: 0/100 arms left, workers=8
+[08-26 08:56:08] selftm wave2: 51/145 arms left
+[08-26 08:56:09]   !! foreign process on a GPU: john
+[08-26 08:56:09]   !! foreign process on a GPU: kao
+[08-26 08:56:09]   !! foreign process on a GPU: john
+[08-26 08:56:09]   !! foreign process on a GPU: john
+[08-26 08:56:09]   !! foreign process on a GPU: john
+[08-26 08:56:09] cores=4 disk=6.7T
+[08-26 09:06:09] selftm wave1: 0/100 arms left, workers=8
+[08-26 09:06:09] selftm wave2: 51/145 arms left
+[08-26 09:06:10]   !! foreign process on a GPU: john
+[08-26 09:06:10]   !! foreign process on a GPU: kao
+[08-26 09:06:10]   !! foreign process on a GPU: john
+[08-26 09:06:11]   !! foreign process on a GPU: john
+[08-26 09:06:11]   !! foreign process on a GPU: john
+[08-26 09:06:11] cores=4 disk=6.7T
+[08-26 09:16:11] selftm wave1: 0/100 arms left, workers=8
+[08-26 09:16:11] selftm wave2: 46/145 arms left
+[08-26 09:16:11]   !! gpu1 IDLE
+[08-26 09:16:12]   !! foreign process on a GPU: john
+[08-26 09:16:12]   !! foreign process on a GPU: kao
+[08-26 09:16:12]   !! foreign process on a GPU: john
+[08-26 09:16:12]   !! foreign process on a GPU: john
+[08-26 09:16:12]   !! foreign process on a GPU: john
+[08-26 09:16:12] cores=4 disk=6.7T
+[08-26 09:26:12] selftm wave1: 0/100 arms left, workers=8
+[08-26 09:26:13] selftm wave2: 43/145 arms left
+[08-26 09:26:14]   !! foreign process on a GPU: john
+[08-26 09:26:14]   !! foreign process on a GPU: kao
+[08-26 09:26:14]   !! foreign process on a GPU: john
+[08-26 09:26:14]   !! foreign process on a GPU: john
+[08-26 09:26:14]   !! foreign process on a GPU: john
+[08-26 09:26:14] cores=4 disk=6.7T
+[08-26 09:36:14] selftm wave1: 0/100 arms left, workers=8
+[08-26 09:36:14] selftm wave2: 42/145 arms left
+[08-26 09:36:15]   !! foreign process on a GPU: john
+[08-26 09:36:15]   !! foreign process on a GPU: kao
+[08-26 09:36:15]   !! foreign process on a GPU: john
+[08-26 09:36:15]   !! foreign process on a GPU: john
+[08-26 09:36:15]   !! foreign process on a GPU: john
+[08-26 09:36:16] cores=4 disk=6.7T
+[08-26 09:46:16] selftm wave1: 0/100 arms left, workers=8
+[08-26 09:46:16] selftm wave2: 40/145 arms left
+[08-26 09:46:17]   !! foreign process on a GPU: john
+[08-26 09:46:17]   !! foreign process on a GPU: kao
+[08-26 09:46:17]   !! foreign process on a GPU: john
+[08-26 09:46:17]   !! foreign process on a GPU: john
+[08-26 09:46:17]   !! foreign process on a GPU: john
+[08-26 09:46:17] cores=6 disk=6.7T
+[08-26 09:56:17] selftm wave1: 0/100 arms left, workers=8
+[08-26 09:56:18] selftm wave2: 39/145 arms left
+[08-26 09:56:19]   !! foreign process on a GPU: john
+[08-26 09:56:19]   !! foreign process on a GPU: kao
+[08-26 09:56:19]   !! foreign process on a GPU: john
+[08-26 09:56:19]   !! foreign process on a GPU: john
+[08-26 09:56:19]   !! foreign process on a GPU: john
+[08-26 09:56:19] cores=4 disk=6.7T
+[08-26 10:06:19] selftm wave1: 0/100 arms left, workers=8
+[08-26 10:06:19] selftm wave2: 36/145 arms left
+[08-26 10:06:20]   !! foreign process on a GPU: john
+[08-26 10:06:20]   !! foreign process on a GPU: kao
+[08-26 10:06:20]   !! foreign process on a GPU: john
+[08-26 10:06:20]   !! foreign process on a GPU: john
+[08-26 10:06:20]   !! foreign process on a GPU: john
+[08-26 10:06:20] cores=4 disk=6.7T
+[08-26 10:16:21] selftm wave1: 0/100 arms left, workers=8
+[08-26 10:16:21] selftm wave2: 35/145 arms left
+[08-26 10:16:21]   !! gpu2 IDLE
+[08-26 10:16:22]   !! foreign process on a GPU: john
+[08-26 10:16:22]   !! foreign process on a GPU: kao
+[08-26 10:16:22]   !! foreign process on a GPU: john
+[08-26 10:16:22]   !! foreign process on a GPU: john
+[08-26 10:16:22]   !! foreign process on a GPU: john
+[08-26 10:16:22] cores=7 disk=6.7T
+[08-26 10:26:22] selftm wave1: 0/100 arms left, workers=8
+[08-26 10:26:22] selftm wave2: 33/145 arms left
+[08-26 10:26:23]   !! foreign process on a GPU: john
+[08-26 10:26:24]   !! foreign process on a GPU: kao
+[08-26 10:26:24]   !! foreign process on a GPU: john
+[08-26 10:26:24]   !! foreign process on a GPU: john
+[08-26 10:26:24]   !! foreign process on a GPU: john
+[08-26 10:26:24] cores=4 disk=6.7T
+[08-26 10:36:24] selftm wave1: 0/100 arms left, workers=8
+[08-26 10:36:24] selftm wave2: 28/145 arms left
+[08-26 10:36:25]   !! foreign process on a GPU: john
+[08-26 10:36:25]   !! foreign process on a GPU: kao
+[08-26 10:36:25]   !! foreign process on a GPU: john
+[08-26 10:36:25]   !! foreign process on a GPU: john
+[08-26 10:36:25]   !! foreign process on a GPU: john
+[08-26 10:36:25] cores=4 disk=6.7T
+[08-26 10:46:26] selftm wave1: 0/100 arms left, workers=8
+[08-26 10:46:26] selftm wave2: 25/145 arms left
+[08-26 10:46:27]   !! foreign process on a GPU: john
+[08-26 10:46:27]   !! foreign process on a GPU: kao
+[08-26 10:46:27]   !! foreign process on a GPU: john
+[08-26 10:46:27]   !! foreign process on a GPU: john
+[08-26 10:46:27]   !! foreign process on a GPU: john
+[08-26 10:46:27] cores=4 disk=6.7T
+[08-26 10:56:27] selftm wave1: 0/100 arms left, workers=8
+[08-26 10:56:27] selftm wave2: 22/145 arms left
+[08-26 10:56:28]   !! foreign process on a GPU: john
+[08-26 10:56:29]   !! foreign process on a GPU: kao
+[08-26 10:56:29]   !! foreign process on a GPU: john
+[08-26 10:56:29]   !! foreign process on a GPU: john
+[08-26 10:56:29]   !! foreign process on a GPU: john
+[08-26 10:56:29] cores=4 disk=6.7T
+[08-26 11:06:29] selftm wave1: 0/100 arms left, workers=8
+[08-26 11:06:29] selftm wave2: 20/145 arms left
+[08-26 11:06:30]   !! foreign process on a GPU: john
+[08-26 11:06:30]   !! foreign process on a GPU: kao
+[08-26 11:06:30]   !! foreign process on a GPU: john
+[08-26 11:06:30]   !! foreign process on a GPU: john
+[08-26 11:06:30]   !! foreign process on a GPU: john
+[08-26 11:06:30] cores=4 disk=6.7T
+[08-26 11:16:31] selftm wave1: 0/100 arms left, workers=8
+[08-26 11:16:31] selftm wave2: 18/145 arms left
+[08-26 11:16:32]   !! foreign process on a GPU: john
+[08-26 11:16:32]   !! foreign process on a GPU: kao
+[08-26 11:16:32]   !! foreign process on a GPU: john
+[08-26 11:16:32]   !! foreign process on a GPU: john
+[08-26 11:16:32]   !! foreign process on a GPU: john
+[08-26 11:16:32] cores=4 disk=6.7T
+[08-26 11:26:32] selftm wave1: 0/100 arms left, workers=8
+[08-26 11:26:32] selftm wave2: 16/145 arms left
+[08-26 11:26:33]   !! foreign process on a GPU: john
+[08-26 11:26:33]   !! foreign process on a GPU: kao
+[08-26 11:26:34]   !! foreign process on a GPU: john
+[08-26 11:26:34]   !! foreign process on a GPU: john
+[08-26 11:26:34]   !! foreign process on a GPU: john
+[08-26 11:26:34] cores=4 disk=6.7T
+[08-26 11:36:34] selftm wave1: 0/100 arms left, workers=8
+[08-26 11:36:34] selftm wave2: 15/145 arms left
+[08-26 11:36:35]   !! foreign process on a GPU: john
+[08-26 11:36:35]   !! foreign process on a GPU: kao
+[08-26 11:36:35]   !! foreign process on a GPU: john
+[08-26 11:36:35]   !! foreign process on a GPU: john
+[08-26 11:36:35]   !! foreign process on a GPU: john
+[08-26 11:36:35] cores=3 disk=6.7T
+[08-26 11:46:36] selftm wave1: 0/100 arms left, workers=8
+[08-26 11:46:36] selftm wave2: 15/145 arms left
+[08-26 11:46:37]   !! foreign process on a GPU: john
+[08-26 11:46:37]   !! foreign process on a GPU: kao
+[08-26 11:46:37]   !! foreign process on a GPU: john
+[08-26 11:46:37]   !! foreign process on a GPU: john
+[08-26 11:46:37]   !! foreign process on a GPU: john
+[08-26 11:46:37] cores=3 disk=6.7T
+[08-26 11:56:37] selftm wave1: 0/100 arms left, workers=8
+[08-26 11:56:37] selftm wave2: 15/145 arms left
+[08-26 11:56:38]   !! foreign process on a GPU: john
+[08-26 11:56:38]   !! foreign process on a GPU: kao
+[08-26 11:56:38]   !! foreign process on a GPU: john
+[08-26 11:56:38]   !! foreign process on a GPU: john
+[08-26 11:56:39]   !! foreign process on a GPU: john
+[08-26 11:56:39] cores=3 disk=6.7T
+[08-26 12:06:39] selftm wave1: 0/100 arms left, workers=8
+[08-26 12:06:39] selftm wave2: 15/145 arms left
+[08-26 12:06:40]   !! foreign process on a GPU: john
+[08-26 12:06:40]   !! foreign process on a GPU: kao
+[08-26 12:06:40]   !! foreign process on a GPU: john
+[08-26 12:06:40]   !! foreign process on a GPU: john
+[08-26 12:06:40]   !! foreign process on a GPU: john
+[08-26 12:06:40] cores=3 disk=6.7T
+[08-26 12:16:40] selftm wave1: 0/100 arms left, workers=8
+[08-26 12:16:41] selftm wave2: 15/145 arms left
+[08-26 12:16:42]   !! foreign process on a GPU: john
+[08-26 12:16:42]   !! foreign process on a GPU: kao
+[08-26 12:16:42]   !! foreign process on a GPU: john
+[08-26 12:16:42]   !! foreign process on a GPU: john
+[08-26 12:16:42]   !! foreign process on a GPU: john
+[08-26 12:16:42] cores=3 disk=6.7T
+[08-26 12:26:42] selftm wave1: 0/100 arms left, workers=8
+[08-26 12:26:42] selftm wave2: 15/145 arms left
+[08-26 12:26:43]   !! foreign process on a GPU: john
+[08-26 12:26:43]   !! foreign process on a GPU: kao
+[08-26 12:26:43]   !! foreign process on a GPU: john
+[08-26 12:26:43]   !! foreign process on a GPU: john
+[08-26 12:26:43]   !! foreign process on a GPU: john
+[08-26 12:26:43] cores=6 disk=6.7T
+[08-26 12:36:44] selftm wave1: 0/100 arms left, workers=8
+[08-26 12:36:44] selftm wave2: 15/145 arms left
+[08-26 12:36:45]   !! foreign process on a GPU: john
+[08-26 12:36:45]   !! foreign process on a GPU: kao
+[08-26 12:36:45]   !! foreign process on a GPU: john
+[08-26 12:36:45]   !! foreign process on a GPU: john
+[08-26 12:36:45]   !! foreign process on a GPU: john
+[08-26 12:36:45] cores=3 disk=6.7T
+[08-26 12:46:45] selftm wave1: 0/100 arms left, workers=8
+[08-26 12:46:46] selftm wave2: 15/145 arms left
+[08-26 12:46:46]   !! foreign process on a GPU: john
+[08-26 12:46:47]   !! foreign process on a GPU: kao
+[08-26 12:46:47]   !! foreign process on a GPU: john
+[08-26 12:46:47]   !! foreign process on a GPU: john
+[08-26 12:46:47]   !! foreign process on a GPU: john
+[08-26 12:46:47] cores=3 disk=6.7T
+[08-26 12:56:47] selftm wave1: 0/100 arms left, workers=8
+[08-26 12:56:47] selftm wave2: 15/145 arms left
+[08-26 12:56:48]   !! foreign process on a GPU: john
+[08-26 12:56:48]   !! foreign process on a GPU: kao
+[08-26 12:56:48]   !! foreign process on a GPU: john
+[08-26 12:56:48]   !! foreign process on a GPU: john
+[08-26 12:56:48]   !! foreign process on a GPU: john
+[08-26 12:56:48] cores=3 disk=6.7T
+[08-26 13:06:49] selftm wave1: 0/100 arms left, workers=8
+[08-26 13:06:49] selftm wave2: 15/145 arms left
+[08-26 13:06:50]   !! foreign process on a GPU: john
+[08-26 13:06:50]   !! foreign process on a GPU: kao
+[08-26 13:06:50]   !! foreign process on a GPU: john
+[08-26 13:06:50]   !! foreign process on a GPU: john
+[08-26 13:06:50]   !! foreign process on a GPU: john
+[08-26 13:06:50] cores=3 disk=6.7T
+[08-26 13:16:50] selftm wave1: 0/100 arms left, workers=8
+[08-26 13:16:50] selftm wave2: 15/145 arms left
+[08-26 13:16:51]   !! foreign process on a GPU: john
+[08-26 13:16:51]   !! foreign process on a GPU: kao
+[08-26 13:16:52]   !! foreign process on a GPU: john
+[08-26 13:16:52]   !! foreign process on a GPU: john
+[08-26 13:16:52]   !! foreign process on a GPU: john
+[08-26 13:16:52] cores=3 disk=6.7T
+[08-26 13:26:52] selftm wave1: 0/100 arms left, workers=8
+[08-26 13:26:52] selftm wave2: 15/145 arms left
+[08-26 13:26:53]   !! foreign process on a GPU: john
+[08-26 13:26:53]   !! foreign process on a GPU: kao
+[08-26 13:26:53]   !! foreign process on a GPU: john
+[08-26 13:26:53]   !! foreign process on a GPU: john
+[08-26 13:26:53]   !! foreign process on a GPU: john
+[08-26 13:26:53] cores=3 disk=6.7T
+[08-26 13:36:53] selftm wave1: 0/100 arms left, workers=8
+[08-26 13:36:54] selftm wave2: 15/145 arms left
+[08-26 13:36:55]   !! foreign process on a GPU: john
+[08-26 13:36:55]   !! foreign process on a GPU: kao
+[08-26 13:36:55]   !! foreign process on a GPU: john
+[08-26 13:36:55]   !! foreign process on a GPU: john
+[08-26 13:36:55]   !! foreign process on a GPU: john
+[08-26 13:36:55] cores=3 disk=6.7T
+[08-26 13:46:55] selftm wave1: 0/100 arms left, workers=8
+[08-26 13:46:55] selftm wave2: 14/145 arms left
+[08-26 13:46:56]   !! foreign process on a GPU: john
+[08-26 13:46:56]   !! foreign process on a GPU: kao
+[08-26 13:46:56]   !! foreign process on a GPU: john
+[08-26 13:46:57]   !! foreign process on a GPU: john
+[08-26 13:46:57]   !! foreign process on a GPU: john
+[08-26 13:46:57] cores=6 disk=6.7T
+[08-26 13:56:57] selftm wave1: 0/100 arms left, workers=8
+[08-26 13:56:57] selftm wave2: 13/145 arms left
+[08-26 13:56:58]   !! foreign process on a GPU: john
+[08-26 13:56:58]   !! foreign process on a GPU: kao
+[08-26 13:56:58]   !! foreign process on a GPU: john
+[08-26 13:56:58]   !! foreign process on a GPU: john
+[08-26 13:56:58]   !! foreign process on a GPU: john
+[08-26 13:56:58] cores=3 disk=6.7T
+[08-26 14:06:58] selftm wave1: 0/100 arms left, workers=8
+[08-26 14:06:59] selftm wave2: 10/145 arms left
+[08-26 14:06:59]   !! gpu2 IDLE
+[08-26 14:07:00]   !! foreign process on a GPU: john
+[08-26 14:07:00]   !! foreign process on a GPU: kao
+[08-26 14:07:00]   !! foreign process on a GPU: john
+[08-26 14:07:00]   !! foreign process on a GPU: john
+[08-26 14:07:00]   !! foreign process on a GPU: john
+[08-26 14:07:00] cores=3 disk=6.7T
+[08-26 14:17:00] selftm wave1: 0/100 arms left, workers=8
+[08-26 14:17:00] selftm wave2: 8/145 arms left
+[08-26 14:17:01]   !! foreign process on a GPU: john
+[08-26 14:17:01]   !! foreign process on a GPU: kao
+[08-26 14:17:01]   !! foreign process on a GPU: john
+[08-26 14:17:01]   !! foreign process on a GPU: john
+[08-26 14:17:01]   !! foreign process on a GPU: john
+[08-26 14:17:02] cores=3 disk=6.7T
+[08-26 14:27:02] selftm wave1: 0/100 arms left, workers=8
+[08-26 14:27:02] selftm wave2: 5/145 arms left
+[08-26 14:27:02]   !! gpu2 IDLE
+[08-26 14:27:03]   !! foreign process on a GPU: john
+[08-26 14:27:03]   !! foreign process on a GPU: kao
+[08-26 14:27:03]   !! foreign process on a GPU: john
+[08-26 14:27:03]   !! foreign process on a GPU: john
+[08-26 14:27:03]   !! foreign process on a GPU: john
+[08-26 14:27:03] cores=3 disk=6.7T
+[08-26 14:37:03] selftm wave1: 0/100 arms left, workers=8
+[08-26 14:37:04] selftm wave2: 2/145 arms left
+[08-26 14:37:04]   !! gpu1 IDLE
+[08-26 14:37:04]   !! gpu2 IDLE
+[08-26 14:37:04]   !! foreign process on a GPU: john
+[08-26 14:37:04]   !! foreign process on a GPU: kao
+[08-26 14:37:04]   !! foreign process on a GPU: john
+[08-26 14:37:05]   !! foreign process on a GPU: john
+[08-26 14:37:05]   !! foreign process on a GPU: john
+[08-26 14:37:05] cores=1 disk=6.7T
+[08-26 14:47:05] selftm wave1: 0/100 arms left, workers=8
+[08-26 14:47:05] selftm wave2: 2/145 arms left
+[08-26 14:47:05]   !! gpu1 IDLE
+[08-26 14:47:06]   !! gpu2 IDLE
+[08-26 14:47:06]   !! foreign process on a GPU: john
+[08-26 14:47:06]   !! foreign process on a GPU: kao
+[08-26 14:47:06]   !! foreign process on a GPU: john
+[08-26 14:47:06]   !! foreign process on a GPU: john
+[08-26 14:47:06]   !! foreign process on a GPU: john
+[08-26 14:47:06] cores=1 disk=6.7T
+[08-26 14:57:06] selftm wave1: 0/100 arms left, workers=8
+[08-26 14:57:07] selftm wave2: 2/145 arms left
+[08-26 14:57:07]   !! gpu1 IDLE
+[08-26 14:57:07]   !! gpu2 IDLE
+[08-26 14:57:08]   !! foreign process on a GPU: john
+[08-26 14:57:08]   !! foreign process on a GPU: kao
+[08-26 14:57:08]   !! foreign process on a GPU: john
+[08-26 14:57:08]   !! foreign process on a GPU: john
+[08-26 14:57:08]   !! foreign process on a GPU: john
+[08-26 14:57:08] cores=4 disk=6.7T
+[08-26 15:07:08] selftm wave1: 0/100 arms left, workers=8
+[08-26 15:07:08] selftm wave2: 2/145 arms left
+[08-26 15:07:09]   !! gpu1 IDLE
+[08-26 15:07:09]   !! gpu2 IDLE
+[08-26 15:07:09]   !! foreign process on a GPU: john
+[08-26 15:07:09]   !! foreign process on a GPU: kao
+[08-26 15:07:09]   !! foreign process on a GPU: john
+[08-26 15:07:09]   !! foreign process on a GPU: john
+[08-26 15:07:09]   !! foreign process on a GPU: john
+[08-26 15:07:09] cores=1 disk=6.7T
+[08-26 15:17:09] selftm wave1: 0/100 arms left, workers=8
+[08-26 15:17:10] selftm wave2: 2/145 arms left
+[08-26 15:17:10]   !! gpu1 IDLE
+[08-26 15:17:10]   !! gpu2 IDLE
+[08-26 15:17:11]   !! foreign process on a GPU: john
+[08-26 15:17:11]   !! foreign process on a GPU: kao
+[08-26 15:17:11]   !! foreign process on a GPU: john
+[08-26 15:17:11]   !! foreign process on a GPU: john
+[08-26 15:17:11]   !! foreign process on a GPU: john
+[08-26 15:17:11] cores=1 disk=6.7T
+[08-26 15:27:11] selftm wave1: 0/100 arms left, workers=8
+[08-26 15:27:11] selftm wave2: 2/145 arms left
+[08-26 15:27:12]   !! gpu1 IDLE
+[08-26 15:27:12]   !! gpu2 IDLE
+[08-26 15:27:12]   !! foreign process on a GPU: john
+[08-26 15:27:12]   !! foreign process on a GPU: kao
+[08-26 15:27:12]   !! foreign process on a GPU: john
+[08-26 15:27:12]   !! foreign process on a GPU: john
+[08-26 15:27:12]   !! foreign process on a GPU: john
+[08-26 15:27:12] cores=1 disk=6.7T
+[08-26 15:37:12] selftm wave1: 0/100 arms left, workers=8
+[08-26 15:37:13] selftm wave2: 2/145 arms left
+[08-26 15:37:13]   !! gpu1 IDLE
+[08-26 15:37:13]   !! gpu2 IDLE
+[08-26 15:37:14]   !! foreign process on a GPU: john
+[08-26 15:37:14]   !! foreign process on a GPU: kao
+[08-26 15:37:14]   !! foreign process on a GPU: john
+[08-26 15:37:14]   !! foreign process on a GPU: john
+[08-26 15:37:14]   !! foreign process on a GPU: john
+[08-26 15:37:14] cores=1 disk=6.7T
+[08-26 15:47:14] selftm wave1: 0/100 arms left, workers=8
+[08-26 15:47:14] selftm wave2: 2/145 arms left
+[08-26 15:47:15]   !! gpu1 IDLE
+[08-26 15:47:15]   !! gpu2 IDLE
+[08-26 15:47:15]   !! foreign process on a GPU: john
+[08-26 15:47:15]   !! foreign process on a GPU: kao
+[08-26 15:47:15]   !! foreign process on a GPU: john
+[08-26 15:47:15]   !! foreign process on a GPU: john
+[08-26 15:47:15]   !! foreign process on a GPU: john
+[08-26 15:47:15] cores=1 disk=6.7T
+[08-26 15:57:16] selftm wave1: 0/100 arms left, workers=8
+[08-26 15:57:16] selftm wave2: 2/145 arms left
+[08-26 15:57:17]   !! foreign process on a GPU: john
+[08-26 15:57:17]   !! foreign process on a GPU: kao
+[08-26 15:57:17]   !! foreign process on a GPU: john
+[08-26 15:57:17]   !! foreign process on a GPU: john
+[08-26 15:57:17]   !! foreign process on a GPU: john
+[08-26 15:57:17] cores=32 disk=6.7T
+[08-26 16:07:17] selftm wave1: 0/100 arms left, workers=8
+[08-26 16:07:18] selftm wave2: 2/145 arms left
+[08-26 16:07:19]   !! foreign process on a GPU: john
+[08-26 16:07:19]   !! foreign process on a GPU: kao
+[08-26 16:07:19]   !! foreign process on a GPU: john
+[08-26 16:07:19]   !! foreign process on a GPU: john
+[08-26 16:07:19]   !! foreign process on a GPU: john
+[08-26 16:07:19] cores=21 disk=6.7T

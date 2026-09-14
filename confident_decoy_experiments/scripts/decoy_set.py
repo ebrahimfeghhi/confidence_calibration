@@ -117,9 +117,15 @@ def pose(args):
     qs, ifs = d.get("dockq") or [], d.get("dockq_interfaces") or []
     dq = mc = None
     for i, t in enumerate(ifs):
-        if {t[0], t[1]} == {c1, c2} and i < len(qs):
-            dq, mc = qs[i], (t[2], t[3])
-            break
+        # Strip OST's copy suffix ("A-2" -> "A") before matching. In a multi-copy native assembly OST
+        # maps our single predicted copy to WHICHEVER native copy fits best, so a literal comparison
+        # keeps only the poses that happened to land on copy 1. On 8fxv that silently discarded 169 of
+        # 369 poses in d50_s1e4 and 164 of 364 in bo50 -- a BIASED subset, not merely a smaller one,
+        # because the copy OST selects can correlate with pose quality. 8fxv is the only multi-copy
+        # complex in this project (verified across all 1176 OST cache dirs, 2026-08-28).
+        if {t[0].split("-")[0], t[1].split("-")[0]} == {c1, c2} and i < len(qs):
+            if dq is None or qs[i] > dq:      # if both copies match, keep the better
+                dq, mc = qs[i], (t[2], t[3])
     if dq is None:                    # labelled pair absent from OST's mapping -> no score, not a guess
         return None
     if dq is None:

@@ -44,8 +44,12 @@ while true; do
       u=$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits -i $g 2>/dev/null)
       m=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits -i $g 2>/dev/null)
       # idle = no memory AND no util; brief 0% with memory held is just an arm boundary
-      if [ "${m:-0}" -lt 2000 ] && [ "${u:-0}" -eq 0 ] && [ "$left" -ge "$workers" ]; then
-        say "!! gpu$g IDLE (${m}MiB) while $left arms remain"
+      # Flag an idle card whenever ANY work remains anywhere -- d50, bo50 or unif. The old guard
+      # required left >= workers, which is precisely backwards: idling happens at the TAIL, when
+      # fewer arms remain than cards. That gap left four GPUs idle for hours on the d50 tail.
+      tot=$((left + ul))
+      if [ "${m:-0}" -lt 2000 ] && [ "${u:-0}" -eq 0 ] && [ "$tot" -gt 0 ]; then
+        say "!! gpu$g IDLE (${m}MiB) while $tot arms remain (d50/bo50=$left unif=$ul)"
       fi
     done
 

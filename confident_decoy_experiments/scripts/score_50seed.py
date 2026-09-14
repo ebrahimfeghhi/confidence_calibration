@@ -25,7 +25,7 @@ THRESH = 0.23
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--jobs", type=int, default=6)
-ap.add_argument("--arm", default="both", choices=["1e-4", "bothoff", "both"])
+ap.add_argument("--arm", default="all", choices=["1e-4", "bothoff", "unif", "alln", "selftm", "iter", "all"])
 ARGS = ap.parse_args()
 
 ALL = json.load(open(f"{A}/abag_all_101_150.json"))
@@ -109,6 +109,27 @@ def run_pose(t):
 
 def halves(pdb, which):
     """(first-half arms, second-half arm) for this complex, or None if either half is short."""
+    if which == "iter":
+        # Iterative self-templating: one arm per complex, 50 sequential iterations x 1 pose each.
+        # 50 poses, not 250 -- one diffusion sample per iteration by design.
+        n = len(glob.glob(f"{A}/sweep_out/iter_{pdb}/**/*_sample_*.cif", recursive=True))
+        return ([f"iter_{pdb}"], None) if n >= 50 else None
+    if which == "selftm":
+        # Self-template arms are per DONOR: selftm_<pdb>_d0..d4, 10 seeds each. The complex's
+        # 50-seed pool is the union of its 5 donor arms -- pooling them is the point, since the
+        # selection rule is argmax ipTM over everything that complex produced.
+        arms = [f"selftm_{pdb}_d{k}" for k in range(5)] + [f"selftm2_{pdb}_d{k}" for k in range(5)]
+        have = [a for a in arms
+                if len(glob.glob(f"{A}/sweep_out/{a}/**/*_sample_*.cif", recursive=True)) >= 50]
+        return (have, None) if len(have) == 5 else None
+    if which == "alln":
+        # stock config + static per-seed noise on all weights; one 50-seed arm, no second half
+        n = len(glob.glob(f"{A}/sweep_out/alln_{pdb}/**/*_sample_*.cif", recursive=True))
+        return ([f"alln_{pdb}"], None) if n >= 250 else None
+    if which == "unif":
+        # unif was run as ONE 50-seed arm rather than 10+40, so there is no second half to pool.
+        n = len(glob.glob(f"{A}/sweep_out/unif_{pdb}/**/*_sample_*.cif", recursive=True))
+        return ([f"unif_{pdb}"], None) if n >= 250 else None
     if which == "1e-4":
         a, b = [f"wnm_s1e4_{pdb}"], f"d50_s1e4_{pdb}"
     else:
@@ -129,7 +150,7 @@ def score_arm(which, label):
         h = halves(p, which)
         if not h: continue
         covered.append(p)
-        for arm in list(h[0]) + [h[1]]:
+        for arm in list(h[0]) + ([h[1]] if h[1] else []):
             tasks += [(arm, p, c) for c in
                       glob.glob(f"{A}/sweep_out/{arm}/**/*_sample_*.cif", recursive=True)]
     if not tasks:
@@ -176,5 +197,9 @@ def score_arm(which, label):
 
 print(f"{'arm':<26}{'mean':>8}{'median':>9}{'oracle':>9}{'frac_acc':>10}{'rescued':>9}{'n':>5}")
 print("-" * 88)
-if ARGS.arm in ("1e-4", "both"): score_arm("1e-4", "sigma=1e-4  50 seeds")
-if ARGS.arm in ("bothoff", "both"): score_arm("bothoff", "both-off    50 seeds")
+if ARGS.arm in ("1e-4", "all"): score_arm("1e-4", "sigma=1e-4      50 seeds")
+if ARGS.arm in ("unif", "all"): score_arm("unif", "sigma~U[0,5e-2]  50 seeds")
+if ARGS.arm in ("bothoff", "all"): score_arm("bothoff", "both-off        50 seeds")
+if ARGS.arm in ("alln", "all"): score_arm("alln", "sub+drop+noise  50 seeds")
+if ARGS.arm in ("selftm", "all"): score_arm("selftm", "self-template   50 seeds")
+if ARGS.arm in ("iter", "all"): score_arm("iter", "iterative selftmpl (50 poses)")

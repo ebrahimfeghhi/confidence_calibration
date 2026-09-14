@@ -1,0 +1,1731 @@
+[08-24 20:05:03] stage=d50  arms_left=15  workers=5
+[08-24 20:05:05] cores=5  errors=0
+0  disk=6.9T free
+[08-24 20:30:30] unif: arms_left=49 workers=2
+[08-24 20:30:30] stage=d50  arms_left=14  workers=5
+[08-24 20:30:31] cores=7  errors=0
+0  disk=6.9T free
+[08-24 20:31:20] unif: arms_left=49 workers=2
+[08-24 20:31:20] stage=d50  arms_left=14  workers=5
+[08-24 20:31:22] cores=7  errors=0
+0  disk=6.9T free
+[08-24 21:01:22] unif: arms_left=48 workers=2
+[08-24 21:01:22] stage=d50  arms_left=10  workers=5
+[08-24 21:01:24] !! CPU 67 cores (target 64)
+[08-24 21:01:24] cores=67  errors=0
+0  disk=6.9T free
+[08-24 21:31:24] unif: arms_left=48 workers=2
+[08-24 21:31:24] stage=d50  arms_left=9  workers=5
+[08-24 21:31:26] cores=7  errors=0
+0  disk=6.9T free
+[08-24 22:01:26] unif: arms_left=47 workers=2
+[08-24 22:01:26] stage=d50  arms_left=6  workers=5
+[08-24 22:01:28] cores=9  errors=0
+0  disk=6.9T free
+[08-24 22:31:28] unif: arms_left=45 workers=2
+[08-24 22:31:28] stage=d50  arms_left=2  workers=5
+[08-24 22:31:30] cores=6  errors=0
+0  disk=6.9T free
+[08-24 23:01:30] unif: arms_left=44 workers=2
+[08-24 23:01:30] stage=d50  arms_left=1  workers=5
+[08-24 23:01:32] cores=3  errors=0
+0  disk=6.9T free
+[08-24 23:31:32] unif: arms_left=44 workers=2
+[08-24 23:31:32] stage=d50  arms_left=1  workers=5
+[08-24 23:31:35] cores=3  errors=0
+0  disk=6.9T free
+[08-25 00:01:35] unif: arms_left=43 workers=2
+[08-25 00:01:35] stage=d50  arms_left=1  workers=5
+[08-25 00:01:37] cores=3  errors=0
+0  disk=6.9T free
+[08-25 00:31:37] unif: arms_left=43 workers=2
+[08-25 00:31:37] stage=d50  arms_left=1  workers=5
+[08-25 00:31:39] cores=3  errors=0
+0  disk=6.9T free
+[08-25 01:01:40] unif: arms_left=39 workers=2
+[08-25 01:01:40] stage=d50  arms_left=1  workers=5
+[08-25 01:01:42] cores=3  errors=0
+0  disk=6.9T free
+[08-25 01:31:42] unif: arms_left=37 workers=2
+[08-25 01:31:42] stage=d50  arms_left=1  workers=5
+[08-25 01:31:44] cores=3  errors=0
+0  disk=6.9T free
+[08-25 02:01:44] unif: arms_left=37 workers=2
+[08-25 02:01:44] stage=d50  arms_left=1  workers=5
+[08-25 02:01:47] cores=3  errors=0
+0  disk=6.9T free
+[08-25 02:31:47] unif: arms_left=35 workers=2
+[08-25 02:31:47] stage=d50  arms_left=1  workers=5
+[08-25 02:31:49] cores=3  errors=0
+0  disk=6.9T free
+[08-25 03:01:49] unif: arms_left=34 workers=2
+[08-25 03:01:49] stage=d50  arms_left=1  workers=5
+[08-25 03:01:51] cores=3  errors=0
+0  disk=6.9T free
+[08-25 03:31:51] unif: arms_left=34 workers=2
+[08-25 03:31:52] stage=d50  arms_left=1  workers=5
+[08-25 03:31:54] cores=3  errors=0
+0  disk=6.9T free
+[08-25 04:01:54] unif: arms_left=34 workers=2
+[08-25 04:01:54] stage=d50  arms_left=1  workers=5
+[08-25 04:01:56] cores=5  errors=0
+0  disk=6.9T free
+[08-25 04:31:56] unif: arms_left=34 workers=2
+[08-25 04:31:56] stage=d50  arms_left=1  workers=5
+[08-25 04:31:59] cores=3  errors=0
+0  disk=6.9T free
+[08-25 05:01:59] unif: arms_left=32 workers=2
+[08-25 05:01:59] stage=d50  arms_left=1  workers=5
+[08-25 05:02:01] cores=3  errors=0
+0  disk=6.9T free
+[08-25 05:32:01] unif: arms_left=31 workers=2
+[08-25 05:32:01] stage=d50  arms_left=1  workers=5
+[08-25 05:32:03] cores=3  errors=0
+0  disk=6.9T free
+[08-25 05:50:17] unif: arms_left=31 workers=2
+[08-25 05:50:17] stage=bo50  arms_left=49  workers=4
+[08-25 05:50:19] cores=9  errors=0
+0  disk=6.9T free
+[08-25 06:20:19] unif: arms_left=28 workers=2
+[08-25 06:20:19] stage=bo50  arms_left=47  workers=4
+[08-25 06:20:21] cores=7  errors=0
+0  disk=6.9T free
+[08-25 06:50:21] unif: arms_left=28 workers=2
+[08-25 06:50:21] stage=bo50  arms_left=45  workers=4
+[08-25 06:50:23] cores=7  errors=0
+0  disk=6.9T free
+[08-25 07:20:23] unif: arms_left=28 workers=2
+[08-25 07:20:23] stage=bo50  arms_left=42  workers=4
+[08-25 07:20:25] cores=9  errors=0
+0  disk=6.9T free
+[08-25 07:50:25] unif: arms_left=27 workers=2
+[08-25 07:50:25] stage=bo50  arms_left=39  workers=4
+[08-25 07:50:27] cores=7  errors=0
+0  disk=6.9T free
+[08-25 08:20:27] unif: arms_left=27 workers=2
+[08-25 08:20:27] stage=bo50  arms_left=35  workers=5
+[08-25 08:20:29] cores=7  errors=0
+0  disk=6.9T free
+[08-25 08:50:29] unif: arms_left=26 workers=3
+[08-25 08:50:29] stage=bo50  arms_left=33  workers=4
+[08-25 08:50:31] !! gpu7 IDLE (3MiB) while 59 arms remain (d50/bo50=33 unif=26)
+[08-25 08:50:31] cores=9  errors=0
+0  disk=6.9T free
+[08-25 09:20:31] unif: arms_left=25 workers=3
+[08-25 09:20:31] stage=bo50  arms_left=30  workers=4
+[08-25 09:20:33] cores=7  errors=0
+0  disk=6.9T free
+[08-25 09:50:33] unif: arms_left=24 workers=3
+[08-25 09:50:33] stage=bo50  arms_left=29  workers=4
+[08-25 09:50:35] cores=7  errors=0
+0  disk=6.9T free
+[08-25 10:20:35] unif: arms_left=24 workers=0
+[08-25 10:20:35] !! unif has no workers but 24 arms remain
+[08-25 10:20:35] stage=bo50  arms_left=29  workers=7
+[08-25 10:20:37] cores=7  errors=0
+0  disk=6.9T free
+[08-25 10:50:37] unif: arms_left=24 workers=0
+[08-25 10:50:37] !! unif has no workers but 24 arms remain
+[08-25 10:50:37] stage=bo50  arms_left=24  workers=7
+[08-25 10:50:38] !! gpu5 IDLE (3MiB) while 48 arms remain (d50/bo50=24 unif=24)
+[08-25 10:50:39] cores=7  errors=0
+0  disk=6.9T free
+[08-25 11:20:39] unif: arms_left=24 workers=0
+[08-25 11:20:39] !! unif has no workers but 24 arms remain
+[08-25 11:20:39] stage=bo50  arms_left=23  workers=7
+[08-25 11:20:41] cores=7  errors=0
+0  disk=6.9T free
+[08-25 11:50:41] unif: arms_left=24 workers=0
+[08-25 11:50:41] !! unif has no workers but 24 arms remain
+[08-25 11:50:42] stage=bo50  arms_left=19  workers=7
+[08-25 11:50:43] cores=7  errors=0
+0  disk=6.9T free
+[08-25 12:20:43] unif: arms_left=24 workers=0
+[08-25 12:20:43] !! unif has no workers but 24 arms remain
+[08-25 12:20:44] stage=bo50  arms_left=17  workers=7
+[08-25 12:20:45] cores=7  errors=0
+0  disk=6.9T free
+[08-25 12:50:45] unif: arms_left=24 workers=0
+[08-25 12:50:45] !! unif has no workers but 24 arms remain
+[08-25 12:50:46] stage=bo50  arms_left=15  workers=7
+[08-25 12:50:48] cores=7  errors=0
+0  disk=6.9T free
+[08-25 13:20:48] unif: arms_left=24 workers=0
+[08-25 13:20:48] !! unif has no workers but 24 arms remain
+[08-25 13:20:48] stage=bo50  arms_left=11  workers=7
+[08-25 13:20:50] cores=61  errors=0
+0  disk=6.9T free
+[08-25 13:50:50] unif: arms_left=24 workers=0
+[08-25 13:50:50] !! unif has no workers but 24 arms remain
+[08-25 13:50:50] stage=bo50  arms_left=8  workers=7
+[08-25 13:50:50] !! gpu2 IDLE (3MiB) while 32 arms remain (d50/bo50=8 unif=24)
+[08-25 13:50:52] cores=10  errors=0
+0  disk=6.8T free
+[08-25 14:20:52] unif: arms_left=24 workers=0
+[08-25 14:20:52] !! unif has no workers but 24 arms remain
+[08-25 14:20:52] stage=bo50  arms_left=4  workers=7
+[08-25 14:20:52] !! gpu2 IDLE (0MiB) while 28 arms remain (d50/bo50=4 unif=24)
+[08-25 14:20:53] !! gpu3 IDLE (0MiB) while 28 arms remain (d50/bo50=4 unif=24)
+[08-25 14:20:53] !! gpu6 IDLE (0MiB) while 28 arms remain (d50/bo50=4 unif=24)
+[08-25 14:20:54] cores=4  errors=0
+0  disk=6.8T free
+[08-25 14:50:54] unif: arms_left=24 workers=0
+[08-25 14:50:54] !! unif has no workers but 24 arms remain
+[08-25 14:50:54] stage=bo50  arms_left=1  workers=7
+[08-25 14:50:54] !! gpu0 IDLE (0MiB) while 25 arms remain (d50/bo50=1 unif=24)
+[08-25 14:50:54] !! gpu1 IDLE (0MiB) while 25 arms remain (d50/bo50=1 unif=24)
+[08-25 14:50:54] !! gpu2 IDLE (0MiB) while 25 arms remain (d50/bo50=1 unif=24)
+[08-25 14:50:54] !! gpu3 IDLE (0MiB) while 25 arms remain (d50/bo50=1 unif=24)
+[08-25 14:50:55] !! gpu6 IDLE (0MiB) while 25 arms remain (d50/bo50=1 unif=24)
+[08-25 14:50:55] !! gpu7 IDLE (0MiB) while 25 arms remain (d50/bo50=1 unif=24)
+[08-25 14:50:55] cores=1  errors=0
+0  disk=6.8T free
+[08-25 15:20:55] unif: arms_left=23 workers=6
+[08-25 15:20:55] stage=bo50  arms_left=1  workers=7
+[08-25 15:20:57] cores=9  errors=0
+0  disk=6.8T free
+[08-25 15:50:57] unif: arms_left=22 workers=0
+[08-25 15:50:57] !! unif has no workers but 22 arms remain
+[08-25 15:50:57] stage=d50  arms_left=0  workers=0
+[08-25 15:50:59] cores=7  errors=0
+0  disk=6.8T free
+[08-25 16:20:59] unif: arms_left=22 workers=0
+[08-25 16:20:59] !! unif has no workers but 22 arms remain
+[08-25 16:20:59] stage=d50  arms_left=0  workers=0
+[08-25 16:21:00] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 16:21:01] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 16:21:01] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 16:21:01] !! foreign process on a GPU: user=kao pid=3895742
+[08-25 16:21:01] cores=4  errors=0
+0  disk=6.8T free
+[08-25 16:51:01] unif: arms_left=22 workers=0
+[08-25 16:51:01] !! unif has no workers but 22 arms remain
+[08-25 16:51:01] stage=d50  arms_left=0  workers=0
+[08-25 16:51:03] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 16:51:03] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 16:51:03] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 16:51:03] !! foreign process on a GPU: user=kao pid=3895742
+[08-25 16:51:03] cores=4  errors=0
+0  disk=6.8T free
+[08-25 17:21:03] unif: arms_left=22 workers=0
+[08-25 17:21:03] !! unif has no workers but 22 arms remain
+[08-25 17:21:04] stage=d50  arms_left=0  workers=0
+[08-25 17:21:05] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 17:21:05] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 17:21:05] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 17:21:05] !! foreign process on a GPU: user=kao pid=3895742
+[08-25 17:21:05] cores=4  errors=0
+0  disk=6.8T free
+[08-25 17:51:06] unif: arms_left=22 workers=0
+[08-25 17:51:06] !! unif has no workers but 22 arms remain
+[08-25 17:51:06] stage=d50  arms_left=0  workers=0
+[08-25 17:51:07] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 17:51:07] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 17:51:08] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 17:51:08] !! foreign process on a GPU: user=kao pid=3895742
+[08-25 17:51:08] cores=39  errors=0
+0  disk=6.8T free
+[08-25 18:21:08] unif: arms_left=22 workers=0
+[08-25 18:21:08] !! unif has no workers but 22 arms remain
+[08-25 18:21:08] stage=d50  arms_left=0  workers=0
+[08-25 18:21:09] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 18:21:09] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 18:21:10] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 18:21:10] !! foreign process on a GPU: user=kao pid=3895742
+[08-25 18:21:10] cores=4  errors=0
+0  disk=6.8T free
+[08-25 18:51:10] unif: arms_left=22 workers=0
+[08-25 18:51:10] !! unif has no workers but 22 arms remain
+[08-25 18:51:10] stage=d50  arms_left=0  workers=0
+[08-25 18:51:10] !! gpu0 IDLE (3MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 18:51:11] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 18:51:12] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 18:51:12] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 18:51:12] !! foreign process on a GPU: user=kao pid=3895742
+[08-25 18:51:12] cores=4  errors=0
+0  disk=6.8T free
+[08-25 19:21:12] unif: arms_left=22 workers=0
+[08-25 19:21:12] !! unif has no workers but 22 arms remain
+[08-25 19:21:12] stage=d50  arms_left=0  workers=0
+[08-25 19:21:13] !! gpu1 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 19:21:13] !! gpu2 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 19:21:13] !! gpu3 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 19:21:14] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 19:21:14] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 19:21:14] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 19:21:14] !! foreign process on a GPU: user=kao pid=3895742
+[08-25 19:21:14] cores=1  errors=0
+0  disk=6.8T free
+[08-25 19:51:14] unif: arms_left=22 workers=0
+[08-25 19:51:14] !! unif has no workers but 22 arms remain
+[08-25 19:51:15] stage=d50  arms_left=0  workers=0
+[08-25 19:51:15] !! gpu0 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 19:51:15] !! gpu1 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 19:51:15] !! gpu2 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 19:51:16] !! gpu3 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 19:51:16] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 19:51:16] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 19:51:17] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 19:51:17] !! foreign process on a GPU: user=kao pid=3895742
+[08-25 19:51:17] cores=2  errors=0
+0  disk=6.8T free
+[08-25 20:21:17] unif: arms_left=22 workers=0
+[08-25 20:21:17] !! unif has no workers but 22 arms remain
+[08-25 20:21:17] stage=d50  arms_left=0  workers=0
+[08-25 20:21:18] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 20:21:18] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 20:21:19] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 20:21:19] !! foreign process on a GPU: user=kao pid=3895742
+[08-25 20:21:19] cores=4  errors=0
+0  disk=6.8T free
+[08-25 20:51:19] unif: arms_left=22 workers=0
+[08-25 20:51:19] !! unif has no workers but 22 arms remain
+[08-25 20:51:19] stage=d50  arms_left=0  workers=0
+[08-25 20:51:20] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 20:51:20] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 20:51:20] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 20:51:21] !! foreign process on a GPU: user=john pid=388583
+[08-25 20:51:21] !! foreign process on a GPU: user=john pid=388583
+[08-25 20:51:21] !! foreign process on a GPU: user=john pid=388583
+[08-25 20:51:21] !! foreign process on a GPU: user=john pid=388583
+[08-25 20:51:21] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 20:51:21] cores=4  errors=0
+0  disk=6.8T free
+[08-25 21:21:21] unif: arms_left=22 workers=0
+[08-25 21:21:21] !! unif has no workers but 22 arms remain
+[08-25 21:21:21] stage=d50  arms_left=0  workers=0
+[08-25 21:21:22] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 21:21:23] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 21:21:23] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-25 21:21:23] !! foreign process on a GPU: user=john pid=388583
+[08-25 21:21:23] !! foreign process on a GPU: user=john pid=388583
+[08-25 21:21:23] !! foreign process on a GPU: user=john pid=388583
+[08-25 21:21:23] !! foreign process on a GPU: user=john pid=388583
+[08-25 21:21:23] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 21:21:23] cores=4  errors=0
+0  disk=6.8T free
+[08-25 21:51:24] unif: arms_left=22 workers=0
+[08-25 21:51:24] !! unif has no workers but 22 arms remain
+[08-25 21:51:24] stage=d50  arms_left=0  workers=0
+[08-25 21:51:25] !! foreign process on a GPU: user=john pid=388583
+[08-25 21:51:25] !! foreign process on a GPU: user=john pid=388583
+[08-25 21:51:25] !! foreign process on a GPU: user=john pid=388583
+[08-25 21:51:25] !! foreign process on a GPU: user=john pid=388583
+[08-25 21:51:25] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 21:51:25] cores=3  errors=0
+0  disk=6.8T free
+[08-25 22:21:25] unif: arms_left=22 workers=0
+[08-25 22:21:25] !! unif has no workers but 22 arms remain
+[08-25 22:21:26] stage=d50  arms_left=0  workers=0
+[08-25 22:21:27] !! foreign process on a GPU: user=john pid=388583
+[08-25 22:21:27] !! foreign process on a GPU: user=john pid=388583
+[08-25 22:21:27] !! foreign process on a GPU: user=john pid=388583
+[08-25 22:21:27] !! foreign process on a GPU: user=john pid=388583
+[08-25 22:21:27] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 22:21:27] cores=3  errors=0
+0  disk=6.8T free
+[08-25 22:51:27] unif: arms_left=22 workers=0
+[08-25 22:51:27] !! unif has no workers but 22 arms remain
+[08-25 22:51:27] stage=d50  arms_left=0  workers=0
+[08-25 22:51:29] !! foreign process on a GPU: user=john pid=388583
+[08-25 22:51:29] !! foreign process on a GPU: user=john pid=388583
+[08-25 22:51:29] !! foreign process on a GPU: user=john pid=388583
+[08-25 22:51:29] !! foreign process on a GPU: user=john pid=388583
+[08-25 22:51:29] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 22:51:29] cores=3  errors=0
+0  disk=6.8T free
+[08-25 23:21:29] unif: arms_left=22 workers=0
+[08-25 23:21:29] !! unif has no workers but 22 arms remain
+[08-25 23:21:29] stage=d50  arms_left=0  workers=0
+[08-25 23:21:31] !! foreign process on a GPU: user=john pid=388583
+[08-25 23:21:31] !! foreign process on a GPU: user=john pid=388583
+[08-25 23:21:31] !! foreign process on a GPU: user=john pid=388583
+[08-25 23:21:31] !! foreign process on a GPU: user=john pid=388583
+[08-25 23:21:31] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 23:21:31] cores=3  errors=0
+0  disk=6.8T free
+[08-25 23:51:31] unif: arms_left=22 workers=0
+[08-25 23:51:31] !! unif has no workers but 22 arms remain
+[08-25 23:51:31] stage=d50  arms_left=0  workers=0
+[08-25 23:51:33] !! foreign process on a GPU: user=john pid=388583
+[08-25 23:51:33] !! foreign process on a GPU: user=john pid=388583
+[08-25 23:51:33] !! foreign process on a GPU: user=john pid=388583
+[08-25 23:51:33] !! foreign process on a GPU: user=john pid=388583
+[08-25 23:51:33] !! foreign process on a GPU: user=kao pid=3886576
+[08-25 23:51:33] cores=3  errors=0
+0  disk=6.8T free
+[08-26 00:21:33] unif: arms_left=22 workers=0
+[08-26 00:21:33] !! unif has no workers but 22 arms remain
+[08-26 00:21:33] stage=d50  arms_left=0  workers=0
+[08-26 00:21:35] !! foreign process on a GPU: user=john pid=388583
+[08-26 00:21:35] !! foreign process on a GPU: user=john pid=388583
+[08-26 00:21:35] !! foreign process on a GPU: user=john pid=388583
+[08-26 00:21:35] !! foreign process on a GPU: user=john pid=388583
+[08-26 00:21:35] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 00:21:35] cores=3  errors=0
+0  disk=6.7T free
+[08-26 00:51:35] unif: arms_left=22 workers=0
+[08-26 00:51:35] !! unif has no workers but 22 arms remain
+[08-26 00:51:35] stage=d50  arms_left=0  workers=0
+[08-26 00:51:36] !! foreign process on a GPU: user=john pid=388583
+[08-26 00:51:37] !! foreign process on a GPU: user=john pid=388583
+[08-26 00:51:37] !! foreign process on a GPU: user=john pid=388583
+[08-26 00:51:37] !! foreign process on a GPU: user=john pid=388583
+[08-26 00:51:37] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 00:51:37] cores=3  errors=0
+0  disk=6.7T free
+[08-26 01:21:37] unif: arms_left=22 workers=0
+[08-26 01:21:37] !! unif has no workers but 22 arms remain
+[08-26 01:21:37] stage=d50  arms_left=0  workers=0
+[08-26 01:21:39] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 01:21:39] cores=7  errors=0
+0  disk=6.7T free
+[08-26 01:51:39] unif: arms_left=22 workers=0
+[08-26 01:51:39] !! unif has no workers but 22 arms remain
+[08-26 01:51:39] stage=d50  arms_left=0  workers=0
+[08-26 01:51:41] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 01:51:41] cores=10  errors=0
+0  disk=6.7T free
+[08-26 02:21:41] unif: arms_left=22 workers=0
+[08-26 02:21:41] !! unif has no workers but 22 arms remain
+[08-26 02:21:41] stage=d50  arms_left=0  workers=0
+[08-26 02:21:43] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 02:21:43] cores=10  errors=0
+0  disk=6.7T free
+[08-26 02:51:43] unif: arms_left=22 workers=0
+[08-26 02:51:43] !! unif has no workers but 22 arms remain
+[08-26 02:51:43] stage=d50  arms_left=0  workers=0
+[08-26 02:51:43] !! gpu0 IDLE (3MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 02:51:44] !! gpu2 IDLE (3MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 02:51:44] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 02:51:44] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 02:51:44] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 02:51:45] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 02:51:45] cores=4  errors=0
+0  disk=6.7T free
+[08-26 03:21:45] unif: arms_left=22 workers=0
+[08-26 03:21:45] !! unif has no workers but 22 arms remain
+[08-26 03:21:45] stage=d50  arms_left=0  workers=0
+[08-26 03:21:45] !! gpu0 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 03:21:45] !! gpu1 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 03:21:46] !! gpu2 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 03:21:46] !! gpu3 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 03:21:46] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 03:21:46] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 03:21:47] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 03:21:47] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 03:21:47] cores=3  errors=0
+0  disk=6.7T free
+[08-26 03:51:47] unif: arms_left=22 workers=0
+[08-26 03:51:47] !! unif has no workers but 22 arms remain
+[08-26 03:51:47] stage=d50  arms_left=0  workers=0
+[08-26 03:51:48] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 03:51:48] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 03:51:49] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 03:51:49] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 03:51:49] cores=4  errors=0
+0  disk=6.7T free
+[08-26 04:21:49] unif: arms_left=22 workers=0
+[08-26 04:21:49] !! unif has no workers but 22 arms remain
+[08-26 04:21:49] stage=d50  arms_left=0  workers=0
+[08-26 04:21:50] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 04:21:51] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 04:21:51] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 04:21:51] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 04:21:51] cores=6  errors=0
+0  disk=6.7T free
+[08-26 04:51:51] unif: arms_left=22 workers=0
+[08-26 04:51:51] !! unif has no workers but 22 arms remain
+[08-26 04:51:52] stage=d50  arms_left=0  workers=0
+[08-26 04:51:52] !! gpu1 IDLE (3MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 04:51:53] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 04:51:53] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 04:51:53] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 04:51:53] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 04:51:54] cores=4  errors=0
+0  disk=6.7T free
+[08-26 05:21:54] unif: arms_left=22 workers=0
+[08-26 05:21:54] !! unif has no workers but 22 arms remain
+[08-26 05:21:54] stage=d50  arms_left=0  workers=0
+[08-26 05:21:55] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 05:21:55] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 05:21:55] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 05:21:56] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 05:21:56] cores=4  errors=0
+0  disk=6.7T free
+[08-26 05:51:56] unif: arms_left=22 workers=0
+[08-26 05:51:56] !! unif has no workers but 22 arms remain
+[08-26 05:51:56] stage=d50  arms_left=0  workers=0
+[08-26 05:51:57] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 05:51:57] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 05:51:57] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 05:51:58] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 05:51:58] cores=7  errors=0
+0  disk=6.7T free
+[08-26 06:21:58] unif: arms_left=22 workers=0
+[08-26 06:21:58] !! unif has no workers but 22 arms remain
+[08-26 06:21:58] stage=d50  arms_left=0  workers=0
+[08-26 06:21:59] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 06:21:59] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 06:22:00] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 06:22:00] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 06:22:00] cores=4  errors=0
+0  disk=6.7T free
+[08-26 06:52:00] unif: arms_left=22 workers=0
+[08-26 06:52:00] !! unif has no workers but 22 arms remain
+[08-26 06:52:00] stage=d50  arms_left=0  workers=0
+[08-26 06:52:01] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 06:52:02] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 06:52:02] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 06:52:02] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 06:52:02] cores=4  errors=0
+0  disk=6.7T free
+[08-26 07:22:02] unif: arms_left=22 workers=0
+[08-26 07:22:02] !! unif has no workers but 22 arms remain
+[08-26 07:22:02] stage=d50  arms_left=0  workers=0
+[08-26 07:22:04] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 07:22:04] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 07:22:04] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 07:22:04] !! foreign process on a GPU: user=john pid=1828304
+[08-26 07:22:04] cores=4  errors=0
+0  disk=6.7T free
+[08-26 07:52:05] unif: arms_left=22 workers=0
+[08-26 07:52:05] !! unif has no workers but 22 arms remain
+[08-26 07:52:05] stage=d50  arms_left=0  workers=0
+[08-26 07:52:06] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 07:52:06] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 07:52:06] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 07:52:06] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 07:52:06] cores=4  errors=0
+0  disk=6.7T free
+[08-26 08:22:07] unif: arms_left=22 workers=0
+[08-26 08:22:07] !! unif has no workers but 22 arms remain
+[08-26 08:22:07] stage=d50  arms_left=0  workers=0
+[08-26 08:22:08] !! foreign process on a GPU: user=john pid=1946510
+[08-26 08:22:08] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 08:22:08] !! foreign process on a GPU: user=john pid=1946510
+[08-26 08:22:08] !! foreign process on a GPU: user=john pid=1946510
+[08-26 08:22:08] !! foreign process on a GPU: user=john pid=1946510
+[08-26 08:22:08] cores=4  errors=0
+0  disk=6.7T free
+[08-26 08:52:08] unif: arms_left=22 workers=0
+[08-26 08:52:08] !! unif has no workers but 22 arms remain
+[08-26 08:52:09] stage=d50  arms_left=0  workers=0
+[08-26 08:52:10] !! foreign process on a GPU: user=john pid=1946510
+[08-26 08:52:10] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 08:52:10] !! foreign process on a GPU: user=john pid=1946510
+[08-26 08:52:10] !! foreign process on a GPU: user=john pid=1946510
+[08-26 08:52:10] !! foreign process on a GPU: user=john pid=1946510
+[08-26 08:52:10] cores=4  errors=0
+0  disk=6.7T free
+[08-26 09:22:10] unif: arms_left=22 workers=0
+[08-26 09:22:10] !! unif has no workers but 22 arms remain
+[08-26 09:22:10] stage=d50  arms_left=0  workers=0
+[08-26 09:22:12] !! foreign process on a GPU: user=john pid=1946510
+[08-26 09:22:12] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 09:22:12] !! foreign process on a GPU: user=john pid=1946510
+[08-26 09:22:12] !! foreign process on a GPU: user=john pid=1946510
+[08-26 09:22:12] !! foreign process on a GPU: user=john pid=1946510
+[08-26 09:22:12] cores=4  errors=0
+0  disk=6.7T free
+[08-26 09:52:12] unif: arms_left=22 workers=0
+[08-26 09:52:12] !! unif has no workers but 22 arms remain
+[08-26 09:52:12] stage=d50  arms_left=0  workers=0
+[08-26 09:52:14] !! foreign process on a GPU: user=john pid=1946510
+[08-26 09:52:14] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 09:52:14] !! foreign process on a GPU: user=john pid=1946510
+[08-26 09:52:14] !! foreign process on a GPU: user=john pid=1946510
+[08-26 09:52:14] !! foreign process on a GPU: user=john pid=1946510
+[08-26 09:52:14] cores=4  errors=0
+0  disk=6.7T free
+[08-26 10:22:14] unif: arms_left=22 workers=0
+[08-26 10:22:14] !! unif has no workers but 22 arms remain
+[08-26 10:22:14] stage=d50  arms_left=0  workers=0
+[08-26 10:22:15] !! gpu1 IDLE (3MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 10:22:16] !! foreign process on a GPU: user=john pid=1946510
+[08-26 10:22:16] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 10:22:16] !! foreign process on a GPU: user=john pid=1946510
+[08-26 10:22:16] !! foreign process on a GPU: user=john pid=1946510
+[08-26 10:22:16] !! foreign process on a GPU: user=john pid=1946510
+[08-26 10:22:16] cores=7  errors=0
+0  disk=6.7T free
+[08-26 10:52:16] unif: arms_left=22 workers=0
+[08-26 10:52:16] !! unif has no workers but 22 arms remain
+[08-26 10:52:16] stage=d50  arms_left=0  workers=0
+[08-26 10:52:18] !! foreign process on a GPU: user=john pid=1946510
+[08-26 10:52:18] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 10:52:18] !! foreign process on a GPU: user=john pid=1946510
+[08-26 10:52:18] !! foreign process on a GPU: user=john pid=1946510
+[08-26 10:52:18] !! foreign process on a GPU: user=john pid=1946510
+[08-26 10:52:18] cores=7  errors=0
+0  disk=6.7T free
+[08-26 11:22:18] unif: arms_left=22 workers=0
+[08-26 11:22:18] !! unif has no workers but 22 arms remain
+[08-26 11:22:18] stage=d50  arms_left=0  workers=0
+[08-26 11:22:20] !! foreign process on a GPU: user=john pid=1946510
+[08-26 11:22:20] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 11:22:20] !! foreign process on a GPU: user=john pid=1946510
+[08-26 11:22:20] !! foreign process on a GPU: user=john pid=1946510
+[08-26 11:22:20] !! foreign process on a GPU: user=john pid=1946510
+[08-26 11:22:20] cores=4  errors=0
+0  disk=6.7T free
+[08-26 11:52:20] unif: arms_left=22 workers=0
+[08-26 11:52:20] !! unif has no workers but 22 arms remain
+[08-26 11:52:20] stage=d50  arms_left=0  workers=0
+[08-26 11:52:22] !! foreign process on a GPU: user=john pid=1946510
+[08-26 11:52:22] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 11:52:22] !! foreign process on a GPU: user=john pid=1946510
+[08-26 11:52:22] !! foreign process on a GPU: user=john pid=1946510
+[08-26 11:52:22] !! foreign process on a GPU: user=john pid=1946510
+[08-26 11:52:22] cores=3  errors=0
+0  disk=6.7T free
+[08-26 12:22:22] unif: arms_left=22 workers=0
+[08-26 12:22:22] !! unif has no workers but 22 arms remain
+[08-26 12:22:22] stage=d50  arms_left=0  workers=0
+[08-26 12:22:23] !! foreign process on a GPU: user=john pid=1946510
+[08-26 12:22:23] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 12:22:23] !! foreign process on a GPU: user=john pid=1946510
+[08-26 12:22:24] !! foreign process on a GPU: user=john pid=1946510
+[08-26 12:22:24] !! foreign process on a GPU: user=john pid=1946510
+[08-26 12:22:24] cores=5  errors=0
+0  disk=6.7T free
+[08-26 12:52:24] unif: arms_left=22 workers=0
+[08-26 12:52:24] !! unif has no workers but 22 arms remain
+[08-26 12:52:24] stage=d50  arms_left=0  workers=0
+[08-26 12:52:25] !! foreign process on a GPU: user=john pid=1946510
+[08-26 12:52:25] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 12:52:25] !! foreign process on a GPU: user=john pid=1946510
+[08-26 12:52:25] !! foreign process on a GPU: user=john pid=1946510
+[08-26 12:52:25] !! foreign process on a GPU: user=john pid=1946510
+[08-26 12:52:26] cores=3  errors=0
+0  disk=6.7T free
+[08-26 13:22:26] unif: arms_left=22 workers=0
+[08-26 13:22:26] !! unif has no workers but 22 arms remain
+[08-26 13:22:26] stage=d50  arms_left=0  workers=0
+[08-26 13:22:27] !! foreign process on a GPU: user=john pid=1946510
+[08-26 13:22:27] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 13:22:27] !! foreign process on a GPU: user=john pid=1946510
+[08-26 13:22:27] !! foreign process on a GPU: user=john pid=1946510
+[08-26 13:22:27] !! foreign process on a GPU: user=john pid=1946510
+[08-26 13:22:27] cores=3  errors=0
+0  disk=6.7T free
+[08-26 13:52:28] unif: arms_left=22 workers=0
+[08-26 13:52:28] !! unif has no workers but 22 arms remain
+[08-26 13:52:28] stage=d50  arms_left=0  workers=0
+[08-26 13:52:29] !! foreign process on a GPU: user=john pid=1946510
+[08-26 13:52:29] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 13:52:29] !! foreign process on a GPU: user=john pid=1946510
+[08-26 13:52:29] !! foreign process on a GPU: user=john pid=1946510
+[08-26 13:52:29] !! foreign process on a GPU: user=john pid=1946510
+[08-26 13:52:29] cores=3  errors=0
+0  disk=6.7T free
+[08-26 14:22:29] unif: arms_left=22 workers=0
+[08-26 14:22:29] !! unif has no workers but 22 arms remain
+[08-26 14:22:30] stage=d50  arms_left=0  workers=0
+[08-26 14:22:31] !! foreign process on a GPU: user=john pid=1946510
+[08-26 14:22:31] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 14:22:31] !! foreign process on a GPU: user=john pid=1946510
+[08-26 14:22:31] !! foreign process on a GPU: user=john pid=1946510
+[08-26 14:22:31] !! foreign process on a GPU: user=john pid=1946510
+[08-26 14:22:31] cores=3  errors=0
+0  disk=6.7T free
+[08-26 14:52:31] unif: arms_left=22 workers=0
+[08-26 14:52:31] !! unif has no workers but 22 arms remain
+[08-26 14:52:31] stage=d50  arms_left=0  workers=0
+[08-26 14:52:32] !! gpu1 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 14:52:32] !! gpu2 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 14:52:33] !! foreign process on a GPU: user=john pid=1946510
+[08-26 14:52:33] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 14:52:33] !! foreign process on a GPU: user=john pid=1946510
+[08-26 14:52:33] !! foreign process on a GPU: user=john pid=1946510
+[08-26 14:52:33] !! foreign process on a GPU: user=john pid=1946510
+[08-26 14:52:33] cores=1  errors=0
+0  disk=6.7T free
+[08-26 15:22:33] unif: arms_left=22 workers=0
+[08-26 15:22:33] !! unif has no workers but 22 arms remain
+[08-26 15:22:33] stage=d50  arms_left=0  workers=0
+[08-26 15:22:34] !! gpu1 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 15:22:34] !! gpu2 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 15:22:35] !! foreign process on a GPU: user=john pid=1946510
+[08-26 15:22:35] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 15:22:35] !! foreign process on a GPU: user=john pid=1946510
+[08-26 15:22:35] !! foreign process on a GPU: user=john pid=1946510
+[08-26 15:22:35] !! foreign process on a GPU: user=john pid=1946510
+[08-26 15:22:35] cores=1  errors=0
+0  disk=6.7T free
+[08-26 15:52:35] unif: arms_left=22 workers=0
+[08-26 15:52:35] !! unif has no workers but 22 arms remain
+[08-26 15:52:35] stage=d50  arms_left=0  workers=0
+[08-26 15:52:36] !! foreign process on a GPU: user=john pid=1946510
+[08-26 15:52:36] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 15:52:37] !! foreign process on a GPU: user=john pid=1946510
+[08-26 15:52:37] !! foreign process on a GPU: user=john pid=1946510
+[08-26 15:52:37] !! foreign process on a GPU: user=john pid=1946510
+[08-26 15:52:37] cores=3  errors=0
+0  disk=6.7T free
+[08-26 16:22:37] unif: arms_left=22 workers=0
+[08-26 16:22:37] !! unif has no workers but 22 arms remain
+[08-26 16:22:37] stage=d50  arms_left=0  workers=0
+[08-26 16:22:37] !! gpu0 IDLE (3MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 16:22:37] !! gpu1 IDLE (3MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 16:22:38] !! gpu2 IDLE (3MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 16:22:38] !! foreign process on a GPU: user=john pid=1946510
+[08-26 16:22:38] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 16:22:39] !! foreign process on a GPU: user=john pid=1946510
+[08-26 16:22:39] !! foreign process on a GPU: user=john pid=1946510
+[08-26 16:22:39] !! foreign process on a GPU: user=john pid=1946510
+[08-26 16:22:39] !! CPU 179 cores (target 64)
+[08-26 16:22:39] cores=179  errors=0
+0  disk=6.7T free
+[08-26 16:52:39] unif: arms_left=22 workers=0
+[08-26 16:52:39] !! unif has no workers but 22 arms remain
+[08-26 16:52:39] stage=d50  arms_left=0  workers=0
+[08-26 16:52:39] !! gpu0 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 16:52:40] !! foreign process on a GPU: user=john pid=1946510
+[08-26 16:52:40] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 16:52:40] !! foreign process on a GPU: user=john pid=1946510
+[08-26 16:52:40] !! foreign process on a GPU: user=john pid=1946510
+[08-26 16:52:41] !! foreign process on a GPU: user=john pid=1946510
+[08-26 16:52:41] !! CPU 79 cores (target 64)
+[08-26 16:52:41] cores=79  errors=0
+0  disk=6.6T free
+[08-26 17:22:41] unif: arms_left=22 workers=0
+[08-26 17:22:41] !! unif has no workers but 22 arms remain
+[08-26 17:22:41] stage=d50  arms_left=0  workers=0
+[08-26 17:22:41] !! gpu0 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 17:22:41] !! gpu1 IDLE (3MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 17:22:42] !! foreign process on a GPU: user=john pid=1946510
+[08-26 17:22:42] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 17:22:42] !! foreign process on a GPU: user=john pid=1946510
+[08-26 17:22:42] !! foreign process on a GPU: user=john pid=1946510
+[08-26 17:22:42] !! foreign process on a GPU: user=john pid=1946510
+[08-26 17:22:42] !! CPU 66 cores (target 64)
+[08-26 17:22:42] cores=66  errors=0
+0  disk=6.6T free
+[08-26 17:52:43] unif: arms_left=22 workers=0
+[08-26 17:52:43] !! unif has no workers but 22 arms remain
+[08-26 17:52:43] stage=d50  arms_left=0  workers=0
+[08-26 17:52:43] !! gpu0 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 17:52:44] !! foreign process on a GPU: user=john pid=1946510
+[08-26 17:52:44] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 17:52:44] !! foreign process on a GPU: user=john pid=1946510
+[08-26 17:52:44] !! foreign process on a GPU: user=john pid=1946510
+[08-26 17:52:44] !! foreign process on a GPU: user=john pid=1946510
+[08-26 17:52:44] !! foreign process on a GPU: user=john pid=2919901
+[08-26 17:52:44] !! CPU 104 cores (target 64)
+[08-26 17:52:44] cores=104  errors=0
+0  disk=6.6T free
+[08-26 18:22:44] unif: arms_left=22 workers=0
+[08-26 18:22:44] !! unif has no workers but 22 arms remain
+[08-26 18:22:45] stage=d50  arms_left=0  workers=0
+[08-26 18:22:45] !! gpu0 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 18:22:46] !! foreign process on a GPU: user=john pid=1946510
+[08-26 18:22:46] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 18:22:46] !! foreign process on a GPU: user=john pid=1946510
+[08-26 18:22:46] !! foreign process on a GPU: user=john pid=1946510
+[08-26 18:22:46] !! foreign process on a GPU: user=john pid=1946510
+[08-26 18:22:46] !! foreign process on a GPU: user=john pid=2919901
+[08-26 18:22:46] cores=34  errors=0
+0  disk=6.6T free
+[08-26 18:52:46] unif: arms_left=22 workers=0
+[08-26 18:52:46] !! unif has no workers but 22 arms remain
+[08-26 18:52:47] stage=d50  arms_left=0  workers=0
+[08-26 18:52:47] !! gpu0 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 18:52:47] !! gpu1 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 18:52:47] !! gpu2 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 18:52:48] !! foreign process on a GPU: user=john pid=1946510
+[08-26 18:52:48] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 18:52:48] !! foreign process on a GPU: user=john pid=1946510
+[08-26 18:52:48] !! foreign process on a GPU: user=john pid=1946510
+[08-26 18:52:48] !! foreign process on a GPU: user=john pid=1946510
+[08-26 18:52:49] !! foreign process on a GPU: user=john pid=2919901
+[08-26 18:52:49] cores=13  errors=0
+0  disk=6.5T free
+[08-26 19:22:49] unif: arms_left=22 workers=0
+[08-26 19:22:49] !! unif has no workers but 22 arms remain
+[08-26 19:22:49] stage=d50  arms_left=0  workers=0
+[08-26 19:22:49] !! gpu0 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 19:22:49] !! gpu1 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 19:22:49] !! gpu2 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 19:22:50] !! foreign process on a GPU: user=john pid=1946510
+[08-26 19:22:51] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 19:22:51] !! foreign process on a GPU: user=john pid=1946510
+[08-26 19:22:51] !! foreign process on a GPU: user=john pid=1946510
+[08-26 19:22:51] !! foreign process on a GPU: user=john pid=1946510
+[08-26 19:22:51] !! foreign process on a GPU: user=john pid=2919901
+[08-26 19:22:51] cores=5  errors=0
+0  disk=6.5T free
+[08-26 19:52:51] unif: arms_left=22 workers=0
+[08-26 19:52:51] !! unif has no workers but 22 arms remain
+[08-26 19:52:51] stage=d50  arms_left=0  workers=0
+[08-26 19:52:51] !! gpu0 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 19:52:51] !! gpu1 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 19:52:52] !! gpu2 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 19:52:52] !! foreign process on a GPU: user=john pid=1946510
+[08-26 19:52:53] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 19:52:53] !! foreign process on a GPU: user=john pid=1946510
+[08-26 19:52:53] !! foreign process on a GPU: user=john pid=1946510
+[08-26 19:52:53] !! foreign process on a GPU: user=john pid=1946510
+[08-26 19:52:53] !! foreign process on a GPU: user=john pid=2919901
+[08-26 19:52:53] cores=7  errors=0
+0  disk=6.5T free
+[08-26 20:22:53] unif: arms_left=22 workers=0
+[08-26 20:22:53] !! unif has no workers but 22 arms remain
+[08-26 20:22:53] stage=d50  arms_left=0  workers=0
+[08-26 20:22:53] !! gpu0 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 20:22:53] !! gpu1 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 20:22:54] !! gpu2 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 20:22:55] !! foreign process on a GPU: user=john pid=1946510
+[08-26 20:22:55] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 20:22:55] !! foreign process on a GPU: user=john pid=1946510
+[08-26 20:22:55] !! foreign process on a GPU: user=john pid=1946510
+[08-26 20:22:55] !! foreign process on a GPU: user=john pid=1946510
+[08-26 20:22:55] !! foreign process on a GPU: user=john pid=2919901
+[08-26 20:22:55] cores=44  errors=0
+0  disk=6.5T free
+[08-26 20:52:55] unif: arms_left=22 workers=0
+[08-26 20:52:55] !! unif has no workers but 22 arms remain
+[08-26 20:52:55] stage=d50  arms_left=0  workers=0
+[08-26 20:52:56] !! gpu2 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-26 20:52:56] !! foreign process on a GPU: user=shawn pid=3148440
+[08-26 20:52:56] !! foreign process on a GPU: user=shawn pid=3148440
+[08-26 20:52:56] !! foreign process on a GPU: user=john pid=1946510
+[08-26 20:52:57] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 20:52:57] !! foreign process on a GPU: user=john pid=1946510
+[08-26 20:52:57] !! foreign process on a GPU: user=john pid=1946510
+[08-26 20:52:57] !! foreign process on a GPU: user=john pid=1946510
+[08-26 20:52:57] !! foreign process on a GPU: user=john pid=2919901
+[08-26 20:52:57] cores=6  errors=0
+0  disk=6.5T free
+[08-26 21:22:57] unif: arms_left=22 workers=0
+[08-26 21:22:57] !! unif has no workers but 22 arms remain
+[08-26 21:22:57] stage=d50  arms_left=0  workers=0
+[08-26 21:22:58] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 21:22:58] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 21:22:58] !! foreign process on a GPU: user=kao pid=3182621
+[08-26 21:22:59] !! foreign process on a GPU: user=john pid=1946510
+[08-26 21:22:59] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 21:22:59] !! foreign process on a GPU: user=john pid=1946510
+[08-26 21:22:59] !! foreign process on a GPU: user=john pid=1946510
+[08-26 21:22:59] !! foreign process on a GPU: user=john pid=1946510
+[08-26 21:22:59] !! foreign process on a GPU: user=john pid=2919901
+[08-26 21:22:59] cores=36  errors=0
+0  disk=6.5T free
+[08-26 21:52:59] unif: arms_left=22 workers=0
+[08-26 21:52:59] !! unif has no workers but 22 arms remain
+[08-26 21:52:59] stage=d50  arms_left=0  workers=0
+[08-26 21:53:00] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 21:53:00] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 21:53:00] !! foreign process on a GPU: user=kao pid=3182621
+[08-26 21:53:00] !! foreign process on a GPU: user=john pid=1946510
+[08-26 21:53:01] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 21:53:01] !! foreign process on a GPU: user=john pid=1946510
+[08-26 21:53:01] !! foreign process on a GPU: user=john pid=1946510
+[08-26 21:53:01] !! foreign process on a GPU: user=john pid=1946510
+[08-26 21:53:01] !! foreign process on a GPU: user=john pid=2919901
+[08-26 21:53:01] cores=29  errors=0
+0  disk=6.5T free
+[08-26 22:23:01] unif: arms_left=22 workers=0
+[08-26 22:23:01] !! unif has no workers but 22 arms remain
+[08-26 22:23:01] stage=d50  arms_left=0  workers=0
+[08-26 22:23:02] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 22:23:02] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 22:23:02] !! foreign process on a GPU: user=kao pid=3182621
+[08-26 22:23:03] !! foreign process on a GPU: user=john pid=1946510
+[08-26 22:23:03] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 22:23:03] !! foreign process on a GPU: user=john pid=1946510
+[08-26 22:23:03] !! foreign process on a GPU: user=john pid=1946510
+[08-26 22:23:03] !! foreign process on a GPU: user=john pid=1946510
+[08-26 22:23:03] !! foreign process on a GPU: user=john pid=2919901
+[08-26 22:23:03] cores=16  errors=0
+0  disk=6.5T free
+[08-26 22:53:03] unif: arms_left=22 workers=0
+[08-26 22:53:03] !! unif has no workers but 22 arms remain
+[08-26 22:53:03] stage=d50  arms_left=0  workers=0
+[08-26 22:53:04] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 22:53:04] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 22:53:04] !! foreign process on a GPU: user=kao pid=3182621
+[08-26 22:53:04] !! foreign process on a GPU: user=john pid=1946510
+[08-26 22:53:05] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 22:53:05] !! foreign process on a GPU: user=john pid=1946510
+[08-26 22:53:05] !! foreign process on a GPU: user=john pid=1946510
+[08-26 22:53:05] !! foreign process on a GPU: user=john pid=1946510
+[08-26 22:53:05] !! foreign process on a GPU: user=john pid=2919901
+[08-26 22:53:05] cores=7  errors=0
+0  disk=6.5T free
+[08-26 23:23:05] unif: arms_left=22 workers=0
+[08-26 23:23:05] !! unif has no workers but 22 arms remain
+[08-26 23:23:05] stage=d50  arms_left=0  workers=0
+[08-26 23:23:06] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 23:23:06] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 23:23:06] !! foreign process on a GPU: user=kao pid=3182621
+[08-26 23:23:06] !! foreign process on a GPU: user=john pid=1946510
+[08-26 23:23:07] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 23:23:07] !! foreign process on a GPU: user=john pid=1946510
+[08-26 23:23:07] !! foreign process on a GPU: user=john pid=1946510
+[08-26 23:23:07] !! foreign process on a GPU: user=john pid=1946510
+[08-26 23:23:07] !! foreign process on a GPU: user=john pid=2919901
+[08-26 23:23:07] cores=8  errors=0
+0  disk=6.5T free
+[08-26 23:53:07] unif: arms_left=22 workers=0
+[08-26 23:53:07] !! unif has no workers but 22 arms remain
+[08-26 23:53:07] stage=d50  arms_left=0  workers=0
+[08-26 23:53:08] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 23:53:08] !! foreign process on a GPU: user=shawn pid=3155390
+[08-26 23:53:08] !! foreign process on a GPU: user=kao pid=3182621
+[08-26 23:53:08] !! foreign process on a GPU: user=john pid=1946510
+[08-26 23:53:08] !! foreign process on a GPU: user=kao pid=3886576
+[08-26 23:53:09] !! foreign process on a GPU: user=john pid=1946510
+[08-26 23:53:09] !! foreign process on a GPU: user=john pid=1946510
+[08-26 23:53:09] !! foreign process on a GPU: user=john pid=1946510
+[08-26 23:53:09] !! foreign process on a GPU: user=john pid=2919901
+[08-26 23:53:09] cores=43  errors=0
+0  disk=6.5T free
+[08-27 00:23:09] unif: arms_left=22 workers=0
+[08-27 00:23:09] !! unif has no workers but 22 arms remain
+[08-27 00:23:09] stage=d50  arms_left=0  workers=0
+[08-27 00:23:10] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 00:23:10] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 00:23:10] !! foreign process on a GPU: user=kao pid=3182621
+[08-27 00:23:10] !! foreign process on a GPU: user=john pid=1946510
+[08-27 00:23:10] !! foreign process on a GPU: user=kao pid=3886576
+[08-27 00:23:10] !! foreign process on a GPU: user=john pid=1946510
+[08-27 00:23:10] !! foreign process on a GPU: user=john pid=1946510
+[08-27 00:23:11] !! foreign process on a GPU: user=john pid=1946510
+[08-27 00:23:11] !! foreign process on a GPU: user=john pid=2919901
+[08-27 00:23:11] cores=12  errors=0
+0  disk=6.5T free
+[08-27 00:53:11] unif: arms_left=22 workers=0
+[08-27 00:53:11] !! unif has no workers but 22 arms remain
+[08-27 00:53:11] stage=d50  arms_left=0  workers=0
+[08-27 00:53:12] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 00:53:12] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 00:53:12] !! foreign process on a GPU: user=kao pid=3182621
+[08-27 00:53:12] !! foreign process on a GPU: user=john pid=1946510
+[08-27 00:53:12] !! foreign process on a GPU: user=kao pid=3886576
+[08-27 00:53:12] !! foreign process on a GPU: user=john pid=1946510
+[08-27 00:53:13] !! foreign process on a GPU: user=john pid=1946510
+[08-27 00:53:13] !! foreign process on a GPU: user=john pid=1946510
+[08-27 00:53:13] !! foreign process on a GPU: user=john pid=2919901
+[08-27 00:53:13] cores=12  errors=0
+0  disk=6.5T free
+[08-27 01:23:13] unif: arms_left=22 workers=0
+[08-27 01:23:13] !! unif has no workers but 22 arms remain
+[08-27 01:23:13] stage=d50  arms_left=0  workers=0
+[08-27 01:23:14] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 01:23:14] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 01:23:14] !! foreign process on a GPU: user=kao pid=3182621
+[08-27 01:23:14] !! foreign process on a GPU: user=john pid=1946510
+[08-27 01:23:14] !! foreign process on a GPU: user=kao pid=3886576
+[08-27 01:23:14] !! foreign process on a GPU: user=john pid=1946510
+[08-27 01:23:14] !! foreign process on a GPU: user=john pid=1946510
+[08-27 01:23:15] !! foreign process on a GPU: user=john pid=1946510
+[08-27 01:23:15] !! foreign process on a GPU: user=john pid=2919901
+[08-27 01:23:15] cores=40  errors=0
+0  disk=6.5T free
+[08-27 01:53:15] unif: arms_left=22 workers=0
+[08-27 01:53:15] !! unif has no workers but 22 arms remain
+[08-27 01:53:15] stage=d50  arms_left=0  workers=0
+[08-27 01:53:16] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 01:53:16] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 01:53:16] !! foreign process on a GPU: user=kao pid=3182621
+[08-27 01:53:16] !! foreign process on a GPU: user=john pid=1946510
+[08-27 01:53:16] !! foreign process on a GPU: user=kao pid=3886576
+[08-27 01:53:16] !! foreign process on a GPU: user=john pid=1946510
+[08-27 01:53:16] !! foreign process on a GPU: user=john pid=1946510
+[08-27 01:53:17] !! foreign process on a GPU: user=john pid=1946510
+[08-27 01:53:17] !! foreign process on a GPU: user=john pid=2919901
+[08-27 01:53:17] cores=35  errors=0
+0  disk=6.5T free
+[08-27 02:23:17] unif: arms_left=22 workers=0
+[08-27 02:23:17] !! unif has no workers but 22 arms remain
+[08-27 02:23:17] stage=d50  arms_left=0  workers=0
+[08-27 02:23:18] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 02:23:18] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 02:23:18] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 02:23:18] !! foreign process on a GPU: user=john pid=1946510
+[08-27 02:23:18] !! foreign process on a GPU: user=kao pid=3886576
+[08-27 02:23:18] !! foreign process on a GPU: user=john pid=1946510
+[08-27 02:23:18] !! foreign process on a GPU: user=john pid=1946510
+[08-27 02:23:18] !! foreign process on a GPU: user=john pid=1946510
+[08-27 02:23:18] !! foreign process on a GPU: user=john pid=2919901
+[08-27 02:23:19] cores=8  errors=0
+0  disk=6.5T free
+[08-27 02:53:19] unif: arms_left=22 workers=0
+[08-27 02:53:19] !! unif has no workers but 22 arms remain
+[08-27 02:53:19] stage=d50  arms_left=0  workers=0
+[08-27 02:53:20] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 02:53:20] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 02:53:20] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 02:53:20] !! foreign process on a GPU: user=john pid=1946510
+[08-27 02:53:20] !! foreign process on a GPU: user=kao pid=3886576
+[08-27 02:53:20] !! foreign process on a GPU: user=john pid=1946510
+[08-27 02:53:20] !! foreign process on a GPU: user=john pid=1946510
+[08-27 02:53:20] !! foreign process on a GPU: user=john pid=1946510
+[08-27 02:53:20] !! foreign process on a GPU: user=john pid=2919901
+[08-27 02:53:20] cores=9  errors=0
+0  disk=6.5T free
+[08-27 03:23:21] unif: arms_left=22 workers=0
+[08-27 03:23:21] !! unif has no workers but 22 arms remain
+[08-27 03:23:21] stage=d50  arms_left=0  workers=0
+[08-27 03:23:22] !! gpu5 IDLE (1MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 03:23:22] !! gpu6 IDLE (1MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 03:23:22] !! gpu7 IDLE (1MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 03:23:22] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 03:23:22] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 03:23:22] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 03:23:22] cores=29  errors=0
+0  disk=6.5T free
+[08-27 03:53:22] unif: arms_left=22 workers=0
+[08-27 03:53:22] !! unif has no workers but 22 arms remain
+[08-27 03:53:22] stage=d50  arms_left=0  workers=0
+[08-27 03:53:23] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 03:53:24] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 03:53:24] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 03:53:24] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 03:53:24] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 03:53:24] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 03:53:24] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 03:53:24] cores=14  errors=0
+0  disk=6.5T free
+[08-27 04:23:24] unif: arms_left=22 workers=0
+[08-27 04:23:24] !! unif has no workers but 22 arms remain
+[08-27 04:23:24] stage=d50  arms_left=0  workers=0
+[08-27 04:23:25] !! gpu3 IDLE (3MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 04:23:26] !! gpu5 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 04:23:26] !! gpu6 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 04:23:26] !! gpu7 IDLE (0MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 04:23:26] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 04:23:26] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 04:23:26] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 04:23:26] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 04:23:26] cores=43  errors=0
+0  disk=6.5T free
+[08-27 04:53:26] unif: arms_left=22 workers=0
+[08-27 04:53:26] !! unif has no workers but 22 arms remain
+[08-27 04:53:27] stage=d50  arms_left=0  workers=0
+[08-27 04:53:28] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 04:53:28] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 04:53:28] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 04:53:28] !! foreign process on a GPU: user=john pid=3735828
+[08-27 04:53:28] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 04:53:28] !! foreign process on a GPU: user=john pid=3735815
+[08-27 04:53:28] !! foreign process on a GPU: user=john pid=3736003
+[08-27 04:53:28] !! foreign process on a GPU: user=john pid=3736016
+[08-27 04:53:28] cores=10  errors=0
+0  disk=6.5T free
+[08-27 05:23:28] unif: arms_left=22 workers=0
+[08-27 05:23:28] !! unif has no workers but 22 arms remain
+[08-27 05:23:28] stage=d50  arms_left=0  workers=0
+[08-27 05:23:29] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 05:23:30] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 05:23:30] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 05:23:30] !! foreign process on a GPU: user=john pid=3735828
+[08-27 05:23:30] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 05:23:30] !! foreign process on a GPU: user=john pid=3821231
+[08-27 05:23:30] !! foreign process on a GPU: user=john pid=3819132
+[08-27 05:23:30] !! foreign process on a GPU: user=john pid=3736016
+[08-27 05:23:30] cores=0  errors=0
+0  disk=6.5T free
+[08-27 05:53:30] unif: arms_left=22 workers=0
+[08-27 05:53:30] !! unif has no workers but 22 arms remain
+[08-27 05:53:30] stage=d50  arms_left=0  workers=0
+[08-27 05:53:31] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 05:53:31] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 05:53:31] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 05:53:31] !! foreign process on a GPU: user=john pid=3838925
+[08-27 05:53:31] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 05:53:32] !! foreign process on a GPU: user=john pid=3821231
+[08-27 05:53:32] !! foreign process on a GPU: user=john pid=3819132
+[08-27 05:53:32] !! foreign process on a GPU: user=john pid=3827984
+[08-27 05:53:32] cores=0  errors=0
+0  disk=6.5T free
+[08-27 06:23:32] unif: arms_left=22 workers=0
+[08-27 06:23:32] !! unif has no workers but 22 arms remain
+[08-27 06:23:32] stage=d50  arms_left=0  workers=0
+[08-27 06:23:33] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 06:23:33] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 06:23:33] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 06:23:33] !! foreign process on a GPU: user=john pid=3838925
+[08-27 06:23:33] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 06:23:33] !! foreign process on a GPU: user=john pid=3925701
+[08-27 06:23:33] !! foreign process on a GPU: user=john pid=3903163
+[08-27 06:23:33] !! foreign process on a GPU: user=john pid=3918425
+[08-27 06:23:33] cores=39  errors=0
+0  disk=6.5T free
+[08-27 06:53:34] unif: arms_left=22 workers=0
+[08-27 06:53:34] !! unif has no workers but 22 arms remain
+[08-27 06:53:34] stage=d50  arms_left=0  workers=0
+[08-27 06:53:35] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 06:53:35] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 06:53:35] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 06:53:35] !! foreign process on a GPU: user=john pid=3982223
+[08-27 06:53:35] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 06:53:35] !! foreign process on a GPU: user=john pid=3925701
+[08-27 06:53:35] !! foreign process on a GPU: user=john pid=3903163
+[08-27 06:53:35] !! foreign process on a GPU: user=john pid=3918425
+[08-27 06:53:35] cores=0  errors=0
+0  disk=6.5T free
+[08-27 07:23:35] unif: arms_left=22 workers=0
+[08-27 07:23:35] !! unif has no workers but 22 arms remain
+[08-27 07:23:35] stage=d50  arms_left=0  workers=0
+[08-27 07:23:37] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 07:23:37] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 07:23:37] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 07:23:37] !! foreign process on a GPU: user=john pid=4082854
+[08-27 07:23:37] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 07:23:37] !! foreign process on a GPU: user=john pid=4057588
+[08-27 07:23:37] !! foreign process on a GPU: user=john pid=4030078
+[08-27 07:23:37] !! foreign process on a GPU: user=john pid=4055621
+[08-27 07:23:37] cores=0  errors=0
+0  disk=6.5T free
+[08-27 07:53:37] unif: arms_left=22 workers=0
+[08-27 07:53:37] !! unif has no workers but 22 arms remain
+[08-27 07:53:37] stage=d50  arms_left=0  workers=0
+[08-27 07:53:38] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 07:53:38] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 07:53:38] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 07:53:38] !! foreign process on a GPU: user=john pid=4082854
+[08-27 07:53:39] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 07:53:39] !! foreign process on a GPU: user=john pid=4140927
+[08-27 07:53:39] !! foreign process on a GPU: user=john pid=4117935
+[08-27 07:53:39] !! foreign process on a GPU: user=john pid=4055621
+[08-27 07:53:39] cores=4  errors=0
+0  disk=6.5T free
+[08-27 08:23:39] unif: arms_left=22 workers=0
+[08-27 08:23:39] !! unif has no workers but 22 arms remain
+[08-27 08:23:39] stage=d50  arms_left=0  workers=0
+[08-27 08:23:40] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 08:23:40] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 08:23:40] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 08:23:40] !! foreign process on a GPU: user=john pid=4182640
+[08-27 08:23:40] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 08:23:40] !! foreign process on a GPU: user=john pid=4140927
+[08-27 08:23:40] !! foreign process on a GPU: user=john pid=4117935
+[08-27 08:23:40] !! foreign process on a GPU: user=john pid=4149038
+[08-27 08:23:41] cores=3  errors=0
+0  disk=6.5T free
+[08-27 08:53:41] unif: arms_left=22 workers=0
+[08-27 08:53:41] !! unif has no workers but 22 arms remain
+[08-27 08:53:41] stage=d50  arms_left=0  workers=0
+[08-27 08:53:42] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 08:53:42] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 08:53:42] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 08:53:42] !! foreign process on a GPU: user=john pid=4182640
+[08-27 08:53:42] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 08:53:42] !! foreign process on a GPU: user=john pid=59279
+[08-27 08:53:42] !! foreign process on a GPU: user=john pid=23581
+[08-27 08:53:42] !! foreign process on a GPU: user=john pid=61910
+[08-27 08:53:42] cores=63  errors=0
+0  disk=6.4T free
+[08-27 09:23:43] unif: arms_left=22 workers=0
+[08-27 09:23:43] !! unif has no workers but 22 arms remain
+[08-27 09:23:43] stage=d50  arms_left=0  workers=0
+[08-27 09:23:44] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 09:23:44] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 09:23:44] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 09:23:44] !! foreign process on a GPU: user=john pid=137349
+[08-27 09:23:44] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 09:23:44] !! foreign process on a GPU: user=john pid=59279
+[08-27 09:23:44] !! foreign process on a GPU: user=john pid=175756
+[08-27 09:23:44] !! foreign process on a GPU: user=john pid=61910
+[08-27 09:23:44] cores=0  errors=0
+0  disk=6.4T free
+[08-27 09:53:44] unif: arms_left=22 workers=0
+[08-27 09:53:44] !! unif has no workers but 22 arms remain
+[08-27 09:53:44] stage=d50  arms_left=0  workers=0
+[08-27 09:53:46] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 09:53:46] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 09:53:46] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 09:53:46] !! foreign process on a GPU: user=john pid=137349
+[08-27 09:53:46] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 09:53:46] !! foreign process on a GPU: user=john pid=208276
+[08-27 09:53:46] !! foreign process on a GPU: user=john pid=175756
+[08-27 09:53:46] !! foreign process on a GPU: user=john pid=202524
+[08-27 09:53:46] cores=0  errors=0
+0  disk=6.4T free
+[08-27 10:23:46] unif: arms_left=22 workers=0
+[08-27 10:23:46] !! unif has no workers but 22 arms remain
+[08-27 10:23:46] stage=d50  arms_left=0  workers=0
+[08-27 10:23:47] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 10:23:47] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 10:23:47] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 10:23:48] !! foreign process on a GPU: user=john pid=254413
+[08-27 10:23:48] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 10:23:48] !! foreign process on a GPU: user=john pid=208276
+[08-27 10:23:48] !! foreign process on a GPU: user=john pid=175756
+[08-27 10:23:48] !! foreign process on a GPU: user=john pid=202524
+[08-27 10:23:48] cores=0  errors=0
+0  disk=6.4T free
+[08-27 10:53:48] unif: arms_left=22 workers=0
+[08-27 10:53:48] !! unif has no workers but 22 arms remain
+[08-27 10:53:48] stage=d50  arms_left=0  workers=0
+[08-27 10:53:49] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 10:53:49] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 10:53:49] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 10:53:49] !! foreign process on a GPU: user=john pid=254413
+[08-27 10:53:49] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 10:53:49] !! foreign process on a GPU: user=john pid=208276
+[08-27 10:53:49] !! foreign process on a GPU: user=john pid=339690
+[08-27 10:53:49] !! foreign process on a GPU: user=john pid=202524
+[08-27 10:53:50] cores=0  errors=0
+0  disk=6.4T free
+[08-27 11:23:50] unif: arms_left=22 workers=0
+[08-27 11:23:50] !! unif has no workers but 22 arms remain
+[08-27 11:23:50] stage=d50  arms_left=0  workers=0
+[08-27 11:23:51] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 11:23:51] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 11:23:51] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 11:23:51] !! foreign process on a GPU: user=john pid=254413
+[08-27 11:23:51] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 11:23:51] !! foreign process on a GPU: user=john pid=369939
+[08-27 11:23:51] !! foreign process on a GPU: user=john pid=339690
+[08-27 11:23:51] !! foreign process on a GPU: user=john pid=374979
+[08-27 11:23:51] cores=0  errors=0
+0  disk=6.4T free
+[08-27 11:53:51] unif: arms_left=22 workers=0
+[08-27 11:53:51] !! unif has no workers but 22 arms remain
+[08-27 11:53:51] stage=d50  arms_left=0  workers=0
+[08-27 11:53:53] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 11:53:53] !! foreign process on a GPU: user=shawn pid=3155390
+[08-27 11:53:53] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 11:53:53] !! foreign process on a GPU: user=john pid=429455
+[08-27 11:53:53] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 11:53:53] !! foreign process on a GPU: user=john pid=524897
+[08-27 11:53:53] !! foreign process on a GPU: user=john pid=447991
+[08-27 11:53:53] !! foreign process on a GPU: user=john pid=522449
+[08-27 11:53:53] !! foreign process on a GPU: user=shawn pid=527975
+[08-27 11:53:53] cores=0  errors=0
+0  disk=6.4T free
+[08-27 12:23:53] unif: arms_left=22 workers=0
+[08-27 12:23:53] !! unif has no workers but 22 arms remain
+[08-27 12:23:53] stage=d50  arms_left=0  workers=0
+[08-27 12:23:54] !! foreign process on a GPU: user=shawn pid=626420
+[08-27 12:23:54] !! foreign process on a GPU: user=shawn pid=626420
+[08-27 12:23:55] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 12:23:55] !! foreign process on a GPU: user=john pid=601723
+[08-27 12:23:55] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 12:23:55] !! foreign process on a GPU: user=john pid=524897
+[08-27 12:23:55] !! foreign process on a GPU: user=john pid=574581
+[08-27 12:23:55] !! foreign process on a GPU: user=john pid=522449
+[08-27 12:23:55] cores=0  errors=0
+0  disk=6.4T free
+[08-27 12:53:55] unif: arms_left=22 workers=0
+[08-27 12:53:55] !! unif has no workers but 22 arms remain
+[08-27 12:53:55] stage=d50  arms_left=0  workers=0
+[08-27 12:53:56] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 12:53:56] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 12:53:56] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 12:53:56] !! foreign process on a GPU: user=john pid=673679
+[08-27 12:53:56] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 12:53:56] !! foreign process on a GPU: user=john pid=673757
+[08-27 12:53:57] !! foreign process on a GPU: user=john pid=708109
+[08-27 12:53:57] !! foreign process on a GPU: user=john pid=673602
+[08-27 12:53:57] cores=0  errors=0
+0  disk=6.4T free
+[08-27 13:23:57] unif: arms_left=22 workers=0
+[08-27 13:23:57] !! unif has no workers but 22 arms remain
+[08-27 13:23:57] stage=d50  arms_left=0  workers=0
+[08-27 13:23:58] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 13:23:58] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 13:23:58] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 13:23:58] !! foreign process on a GPU: user=john pid=673679
+[08-27 13:23:58] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 13:23:58] !! foreign process on a GPU: user=john pid=673757
+[08-27 13:23:58] !! foreign process on a GPU: user=john pid=708109
+[08-27 13:23:58] !! foreign process on a GPU: user=john pid=673602
+[08-27 13:23:58] cores=0  errors=0
+0  disk=6.4T free
+[08-27 13:53:58] unif: arms_left=22 workers=0
+[08-27 13:53:58] !! unif has no workers but 22 arms remain
+[08-27 13:53:59] stage=d50  arms_left=0  workers=0
+[08-27 13:54:00] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 13:54:00] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 13:54:00] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 13:54:00] !! foreign process on a GPU: user=john pid=673679
+[08-27 13:54:00] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 13:54:00] !! foreign process on a GPU: user=john pid=673757
+[08-27 13:54:00] !! foreign process on a GPU: user=john pid=708109
+[08-27 13:54:00] !! foreign process on a GPU: user=john pid=673602
+[08-27 13:54:00] cores=3  errors=0
+0  disk=6.4T free
+[08-27 14:24:00] unif: arms_left=22 workers=0
+[08-27 14:24:00] !! unif has no workers but 22 arms remain
+[08-27 14:24:00] stage=d50  arms_left=0  workers=0
+[08-27 14:24:01] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 14:24:01] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 14:24:02] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 14:24:02] !! foreign process on a GPU: user=john pid=863254
+[08-27 14:24:02] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 14:24:02] !! foreign process on a GPU: user=john pid=850697
+[08-27 14:24:02] !! foreign process on a GPU: user=john pid=882317
+[08-27 14:24:02] !! foreign process on a GPU: user=john pid=855199
+[08-27 14:24:02] cores=0  errors=0
+0  disk=6.4T free
+[08-27 14:54:02] unif: arms_left=22 workers=0
+[08-27 14:54:02] !! unif has no workers but 22 arms remain
+[08-27 14:54:02] stage=d50  arms_left=0  workers=0
+[08-27 14:54:03] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 14:54:03] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 14:54:03] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 14:54:03] !! foreign process on a GPU: user=john pid=967333
+[08-27 14:54:03] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 14:54:03] !! foreign process on a GPU: user=john pid=942785
+[08-27 14:54:03] !! foreign process on a GPU: user=john pid=882317
+[08-27 14:54:04] !! foreign process on a GPU: user=john pid=953565
+[08-27 14:54:04] cores=0  errors=0
+0  disk=6.4T free
+[08-27 15:24:04] unif: arms_left=22 workers=0
+[08-27 15:24:04] !! unif has no workers but 22 arms remain
+[08-27 15:24:04] stage=d50  arms_left=0  workers=0
+[08-27 15:24:05] !! gpu7 IDLE (611MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 15:24:05] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 15:24:05] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 15:24:05] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 15:24:05] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 15:24:05] !! foreign process on a GPU: user=john pid=967333
+[08-27 15:24:05] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 15:24:05] !! foreign process on a GPU: user=john pid=1105186
+[08-27 15:24:05] !! foreign process on a GPU: user=john pid=1004645
+[08-27 15:24:05] !! foreign process on a GPU: user=john pid=1117454
+[08-27 15:24:05] cores=0  errors=0
+0  disk=6.9T free
+[08-27 15:54:06] unif: arms_left=22 workers=0
+[08-27 15:54:06] !! unif has no workers but 22 arms remain
+[08-27 15:54:06] stage=d50  arms_left=0  workers=0
+[08-27 15:54:06] !! gpu3 IDLE (1621MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-27 15:54:07] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 15:54:07] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 15:54:07] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 15:54:07] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 15:54:07] !! foreign process on a GPU: user=john pid=1207593
+[08-27 15:54:07] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 15:54:07] !! foreign process on a GPU: user=john pid=1105186
+[08-27 15:54:07] !! foreign process on a GPU: user=john pid=1214332
+[08-27 15:54:07] !! foreign process on a GPU: user=john pid=1201764
+[08-27 15:54:07] cores=0  errors=0
+0  disk=6.9T free
+[08-27 16:24:07] unif: arms_left=22 workers=0
+[08-27 16:24:07] !! unif has no workers but 22 arms remain
+[08-27 16:24:07] stage=d50  arms_left=0  workers=0
+[08-27 16:24:09] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 16:24:09] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 16:24:09] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 16:24:09] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 16:24:09] !! foreign process on a GPU: user=john pid=1207593
+[08-27 16:24:09] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 16:24:09] !! foreign process on a GPU: user=john pid=1105186
+[08-27 16:24:09] !! foreign process on a GPU: user=john pid=1381402
+[08-27 16:24:09] !! foreign process on a GPU: user=john pid=1201764
+[08-27 16:24:09] cores=0  errors=0
+0  disk=6.9T free
+[08-27 16:54:09] unif: arms_left=22 workers=0
+[08-27 16:54:09] !! unif has no workers but 22 arms remain
+[08-27 16:54:09] stage=d50  arms_left=0  workers=0
+[08-27 16:54:11] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 16:54:11] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 16:54:11] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 16:54:11] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 16:54:11] !! foreign process on a GPU: user=john pid=1207593
+[08-27 16:54:11] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 16:54:11] !! foreign process on a GPU: user=john pid=1388149
+[08-27 16:54:11] !! foreign process on a GPU: user=john pid=1381402
+[08-27 16:54:11] !! foreign process on a GPU: user=john pid=1201764
+[08-27 16:54:11] cores=0  errors=0
+0  disk=6.9T free
+[08-27 17:24:11] unif: arms_left=22 workers=0
+[08-27 17:24:11] !! unif has no workers but 22 arms remain
+[08-27 17:24:11] stage=d50  arms_left=0  workers=0
+[08-27 17:24:12] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 17:24:12] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 17:24:12] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 17:24:12] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 17:24:13] !! foreign process on a GPU: user=john pid=1544795
+[08-27 17:24:13] !! foreign process on a GPU: user=kao pid=3612011
+[08-27 17:24:13] !! foreign process on a GPU: user=john pid=1388149
+[08-27 17:24:13] !! foreign process on a GPU: user=john pid=1525035
+[08-27 17:24:13] !! foreign process on a GPU: user=john pid=1539526
+[08-27 17:24:13] cores=0  errors=0
+0  disk=6.9T free
+[08-27 17:54:13] unif: arms_left=22 workers=0
+[08-27 17:54:13] !! unif has no workers but 22 arms remain
+[08-27 17:54:13] stage=d50  arms_left=0  workers=0
+[08-27 17:54:14] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 17:54:14] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 17:54:14] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 17:54:14] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 17:54:14] !! foreign process on a GPU: user=john pid=1662909
+[08-27 17:54:14] !! foreign process on a GPU: user=john pid=1671967
+[08-27 17:54:14] !! foreign process on a GPU: user=john pid=1525035
+[08-27 17:54:14] !! foreign process on a GPU: user=john pid=1659744
+[08-27 17:54:15] cores=0  errors=0
+0  disk=6.9T free
+[08-27 18:24:15] unif: arms_left=22 workers=0
+[08-27 18:24:15] !! unif has no workers but 22 arms remain
+[08-27 18:24:15] stage=d50  arms_left=0  workers=0
+[08-27 18:24:16] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 18:24:16] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 18:24:16] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 18:24:16] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 18:24:16] !! foreign process on a GPU: user=john pid=1662909
+[08-27 18:24:16] !! foreign process on a GPU: user=john pid=1780345
+[08-27 18:24:16] !! foreign process on a GPU: user=john pid=1792648
+[08-27 18:24:16] !! foreign process on a GPU: user=john pid=1659744
+[08-27 18:24:16] cores=2  errors=0
+0  disk=6.9T free
+[08-27 18:54:17] unif: arms_left=22 workers=0
+[08-27 18:54:17] !! unif has no workers but 22 arms remain
+[08-27 18:54:17] stage=d50  arms_left=0  workers=0
+[08-27 18:54:18] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 18:54:18] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 18:54:18] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 18:54:18] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 18:54:18] !! foreign process on a GPU: user=john pid=1662909
+[08-27 18:54:18] !! foreign process on a GPU: user=john pid=1887902
+[08-27 18:54:18] !! foreign process on a GPU: user=john pid=1792648
+[08-27 18:54:18] !! foreign process on a GPU: user=john pid=1659744
+[08-27 18:54:18] !! foreign process on a GPU: user=kao pid=1918979
+[08-27 18:54:18] cores=2  errors=0
+0  disk=6.9T free
+[08-27 19:24:19] unif: arms_left=22 workers=0
+[08-27 19:24:19] !! unif has no workers but 22 arms remain
+[08-27 19:24:19] stage=d50  arms_left=0  workers=0
+[08-27 19:24:20] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 19:24:20] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 19:24:20] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 19:24:20] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 19:24:20] !! foreign process on a GPU: user=john pid=1954158
+[08-27 19:24:20] !! foreign process on a GPU: user=john pid=1887902
+[08-27 19:24:20] !! foreign process on a GPU: user=john pid=1792648
+[08-27 19:24:20] !! foreign process on a GPU: user=kao pid=1918979
+[08-27 19:24:20] !! foreign process on a GPU: user=john pid=1942495
+[08-27 19:24:20] cores=2  errors=0
+0  disk=6.9T free
+[08-27 19:54:20] unif: arms_left=22 workers=0
+[08-27 19:54:20] !! unif has no workers but 22 arms remain
+[08-27 19:54:21] stage=d50  arms_left=0  workers=0
+[08-27 19:54:22] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 19:54:22] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 19:54:22] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 19:54:22] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 19:54:22] !! foreign process on a GPU: user=john pid=2089136
+[08-27 19:54:22] !! foreign process on a GPU: user=john pid=1887902
+[08-27 19:54:22] !! foreign process on a GPU: user=john pid=2102373
+[08-27 19:54:22] !! foreign process on a GPU: user=kao pid=1918979
+[08-27 19:54:22] !! foreign process on a GPU: user=john pid=2080204
+[08-27 19:54:22] cores=24  errors=0
+0  disk=6.9T free
+[08-27 20:24:23] unif: arms_left=22 workers=0
+[08-27 20:24:23] !! unif has no workers but 22 arms remain
+[08-27 20:24:23] stage=d50  arms_left=0  workers=0
+[08-27 20:24:24] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 20:24:24] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 20:24:24] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 20:24:24] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 20:24:24] !! foreign process on a GPU: user=john pid=2089136
+[08-27 20:24:24] !! foreign process on a GPU: user=john pid=2167156
+[08-27 20:24:24] !! foreign process on a GPU: user=john pid=2206896
+[08-27 20:24:24] !! foreign process on a GPU: user=kao pid=1918979
+[08-27 20:24:24] !! foreign process on a GPU: user=john pid=2080204
+[08-27 20:24:24] cores=11  errors=0
+0  disk=6.9T free
+[08-27 20:54:25] unif: arms_left=22 workers=0
+[08-27 20:54:25] !! unif has no workers but 22 arms remain
+[08-27 20:54:25] stage=d50  arms_left=0  workers=0
+[08-27 20:54:26] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 20:54:26] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 20:54:26] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 20:54:26] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 20:54:26] !! foreign process on a GPU: user=john pid=2089136
+[08-27 20:54:26] !! foreign process on a GPU: user=john pid=2327903
+[08-27 20:54:26] !! foreign process on a GPU: user=john pid=2206896
+[08-27 20:54:26] !! foreign process on a GPU: user=kao pid=1918979
+[08-27 20:54:26] !! foreign process on a GPU: user=john pid=2080204
+[08-27 20:54:26] cores=3  errors=0
+0  disk=6.9T free
+[08-27 21:24:27] unif: arms_left=22 workers=0
+[08-27 21:24:27] !! unif has no workers but 22 arms remain
+[08-27 21:24:27] stage=d50  arms_left=0  workers=0
+[08-27 21:24:28] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 21:24:28] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 21:24:28] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 21:24:28] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 21:24:28] !! foreign process on a GPU: user=john pid=2424540
+[08-27 21:24:28] !! foreign process on a GPU: user=john pid=2327903
+[08-27 21:24:28] !! foreign process on a GPU: user=john pid=2206896
+[08-27 21:24:28] !! foreign process on a GPU: user=kao pid=1918979
+[08-27 21:24:28] !! foreign process on a GPU: user=john pid=2387297
+[08-27 21:24:28] cores=27  errors=0
+0  disk=6.9T free
+[08-27 21:54:29] unif: arms_left=22 workers=0
+[08-27 21:54:29] !! unif has no workers but 22 arms remain
+[08-27 21:54:29] stage=d50  arms_left=0  workers=0
+[08-27 21:54:30] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 21:54:30] !! foreign process on a GPU: user=shawn pid=642196
+[08-27 21:54:30] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 21:54:30] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 21:54:30] !! foreign process on a GPU: user=john pid=2570034
+[08-27 21:54:30] !! foreign process on a GPU: user=john pid=2327903
+[08-27 21:54:30] !! foreign process on a GPU: user=john pid=2540875
+[08-27 21:54:30] !! foreign process on a GPU: user=kao pid=1918979
+[08-27 21:54:30] !! foreign process on a GPU: user=john pid=2514015
+[08-27 21:54:31] cores=8  errors=0
+0  disk=6.9T free
+[08-27 22:24:31] unif: arms_left=22 workers=0
+[08-27 22:24:31] !! unif has no workers but 22 arms remain
+[08-27 22:24:31] stage=d50  arms_left=0  workers=0
+[08-27 22:24:32] !! foreign process on a GPU: user=shawn pid=2680889
+[08-27 22:24:32] !! foreign process on a GPU: user=shawn pid=2680889
+[08-27 22:24:32] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 22:24:32] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 22:24:32] !! foreign process on a GPU: user=john pid=2570034
+[08-27 22:24:32] !! foreign process on a GPU: user=john pid=2655894
+[08-27 22:24:32] !! foreign process on a GPU: user=john pid=2540875
+[08-27 22:24:32] !! foreign process on a GPU: user=john pid=2514015
+[08-27 22:24:32] cores=7  errors=0
+0  disk=6.9T free
+[08-27 22:54:33] unif: arms_left=22 workers=0
+[08-27 22:54:33] !! unif has no workers but 22 arms remain
+[08-27 22:54:33] stage=d50  arms_left=0  workers=0
+[08-27 22:54:34] !! foreign process on a GPU: user=shawn pid=2680889
+[08-27 22:54:34] !! foreign process on a GPU: user=shawn pid=2680889
+[08-27 22:54:34] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 22:54:34] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 22:54:34] !! foreign process on a GPU: user=john pid=2789638
+[08-27 22:54:34] !! foreign process on a GPU: user=john pid=2655894
+[08-27 22:54:34] !! foreign process on a GPU: user=john pid=2780921
+[08-27 22:54:34] !! foreign process on a GPU: user=john pid=2762917
+[08-27 22:54:34] cores=2  errors=0
+0  disk=6.9T free
+[08-27 23:24:34] unif: arms_left=22 workers=0
+[08-27 23:24:34] !! unif has no workers but 22 arms remain
+[08-27 23:24:35] stage=d50  arms_left=0  workers=0
+[08-27 23:24:36] !! foreign process on a GPU: user=shawn pid=2680889
+[08-27 23:24:36] !! foreign process on a GPU: user=shawn pid=2680889
+[08-27 23:24:36] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 23:24:36] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 23:24:36] !! foreign process on a GPU: user=john pid=2789638
+[08-27 23:24:36] !! foreign process on a GPU: user=john pid=2867044
+[08-27 23:24:36] !! foreign process on a GPU: user=john pid=2780921
+[08-27 23:24:36] !! foreign process on a GPU: user=john pid=2887053
+[08-27 23:24:36] cores=2  errors=0
+0  disk=6.9T free
+[08-27 23:54:36] unif: arms_left=22 workers=0
+[08-27 23:54:36] !! unif has no workers but 22 arms remain
+[08-27 23:54:36] stage=d50  arms_left=0  workers=0
+[08-27 23:54:38] !! foreign process on a GPU: user=shawn pid=2680889
+[08-27 23:54:38] !! foreign process on a GPU: user=shawn pid=2680889
+[08-27 23:54:38] !! foreign process on a GPU: user=kao pid=3503657
+[08-27 23:54:38] !! foreign process on a GPU: user=kao pid=1093362
+[08-27 23:54:38] !! foreign process on a GPU: user=john pid=2921560
+[08-27 23:54:38] !! foreign process on a GPU: user=john pid=2867044
+[08-27 23:54:38] !! foreign process on a GPU: user=john pid=2929433
+[08-27 23:54:38] !! foreign process on a GPU: user=john pid=2887053
+[08-27 23:54:38] cores=35  errors=0
+0  disk=6.9T free
+[08-28 00:24:38] unif: arms_left=22 workers=0
+[08-28 00:24:38] !! unif has no workers but 22 arms remain
+[08-28 00:24:38] stage=d50  arms_left=0  workers=0
+[08-28 00:24:40] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 00:24:40] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 00:24:40] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 00:24:40] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 00:24:40] !! foreign process on a GPU: user=john pid=2921560
+[08-28 00:24:40] !! foreign process on a GPU: user=john pid=3008927
+[08-28 00:24:40] !! foreign process on a GPU: user=john pid=2929433
+[08-28 00:24:40] !! foreign process on a GPU: user=john pid=3017513
+[08-28 00:24:40] cores=11  errors=0
+0  disk=6.9T free
+[08-28 00:54:40] unif: arms_left=22 workers=0
+[08-28 00:54:40] !! unif has no workers but 22 arms remain
+[08-28 00:54:40] stage=d50  arms_left=0  workers=0
+[08-28 00:54:42] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 00:54:42] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 00:54:42] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 00:54:42] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 00:54:42] !! foreign process on a GPU: user=john pid=2921560
+[08-28 00:54:42] !! foreign process on a GPU: user=john pid=3008927
+[08-28 00:54:42] !! foreign process on a GPU: user=john pid=3052060
+[08-28 00:54:42] !! foreign process on a GPU: user=john pid=3017513
+[08-28 00:54:42] cores=4  errors=0
+0  disk=6.9T free
+[08-28 01:24:42] unif: arms_left=22 workers=0
+[08-28 01:24:42] !! unif has no workers but 22 arms remain
+[08-28 01:24:42] stage=d50  arms_left=0  workers=0
+[08-28 01:24:44] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 01:24:44] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 01:24:44] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 01:24:44] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 01:24:44] !! foreign process on a GPU: user=john pid=2921560
+[08-28 01:24:44] !! foreign process on a GPU: user=john pid=3090160
+[08-28 01:24:44] !! foreign process on a GPU: user=john pid=3052060
+[08-28 01:24:44] !! foreign process on a GPU: user=john pid=3080616
+[08-28 01:24:44] cores=5  errors=0
+0  disk=6.9T free
+[08-28 01:54:44] unif: arms_left=22 workers=0
+[08-28 01:54:44] !! unif has no workers but 22 arms remain
+[08-28 01:54:44] stage=d50  arms_left=0  workers=0
+[08-28 01:54:46] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 01:54:46] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 01:54:46] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 01:54:46] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 01:54:46] !! foreign process on a GPU: user=john pid=2921560
+[08-28 01:54:46] !! foreign process on a GPU: user=john pid=3090160
+[08-28 01:54:46] !! foreign process on a GPU: user=john pid=3129800
+[08-28 01:54:46] !! foreign process on a GPU: user=john pid=3155770
+[08-28 01:54:46] cores=20  errors=0
+0  disk=6.9T free
+[08-28 02:24:46] unif: arms_left=22 workers=0
+[08-28 02:24:46] !! unif has no workers but 22 arms remain
+[08-28 02:24:46] stage=d50  arms_left=0  workers=0
+[08-28 02:24:48] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 02:24:48] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 02:24:48] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 02:24:48] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 02:24:48] !! foreign process on a GPU: user=john pid=3170801
+[08-28 02:24:48] !! foreign process on a GPU: user=john pid=3179488
+[08-28 02:24:48] !! foreign process on a GPU: user=john pid=3196496
+[08-28 02:24:48] !! foreign process on a GPU: user=john pid=3155770
+[08-28 02:24:48] cores=2  errors=0
+0  disk=6.9T free
+[08-28 02:54:48] unif: arms_left=22 workers=0
+[08-28 02:54:48] !! unif has no workers but 22 arms remain
+[08-28 02:54:48] stage=d50  arms_left=0  workers=0
+[08-28 02:54:49] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 02:54:49] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 02:54:49] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 02:54:50] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 02:54:50] !! foreign process on a GPU: user=john pid=3170801
+[08-28 02:54:50] !! foreign process on a GPU: user=john pid=3179488
+[08-28 02:54:50] !! foreign process on a GPU: user=john pid=3196496
+[08-28 02:54:50] !! foreign process on a GPU: user=john pid=3224335
+[08-28 02:54:50] cores=2  errors=0
+0  disk=6.9T free
+[08-28 03:24:50] unif: arms_left=22 workers=0
+[08-28 03:24:50] !! unif has no workers but 22 arms remain
+[08-28 03:24:50] stage=d50  arms_left=0  workers=0
+[08-28 03:24:51] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 03:24:51] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 03:24:51] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 03:24:51] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 03:24:51] !! foreign process on a GPU: user=john pid=3261755
+[08-28 03:24:52] !! foreign process on a GPU: user=john pid=3253933
+[08-28 03:24:52] !! foreign process on a GPU: user=john pid=3267097
+[08-28 03:24:52] !! foreign process on a GPU: user=john pid=3224335
+[08-28 03:24:52] cores=3  errors=0
+0  disk=6.9T free
+[08-28 03:54:52] unif: arms_left=22 workers=0
+[08-28 03:54:52] !! unif has no workers but 22 arms remain
+[08-28 03:54:52] stage=d50  arms_left=0  workers=0
+[08-28 03:54:53] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 03:54:53] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 03:54:53] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 03:54:53] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 03:54:53] !! foreign process on a GPU: user=john pid=3261755
+[08-28 03:54:54] !! foreign process on a GPU: user=john pid=3253933
+[08-28 03:54:54] !! foreign process on a GPU: user=john pid=3267097
+[08-28 03:54:54] !! foreign process on a GPU: user=john pid=3298822
+[08-28 03:54:54] cores=5  errors=0
+0  disk=6.9T free
+[08-28 04:24:54] unif: arms_left=22 workers=0
+[08-28 04:24:54] !! unif has no workers but 22 arms remain
+[08-28 04:24:54] stage=d50  arms_left=0  workers=0
+[08-28 04:24:55] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 04:24:55] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 04:24:55] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 04:24:55] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 04:24:55] !! foreign process on a GPU: user=john pid=3335138
+[08-28 04:24:55] !! foreign process on a GPU: user=john pid=3321403
+[08-28 04:24:56] !! foreign process on a GPU: user=john pid=3330287
+[08-28 04:24:56] !! foreign process on a GPU: user=john pid=3298822
+[08-28 04:24:56] cores=9  errors=0
+0  disk=6.9T free
+[08-28 04:54:56] unif: arms_left=22 workers=0
+[08-28 04:54:56] !! unif has no workers but 22 arms remain
+[08-28 04:54:56] stage=d50  arms_left=0  workers=0
+[08-28 04:54:57] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 04:54:57] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 04:54:57] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 04:54:57] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 04:54:57] !! foreign process on a GPU: user=john pid=3335138
+[08-28 04:54:57] !! foreign process on a GPU: user=john pid=3321403
+[08-28 04:54:58] !! foreign process on a GPU: user=john pid=3330287
+[08-28 04:54:58] !! foreign process on a GPU: user=john pid=3298822
+[08-28 04:54:58] cores=6  errors=0
+0  disk=6.9T free
+[08-28 05:24:58] unif: arms_left=22 workers=0
+[08-28 05:24:58] !! unif has no workers but 22 arms remain
+[08-28 05:24:58] stage=d50  arms_left=0  workers=0
+[08-28 05:24:59] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 05:24:59] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 05:24:59] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 05:24:59] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 05:24:59] !! foreign process on a GPU: user=john pid=3380784
+[08-28 05:24:59] !! foreign process on a GPU: user=john pid=3382912
+[08-28 05:25:00] !! foreign process on a GPU: user=john pid=3398718
+[08-28 05:25:00] !! foreign process on a GPU: user=john pid=3298822
+[08-28 05:25:00] cores=26  errors=0
+0  disk=6.9T free
+[08-28 05:55:00] unif: arms_left=22 workers=0
+[08-28 05:55:00] !! unif has no workers but 22 arms remain
+[08-28 05:55:00] stage=d50  arms_left=0  workers=0
+[08-28 05:55:01] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 05:55:01] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 05:55:01] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 05:55:01] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 05:55:01] !! foreign process on a GPU: user=john pid=3380784
+[08-28 05:55:01] !! foreign process on a GPU: user=john pid=3470891
+[08-28 05:55:01] !! foreign process on a GPU: user=john pid=3398718
+[08-28 05:55:01] !! foreign process on a GPU: user=john pid=3298822
+[08-28 05:55:02] cores=7  errors=0
+0  disk=6.9T free
+[08-28 06:25:02] unif: arms_left=22 workers=0
+[08-28 06:25:02] !! unif has no workers but 22 arms remain
+[08-28 06:25:02] stage=d50  arms_left=0  workers=0
+[08-28 06:25:03] !! gpu6 IDLE (1MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-28 06:25:03] !! gpu7 IDLE (1MiB) while 22 arms remain (d50/bo50=0 unif=22)
+[08-28 06:25:03] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 06:25:03] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 06:25:03] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 06:25:03] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 06:25:03] cores=14  errors=0
+0  disk=6.9T free
+[08-28 06:55:03] unif: arms_left=22 workers=0
+[08-28 06:55:03] !! unif has no workers but 22 arms remain
+[08-28 06:55:04] stage=d50  arms_left=0  workers=0
+[08-28 06:55:05] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 06:55:05] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 06:55:05] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 06:55:05] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 06:55:05] !! foreign process on a GPU: user=john pid=3765719
+[08-28 06:55:05] !! foreign process on a GPU: user=john pid=3765634
+[08-28 06:55:05] !! foreign process on a GPU: user=john pid=3765810
+[08-28 06:55:05] !! foreign process on a GPU: user=john pid=3765796
+[08-28 06:55:05] cores=9  errors=0
+0  disk=6.9T free
+[08-28 07:25:06] unif: arms_left=22 workers=0
+[08-28 07:25:06] !! unif has no workers but 22 arms remain
+[08-28 07:25:06] stage=d50  arms_left=0  workers=0
+[08-28 07:25:07] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 07:25:07] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 07:25:07] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 07:25:07] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 07:25:07] !! foreign process on a GPU: user=john pid=3765719
+[08-28 07:25:07] !! foreign process on a GPU: user=john pid=3765634
+[08-28 07:25:07] !! foreign process on a GPU: user=john pid=3765810
+[08-28 07:25:07] !! foreign process on a GPU: user=john pid=3765796
+[08-28 07:25:07] cores=6  errors=0
+0  disk=6.9T free
+[08-28 07:55:07] unif: arms_left=22 workers=0
+[08-28 07:55:07] !! unif has no workers but 22 arms remain
+[08-28 07:55:08] stage=d50  arms_left=0  workers=0
+[08-28 07:55:09] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 07:55:09] !! foreign process on a GPU: user=shawn pid=2680889
+[08-28 07:55:09] !! foreign process on a GPU: user=kao pid=3503657
+[08-28 07:55:09] !! foreign process on a GPU: user=kao pid=1093362
+[08-28 07:55:09] !! foreign process on a GPU: user=john pid=3765719
+[08-28 07:55:09] !! foreign process on a GPU: user=john pid=3855813
+[08-28 07:55:09] !! foreign process on a GPU: user=john pid=3765810
+[08-28 07:55:09] !! foreign process on a GPU: user=john pid=3883923
+[08-28 07:55:09] cores=17  errors=0
+0  disk=6.9T free

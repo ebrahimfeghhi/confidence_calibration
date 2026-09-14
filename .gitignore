@@ -62,3 +62,13 @@ confident_decoy_experiments/predictions/
 confident_decoy_experiments/ops/*.log
 # 17 MB of release_date_cache backups pulled from naboo before it was retired -- data, not code
 confident_decoy_experiments/handoff/naboo_pull/
+
+# --- environments and bulk data: code only in git ---
+# gitignore has no trailing comments: a comment after a pattern becomes part of it
+# 6.2 GB virtualenv
+confident_decoy_experiments/envs/
+confident_decoy_experiments/predictions/
+# 166 GB of generated structures
+poses/
+# vendored third-party source
+external/

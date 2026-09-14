@@ -28,6 +28,33 @@ from cifconv import convert
 from decoy_set import EXP, GT
 
 JDIR = "/home/ebrahim/Protenix/foldbench_abag/jsons"
+IFACE_CSV = "/home/ebrahim/FoldBench/targets/interface_antibody_antigen.csv"
+
+
+def antigen_entity_indices(pdb, obj):
+    """Entity indices (q-index over proteinChain entries) that are ANTIGEN for this complex.
+
+    The FoldBench interface table names the antigen CHAIN; chains are lettered A,B,C... across
+    entities and their copies, so the antigen chain letter maps back to a q-index by walking the
+    entity/count layout. Everything else that is a protein entity counts as antibody.
+    """
+    import csv as _csv
+    ag_chains = set()
+    for r in _csv.DictReader(open(IFACE_CSV)):
+        if r["pdb_id"].split("-")[0] == pdb:
+            ag_chains.add(r["antigen_chain"])
+    idx, ch, out = 0, 0, set()
+    for e in obj["sequences"]:
+        if "proteinChain" not in e:
+            ch += int(list(e.values())[0].get("count", 1))
+            continue
+        n = int(e["proteinChain"].get("count", 1))
+        letters = {chr(ord("A") + ch + k) for k in range(n)}
+        if letters & ag_chains:
+            out.add(idx)
+        ch += n
+        idx += 1
+    return out
 TMPL = f"{EXP}/artifacts/native_tmpl"; A3M = f"{EXP}/artifacts/native_a3m_built"
 CACHE_F = "/home/ebrahim/common/release_date_cache.json"
 SEEDS = list(range(101, 151))
@@ -35,6 +62,14 @@ os.makedirs(TMPL, exist_ok=True); os.makedirs(A3M, exist_ok=True)
 
 ap = argparse.ArgumentParser()
 ap.add_argument("pdbs", nargs="*")
+ap.add_argument("--only", default="both", choices=["both", "ab", "ag"],
+                help="which side to template: both (native50), ab (antibody only), ag (antigen only). "
+                     "Antibody vs antigen is decided by the FoldBench interface table -- the antigen "
+                     "chain of each labelled ab-ag interface is the antigen; every other protein "
+                     "entity is antibody. Mirrors the agonly arm, which templated only the antigen "
+                     "entity indices listed in artifacts/agonly_antigen_idx.json.")
+ap.add_argument("--tag", default=None, help="run/name/file tag (default native50, or ab/agonly)")
+ap.add_argument("--seeds", default=None, help="comma-separated seeds; default the built-in 101-150")
 ap.add_argument("--from-status", default=None,
                 help="comma-separated statuses to pull from artifacts/abag_all_101_150.json")
 A = ap.parse_args()
@@ -84,11 +119,18 @@ for pdb in pdbs:
     open(f"/home/ebrahim/mmcif/{tid}.cif", "w").write(convert(open(nat).read(), tid))
 
     o = json.load(open(base)); obj = json.loads(json.dumps(o[0] if isinstance(o, list) else o))
+    ag_idx = antigen_entity_indices(pdb, obj)
     pi, info, ok = 0, [], True
     for e in obj["sequences"]:
         if "proteinChain" not in e:
             continue
         q = e["proteinChain"]["sequence"]
+        # --only: leave the other side FREE (no templatesPath), exactly as agonly did
+        if (args.only == "ag" and pi not in ag_idx) or (args.only == "ab" and pi in ag_idx):
+            e["proteinChain"].pop("templatesPath", None)
+            info.append(f"q{pi}:free({'ab' if pi not in ag_idx else 'ag'} side)")
+            pi += 1
+            continue
 
         def score(nseq):
             """Plain ratio penalises a native chain that is heavily truncated (8vzo D: 70 of 215
@@ -122,14 +164,19 @@ for pdb in pdbs:
         pi += 1
     if not ok:
         continue
-    obj["name"] = f"{pdb}_native50"
-    jp = f"{TMPL}/{pdb}-native50.json"
+    TAG = args.tag or {"both": "native50", "ab": "abonly", "ag": "agonly"}[args.only]
+    obj["name"] = f"{pdb}_{TAG}"
+    jp = f"{TMPL}/{pdb}-{TAG}.json"
     json.dump([obj], open(jp, "w"))
-    jobs.append({"run": "native50", "pdb": pdb, "json": jp, "name": obj["name"], "seeds": SEEDS})
+    seeds = [int(x) for x in args.seeds.split(",")] if args.seeds else SEEDS
+    jobs.append({"run": TAG, "pdb": pdb, "json": jp, "name": obj["name"], "seeds": seeds})
     print(f"{pdb}: tid {tid}  " + " ".join(info), flush=True)
 
 json.dump(cache, open(CACHE_F, "w"))
-json.dump(jobs, open(f"{EXP}/artifacts/native_tmpl_jobs.json", "w"), indent=1)
+_TAG = args.tag or {"both": "native50", "ab": "abonly", "ag": "agonly"}[args.only]
+_jf = f"{EXP}/artifacts/native_tmpl_jobs.json" if _TAG == "native50" else f"{EXP}/artifacts/{_TAG}_jobs_built.json"
+json.dump(jobs, open(_jf, "w"), indent=1)
+print(f"\nwrote {len(jobs)} jobs -> {_jf}")
 print(f"\nBUILT {len(jobs)} native50 template sets -> artifacts/native_tmpl_jobs.json")
 if skipped:
     print(f"SKIPPED {len(skipped)}:")

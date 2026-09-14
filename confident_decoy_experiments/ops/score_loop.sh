@@ -37,7 +37,7 @@ PYEOF
         echo "--- scoring ---"
         # The 10-seed ladder and both-off arms are FINISHED -- their inputs cannot change, so
         # re-scoring them hourly just recomputes a constant. Only the 50-seed arms are still growing.
-        $PY scripts/score_50seed.py --jobs 6
+        $PY scripts/score_50seed.py --jobs 6 --arm all
     } > $REPO/ops/score_latest.txt 2>&1
     cat $REPO/ops/score_latest.txt >> $REPO/ops/score_history.txt
     sleep 3600
