@@ -43,6 +43,9 @@ sys.path.insert(0, str(_p))
 import paths
 
 PROTENIX_PYTHON = str(paths.PROTENIX_PYTHON)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ost_dockq as _ost      # the single OST entry point for the whole project
+
 OST_BIN = str(paths.OST_BIN)
 OST_ENV = {**os.environ, "LD_LIBRARY_PATH": str(paths.OST_LIB)}
 
@@ -134,33 +137,12 @@ def postprocess_cif(src: Path, dst: Path) -> bool:
     return r.returncode == 0
 
 
-def _run_ost_once(model_cif: Path, native_cif: Path, out_json: Path, chain_map=None) -> bool:
-    """One OST compare-structures call. Success = exit 0 AND a non-empty JSON was written
-    (a zero exit with no/empty JSON is NOT success — OST can exit 0 yet write nothing)."""
-    cmd = [
-        OST_BIN, "compare-structures",
-        "-m", str(model_cif), "-r", str(native_cif), "-o", str(out_json),
-        "--fault-tolerant",
-        "--min-pep-length", "4", "--min-nuc-length", "4",
-        "--lddt", "--dockq",   # NOTE: --rigid-scores/--tm-score DROPPED — on some structures they
-    ]                          # crash ("3 points required for superposition") and OST exits nonzero,
-                               # discarding the already-computed DockQ (the 8c5h scoring bug).
-    if chain_map:
-        cmd += ["-c", *chain_map]
-    try:
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=180, env=OST_ENV)
-    except Exception:          # TimeoutExpired / OSError -> let the caller try a fallback
-        return False
-    return r.returncode == 0 and out_json.exists() and out_json.stat().st_size > 0
-
-
-def run_ost(model_cif: Path, native_cif: Path, out_json: Path) -> bool:
-    """Auto chain-mapping; on failure retry with an explicit identity map (-c A:A B:B C:C),
-    which rescues multi-chain natives whose auto-mapper crashes (bug #2, e.g. 8ts0). Kept as a
-    bool-returning helper for external callers (steer/experiments/decode_dockq.py). The batch
-    path additionally retries on an UNUSABLE result — see evaluate_group."""
-    return (_run_ost_once(model_cif, native_cif, out_json)
-            or _run_ost_once(model_cif, native_cif, out_json, ["A:A", "B:B", "C:C"]))
+# THE OST CALL LIVES IN eval/ost_dockq.py -- these are thin aliases, kept because this file's
+# call sites (and its docstrings) refer to them by name. The command line, the --rigid-scores strip,
+# the "exit 0 but empty json" check and the identity-map retry are all defined there now; they used
+# to be duplicated here, and the duplicate is what drifted.
+_run_ost_once = _ost.invoke     # one call, no skip, no retry -- caller controls the chain map
+run_ost = _ost.run              # skip-if-done, auto map, then identity-map retry on failure
 
 
 def chain_to_asym_id(chain_id: str) -> int:
@@ -390,7 +372,7 @@ def evaluate_group(task):
                 ost_data = _load_ost_json(ost_json)
             if not _usable(ost_data, iface_list):         # JSON OK but no requested interface ->
                 cmap = [f"{c}:{c}" for c in want]         # force an identity map and re-parse
-                if _run_ost_once(proc_cif, native_cif, ost_json, cmap):
+                if _run_ost_once(proc_cif, native_cif, ost_json, chain_map=cmap):
                     forced = _load_ost_json(ost_json)
                     if forced is not None and (_usable(forced, iface_list) or ost_data is None):
                         ost_data = forced
