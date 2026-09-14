@@ -22,7 +22,7 @@ Why each term batches:
 The reference DockQ package takes 13.8 ms per pair. At N=5125 that is 26M pairs ~ 100 core-hours.
 This does the same work in minutes.
 
-Usage:  python steer/experiments/dockq_torch.py --validate 8ts0 A C
+Usage:  python scripts/dockq_torch.py --validate 8ts0 A C
         (checks against the saved reference matrix; must agree to ~1e-4)
 """
 import argparse, json, sys, time

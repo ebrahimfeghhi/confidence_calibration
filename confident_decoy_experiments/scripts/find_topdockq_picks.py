@@ -10,8 +10,11 @@ meta=json.load(open(f"{SC}/meta.json"))
 ifpp={}
 for ifc,m in meta.items(): ifpp.setdefault(m["pdb"],[]).append((ifc,m["c1"],m["c2"]))
 def run_ost(m,n,o):
-    if os.path.exists(o) and os.path.getsize(o)>0: return
-    subprocess.run(["taskset","-c","0-49",OST,"compare-structures","-m",m,"-r",n,"-o",o,"--fault-tolerant","--min-pep-length","4","--dockq"],env=ENV,capture_output=True,timeout=300)
+    # delegates to eval/ost_dockq.py -- the single OST entry point. This used to be a
+    # local copy; the copies drifted and five of them still passed --rigid-scores, which
+    # crashes on small interfaces and loses the whole score.
+    return _ost_run(m, n, o)
+
 def dq_of(o,c1,c2):
     try: d=json.load(open(o))
     except: return None

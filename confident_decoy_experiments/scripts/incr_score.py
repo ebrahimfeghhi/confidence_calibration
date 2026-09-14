@@ -9,8 +9,11 @@ CACHE=f"{SC}/ost_{SUF}_incr"; os.makedirs(CACHE,exist_ok=True)
 meta=json.load(open(f"{SC}/meta.json")); GT="/home/ebrahim/FoldBench/examples/ground_truths"
 def out(m): print(m,flush=True)
 def run_ost(m,n,o):
-    if os.path.exists(o) and os.path.getsize(o)>0: return
-    subprocess.run(["taskset","-c","0-49",OST,"compare-structures","-m",m,"-r",n,"-o",o,"--fault-tolerant","--min-pep-length","4","--dockq"],env=ENV,capture_output=True,timeout=300)
+    # delegates to eval/ost_dockq.py -- the single OST entry point. This used to be a
+    # local copy; the copies drifted and five of them still passed --rigid-scores, which
+    # crashes on small interfaces and loses the whole score.
+    return _ost_run(m, n, o)
+
 def ex(o,cf,c1,c2):
     try: d=json.load(open(o))
     except: return None

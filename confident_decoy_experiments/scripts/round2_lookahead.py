@@ -15,7 +15,7 @@ and the loop has no engine.
 LEADERS = greedy non-maximum suppression down the pair_iptm ranking, dropping any pose within
 `thresh` pose-pose DockQ of an already-kept pose. thresh=0.23 is the project standard.
 
-Pose-pose DockQ is computed with steer/experiments/dockq_torch.py (exact DockQ 2.1.3, batched on
+Pose-pose DockQ is computed with scripts/dockq_torch.py (exact DockQ 2.1.3, batched on
 GPU), NEVER ligand-RMSD. Model chain names for the 8che_BE interface are B?/E? taken from the arm's
 OST output by NAME (native B-E -> model C-E here), not assumed.
 
@@ -29,7 +29,7 @@ import argparse, json, os, sys
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-sys.path.insert(0, "/home/ebrahim/tts_abag/steer/experiments")
+sys.path.insert(0, "/home/ebrahim/tts_abag/confident_decoy_experiments/scripts")
 from paths import EXP
 from dockq_torch import dockq_matrix
 

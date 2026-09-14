@@ -40,9 +40,11 @@ ready={p:done_seeds(p) for p in PDBS}
 print(f"\nALL READY. first finished seed per pdb: { {k:v[0] for k,v in ready.items()} }\n", flush=True)
 
 def run_ost(m,r,o,extra):
-    if os.path.exists(o) and os.path.getsize(o)>0: return
-    subprocess.run(["taskset","-c","0-31",OST,"compare-structures","-m",m,"-r",r,"-o",o,
-                    "--fault-tolerant","--min-pep-length","4"]+extra,env=ENV,capture_output=True,timeout=600)
+    # delegates to eval/ost_dockq.py -- the single OST entry point. This used to be a
+    # local copy; the copies drifted and five of them still passed --rigid-scores, which
+    # crashes on small interfaces and loses the whole score.
+    return _ost_run(m, r, o, extra=extra)
+
 def dockq_of(o,cf,c1,c2):
     try: d=json.load(open(o))
     except Exception: return None,None

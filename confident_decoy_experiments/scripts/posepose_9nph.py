@@ -13,7 +13,7 @@ REFERENCE letters (A,C) but the kernel needs MODEL chains, and the two differ pe
 one for the other is the mistake that once put 45% of this project's interface measurements on the
 wrong chains.
 
-The kernel (steer/experiments/dockq_torch.py) is exact DockQ 2.1.3, vectorised over all pairs; it runs
+The kernel (scripts/dockq_torch.py) is exact DockQ 2.1.3, vectorised over all pairs; it runs
 on CPU here so the GPUs stay untouched.
 
 --hist replots from the saved .npz (no GPU, no re-scoring): the distribution of pose-pose DockQ
@@ -33,7 +33,7 @@ import sys
 
 import numpy as np
 
-sys.path.insert(0, "/home/ebrahim/tts_abag/steer/experiments")
+sys.path.insert(0, "/home/ebrahim/tts_abag/confident_decoy_experiments/scripts")
 EXP = "/home/ebrahim/tts_abag/confident_decoy_experiments"
 P = f"{EXP}/artifacts/pxm2025"
 M = f"{EXP}/artifacts/hybrid25"

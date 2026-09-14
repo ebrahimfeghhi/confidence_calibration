@@ -33,6 +33,9 @@ import json
 import os
 import re
 import subprocess
+import sys as _sys
+_sys.path.insert(0, "/home/ebrahim/tts_abag/eval")
+from ost_dockq import run as _ost_run
 from concurrent.futures import ThreadPoolExecutor
 
 EXP = "/home/ebrahim/tts_abag/confident_decoy_experiments"
@@ -46,15 +49,10 @@ HDR = ["pdb", "chain1", "chain2", "seed", "sample", "dockq", "fnat", "irmsd", "l
 
 
 def run_ost(model, native, out):
-    if os.path.exists(out) and os.path.getsize(out) > 0:
-        return
-    try:
-        subprocess.run([OST, "compare-structures", "-m", model, "-r", native, "-o", out,
-                        "--fault-tolerant", "--min-pep-length", "4", "--dockq"],
-                       env=ENV, capture_output=True, timeout=600)
-    except subprocess.TimeoutExpired:
-        pass
-
+    # delegates to eval/ost_dockq.py -- the single OST entry point. This used to be a
+    # local copy; the copies drifted and five of them still passed --rigid-scores, which
+    # crashes on small interfaces and loses the whole score.
+    return _ost_run(model, native, out)
 
 def chain_idx(ch):
     """Model chain label -> index into chain_pair_iptm ('A'->0). Leading alphabetic run only, so a

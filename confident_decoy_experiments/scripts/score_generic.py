@@ -6,8 +6,11 @@ OST="/home/ebrahim/miniconda3/envs/foldbench/bin/ost"; ENV=dict(os.environ); ENV
 OUT=sys.argv[1]; WHICH=sys.argv[2]; SUF=sys.argv[3]; SCORESJSON=sys.argv[4]
 OSTSUB=f"{SC}/selftmpl/ost_{SUF}"; os.makedirs(OSTSUB,exist_ok=True)
 def run_ost(m,n,o):
-    if os.path.exists(o) and os.path.getsize(o)>0: return
-    subprocess.run(["taskset","-c","0-39",OST,"compare-structures","-m",m,"-r",n,"-o",o,"--fault-tolerant","--min-pep-length","4","--dockq"],env=ENV,capture_output=True,timeout=300)
+    # delegates to eval/ost_dockq.py -- the single OST entry point. This used to be a
+    # local copy; the copies drifted and five of them still passed --rigid-scores, which
+    # crashes on small interfaces and loses the whole score.
+    return _ost_run(m, n, o)
+
 def ex(o,cf,c1,c2):
     try: d=json.load(open(o))
     except: return None

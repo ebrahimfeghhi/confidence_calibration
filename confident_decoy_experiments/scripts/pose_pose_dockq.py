@@ -7,7 +7,7 @@ filename says which. The two disagree about the answer -- 8vui_BC has 0 acceptab
 and 6 at 101-150; 8ux6_DF is a confident decoy at 0-49 and not at 101-150. Reusing them silently mixes
 seed ranges.
 
-WHY NOT REUSE steer/experiments/dockq_torch.py's `build`: its `pose_list()` reads an ESMFold2-fast
+WHY NOT REUSE scripts/dockq_torch.py's `build`: its `pose_list()` reads an ESMFold2-fast
 scoring CSV and paths under ~/esm/foldbench_predictions/. It enumerates ESM poses, not Protenix ones.
 Only its `dockq_matrix()` kernel is predictor-agnostic, so that is what this reuses -- the exact,
 vectorised, GPU DockQ (reproduces DockQ 2.1.3, not an approximation).
@@ -27,7 +27,7 @@ import argparse, csv, json, os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, "/home/ebrahim/tts_abag")
-sys.path.insert(0, "/home/ebrahim/tts_abag/steer/experiments")
+sys.path.insert(0, "/home/ebrahim/tts_abag/confident_decoy_experiments/scripts")
 import numpy as np
 from decoy_set import EXP, PRED, SEEDS, SAMPLES, THRESH
 

@@ -16,7 +16,7 @@ whichever model copy fits best, POSE BY POSE. Using fixed chain letters would sc
 molecules on roughly half the poses. The mapping comes from each pose's own PXMeter json
 (ref_to_model_chain_mapping), the same source every other number in this project uses.
 
-The kernel is steer/experiments/dockq_torch.py: exact DockQ 2.1.3, vectorised over all pairs, not an
+The kernel is scripts/dockq_torch.py: exact DockQ 2.1.3, vectorised over all pairs, not an
 approximation. Entry [i,j] = DockQ(reference=pose i, model=pose j); it is not symmetric, so the
 clustering symmetrises.
 
@@ -31,7 +31,7 @@ import sys
 
 import numpy as np
 
-sys.path.insert(0, "/home/ebrahim/tts_abag/steer/experiments")
+sys.path.insert(0, "/home/ebrahim/tts_abag/confident_decoy_experiments/scripts")
 EXP = "/home/ebrahim/tts_abag/confident_decoy_experiments"
 P = f"{EXP}/artifacts/pxm2025"
 ACC = 0.23
