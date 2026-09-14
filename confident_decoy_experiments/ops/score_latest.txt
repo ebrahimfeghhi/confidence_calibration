@@ -1,10 +1,10 @@
-=== 09-14 12:42:17 ===
+=== 09-14 13:42:18 ===
 d50 (1e-4, 111-150)          49/49 arms
 bo50 (both-off, 111-150)     48/49 arms
 msaperm_perm_8bf4            50/50 poses, 100 cycle dumps
 msaperm_topk_8bf4            50/50 poses, 100 cycle dumps
-gpus: 0, 74 % 1, 77 % 2, 100 % 3, 64 % 4, 19 % 5, 15 % 6, 0 % 7, 67 % 
-cores: 4
+gpus: 0, 79 % 1, 0 % 2, 0 % 3, 75 % 4, 68 % 5, 100 % 6, 0 % 7, 71 % 
+cores: 59
 errors: 0
 0
 --- scoring ---
