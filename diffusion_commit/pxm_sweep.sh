@@ -24,5 +24,10 @@ for iface in $IFACES; do
   # PXMeter as the scorer together, and mixing pools silently would make the numbers incomparable.
   GPU=$GPU PDB=$pdb IFACE=$iface DATASET=pxm2025 NS=5 KEEP_TRUNK=0 ZINIT=0 \
     SEEDS="$SEEDS" bash "$DC/batch.sh" || echo "!! $iface exited nonzero, moving on"
+  # Report the moment this interface is done, rather than at the end of a multi-day sweep.
+  REPORT=${REPORT:-/home/ebrahim/tts_abag/confident_decoy_experiments/artifacts/pxm_reports.txt}
+  { echo; echo "######## $iface finished $(date '+%m-%d %H:%M:%S') on GPU$GPU ########"
+    /home/ebrahim/Protenix/.venv/bin/python "$DC/report_complex.py" --iface "$iface"; } >> "$REPORT" 2>&1
+  echo "    -> summary appended to $REPORT"
 done
 echo "=== $(date +%H:%M:%S) GPU$GPU pxm sweep COMPLETE"
