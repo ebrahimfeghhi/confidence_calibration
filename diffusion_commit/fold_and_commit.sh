@@ -54,6 +54,12 @@ PDB=${PDB:-9h1f}; IFACE=${IFACE:-9h1f_AB}; SEED=${SEED:-300000}; NS=${NS:-5}
 # 54 files, on a quota this project has already filled once. ZINIT=1 to re-check on a new complex.
 ZINIT=${ZINIT:-0}
 
+# KEEP_TRUNK=0 deletes the trunk dump once the seed is fully armed. The trunk is only needed WHILE the
+# arms of that seed run (each resumes from it via PROTENIX_LOAD_TRUNK), so for a broad sweep across many
+# complexes there is no reason to keep it: 1000 seeds would be ~100 GB at 462 tokens and far more at
+# 1474. Keep it (=1) only when arms may be re-run or extended later without refolding.
+KEEP_TRUNK=${KEEP_TRUNK:-1}
+
 DATASET=${DATASET:-pxm2025}
 case "$DATASET" in
   pxm2025)
@@ -192,6 +198,11 @@ for pose in $POSES; do
     "$ZD"
   i=$((i+1))
 done
+
+# discard the trunk if asked -- only now, with every arm scored
+if [ "$KEEP_TRUNK" = "0" ] && [ -s "$D/trunk.npz" ]; then
+  rm -f "$D/trunk.npz" && echo "    discarded trunk.npz (KEEP_TRUNK=0)"
+fi
 
 echo "=== $(date +%H:%M:%S) done"
 $PY "$DC/read_results.py" --iface "$IFACE" --seed "$SEED" || true

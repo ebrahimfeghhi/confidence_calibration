@@ -64,9 +64,22 @@ if strad:
           ", ".join(f"{s}[{min(full[s]):.2f}-{max(full[s]):.2f}]" for s in ex))
 EOF
 
+    # --- ARM progress: how many seeds have the full 7-stage unit
+    armed=0; part=0
+    for d in "$REPO"/artifacts/commit11/${IFACE}_s*/; do
+      n=0
+      for a in none p0 p1 p2 p3 p4; do
+        [ "$(find "$d$a/out" -name '*_sample_*.cif' 2>/dev/null | wc -l)" -ge 1 ] && n=$((n+1))
+      done
+      [ "$n" -eq 6 ] && armed=$((armed+1))
+      [ "$n" -gt 0 ] && [ "$n" -lt 6 ] && part=$((part+1))
+    done
+    echo "  arms: $armed seeds complete (6/6), $part partial"
+
     # --- workers alive?
     for g in $GPUS; do
-      w=$(tmux has-session -t "b$g" 2>/dev/null && echo up || echo DOWN)
+      w=$(tmux has-session -t "b$g" 2>/dev/null && echo folding \
+          || (tmux has-session -t "q$g" 2>/dev/null && echo arms/queued || echo DOWN))
       h=$(tmux has-session -t "hhold$g" 2>/dev/null && echo held || echo UNHELD)
       u=$(for p in $(nvidia-smi --query-compute-apps=pid --format=csv,noheader -i "$g" 2>/dev/null); do
             ps -o user= -p "$p" 2>/dev/null | tr -d ' '; done | sort -u | tr '\n' ',' )
