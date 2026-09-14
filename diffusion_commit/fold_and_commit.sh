@@ -46,6 +46,14 @@ PDB=${PDB:-9h1f}; IFACE=${IFACE:-9h1f_AB}; SEED=${SEED:-300000}; NS=${NS:-5}
 # DATASET picks where the input json and the scoring reference come from, and which of the two
 # canonical scorers in eval/ is used. The two pools are NOT interchangeable in one analysis -- pick
 # one per comparison and say which. Both name the job <pdb>-final-updated.json, so only the dir moves.
+# PROTENIX_DUMP_ZINIT is ~2.1 GB per file at 1474 tokens and fires TWICE per seed. It existed to check
+# the assumption this design rests on: that z_init/s_init are identical across arms, because templates
+# are consumed INSIDE the recycle loop and so cannot reach the pre-loop embedding. THAT CHECK IS DONE --
+# identical to 0.000e+00 at 289 and 504 tokens, 3e-3 at 1474 which is bf16 rounding (see
+# Protenix/docs/env_hooks.md). Leaving it on re-answered a settled question at a cost of 114 GB across
+# 54 files, on a quota this project has already filled once. ZINIT=1 to re-check on a new complex.
+ZINIT=${ZINIT:-0}
+
 DATASET=${DATASET:-pxm2025}
 case "$DATASET" in
   pxm2025)
@@ -170,14 +178,15 @@ arm () {                          # arm <tag> <job.json> <donor-idx> <template-e
 }
 
 # control: a stock 11th recycle -- real templates, default mask, as recycles 1-10 ran
-arm none "$JOB" -1 "" "$D/zinit_none.npz"
+ZD_NONE=""; [ "$ZINIT" = "1" ] && ZD_NONE="$D/zinit_none.npz"
+arm none "$JOB" -1 "" "$ZD_NONE"
 
 i=0
 for pose in $POSES; do
   T=$D/tmpl$i
   [ -s "$T/job.json" ] || SELFTMPL_JOBS="$JOBS" $PY "$DC/build_selftmpl_general.py" --pdb "$PDB" --out "$T" \
       --poses "$pose" --tids "$(printf 's%01d%02d' "$i" $((SEED % 100)))" >> "$D/build.log" 2>&1
-  ZD=""; [ "$i" = "0" ] && ZD="$D/zinit_p0.npz"
+  ZD=""; [ "$ZINIT" = "1" ] && [ "$i" = "0" ] && ZD="$D/zinit_p0.npz"
   arm "p$i" "$T/job.json" "$i" \
     "PROTENIX_MULTICHAIN_MASK=0 PROTENIX_TMPL_KEEP_FRAME=1 PROTENIX_TMPL_NODEDUP=1 PROTENIX_MAX_TEMPLATES=1" \
     "$ZD"
