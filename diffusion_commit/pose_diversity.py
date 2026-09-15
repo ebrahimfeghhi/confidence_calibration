@@ -56,6 +56,11 @@ def main():
     # shard would report a table over its own subset and the two would look like disagreeing results.
     ap.add_argument("--shard", default=None, help="I/N -- take every Nth interface starting at I")
     ap.add_argument("--out", default=f"{EXP}/artifacts/pose_diversity_cd.csv")
+    # decoy      = pooled-ipTM top pose is below 0.23 while an acceptable pose exists (confident decoys)
+    # acceptable = pooled-ipTM top pose IS acceptable -- the interfaces where selection already works,
+    #              i.e. the contrast group for asking whether confident seeds are unusually consistent
+    #              everywhere or only where confidence fails
+    ap.add_argument("--set", dest="iset", choices=("decoy", "acceptable", "all"), default="decoy")
     A = ap.parse_args()
 
     # --- the confident-decoy set, defined exactly as elsewhere: pooled-ipTM top pose is a decoy while
@@ -72,9 +77,11 @@ def main():
         allp = [p for v in seeds.values() for p in v]
         if len(allp) < 25:
             continue
-        if max(allp, key=lambda x: x[2])[1] >= AP:      # ipTM already picks an acceptable pose
+        sel_ok = max(allp, key=lambda x: x[2])[1] >= AP    # does pooled ipTM pick an acceptable pose?
+        has_good = max(allp, key=lambda x: x[1])[1] >= AP
+        if A.iset == "decoy" and (sel_ok or not has_good):
             continue
-        if max(allp, key=lambda x: x[1])[1] < AP:       # no acceptable pose exists at all
+        if A.iset == "acceptable" and not sel_ok:
             continue
         cd.append(key)
     cd.sort()

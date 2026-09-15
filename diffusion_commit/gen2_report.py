@@ -84,35 +84,64 @@ def main():
                          selh=max(pool_hyb, key=lambda x: x[1])[0],
                          orcf=max(x[0] for x in pool_free),
                          orch=max(x[0] for x in pool_hyb)))
-    print(f"  complete at {A.min_seeds} seeds per arm: {len(rows)} interfaces   "
-          f"(still filling: {partial})")
+    W = 78
+    print()
+    print("  " + "=" * W)
+    print(f"  {'BUDGET-MATCHED AT 75 SEEDS':^{W}}")
+    print(f"  {'FREE-75  =  50 free + 25 free':^{W}}")
+    print(f"  {'HYBRID-75 =  25 free + 25 gen-1 templated + 25 gen-2':^{W}}")
+    print("  " + "=" * W)
+    print(f"  complete: {len(rows)} interfaces      still filling: {partial}")
     if not rows:
-        return
-    print(f"\n  {'class':<8} {'n':>4} {'sel FREE-75':>12} {'sel HYBRID-75':>14} {'delta':>8} | "
-          f"{'orc FREE':>9} {'orc HYB':>8} | better/worse")
-    for c in ["solved", "decoy", "nocov", "?"]:
+        print("  " + "-" * W); return
+
+    # ---- per interface, biggest movers first
+    print("  " + "-" * W)
+    print(f"  {'interface':<12} {'class':<7} {'FREE':>7} {'HYBRID':>7} {'delta':>8}   "
+          f"{'orcF':>6} {'orcH':>6}   note")
+    print("  " + "-" * W)
+    for r in sorted(rows, key=lambda r: -(r["selh"] - r["self"])):
+        d = r["selh"] - r["self"]
+        note = ""
+        if r["selh"] >= AP > r["self"]:  note = "RESCUED"
+        elif r["self"] >= AP > r["selh"]: note = "LOST"
+        elif abs(d) < 1e-3:              note = "-"
+        bar = "+" * min(8, int(abs(d) * 20)) if d > 0 else "-" * min(8, int(abs(d) * 20))
+        print(f"  {r['iface']:<12} {r['cls']:<7} {r['self']:>7.3f} {r['selh']:>7.3f} {d:>+8.3f}   "
+              f"{r['orcf']:>6.3f} {r['orch']:>6.3f}   {note:<8}{bar}")
+    print("  " + "-" * W)
+
+    # ---- by class
+    print(f"  {'BY CLASS':<12} {'n':>4} {'FREE':>8} {'HYBRID':>8} {'delta':>8}   "
+          f"{'orcF':>6} {'orcH':>6}   up/down")
+    for c in ["decoy", "solved", "nocov", "?"]:
         R = [r for r in rows if r["cls"] == c]
-        if not R:
-            continue
+        if not R: continue
         f = [r["self"] for r in R]; h = [r["selh"] for r in R]
         w = sum(1 for r in R if r["selh"] > r["self"] + 1e-9)
         l = sum(1 for r in R if r["selh"] < r["self"] - 1e-9)
-        print(f"  {c:<8} {len(R):>4} {st.mean(f):>12.3f} {st.mean(h):>14.3f} "
-              f"{st.mean(h)-st.mean(f):>+8.3f} | {st.mean(r['orcf'] for r in R):>9.3f} "
-              f"{st.mean(r['orch'] for r in R):>8.3f} | {w}/{l}")
+        print(f"  {c:<12} {len(R):>4} {st.mean(f):>8.3f} {st.mean(h):>8.3f} "
+              f"{st.mean(h)-st.mean(f):>+8.3f}   {st.mean(r['orcf'] for r in R):>6.3f} "
+              f"{st.mean(r['orch'] for r in R):>6.3f}   {w}/{l}")
     f = [r["self"] for r in rows]; h = [r["selh"] for r in rows]
     w = sum(1 for r in rows if r["selh"] > r["self"] + 1e-9)
     l = sum(1 for r in rows if r["selh"] < r["self"] - 1e-9)
     d = [r["selh"] - r["self"] for r in rows]
-    print(f"  {'ALL':<8} {len(rows):>4} {st.mean(f):>12.3f} {st.mean(h):>14.3f} "
-          f"{st.mean(h)-st.mean(f):>+8.3f} | {st.mean(r['orcf'] for r in rows):>9.3f} "
-          f"{st.mean(r['orch'] for r in rows):>8.3f} | {w}/{l}")
-    print(f"\n  acceptable picks: FREE-75 {sum(1 for x in f if x>=AP)}/{len(rows)}  ->  "
-          f"HYBRID-75 {sum(1 for x in h if x>=AP)}/{len(rows)}")
-    print(f"  paired delta: mean {st.mean(d):+.4f}   median {st.median(d):+.4f}   "
-          f"({w} up / {l} down / {len(rows)-w-l} tied)")
-    print("  NOTE: the median is the number to watch -- the 50-seed version had mean +0.010 with a "
-          "median of exactly 0.000, i.e. a few large rescues rather than a broad shift.")
+    print("  " + "-" * W)
+    print(f"  {'ALL':<12} {len(rows):>4} {st.mean(f):>8.3f} {st.mean(h):>8.3f} "
+          f"{st.mean(h)-st.mean(f):>+8.3f}   {st.mean(r['orcf'] for r in rows):>6.3f} "
+          f"{st.mean(r['orch'] for r in rows):>6.3f}   {w}/{l}")
+    print("  " + "=" * W)
+    print(f"  acceptable picks (DockQ >= {AP}):   FREE-75 {sum(1 for x in f if x>=AP)}/{len(rows)}"
+          f"   ->   HYBRID-75 {sum(1 for x in h if x>=AP)}/{len(rows)}")
+    print(f"  paired delta:   mean {st.mean(d):+.4f}      median {st.median(d):+.4f}"
+          f"      {w} up / {l} down / {len(rows)-w-l} tied")
+    print()
+    print("  READ THE MEDIAN, NOT THE MEAN. At 50 seeds the mean was +0.010 on a median of exactly")
+    print("  0.000 (135 up / 115 down, sign test p~0.23) -- a few large rescues on a flat distribution.")
+    print("  orcF/orcH are each pool's best pose: if orcH < orcF the templated pool holds FEWER good")
+    print("  poses, which is destruction rather than mis-ranking.")
+    print("  " + "=" * W)
 
 
 if __name__ == "__main__":
