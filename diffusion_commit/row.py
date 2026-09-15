@@ -40,9 +40,12 @@ mod = ost_dockq if A.scorer == "ost" else pxm_dockq
 jdir = os.path.join(A.dir, f"{A.scorer}_json")
 os.makedirs(jdir, exist_ok=True)
 
-for cif in sorted(glob.glob(f"{A.dir}/out/**/*_sample_*.cif", recursive=True)):
+# Search the whole arm dir, not just <dir>/out: the shell driver nests CIFs under out/, the
+# single-process driver writes them one level higher. The scorer json dir holds .json only, so
+# widening this cannot pick up anything that is not a predicted structure.
+for cif in sorted(glob.glob(f"{A.dir}/**/*_sample_*.cif", recursive=True)):
     k = cif.split("sample_")[-1].split(".")[0]
-    conf = glob.glob(f"{A.dir}/out/**/*summary_confidence_sample_{k}.json", recursive=True)
+    conf = glob.glob(f"{A.dir}/**/*summary_confidence_sample_{k}.json", recursive=True)
     res = mod.score(cif, A.ref, os.path.join(jdir, f"{k}.json"),
                     conf_json=conf[0] if conf else None)
     v = res.get(f"{c1},{c2}") or res.get(f"{c2},{c1}")
