@@ -170,6 +170,10 @@ def main():
                     help="keep each seed's trunk dump; default discards it once the seed is armed, "
                          "since the trunk is only needed WHILE that seed's own arms run")
     ap.add_argument("--dataset", choices=sorted(DATASETS), default="pxm2025")
+    # all5: fold, then ONE further recycle resuming that trunk with ALL FIVE poses as the sole template.
+    # The per-pose arms (mode=perpose) already answered their question -- showing one pose reproduces it
+    # (r=0.985) -- so the open question is what happens when the model sees the whole spread at once.
+    ap.add_argument("--mode", choices=("perpose", "all5"), default="perpose")
     A = ap.parse_args()
     seeds = parse_seeds(A.seeds)
     JOBS, REFF, SCORER = DATASETS[A.dataset]
@@ -205,6 +209,15 @@ def main():
         trunk = f"{pre}_trunk.npz"
         t0 = time.time()
 
+        # SKIP A FINISHED SEED ENTIRELY. The per-arm checks below are not enough: the fold is gated on
+        # this driver's OWN trunk path, so a seed already completed by the shell driver (which wrote its
+        # trunk elsewhere, and deletes it afterwards) would be re-folded for nothing -- 39 pointless
+        # folds when the sweep was switched over mid-complex.
+        need = ["donor", "all5_k1"] if A.mode == "all5" else ["donor", "none"] + [f"p{i}" for i in range(5)]
+        if all((str(seed), a) in done for a in need):
+            print(f"  seed {seed}: all arms already scored, skipping", flush=True)
+            continue
+
         if not os.path.exists(trunk):
             j = named_job(job0, f"s{seed}_donor", f"{A.out}/jobs")
             stage(runner, configs, j, seed, 10,
@@ -218,39 +231,62 @@ def main():
             print(f"  seed {seed}: only {len(poses)} donor poses -- skipping", flush=True)
             continue
 
-        if (str(seed), "none") not in done:
-            j = named_job(job0, f"s{seed}_none", f"{A.out}/jobs")
-            stage(runner, configs, j, seed, 1,
-                  {"PROTENIX_LOAD_TRUNK": trunk, "PROTENIX_DUMP_TRUNK": None},
-                  f"s{seed}_none", A.out)
+        if A.mode == "all5":
+            if (str(seed), "all5_k1") not in done:
+                T = f"{pre}_tmpl_all5"
+                r = None
+                if not os.path.exists(f"{T}/job.json"):
+                    tids = [f"f{i}{seed % 100:02d}" for i in range(len(poses))]
+                    # SELFTMPL_JOBS must follow the dataset, or a foldbench complex silently builds
+                    # nothing and every arm is skipped with only "template build failed" to show for it.
+                    r = subprocess.run([PY, f"{DC}/build_selftmpl_general.py", "--pdb", A.pdb,
+                                        "--out", T, "--poses", *poses, "--tids", *tids],
+                                       cwd=DC, capture_output=True, text=True,
+                                       env={**os.environ, "SELFTMPL_JOBS": JOBS})
+                if not os.path.exists(f"{T}/job.json"):
+                    print(f"  seed {seed}: all5 template build FAILED", flush=True)
+                    for line in ((r.stderr if r else "") or "").strip().splitlines()[-3:]:
+                        print(f"      {line}", flush=True)
+                    raise StageError("all5 template build failed")
+                env = dict(TMPL_ENV)
+                env["PROTENIX_MAX_TEMPLATES"] = "5"          # trained default is 4 -- would drop a pose
+                env["PROTENIX_MAX_TEMPLATE_CANDIDATES"] = "20"
+                env["PROTENIX_LOAD_TRUNK"] = trunk           # TRUE continuation: recycle 11, not a refold
+                env["PROTENIX_DUMP_TRUNK"] = None
+                j = named_job(f"{T}/job.json", f"s{seed}_all5_k1", f"{A.out}/jobs")
+                stage(runner, configs, j, seed, 1, env, f"s{seed}_all5_k1", A.out)
+        else:
+            if (str(seed), "none") not in done:
+                j = named_job(job0, f"s{seed}_none", f"{A.out}/jobs")
+                stage(runner, configs, j, seed, 1,
+                      {"PROTENIX_LOAD_TRUNK": trunk, "PROTENIX_DUMP_TRUNK": None},
+                      f"s{seed}_none", A.out)
 
-        for i, pose in enumerate(poses):
-            if (str(seed), f"p{i}") in done:
-                continue
-            T = f"{pre}_tmpl{i}"
-            r = None                      # bound only if we actually shell out to the builder
-            if not os.path.exists(f"{T}/job.json"):
-                # SELFTMPL_JOBS must follow the dataset: the builder clones the base job json, and its
-                # default is the pxm2025 pool. Without this a foldbench complex silently fails to build
-                # every template and all five p-arms are skipped -- which is exactly what happened on
-                # the first validation run, and it reported only as "template build failed".
-                r = subprocess.run([PY, f"{DC}/build_selftmpl_general.py", "--pdb", A.pdb,
-                                    "--out", T, "--poses", pose, "--tids", f"t{i}{seed % 100:02d}"],
-                                   cwd=DC, capture_output=True, text=True,
-                                   env={**os.environ, "SELFTMPL_JOBS": JOBS})
-            if not os.path.exists(f"{T}/job.json"):
-                print(f"  seed {seed} pose {i}: template build FAILED", flush=True)
-                for line in ((r.stderr if r else "") or "").strip().splitlines()[-3:]:
-                    print(f"      {line}", flush=True)
-                continue
-            env = dict(TMPL_ENV); env["PROTENIX_LOAD_TRUNK"] = trunk
-            env["PROTENIX_DUMP_TRUNK"] = None
-            j = named_job(f"{T}/job.json", f"s{seed}_p{i}", f"{A.out}/jobs")
-            stage(runner, configs, j, seed, 1, env, f"s{seed}_p{i}", A.out)
+            for i, pose in enumerate(poses):
+                if (str(seed), f"p{i}") in done:
+                    continue
+                T = f"{pre}_tmpl{i}"
+                r = None
+                if not os.path.exists(f"{T}/job.json"):
+                    r = subprocess.run([PY, f"{DC}/build_selftmpl_general.py", "--pdb", A.pdb,
+                                        "--out", T, "--poses", pose, "--tids", f"t{i}{seed % 100:02d}"],
+                                       cwd=DC, capture_output=True, text=True,
+                                       env={**os.environ, "SELFTMPL_JOBS": JOBS})
+                if not os.path.exists(f"{T}/job.json"):
+                    print(f"  seed {seed} pose {i}: template build FAILED", flush=True)
+                    for line in ((r.stderr if r else "") or "").strip().splitlines()[-3:]:
+                        print(f"      {line}", flush=True)
+                    continue
+                env = dict(TMPL_ENV); env["PROTENIX_LOAD_TRUNK"] = trunk
+                env["PROTENIX_DUMP_TRUNK"] = None
+                j = named_job(f"{T}/job.json", f"s{seed}_p{i}", f"{A.out}/jobs")
+                stage(runner, configs, j, seed, 1, env, f"s{seed}_p{i}", A.out)
 
         # score everything, then drop the arms' structures (DockQ/ipTM survive in the pxm jsons;
         # 50 seeds x 35 poses is otherwise a lot of disk on a quota this project has already filled)
-        for arm, dn in [("donor", -1), ("none", -1)] + [(f"p{i}", i) for i in range(len(poses))]:
+        arms = ([("donor", -1), ("all5_k1", -1)] if A.mode == "all5"
+                else [("donor", -1), ("none", -1)] + [(f"p{i}", i) for i in range(len(poses))])
+        for arm, dn in arms:
             d = f"{A.out}/s{seed}_{arm}"
             if not os.path.isdir(d) or (str(seed), arm) in done:
                 continue
