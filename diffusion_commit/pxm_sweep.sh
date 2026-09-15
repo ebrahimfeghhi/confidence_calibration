@@ -45,8 +45,18 @@ for iface in $IFACES; do
       SEEDS="$(seq 1 "$NSEEDS" | tr '\n' ' ')" bash "$DC/batch.sh" \
         || echo "!! $iface exited nonzero, moving on"
   fi
+  # A COMPLEX THAT RECORDED NOTHING IS A FAILURE, NOT A RESULT. 8vqf_AC once reported "finished" after
+  # 50 folds and zero rows: the driver's dedupe key omitted the interface, so every complex inherited
+  # 8fas_BC's completions and skipped all seven stages. It exited 0 and looked healthy. Count the rows.
+  CSVF=$REPO/artifacts/commit11/results.csv
+  NROW=$(grep -c "^$iface," "$CSVF" 2>/dev/null || echo 0)
+  if [ "$NROW" -lt "$NSEEDS" ]; then
+    echo "!! $iface recorded only $NROW rows for $NSEEDS seeds -- EXPECTED >= $NSEEDS. Something is"
+    echo "!! skipping stages; not a result. Check the driver log before trusting any summary."
+  fi
+
   # Report the moment this interface is done, rather than at the end of a multi-day sweep.
-  { echo; echo "######## $iface finished $(date '+%m-%d %H:%M:%S') on GPU$GPU [$DRIVER] ########"
+  { echo; echo "######## $iface finished $(date '+%m-%d %H:%M:%S') on GPU$GPU [$DRIVER] rows=$NROW ########"
     $PY "$DC/report_complex.py" --iface "$iface"; } >> "$REPORT" 2>&1
   echo "    -> summary appended to $REPORT"
   # Structures are large and the scores are already in the csv; keep only the donor poses, which are

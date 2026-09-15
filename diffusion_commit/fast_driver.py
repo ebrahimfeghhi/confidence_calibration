@@ -185,7 +185,12 @@ def main():
             fh.write("iface,seed,arm,donor_pose,sample,dockq,iptm\n")
     done = set()
     for r in csv.DictReader(open(csv_path)):
-        done.add((r["seed"], r["arm"]))          # dedupe: re-running a seed cannot inflate the CSV
+        # KEY ON THE INTERFACE TOO. Without it, pointing this driver at the shared project csv makes
+        # every complex inherit another complex's completions: 8fas_BC seeds 1-51 already had rows for
+        # donor/none/p0..p4, so 8vqf_AC seed 50 was judged finished before it started. It folded, skipped
+        # all seven stages, recorded nothing, and exited looking healthy -- 50 seeds of GPU for no data.
+        if r["iface"] == A.iface:
+            done.add((r["seed"], r["arm"]))
 
     t_load = time.time()
     runner, configs = build_runner(A.ckpt_dir, A.model_name, job0, A.out)
