@@ -92,6 +92,24 @@ def build_runner(ckpt_dir, model_name, job_path, dump_dir):
     return InferenceRunner(configs), configs
 
 
+def score_arm(A, PY, DC, seed, arm, donor, REF, SCORER, csv_path, done):
+    """Score one arm's output into the project csv, then drop its cifs. Rows are keyed on
+    (iface, seed, arm) so a re-run can never duplicate them."""
+    import subprocess as _sp
+    d = f"{A.out}/s{seed}_{arm}"
+    out = _sp.run([PY, f"{DC}/row.py", "--dir", d, "--iface", A.iface, "--seed", str(seed),
+                   "--arm", arm, "--donor", str(donor), "--ref", REF, "--scorer", SCORER],
+                  cwd=DC, capture_output=True, text=True)
+    if out.stdout.strip():
+        with open(csv_path, "a") as fh:
+            fh.write(out.stdout)
+        done.add((str(seed), arm))
+    if not A.keep_arm_cifs:
+        for sub in glob.glob(f"{d}/*"):
+            if os.path.isdir(sub) and "_json" not in sub:
+                shutil.rmtree(sub, ignore_errors=True)
+
+
 def named_job(src, name, out_dir):
     """Write a copy of a job json under a UNIQUE name.
 
@@ -173,7 +191,15 @@ def main():
     # all5: fold, then ONE further recycle resuming that trunk with ALL FIVE poses as the sole template.
     # The per-pose arms (mode=perpose) already answered their question -- showing one pose reproduces it
     # (r=0.985) -- so the open question is what happens when the model sees the whole spread at once.
-    ap.add_argument("--mode", choices=("perpose", "all5"), default="perpose")
+    # free: plain folds, no templates, no trunk -- the paired budget arm.
+    # gen2: no fold at all; template on an EXTERNAL set of poses (a previous generation's output) and
+    #       run the full recycle count. --tmpl-root points at <hybrid25>/<pdb>, whose s<donor>/out/.../
+    #       seed_<g1>/predictions dirs supply the five templates for new seed g1+<seed-offset>.
+    ap.add_argument("--mode", choices=("perpose", "all5", "free", "gen2"), default="perpose")
+    ap.add_argument("--arm-name", default=None, help="csv arm label; defaults per mode")
+    ap.add_argument("--tmpl-root", default=None, help="gen2: <hybrid25>/<pdb>")
+    ap.add_argument("--seed-offset", type=int, default=25, help="gen2: new_seed = gen1_seed + offset")
+    ap.add_argument("--ncycle", type=int, default=10)
     A = ap.parse_args()
     seeds = parse_seeds(A.seeds)
     JOBS, REFF, SCORER = DATASETS[A.dataset]
@@ -208,6 +234,58 @@ def main():
         pre = f"{A.out}/s{seed}"
         trunk = f"{pre}_trunk.npz"
         t0 = time.time()
+
+        # ---- free: one plain fold, scored under --arm-name. No templates, no trunk.
+        if A.mode == "free":
+            arm = A.arm_name or "free75"
+            if (str(seed), arm) in done:
+                print(f"  seed {seed}: already scored, skipping", flush=True); continue
+            j = named_job(job0, f"s{seed}_{arm}", f"{A.out}/jobs")
+            stage(runner, configs, j, seed, A.ncycle,
+                  {"PROTENIX_DUMP_TRUNK": None, "PROTENIX_LOAD_TRUNK": None},
+                  f"s{seed}_{arm}", A.out)
+            score_arm(A, PY, DC, seed, arm, -1, REF, SCORER, csv_path, done)
+            print(f"  seed {seed} done in {time.time()-t0:.0f}s", flush=True)
+            continue
+
+        # ---- gen2: no fold. Template on the previous generation's poses for this seed.
+        if A.mode == "gen2":
+            arm = A.arm_name or "gen2"
+            if (str(seed), arm) in done:
+                print(f"  seed {seed}: already scored, skipping", flush=True); continue
+            g1 = seed - A.seed_offset
+            src = None
+            for d in sorted(glob.glob(f"{A.tmpl_root}/s*/out/*/seed_{g1}/predictions")):
+                src = d; break
+            if not src:
+                print(f"  seed {seed}: no gen-1 poses for seed {g1} under {A.tmpl_root}", flush=True)
+                continue
+            poses = sorted(glob.glob(f"{src}/*_sample_*.cif"))
+            if len(poses) < 5:
+                print(f"  seed {seed}: only {len(poses)} gen-1 poses", flush=True); continue
+            T = f"{pre}_tmpl_gen2"
+            r = None
+            if not os.path.exists(f"{T}/job.json"):
+                tids = [f"g{i}{seed % 100:02d}" for i in range(len(poses))]
+                r = subprocess.run([PY, f"{DC}/build_selftmpl_general.py", "--pdb", A.pdb,
+                                    "--out", T, "--poses", *poses, "--tids", *tids],
+                                   cwd=DC, capture_output=True, text=True,
+                                   env={**os.environ, "SELFTMPL_JOBS": JOBS})
+            if not os.path.exists(f"{T}/job.json"):
+                print(f"  seed {seed}: gen2 template build FAILED", flush=True)
+                for line in ((r.stderr if r else "") or "").strip().splitlines()[-3:]:
+                    print(f"      {line}", flush=True)
+                continue
+            env = dict(TMPL_ENV)
+            env["PROTENIX_MAX_TEMPLATES"] = "5"
+            env["PROTENIX_MAX_TEMPLATE_CANDIDATES"] = "20"
+            env["PROTENIX_LOAD_TRUNK"] = None
+            env["PROTENIX_DUMP_TRUNK"] = None
+            j = named_job(f"{T}/job.json", f"s{seed}_{arm}", f"{A.out}/jobs")
+            stage(runner, configs, j, seed, A.ncycle, env, f"s{seed}_{arm}", A.out)
+            score_arm(A, PY, DC, seed, arm, g1, REF, SCORER, csv_path, done)
+            print(f"  seed {seed} done in {time.time()-t0:.0f}s", flush=True)
+            continue
 
         # SKIP A FINISHED SEED ENTIRELY. The per-arm checks below are not enough: the fold is gated on
         # this driver's OWN trunk path, so a seed already completed by the shell driver (which wrote its
