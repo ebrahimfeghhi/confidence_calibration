@@ -448,7 +448,7 @@ def main():
             dt, tcounts = fold(runner, configs, named_job(job_src, name, f"{rdir}/jobs"), int(seed),
                                name, A.ncycle, A.nsample, expect, rdir, env)
         except Exception as e:
-            print(f"  {target} {tag} seed {seed}: FAILED -- {type(e).__name__}: {str(e)[:120]}",
+            print(f"  {pdb} {target} {tag} seed {seed}: FAILED -- {type(e).__name__}: {str(e)[:120]}",
                   flush=True)
             failed += 1
             release()
@@ -477,10 +477,12 @@ def main():
                 got += 1
         if got or all((i, str(seed), tag) in done for i in want):
             ran += 1
-            print(f"  {kind} {target} {tag} seed {seed}: {got}/{len(want)} interfaces in {dt:.0f}s",
-                  flush=True)
+            # pdb AND target: target is "*" for a pool fold, so printing target alone left every
+            # progress line anonymous -- unreadable when diagnosing which complex is slow.
+            print(f"  {kind} {pdb} {target} {tag} seed {seed}: {got}/{len(want)} interfaces "
+                  f"in {dt:.0f}s", flush=True)
         else:
-            print(f"  {target} {tag} seed {seed}: SCORING produced no rows", flush=True)
+            print(f"  {pdb} {target} {tag} seed {seed}: SCORING produced no rows", flush=True)
             for line in (out.stderr or "").strip().splitlines()[-3:]:
                 print(f"      {line}", flush=True)
             failed += 1
