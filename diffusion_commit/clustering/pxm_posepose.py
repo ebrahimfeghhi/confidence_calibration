@@ -36,17 +36,20 @@ import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit")
+sys.path.insert(0, "/home/ebrahim/tts_abag")
+
+import paths  # noqa: E402  (needs the path insert above)
 from fmt import table
 
-REPO = "/home/ebrahim/tts_abag/confident_decoy_experiments"
-POOL = f"{REPO}/artifacts/pxm2025/dockq_pxm2025.csv"
-OUT = f"{REPO}/artifacts/pxm2025/out"
-JOBS = f"{REPO}/artifacts/pxm2025/jsons"
-ROLES = f"{REPO}/artifacts/pxm2025/chain_roles.csv"
+REPO = str(paths.DATA_DIR)
+POOL = f"{REPO}/pxm2025/dockq_pxm2025.csv"
+OUT = f"{REPO}/pxm2025/out"
+JOBS = f"{REPO}/pxm2025/jsons"
+ROLES = f"{REPO}/pxm2025/chain_roles.csv"
 # the PXM pool's own reference structures -- the same files row.py scores against. NOT the
 # FoldBench ground_truths dir, which covers a different 117-target set and lacks these pdbs.
-GT = f"{REPO}/artifacts/pxm2025/cif"
-MATDIR = f"{REPO}/artifacts/posepose_pxm"
+GT = f"{REPO}/pxm2025/cif"
+MATDIR = f"{REPO}/posepose_pxm"
 
 
 def roles_map():

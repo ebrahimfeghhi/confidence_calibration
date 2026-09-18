@@ -51,7 +51,7 @@ import sys
 
 DC = "/home/ebrahim/tts_abag/diffusion_commit"
 PY = "/home/ebrahim/Protenix/.venv/bin/python"
-JOBS = "/home/ebrahim/tts_abag/confident_decoy_experiments/artifacts/pxm2025/jsons"
+JOBS = str(paths.PXM2025_JOBS)
 B36 = "0123456789abcdefghijklmnopqrstuvwxyz"
 
 
@@ -154,3 +154,6 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+sys.path.insert(0, "/home/ebrahim/tts_abag")
+
+import paths  # noqa: E402  (needs the path insert above)

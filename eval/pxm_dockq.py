@@ -29,7 +29,7 @@ import subprocess
 
 PXM = os.environ.get(
     "PXM_BIN",
-    "/home/ebrahim/tts_abag/confident_decoy_experiments/envs/pxmeter/bin/pxm")
+    "/home/ebrahim/tts_abag/envs/pxmeter/bin/pxm")
 TIMEOUT = int(os.environ.get("PXM_TIMEOUT", "300"))
 
 

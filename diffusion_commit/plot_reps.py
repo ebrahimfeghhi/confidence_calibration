@@ -27,7 +27,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-POOL = "/home/ebrahim/tts_abag/confident_decoy_experiments/artifacts/pxm2025/dockq_pxm2025.csv"
+POOL = str(paths.PXM2025_POOL_CSV)
 # seed per complex: the donor seed these repeats re-fold
 SEEDS = {"9x1h_AF": "300014", "9g9o_AC": "300009", "9r1g_AC": "300024", "8w5m_BC": "300001",
          "8w5i_AE": "300017", "8vqf_AC": "300048", "9dbo_AC": "300040", "8w5f_BD": "300047",
@@ -98,3 +98,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+sys.path.insert(0, "/home/ebrahim/tts_abag")
+
+import paths  # noqa: E402  (needs the path insert above)

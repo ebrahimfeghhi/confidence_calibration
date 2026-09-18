@@ -38,18 +38,20 @@ import sys
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-# cifconv is a SHARED helper (~30 build_* scripts import it) and stays where they can all see it.
-# This file was moved here out of confident_decoy_experiments/scripts/, so its own directory no longer
-# contains cifconv -- hence the explicit path. Copying the module here instead would start exactly the
-# kind of drift that left 14 diverging copies of the OST call in this project.
-sys.path.insert(0, "/home/ebrahim/tts_abag/confident_decoy_experiments/scripts")
+# cifconv converts a Protenix-output cif into a template-parseable one. It was copied in from the
+# archived scripts/ directory, which ~30 dead build_* scripts also imported it from; only this copy is
+# live now.
+sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit")
+sys.path.insert(0, "/home/ebrahim/tts_abag")
+
+import paths  # noqa: E402  (needs the path insert above)
 import gemmi  # noqa: E402
 from cifconv import convert  # noqa: E402
 
-EXP = "/home/ebrahim/tts_abag/confident_decoy_experiments"
+EXP = str(paths.DATA_DIR)
 # The base job json to clone. Defaults to the pxm2025 pool; SELFTMPL_JOBS overrides it so the same
 # builder serves the FoldBench pool (both name the file <pdb>-final-updated.json).
-P = f"{EXP}/artifacts/pxm2025"
+P = f"{EXP}/pxm2025"
 JOBS = os.environ.get("SELFTMPL_JOBS", f"{P}/jsons")
 # PRIVATE NAMESPACE PER RUN. Template ids must be 4 chars (Protenix treats them as pdb ids), which is
 # only 36^4 ~ 1.68M values -- and the shared /home/ebrahim/mmcif already holds >10k of them, so by the

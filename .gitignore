@@ -55,8 +55,14 @@ confident_decoy_experiments/vendor/**/*.pyc
 # Lives INSIDE the repo (moved 2026-08-10) so everything the project produces is
 # under tts_abag, but is not tracked. /home/ebrahim/confident_decoy_experiments/
 # holds symlinks here so absolute paths in old logs and configs still resolve.
+# Renamed 2026-09-18: artifacts/ became experimental_data/ at the repo root when the
+# confident_decoy_experiments era was archived. The OLD patterns are kept below because the
+# archived tree still contains those directories.
+experimental_data/
 confident_decoy_experiments/artifacts/
 confident_decoy_experiments/predictions/
+archive/confident_decoy_experiments/artifacts/
+archive/confident_decoy_experiments/predictions/
 
 # confident-decoy ops: keep the watcher/runner SCRIPTS, never their logs (xfer.log alone is 48 MB)
 confident_decoy_experiments/ops/*.log
@@ -65,8 +71,10 @@ confident_decoy_experiments/handoff/naboo_pull/
 
 # --- environments and bulk data: code only in git ---
 # gitignore has no trailing comments: a comment after a pattern becomes part of it
-# 6.2 GB virtualenv
+# 6.2 GB virtualenv, moved to envs/ at the repo root (it is a live dependency of eval/)
+envs/
 confident_decoy_experiments/envs/
+archive/confident_decoy_experiments/envs/
 confident_decoy_experiments/predictions/
 # 166 GB of generated structures
 poses/

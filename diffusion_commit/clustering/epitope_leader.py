@@ -34,12 +34,15 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit")
+sys.path.insert(0, "/home/ebrahim/tts_abag")
+
+import paths  # noqa: E402  (needs the path insert above)
 from fmt import table
 
-REPO = "/home/ebrahim/tts_abag/confident_decoy_experiments"
-POOL = f"{REPO}/artifacts/pxm2025/dockq_pxm2025.csv"
-OUT = f"{REPO}/artifacts/pxm2025/out"
-ROLES = f"{REPO}/artifacts/pxm2025/chain_roles.csv"
+REPO = str(paths.DATA_DIR)
+POOL = f"{REPO}/pxm2025/dockq_pxm2025.csv"
+OUT = f"{REPO}/pxm2025/out"
+ROLES = f"{REPO}/pxm2025/chain_roles.csv"
 
 
 def pose_chains(path):

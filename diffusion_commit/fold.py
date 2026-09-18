@@ -68,22 +68,16 @@ import time
 
 sys.path.insert(0, "/home/ebrahim/Protenix")
 sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit")
+sys.path.insert(0, "/home/ebrahim/tts_abag")
 
-import runmeta  # noqa: E402  (after the path insert, by necessity)
+import paths     # noqa: E402  every location comes from here, never a literal
+import runmeta   # noqa: E402
 
-DC = "/home/ebrahim/tts_abag/diffusion_commit"
-PY = "/home/ebrahim/Protenix/.venv/bin/python"
-EXP = "/home/ebrahim/tts_abag/confident_decoy_experiments"
+DC = str(paths.CODE_DIR)
+PY = str(paths.PROTENIX_PYTHON)
 
-# Inputs, scoring reference and scorer move together: a foldbench complex scored with the pxm scorer
-# silently produces nothing.
-DATASETS = {
-    "pxm2025": (f"{EXP}/artifacts/pxm2025/jsons",
-                lambda pdb: f"{EXP}/artifacts/pxm2025/cif/{pdb}.cif", "pxm"),
-    "foldbench": ("/home/ebrahim/Protenix/foldbench_abag/jsons",
-                  lambda pdb: f"/home/ebrahim/FoldBench/examples/ground_truths/{pdb}-assembly1.cif",
-                  "ost"),
-}
+# Inputs, ground truth and scorer move together -- a foldbench complex scored with the pxm scorer
+# silently produces nothing -- so they come as one triple from paths.dataset(), not assembled here.
 
 # Cross-chain template geometry is the entire point of self-templating: without these the template
 # carries each chain's fold but nothing about how the chains sit relative to each other.
@@ -269,6 +263,36 @@ def read_queue(path):
     return units
 
 
+def reconcile_claims(claim_dir, csv_path, pool_ifaces):
+    """Release claims whose work never finished, so a killed worker's units are retried.
+
+    A claim is taken before a fold and released only on failure, so a worker killed mid-fold leaves
+    one behind -- and a claimed-but-unscored unit is skipped FOREVER, silently shrinking the sweep.
+    This ran as an ad-hoc script twice and I got the parsing wrong the second time (claim names had
+    changed shape between drivers, so it matched nothing and reported success). It belongs here, run
+    on every start, keyed only on the first and last name components so any naming scheme works.
+    """
+    if not claim_dir or not os.path.isdir(claim_dir):
+        return 0
+    scored = collections.defaultdict(set)
+    for r in csv.DictReader(open(csv_path)):
+        scored[(r["iface"].split("_")[0], r["seed"])].add(r["iface"])
+    released = 0
+    for c in os.listdir(claim_dir):
+        parts = c.split("_")
+        pdb, seed = parts[0], parts[-1]
+        want = pool_ifaces.get(pdb)
+        if want and not want <= scored.get((pdb, seed), set()):
+            try:
+                os.rmdir(f"{claim_dir}/{c}")
+                released += 1
+            except OSError:
+                pass
+    if released:
+        print(f"  released {released} stale claims (killed mid-fold, now retryable)", flush=True)
+    return released
+
+
 def report(csv_path):
     sys.path.insert(0, DC)
     from fmt import table
@@ -297,14 +321,14 @@ def main():
     ap.add_argument("--csv", required=True)
     ap.add_argument("--templates", help="namespace built by write_templates.py; required for "
                                         "templated units, never written to here")
-    ap.add_argument("--pool", default=f"{EXP}/artifacts/pxm2025/dockq_pxm2025.csv",
+    ap.add_argument("--pool", default=str(paths.PXM2025_POOL_CSV),
                     help="csv whose interfaces define what `target=*` scores")
     ap.add_argument("--claim-dir", help="atomic mkdir claims so workers share one queue")
     ap.add_argument("--dtype", choices=("bf16", "fp32", "fp16"), default="bf16")
     ap.add_argument("--ncycle", type=int, default=10)
     ap.add_argument("--nsample", type=int, default=5)
-    ap.add_argument("--dataset", choices=sorted(DATASETS), default="pxm2025")
-    ap.add_argument("--ckpt-dir", default="/home/ebrahim/checkpoint")
+    ap.add_argument("--dataset", choices=sorted(paths.DATASET_NAMES), default="pxm2025")
+    ap.add_argument("--ckpt-dir", default=str(paths.PROTENIX_CKPT))
     ap.add_argument("--model-name", default="protenix-v2")
     ap.add_argument("--keep-cifs", action="store_true", default=True,
                     help="poses are kept by default: a pose whose score is in the csv but whose "
@@ -320,7 +344,7 @@ def main():
             raise SystemExit(f"--{req} is required")
 
     units = read_queue(A.queue)
-    JOBS, REFF, SCORER = DATASETS[A.dataset]
+    JOBS, REFF, SCORER = paths.dataset(A.dataset)
     templated = [u for u in units if u[0] != "free"]
     if templated and not A.templates:
         raise SystemExit(f"{len(templated)} templated units need --templates "
@@ -350,6 +374,7 @@ def main():
     done = {(r["iface"], r["seed"], r["arm"]) for r in csv.DictReader(open(A.csv))}
     if A.claim_dir:
         os.makedirs(A.claim_dir, exist_ok=True)
+        reconcile_claims(A.claim_dir, A.csv, pool_ifaces)
 
     # runner.error_dir is derived from configs.dump_dir when the runner is BUILT, not per fold.
     os.makedirs(f"{A.out}/ERR", exist_ok=True)
@@ -437,7 +462,10 @@ def main():
             templates_found=tcounts, template_namespace=A.templates)
 
         got = 0
-        for iface in want:
+        # Score only what is MISSING. A retried unit (stale claim released) would otherwise append a
+        # second row set for interfaces already scored, and duplicate rows quietly double-weight a
+        # seed in every downstream average.
+        for iface in [i for i in want if (i, str(seed), tag) not in done]:
             out = subprocess.run([PY, f"{DC}/row.py", "--dir", f"{rdir}/{name}", "--iface", iface,
                                   "--seed", str(seed), "--arm", tag, "--donor", "-1",
                                   "--ref", REFF(pdb), "--scorer", SCORER],
@@ -447,7 +475,7 @@ def main():
                     fh.write(out.stdout)
                 done.add((iface, str(seed), tag))
                 got += 1
-        if got:
+        if got or all((i, str(seed), tag) in done for i in want):
             ran += 1
             print(f"  {kind} {target} {tag} seed {seed}: {got}/{len(want)} interfaces in {dt:.0f}s",
                   flush=True)

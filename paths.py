@@ -74,6 +74,39 @@ CSV_DIR = _path("CSV_DIR", RESULTS_DIR / "csv_files")
 STEER_DATA = _path("STEER_DATA", REPO_ROOT / "steer" / "data")
 
 
+# --- Current experiment: confident decoys / self-templating ------------------
+# These moved out of confident_decoy_experiments/ when that era was archived: code now lives in
+# diffusion_commit/ and everything the runs read or produce lives in experimental_data/. They are
+# defined HERE rather than in diffusion_commit so there is one source of truth for locations, which
+# is what made the move a one-line edit instead of a grep across a dozen files.
+CODE_DIR = _path("CODE_DIR", REPO_ROOT / "diffusion_commit")
+DATA_DIR = _path("DATA_DIR", REPO_ROOT / "experimental_data")
+EVAL_DIR = _path("EVAL_DIR", REPO_ROOT / "eval")
+# The pxm scorer is a built environment, not code we edit, and every DockQ score shells out to it --
+# so it lives outside the archived repo.
+PXMETER_BIN = _path("PXMETER_BIN", REPO_ROOT / "envs" / "pxmeter" / "bin" / "pxm")
+
+# A pool travels as a unit: job jsons to fold, ground-truth cifs to score against, and the scorer
+# that matches them. Mixing them silently produces nothing.
+PXM2025_DIR = _path("PXM2025_DIR", DATA_DIR / "pxm2025")
+PXM2025_JOBS = _path("PXM2025_JOBS", PXM2025_DIR / "jsons")
+PXM2025_CIF = _path("PXM2025_CIF", PXM2025_DIR / "cif")
+PXM2025_POOL_CSV = _path("PXM2025_POOL_CSV", PXM2025_DIR / "dockq_pxm2025.csv")
+PXM2025_CHAIN_ROLES = _path("PXM2025_CHAIN_ROLES", PXM2025_DIR / "chain_roles.csv")
+
+
+def dataset(name):
+    """(job dir, ground-truth cif for a pdb, scorer name) for a pool, as strings."""
+    if name == "pxm2025":
+        return str(PXM2025_JOBS), (lambda pdb: f"{PXM2025_CIF}/{pdb}.cif"), "pxm"
+    if name == "foldbench":
+        return str(JSON_DIR), (lambda pdb: f"{GROUND_TRUTHS}/{pdb}-assembly1.cif"), "ost"
+    raise KeyError(f"unknown dataset {name!r}")
+
+
+DATASET_NAMES = ("pxm2025", "foldbench")
+
+
 def _sh():
     """Print `export NAME=value` lines so shell scripts can source these paths:
 
@@ -84,7 +117,8 @@ def _sh():
         "ESM_REPO", "PROTENIX_REPO", "ESM_PYTHON", "PROTENIX_PYTHON",
         "PROTENIX_CKPT", "OST_BIN", "OST_LIB",
         "ESM_PREDICTIONS", "PROTENIX_PREDICTIONS", "RESULTS_DIR", "CSV_DIR",
-        "STEER_DATA",
+        "STEER_DATA", "CODE_DIR", "DATA_DIR", "EVAL_DIR", "PXMETER_BIN",
+        "PXM2025_DIR", "PXM2025_JOBS", "PXM2025_CIF", "PXM2025_POOL_CSV",
     ):
         print(f'export {name}="{globals()[name]}"')
 

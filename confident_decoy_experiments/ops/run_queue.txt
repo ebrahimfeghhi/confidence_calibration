@@ -1,6 +1,0 @@
-# TRAIN-split templated arms, 250 donors x 5 seeds, smallest complex first so results
-# accumulate early. 7zau is last (~110 h alone) and can be dropped if the picture is clear.
-# FULL-MSA test: same 250 templates and first 5 seeds as allpose8aok10, so it is
-# seed- and template-matched. Only difference: --data.msa.min_size.test 16384
-# (no MSA row subsampling). 8aok is the fastest complex (~1 h).
-free1k7zau
