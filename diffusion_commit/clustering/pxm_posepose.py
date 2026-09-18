@@ -43,7 +43,6 @@ from fmt import table
 
 REPO = str(paths.DATA_DIR)
 POOL = f"{REPO}/pxm2025/dockq_pxm2025.csv"
-OUT = f"{REPO}/pxm2025/out"
 JOBS = f"{REPO}/pxm2025/jsons"
 ROLES = f"{REPO}/pxm2025/chain_roles.csv"
 # the PXM pool's own reference structures -- the same files row.py scores against. NOT the
@@ -147,7 +146,7 @@ def pose_list(iface, ab, ag):
     for r in csv.DictReader(open(POOL)):
         if r["pdb"] != pdb or r["chain1"] != c1 or r["chain2"] != c2:
             continue
-        p = f"{OUT}/{pdb}/{pdb}/seed_{r['seed']}/predictions/{pdb}_sample_{r['sample']}.cif"
+        p = paths.pool_pose(pdb, r["seed"], r["sample"])
         if os.path.exists(p):
             rows.append((p, ab, ag, float(r["pair_iptm"]), float(r["dockq"]),
                          r["seed"], int(r["sample"])))

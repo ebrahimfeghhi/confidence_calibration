@@ -41,7 +41,6 @@ from fmt import table
 
 REPO = str(paths.DATA_DIR)
 POOL = f"{REPO}/pxm2025/dockq_pxm2025.csv"
-OUT = f"{REPO}/pxm2025/out"
 ROLES = f"{REPO}/pxm2025/chain_roles.csv"
 
 
@@ -153,7 +152,7 @@ def main():
         reps = {}
         for s, v in seeds.items():
             samp = max(v, key=lambda x: x[1])[0]
-            f = f"{OUT}/{pdb}/{pdb}/seed_{s}/predictions/{pdb}_sample_{samp}.cif"
+            f = paths.pool_pose(pdb, s, samp)
             if os.path.exists(f):
                 reps[s] = f
         if len(reps) < 40:

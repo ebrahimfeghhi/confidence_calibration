@@ -107,6 +107,26 @@ def dataset(name):
 DATASET_NAMES = ("pxm2025", "foldbench")
 
 
+# --- run trees ---------------------------------------------------------------
+# Every fold we generate lands in one of these two, as <pdb>/<seed>/<run_id>/.
+FREE_DIR = _path("FREE_DIR", DATA_DIR / "free")
+SELFTMPL_DIR = _path("SELFTMPL_DIR", DATA_DIR / "self_template")
+# The template namespace write_templates.py builds: an input to self-templated folds.
+TEMPLATES_DIR = _path("TEMPLATES_DIR", SELFTMPL_DIR / "templates")
+
+# The pool's original 50-75 seeds per complex predate run provenance -- no run id, no run.json, and
+# their configuration is known only from what the defaults were at the time (bf16, N_cycle 10). They
+# sit under this marker so the absence is visible in the path rather than dressed up as a real run id.
+LEGACY_RUN = "legacy-no-provenance"
+
+
+def pool_pose(pdb, seed, sample):
+    """Path to one pose of the original pool. A FUNCTION, not a format string: legacy folds and
+    modern ones nest predictions differently, and two scripts had hand-built this path identically,
+    which is how a layout change breaks them both silently."""
+    return (f"{FREE_DIR}/{pdb}/{seed}/{LEGACY_RUN}/predictions/{pdb}_sample_{sample}.cif")
+
+
 def _sh():
     """Print `export NAME=value` lines so shell scripts can source these paths:
 
@@ -119,6 +139,7 @@ def _sh():
         "ESM_PREDICTIONS", "PROTENIX_PREDICTIONS", "RESULTS_DIR", "CSV_DIR",
         "STEER_DATA", "CODE_DIR", "DATA_DIR", "EVAL_DIR", "PXMETER_BIN",
         "PXM2025_DIR", "PXM2025_JOBS", "PXM2025_CIF", "PXM2025_POOL_CSV",
+        "FREE_DIR", "SELFTMPL_DIR", "TEMPLATES_DIR",
     ):
         print(f'export {name}="{globals()[name]}"')
 
