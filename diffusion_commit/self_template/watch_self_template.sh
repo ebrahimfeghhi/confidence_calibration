@@ -12,11 +12,13 @@
 #
 # Stop with: touch <OUT>/WATCH_STOP
 set -u
-ST=/home/ebrahim/tts_abag/diffusion_commit/self_template
+DRIVER=/home/ebrahim/tts_abag/diffusion_commit/fold.py
 PY=/home/ebrahim/Protenix/.venv/bin/python
 OUT=${OUT:?set OUT to the run root, e.g. .../artifacts/freespread -- there is no sane default}
-MAN=${MAN:-/home/ebrahim/tts_abag/confident_decoy_experiments/artifacts/st_manifest.tsv}
-NS=${NS:-$OUT/ns}
+QUEUE=${QUEUE:?set QUEUE to the queue tsv}
+DTYPE=${DTYPE:-bf16}
+NCYCLE=${NCYCLE:-10}
+TEMPLATES=${TEMPLATES:-}
 CSV=$OUT/results.csv
 CLAIM=$OUT/.claims
 LOG=$OUT/watch.log
@@ -35,7 +37,7 @@ while :; do
   now=$(date +%s)
   arms=$(awk -F, 'NR>1{print $1"|"$2"|"$3}' "$CSV" 2>/dev/null | sort -u | wc -l)
   claimed=$(ls "$CLAIM" 2>/dev/null | wc -l)
-  workers=$(pgrep -u "$USER" -f "run_self_template.py" | wc -l)
+  workers=$(pgrep -u "$USER" -f "fold.py --queue" | wc -l)
   [ "$arms" -ne "$last" ] && { last=$arms; last_change=$now; }
   stalled=$(( (now - last_change) / 60 ))
 
@@ -56,7 +58,7 @@ while :; do
   echo "$msg" | tee -a "$LOG"
 
   # SCORING REPORT -- the point of the watcher is to show results, not just liveness
-  $PY "$ST/run_self_template.py" --report --csv "$CSV" 2>&1 | tail -25 | tee -a "$LOG"
+  $PY "$DRIVER" --report --csv "$CSV" 2>&1 | tail -25 | tee -a "$LOG"
 
   if [ "$arms" -ge "$total" ]; then
     echo "[$(date +%H:%M:%S)] ALL $total $ONLY ARMS COMPLETE" | tee -a "$LOG"; exit 0
@@ -64,8 +66,8 @@ while :; do
 
   # remediation: one worker per card, and never two on one card (fp32 needs ~90 GB of a 98 GB card)
   for G in $GPUS; do
-    if ! pgrep -u "$USER" -f "CUDA_VISIBLE_DEVICES=$G.*run_self_template" >/dev/null 2>&1; then
-      mine=$(pgrep -u "$USER" -f "run_self_template.py" | wc -l)
+    if ! pgrep -u "$USER" -f "CUDA_VISIBLE_DEVICES=$G.*fold.py" >/dev/null 2>&1; then
+      mine=$(pgrep -u "$USER" -f "fold.py --queue" | wc -l)
       if [ "$mine" -lt 2 ]; then
         if [ "$relaunches" -ge 6 ]; then
           echo "[$(date +%H:%M:%S)] !! $relaunches relaunches with no progress -- NOT retrying, needs a human" \
@@ -73,9 +75,11 @@ while :; do
         else
           relaunches=$((relaunches+1))
           echo "[$(date +%H:%M:%S)] !! relaunching worker on gpu$G (attempt $relaunches)" | tee -a "$LOG"
-          CUDA_VISIBLE_DEVICES=$G LAYERNORM_TYPE=openfold nohup $PY "$ST/run_self_template.py" \
-            --manifest "$MAN" --ns "$NS" --out "$OUT" --csv "$CSV" --claim-dir "$CLAIM" \
-            --dtype fp32 --ncycle 10 --nsample 5 --only "$ONLY" >> "$OUT/gpu$G.log" 2>&1 &
+          # DTYPE and QUEUE come from the environment: relaunching a bf16 sweep as fp32 -- which a
+          # hardcoded --dtype did -- silently changes the precision half way through a dataset.
+          CUDA_VISIBLE_DEVICES=$G LAYERNORM_TYPE=openfold nohup $PY "$DRIVER" \
+            --queue "$QUEUE" ${TEMPLATES:+--templates "$TEMPLATES"} --out "$OUT" --csv "$CSV" \
+            --claim-dir "$CLAIM" --dtype "$DTYPE" --ncycle "$NCYCLE" >> "$OUT/gpu$G.log" 2>&1 &
         fi
       fi
     fi
