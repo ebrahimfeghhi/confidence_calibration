@@ -51,7 +51,14 @@ EXP = "/home/ebrahim/tts_abag/confident_decoy_experiments"
 # builder serves the FoldBench pool (both name the file <pdb>-final-updated.json).
 P = f"{EXP}/artifacts/pxm2025"
 JOBS = os.environ.get("SELFTMPL_JOBS", f"{P}/jsons")
-CACHE_F = "/home/ebrahim/common/release_date_cache.json"
+# PRIVATE NAMESPACE PER RUN. Template ids must be 4 chars (Protenix treats them as pdb ids), which is
+# only 36^4 ~ 1.68M values -- and the shared /home/ebrahim/mmcif already holds >10k of them, so by the
+# birthday bound a collision in a global namespace is near-certain, not unlikely. No hashing scheme
+# fixes that. Instead each run gets its own template dir and its own release-date file via these two
+# env vars: the namespace then holds only that run's handful of ids, collisions are impossible by
+# construction, and nothing mutates a file another process has already cached.
+MMCIF_DIR = os.environ.get("SELFTMPL_MMCIF_DIR", "/home/ebrahim/mmcif")
+CACHE_F = os.environ.get("SELFTMPL_RELEASE_DATES", "/home/ebrahim/common/release_date_cache.json")
 CUT = 5.0
 TLC = {'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'CYS': 'C', 'GLN': 'Q', 'GLU': 'E', 'GLY': 'G',
        'HIS': 'H', 'ILE': 'I', 'LEU': 'L', 'LYS': 'K', 'MET': 'M', 'PHE': 'F', 'PRO': 'P', 'SER': 'S',
@@ -131,7 +138,8 @@ def main():
     if not ent_seqs:
         sys.exit("no protein entities")
 
-    cache = json.load(open(CACHE_F))
+    os.makedirs(MMCIF_DIR, exist_ok=True)
+    cache = json.load(open(CACHE_F)) if os.path.exists(CACHE_F) else {}
     donors = []
     for d, cif in enumerate(A.poses):
         chains, info = pick_chains(cif, ent_seqs)
@@ -143,13 +151,37 @@ def main():
         if A.no_cache_write and tid not in cache:
             sys.exit(f"tid {tid} not pre-registered")
         cache.setdefault(tid, {"release_date": "2000-01-01"})
-        open(f"/home/ebrahim/mmcif/{tid}.cif", "w").write(convert(open(cif).read(), tid))
+        # write-then-rename so a concurrent featuriser never sees a half-written cif
+        _txt = convert(open(cif).read(), tid)
+        _tmp = f"{MMCIF_DIR}/.{tid}.tmp"
+        with open(_tmp, "w") as _fh:
+            _fh.write(_txt)
+        os.replace(_tmp, f"{MMCIF_DIR}/{tid}.cif")
         donors.append(dict(idx=d, cif=cif, tid=tid, chains=chains, contacts=info))
         print(f"   donor {d}: {tid}  chains {'/'.join(chains)}  contacts {info}")
     if not donors:
         sys.exit("no usable donors")
     if not A.no_cache_write:
-        json.dump(cache, open(CACHE_F, "w"))
+        # ATOMIC, LOCKED, AND RE-READ UNDER THE LOCK. Two workers building templates at once were
+        # racing here: this is a read-modify-write on a file they share, and `open(...,"w")` truncates
+        # it, so the other worker could read a partial file and lose its tids. Re-reading inside the
+        # lock also stops one worker's entries being clobbered by the other's stale copy. Symptom was
+        # "templates consumed [0]" on arms whose templates had just been written.
+        import fcntl, tempfile
+        os.makedirs(os.path.dirname(CACHE_F), exist_ok=True)
+        lock_f = CACHE_F + ".lock"
+        with open(lock_f, "w") as _lk:
+            fcntl.flock(_lk, fcntl.LOCK_EX)
+            try:
+                merged = json.load(open(CACHE_F)) if os.path.exists(CACHE_F) else {}
+            except Exception:
+                merged = {}
+            merged.update(cache)
+            fd, tmp = tempfile.mkstemp(dir=os.path.dirname(CACHE_F))
+            with os.fdopen(fd, "w") as fh:
+                json.dump(merged, fh)
+            os.replace(tmp, CACHE_F)          # atomic: readers see old or new, never partial
+            fcntl.flock(_lk, fcntl.LOCK_UN)
 
     pi = 0
     for e in obj["sequences"]:
