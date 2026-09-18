@@ -362,9 +362,8 @@ def main():
 
     # interfaces per pdb, for target=*
     pool_ifaces = collections.defaultdict(set)
-    if any(u[2] == "*" for u in units):
-        for r in csv.DictReader(open(A.pool)):
-            pool_ifaces[r["pdb"]].add(f"{r['pdb']}_{r['chain1']}{r['chain2']}")
+    for r in csv.DictReader(open(A.pool)):
+        pool_ifaces[r["pdb"]].add(f"{r['pdb']}_{r['chain1']}{r['chain2']}")
 
     os.makedirs(A.out, exist_ok=True)
     if not os.path.exists(A.csv):
@@ -403,7 +402,10 @@ def main():
 
     ran = skipped = failed = 0
     for kind, pdb, target, tag, seed, poses in units:
-        want = sorted(pool_ifaces.get(pdb, ())) if target == "*" else [target]
+        # EVERY interface of this complex, always. A fold produces the whole complex whatever it was
+        # aimed at, so scoring only the motivating interface discarded measurements already paid for --
+        # and hid what templating one interface does to the others in the same complex.
+        want = sorted(pool_ifaces.get(pdb, ()))
         if not want:
             print(f"  {pdb}: no interfaces to score, skipping", flush=True)
             continue
@@ -442,7 +444,7 @@ def main():
         rid = runmeta.run_id({"pdb": pdb, "target": target, "tag": tag, "seed": seed, "kind": kind,
                               "dtype": A.dtype, "ncycle": A.ncycle, "nsample": A.nsample,
                               "poses": [os.path.basename(p) for p in poses]})
-        rdir = runmeta.run_dir(A.out, kind, pdb, target.replace("*", "all"), seed, rid)
+        rdir = runmeta.run_dir(A.out, kind, pdb, seed, rid)
         name = f"{target.replace('*', pdb)}_{tag}"
         try:
             dt, tcounts = fold(runner, configs, named_job(job_src, name, f"{rdir}/jobs"), int(seed),
@@ -455,7 +457,11 @@ def main():
             continue
 
         runmeta.write_run_json(
-            rdir, kind=kind, pdb=pdb, target=target, iface=None if target == "*" else target,
+            # motivating_interface is WHY this arm exists (which interface's poses were chosen);
+            # interfaces_scored is what the fold actually produced. For a pool fold there is no
+            # motivation -- it deepens the pool for every interface equally.
+            rdir, kind=kind, pdb=pdb,
+            motivating_interface=None if target == "*" else target,
             seed=seed, arm=tag, precision=A.dtype, n_cycle=A.ncycle, n_sample=A.nsample,
             fold_seconds=round(dt, 1), interfaces_scored=want,
             templates=[{"source_pose": p, "md5": runmeta_md5(p)} for p in poses] or None,

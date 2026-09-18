@@ -29,9 +29,16 @@ def run_id(defining: dict) -> str:
     return f"{time.strftime('%Y%m%d-%H%M%S', time.gmtime())}-{os.getpid()}-{h}"
 
 
-def run_dir(out: str, mode: str, pdb: str, iface: str, seed, rid: str) -> str:
-    """<out>/<mode>/<pdb>/<iface>/<seed>/<run_id>/ -- granular enough that repeats coexist."""
-    return os.path.join(out, mode, str(pdb), str(iface), str(seed), rid)
+def run_dir(out: str, mode: str, pdb: str, seed, rid: str) -> str:
+    """<out>/<mode>/<pdb>/<seed>/<run_id>/ -- granular enough that repeats coexist.
+
+    NO INTERFACE LEVEL. Every fold produces the WHOLE complex, whatever it was aimed at, so an
+    interface in the path is misleading: it suggests the output is specific to one interface when the
+    coordinates cover all of them. Which interface motivated a templated arm, and which poses were
+    used, live in run.json instead -- metadata, not directory structure. The earlier shape also
+    invited a silent error: the old driver passed pdb into the interface slot, so pool folds landed
+    at <pdb>/<pdb>/ while the new one wrote <pdb>/all/, two shapes for one kind of fold.""" 
+    return os.path.join(out, mode, str(pdb), str(seed), rid)
 
 
 def git_sha() -> str:
