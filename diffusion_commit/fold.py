@@ -52,11 +52,34 @@ QUEUE FILE -- one unit per line, tab separated:
 Usage:
     fold.py --queue q.tsv --out <root> --csv <results.csv> [--templates <ns>] [--dtype bf16]
     fold.py --report --csv <results.csv>
+
+!! KNOWN BUG, FOUND 2026-09-19, NOT YET FIXED -- READ BEFORE TRUSTING ANY SELF-TEMPLATED RESULT.
+The CIFs this driver writes for templates are only PARTLY readable by Protenix. Its template parser
+(protenix/data/template/template_parser.py, auth_chain_to_seq) sees ONE chain in them -- verified on
+every complex of both runs: the builder requests e.g. ['A','B','C'] and the parser returns ['A'].
+Consequence, from template_utils.py:578:
+
+        target_seq = mmcif_obj.chain_to_seqres.get(chain_id, "")
+        if not target_seq:
+            if len(mmcif_obj.chain_to_seqres) == 1:   # <-- silently uses the ONLY chain
+                ...
+            else:
+                raise QueryToTemplateAlignError(f"Chain {chain_id} not found.")
+
+So a hit for chain A succeeds by falling through that shortcut, while hits for B/C/D raise. Every
+entity of a complex was therefore templated against chain A, and on complexes where that raised, the
+fold still completed and scored. "Found 5 templates" in a log does NOT mean five multi-chain templates
+were used.
+
+This invalidates the MECHANISM described above -- a template cannot be supplying cross-chain placement
+if only one chain is visible -- even though the measured effects (e.g. 9h01_AB 0.005 -> 0.782 pooled,
+50 seeds) reproduced. Fix the writer, then re-run one complex before interpreting anything.
 """
 import argparse
 import collections
 import csv
 import glob
+import hashlib
 import json
 import logging
 import os
@@ -263,6 +286,264 @@ def read_queue(path):
     return units
 
 
+
+
+B36 = "0123456789abcdefghijklmnopqrstuvwxyz"
+
+
+def hook_tids(pdb, tag, cycle_no, n):
+    """4-char template ids for a mid-loop splice, DETERMINISTIC.
+
+    Protenix identifies a template by a 4-character pdb id, so a decoded pose has to masquerade as
+    one. The previous version built these from abs(hash((tag, cycle_no))) -- and Python randomises
+    string hashing per process, so the ids were unknowable before the run. That mattered because of
+    the next function: ids have to be registered in the release-date file BEFORE the first fold, and
+    you cannot pre-register a name you cannot predict.
+    """
+    h = int(hashlib.md5(f"{pdb}:{tag}:{cycle_no}".encode()).hexdigest(), 16) % (36 ** 3)
+    pre = "".join(B36[(h // 36 ** k) % 36] for k in (2, 1, 0))
+    return [f"{pre}{B36[i % 36]}" for i in range(n)]
+
+
+def preregister_hook_tids(units, after, nsample, rd_path):
+    """Put every id the hook will ever use into the release-date file, before any fold runs.
+
+    THIS IS THE FIX FOR "Found 0 templates". Protenix loads the release-date file ONCE per process
+    (template_utils.py:838) and keeps it. A mid-run splice registers its ids after that snapshot, so
+    _assess_hit rejects them as "date unknown" (line 372) and drops every template -- while the fold
+    completes and scores normally. Registering up front means the snapshot already contains them.
+
+    The date is deliberately old: templates newer than the target are filtered out by design, so a
+    self-template must not look recent.
+    """
+    dates = json.load(open(rd_path)) if os.path.exists(rd_path) else {}
+    added = 0
+    # SCHEMA MATTERS. _parse_release_dates (template_utils.py:869) keeps only entries shaped
+    # {"id": {"release_date": "YYYY-MM-DD"}} -- a flat {"id": "YYYY-MM-DD"} parses to NOTHING, and the
+    # id is then rejected as "date unknown" even though it is plainly in the file. That cost a smoke
+    # test to find, because the fold still completed and scored.
+    for kind, pdb, target, tag, seed, _poses in units:
+        for c in range(after, after + 8):        # covers any --ncycle the run might use
+            for t in hook_tids(pdb, f"{target}_{tag}_{seed}", c, nsample):
+                if t not in dates:
+                    dates[t] = {"release_date": "2000-01-01"}
+                    added += 1
+    tmp = rd_path + ".tmp"
+    with open(tmp, "w") as fh:
+        json.dump(dates, fh)
+    os.replace(tmp, rd_path)
+    # Parse it back with PROTENIX'S OWN parser, not ours: the only check that matters is whether the
+    # ids are visible to the code that will reject them.
+    from protenix.data.template.template_utils import TemplateHitFilter  # noqa: F401
+    import datetime as _dt
+    seen = {k.lower() for k, v in dates.items()
+            if isinstance(v, dict) and "release_date" in v
+            and _dt.datetime.strptime(v["release_date"], "%Y-%m-%d")}
+    missing = [t for _, pdb, target, tag, seed, _p in units
+               for c in range(after, after + 8)
+               for t in hook_tids(pdb, f"{target}_{tag}_{seed}", c, nsample) if t not in seen]
+    if missing:
+        raise SystemExit(f"pre-registration failed: {len(missing)} ids are not parseable from "
+                         f"{rd_path} (e.g. {missing[:3]}) -- check the release_date schema")
+    print(f"  pre-registered {added} hook template ids ({len(seen)} parseable) in {rd_path}",
+          flush=True)
+    return added
+
+
+def save_decode(runner, state, xyz, cycle_no, summary):
+    """Write one mid-loop decode: the poses, and the confidence json row.py needs for ipTM.
+
+    The json must be named *summary_confidence_sample_<k>.json and carry chain_pair_iptm as a nested
+    list -- eval/pxm_dockq.py indexes that matrix by model asym order to get the per-interface ipTM.
+    Tensors have to be converted; json cannot serialise them and the failure would surface much later
+    as a missing ipTM column.
+    """
+    from protenix.data.utils import save_structure_cif
+    aa = getattr(runner, "_cur_atom_array", None)
+    if aa is None:
+        raise ArmError("hook: runner._cur_atom_array missing")
+    pdb = state["pdb"]
+    d = f"{state['workroot']}/c{cycle_no}/poses"
+    os.makedirs(d, exist_ok=True)
+    out = []
+    for i in range(int(xyz.shape[0])):
+        fp = f"{d}/{pdb}_sample_{i}.cif"
+        save_structure_cif(atom_array=aa, pred_coordinate=xyz[i].detach().float().cpu(),
+                           output_fpath=fp,
+                           entity_poly_type=getattr(runner, "_cur_entity_poly_type", {}),
+                           pdb_id=pdb)
+        out.append(fp)
+        if summary is None:
+            continue
+        try:
+            row = summary[i] if isinstance(summary, (list, tuple)) else summary
+            def _plain(v):
+                if hasattr(v, "tolist"):
+                    return v.tolist()
+                if isinstance(v, dict):
+                    return {k: _plain(x) for k, x in v.items()}
+                if isinstance(v, (list, tuple)):
+                    return [_plain(x) for x in v]
+                return v
+            with open(f"{d}/{pdb}_summary_confidence_sample_{i}.json", "w") as fh:
+                json.dump({k: _plain(v) for k, v in dict(row).items()}, fh)
+        except Exception as e:
+            print(f"    hook: could not write confidence for sample {i}: {e}", flush=True)
+    return out
+
+
+def install_hook(runner, configs, mode, after, nsample, dataset, ns=None, observe=(),
+                 splice=()):
+    """Mid-loop decode at recycle `after`, then optionally splice template features back in.
+
+    WHAT THIS IS FOR. A templated fold currently costs a whole second fold. If the model can decode at
+    recycle 10, take its own poses back as the template, and run recycle 11, the templated arm becomes
+    ~4 s instead of ~35 s. The model-side half of this lives in protenix/model/protenix.py; this is the
+    callback it invokes.
+
+    THREE MODES, two of which are controls:
+      noop  decode, splice NOTHING           -- isolates the cost of merely decoding mid-loop
+      same  decode, splice back the templates the fold is ALREADY using -- exercises the splice path
+            with values that cannot change the answer
+      self  decode, splice the decoded pose as the template -- the actual experiment
+
+    Both controls must reproduce a plain run of the same recycle count. They exist because a no-op
+    hook once moved DockQ by 0.252 in fp32, where repeat folds agree to ~0.001, and the cause was
+    never found. Until that is understood, `self` must be compared against `noop`/`same`, never
+    against a stock run.
+
+    NOTE `same` USED TO BE A NO-OP BY ACCIDENT: it returned {}, and the model splices only `if
+    _st_feats:`, so an empty dict was falsy and skipped the splice. It now returns the real
+    template_* tensors, which is why the model-side call passes the live feature dict.
+    """
+    import torch  # noqa: F401  (imported for its side effect on the model's device handling)
+
+    # A PRIVATE NAMESPACE FOR THE SPLICE ONLY. The ids the hook mints must be findable when it
+    # featurises them, but they must not go into the shared release-date cache, and pointing the LIVE
+    # run at this directory would strip the real PDB templates from cycles 0..after and change the
+    # baseline. So: the run keeps stock templates, and only the hook's own featurisation looks here.
+    state = {"pdb": "", "tag": "", "workroot": None, "n": 0,
+             "ns": ns, "mmcif": f"{ns}/mmcif" if ns else None,
+             "rd": f"{ns}/release_dates.json" if ns else None}
+
+    def _cb(xyz, cycle_no, feats=None, summary=None, splice=True):
+        # EVERY decode is written out, splice or not: the decode at the splice cycle IS the free
+        # baseline for this fold, and the later ones are the 11-/12-/13-recycle outputs. Writing the
+        # confidence json beside them is what gives those poses an ipTM, without which only oracle
+        # DockQ could be compared and never SELECTED quality.
+        save_decode(runner, state, xyz, cycle_no, summary)
+        if not splice:
+            return None
+        if mode == "noop":
+            return None
+        if mode == "same":
+            if feats is None:
+                raise ArmError("hook mode 'same' needs the live feature dict -- the model-side "
+                               "call in protenix.py must pass it")
+            same = {k: v for k, v in feats.items() if k.startswith("template_")}
+            if not same:
+                # A fold with no templates at all has nothing to re-inject, and returning {} would
+                # silently degrade this arm into the no-op arm -- the exact confusion this mode exists
+                # to avoid.
+                raise ArmError("hook mode 'same' found no template_* features to re-inject")
+            return same
+        # --- self: the fold's own mid-loop poses become the template ---------------------------
+        aa = getattr(runner, "_cur_atom_array", None)
+        if aa is None:
+            raise ArmError("hook: runner._cur_atom_array missing -- the stash in "
+                           "runner/inference.py did not run")
+        from protenix.data.utils import save_structure_cif
+        pdb, tag = state["pdb"], state["tag"]
+        work = f"{state['workroot']}/c{cycle_no}"
+        os.makedirs(f"{work}/poses", exist_ok=True)
+        poses, tids = [], hook_tids(pdb, tag, cycle_no, int(xyz.shape[0]))
+        for i in range(xyz.shape[0]):
+            fp = f"{work}/poses/{pdb}_sample_{i}.cif"
+            save_structure_cif(atom_array=aa, pred_coordinate=xyz[i].detach().float().cpu(),
+                               output_fpath=fp,
+                               entity_poly_type=getattr(runner, "_cur_entity_poly_type", {}),
+                               pdb_id=pdb)
+            poses.append(fp)
+        jobs, _, _ = paths.dataset(dataset)
+        r = subprocess.run([PY, f"{DC}/build_selftmpl_general.py", "--pdb", pdb,
+                            "--out", f"{work}/tmpl", "--poses", *poses, "--tids", *tids],
+                           cwd=DC, capture_output=True, text=True,
+                           env={**os.environ, "SELFTMPL_JOBS": jobs,
+                                "SELFTMPL_MMCIF_DIR": state["mmcif"],
+                                "SELFTMPL_RELEASE_DATES": state["rd"]})
+        if not os.path.exists(f"{work}/tmpl/job.json"):
+            raise ArmError(f"hook: template build failed\n{(r.stderr or '')[-300:]}")
+        # Featurise that job and lift out ONLY the template_* tensors. Sequence, MSA and relative
+        # position encodings must stay exactly as the live run has them -- swapping more than the
+        # templates would make the comparison meaningless.
+        # THE SPLICE NEEDS THE TEMPLATE FLAGS, and only the splice. Five poses of one complex share a
+        # sequence, so without NODEDUP the featuriser collapses them to ONE ("Found 1 templates"), and
+        # without MAX_TEMPLATES it caps below five. MULTICHAIN_MASK=0 and KEEP_FRAME=1 preserve the
+        # cross-chain placement, which is the only thing a self-template has to offer. They are set
+        # around this featurisation and restored, because applying them to the whole fold would change
+        # how the live run treats its stock templates and move the baseline we compare against.
+        _mark = len(_TEMPLATE_COUNTS)      # anything appended past here is the HOOK's featurisation
+        _env = dict(TMPL_ENV, PROTENIX_MAX_TEMPLATES=str(int(xyz.shape[0])))
+        _old_env = {k: os.environ.get(k) for k in _env}
+        for k, v in _env.items():
+            os.environ[k] = str(v)
+        from protenix.data.inference.infer_dataloader import InferenceDataset
+        import copy as _copy
+        cfg2 = _copy.deepcopy(configs)
+        cfg2.input_json_path = f"{work}/tmpl/job.json"
+        cfg2.data.template.prot_template_mmcif_dir = state["mmcif"]
+        cfg2.data.template.release_dates_path = state["rd"]
+        item, _aa2, _err = InferenceDataset(configs=cfg2)[0]
+        if _err:
+            raise ArmError(f"hook: featurisation errored: {str(_err)[:200]}")
+        for k, v in _old_env.items():
+            os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
+        f2 = item["input_feature_dict"] if "input_feature_dict" in item else item
+        out = {k: (v.to(xyz.device) if hasattr(v, "to") else v)
+               for k, v in f2.items() if k.startswith("template_")}
+        if not out:
+            raise ArmError("hook: featurisation produced no template_* keys")
+        # KEYS ARE NOT TEMPLATES. The featuriser emits template_* tensors even when every hit was
+        # rejected, so checking for keys passed while splicing EMPTY templates -- the same silent
+        # failure in a new costume. Assert on the mask: it counts templates that survived.
+        m = out.get("template_mask")
+        kept = int(m.sum().item()) if hasattr(m, "sum") else -1
+        if kept == 0:
+            raise ArmError(f"hook: all {len(tids)} self-templates were rejected (template_mask is "
+                           f"empty) -- ids {tids[:3]} are probably unregistered or mis-dated")
+        mine = _TEMPLATE_COUNTS[_mark:]
+        if mine and min(mine) == 0:
+            raise ArmError("hook: a chain kept ZERO self-templates -- ids unregistered or mis-dated")
+        if mine and min(mine) < len(tids):
+            # NOT fatal. Two of the five decoded poses can be near-identical, and dedup collapses
+            # them even with NODEDUP set; a fold that templated on 4 real poses instead of 5 is still
+            # a valid experiment, whereas failing it throws away the whole seed. Zero, on the other
+            # hand, means the ids are broken and the fold is measuring nothing.
+            print(f"    hook: kept {sorted(set(mine))} of {len(tids)} self-templates "
+                  f"(near-duplicate poses deduped)", flush=True)
+        state["n"] += 1
+        return out
+
+    runner.model._selftmpl_after = int(after)
+    runner.model._selftmpl_observe = tuple(int(c) for c in observe)
+    runner.model._selftmpl_splice = tuple(int(c) for c in splice)
+    if splice:
+        # In periodic mode the single late splice must NOT also fire, or cycle 9 would splice without
+        # a restore and undo the whole point.
+        runner.model._selftmpl_after = None
+    runner.model._selftmpl_nsample = int(nsample)
+    runner.model._selftmpl_cb = _cb
+    runner._selftmpl_state = state
+    if splice:
+        print(f"  hook installed: mode={mode} PERIODIC -- splices at cycles {sorted(splice)}, each "
+              f"for one recycle, then the original templates are restored", flush=True)
+    else:
+        print(f"  hook installed: mode={mode} splices at cycle index {after} "
+              f"({after + 1} recycles before it); observes at {sorted(observe) or 'nothing'}",
+              flush=True)
+    return state
+
+
 def reconcile_claims(claim_dir, csv_path, pool_ifaces):
     """Release claims whose work never finished, so a killed worker's units are retried.
 
@@ -336,6 +617,16 @@ def main():
                          "reproduce")
     ap.add_argument("--drop-cifs", dest="keep_cifs", action="store_false")
     ap.add_argument("--report", action="store_true")
+    # MID-LOOP HOOK. --hook-after is a 0-BASED cycle index: with --ncycle 11 --hook-after 9 the hook
+    # fires after 10 recycles and the 11th runs with whatever it spliced.
+    ap.add_argument("--hook", choices=("noop", "same", "self"), default=None)
+    ap.add_argument("--hook-after", type=int, default=9)
+    # Cycles to decode WITHOUT splicing, so one fold yields several recycle counts. "auto" observes
+    # every cycle after the splice, which is what makes 11/12/13 one fold instead of three.
+    ap.add_argument("--hook-observe", default="auto")
+    # PERIODIC self-templating: splice at each of these cycles, each lasting ONE recycle before the
+    # original templates are restored. e.g. --hook-splice 2,5,8 with 0-based cycles.
+    ap.add_argument("--hook-splice", default=None)
     A = ap.parse_args()
     if A.report:
         return report(A.csv)
@@ -396,6 +687,30 @@ def main():
         for k, v in (("SELFTMPL_MMCIF_DIR", m), ("SELFTMPL_RELEASE_DATES", r)):
             os.environ.pop(k, None) if (v is None or not use_ns) else os.environ.__setitem__(k, v)
 
+    if A.hook:
+        # Only check --hook-after in single-splice mode: in periodic mode it is unused, and
+        # complaining about a flag the caller never set sends them looking in the wrong place.
+        if not A.hook_splice and A.hook_after >= A.ncycle:
+            raise SystemExit(f"--hook-after {A.hook_after} never fires with --ncycle {A.ncycle} "
+                             f"(it is a 0-based cycle index, so it must be < ncycle)")
+        hook_ns = os.path.abspath(f"{A.out}/_hook_ns")
+        os.makedirs(f"{hook_ns}/mmcif", exist_ok=True)
+        per = [int(x) for x in A.hook_splice.split(",") if x.strip()] if A.hook_splice else []
+        if per and max(per) >= A.ncycle - 1:
+            raise SystemExit(f"--hook-splice {per} needs a cycle AFTER the last splice to use it; "
+                             f"with --ncycle {A.ncycle} the highest usable splice cycle is "
+                             f"{A.ncycle - 2}")
+        # In periodic mode the splices ARE the intervention, so nothing extra is observed by default:
+        # every splice already decodes, and the fold's own final decode is the result.
+        obs = ([] if per else
+               (range(A.hook_after + 1, A.ncycle - 1) if A.hook_observe == "auto"
+                else [int(x) for x in A.hook_observe.split(",") if x.strip()]))
+        hook_state = install_hook(runner, configs, A.hook, A.hook_after, A.nsample, A.dataset,
+                                  ns=hook_ns, observe=obs, splice=per)
+        if A.hook == "self":
+            # BEFORE the first fold: Protenix snapshots the release-date file once per process.
+            first = min(per) if per else A.hook_after
+            preregister_hook_tids(units, first, A.nsample, f"{hook_ns}/release_dates.json")
     logging.getLogger().addHandler(_CountHandler())
     print(f"  model loaded in {time.time()-t_load:.0f}s | dtype={A.dtype} | {len(units)} units "
           f"| templates={A.templates}", flush=True)
@@ -446,6 +761,14 @@ def main():
                               "poses": [os.path.basename(p) for p in poses]})
         rdir = runmeta.run_dir(A.out, kind, pdb, seed, rid)
         name = f"{target.replace('*', pdb)}_{tag}"
+        if A.hook:
+            # tag carries target+seed so the ids differ per unit; pre-registration uses the same key
+            hook_state.update(pdb=pdb, tag=f"{target}_{tag}_{seed}",
+                              workroot=os.path.abspath(f"{rdir}/_hook"))
+            # STATE LIVES ON THE MODEL, which is reused across folds: a pending restore or a stashed
+            # template set from the previous fold would leak into this one.
+            runner.model._st_restore_at = None
+            runner.model._st_orig_tmpl = None
         try:
             dt, tcounts = fold(runner, configs, named_job(job_src, name, f"{rdir}/jobs"), int(seed),
                                name, A.ncycle, A.nsample, expect, rdir, env)
