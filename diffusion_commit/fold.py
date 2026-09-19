@@ -305,7 +305,22 @@ def hook_tids(pdb, tag, cycle_no, n):
     return [f"{pre}{B36[i % 36]}" for i in range(n)]
 
 
-def preregister_hook_tids(units, after, nsample, rd_path):
+def append_index(out, pdb, seed, run_dir, kind, precision, ncycle, templated):
+    """One line per fold in <experiment>/index.tsv, so runs are found by grep not by walking.
+
+    run.json stays authoritative per fold; this is a lookup table and can be rebuilt from those files
+    if it is ever lost. Appended under the assumption of one writer per line -- a short append is
+    atomic enough in practice, and a duplicated line is harmless to a grep.
+    """
+    p = os.path.join(out, "index.tsv")
+    new = not os.path.exists(p)
+    with open(p, "a") as fh:
+        if new:
+            fh.write("pdb\tseed\trun_dir\tkind\tprecision\tn_cycle\ttemplated\n")
+        fh.write(f"{pdb}\t{seed}\t{run_dir}\t{kind}\t{precision}\t{ncycle}\t{templated}\n")
+
+
+def preregister_hook_tids(units, after, nsample, rd_path, quiet=False):
     """Put every id the hook will ever use into the release-date file, before any fold runs.
 
     THIS IS THE FIX FOR "Found 0 templates". Protenix loads the release-date file ONCE per process
@@ -345,8 +360,9 @@ def preregister_hook_tids(units, after, nsample, rd_path):
     if missing:
         raise SystemExit(f"pre-registration failed: {len(missing)} ids are not parseable from "
                          f"{rd_path} (e.g. {missing[:3]}) -- check the release_date schema")
-    print(f"  pre-registered {added} hook template ids ({len(seen)} parseable) in {rd_path}",
-          flush=True)
+    if not quiet:
+        print(f"  pre-registered {added} hook template ids ({len(seen)} parseable) in {rd_path}",
+              flush=True)
     return added
 
 
@@ -392,8 +408,8 @@ def save_decode(runner, state, xyz, cycle_no, summary):
     return out
 
 
-def install_hook(runner, configs, mode, after, nsample, dataset, ns=None, observe=(),
-                 splice=()):
+def install_hook(runner, configs, mode, nsample, dataset, ns=None, observe=(), splice=(),
+                 hold=False):
     """Mid-loop decode at recycle `after`, then optionally splice template features back in.
 
     WHAT THIS IS FOR. A templated fold currently costs a whole second fold. If the model can decode at
@@ -524,23 +540,18 @@ def install_hook(runner, configs, mode, after, nsample, dataset, ns=None, observ
         state["n"] += 1
         return out
 
-    runner.model._selftmpl_after = int(after)
-    runner.model._selftmpl_observe = tuple(int(c) for c in observe)
     runner.model._selftmpl_splice = tuple(int(c) for c in splice)
-    if splice:
-        # In periodic mode the single late splice must NOT also fire, or cycle 9 would splice without
-        # a restore and undo the whole point.
-        runner.model._selftmpl_after = None
+    runner.model._selftmpl_observe = tuple(int(c) for c in observe)
+    # HOLD is the whole distinction between the two arms: the model schedules a restore one cycle
+    # after each splice unless told to hold.
+    runner.model._selftmpl_hold = bool(hold)
+    runner.model._selftmpl_after = None      # retired: --hook-splice covers it
     runner.model._selftmpl_nsample = int(nsample)
     runner.model._selftmpl_cb = _cb
     runner._selftmpl_state = state
-    if splice:
-        print(f"  hook installed: mode={mode} PERIODIC -- splices at cycles {sorted(splice)}, each "
-              f"for one recycle, then the original templates are restored", flush=True)
-    else:
-        print(f"  hook installed: mode={mode} splices at cycle index {after} "
-              f"({after + 1} recycles before it); observes at {sorted(observe) or 'nothing'}",
-              flush=True)
+    print(f"  hook installed: mode={mode} | splices at {sorted(splice)} | "
+          f"{'HOLDS to the end' if hold else 'restores after one recycle'} | "
+          f"observes at {sorted(observe) or 'nothing'}", flush=True)
     return state
 
 
@@ -620,13 +631,18 @@ def main():
     # MID-LOOP HOOK. --hook-after is a 0-BASED cycle index: with --ncycle 11 --hook-after 9 the hook
     # fires after 10 recycles and the 11th runs with whatever it spliced.
     ap.add_argument("--hook", choices=("noop", "same", "self"), default=None)
-    ap.add_argument("--hook-after", type=int, default=9)
+    # WHERE to splice. 0-based cycle indices: --hook-splice 9 with --ncycle 13 fires after the 10th
+    # recycle. WHETHER IT PERSISTS is --hook-hold, and that is the only real difference between the
+    # two arms we run -- a single late splice that stays, versus periodic splices that are undone.
+    # These used to be separate flags (--hook-after vs --hook-splice) that could contradict each
+    # other, resolved by silently disabling one of them inside install_hook.
+    ap.add_argument("--hook-splice", default="9")
+    ap.add_argument("--hook-hold", action="store_true",
+                    help="keep the spliced template for the rest of the fold instead of restoring "
+                         "the originals after one recycle")
     # Cycles to decode WITHOUT splicing, so one fold yields several recycle counts. "auto" observes
     # every cycle after the splice, which is what makes 11/12/13 one fold instead of three.
     ap.add_argument("--hook-observe", default="auto")
-    # PERIODIC self-templating: splice at each of these cycles, each lasting ONE recycle before the
-    # original templates are restored. e.g. --hook-splice 2,5,8 with 0-based cycles.
-    ap.add_argument("--hook-splice", default=None)
     A = ap.parse_args()
     if A.report:
         return report(A.csv)
@@ -688,29 +704,24 @@ def main():
             os.environ.pop(k, None) if (v is None or not use_ns) else os.environ.__setitem__(k, v)
 
     if A.hook:
-        # Only check --hook-after in single-splice mode: in periodic mode it is unused, and
-        # complaining about a flag the caller never set sends them looking in the wrong place.
-        if not A.hook_splice and A.hook_after >= A.ncycle:
-            raise SystemExit(f"--hook-after {A.hook_after} never fires with --ncycle {A.ncycle} "
-                             f"(it is a 0-based cycle index, so it must be < ncycle)")
-        hook_ns = os.path.abspath(f"{A.out}/_hook_ns")
-        os.makedirs(f"{hook_ns}/mmcif", exist_ok=True)
-        per = [int(x) for x in A.hook_splice.split(",") if x.strip()] if A.hook_splice else []
-        if per and max(per) >= A.ncycle - 1:
+        per = [int(x) for x in A.hook_splice.split(",") if x.strip()]
+        if not per:
+            raise SystemExit("--hook-splice needs at least one cycle")
+        if max(per) >= A.ncycle - 1:
             raise SystemExit(f"--hook-splice {per} needs a cycle AFTER the last splice to use it; "
                              f"with --ncycle {A.ncycle} the highest usable splice cycle is "
                              f"{A.ncycle - 2}")
         # In periodic mode the splices ARE the intervention, so nothing extra is observed by default:
         # every splice already decodes, and the fold's own final decode is the result.
-        obs = ([] if per else
-               (range(A.hook_after + 1, A.ncycle - 1) if A.hook_observe == "auto"
-                else [int(x) for x in A.hook_observe.split(",") if x.strip()]))
-        hook_state = install_hook(runner, configs, A.hook, A.hook_after, A.nsample, A.dataset,
-                                  ns=hook_ns, observe=obs, splice=per)
-        if A.hook == "self":
-            # BEFORE the first fold: Protenix snapshots the release-date file once per process.
-            first = min(per) if per else A.hook_after
-            preregister_hook_tids(units, first, A.nsample, f"{hook_ns}/release_dates.json")
+        # Observation decodes only make sense when the splice HOLDS: they read the state of a fold
+        # that is still carrying the template. With restores there is nothing steady to observe.
+        obs = ((range(max(per) + 1, A.ncycle - 1) if A.hook_observe == "auto"
+                else [int(x) for x in A.hook_observe.split(",") if x.strip()])
+               if A.hook_hold else [])
+        hook_state = install_hook(runner, configs, A.hook, A.nsample, A.dataset,
+                                  ns=None, observe=obs, splice=per, hold=A.hook_hold)
+        # Pre-registration is PER FOLD now (see the unit loop): each fold has its own release-date
+        # file, so Protenix's once-per-process cache -- keyed by path -- reads each one fresh.
     logging.getLogger().addHandler(_CountHandler())
     print(f"  model loaded in {time.time()-t_load:.0f}s | dtype={A.dtype} | {len(units)} units "
           f"| templates={A.templates}", flush=True)
@@ -756,15 +767,22 @@ def main():
             release()
             continue
 
-        rid = runmeta.run_id({"pdb": pdb, "target": target, "tag": tag, "seed": seed, "kind": kind,
-                              "dtype": A.dtype, "ncycle": A.ncycle, "nsample": A.nsample,
-                              "poses": [os.path.basename(p) for p in poses]})
-        rdir = runmeta.run_dir(A.out, kind, pdb, seed, rid)
+        rid = runmeta.run_id()
+        rdir = runmeta.run_dir(A.out, pdb, seed, rid)
         name = f"{target.replace('*', pdb)}_{tag}"
         if A.hook:
-            # tag carries target+seed so the ids differ per unit; pre-registration uses the same key
+            # PER-FOLD TEMPLATE NAMESPACE. Sharing one namespace across a sweep put every fold's
+            # 4-char ids into the same 36^3 space: 720 of ~3300 collided, so one fold could overwrite
+            # a template another was still using. Scoped to a fold there are 15 ids and collisions are
+            # impossible. It also sidesteps Protenix's once-per-process release-date cache, which is
+            # keyed by PATH -- a fresh path per fold is read fresh.
+            ns = os.path.abspath(f"{rdir}/templates")
+            os.makedirs(f"{ns}/mmcif", exist_ok=True)
             hook_state.update(pdb=pdb, tag=f"{target}_{tag}_{seed}",
-                              workroot=os.path.abspath(f"{rdir}/_hook"))
+                              workroot=os.path.abspath(f"{rdir}/_hook"),
+                              ns=ns, mmcif=f"{ns}/mmcif", rd=f"{ns}/release_dates.json")
+            preregister_hook_tids([(kind, pdb, target, tag, seed, poses)], min(per), A.nsample,
+                                  f"{ns}/release_dates.json", quiet=True)
             # STATE LIVES ON THE MODEL, which is reused across folds: a pending restore or a stashed
             # template set from the previous fold would leak into this one.
             runner.model._st_restore_at = None
@@ -788,7 +806,12 @@ def main():
             seed=seed, arm=tag, precision=A.dtype, n_cycle=A.ncycle, n_sample=A.nsample,
             fold_seconds=round(dt, 1), interfaces_scored=want,
             templates=[{"source_pose": p, "md5": runmeta_md5(p)} for p in poses] or None,
-            templates_found=tcounts, template_namespace=A.templates)
+            templates_found=tcounts, template_namespace=A.templates,
+            # true iff this fold minted its own templates -- so `templates/` existing and this flag
+            # always agree, and a plain fold never gets an empty templates directory
+            templated=bool(A.hook == "self" or poses), run_dir=os.path.basename(rdir))
+        append_index(A.out, pdb, seed, os.path.basename(rdir), kind, A.dtype, A.ncycle,
+                     bool(A.hook == "self" or poses))
 
         got = 0
         # Score only what is MISSING. A retried unit (stale claim released) would otherwise append a

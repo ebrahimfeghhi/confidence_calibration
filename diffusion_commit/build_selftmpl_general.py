@@ -59,7 +59,13 @@ JOBS = os.environ.get("SELFTMPL_JOBS", f"{P}/jsons")
 # fixes that. Instead each run gets its own template dir and its own release-date file via these two
 # env vars: the namespace then holds only that run's handful of ids, collisions are impossible by
 # construction, and nothing mutates a file another process has already cached.
-MMCIF_DIR = os.environ.get("SELFTMPL_MMCIF_DIR", "/home/ebrahim/mmcif")
+# NO DEFAULT. This used to fall back to /home/ebrahim/mmcif -- the REAL PDB template library of
+# ~10,000 structures. We always override it, but an unset variable would have written invented
+# 4-char templates into the genuine library, where they would be indistinguishable from real entries
+# and would collide with them. Fail instead.
+MMCIF_DIR = os.environ.get("SELFTMPL_MMCIF_DIR")
+if not MMCIF_DIR:
+    raise SystemExit("SELFTMPL_MMCIF_DIR must be set -- refusing to guess a template directory")
 CACHE_F = os.environ.get("SELFTMPL_RELEASE_DATES", "/home/ebrahim/common/release_date_cache.json")
 CUT = 5.0
 TLC = {'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'CYS': 'C', 'GLN': 'Q', 'GLU': 'E', 'GLY': 'G',

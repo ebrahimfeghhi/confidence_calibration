@@ -23,14 +23,32 @@ import sys
 import time
 
 
-def run_id(defining: dict) -> str:
-    """`<utc>-<pid>-<hash>` for the inputs that define a fold."""
-    h = hashlib.md5(json.dumps(defining, sort_keys=True, default=str).encode()).hexdigest()[:6]
-    return f"{time.strftime('%Y%m%d-%H%M%S', time.gmtime())}-{os.getpid()}-{h}"
+ALPHABET = "abcdefghijklmnopqrstuvwxyz0123456789"
 
 
-def run_dir(out: str, mode: str, pdb: str, seed, rid: str) -> str:
-    """<out>/<mode>/<pdb>/<seed>/<run_id>/ -- granular enough that repeats coexist.
+def run_id(defining: dict = None, n: int = 10) -> str:
+    """A random 10-char id naming ONE fold's directory.
+
+    RANDOM, not a hash of the inputs. Two folds of the same seed are different data -- folds do not
+    reproduce -- so an id derived from the inputs would collapse them onto one directory, and the
+    second would overwrite the first. 36^10 is large enough that collisions are not a consideration;
+    the previous scheme hashed into 36^3 for TEMPLATE ids and 720 of ~3300 collided.
+
+    `defining` is accepted and ignored so old callers keep working.
+    """
+    import random
+    return "".join(random.choice(ALPHABET) for _ in range(n))
+
+
+def run_dir(out: str, pdb: str, seed, rid: str) -> str:
+    """<out>/<pdb>/<seed>-<run_id>/ -- one directory per fold.
+
+    The seed is in the NAME so `ls` is useful (which seeds are done, which are missing), and in
+    run.json where it is authoritative -- a renamed directory must not be able to lie about it.
+
+    The experiment name is the caller's --out, so the old <mode> level is gone: "periodic_2_5_8" as
+    an experiment name says more than "free" did as a mode. Its absence also fixed a real accident --
+    passing --out <tree>/free while the mode was also "free" produced <tree>/free/free/<pdb>/...
 
     NO INTERFACE LEVEL. Every fold produces the WHOLE complex, whatever it was aimed at, so an
     interface in the path is misleading: it suggests the output is specific to one interface when the
@@ -38,7 +56,7 @@ def run_dir(out: str, mode: str, pdb: str, seed, rid: str) -> str:
     used, live in run.json instead -- metadata, not directory structure. The earlier shape also
     invited a silent error: the old driver passed pdb into the interface slot, so pool folds landed
     at <pdb>/<pdb>/ while the new one wrote <pdb>/all/, two shapes for one kind of fold.""" 
-    return os.path.join(out, mode, str(pdb), str(seed), rid)
+    return os.path.join(out, str(pdb), f"{seed}-{rid}")
 
 
 def git_sha() -> str:
