@@ -49,7 +49,14 @@ sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit/clustering")
 import paths  # noqa: E402
 from epitope_leader import pose_chains  # noqa: E402  (validated label_asym_id parser)
 
-EPITOPE_CUTOFF = 4.5
+# 5.0 A for BOTH, deliberately, though the SAbDab/AsEP convention for an epitope is 4.5. The question
+# here is which metric defines a basin, not which cutoff is conventional, and a tighter cutoff on
+# epitope alone would confound the comparison: if epitope-Jaccard lost, we could not tell whether a
+# patch carries less information than a register or whether I had simply been stingier with it. With
+# both at 5.0 the two differ only in WHAT the set contains -- residues against residue pairs.
+# Concretely it also matters: on ring assemblies like 9kmp the true interface is a 1-2 residue glance
+# at ~4.7 A, so at 4.5 those poses would have an EMPTY epitope and score 0 against everything.
+EPITOPE_CUTOFF = 5.0
 CONTACT_CUTOFF = 5.0
 
 

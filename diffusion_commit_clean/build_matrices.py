@@ -91,16 +91,19 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--ifaces", default=None, help="comma-separated subset")
     ap.add_argument("--device", default="cuda")
+    ap.add_argument("--shard", default="0/1", help="i/n -- take every n'th interface, offset i")
     A = ap.parse_args()
+    si, sn = (int(v) for v in A.shard.split("/"))
 
     os.makedirs(A.out, exist_ok=True)
     pool, maps, roles = load_pool(), metrics.load_chain_maps(), metrics.load_roles()
     want = set(A.ifaces.split(",")) if A.ifaces else None
     todo = sorted(k for k in pool if (not want or k in want) and k in roles)
-    todo = [k for k in todo if not os.path.exists(f"{A.out}/{k}.npz")]
-    print(f"  interfaces to build: {len(todo)}", flush=True)
+    todo = [k for k in todo if not os.path.exists(f"{A.out}/{k}.npz")][si::sn]
+    print(f"  interfaces to build: {len(todo)}  (shard {si}/{sn})", flush=True)
 
-    log = open(f"{A.out}/build_log.csv", "a", newline="")
+    # one log per shard: three processes appending to one csv interleaves partial lines
+    log = open(f"{A.out}/build_log{'' if sn == 1 else f'_{si}'}.csv", "a", newline="")
     w = csv.writer(log)
     if log.tell() == 0:
         w.writerow(["interface", "poses_in_pool", "rows", "dropped_unmapped",
