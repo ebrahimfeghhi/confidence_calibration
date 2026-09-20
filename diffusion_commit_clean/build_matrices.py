@@ -60,8 +60,12 @@ def build(iface, rows, maps, roles, device):
     by_key = {(s, x): (d, i) for s, x, d, i in rows}
     keys = [(s, x) for (s, x) in [(s, x) for s, x, _, _ in rows]
             if (s, x) not in set(nomap)]
+    # Filter at the CONTACT cutoff (5.0 A), not the epitope cutoff (4.5 A). Using 4.5 dropped ~1,110
+    # poses that DockQ scores as real interfaces: on ring assemblies like 9kmp (5 antigens, 5
+    # antibodies, each antigen bound by two) the second interface of the ring is a glancing 4.70 A
+    # contact -- outside 4.5, inside DockQ's 5.0 -- and 162 of those poses had GT DockQ above 0.80.
     keep = [(it, k) for it, k in zip(items, keys)
-            if len(metrics.epitope_set(it[0], it[1], it[2])) > 0]
+            if len(metrics.epitope_set(it[0], it[1], it[2], cutoff=metrics.CONTACT_CUTOFF)) > 0]
     nocontact = len(items) - len(keep)
     if len(keep) < 5:
         return None, len(nomap), nocontact
