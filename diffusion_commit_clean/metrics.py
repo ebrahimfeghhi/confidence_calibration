@@ -12,7 +12,9 @@ They differ in a way we have already been bitten by: two poses can touch the sam
 opposite directions. Epitope overlap calls those identical; FCC does not, because the pairs differ.
 Measured earlier on 250 poses, epitope-Jaccard-to-truth in 0.4-0.6 was LESS often acceptable (9/65)
 than 0.2-0.3 (15/18), and it traced to one interface whose poses shared the surface with the wrong
-register -- exactly the failure epitope-only similarity cannot see.
+register -- exactly the failure epitope-only similarity cannot see. A 5-pose smoke test on 9s36_AB
+showed the same split: one pose shared 11-27% of antigen residues with the other four but had FCC
+0.000 against all of them, and pose-pose DockQ agreed with FCC (0.07-0.12), not with epitope Jaccard.
 
 CUTOFFS follow the conventions we would be compared against:
     epitope   4.5 A heavy atom, the SAbDab/AsEP convention
@@ -23,23 +25,82 @@ so FCC(a,b) != FCC(b,a). Clustering needs a symmetric distance, so this returns 
 |A and B| / |A or B| over contact pairs. Noted because the asymmetric number is what the FCC papers
 report, and the two are not interchangeable.
 
-SINGLE-COPY COMPLEXES ONLY. On a multi-copy assembly the model builds two copies of the antigen and
-different poses bind different copies, so "chain A-C" is not the same interface in every pose (see
-dockq_torch.load_poses). Every metric here would then compare different things. Callers must restrict
-to single-copy complexes, or resolve the chain pick per pose first.
+EVERY FUNCTION TAKES ONE CHAIN PAIR PER POSE, never a single pair for the whole set. On a multi-copy
+assembly the model builds several antigen copies and different poses bind different ones -- 23 of 40
+8w5d poses are permuted relative to the reference -- so a fixed pair silently compares different
+molecules. chain_map.py backfills the per-pose mapping (see its docstring for why it must be anchored
+to the ground truth rather than pose-to-pose); items_for_interface() below turns that into the
+per-pose chain pairs these functions expect. This mirrors dockq_torch, which has always taken the
+pair as an argument for the same reason.
+
+TWO VENVS. The metric functions need torch (Protenix venv); chain_map.py needs pxmeter. Imports here
+are lazy so this module loads under either.
 """
+import csv
+import json
 import sys
 
 import numpy as np
 from scipy.spatial import cKDTree
 
+sys.path.insert(0, "/home/ebrahim/tts_abag")
 sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit/clustering")
 
+import paths  # noqa: E402
 from epitope_leader import pose_chains  # noqa: E402  (validated label_asym_id parser)
 
 EPITOPE_CUTOFF = 4.5
 CONTACT_CUTOFF = 5.0
 
+
+# --- resolving which model chains to compare ---------------------------------------------------
+
+def load_chain_maps(path=None):
+    """{(pdb, seed, sample): {ref_chain: model_chain}} from chain_map.py's backfill."""
+    path = path or f"{paths.PXM2025_DIR}/chain_maps.csv"
+    out = {}
+    with open(path) as fh:
+        for r in csv.DictReader(fh):
+            if r["chain_mapping"]:            # blank means the mapping failed for that pose
+                out[(r["pdb"], r["seed"], int(r["sample"]))] = json.loads(r["chain_mapping"])
+    return out
+
+
+def load_roles(path=None):
+    """{"<pdb>_<c1><c2>": (ab_ref_chain, ag_ref_chain)} -- roles are in REFERENCE chain labels.
+
+    Keyed off chain_1/chain_2 to match the pool CSV's interface key. NOT off the `interface` column,
+    which already contains the pdb ("8w5d_A_B"), so using it yields "8w5d_8w5d_A_B" and every lookup
+    misses.
+    """
+    path = path or str(paths.PXM2025_CHAIN_ROLES)
+    out = {}
+    with open(path) as fh:
+        for r in csv.DictReader(fh):
+            out[f"{r['pdb']}_{r['chain_1']}{r['chain_2']}"] = (r["ab_chain"], r["ag_chain"])
+    return out
+
+
+def items_for_interface(iface, seeds_samples, maps, roles):
+    """[(pose_path, model_ab, model_ag), ...] for one interface.
+
+    seeds_samples is [(seed, sample), ...]. Poses whose mapping is missing or does not cover both
+    reference chains are DROPPED and reported, not silently defaulted to the reference labels -- that
+    default is exactly the bug this plumbing exists to prevent.
+    """
+    pdb = iface.split("_")[0]
+    ab_ref, ag_ref = roles[iface]
+    items, dropped = [], []
+    for seed, sample in seeds_samples:
+        m = maps.get((pdb, str(seed), int(sample)))
+        if not m or ab_ref not in m or ag_ref not in m:
+            dropped.append((seed, sample))
+            continue
+        items.append((paths.pool_pose(pdb, seed, sample), m[ab_ref], m[ag_ref]))
+    return items, dropped
+
+
+# --- the three metrics -------------------------------------------------------------------------
 
 def epitope_set(path, ab, ag, cutoff=EPITOPE_CUTOFF):
     """Antigen residues with a heavy atom within cutoff of the antibody."""
@@ -71,14 +132,14 @@ def jaccard(a, b):
     return len(a & b) / len(a | b) if (a or b) else 0.0
 
 
-def set_matrix(paths, ab, ag, kind):
+def set_matrix(items, kind):
     """Symmetric similarity matrix from a per-pose SET -- epitope residues or contact pairs.
 
     Sets are computed once per pose (N parses), then compared pairwise (N^2/2 cheap set ops). Doing
     it the other way round would re-parse the same file N times.
     """
     fn = epitope_set if kind == "epitope" else contact_pairs
-    sets = [fn(p, ab, ag) for p in paths]
+    sets = [fn(p, ab, ag) for p, ab, ag in items]
     n = len(sets)
     M = np.eye(n, dtype=np.float32)
     for i in range(n):
@@ -87,23 +148,21 @@ def set_matrix(paths, ab, ag, kind):
     return M, [len(s) for s in sets]
 
 
-def dockq_pose_matrix(paths, ab, ag, device="cuda"):
+def dockq_pose_matrix(items, device="cuda"):
     """Pose-against-pose DockQ, symmetrised.
 
     dockq_matrix returns [i, j] = DockQ(reference=i, model=j), which is not symmetric because Fnat
     divides by the reference's contact count. The average of the two directions is what we cluster on.
     """
-    sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit/clustering")
     from dockq_torch import dockq_matrix
-    items = [(p, ab, ag) for p in paths]      # single-copy: one chain pair serves every pose
     M = np.asarray(dockq_matrix(items, device=device, verbose=False), dtype=np.float32)
     return (M + M.T) / 2.0
 
 
-def all_metrics(paths, ab, ag, device="cuda"):
+def all_metrics(items, device="cuda"):
     """{name: NxN similarity} for the three candidates, plus the per-pose set sizes."""
     out, sizes = {}, {}
     for kind in ("epitope", "fcc"):
-        out[kind], sizes[kind] = set_matrix(paths, ab, ag, kind)
-    out["dockq"] = dockq_pose_matrix(paths, ab, ag, device=device)
+        out[kind], sizes[kind] = set_matrix(items, kind)
+    out["dockq"] = dockq_pose_matrix(items, device=device)
     return out, sizes
