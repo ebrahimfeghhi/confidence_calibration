@@ -123,8 +123,13 @@ LEGACY_RUN = "legacy-no-provenance"
 def pool_pose(pdb, seed, sample):
     """Path to one pose of the original pool. A FUNCTION, not a format string: legacy folds and
     modern ones nest predictions differently, and two scripts had hand-built this path identically,
-    which is how a layout change breaks them both silently."""
-    return (f"{FREE_DIR}/{pdb}/{seed}/{LEGACY_RUN}/predictions/{pdb}_sample_{sample}.cif")
+    which is how a layout change breaks them both silently.
+
+    It then broke ANYWAY: the run-id migration flattened <seed>/<run_id>/ to <seed>-<run_id>/ and
+    this function kept returning the old nested form, so it pointed at nothing for months. Nobody
+    noticed because both callers glob or guard. Centralising a path is necessary but not sufficient:
+    nothing here fails loudly when the layout moves, so a layout change needs this checked by hand."""
+    return (f"{FREE_DIR}/{pdb}/{seed}-{LEGACY_RUN}/predictions/{pdb}_sample_{sample}.cif")
 
 
 def _sh():
