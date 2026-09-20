@@ -104,8 +104,22 @@ PY = str(paths.PROTENIX_PYTHON)
 
 # Cross-chain template geometry is the entire point of self-templating: without these the template
 # carries each chain's fold but nothing about how the chains sit relative to each other.
-TMPL_ENV = {"PROTENIX_MULTICHAIN_MASK": "0", "PROTENIX_TMPL_KEEP_FRAME": "1",
-            "PROTENIX_TMPL_NODEDUP": "1", "PROTENIX_MAX_TEMPLATE_CANDIDATES": "20"}
+# The four knobs that make a self-template carry real docking geometry. Overridable from the shell
+# ONLY so the settings can be bisected when a templated fold misbehaves -- every templated fold in
+# this project produced NaN coordinates from verifiably valid template features, and narrowing that
+# to a single knob is impossible if the driver silently overwrites whatever the caller set.
+# Defaults are unchanged; an unset variable behaves exactly as before.
+# THE KERNEL SELECTION IS NOT OPTIONAL AND MUST NOT COME FROM THE CALLER'S SHELL. Without
+# LAYERNORM_TYPE=openfold this model emits NaN coordinates -- silently. No error, no warning, five
+# plausible-looking cif files per fold, and the failure only surfaces downstream when the scorer dies
+# on "SVD did not converge". The sweep's tmux sessions happened to set it; a fresh shell does not, and
+# the resulting NaNs cost eight diagnostic folds spent bisecting template flags for a failure that had
+# nothing to do with templates. setdefault, not assignment, so an explicit override is still possible.
+os.environ.setdefault("LAYERNORM_TYPE", "openfold")
+
+TMPL_ENV = {k: os.environ.get(k, v) for k, v in {
+    "PROTENIX_MULTICHAIN_MASK": "0", "PROTENIX_TMPL_KEEP_FRAME": "1",
+    "PROTENIX_TMPL_NODEDUP": "1", "PROTENIX_MAX_TEMPLATE_CANDIDATES": "20"}.items()}
 
 KINDS = ("free", "all5", "perpose")
 _TEMPLATE_COUNTS = []

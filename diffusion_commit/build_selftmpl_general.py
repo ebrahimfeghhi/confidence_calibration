@@ -13,8 +13,13 @@ of that entity. On a multi-copy assembly the donor has several chains matching e
 are NOT interchangeable: on 9x1h the two Fabs bind different antigen copies, so pairing chain A with
 antigen E instead of F hands the model an antibody and an antigen that are not in contact. With the
 cross-chain mask ON that is harmless; with it OFF -- which is the whole point here -- it is fatal.
-So candidate chains are enumerated per entity and the COMBINATION with the most mutual heavy-atom
-contact (5 A) is chosen, which recovers the docked protomer without assuming its composition.
+Candidate chains are enumerated per entity, but the combination is NOT chosen by contact count alone:
+--require-chains pins the chains the caller ranked the pose on, and the heuristic only fills in any
+remaining entities. Contact count alone picked a different protomer for 1053 of 2920 donors in the
+top-5 experiment -- poses selected on the DockQ of chains B/E were templated from A/C/F. The caller
+takes the right chains from chain_map.py, which records the mapping the scorer itself used, so the
+template encodes the same pair the pose was ranked on. It is required, not optional, because an
+unpinned call silently produces a plausible template for the wrong protomer.
 
 DEDUP TRAPS, both of which have silently reduced multi-template arms to one template in this project:
   a3m level     -- hits dedup by SEQUENCE, so every donor gets a different mutated hit string, and
@@ -77,10 +82,18 @@ def seqof(ch):
     return "".join(TLC[r.name] for r in ch if r.name in TLC)
 
 
-def pick_chains(cif, ent_seqs):
+def pick_chains(cif, ent_seqs, require=()):
     """One donor chain per query entity, choosing the most mutually-contacting combination.
 
+    `require` forces named chains into the combination. Without it this picks whichever protomer has
+    the most mutual contact, which is NOT necessarily the one the caller cares about: on a multi-copy
+    assembly, poses selected by the DockQ of chains B/E were being templated from chains A/C/F, a
+    different protomer -- 1053 of 2920 donors in the top-5 experiment. Since the pose was RANKED on
+    one chain pair, the template has to encode that same pair or the experiment measures something
+    else. The caller gets the right pair from chain_map.py, which records what the scorer itself used.
+
     Returns (chains, contacts) or (None, reason)."""
+    require = set(require)
     st = gemmi.read_structure(cif)
     st.setup_entities()
     st.remove_ligands_and_waters()
@@ -110,8 +123,13 @@ def pick_chains(cif, ent_seqs):
 
     best, best_score = None, -1
     cache = {}
+    missing = require - {c for cs in cands for c in cs}
+    if missing:
+        return None, f"required chains {sorted(missing)} match no entity"
     for combo in itertools.product(*cands):
         if len(set(combo)) != len(combo):      # one chain cannot serve two entities
+            continue
+        if not require <= set(combo):          # must be the protomer the caller ranked
             continue
         tot = 0
         for a, b in itertools.combinations(sorted(set(combo)), 2):
@@ -132,6 +150,10 @@ def main():
     ap.add_argument("--poses", nargs="+", required=True)
     ap.add_argument("--tids", nargs="+", required=True)
     ap.add_argument("--no-cache-write", action="store_true")
+    ap.add_argument("--require-chains", nargs="+", required=True,
+                    help="one comma-separated chain list per --poses entry, forcing that pose's "
+                         "template to use those chains. REQUIRED: on multi-copy assemblies the "
+                         "most-contacting protomer is often not the one the pose was ranked on.")
     ap.add_argument("--prepend-real", default="",
                     help="real_tmpl_ids.py output: put the FREE arm's real templates BEFORE the "
                          "self-poses, so template_id 0..k-1 are real and k.. are self")
@@ -149,8 +171,11 @@ def main():
     os.makedirs(MMCIF_DIR, exist_ok=True)
     cache = json.load(open(CACHE_F)) if os.path.exists(CACHE_F) else {}
     donors = []
+    if len(A.require_chains) != len(A.poses):
+        sys.exit("--require-chains needs exactly one entry per --poses entry")
     for d, cif in enumerate(A.poses):
-        chains, info = pick_chains(cif, ent_seqs)
+        req = A.require_chains[d].split(",")
+        chains, info = pick_chains(cif, ent_seqs, require=req)
         if chains is None:
             print(f"   SKIP donor {d}: {info}")
             continue
