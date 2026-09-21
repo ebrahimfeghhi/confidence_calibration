@@ -106,6 +106,8 @@ def main():
                     help="one row per interface instead of the class summary")
     ap.add_argument("--plot", default=None, help="write a per-interface figure here")
     ap.add_argument("--klass", default="decoy")
+    ap.add_argument("--pooled", action="store_true",
+                    help="selection pooled across ALL templated poses -- the deployable number")
     A = ap.parse_args()
 
     cls = pool_classes()
@@ -176,6 +178,31 @@ def main():
                  "pool max ipTM", "DockQ it picks",
                  "after max ipTM", "DockQ it picks",
                  "pool picks OK", "after picks OK"], out, align="l l r r r r r r r"))
+    # POOLED ACROSS EVERY TEMPLATED POSE. Within-arm selection reported 8 of 24 acceptable; pooling
+    # the oracle and conf arms together gives 5 of 32, because on three interfaces the CONF arm's pose
+    # is more confident than the oracle arm's and selection ships that instead. Pooled is the honest
+    # number: in use you do not know which arm produced which pose.
+    pooled = collections.defaultdict(list)
+    for (iface, arm), v in made.items():
+        pooled[iface].extend(v)
+    if A.pooled:
+        prows = []
+        for r in rows:
+            if r["arm"] != "oracle" or (A.klass not in ("all", r["klass"])):
+                continue
+            P = pooled.get(r["interface"])
+            if not P:
+                continue
+            k = int(np.argmax([a for a, _, _ in P]))
+            prows.append([r["interface"], r["klass"], r["pool_dockq_at_max_iptm"],
+                          round(P[k][1], 3), round(P[k][0], 3), len(P)])
+        prows.sort(key=lambda x: -x[3])
+        print(table(["interface", "class", "free pool baseline",
+                     "POOLED templated", "its ipTM", "poses pooled"], prows, align="l l r r r r"))
+        a = np.array([x[3] for x in prows])
+        b = np.array([x[2] for x in prows])
+        print(f"\n  n={len(prows)}   mean {b.mean():.3f} -> {a.mean():.3f}   "
+              f"acceptable {int((b >= ACC).sum())}/{len(b)} -> {int((a >= ACC).sum())}/{len(a)}")
     if A.per_interface:
         per = collections.defaultdict(dict)
         for r in done:

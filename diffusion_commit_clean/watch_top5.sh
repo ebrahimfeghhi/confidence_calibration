@@ -93,5 +93,13 @@ if both:
                 out, align="l r r r r"))
 PYEOF
 
+  # ---- the selection table: what ipTM actually ships, before vs after ---------------------------
+  # Regenerated every cycle so the morning table is current, and written to a file as well as the log
+  # so it can be read without scrolling through 16 cycles of health output.
+  cd /home/ebrahim/tts_abag/diffusion_commit_clean 2>/dev/null && \
+    $PY arms_report.py --out "$T/arms.csv" --pooled \
+        --plot "$T/arms_decoy.png" > "$T/arms_table.txt" 2>&1
+  tail -n +1 "$T/arms_table.txt" | tail -30
+
   sleep "$INT"
 done
