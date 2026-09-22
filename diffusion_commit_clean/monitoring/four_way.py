@@ -15,15 +15,17 @@ donors benefit from the free poses as a safety net.
 import collections, csv, glob, os, sys
 import numpy as np
 sys.path.insert(0, "/home/ebrahim/tts_abag")
+sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit_clean/analysis")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths                                     # noqa: E402
 from fmt import table                            # noqa: E402
 from separation import pool_classes              # noqa: E402
 
+MATRICES = "/home/ebrahim/tts_abag/diffusion_commit_clean/matrices"
 ACC = 0.23
 cls = pool_classes()
 expected = collections.Counter()
-for line in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "queue_k50.tsv")):
+for line in open(f"{paths.DATA_DIR}/k50/queue.tsv"):
     f = line.rstrip("\n").split("\t")
     if len(f) >= 6:
         expected[f[2]] += 1
@@ -43,7 +45,7 @@ s_made, s_units = load(f"{paths.DATA_DIR}/single/results.csv", False)
 pick = lambda X: float(X[int(np.argmax([a for a, _ in X]))][1])   # noqa: E731
 
 res = collections.defaultdict(lambda: collections.defaultdict(list))
-for f in sorted(glob.glob("matrices/*.npz")):
+for f in sorted(glob.glob(f"{MATRICES}/*.npz")):
     i = os.path.basename(f)[:-4]
     k = cls.get(i, "?")
     # complete in BOTH runs, or the row is not comparable

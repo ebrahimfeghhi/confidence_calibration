@@ -34,6 +34,7 @@ from scipy.cluster.hierarchy import fcluster, linkage
 from scipy.spatial.distance import squareform
 
 sys.path.insert(0, "/home/ebrahim/tts_abag")
+sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit_clean/analysis")
 
 import paths  # noqa: E402
 from fmt import table  # noqa: E402

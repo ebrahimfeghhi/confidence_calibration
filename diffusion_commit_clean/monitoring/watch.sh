@@ -23,7 +23,8 @@ while [ $# -gt 0 ]; do
   esac
 done
 CODE=/home/ebrahim/tts_abag/diffusion_commit
-HERE=/home/ebrahim/tts_abag/diffusion_commit_clean
+# reporters live beside this script; hardcoding the parent dir broke when it moved
+HERE=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PY=/home/ebrahim/Protenix/.venv/bin/python
 GPUS=(1 5 6)
 NAME=$(basename "$T")

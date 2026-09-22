@@ -38,6 +38,7 @@ from scipy.spatial.distance import squareform
 from sklearn.metrics import silhouette_score
 
 sys.path.insert(0, "/home/ebrahim/tts_abag")
+sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit_clean/analysis")
 
 from fmt import table  # noqa: E402
 from separation import METRICS, pool_classes  # noqa: E402

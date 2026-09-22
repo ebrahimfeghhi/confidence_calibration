@@ -30,6 +30,7 @@ import sys
 import numpy as np
 
 sys.path.insert(0, "/home/ebrahim/tts_abag")
+sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit_clean/analysis")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import paths  # noqa: E402

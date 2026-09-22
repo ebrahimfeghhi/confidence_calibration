@@ -23,16 +23,18 @@ land -- which looks like a trend and is an artefact.
 import collections, csv, glob, os, sys
 import numpy as np
 sys.path.insert(0, "/home/ebrahim/tts_abag")
+sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit_clean/analysis")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths                                    # noqa: E402
 from fmt import table                           # noqa: E402
 from separation import pool_classes             # noqa: E402
 
+MATRICES = "/home/ebrahim/tts_abag/diffusion_commit_clean/matrices"
 ACC = 0.23
 cls = pool_classes()
 R = f"{paths.DATA_DIR}/k50/results.csv"
 expected = collections.Counter()
-for _l in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "queue_k50.tsv")):
+for _l in open(f"{paths.DATA_DIR}/k50/queue.tsv"):
     _f = _l.rstrip("\n").split("\t")
     if len(_f) >= 6:
         expected[_f[2]] += 1
@@ -44,7 +46,7 @@ if os.path.exists(R):
 
 rows = collections.defaultdict(lambda: [[], []])
 partial = 0
-for f in sorted(glob.glob("matrices/*.npz")):
+for f in sorted(glob.glob(f"{MATRICES}/*.npz")):
     i = os.path.basename(f)[:-4]
     if i not in made:
         continue
