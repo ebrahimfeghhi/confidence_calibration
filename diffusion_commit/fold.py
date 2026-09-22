@@ -11,8 +11,8 @@ means one place for those to live.
 THE ONLY REAL DISTINCTION between work units is how many of OUR OWN poses go into one fold:
 
     free      0 self-templated poses    one plain fold
-    all5      N poses -> 1 fold         all of them as the template, averaged by TemplateEmbedder
-    perpose   N poses -> N folds        one pose each, so the arms can be compared
+    tmpl      N poses -> 1 fold         all of them as the template, averaged by TemplateEmbedder
+                                        (written `all5` in older queue files; still accepted)
 
 "free" MEANS ZERO SELF-TEMPLATED POSES, NOT ZERO TEMPLATES. Protenix's own template search still runs
 on a free fold and supplies ~4 real PDB templates per chain -- confirmed in the logs as "Found 4
@@ -20,7 +20,7 @@ templates for sequence ...". So the contrast these units support is "PDB templat
 templates replaced by our own poses", never "templated" versus "untemplated". Reading `free` as
 template-free would misattribute the whole self-templating effect.
 
-There is deliberately no "gen2" kind. Templating on a previous generation's poses is just `all5` with
+There is deliberately no "gen2" kind. Templating on a previous generation's poses is just `tmpl` with
 pose paths that point somewhere else; where a pose came from is not the driver's business.
 
 THERE IS NO TRUNK RESUME. Loading a dumped recurrent state and paying one further recycle instead of
@@ -40,8 +40,7 @@ QUEUE FILE -- one unit per line, tab separated:
 
     kind    pdb     target      tag       seeds           poses
     free    8vqf    *           free100   300050-300099
-    all5    9vca    9vca_AC     s20all    300020          /abs/p0.cif /abs/p1.cif ...
-    perpose 9vca    9vca_AC     s20       300020          /abs/p0.cif /abs/p1.cif ...
+    tmpl    9vca    9vca_AC     s20all    300020          /abs/p0.cif /abs/p1.cif ...
 
   target  the interface to score, or `*` for every interface that pdb contributes to --pool. A fold
           produces the whole complex, so scoring one interface when the pdb has three would either
@@ -121,7 +120,15 @@ TMPL_ENV = {k: os.environ.get(k, v) for k, v in {
     "PROTENIX_MULTICHAIN_MASK": "0", "PROTENIX_TMPL_KEEP_FRAME": "1",
     "PROTENIX_TMPL_NODEDUP": "1", "PROTENIX_MAX_TEMPLATE_CANDIDATES": "20"}.items()}
 
-KINDS = ("free", "all5", "perpose")
+# TWO KINDS. `tmpl` means "template on the poses listed on this line" -- one fold, however many poses
+# are given. It used to be called all5, from when every design used five, which was actively
+# misleading once the k50 design listed ONE pose per line and the kind still read all5. `all5` stays
+# accepted as an alias so the queue files already on disk keep working.
+#
+# `perpose` is gone. It expanded one line into N single-pose folds, which every current design writes
+# out explicitly instead; no live queue used it.
+KINDS = ("free", "tmpl")
+ALIASES = {"all5": "tmpl"}
 _TEMPLATE_COUNTS = []
 
 
@@ -268,8 +275,7 @@ def fold(runner, configs, job, seed, name, n_cycle, n_sample, expect_templates, 
 def read_queue(path):
     """Parse the queue into (kind, pdb, target, tag, seed, poses) units, one per fold.
 
-    perpose lines expand here, so the rest of the driver never has to care: one line in, N units out,
-    each with its own tag so their outputs and csv rows cannot collide.
+    One line in, one unit out. `all5` is accepted as a legacy spelling of `tmpl`.
     """
     units = []
     for lineno, raw in enumerate(open(path), 1):
@@ -279,6 +285,7 @@ def read_queue(path):
         if len(f) < 5:
             raise SystemExit(f"{path}:{lineno}: need >=5 tab-separated fields, got {len(f)}")
         kind, pdb, target, tag, seedspec = f[:5]
+        kind = ALIASES.get(kind, kind)
         poses = f[5].split() if len(f) > 5 and f[5].strip() else []
         if kind not in KINDS:
             raise SystemExit(f"{path}:{lineno}: kind must be one of {KINDS}, got {kind!r}")
@@ -290,11 +297,7 @@ def read_queue(path):
             if not os.path.isabs(p):
                 raise SystemExit(f"{path}:{lineno}: pose paths must be absolute ({p})")
         for seed in parse_seeds(seedspec):
-            if kind == "perpose":
-                for i, p in enumerate(poses):
-                    units.append(("perpose", pdb, target, f"{tag}p{i}", seed, [p]))
-            else:
-                units.append((kind, pdb, target, tag, seed, poses))
+            units.append((kind, pdb, target, tag, seed, poses))
     if not units:
         raise SystemExit(f"{path}: no units")
     return units
