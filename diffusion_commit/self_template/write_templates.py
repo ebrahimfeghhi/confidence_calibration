@@ -133,7 +133,7 @@ def main():
     for iface, pdb, tag, seed, poses in arms:
         out = f"{A.ns}/jobs/{iface}_{tag}"
         tids = [pose_tid(p) for p in poses]
-        r = subprocess.run([PY, f"{DC}/build_selftmpl_general.py", "--pdb", pdb, "--out", out,
+        r = subprocess.run([PY, "/home/ebrahim/tts_abag/diffusion_commit_clean/build_selftmpl_general.py", "--pdb", pdb, "--out", out,
                             "--poses", *[os.path.abspath(p) for p in poses], "--tids", *tids],
                            capture_output=True, text=True, env=env, cwd=DC)
         if not os.path.exists(f"{out}/job.json"):

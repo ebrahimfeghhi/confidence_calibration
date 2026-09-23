@@ -96,6 +96,8 @@ import paths     # noqa: E402  every location comes from here, never a literal
 import runmeta   # noqa: E402
 
 DC = str(paths.CODE_DIR)
+# the template builder moved to diffusion_commit_clean; all experiment code lives there now
+CLEAN_CODE = "/home/ebrahim/tts_abag/diffusion_commit_clean"
 PY = str(paths.PROTENIX_PYTHON)
 
 # Inputs, ground truth and scorer move together -- a foldbench complex scored with the pxm scorer
@@ -498,7 +500,7 @@ def install_hook(runner, configs, mode, nsample, dataset, ns=None, observe=(), s
                                pdb_id=pdb)
             poses.append(fp)
         jobs, _, _ = paths.dataset(dataset)
-        r = subprocess.run([PY, f"{DC}/build_selftmpl_general.py", "--pdb", pdb,
+        r = subprocess.run([PY, f"{CLEAN_CODE}/build_selftmpl_general.py", "--pdb", pdb,
                             "--out", f"{work}/tmpl", "--poses", *poses, "--tids", *tids],
                            cwd=DC, capture_output=True, text=True,
                            env={**os.environ, "SELFTMPL_JOBS": jobs,

@@ -43,10 +43,8 @@ import sys
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-# cifconv converts a Protenix-output cif into a template-parseable one. It was copied in from the
-# archived scripts/ directory, which ~30 dead build_* scripts also imported it from; only this copy is
-# live now.
-sys.path.insert(0, "/home/ebrahim/tts_abag/diffusion_commit")
+# cifconv converts a Protenix-output cif into a template-parseable one. It now lives beside this file
+# in diffusion_commit_clean; sys.path.insert(0, dirname(__file__)) above is what finds it.
 sys.path.insert(0, "/home/ebrahim/tts_abag")
 
 import paths  # noqa: E402  (needs the path insert above)

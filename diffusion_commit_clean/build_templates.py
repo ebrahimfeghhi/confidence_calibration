@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import metrics  # noqa: E402
 import paths  # noqa: E402
 
-CODE = "/home/ebrahim/tts_abag/diffusion_commit"
+CODE = os.path.dirname(os.path.abspath(__file__))   # the builder lives beside this file
 B36 = "0123456789abcdefghijklmnopqrstuvwxyz"
 
 
