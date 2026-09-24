@@ -1,42 +1,43 @@
 #!/usr/bin/env python
 """Launch folder.py workers on a queue -- any queue, free or self-templated.
 
-One launcher for both kinds of run, because the launching is identical: same driver, same claim
-directory, same GPU rules. Assembling the folder.py command by hand instead is how workers end up
-pointed at the wrong paths.
-
     call_folder.py --queue <dir>/queue_free.tsv --out <dir> --gpus 1,5,6 --run
     call_folder.py --queue <dir>/queue.tsv --out <dir> --templates <dir>/ns --gpus 1,5,6 --run
 
-Without --run it prints the plan and launches nothing.
+SUMMARY
+    One launcher for both kinds of run: same driver, same claim directory, same GPU rules. Assembling
+    the folder.py command by hand instead is how workers end up pointed at the wrong paths.
 
-A QUEUE is a tab-separated work list, one line per fold:
+    Several workers read one queue at once. Each claims a line by creating a directory under the claim
+    directory before folding it, so two workers never take the same fold and there is nothing to split
+    up by hand. A worker killed mid-fold leaves a claim behind, which folder.py releases at startup.
 
-    kind   pdb    target     tag    seed     poses
-    free   8ror   *          free   300000                           <- from build_free_queue.py
-    tmpl   8w5d   8w5d_DC    A14    430000   /abs/8w5d_sample_4.cif  <- from donor selection
+    Devices are never guessed -- this is a shared machine -- and more than four is refused. Workers go
+    in tmux, not background jobs, which die with the shell that started them and leave claims behind.
 
-Several workers read the same queue at once. Each claims a line by creating a directory under
-<out>/claims before folding it, so two workers never take the same fold and there is nothing to split
-up by hand. A worker killed mid-fold leaves a claim behind, which folder.py releases at startup.
+INPUTS
+    --queue        the work list, free or templated
+    --templates    template namespace, required if the queue has any tmpl lines
+    --gpus         explicit device ids; required by --run
+    --out          where folds land
+    --csv          default <out>/results.csv
+    --claim-dir    default <out>/claims
+    --log-dir      default <out>; worker logs are w<gpu>.log
 
-DEFAULTS
+    DEFAULTS
+        --out       paths.FREE_DIR
+        --dataset   pxm2025
+        --nsample   5
+        --run       off; without it the plan is printed and nothing starts
 
-    --out          paths.FREE_DIR   experimental_data/free
-    --dataset      pxm2025          the other choice is foldbench
-    --nsample      5                poses per fold
-    --gpus         none             required by --run; never guessed
-    --run          off
+OUTPUTS
+    one tmux session per GPU, named <basename of log dir>w<gpu>, each running folder.py on the queue
 
 FUNCTIONS
-
-    check()    refuse a queue that cannot run: missing, templated with no namespace, or a templated
-               queue aimed at the shared free pool
-    launch()   one tmux session per GPU, all reading the same queue
-
-It will not guess GPUs: this is a shared machine, so devices are explicit and more than four is
-refused. Workers go in tmux rather than background jobs, which die with the shell that started them
-and leave their claims behind.
+    check()   refuse a queue that cannot run: missing, templated with no namespace, or a templated
+              queue aimed at the shared free pool
+    launch()  one tmux session per GPU, all reading the same queue
+    main()    validate, then launch
 """
 import argparse
 import os

@@ -3,10 +3,23 @@
 #
 #   watch.sh --exp <dir> --gpus 1,5,6 [--templates <dir>] [--interval 1800] <reporter.py> [...]
 #
-# Each cycle: restart any worker whose tmux session is gone, print workers/claims/rows, grep worker
-# logs for tracebacks and OOM, print GPU state, run each reporter into <exp>/table.txt.
+# SUMMARY
+#   Runs one cycle per interval so a sweep can be left unattended. Worker launching is delegated to
+#   call_folder.py, so session naming has one owner: <experiment>w<gpu>.
 #
-# Worker launching is delegated to call_folder.py so session naming has one owner: <experiment>w<gpu>.
+#   Each cycle: restart any worker whose tmux session is gone, print workers/claims/rows, grep the
+#   worker logs for tracebacks and OOM, print GPU state, run each reporter.
+#
+# INPUTS
+#   --exp        the experiment directory: queue.tsv, claims/, results.csv, w<gpu>.log
+#   --gpus       which devices the sweep uses; drives both the restart loop and the GPU report
+#   --templates  passed through to call_folder.py when restarting a templated run
+#   --interval   seconds between cycles
+#   reporters    python scripts run from this directory, output collected in order
+#
+# OUTPUTS
+#   stdout        the cycle report; ESCALATE prefixes anything it cannot fix itself
+#   <exp>/table.txt   the reporters' combined output, overwritten each cycle
 set -u
 
 EXP=""; GPUS=""; TMPL=""; INT=1800; REPORTERS=()

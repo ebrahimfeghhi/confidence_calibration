@@ -5,39 +5,57 @@
     folder.py --report --csv <results.csv>      summarise what has been scored
     folder.py --verify --csv <csv> --out <dir>  cross-check the csv against files on disk
 
-QUEUE -- one fold per line, tab separated:
+SUMMARY
+    The one driver for every kind of fold. The checkpoint is 464M parameters and takes 50-80s to load,
+    so one long-lived process works through many units rather than one process per fold. Several
+    processes can share a queue: each claims a unit by creating a directory before folding it.
 
-    kind   pdb    target     tag    seeds            poses
-    free   8vqf   *          free   300050-300099
-    tmpl   9vca   9vca_AC    A06    300020           /abs/pose.cif
+    THREE THINGS THAT WILL BITE YOU
+      LAYERNORM_TYPE=openfold is mandatory. Without it the model emits NaN coordinates silently -- no
+      error, five plausible-looking cifs, and the failure only surfaces when the scorer dies.
 
-  kind     `free` = no self-templated poses. `tmpl` = template on the listed poses.
-           free does NOT mean template-free: Protenix still finds ~4 real PDB templates per chain,
-           so the contrast is "PDB templates" vs "PDB templates replaced by our own poses".
-  target   the interface this unit was chosen FOR, or `*` for none in particular. It does not
-           restrict scoring: every fold is scored against every interface of its complex, because
-           the fold produces the whole complex either way.
-  tag      names the arm. A unit is identified by (seed, tag) and NOT by target, so two lines
-           sharing a tag and seed are the same unit even if their targets differ.
-  poses    absolute paths, tmpl only.
+      Templates must be fully built BEFORE the first fold. Protenix caches release dates once per
+      process, so an id registered mid-run is rejected and every template is dropped while the fold
+      still completes and scores normally.
 
-OUTPUT
+      Protenix's template parser sees ONE chain in the cifs we write (verified 2026-09-24, unresolved).
+      The rescues we measure are real; the cross-chain mechanism we attribute them to is not confirmed.
 
-  <out>/<pdb>/<seed>-<run_id>/predictions/  the poses. run_id is random because folds do not
-                                            reproduce -- two folds of one seed are different data.
-  <csv>                                     one row per scored pose:
+INPUTS
+    --queue    one fold per line, tab separated:
 
-      iface,seed,arm,donor_pose,tmpl_chains,sample,dockq,iptm
+        kind   pdb    target     tag    seeds            poses
+        free   8vqf   *          free   300050-300099
+        tmpl   9vca   9vca_AC    A06    300020           /abs/pose.cif
 
-  `arm` is the tag: a label. `donor_pose` and `tmpl_chains` are the provenance -- a templated fold is
-  identified by (pose, seed, pinned chains). The tag alone used to be the only link back to the
-  template, and when two interfaces of one complex both used tag K00 they silently swapped donors.
+      kind     `free` = no self-templated poses. `tmpl` = template on the listed poses. free does NOT
+               mean template-free: Protenix still finds ~4 real PDB templates per chain, so the
+               contrast is "PDB templates" vs "PDB templates replaced by our own poses".
+      target   the interface this unit was chosen FOR, or `*` for none in particular. It does not
+               restrict scoring: every fold is scored against every interface of its complex.
+      tag      names the arm. A unit is identified by (seed, tag) and NOT by target, so two lines
+               sharing a tag and seed are the same unit even if their targets differ.
+      poses    absolute paths, tmpl only.
 
-  The csv is also the TO-DO LIST: an (iface, seed, arm) already present is skipped, which is how
-  several workers share one queue. Nothing here checks the filesystem, hence --verify.
+    --templates  namespace built by the template builder; required for tmpl units
+    --pool       csv whose interfaces define what `target=*` scores
+    --csv        doubles as the to-do list: an (iface, seed, arm) already present is skipped
+    --claim-dir  atomic mkdir claims so several workers share one queue
+
+OUTPUTS
+    <out>/<pdb>/<seed>-<run_id>/predictions/   the poses. run_id is random because folds do not
+                                               reproduce -- two folds of one seed are different data.
+    <out>/<pdb>/<seed>-<run_id>/run.json       per-fold provenance
+    <out>/index.tsv                            one line per fold, greppable, with the template md5
+    <csv>                                      one row per scored pose:
+
+        iface,seed,arm,donor_pose,tmpl_chains,sample,dockq,iptm
+
+    `arm` is the tag: a label. `donor_pose` and `tmpl_chains` are the provenance -- a templated fold is
+    identified by (pose, seed, pinned chains). The tag alone used to be the only link back to the
+    template, and when two interfaces of one complex both used tag K00 they silently swapped donors.
 
 FUNCTIONS
-
     parse_args()        the command line; defaults point at the free pool
     read_queue()        the queue file -> one (kind, pdb, target, tag, seed, poses) unit per fold
     parse_seeds()       "300050-300099" -> a list of seeds
@@ -45,31 +63,20 @@ FUNCTIONS
                         templated queue aimed at the shared free pool
     interfaces_by_pdb() the pool csv -> what a unit with target=* gets scored on
     open_csv()          create the results csv if absent; return what is already scored
+    unit_already_folded() has this (complex, seed, template) been folded before
     build_runner()      load the checkpoint once; every unit reuses the returned runner
-    Ctx                 the handles every unit shares: args, model, interfaces, done-set, namespace
+    Ctx                 the handles every unit shares: args, model, interfaces, done-sets, namespace
     run_unit()          claim one unit, fold it, score it, release the claim if anything fails
     named_job()         copy a unit's job json under a unique name, which is what fixes its output dir
     fold()              run one fold; assert it produced poses and the expected template count
     provenance()        the unit -> (donor_pose, tmpl_chains), the two fields that identify a fold
     score_fold()        run scorer.py per interface and append its rows to the csv
     reconcile_claims()  at startup, free claims whose unit was never scored (a killed worker's work)
-    append_index()      one line per fold in index.tsv, so runs are greppable
+    append_index()      one line per fold in index.tsv
     runmeta_md5()       checksum a pose, so run.json pins the exact file templated on
     report()            print what has been scored, per (interface, seed, arm)
     verify()            cross-check the csv against the poses on disk
     main()              load the model once, then run every unit
-
-THREE THINGS THAT WILL BITE YOU
-
-  LAYERNORM_TYPE=openfold is mandatory. Without it the model emits NaN coordinates silently -- no
-  error, five plausible-looking cifs, and the failure only surfaces when the scorer dies. Set below.
-
-  Templates must be fully built BEFORE the first fold. Protenix caches release dates once per
-  process, so an id registered mid-run is rejected and every template is dropped while the fold
-  still completes and scores normally.
-
-  Protenix's template parser sees ONE chain in the cifs we write (verified 2026-09-24, unresolved).
-  The rescues we measure are real; the cross-chain mechanism we attribute them to is not confirmed.
 """
 import argparse
 import collections

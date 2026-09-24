@@ -1,35 +1,41 @@
 #!/usr/bin/env python
 """Write a queue of untemplated folds -- the pool of candidate poses everything else selects from.
 
-Only writes the work list. call_folder.py runs it, and runs the templated queues too, so there is one
-launcher for both kinds of run.
-
     build_free_queue.py --out <dir>
     call_folder.py --queue <dir>/queue_free.tsv --out <dir> --gpus 1,5,6 --run
 
-A QUEUE is a tab-separated work list, one line per fold:
+SUMMARY
+    Decides WHAT to fold and writes it down. Nothing is launched here; call_folder.py runs the queue,
+    and runs the templated queues too, so both kinds of run take the identical launch path.
 
-    kind   pdb    target   tag    seed
-    free   8ror   *        free   300000
-    free   8ror   *        free   300001
+INPUTS
+    the dataset's job jsons   one per complex, matched as `*-final-updated.json` (the MSA-attached
+                             input). A complex whose json is named otherwise is silently absent from
+                             the queue, so the caller reports what it asked for and did not get.
+    --seeds, --start-seed    how many folds per complex, and the first seed
 
-`target` is `*` because a free fold is not aimed at one interface -- it is scored against every
-interface of its complex. `tag` names the arm in the results csv.
+    DEFAULTS
+        --dataset      pxm2025          the other choice is foldbench
+        --complexes    every complex with a job json (131 for pxm2025)
+        --seeds        50               folds per complex
+        --start-seed   300000           so seeds are 300000..300049
+        --out          paths.FREE_DIR   experimental_data/free
 
-DEFAULTS
+OUTPUTS
+    <out>/queue_free.tsv   one line per fold, tab separated:
 
-    --dataset      pxm2025          the other choice is foldbench
-    --complexes    every complex the dataset has an input json for (131 for pxm2025)
-    --seeds        50               folds per complex
-    --start-seed   300000           so seeds are 300000..300049
-    --out          paths.FREE_DIR   experimental_data/free
+        kind   pdb    target   tag    seed
+        free   8ror   *        free   300000
+
+    `target` is `*` because a free fold is not aimed at one interface -- it is scored against every
+    interface of its complex. `tag` names the arm in the results csv.
 
 FUNCTIONS
-
-    complexes()           which complexes the dataset has an input json for
+    complexes()           which complexes the dataset has a job json for
     queue_lines()         one queue line per (complex, seed)
     existing_seeds()      which of those already have a fold on disk
     unreadable_warning()  whether later steps will be able to FIND what this writes
+    main()                write the queue, or refuse if the folds already exist
 """
 import argparse
 import glob

@@ -3,50 +3,50 @@
 
     anchor_relabel.py --out-dir DIR [--pdbs 8ror,9puo] [--jobs 8]
 
-WHEN THIS DOES ANYTHING. Only when a complex contains more than one copy of an entity. With one
-antibody and one antigen there is a single possible chain assignment -- the anchor's A can only match
-the pose's A, since that is the only chain with the antibody's sequence -- so the mapping is the
-identity and this step is a no-op. Of the 131 benchmark complexes, 52 have no duplication at all, 44
-duplicate the antibody, and 35 duplicate both; the largest, 9jo7, has 5 antibody and 5 antigen chains.
-Measured over the 73 multi-interface complexes: 24 never produce a non-identity mapping, 49 do, and 42%
-of all poses get at least one chain renamed.
+SUMMARY
+    Protenix names duplicate chains arbitrarily: the antigen copy it calls B in one pose can be C in
+    the next. Later steps sort poses per interface, so they need one consistent naming across the pool.
+    This picks one pose per complex as the reference and expresses every other pose in its terms. No
+    native structure is involved.
 
-WHY THE LABEL MATTERS EVEN THOUGH THE COPIES ARE IDENTICAL. The copies have the same sequence but not
-the same position, and in any given pose the antibody touches one of them and not the other:
+    WHEN IT DOES ANYTHING -- only when a complex has more than one copy of an entity. With one antibody
+    and one antigen there is a single possible assignment (the anchor's A can only match the pose's A,
+    the only chain with that sequence), so the mapping is the identity. Of 131 benchmark complexes, 52
+    have no duplication, 44 duplicate the antibody, 35 duplicate both; 9jo7 has 5 of each. Over the 73
+    multi-interface complexes, 24 never produce a non-identity mapping and 42% of poses get a chain
+    renamed.
 
-    pose 1: antibody A binds the copy labelled B  ->  (A,B) is a real interface, (A,C) is nothing
-    pose 2: antibody A binds the copy labelled C  ->  (A,C) is a real interface, (A,B) is nothing
+    WHY THE LABEL MATTERS when the copies are identical -- they share a sequence but not a position, and
+    in a given pose the antibody touches one and not the other:
 
-Ranking poses by "ipTM at A-B" then compares pose 1's docking site against a pair of chains in pose 2
-that never touch. The diversity filter has the same problem: pose-pose DockQ at A-B scores pose 1's
-interface against pose 2's non-interface and returns near zero, so two poses that dock identically look
-completely different -- purely because the copies were named in a different order.
+        pose 1: antibody A binds the copy labelled B  ->  (A,B) is a real interface, (A,C) is nothing
+        pose 2: antibody A binds the copy labelled C  ->  (A,C) is a real interface, (A,B) is nothing
 
-Protenix emits chains in a fixed order from the input, but which physical copy lands in which slot
-depends on the fold, so two runs of one complex can put the same copy at B or at C.
+    Ranking by "ipTM at A-B" then compares pose 1's docking site against a pair of chains in pose 2 that
+    never touch, and pose-pose DockQ at A-B makes two identically-docked poses look unrelated.
 
-ONE ANCHOR PER COMPLEX, not per interface. The mapping pairs each anchor chain with exactly one pose
-chain and no two share a partner, so the anchor's (A,B) and (A,C) necessarily land on different chain
-pairs of the pose. Two independent per-interface mappings could both pick the pose's (A,B) pair, putting
-one physical interface into two candidate lists.
+    ONE ANCHOR PER COMPLEX, not per interface. The mapping pairs each anchor chain with exactly one pose
+    chain and no two share a partner, so the anchor's (A,B) and (A,C) necessarily land on different chain
+    pairs of the pose. Two independent per-interface mappings could both pick the pose's (A,B) pair,
+    putting one physical interface into two candidate lists.
 
-OUTPUT, both drop-in for build_matrices.py --maps/--roles:
+INPUTS
+    paths.PXM2025_POOL_CSV     per pose per interface: pair_iptm, used to choose the anchor
+    the pose cifs              read by the chain mapper, via paths.pool_pose()
+    the crystal roles and maps naming only: which of the anchor's chain pairs is called "8w5d_AB", so
+                               the output lines up against the crystal-framed run
 
-    chain_maps_anchor.csv    per pose: {anchor_chain: pose_chain}
-    chain_roles_anchor.csv   per interface: which ANCHOR chains are the antibody and the antigen
+OUTPUTS
+    <out-dir>/chain_maps_anchor.csv   per pose: {anchor_chain: pose_chain}
+    <out-dir>/chain_roles_anchor.csv  per interface: which ANCHOR chains are antibody and antigen
+    Both are drop-in for build_matrices.py --maps/--roles.
 
 FUNCTIONS
-
-    pool_rows()    pool csv -> {pdb: {(seed, sample): {interface: pair_iptm}}}
-    pick_anchor()  the poses of one complex -> the (seed, sample) to use as reference
+    pool_rows()      pool csv -> {pdb: {(seed, sample): {interface: pair_iptm}}}
+    pick_anchor()    the poses of one complex -> the (seed, sample) to use as reference
     map_to_anchor()  one pose -> its chain mapping onto the anchor, as a csv row
     anchor_roles()   the anchor's chain pair per interface, for the roles csv
-    main()         pick an anchor per complex, map every pose, write both csvs
-
-The crystal is read for one thing only: naming. xtal_roles/xtal_maps decide which of the anchor's chain
-pairs is called "8w5d_AB", so the output can be compared against the crystal-framed run. No donor
-depends on it. pick_anchor also averages ipTM over the reference interface list, which is a real
-dependency -- averaging over all antibody x antigen pairs instead would remove it.
+    main()           pick an anchor per complex, map every pose, write both csvs
 """
 import argparse
 import collections
