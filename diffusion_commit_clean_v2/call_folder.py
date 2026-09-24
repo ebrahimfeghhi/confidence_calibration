@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""STEP 1 -- fold every complex N times with no self-templating, to build the pool of candidate poses.
+"""Fold every complex N times with no self-templating, to build the pool of candidate poses.
 
 Later steps pick a handful of these poses and feed them back in as templates. This script only decides
 WHAT to fold and hands that list to folder.py, which does the folding.
@@ -9,14 +9,22 @@ WHAT to fold and hands that list to folder.py, which does the folding.
     call_folder.py --dataset foldbench --seeds 20 --complexes 8ror,9k94 --run --gpus 0
 
 A QUEUE is the work list: a tab-separated file with one line per fold, which folder.py reads and works
-through. This script writes it to <out>/queue_free.tsv, one line per (complex, seed):
+through. Several workers can read the same queue at once -- each claims a line by creating a directory
+in <out>/claims before folding it, so two workers never take the same fold and there is nothing to
+split up by hand.
 
-    free   8ror   *   free   300000
-    free   8ror   *   free   300001
+    kind   pdb    target     tag    seed     poses
 
-Several workers can read the same queue at once. Each one claims a line by creating a directory in
-<out>/claims before folding it, so two workers never take the same fold and there is no work to split
-up by hand.
+    free   8ror   *          free   300000                        <- what this script writes
+    tmpl   8w5d   8w5d_DC    A14    430000   /abs/8w5d_sample_4.cif   <- a self-templated fold
+
+  free    no self-templated poses. `target` is `*` because the fold is not aimed at one interface;
+          it is scored against every interface of the complex either way.
+  tmpl    template on the listed pose. `target` records WHICH interface selected that pose, and the
+          tag numbers it within the complex. Still scored on every interface.
+
+This script only writes `free` lines, to <out>/queue_free.tsv. The `tmpl` lines come from the donor
+selection step, which picks poses out of the pool this one produces.
 
 DEFAULTS
 
