@@ -186,11 +186,19 @@ def main():
                 need = {m[rl[0]], m[rl[1]]}
             k = (pdb, pose, str(A.seed))
             old = idx_old.get(k)
-            if old and need and any(need <= set(t) for t in old[1]):
+            # RECORD THE FULL CHAIN SET, not the pair. A template IS the full set of chains written
+            # into it; the pair is only a constraint on which must be present. Writing the pair here
+            # while folder.py writes the full set made tmpl_chains mean two different things, so the
+            # same fold could not be recognised as the same fold. Verified once on 1625 carried
+            # donors: given the same required pair, the contact heuristic picks the same extras, so
+            # the matched template equals what this frame would have built.
+            match = next((t for t in old[1] if need and need <= set(t)), None) if old else None
+            if match is not None:
                 stat["reused (rows carried over)"] += 1
+                full = "+".join(sorted(match))
                 for r in rows_old.get(k, []):
                     carried.append(f"{r['iface']},{r['seed']},{tag},{pose},"
-                                   f"{'+'.join(sorted(need))},{r['sample']},{r['dockq']},{r['iptm']}")
+                                   f"{full},{r['sample']},{r['dockq']},{r['iptm']}")
                 # the claim name fold.py computes is "<pdb>_<target>_<tag>_<seed>" with target = the
                 # queue's interface column, verified against the existing claims dir
                 os.makedirs(f"{A.out}/claims/{pdb}_{iface}_{tag}_{A.seed}", exist_ok=True)

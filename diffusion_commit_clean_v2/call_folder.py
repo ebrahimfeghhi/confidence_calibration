@@ -1,57 +1,44 @@
 #!/usr/bin/env python
-"""Fold every complex N times with no self-templating, to build the pool of candidate poses.
+"""Launch folder.py workers on a queue -- any queue, free or self-templated.
 
-Later steps pick a handful of these poses and feed them back in as templates. This script only decides
-WHAT to fold and hands that list to folder.py, which does the folding.
+One launcher for both kinds of run, because the launching is identical: same driver, same claim
+directory, same GPU rules. Assembling the folder.py command by hand instead is how workers end up
+pointed at the wrong paths.
 
-    call_folder.py                                   print the plan, launch nothing
-    call_folder.py --run --gpus 1,5,6                every pxm2025 complex, 50 seeds
-    call_folder.py --dataset foldbench --seeds 20 --complexes 8ror,9k94 --run --gpus 0
+    call_folder.py --queue <dir>/queue_free.tsv --out <dir> --gpus 1,5,6 --run
+    call_folder.py --queue <dir>/queue.tsv --out <dir> --templates <dir>/ns --gpus 1,5,6 --run
 
-A QUEUE is the work list: a tab-separated file with one line per fold, which folder.py reads and works
-through. Several workers can read the same queue at once -- each claims a line by creating a directory
-in <out>/claims before folding it, so two workers never take the same fold and there is nothing to
-split up by hand.
+Without --run it prints the plan and launches nothing.
+
+A QUEUE is a tab-separated work list, one line per fold:
 
     kind   pdb    target     tag    seed     poses
+    free   8ror   *          free   300000                           <- from build_free_queue.py
+    tmpl   8w5d   8w5d_DC    A14    430000   /abs/8w5d_sample_4.cif  <- from donor selection
 
-    free   8ror   *          free   300000                        <- what this script writes
-    tmpl   8w5d   8w5d_DC    A14    430000   /abs/8w5d_sample_4.cif   <- a self-templated fold
-
-  free    no self-templated poses. `target` is `*` because the fold is not aimed at one interface;
-          it is scored against every interface of the complex either way.
-  tmpl    template on the listed pose. `target` records WHICH interface selected that pose, and the
-          tag numbers it within the complex. Still scored on every interface.
-
-This script only writes `free` lines, to <out>/queue_free.tsv. The `tmpl` lines come from the donor
-selection step, which picks poses out of the pool this one produces.
+Several workers read the same queue at once. Each claims a line by creating a directory under
+<out>/claims before folding it, so two workers never take the same fold and there is nothing to split
+up by hand. A worker killed mid-fold leaves a claim behind, which folder.py releases at startup.
 
 DEFAULTS
 
-    --dataset      pxm2025          the other choice is foldbench
-    --complexes    every complex the dataset has an input json for (131 for pxm2025)
-    --seeds        50               folds per complex
-    --start-seed   300000           so seeds are 300000..300049
-    --nsample      5                poses per fold, giving 250 poses per complex
-    --model        protenix         the only choice today
     --out          paths.FREE_DIR   experimental_data/free
+    --dataset      pxm2025          the other choice is foldbench
+    --nsample      5                poses per fold
     --gpus         none             required by --run; never guessed
-    --run          off              without it, nothing is launched
+    --run          off
 
 FUNCTIONS
 
-    complexes()           which complexes the dataset has an input json for
-    queue_lines()         one queue line per (complex, seed)
-    existing_seeds()      which of those already have a fold on disk
-    unreadable_warning()  whether later steps will be able to FIND what this writes
-    launch()              one tmux session per GPU, all reading the same queue
+    check()    refuse a queue that cannot run: missing, templated with no namespace, or a templated
+               queue aimed at the shared free pool
+    launch()   one tmux session per GPU, all reading the same queue
 
 It will not guess GPUs: this is a shared machine, so devices are explicit and more than four is
 refused. Workers go in tmux rather than background jobs, which die with the shell that started them
 and leave their claims behind.
 """
 import argparse
-import glob
 import os
 import shlex
 import subprocess
@@ -62,130 +49,59 @@ sys.path.insert(0, "/home/ebrahim/tts_abag")
 import paths  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-
-# the driver lives beside this script now, not in paths.CODE_DIR
-FOLD = "folder.py"
 MAX_GPUS = 4
 
 
-def complexes(dataset, want=None):
-    """Complexes the dataset has a Protenix input json for, optionally restricted to `want`.
+def check(queue, out, templates):
+    """in: queue path, output dir, namespace or None.  out: (n folds, n templated); raises on refusal.
 
-    The glob is on `*-final-updated.json`, the MSA-attached input. A complex whose json is named
-    anything else is silently absent rather than an error, so `want` is checked against what was found
-    and the difference is reported by the caller.
+    A templated sweep must not write into the free pool: its poses would land in the pool that later
+    steps select FROM, making them candidates for templating themselves.
     """
-    jobs, _, _ = paths.dataset(dataset)
-    found = {os.path.basename(p).split("-")[0]
-             for p in glob.glob(f"{jobs}/*-final-updated.json")}
-    return sorted(found if not want else (found & want)), sorted((want or set()) - found)
+    if not os.path.exists(queue):
+        raise SystemExit(f"no queue at {queue}")
+    kinds = [l.split("\t")[0] for l in open(queue) if l.strip()]
+    n_tmpl = sum(1 for k in kinds if k != "free")
+    if n_tmpl and not templates:
+        raise SystemExit(f"{n_tmpl} templated folds need --templates (run the template builder first)")
+    if n_tmpl and out == str(paths.FREE_DIR):
+        raise SystemExit("refusing to write a templated queue into the free pool; pass --out")
+    return len(kinds), n_tmpl
 
 
-def queue_lines(pdbs, seeds, start_seed):
-    """One line per (complex, seed): kind, pdb, target, tag, seed.
-
-    `target` is "*" -- a free fold is not aimed at an interface, and one fold produces the whole
-    complex, so it is scored against every interface the complex has. The tag is constant because
-    folder.py identifies a unit as (seed, tag); a per-seed tag would duplicate the seed column.
-    """
-    return [f"free\t{pdb}\t*\tfree\t{start_seed + i}"
-            for pdb in pdbs for i in range(seeds)]
-
-
-def unreadable_warning(out):
-    """Will the poses this run writes be findable by the rest of the pipeline?
-
-    paths.pool_pose() hardcodes the LEGACY run id:
-
-        f"{FREE_DIR}/{pdb}/{seed}-{LEGACY_RUN}/predictions/{pdb}_sample_{sample}.cif"
-
-    while the driver names every new fold <seed>-<random id>. So a fresh pool is written correctly and
-    then never selected from -- not duplicated, not overwritten, simply invisible. This is already true
-    of data on disk: experimental_data/free/8ror holds 100 seeds and pool_pose can address 50.
-
-    Checked and reported rather than fixed here, because making pool_pose glob changes which poses every
-    existing result was computed from, and that is not a change to make as a side effect of step 1.
-    """
-    return (f"NOTE: poses written here get a random run id, but paths.pool_pose() only resolves "
-            f"'<seed>-{paths.LEGACY_RUN}'. Until pool_pose resolves by glob, poses under {out} will "
-            f"not be selected by later steps.")
-
-
-def existing_seeds(out, pdbs, seeds, start_seed):
-    """(complex, seed) pairs that already have a fold directory under `out`.
-
-    Not a duplication hazard -- one fold per seed is the normal layout and re-running a seed is
-    legitimate, since folds do not reproduce. It is reported so the size of the run is not a surprise:
-    the driver skips a (complex, seed, TAG) already in the csv, and the existing pool was written under
-    tags free100/freebf16r1/freefp32r1, so a run tagged `free` will refold rather than skip.
-    """
-    return [(pdb, start_seed + i) for pdb in pdbs for i in range(seeds)
-            if glob.glob(f"{out}/{pdb}/{start_seed + i}-*")]
-
-
-def launch(gpus, queue, out, dataset, nsample, session_prefix):
-    """One tmux session per GPU, all on the same queue; claims stop them colliding."""
-    cmds = []
+def launch(gpus, queue, out, templates, dataset, nsample, prefix):
+    """in: devices and the run's paths.  out: the tmux session names started, one per GPU."""
+    names = []
     for g in gpus:
         cmd = (f"cd {HERE} && CUDA_VISIBLE_DEVICES={g} LAYERNORM_TYPE=openfold "
-               f"{paths.PROTENIX_PYTHON} {FOLD} --queue {shlex.quote(queue)} "
+               f"{paths.PROTENIX_PYTHON} folder.py --queue {shlex.quote(queue)} "
                f"--out {shlex.quote(out)} --csv {shlex.quote(out)}/results.csv "
                f"--claim-dir {shlex.quote(out)}/claims --dataset {dataset} "
-               f"--nsample {nsample} --drop-cifs 2>&1 | tee -a {shlex.quote(out)}/w{g}.log")
-        s = f"{session_prefix}{g}"
+               f"--nsample {nsample} "
+               + (f"--templates {shlex.quote(templates)} " if templates else "")
+               + f"--drop-cifs 2>&1 | tee -a {shlex.quote(out)}/w{g}.log")
+        s = f"{prefix}{g}"
         subprocess.run(["tmux", "new-session", "-d", "-s", s, cmd], check=True)
-        cmds.append(s)
-    return cmds
+        names.append(s)
+    return names
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--dataset", choices=sorted(paths.DATASET_NAMES), default="pxm2025")
-    ap.add_argument("--complexes", default=None, help="comma-separated; default is every complex")
-    ap.add_argument("--seeds", type=int, default=50)
-    ap.add_argument("--start-seed", type=int, default=300000)
-    ap.add_argument("--nsample", type=int, default=5)
-    # one choice today. Present so adding a model is a new entry rather than a redesign, and so the
-    # flag cannot silently mean "whatever driver happens to be wired up".
-    ap.add_argument("--model", choices=("protenix",), default="protenix")
+    ap.add_argument("--queue", required=True)
     ap.add_argument("--out", default=None, help=f"default {paths.FREE_DIR}")
+    ap.add_argument("--templates", default=None, help="namespace, required for templated queues")
+    ap.add_argument("--dataset", choices=sorted(paths.DATASET_NAMES), default="pxm2025")
+    ap.add_argument("--nsample", type=int, default=5)
     ap.add_argument("--gpus", default=None, help="explicit device ids, e.g. 1,5,6")
     ap.add_argument("--allow-many", action="store_true",
                     help=f"permit more than {MAX_GPUS} GPUs on this shared machine")
     ap.add_argument("--run", action="store_true", help="launch; otherwise only report the plan")
-    ap.add_argument("--force", action="store_true",
-                    help="proceed even though --out already holds folds for these seeds")
     A = ap.parse_args()
 
-    want = set(A.complexes.split(",")) if A.complexes else None
-    pdbs, missing = complexes(A.dataset, want)
-    if missing:
-        print(f"  NOT FOUND in {A.dataset}: {','.join(missing)}")
-    if not pdbs:
-        raise SystemExit("no complexes matched")
-
     out = A.out or str(paths.FREE_DIR)
-    lines = queue_lines(pdbs, A.seeds, A.start_seed)
-    os.makedirs(out, exist_ok=True)
-    qpath = f"{out}/queue_free.tsv"
-    open(qpath, "w").write("\n".join(lines) + "\n")
-
-    print(f"  dataset {A.dataset}   model {A.model}")
-    print(f"  complexes {len(pdbs)}   seeds {A.seeds} from {A.start_seed}   samples {A.nsample}")
-    print(f"  folds {len(lines)}   poses {len(lines) * A.nsample}")
-    print(f"  queue -> {qpath}")
-    print(f"  out   -> {out}")
-
-    print(f"\n  {unreadable_warning(out)}")
-    seen = existing_seeds(out, pdbs, A.seeds, A.start_seed)
-    if seen:
-        hit = sorted({p for p, _ in seen})
-        print(f"  {len(seen)} of {len(lines)} (complex, seed) pairs already have a fold under {out} "
-              f"({len(hit)} complexes, e.g. {', '.join(hit[:4])}).")
-        print("  Those will be folded again: the driver skips on (interface, seed, TAG) from the csv, "
-              "and the existing pool carries other tags.")
-        if not A.force:
-            raise SystemExit("  refusing. --out <new dir> for a fresh pool, or --force to refold.")
+    n, n_tmpl = check(A.queue, out, A.templates)
+    print(f"  queue {A.queue}\n  folds {n} ({n_tmpl} templated)\n  out   {out}")
 
     if not A.run:
         print("\n  nothing launched. re-run with --run --gpus <ids>")
@@ -194,10 +110,11 @@ def main():
         raise SystemExit("--run needs --gpus; this machine is shared and devices are never guessed")
     gpus = [g.strip() for g in A.gpus.split(",") if g.strip()]
     if len(gpus) > MAX_GPUS and not A.allow_many:
-        raise SystemExit(f"{len(gpus)} GPUs requested; cap is {MAX_GPUS}. Pass --allow-many to override.")
-    sessions = launch(gpus, qpath, out, A.dataset, A.nsample, f"free{A.dataset}w")
-    print(f"\n  launched {len(sessions)} workers: {', '.join(sessions)}")
-    print(f"  watch: tmux attach -t {sessions[0]}    |    tail -f {out}/w{gpus[0]}.log")
+        raise SystemExit(f"{len(gpus)} GPUs requested; cap is {MAX_GPUS}. Pass --allow-many.")
+    names = launch(gpus, A.queue, out, A.templates, A.dataset, A.nsample,
+                   f"{os.path.basename(out)}w")
+    print(f"\n  launched {len(names)} workers: {', '.join(names)}")
+    print(f"  watch: tmux attach -t {names[0]}   |   tail -f {out}/w{gpus[0]}.log")
     return 0
 
 

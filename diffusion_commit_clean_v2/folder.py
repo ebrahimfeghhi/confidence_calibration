@@ -284,7 +284,7 @@ def read_queue(path):
 
 
 
-def append_index(out, pdb, seed, run_dir, kind, precision, ncycle, templated):
+def append_index(out, pdb, seed, run_dir, kind, precision, ncycle, templated, tmpl_md5=""):
     """in:  experiment dir and the facts about one finished fold
     out: appends a line to <out>/index.tsv
 
@@ -295,8 +295,9 @@ def append_index(out, pdb, seed, run_dir, kind, precision, ncycle, templated):
     new = not os.path.exists(p)
     with open(p, "a") as fh:
         if new:
-            fh.write("pdb\tseed\trun_dir\tkind\tprecision\tn_cycle\ttemplated\n")
-        fh.write(f"{pdb}\t{seed}\t{run_dir}\t{kind}\t{precision}\t{ncycle}\t{templated}\n")
+            fh.write("pdb\tseed\trun_dir\tkind\tprecision\tn_cycle\ttemplated\ttmpl_md5\n")
+        fh.write(f"{pdb}\t{seed}\t{run_dir}\t{kind}\t{precision}\t{ncycle}\t{templated}\t"
+                 f"{tmpl_md5}\n")
 
 
 def reconcile_claims(claim_dir, csv_path, pool_ifaces):
@@ -392,11 +393,12 @@ def verify(csv_path, out):
 class Ctx:
     """Everything a unit needs that is the same for every unit: args, model, and shared state."""
 
-    def __init__(self, A, runner, configs, jobs, ref, scorer, ifaces, done, mm, rd):
+    def __init__(self, A, runner, configs, jobs, ref, scorer, ifaces, rows_done, units_done, mm, rd):
         self.A, self.runner, self.configs = A, runner, configs
         self.jobs, self.ref, self.scorer = jobs, ref, scorer
         self.ifaces = ifaces        # {pdb: [interface, ...]} -- what target=* scores
-        self.done = done            # {(iface, seed, arm)} already in the csv; mutated as rows land
+        self.rows_done = rows_done      # {(iface, seed, arm)}; mutated as rows land
+        self.units_done = units_done    # {(pdb, seed, donor)} -> [pinned chain sets]
         self.mm, self.rd = mm, rd   # template namespace, or None for a free-only queue
 
     def point_templates_at(self, use_ns):
@@ -438,6 +440,13 @@ def parse_args():
                          "coordinates are gone cannot be templated on later, and folds do not "
                          "reproduce")
     ap.add_argument("--drop-cifs", dest="keep_cifs", action="store_false")
+    ap.add_argument("--skip-by-template", action="store_true",
+                    help="skip a unit already folded with the same (complex, seed, template). Needs a "
+                         "csv whose tmpl_chains holds the FULL chain set; older runs recorded the "
+                         "required pair and would refold")
+    ap.add_argument("--force", action="store_true",
+                    help="refold a unit already folded with the same complex, seed and template; "
+                         "the new fold gets its own directory, nothing is overwritten")
     ap.add_argument("--report", action="store_true")
     ap.add_argument("--verify", action="store_true",
                     help="cross-check --csv against --out and exit; nothing is folded")
@@ -475,12 +484,37 @@ def interfaces_by_pdb(pool_csv):
 
 
 def open_csv(csv_path):
-    """in: results csv path.  out: {(iface, seed, arm)} already scored; creates the file if absent."""
+    """in: results csv path.  out: (rows_done, units_done); creates the file if absent.
+
+    rows_done  {(iface, seed, arm)}        -- stops a retried unit appending duplicate rows
+    units_done {(pdb, seed, donor)} -> [set of pinned chains]
+               identity by CONTENT: the same complex, seed and template is the same fold whatever
+               tag it was given. Keying on the tag instead is what once let two interfaces of one
+               complex swap donors.
+    """
     if not os.path.exists(csv_path):
         os.makedirs(os.path.dirname(csv_path) or ".", exist_ok=True)
         with open(csv_path, "w") as fh:
             fh.write("iface,seed,arm,donor_pose,tmpl_chains,sample,dockq,iptm\n")
-    return {(r["iface"], r["seed"], r["arm"]) for r in csv.DictReader(open(csv_path))}
+    rows_done, units_done = set(), collections.defaultdict(list)
+    for r in csv.DictReader(open(csv_path)):
+        rows_done.add((r["iface"], r["seed"], r["arm"]))
+        pdb = r["iface"].split("_")[0]
+        chains = frozenset(c for grp in r.get("tmpl_chains", "").split() for c in grp.split("+") if c)
+        units_done[(pdb, r["seed"], r.get("donor_pose", "-1"))].append(chains)
+    return rows_done, units_done
+
+
+def unit_already_folded(units_done, pdb, seed, donor, chains):
+    """in: the unit's identity.  out: True if this complex+seed+template was already folded.
+
+    EXACT set equality. A template is the full set of chains written into it, so two folds are the
+    same fold only if those sets match. A subset test looks tempting -- older csvs record the required
+    PAIR rather than the full set -- but it can declare two different templates identical and skip a
+    fold that never ran, which is the one error worth avoiding. Rows in the old pair form simply do
+    not match, so they are refolded rather than wrongly skipped.
+    """
+    return chains in set(units_done.get((pdb, str(seed), donor), ()))
 
 
 def provenance(A, target, tag, poses):
@@ -508,7 +542,7 @@ def score_fold(ctx, pdb, target, tag, seed, rdir, name, want, poses):
     """
     donor, chains = provenance(ctx.A, target, tag, poses)
     got, err = 0, ""
-    for iface in [i for i in want if (i, str(seed), tag) not in ctx.done]:
+    for iface in [i for i in want if (i, str(seed), tag) not in ctx.rows_done]:
         out = subprocess.run([PY, f"{DC}/scorer.py", "--dir", f"{rdir}/{name}", "--iface", iface,
                               "--seed", str(seed), "--arm", tag, "--donor", donor,
                               "--chains", chains,
@@ -518,7 +552,7 @@ def score_fold(ctx, pdb, target, tag, seed, rdir, name, want, poses):
         if out.stdout.strip():
             with open(ctx.A.csv, "a") as fh:      # flushed per interface, not at the end
                 fh.write(out.stdout)
-            ctx.done.add((iface, str(seed), tag))
+            ctx.rows_done.add((iface, str(seed), tag))
             got += 1
     return got, err
 
@@ -536,7 +570,15 @@ def run_unit(ctx, unit):
     if not want:
         print(f"  {pdb}: no interfaces to score, skipping", flush=True)
         return "skipped"
-    if all((i, str(seed), tag) in ctx.done for i in want):
+    donor, chains = provenance(A, target, tag, poses)
+    chain_set = frozenset(c for grp in chains.split() for c in grp.split("+") if c)
+    # identity is (complex, seed, template), not the tag. Off unless asked for: a run whose csv
+    # predates full-chain recording would refold everything in pair form. --force refolds regardless,
+    # into its own directory, since run ids are random and folds do not reproduce.
+    if A.skip_by_template and not A.force \
+            and unit_already_folded(ctx.units_done, pdb, seed, donor, chain_set):
+        return "skipped"
+    if all((i, str(seed), tag) in ctx.rows_done for i in want):
         return "skipped"
 
     claim = f"{A.claim_dir}/{pdb}_{target}_{tag}_{seed}".replace("*", "all") if A.claim_dir else None
@@ -576,20 +618,23 @@ def run_unit(ctx, unit):
         release()
         return "failed"
 
+    tmpl_md5 = "+".join(runmeta_md5(p) for p in poses) if poses else ""
     runmeta.write_run_json(
         rdir, kind=kind, pdb=pdb,
         # motivating_interface is WHY this arm exists; interfaces_scored is what the fold produced.
         motivating_interface=None if target == "*" else target,
         seed=seed, arm=tag, precision=A.dtype, n_cycle=A.ncycle, n_sample=A.nsample,
         fold_seconds=round(dt, 1), interfaces_scored=want,
-        templates=[{"source_pose": p, "md5": runmeta_md5(p)} for p in poses] or None,
+        templates=[{"source_pose": p, "md5": m}
+                   for p, m in zip(poses, tmpl_md5.split("+"))] or None,
         templates_found=tcounts, template_namespace=A.templates,
         templated=bool(poses), run_dir=os.path.basename(rdir))
-    append_index(A.out, pdb, seed, os.path.basename(rdir), kind, A.dtype, A.ncycle, bool(poses))
+    append_index(A.out, pdb, seed, os.path.basename(rdir), kind, A.dtype, A.ncycle, bool(poses),
+                 tmpl_md5)
 
     got, err = score_fold(ctx, pdb, target, tag, seed, rdir, name, want, poses)
     result = "ran"
-    if got or all((i, str(seed), tag) in ctx.done for i in want):
+    if got or all((i, str(seed), tag) in ctx.rows_done for i in want):
         # pdb AND target: target is "*" for a pool fold, so target alone leaves the line anonymous
         print(f"  {kind} {pdb} {target} {tag} seed {seed}: {got}/{len(want)} interfaces "
               f"in {dt:.0f}s", flush=True)
@@ -621,7 +666,7 @@ def main():
     ifaces = interfaces_by_pdb(A.pool)
 
     os.makedirs(A.out, exist_ok=True)
-    done = open_csv(A.csv)
+    rows_done, units_done = open_csv(A.csv)
     if A.claim_dir:
         os.makedirs(A.claim_dir, exist_ok=True)
         reconcile_claims(A.claim_dir, A.csv, ifaces)
@@ -631,7 +676,7 @@ def main():
     t_load = time.time()
     runner, configs = build_runner(A.ckpt_dir, A.model_name,
                                    f"{jobs}/{units[0][1]}-final-updated.json", A.out, A.dtype)
-    ctx = Ctx(A, runner, configs, jobs, ref, scorer, ifaces, done, mm, rd)
+    ctx = Ctx(A, runner, configs, jobs, ref, scorer, ifaces, rows_done, units_done, mm, rd)
     ctx.stock_mm = configs.data.template.prot_template_mmcif_dir
     ctx.stock_rd = configs.data.template.release_dates_path
     logging.getLogger().addHandler(_CountHandler())
