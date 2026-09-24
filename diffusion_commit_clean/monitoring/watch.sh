@@ -43,7 +43,12 @@ while true; do
   carried=$(comm -13 "$T/.qtags" "$T/.ctags" | wc -l)
   if [ "$claimed" -lt "$total" ]; then
     for i in 0 1 2; do
-      if ! tmux has-session -t "${NAME}w$i" 2>/dev/null; then
+      # TWO NAMING CONVENTIONS EXIST for the same session: this script and hand-launches use the
+      # index (w0/w1/w2), call_folder.py uses the GPU id (w1/w5/w6). Checking only one would declare
+      # live workers dead and start a second set on the same cards. Accept either until one launcher
+      # owns this -- call_folder.py should, and this branch should call it instead of rolling its own.
+      if ! tmux has-session -t "${NAME}w$i" 2>/dev/null \
+         && ! tmux has-session -t "${NAME}w${GPUS[$i]}" 2>/dev/null; then
         echo "REMEDIATE: worker $i (GPU ${GPUS[$i]}) gone -- restarting"
         tmux new-session -d -s "${NAME}w$i" \
           "cd $CODE && CUDA_VISIBLE_DEVICES=${GPUS[$i]} LAYERNORM_TYPE=openfold $PY folder.py \
