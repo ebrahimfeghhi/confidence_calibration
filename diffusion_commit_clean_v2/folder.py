@@ -1,78 +1,52 @@
 #!/usr/bin/env python
-"""THE driver. Folds a queue of work units with the checkpoint loaded once, scores each, records
-provenance. Replaces fast_driver.py and self_template/run_self_template.py, which were two
-implementations of this same harness.
+"""Fold a queue of units with the checkpoint loaded once, score each, append rows to a csv.
 
-WHY ONE DRIVER. The two it replaces each had their own copy of the claim logic, the model-once loop,
-the output paths and the error handling. Every bug therefore had to be found and fixed twice, and the
-missing-ERR-directory crash that killed workers three times was fixed separately in each. One harness
-means one place for those to live.
+    folder.py --queue q.tsv --out <dir> --csv <dir>/results.csv [--templates <ns>]
+    folder.py --report --csv <results.csv>      summarise what has been scored
+    folder.py --verify --csv <csv> --out <dir>  cross-check the csv against files on disk
 
-THE ONLY REAL DISTINCTION between work units is how many of OUR OWN poses go into one fold:
+QUEUE -- one fold per line, tab separated:
 
-    free      0 self-templated poses    one plain fold
-    tmpl      N poses -> 1 fold         all of them as the template, averaged by TemplateEmbedder
-                                        (written `all5` in older queue files; still accepted)
+    kind   pdb    target     tag    seeds            poses
+    free   8vqf   *          free   300050-300099
+    tmpl   9vca   9vca_AC    A06    300020           /abs/pose.cif
 
-"free" MEANS ZERO SELF-TEMPLATED POSES, NOT ZERO TEMPLATES. Protenix's own template search still runs
-on a free fold and supplies ~4 real PDB templates per chain -- confirmed in the logs as "Found 4
-templates for sequence ...". So the contrast these units support is "PDB templates" versus "PDB
-templates replaced by our own poses", never "templated" versus "untemplated". Reading `free` as
-template-free would misattribute the whole self-templating effect.
+  kind     `free` = no self-templated poses. `tmpl` = template on the listed poses.
+           free does NOT mean template-free: Protenix still finds ~4 real PDB templates per chain,
+           so the contrast is "PDB templates" vs "PDB templates replaced by our own poses".
+  target   the interface this unit was chosen FOR, or `*` for none in particular. It does not
+           restrict scoring: every fold is scored against every interface of its complex, because
+           the fold produces the whole complex either way.
+  tag      names the arm. A unit is identified by (seed, tag) and NOT by target, so two lines
+           sharing a tag and seed are the same unit even if their targets differ.
+  poses    absolute paths, tmpl only.
 
-There is deliberately no "gen2" kind. Templating on a previous generation's poses is just `tmpl` with
-pose paths that point somewhere else; where a pose came from is not the driver's business.
+OUTPUT
 
-THERE IS NO TRUNK RESUME. Loading a dumped recurrent state and paying one further recycle instead of
-folding from scratch was measured to be unusable: with dropout off, the resumed state was 94% as wrong
-as skipping the cycle entirely, and the cause was never found. Every result produced that way is void.
-It is absent here rather than deprecated, so it cannot be reached by accident.
+  <out>/<pdb>/<seed>-<run_id>/predictions/  the poses. run_id is random because folds do not
+                                            reproduce -- two folds of one seed are different data.
+  <csv>                                     one row per scored pose:
 
-WRITE PHASE FIRST. Templated units consume a namespace that write_templates.py has already built --
-every pose file, every 4-char id, and a COMPLETE release_dates.json. This ordering is load-bearing,
-not tidiness: Protenix caches release dates once per process (template_utils.py:838), so an id
-registered mid-run is rejected as "date unknown" and every template is silently dropped while the
-fold still completes and scores normally. Ids keyed on anything but the pose file's own content also
-collided -- all five per-pose arms of a seed took index 0 and wrote one file, and because
-same-complex sequences still match, the featuriser accepted the wrong pose with no error.
+      iface,seed,arm,donor_pose,tmpl_chains,sample,dockq,iptm
 
-QUEUE FILE -- one unit per line, tab separated:
+  `arm` is the tag: a label. `donor_pose` and `tmpl_chains` are the provenance -- a templated fold is
+  identified by (pose, seed, pinned chains). The tag alone used to be the only link back to the
+  template, and when two interfaces of one complex both used tag K00 they silently swapped donors.
 
-    kind    pdb     target      tag       seeds           poses
-    free    8vqf    *           free100   300050-300099
-    tmpl    9vca    9vca_AC     s20all    300020          /abs/p0.cif /abs/p1.cif ...
+  The csv is also the TO-DO LIST: an (iface, seed, arm) already present is skipped, which is how
+  several workers share one queue. Nothing here checks the filesystem, hence --verify.
 
-  target  the interface to score, or `*` for every interface that pdb contributes to --pool. A fold
-          produces the whole complex, so scoring one interface when the pdb has three would either
-          discard work already done or refold identical coordinates.
-  tag     names the arm in the csv and, for templated units, the write-phase job directory.
-  seeds   `300020` or `300050-300099`.
+THREE THINGS THAT WILL BITE YOU
 
-Usage:
-    folder.py --queue q.tsv --out <root> --csv <results.csv> [--templates <ns>] [--dtype bf16]
-    folder.py --report --csv <results.csv>
+  LAYERNORM_TYPE=openfold is mandatory. Without it the model emits NaN coordinates silently -- no
+  error, five plausible-looking cifs, and the failure only surfaces when the scorer dies. Set below.
 
-!! KNOWN BUG, FOUND 2026-09-19, NOT YET FIXED -- READ BEFORE TRUSTING ANY SELF-TEMPLATED RESULT.
-The CIFs this driver writes for templates are only PARTLY readable by Protenix. Its template parser
-(protenix/data/template/template_parser.py, auth_chain_to_seq) sees ONE chain in them -- verified on
-every complex of both runs: the builder requests e.g. ['A','B','C'] and the parser returns ['A'].
-Consequence, from template_utils.py:578:
+  Templates must be fully built BEFORE the first fold. Protenix caches release dates once per
+  process, so an id registered mid-run is rejected and every template is dropped while the fold
+  still completes and scores normally.
 
-        target_seq = mmcif_obj.chain_to_seqres.get(chain_id, "")
-        if not target_seq:
-            if len(mmcif_obj.chain_to_seqres) == 1:   # <-- silently uses the ONLY chain
-                ...
-            else:
-                raise QueryToTemplateAlignError(f"Chain {chain_id} not found.")
-
-So a hit for chain A succeeds by falling through that shortcut, while hits for B/C/D raise. Every
-entity of a complex was therefore templated against chain A, and on complexes where that raised, the
-fold still completed and scored. "Found 5 templates" in a log does NOT mean five multi-chain templates
-were used.
-
-This invalidates the MECHANISM described above -- a template cannot be supplying cross-chain placement
-if only one chain is visible -- even though the measured effects (e.g. 9h01_AB 0.005 -> 0.782 pooled,
-50 seeds) reproduced. Fix the writer, then re-run one complex before interpreting anything.
+  Protenix's template parser sees ONE chain in the cifs we write (verified 2026-09-24, unresolved).
+  The rescues we measure are real; the cross-chain mechanism we attribute them to is not confirmed.
 """
 import argparse
 import collections
@@ -159,6 +133,7 @@ class _CountHandler(logging.Handler):
 
 
 def parse_seeds(s):
+    """in: "300020" or "300050-300099" or a comma mix.  out: list of ints, one per seed."""
     out = []
     for part in s.split(","):
         if "-" in part:
@@ -170,10 +145,10 @@ def parse_seeds(s):
 
 
 def build_runner(ckpt_dir, model_name, job_path, dump_dir, dtype):
-    """Construct InferenceRunner as runner/inference.py:run() does, then keep it for every unit.
+    """in:  checkpoint dir, model name, a job json to shape the config, dump dir, dtype
+    out: (runner, configs) reused for every unit in the queue
 
-    The checkpoint is 464M parameters and takes 50-80s to load, so building one per fold would
-    dominate any sweep -- on a 123-complex queue that is ~2.7 GPU-hours of pure overhead.
+    Built once: the checkpoint is 464M parameters and takes 50-80s to load.
     """
     from collections.abc import Mapping
 
@@ -207,11 +182,11 @@ def build_runner(ckpt_dir, model_name, job_path, dump_dir, dtype):
 
 
 def named_job(src, name, out_dir):
-    """Copy a job json under a unique NAME.
+    """in:  source job json, a unique name, output dir
+    out: path to a copy of the json named <name>.json
 
-    Protenix derives its output directory from the job name, so two units sharing a name write into
-    each other. configs.dump_dir is NOT re-read after the runner is built, so the name is the only
-    per-fold lever on that path.
+    Protenix derives its output directory from the job NAME, and configs.dump_dir is not re-read
+    after the runner is built, so the name is the only per-fold control over where poses land.
     """
     obj = json.load(open(src))
     obj = obj if isinstance(obj, list) else [obj]
@@ -224,13 +199,12 @@ def named_job(src, name, out_dir):
 
 
 def fold(runner, configs, job, seed, name, n_cycle, n_sample, expect_templates, dump_base, env):
-    """One fold. Asserts what it produced, because a stage that silently yields nothing still lets
-    the run continue and writes a plausible-looking but empty summary -- that has happened twice.
+    """in:  runner/configs, a named job json, seed, cycle and sample counts, expect_templates, env
+    out: (seconds, template counts seen per chain); raises ArmError if the fold produced nothing
 
-    expect_templates=None means a free unit: it has no self-templated poses, so there is no count to
-    assert -- Protenix's own search still returns ~4 real PDB templates per chain and that number is
-    recorded, not checked. Any other value is the number of our poses and must be matched on EVERY
-    chain; a chain that quietly fell back to fewer is the silent-wrong-template failure.
+    expect_templates=None for a free unit (nothing to assert). For a tmpl unit it is the number of
+    poses given, and EVERY chain must report that many -- a chain that quietly used fewer is the
+    silent-wrong-template failure.
     """
     from runner.inference import infer_predict
 
@@ -278,9 +252,10 @@ def fold(runner, configs, job, seed, name, n_cycle, n_sample, expect_templates, 
 
 
 def read_queue(path):
-    """Parse the queue into (kind, pdb, target, tag, seed, poses) units, one per fold.
+    """in:  path to the queue file
+    out: list of (kind, pdb, target, tag, seed, poses), one per fold
 
-    One line in, one unit out. `all5` is accepted as a legacy spelling of `tmpl`.
+    A seed range expands to one unit per seed. `all5` is accepted as an old spelling of `tmpl`.
     """
     units = []
     for lineno, raw in enumerate(open(path), 1):
@@ -313,11 +288,11 @@ def read_queue(path):
 
 
 def append_index(out, pdb, seed, run_dir, kind, precision, ncycle, templated):
-    """One line per fold in <experiment>/index.tsv, so runs are found by grep not by walking.
+    """in:  experiment dir and the facts about one finished fold
+    out: appends a line to <out>/index.tsv
 
-    run.json stays authoritative per fold; this is a lookup table and can be rebuilt from those files
-    if it is ever lost. Appended under the assumption of one writer per line -- a short append is
-    atomic enough in practice, and a duplicated line is harmless to a grep.
+    A lookup table so runs are found by grep instead of walking the tree. run.json stays
+    authoritative per fold, so this can be rebuilt if lost.
     """
     p = os.path.join(out, "index.tsv")
     new = not os.path.exists(p)
@@ -328,13 +303,12 @@ def append_index(out, pdb, seed, run_dir, kind, precision, ncycle, templated):
 
 
 def reconcile_claims(claim_dir, csv_path, pool_ifaces):
-    """Release claims whose work never finished, so a killed worker's units are retried.
+    """in:  claim dir, the results csv, {pdb: interfaces} to know what "finished" means
+    out: removes claim dirs whose unit was never scored; returns nothing
 
-    A claim is taken before a fold and released only on failure, so a worker killed mid-fold leaves
-    one behind -- and a claimed-but-unscored unit is skipped FOREVER, silently shrinking the sweep.
-    This ran as an ad-hoc script twice and I got the parsing wrong the second time (claim names had
-    changed shape between drivers, so it matched nothing and reported success). It belongs here, run
-    on every start, keyed only on the first and last name components so any naming scheme works.
+    Runs at every startup. A claim is taken before a fold and released only on failure, so a worker
+    killed mid-fold leaves one behind -- and a claimed-but-unscored unit is then skipped forever,
+    silently shrinking the sweep.
     """
     if not claim_dir or not os.path.isdir(claim_dir):
         return 0
@@ -358,6 +332,11 @@ def reconcile_claims(claim_dir, csv_path, pool_ifaces):
 
 
 def report(csv_path):
+    """in: results csv.  out: prints one row per (interface, seed, arm) and returns 0.
+
+    "selected" is the pose that arm's OWN confidence picks -- the number that matters. The oracle
+    max is printed beside it only to show the headroom.
+    """
     sys.path.insert(0, DC)
     from fmt import table
     import statistics as st
@@ -379,17 +358,13 @@ def report(csv_path):
 
 
 def verify(csv_path, out):
-    """Cross-check the csv against the filesystem, because nothing else ever does.
+    """in:  results csv, experiment out dir
+    out: prints both mismatches, returns 0 if they agree and 1 otherwise (usable as a gate)
 
-    The csv is the ONLY record of what is done -- the skip test reads it and never looks at disk -- so
-    the two drift silently and in both directions:
-
-      scored but absent   rows exist for a (complex, seed) with no run directory. Reporting still works;
-                          self-templating does not, because it needs the actual cif.
-      present but unscored a run directory with no rows. The driver will refold that seed into a SECOND
-                          directory (run ids are random), and anything globbing <seed>-* then sees both.
-
-    Reports both and returns nonzero if either is non-empty, so it is usable as a gate before a sweep.
+    scored but absent    rows with no run directory -- reporting works, self-templating cannot
+    present but unscored a run directory with no rows -- the driver will refold that seed into a
+                         SECOND directory, since run ids are random
+    Note --drop-cifs deletes poses after scoring, so "scored but absent" is expected for those runs.
     """
     if not os.path.exists(csv_path):
         print(f"  no csv at {csv_path}")
@@ -637,7 +612,7 @@ def main():
 
 
 def runmeta_md5(path, n=12):
-    """Checksum a pose so a run.json identifies the exact file that was templated on."""
+    """in: a pose path.  out: first n chars of its md5, so run.json pins the exact file used."""
     import hashlib
     try:
         with open(path, "rb") as fh:

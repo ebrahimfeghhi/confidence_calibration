@@ -1,31 +1,27 @@
 #!/usr/bin/env python
-"""STEP 1 -- generate the untemplated pose pool that every later step selects from.
+"""STEP 1 -- generate the free pose pool, then hand it to folder.py.
 
-The method does not invent poses. It chooses which of these to feed back in as templates, so this is
-the input, and its two numbers set the ceiling on everything downstream:
+Decides WHAT to fold (which complexes, which seeds) and launches the driver. The method does not
+invent poses: it chooses which of these to feed back in as templates later, so this is the input.
 
-    seeds    independent folds per complex. ipTM is largely a property of the SEED -- a seed commits to
-             a docking basin early and stays there -- so seeds are what buys pose diversity.
-    samples  poses per fold, from diffusion sampling. Poses within a seed are far more alike than poses
-             across seeds, which is why 50x5 is not interchangeable with 5x50.
-
-The published pool is 50 seeds x 5 samples = 250 poses per complex; every result assumes it. Both are
-arguments rather than constants so changing them is a visible choice.
-
-    call_folder.py                                    # what would run, nothing launched
-    call_folder.py --run --gpus 1,5,6                 # all complexes of pxm2025, 50 seeds
+    call_folder.py                                   plan only, nothing launched
+    call_folder.py --run --gpus 1,5,6                every complex of pxm2025, 50 seeds
     call_folder.py --dataset foldbench --seeds 20 --complexes 8ror,9k94 --run --gpus 0
 
-WHY IT DOES NOT PICK GPUS. This runs on a shared machine. A script that finds "free" cards will
-eventually take one mid-job from someone else, so devices are always explicit and more than four is
-refused unless asked for. Workers go in tmux, one session per GPU, because a detached background job
-dies with the shell that made it and leaves its claim behind -- which silently shrinks the sweep.
+Functions
+    complexes()         which complexes the dataset has an input json for
+    queue_lines()       one queue line per (complex, seed)
+    existing_seeds()    which of those already have a fold on disk
+    unreadable_warning() whether later steps will be able to FIND what this writes
+    launch()            one tmux session per GPU, all sharing the queue
 
-NOT IDEMPOTENT ON THE FILESYSTEM, only on the csv. folder.py skips a (complex, seed) already present in
-results.csv, but run directories are named with a RANDOM id (folds do not reproduce, so two folds of one
-seed are different data and must not overwrite). Point at a fresh csv over a populated output directory
-and you get a second copy of every seed, silently double-weighting it downstream. The csv is the
-authority on what is done; the directory only says what exists.
+seeds vs samples: ipTM is largely a property of the SEED -- a seed commits to a docking basin early
+and stays there -- so seeds buy pose diversity and samples within a seed do not. 50 seeds x 5 samples
+is not interchangeable with 5 x 50. The published pool is 50 x 5 = 250 poses per complex and every
+result assumes it.
+
+It will not guess GPUs. This is a shared machine, so devices are explicit and more than four is
+refused. Workers go in tmux, not background jobs, which die with the shell and leave claims behind.
 """
 import argparse
 import glob
