@@ -4,8 +4,8 @@
 Only writes the work list. call_folder.py runs it, and runs the templated queues too, so there is one
 launcher for both kinds of run.
 
-    build_free_queue.py --out <dir>                        write <dir>/queue_free.tsv
-    build_free_queue.py --out <dir> --run --gpus 1,5,6     write it, then hand it to call_folder.py
+    build_free_queue.py --out <dir>
+    call_folder.py --queue <dir>/queue_free.tsv --out <dir> --gpus 1,5,6 --run
 
 A QUEUE is a tab-separated work list, one line per fold:
 
@@ -34,14 +34,11 @@ FUNCTIONS
 import argparse
 import glob
 import os
-import subprocess
 import sys
 
 sys.path.insert(0, "/home/ebrahim/tts_abag")
 
 import paths  # noqa: E402
-
-HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def complexes(dataset, want=None):
@@ -91,8 +88,6 @@ def main():
     ap.add_argument("--seeds", type=int, default=50)
     ap.add_argument("--start-seed", type=int, default=300000)
     ap.add_argument("--out", default=None, help=f"default {paths.FREE_DIR}")
-    ap.add_argument("--run", action="store_true", help="hand the queue to call_folder.py")
-    ap.add_argument("--gpus", default=None, help="passed through to call_folder.py")
     ap.add_argument("--force", action="store_true", help="queue folds that already exist on disk")
     A = ap.parse_args()
 
@@ -120,14 +115,8 @@ def main():
               f"({len(hit)} complexes, e.g. {', '.join(hit[:4])}).")
         raise SystemExit("  refusing. --out <new dir> for a fresh pool, or --force to queue anyway.")
 
-    if not A.run:
-        print(f"\n  next: call_folder.py --queue {qpath} --out {out} --gpus <ids>")
-        return 0
-    cmd = [sys.executable, f"{HERE}/call_folder.py", "--queue", qpath, "--out", out,
-           "--dataset", A.dataset]
-    if A.gpus:
-        cmd += ["--gpus", A.gpus, "--run"]
-    return subprocess.run(cmd).returncode
+    print(f"\n  next: call_folder.py --queue {qpath} --out {out} --gpus <ids> --run")
+    return 0
 
 
 if __name__ == "__main__":
