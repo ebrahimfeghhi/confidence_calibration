@@ -80,3 +80,7 @@ confident_decoy_experiments/predictions/
 poses/
 # vendored third-party source
 external/
+
+# the example tree in v2 shows the expected layout; the real data stays ignored
+!diffusion_commit_clean_v2/experimental_data/
+!diffusion_commit_clean_v2/experimental_data/**

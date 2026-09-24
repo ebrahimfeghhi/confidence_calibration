@@ -66,24 +66,35 @@ def queue_lines(pdbs, seeds, start_seed):
             for pdb in pdbs for i in range(seeds)]
 
 
-def existing_folds(out, pdbs, seeds, start_seed):
-    """(complex, seed) pairs this run would produce that ALREADY have a run directory.
+def unreadable_warning(out):
+    """Will the poses this run writes be findable by the rest of the pipeline?
 
-    The skip logic in fold.py is keyed on (interface, seed, TAG) from the csv, so it protects against
-    repeating work only when the tag matches. The existing pool was written under tags free100,
-    freebf16r1, freefp32r1 -- a fresh run tagged `free` matches none of them, would refold every seed,
-    and because run directories carry a random id the new folds would sit BESIDE the old ones rather
-    than replacing them. Two folds of one seed, both valid, both picked up by anything globbing
-    <seed>-*, silently double-weighting that seed in every average. The csv cannot see this; only the
-    filesystem can, so the filesystem is what gets checked.
+    paths.pool_pose() hardcodes the LEGACY run id:
+
+        f"{FREE_DIR}/{pdb}/{seed}-{LEGACY_RUN}/predictions/{pdb}_sample_{sample}.cif"
+
+    while the driver names every new fold <seed>-<random id>. So a fresh pool is written correctly and
+    then never selected from -- not duplicated, not overwritten, simply invisible. This is already true
+    of data on disk: experimental_data/free/8ror holds 100 seeds and pool_pose can address 50.
+
+    Checked and reported rather than fixed here, because making pool_pose glob changes which poses every
+    existing result was computed from, and that is not a change to make as a side effect of step 1.
     """
-    hits = []
-    for pdb in pdbs:
-        for i in range(seeds):
-            seed = start_seed + i
-            if glob.glob(f"{out}/{pdb}/{seed}-*"):
-                hits.append((pdb, seed))
-    return hits
+    return (f"NOTE: poses written here get a random run id, but paths.pool_pose() only resolves "
+            f"'<seed>-{paths.LEGACY_RUN}'. Until pool_pose resolves by glob, poses under {out} will "
+            f"not be selected by later steps.")
+
+
+def existing_seeds(out, pdbs, seeds, start_seed):
+    """(complex, seed) pairs that already have a fold directory under `out`.
+
+    Not a duplication hazard -- one fold per seed is the normal layout and re-running a seed is
+    legitimate, since folds do not reproduce. It is reported so the size of the run is not a surprise:
+    the driver skips a (complex, seed, TAG) already in the csv, and the existing pool was written under
+    tags free100/freebf16r1/freefp32r1, so a run tagged `free` will refold rather than skip.
+    """
+    return [(pdb, start_seed + i) for pdb in pdbs for i in range(seeds)
+            if glob.glob(f"{out}/{pdb}/{start_seed + i}-*")]
 
 
 def launch(gpus, queue, out, dataset, nsample, session_prefix):
@@ -139,16 +150,16 @@ def main():
     print(f"  queue -> {qpath}")
     print(f"  out   -> {out}")
 
-    clash = existing_folds(out, pdbs, A.seeds, A.start_seed)
-    if clash:
-        pdbs_hit = sorted({p for p, _ in clash})
-        print(f"\n  {len(clash)} of {len(lines)} (complex, seed) pairs ALREADY have folds under {out}")
-        print(f"  affecting {len(pdbs_hit)} complexes, e.g. {', '.join(pdbs_hit[:4])}")
-        print("  these would be folded AGAIN into new directories beside the existing ones, because")
-        print("  the run id is random and the csv is keyed on a tag this run does not share.")
+    print(f"\n  {unreadable_warning(out)}")
+    seen = existing_seeds(out, pdbs, A.seeds, A.start_seed)
+    if seen:
+        hit = sorted({p for p, _ in seen})
+        print(f"  {len(seen)} of {len(lines)} (complex, seed) pairs already have a fold under {out} "
+              f"({len(hit)} complexes, e.g. {', '.join(hit[:4])}).")
+        print("  Those will be folded again: the driver skips on (interface, seed, TAG) from the csv, "
+              "and the existing pool carries other tags.")
         if not A.force:
-            raise SystemExit("  refusing. use --out <new dir> for a fresh pool, or --force if you "
-                             "really intend duplicate folds.")
+            raise SystemExit("  refusing. --out <new dir> for a fresh pool, or --force to refold.")
 
     if not A.run:
         print("\n  nothing launched. re-run with --run --gpus <ids>")
