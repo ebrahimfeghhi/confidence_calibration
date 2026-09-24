@@ -96,11 +96,10 @@ DC = os.path.dirname(os.path.realpath(__file__))   # scorer.py must be the copy 
 CLEAN_CODE = "/home/ebrahim/tts_abag/diffusion_commit_clean"   # template builder still lives there
 PY = str(paths.PROTENIX_PYTHON)
 
-# mandatory: without it the model emits NaN coordinates silently. setdefault, so a caller can override.
+# mandatory: without it the model emits NaN coordinates silently
 os.environ.setdefault("LAYERNORM_TYPE", "openfold")
 
-# what makes a self-template carry cross-chain geometry instead of just each chain's fold.
-# Shell-overridable so they can be bisected when a templated fold misbehaves.
+# template flags that carry cross-chain geometry; shell-overridable for bisecting
 TMPL_ENV = {k: os.environ.get(k, v) for k, v in {
     "PROTENIX_MULTICHAIN_MASK": "0", "PROTENIX_TMPL_KEEP_FRAME": "1",
     "PROTENIX_TMPL_NODEDUP": "1", "PROTENIX_MAX_TEMPLATE_CANDIDATES": "20"}.items()}
@@ -211,12 +210,10 @@ def fold(runner, configs, job, seed, name, n_cycle, n_sample, expect_templates, 
     for k, v in env.items():
         os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, str(v))
 
-    # point the dumper at THIS fold's directory; base_dir is captured at construction but is a
-    # plain attribute, so setting it here avoids moving files afterwards
+    # base_dir is captured at construction but is a plain attribute, so set it per fold
     saved_base = getattr(runner.dumper, "base_dir", None)
     os.makedirs(dump_base, exist_ok=True)
-    # Protenix writes errors to <dump>/ERR/ without creating it, turning a recoverable OOM into
-    # FileNotFoundError
+    # Protenix writes to <dump>/ERR/ without creating it
     os.makedirs(f"{dump_base}/ERR", exist_ok=True)
     runner.dumper.base_dir = dump_base
 
@@ -345,8 +342,7 @@ def report(csv_path):
     for (iface, seed, arm), v in sorted(arms.items()):
         ip = [x for x, _ in v]
         dq = [d for _, d in v]
-        # SELECTED = the pose this arm's own confidence picks, which is the number that matters; the
-        # oracle max is reported beside it only to show the headroom.
+        # selected = the pose this arm's own confidence picks; max(dq) is the oracle, for headroom
         rows.append([iface, seed, arm, len(v), st.mean(ip), max(v)[1], max(dq)])
     print(table(["interface", "seed", "arm", "poses", "arm ipTM", "selected DockQ", "best DockQ"],
                 rows, align="l l l r r r r",
@@ -374,8 +370,7 @@ def verify(csv_path, out):
     for d in glob.glob(f"{out}/*/*-*"):
         if os.path.isdir(f"{d}/predictions"):
             pdb = os.path.basename(os.path.dirname(d))
-            # split on the FIRST hyphen: a run id may contain hyphens itself
-            # ("300000-legacy-no-provenance"), and rsplit gave the seed as "300000-legacy-no".
+            # split on the FIRST hyphen: a run id may contain hyphens ("legacy-no-provenance")
             on_disk[pdb].add(os.path.basename(d).split("-", 1)[0])
     missing = sorted((p, s) for p in scored for s in scored[p] - on_disk.get(p, set()))
     extra = sorted((p, s) for p in on_disk for s in on_disk[p] - scored.get(p, set()))
@@ -572,9 +567,8 @@ def run_unit(ctx, unit):
         return "skipped"
     donor, chains = provenance(A, target, tag, poses)
     chain_set = frozenset(c for grp in chains.split() for c in grp.split("+") if c)
-    # identity is (complex, seed, template), not the tag. Off unless asked for: a run whose csv
-    # predates full-chain recording would refold everything in pair form. --force refolds regardless,
-    # into its own directory, since run ids are random and folds do not reproduce.
+    # identity is (complex, seed, template), not the tag; opt-in because a csv that records the
+    # required pair instead of the full chain set will not match and would refold
     if A.skip_by_template and not A.force \
             and unit_already_folded(ctx.units_done, pdb, seed, donor, chain_set):
         return "skipped"
@@ -621,7 +615,7 @@ def run_unit(ctx, unit):
     tmpl_md5 = "+".join(runmeta_md5(p) for p in poses) if poses else ""
     runmeta.write_run_json(
         rdir, kind=kind, pdb=pdb,
-        # motivating_interface is WHY this arm exists; interfaces_scored is what the fold produced.
+        # motivating_interface = which interface chose this pose; interfaces_scored = what was scored
         motivating_interface=None if target == "*" else target,
         seed=seed, arm=tag, precision=A.dtype, n_cycle=A.ncycle, n_sample=A.nsample,
         fold_seconds=round(dt, 1), interfaces_scored=want,
@@ -635,7 +629,7 @@ def run_unit(ctx, unit):
     got, err = score_fold(ctx, pdb, target, tag, seed, rdir, name, want, poses)
     result = "ran"
     if got or all((i, str(seed), tag) in ctx.rows_done for i in want):
-        # pdb AND target: target is "*" for a pool fold, so target alone leaves the line anonymous
+        # print pdb too: target is "*" for a free fold
         print(f"  {kind} {pdb} {target} {tag} seed {seed}: {got}/{len(want)} interfaces "
               f"in {dt:.0f}s", flush=True)
     else:
@@ -671,7 +665,7 @@ def main():
         os.makedirs(A.claim_dir, exist_ok=True)
         reconcile_claims(A.claim_dir, A.csv, ifaces)
 
-    # runner.error_dir is derived from configs.dump_dir when the runner is BUILT, not per fold
+    # runner.error_dir is derived from configs.dump_dir at build time, not per fold
     os.makedirs(f"{A.out}/ERR", exist_ok=True)
     t_load = time.time()
     runner, configs = build_runner(A.ckpt_dir, A.model_name,

@@ -49,8 +49,7 @@ ap = argparse.ArgumentParser()
 for a in ("--dir", "--iface", "--seed", "--arm", "--donor", "--ref"):
     ap.add_argument(a, required=True)
 ap.add_argument("--scorer", choices=("ost", "pxm"), default="pxm")
-# which chains of the donor were pinned as the template. A fold is identified by
-# (pose, seed, pinned chains): the same pose pinned to a different antigen copy is a different fold.
+# which chains of the donor were pinned; part of a fold's identity, see the docstring
 ap.add_argument("--chains", default="")
 A = ap.parse_args()
 
@@ -66,9 +65,8 @@ jdir = os.path.join(A.dir, f"{A.scorer}_json")
 os.makedirs(jdir, exist_ok=True)
 
 # in:  every *_sample_*.cif under --dir, with its confidence json
-# out: one csv line per pose -- iface,seed,arm,donor,chains,sample,dockq,iptm
-# Both scorers return {"<refC1>,<refC2>": {"dockq", "model_chains", "pair_iptm"}} and translate
-# reference letters to model letters internally, so the csv is identical either way.
+# out: one csv line per pose
+# both scorers key results by REFERENCE chain names and translate to model names internally
 for cif in sorted(glob.glob(f"{A.dir}/**/*_sample_*.cif", recursive=True)):
     k = cif.split("sample_")[-1].split(".")[0]
     conf = glob.glob(f"{A.dir}/**/*summary_confidence_sample_{k}.json", recursive=True)

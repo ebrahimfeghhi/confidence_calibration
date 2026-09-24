@@ -1,25 +1,12 @@
 #!/usr/bin/env bash
-# Babysit a sweep: report progress, restart dead workers, run the scorers. One cycle per --interval.
+# Babysit a sweep: report progress, restart dead workers, run the scorers.
 #
 #   watch.sh --exp <dir> --gpus 1,5,6 [--templates <dir>] [--interval 1800] <reporter.py> [...]
 #
-# A watcher that only prints is useless unattended -- by morning it has logged the same failure sixteen
-# times and nothing has run. So it restarts what it can and prefixes ESCALATE on what it cannot, so one
-# grep finds it. Restarting also recovers the dead worker's claimed units, because folder.py releases
-# claims that have no results when it starts.
+# Each cycle: restart any worker whose tmux session is gone, print workers/claims/rows, grep worker
+# logs for tracebacks and OOM, print GPU state, run each reporter into <exp>/table.txt.
 #
-# Worker launching is DELEGATED to call_folder.py. Two scripts each building their own `tmux
-# new-session` invented two naming schemes for the same session -- the index (w0/w1/w2) here, the GPU
-# id (w1/w5/w6) there -- and the liveness check knew one of them, so launching the other way would
-# declare live workers dead and start a second set on cards that already had one. One launcher, one
-# convention: sessions are <experiment>w<gpu>.
-#
-# EACH CYCLE
-#   1. count claims belonging to THIS queue, and restart any worker whose session is gone
-#   2. print workers / claims / rows
-#   3. grep worker logs for tracebacks and OOM -> ESCALATE
-#   4. print GPU memory and utilisation for the cards in use
-#   5. run each reporter, writing the combined output to <exp>/table.txt
+# Worker launching is delegated to call_folder.py so session naming has one owner: <experiment>w<gpu>.
 set -u
 
 EXP=""; GPUS=""; TMPL=""; INT=1800; REPORTERS=()
@@ -43,9 +30,8 @@ IFS=',' read -r -a GPU_LIST <<< "$GPUS"
 while true; do
   echo "================ $(date '+%F %H:%M')  [$NAME] ================"
 
-  # Claims belonging to THIS queue only. A run that reuses folds from an earlier sweep pre-creates a
-  # claim per reused donor, so a raw `ls claims | wc -l` exceeds the queue length, the restart branch
-  # below becomes unreachable, and a dead worker idles its GPU all night.
+  # claims matching THIS queue only: a reused-fold run pre-creates claims, so a raw count of the
+  # directory exceeds the queue length and the restart branch below never fires
   total=$(wc -l < "$EXP/queue.tsv")
   qtags=$(mktemp); ctags=$(mktemp)
   awk -F'\t' 'NF>=6{print $2"_"$3"_"$4"_"$5}' "$EXP/queue.tsv" | sort -u > "$qtags"
@@ -67,8 +53,7 @@ while true; do
   echo "workers=$(pgrep -u "$USER" -f "$NAME/queue.tsv" | wc -l)  claimed=$claimed/$total (+$carried carried)  rows=$(( $(wc -l < "$EXP/results.csv" 2>/dev/null || echo 1) - 1 ))"
 
   for g in "${GPU_LIST[@]}"; do
-    # grep -c prints 0 AND exits 1 when nothing matches, so `|| echo 0` would yield "0\n0" and break
-    # the numeric test below; `; true` keeps the count and swallows the exit status
+    # grep -c exits 1 when nothing matches; `; true` keeps the count without failing the assignment
     n=$(grep -cE "Traceback|OutOfMemory|CUDA out of memory" "$EXP/w${g}.log" 2>/dev/null; true)
     [ "${n:-0}" -gt 0 ] && echo "ESCALATE: GPU $g worker has $n error lines (grep -nE 'Traceback|out of memory' $EXP/w${g}.log)"
   done

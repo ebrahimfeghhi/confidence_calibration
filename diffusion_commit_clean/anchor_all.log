@@ -1,0 +1,27 @@
+  interfaces with anchor-frame roles: 156  ->  anchor_all/chain_roles_anchor.csv
+  poses to map: 11640  jobs: 16
+  500/11640  0.021s/pose  eta 4m  failed 0
+  1000/11640  0.035s/pose  eta 6m  failed 0
+  1500/11640  0.030s/pose  eta 5m  failed 0
+  2000/11640  0.026s/pose  eta 4m  failed 0
+  2500/11640  0.023s/pose  eta 4m  failed 0
+  3000/11640  0.022s/pose  eta 3m  failed 0
+  3500/11640  0.030s/pose  eta 4m  failed 0
+  4000/11640  0.045s/pose  eta 6m  failed 0
+  4500/11640  0.064s/pose  eta 8m  failed 0
+  5000/11640  0.078s/pose  eta 9m  failed 0
+  5500/11640  0.074s/pose  eta 8m  failed 0
+  6000/11640  0.073s/pose  eta 7m  failed 0
+  6500/11640  0.069s/pose  eta 6m  failed 0
+  7000/11640  0.065s/pose  eta 5m  failed 0
+  7500/11640  0.065s/pose  eta 4m  failed 0
+  8000/11640  0.062s/pose  eta 4m  failed 0
+  8500/11640  0.061s/pose  eta 3m  failed 0
+  9000/11640  0.058s/pose  eta 3m  failed 0
+  9500/11640  0.056s/pose  eta 2m  failed 0
+  10000/11640  0.054s/pose  eta 1m  failed 0
+  10500/11640  0.053s/pose  eta 1m  failed 0
+  11000/11640  0.053s/pose  eta 1m  failed 0
+  11500/11640  0.052s/pose  eta 0m  failed 0
+  11640/11640  0.052s/pose  eta 0m  failed 0
+  wrote anchor_all/chain_maps_anchor.csv  (11640 poses, 0 failed, 608s)

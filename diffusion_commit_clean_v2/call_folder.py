@@ -53,11 +53,7 @@ MAX_GPUS = 4
 
 
 def check(queue, out, templates):
-    """in: queue path, output dir, namespace or None.  out: (n folds, n templated); raises on refusal.
-
-    A templated sweep must not write into the free pool: its poses would land in the pool that later
-    steps select FROM, making them candidates for templating themselves.
-    """
+    """in: queue path, output dir, namespace or None.  out: (n folds, n templated); raises on refusal."""
     if not os.path.exists(queue):
         raise SystemExit(f"no queue at {queue}")
     kinds = [l.split("\t")[0] for l in open(queue) if l.strip()]
@@ -69,17 +65,17 @@ def check(queue, out, templates):
     return len(kinds), n_tmpl
 
 
-def launch(gpus, queue, out, templates, dataset, nsample, prefix):
+def launch(gpus, queue, out, templates, dataset, nsample, prefix, csv_path, claim_dir, log_dir):
     """in: devices and the run's paths.  out: the tmux session names started, one per GPU."""
     names = []
     for g in gpus:
         cmd = (f"cd {HERE} && CUDA_VISIBLE_DEVICES={g} LAYERNORM_TYPE=openfold "
                f"{paths.PROTENIX_PYTHON} folder.py --queue {shlex.quote(queue)} "
-               f"--out {shlex.quote(out)} --csv {shlex.quote(out)}/results.csv "
-               f"--claim-dir {shlex.quote(out)}/claims --dataset {dataset} "
+               f"--out {shlex.quote(out)} --csv {shlex.quote(csv_path)} "
+               f"--claim-dir {shlex.quote(claim_dir)} --dataset {dataset} "
                f"--nsample {nsample} "
                + (f"--templates {shlex.quote(templates)} " if templates else "")
-               + f"--drop-cifs 2>&1 | tee -a {shlex.quote(out)}/w{g}.log")
+               + f"--drop-cifs 2>&1 | tee -a {shlex.quote(log_dir)}/w{g}.log")
         s = f"{prefix}{g}"
         subprocess.run(["tmux", "new-session", "-d", "-s", s, cmd], check=True)
         names.append(s)
@@ -91,6 +87,9 @@ def main():
     ap.add_argument("--queue", required=True)
     ap.add_argument("--out", default=None, help=f"default {paths.FREE_DIR}")
     ap.add_argument("--templates", default=None, help="namespace, required for templated queues")
+    ap.add_argument("--csv", default=None, help="default <out>/results.csv")
+    ap.add_argument("--claim-dir", default=None, help="default <out>/claims")
+    ap.add_argument("--log-dir", default=None, help="default <out>; worker logs are w<gpu>.log")
     ap.add_argument("--dataset", choices=sorted(paths.DATASET_NAMES), default="pxm2025")
     ap.add_argument("--nsample", type=int, default=5)
     ap.add_argument("--gpus", default=None, help="explicit device ids, e.g. 1,5,6")
@@ -102,6 +101,7 @@ def main():
     out = A.out or str(paths.FREE_DIR)
     n, n_tmpl = check(A.queue, out, A.templates)
     print(f"  queue {A.queue}\n  folds {n} ({n_tmpl} templated)\n  out   {out}")
+    print(f"  csv   {A.csv or out + '/results.csv'}\n  claims {A.claim_dir or out + '/claims'}")
 
     if not A.run:
         print("\n  nothing launched. re-run with --run --gpus <ids>")
@@ -111,8 +111,12 @@ def main():
     gpus = [g.strip() for g in A.gpus.split(",") if g.strip()]
     if len(gpus) > MAX_GPUS and not A.allow_many:
         raise SystemExit(f"{len(gpus)} GPUs requested; cap is {MAX_GPUS}. Pass --allow-many.")
+    csv_path = A.csv or f"{out}/results.csv"
+    claim_dir = A.claim_dir or f"{out}/claims"
+    log_dir = A.log_dir or out
+    prefix = f"{os.path.basename(os.path.normpath(log_dir))}w"
     names = launch(gpus, A.queue, out, A.templates, A.dataset, A.nsample,
-                   f"{os.path.basename(out)}w")
+                   prefix, csv_path, claim_dir, log_dir)
     print(f"\n  launched {len(names)} workers: {', '.join(names)}")
     print(f"  watch: tmux attach -t {names[0]}   |   tail -f {out}/w{gpus[0]}.log")
     return 0

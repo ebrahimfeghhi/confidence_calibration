@@ -1,0 +1,4 @@
+relabel done:   wrote anchor_all/chain_maps_anchor.csv  (11640 poses, 0 failed, 608s)
+merged maps rows: 20075  (expect 20075)
+interfaces in scope: 242
+ALL SHARDS DONE: 242 matrices
