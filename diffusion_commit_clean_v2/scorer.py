@@ -1,18 +1,12 @@
 #!/usr/bin/env python
-"""Score every pose of one arm and print one CSV row each. Called by fold_and_commit.sh.
+"""Score one fold's poses against the reference and print CSV rows on stdout.
 
-SCORING GOES THROUGH eval/ -- NOT THROUGH A LOCAL COPY. This file used to hand-parse PXMeter json,
-which is how 14 near-copies of the same scoring code came to exist and drift apart. `--scorer ost|pxm`
-picks one of the two canonical scorers; both return the identical shape
+Run as a subprocess by folder.py, once per interface. Writes nothing itself -- the caller captures
+stdout and appends it to results.csv. A separate process because DockQ scoring needs a different venv
+than folding, and because a pose the scorer chokes on then kills a subprocess rather than the worker
+holding the model.
 
-    {"<refC1>,<refC2>": {"dockq": float, "model_chains": (m1, m2), "pair_iptm": float}}
-
-so the CSV is the same either way and the two datasets stay comparable.
-
-CHAIN LETTERS. The interface is keyed on REFERENCE chain names; `pair_iptm` is indexed by MODEL asym
-order and the scorers do that translation internally from each pose's own mapping. Reference letters
-are NOT model letters -- confusing the two once put 45% of this project's interface measurements on the
-wrong chains.
+    scorer.py --dir <fold dir> --iface 8w5d_AB --seed 430000 --arm A06 --donor <pose> --ref <cif>
 """
 import argparse
 import glob
@@ -27,18 +21,15 @@ ap = argparse.ArgumentParser()
 for a in ("--dir", "--iface", "--seed", "--arm", "--donor", "--ref"):
     ap.add_argument(a, required=True)
 ap.add_argument("--scorer", choices=("ost", "pxm"), default="pxm")
-# WHY --chains. A templated fold is identified by the donor pose, the seed, AND which chains of that
-# donor were pinned as the template: two labellings of the same pose can pin different antigen copies,
-# which is a different template and a different fold. Recording only the pose would make two distinct
-# folds look interchangeable and let a reuse rule silently substitute one for the other. Chains are
-# joined with "+" because this is a csv.
+# which chains of the donor were pinned as the template. A fold is identified by
+# (pose, seed, pinned chains): the same pose pinned to a different antigen copy is a different fold.
 ap.add_argument("--chains", default="")
 A = ap.parse_args()
 
+# in:  --iface "<pdb>_<C1><C2>", REFERENCE chain letters (not model letters)
+# out: the two chain names to score
 chains = A.iface.split("_")[1]
 if len(chains) != 2:
-    # Raise rather than guess: a silently mis-split interface would score the wrong pair and still
-    # produce a full, plausible-looking CSV.
     raise SystemExit(f"--iface {A.iface}: expected <pdb>_<C1><C2> with single-letter chains")
 c1, c2 = chains[0], chains[1]
 
@@ -46,9 +37,10 @@ mod = ost_dockq if A.scorer == "ost" else pxm_dockq
 jdir = os.path.join(A.dir, f"{A.scorer}_json")
 os.makedirs(jdir, exist_ok=True)
 
-# Search the whole arm dir, not just <dir>/out: the shell driver nests CIFs under out/, the
-# single-process driver writes them one level higher. The scorer json dir holds .json only, so
-# widening this cannot pick up anything that is not a predicted structure.
+# in:  every *_sample_*.cif under --dir, with its confidence json
+# out: one csv line per pose -- iface,seed,arm,donor,chains,sample,dockq,iptm
+# Both scorers return {"<refC1>,<refC2>": {"dockq", "model_chains", "pair_iptm"}} and translate
+# reference letters to model letters internally, so the csv is identical either way.
 for cif in sorted(glob.glob(f"{A.dir}/**/*_sample_*.cif", recursive=True)):
     k = cif.split("sample_")[-1].split(".")[0]
     conf = glob.glob(f"{A.dir}/**/*summary_confidence_sample_{k}.json", recursive=True)
@@ -56,7 +48,7 @@ for cif in sorted(glob.glob(f"{A.dir}/**/*_sample_*.cif", recursive=True)):
                     conf_json=conf[0] if conf else None)
     v = res.get(f"{c1},{c2}") or res.get(f"{c2},{c1}")
     if not v or v.get("dockq") is None:
-        continue          # no such interface in this pose -- a real condition, not an error
+        continue          # this pose has no such interface -- a real condition, not an error
     ip = v.get("pair_iptm")
     print(f"{A.iface},{A.seed},{A.arm},{A.donor},{A.chains},{k},{float(v['dockq']):.4f},"
           f"{'' if ip is None else f'{float(ip):.4f}'}")
