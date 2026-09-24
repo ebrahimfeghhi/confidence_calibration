@@ -12,16 +12,16 @@ the input, and its two numbers set the ceiling on everything downstream:
 The published pool is 50 seeds x 5 samples = 250 poses per complex; every result assumes it. Both are
 arguments rather than constants so changing them is a visible choice.
 
-    free_poses.py                                    # what would run, nothing launched
-    free_poses.py --run --gpus 1,5,6                 # all complexes of pxm2025, 50 seeds
-    free_poses.py --dataset foldbench --seeds 20 --complexes 8ror,9k94 --run --gpus 0
+    call_folder.py                                    # what would run, nothing launched
+    call_folder.py --run --gpus 1,5,6                 # all complexes of pxm2025, 50 seeds
+    call_folder.py --dataset foldbench --seeds 20 --complexes 8ror,9k94 --run --gpus 0
 
 WHY IT DOES NOT PICK GPUS. This runs on a shared machine. A script that finds "free" cards will
 eventually take one mid-job from someone else, so devices are always explicit and more than four is
 refused unless asked for. Workers go in tmux, one session per GPU, because a detached background job
 dies with the shell that made it and leaves its claim behind -- which silently shrinks the sweep.
 
-NOT IDEMPOTENT ON THE FILESYSTEM, only on the csv. fold.py skips a (complex, seed) already present in
+NOT IDEMPOTENT ON THE FILESYSTEM, only on the csv. folder.py skips a (complex, seed) already present in
 results.csv, but run directories are named with a RANDOM id (folds do not reproduce, so two folds of one
 seed are different data and must not overwrite). Point at a fresh csv over a populated output directory
 and you get a second copy of every seed, silently double-weighting it downstream. The csv is the
@@ -38,7 +38,10 @@ sys.path.insert(0, "/home/ebrahim/tts_abag")
 
 import paths  # noqa: E402
 
-FOLD = f"{paths.CODE_DIR}/fold.py"
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+# the driver lives beside this script now, not in paths.CODE_DIR
+FOLD = "folder.py"
 MAX_GPUS = 4
 
 
@@ -60,7 +63,7 @@ def queue_lines(pdbs, seeds, start_seed):
 
     `target` is "*" -- a free fold is not aimed at an interface, and one fold produces the whole
     complex, so it is scored against every interface the complex has. The tag is constant because
-    fold.py identifies a unit as (seed, tag); a per-seed tag would duplicate the seed column.
+    folder.py identifies a unit as (seed, tag); a per-seed tag would duplicate the seed column.
     """
     return [f"free\t{pdb}\t*\tfree\t{start_seed + i}"
             for pdb in pdbs for i in range(seeds)]
@@ -101,8 +104,8 @@ def launch(gpus, queue, out, dataset, nsample, session_prefix):
     """One tmux session per GPU, all on the same queue; claims stop them colliding."""
     cmds = []
     for g in gpus:
-        cmd = (f"cd {paths.CODE_DIR} && CUDA_VISIBLE_DEVICES={g} LAYERNORM_TYPE=openfold "
-               f"{paths.PROTENIX_PYTHON} fold.py --queue {shlex.quote(queue)} "
+        cmd = (f"cd {HERE} && CUDA_VISIBLE_DEVICES={g} LAYERNORM_TYPE=openfold "
+               f"{paths.PROTENIX_PYTHON} {FOLD} --queue {shlex.quote(queue)} "
                f"--out {shlex.quote(out)} --csv {shlex.quote(out)}/results.csv "
                f"--claim-dir {shlex.quote(out)}/claims --dataset {dataset} "
                f"--nsample {nsample} --drop-cifs 2>&1 | tee -a {shlex.quote(out)}/w{g}.log")

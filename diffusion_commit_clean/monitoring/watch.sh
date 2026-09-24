@@ -22,7 +22,7 @@ while [ $# -gt 0 ]; do
     *) REPORTERS+=("$1"); shift ;;
   esac
 done
-CODE=/home/ebrahim/tts_abag/diffusion_commit
+CODE=/home/ebrahim/tts_abag/diffusion_commit_clean_v2   # the driver moved here
 # reporters live beside this script; hardcoding the parent dir broke when it moved
 HERE=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PY=/home/ebrahim/Protenix/.venv/bin/python
@@ -46,7 +46,7 @@ while true; do
       if ! tmux has-session -t "${NAME}w$i" 2>/dev/null; then
         echo "REMEDIATE: worker $i (GPU ${GPUS[$i]}) gone -- restarting"
         tmux new-session -d -s "${NAME}w$i" \
-          "cd $CODE && CUDA_VISIBLE_DEVICES=${GPUS[$i]} LAYERNORM_TYPE=openfold $PY fold.py \
+          "cd $CODE && CUDA_VISIBLE_DEVICES=${GPUS[$i]} LAYERNORM_TYPE=openfold $PY folder.py \
            --queue $T/queue.tsv --out $T/out --csv $T/results.csv --templates $T/ns \
            --claim-dir $T/claims --drop-cifs 2>&1 | tee -a $T/w$i.log"
       fi
