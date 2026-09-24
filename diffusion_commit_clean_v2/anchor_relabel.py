@@ -1,11 +1,29 @@
 #!/usr/bin/env python
 """Name every pose's chains after one chosen pose, so "interface A-B" means the same thing in all of them.
 
-Protenix names duplicate chains arbitrarily, so pose 1's chain B can be pose 2's chain C. Later steps
-sort poses per interface, which needs one consistent naming across the pool. This picks one pose as the
-reference and expresses the rest in its terms -- no native structure involved.
-
     anchor_relabel.py --out-dir DIR [--pdbs 8ror,9puo] [--jobs 8]
+
+WHEN THIS DOES ANYTHING. Only when a complex contains more than one copy of an entity. With one
+antibody and one antigen there is a single possible chain assignment -- the anchor's A can only match
+the pose's A, since that is the only chain with the antibody's sequence -- so the mapping is the
+identity and this step is a no-op. Of the 131 benchmark complexes, 52 have no duplication at all, 44
+duplicate the antibody, and 35 duplicate both; the largest, 9jo7, has 5 antibody and 5 antigen chains.
+Measured over the 73 multi-interface complexes: 24 never produce a non-identity mapping, 49 do, and 42%
+of all poses get at least one chain renamed.
+
+WHY THE LABEL MATTERS EVEN THOUGH THE COPIES ARE IDENTICAL. The copies have the same sequence but not
+the same position, and in any given pose the antibody touches one of them and not the other:
+
+    pose 1: antibody A binds the copy labelled B  ->  (A,B) is a real interface, (A,C) is nothing
+    pose 2: antibody A binds the copy labelled C  ->  (A,C) is a real interface, (A,B) is nothing
+
+Ranking poses by "ipTM at A-B" then compares pose 1's docking site against a pair of chains in pose 2
+that never touch. The diversity filter has the same problem: pose-pose DockQ at A-B scores pose 1's
+interface against pose 2's non-interface and returns near zero, so two poses that dock identically look
+completely different -- purely because the copies were named in a different order.
+
+Protenix emits chains in a fixed order from the input, but which physical copy lands in which slot
+depends on the fold, so two runs of one complex can put the same copy at B or at C.
 
 ONE ANCHOR PER COMPLEX, not per interface. The mapping pairs each anchor chain with exactly one pose
 chain and no two share a partner, so the anchor's (A,B) and (A,C) necessarily land on different chain
