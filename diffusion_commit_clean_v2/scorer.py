@@ -6,7 +6,7 @@ stdout and appends it to results.csv. Separate process because DockQ scoring nee
 than folding, and because a pose the scorer chokes on then kills a subprocess rather than the worker
 holding the model.
 
-    scorer.py --dir <fold dir> --iface 8w5d_AB --seed 430000 --arm A06 \
+    scorer.py --dir <fold dir> --iface 8w5d_AB --seed 430000 --arm A07 \
               --donor <pose.cif> --chains A+B+D --ref <reference.cif>
 
 ARGUMENTS
@@ -15,8 +15,8 @@ ARGUMENTS
   --iface   which interface to score, as <pdb>_<C1><C2>, in REFERENCE chain letters. Reference
             letters are not model letters -- the scorers translate internally, per pose.
   --seed    the fold's seed, copied straight through to the csv.
-  --arm     the queue tag for this fold, e.g. "A06" = the 7th donor selected for this complex
-            ("A" names the sweep, 06 is the donor's index in that complex's list; earlier sweeps
+  --arm     the queue tag for this fold, e.g. "A07" = the 8th donor selected for this complex
+            ("A" names the sweep, 07 is the donor's index in that complex's list; earlier sweeps
             used C## and K##). It is only a LABEL: the driver skips a unit whose
             (iface, seed, arm) is already in the csv, so the tag must be unique per complex, but
             it says nothing about what was templated.

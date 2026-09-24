@@ -36,6 +36,20 @@ OUTPUT
   The csv is also the TO-DO LIST: an (iface, seed, arm) already present is skipped, which is how
   several workers share one queue. Nothing here checks the filesystem, hence --verify.
 
+FUNCTIONS
+
+    parse_seeds()       "300050-300099" -> a list of seeds
+    read_queue()        the queue file -> one (kind, pdb, target, tag, seed, poses) unit per fold
+    build_runner()      load the checkpoint once; every unit reuses the returned runner
+    named_job()         copy a unit's job json under a unique name, which is what fixes its output dir
+    fold()              run one fold; assert it produced poses and the expected template count
+    reconcile_claims()  at startup, free claims whose unit was never scored (a killed worker's work)
+    append_index()      one line per fold in index.tsv, so runs are greppable
+    runmeta_md5()       checksum a pose, so run.json pins the exact file templated on
+    report()            print what has been scored, per (interface, seed, arm)
+    verify()            cross-check the csv against the poses on disk
+    main()              claim a unit, fold it, score every interface of its complex, append rows
+
 THREE THINGS THAT WILL BITE YOU
 
   LAYERNORM_TYPE=openfold is mandatory. Without it the model emits NaN coordinates silently -- no
@@ -69,45 +83,21 @@ sys.path.insert(0, "/home/ebrahim/tts_abag")
 import paths     # noqa: E402  every location comes from here, never a literal
 import runmeta   # noqa: E402
 
-# THIS FILE'S OWN DIRECTORY, not paths.CODE_DIR. scorer.py is invoked by path and must be the copy that
-# lives beside this driver; resolving it through a global constant is how a moved driver silently keeps
-# calling the scorer it used to sit next to.
-DC = os.path.dirname(os.path.realpath(__file__))   # realpath, so a symlinked entry point still finds scorer.py
-# the template builder moved to diffusion_commit_clean; all experiment code lives there now
-CLEAN_CODE = "/home/ebrahim/tts_abag/diffusion_commit_clean"
+DC = os.path.dirname(os.path.realpath(__file__))   # scorer.py must be the copy beside this file
+CLEAN_CODE = "/home/ebrahim/tts_abag/diffusion_commit_clean"   # template builder still lives there
 PY = str(paths.PROTENIX_PYTHON)
 
-# Inputs, ground truth and scorer move together -- a foldbench complex scored with the pxm scorer
-# silently produces nothing -- so they come as one triple from paths.dataset(), not assembled here.
-
-# Cross-chain template geometry is the entire point of self-templating: without these the template
-# carries each chain's fold but nothing about how the chains sit relative to each other.
-# The four knobs that make a self-template carry real docking geometry. Overridable from the shell
-# ONLY so the settings can be bisected when a templated fold misbehaves -- every templated fold in
-# this project produced NaN coordinates from verifiably valid template features, and narrowing that
-# to a single knob is impossible if the driver silently overwrites whatever the caller set.
-# Defaults are unchanged; an unset variable behaves exactly as before.
-# THE KERNEL SELECTION IS NOT OPTIONAL AND MUST NOT COME FROM THE CALLER'S SHELL. Without
-# LAYERNORM_TYPE=openfold this model emits NaN coordinates -- silently. No error, no warning, five
-# plausible-looking cif files per fold, and the failure only surfaces downstream when the scorer dies
-# on "SVD did not converge". The sweep's tmux sessions happened to set it; a fresh shell does not, and
-# the resulting NaNs cost eight diagnostic folds spent bisecting template flags for a failure that had
-# nothing to do with templates. setdefault, not assignment, so an explicit override is still possible.
+# mandatory: without it the model emits NaN coordinates silently. setdefault, so a caller can override.
 os.environ.setdefault("LAYERNORM_TYPE", "openfold")
 
+# what makes a self-template carry cross-chain geometry instead of just each chain's fold.
+# Shell-overridable so they can be bisected when a templated fold misbehaves.
 TMPL_ENV = {k: os.environ.get(k, v) for k, v in {
     "PROTENIX_MULTICHAIN_MASK": "0", "PROTENIX_TMPL_KEEP_FRAME": "1",
     "PROTENIX_TMPL_NODEDUP": "1", "PROTENIX_MAX_TEMPLATE_CANDIDATES": "20"}.items()}
 
-# TWO KINDS. `tmpl` means "template on the poses listed on this line" -- one fold, however many poses
-# are given. It used to be called all5, from when every design used five, which was actively
-# misleading once the k50 design listed ONE pose per line and the kind still read all5. `all5` stays
-# accepted as an alias so the queue files already on disk keep working.
-#
-# `perpose` is gone. It expanded one line into N single-pose folds, which every current design writes
-# out explicitly instead; no live queue used it.
 KINDS = ("free", "tmpl")
-ALIASES = {"all5": "tmpl"}
+ALIASES = {"all5": "tmpl"}          # old queue files spell tmpl as all5
 _TEMPLATE_COUNTS = []
 
 
@@ -212,14 +202,12 @@ def fold(runner, configs, job, seed, name, n_cycle, n_sample, expect_templates, 
     for k, v in env.items():
         os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, str(v))
 
-    # Point the dumper at THIS fold's directory. runner/dumper.py builds the path as
-    # <base_dir>/<dataset>/<job name>/seed_<seed>/predictions and captures base_dir when the runner
-    # is constructed -- but it is a plain attribute, so setting it here gives the run-scoped layout
-    # natively instead of moving files afterwards.
+    # point the dumper at THIS fold's directory; base_dir is captured at construction but is a
+    # plain attribute, so setting it here avoids moving files afterwards
     saved_base = getattr(runner.dumper, "base_dir", None)
     os.makedirs(dump_base, exist_ok=True)
-    # Protenix writes per-sample data/OOM errors to <dump>/ERR/<name>.txt WITHOUT creating the
-    # directory, which turns a recoverable OOM into FileNotFoundError and killed workers three times.
+    # Protenix writes errors to <dump>/ERR/ without creating it, turning a recoverable OOM into
+    # FileNotFoundError
     os.makedirs(f"{dump_base}/ERR", exist_ok=True)
     runner.dumper.base_dir = dump_base
 
@@ -395,10 +383,8 @@ def verify(csv_path, out):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--queue")
-    # DEFAULTS FOR THE FREE POOL, the one run that has a canonical home. paths.FREE_DIR was a
-    # convention that only paths.py knew about, so every invocation retyped it and a typo made a second
-    # pool in a stray directory. Templated runs must still say where they go -- see the guard below,
-    # which refuses a tmpl queue that would land in the shared free pool.
+    # default to the free pool, the one run with a canonical home. A templated queue heading there is
+    # refused below.
     ap.add_argument("--out", default=str(paths.FREE_DIR))
     ap.add_argument("--csv", default=f"{paths.FREE_DIR}/results.csv")
     ap.add_argument("--templates", help="namespace built by write_templates.py; required for "
@@ -447,10 +433,8 @@ def main():
             if not os.path.exists(p):
                 raise SystemExit(f"namespace incomplete: {p} missing -- run write_templates.py")
 
-    # interfaces per pdb, for target=*
-    # A templated sweep writing into the free pool would mix self-templated poses into the pool that
-    # every later step selects FROM -- the poses would then be candidates for templating themselves.
-    # Cheap to prevent, expensive to notice.
+    # a templated sweep must not write into the free pool: its poses would become candidates for
+    # templating themselves
     if any(k != "free" for k, *_ in units) and A.out == str(paths.FREE_DIR):
         raise SystemExit("refusing to write a templated queue into the free pool; pass --out")
 
@@ -473,11 +457,8 @@ def main():
     t_load = time.time()
     runner, configs = build_runner(A.ckpt_dir, A.model_name,
                                    f"{JOBS}/{units[0][1]}-final-updated.json", A.out, A.dtype)
-    # WHERE TEMPLATES COME FROM IS PER UNIT, NOT PER RUN. Setting the namespace once at startup
-    # pointed free units at our private 65-file directory too, so they found ZERO real PDB templates
-    # instead of the ~4 they should -- silently stripping templates from the very arm the templated
-    # ones are compared against. Caught because run.json records templates_found. The stock paths are
-    # captured here and restored for every free unit.
+    # the template source is PER UNIT, not per run: a free unit must see Protenix's own PDB templates,
+    # not our namespace, or the baseline it provides is silently stripped of templates
     STOCK_MM = configs.data.template.prot_template_mmcif_dir
     STOCK_RD = configs.data.template.release_dates_path
 
@@ -566,14 +547,8 @@ def main():
                      bool(poses))
 
         got = 0
-        # Score only what is MISSING. A retried unit (stale claim released) would otherwise append a
-        # second row set for interfaces already scored, and duplicate rows quietly double-weight a
-        # seed in every downstream average.
-        # PROVENANCE, not decoration. A row used to record donor_pose="-1", so the only link from a
-        # result back to the template it used was the tag, resolved through the queue file -- the same
-        # coupling that let sibling interfaces collide on (seed, tag) and silently swap donors. Recording
-        # the pose AND the pinned chains makes a fold self-identifying, which is what lets a later run
-        # reuse it: the fold is reusable iff (pose, seed, pinned chains) all match.
+        # a fold is identified by (pose, seed, pinned chains), so record all three: the tag alone once
+        # let two interfaces of one complex swap donors, and this is what makes reuse safe
         donor = " ".join(poses) if poses else "-1"
         chains = ""
         if poses and A.templates:
