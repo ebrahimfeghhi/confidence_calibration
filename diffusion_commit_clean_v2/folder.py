@@ -38,17 +38,26 @@ OUTPUT
 
 FUNCTIONS
 
-    parse_seeds()       "300050-300099" -> a list of seeds
+    parse_args()        the command line; defaults point at the free pool
     read_queue()        the queue file -> one (kind, pdb, target, tag, seed, poses) unit per fold
+    parse_seeds()       "300050-300099" -> a list of seeds
+    check_queue()       refuse a bad queue up front: no namespace, incomplete namespace, or a
+                        templated queue aimed at the shared free pool
+    interfaces_by_pdb() the pool csv -> what a unit with target=* gets scored on
+    open_csv()          create the results csv if absent; return what is already scored
     build_runner()      load the checkpoint once; every unit reuses the returned runner
+    Ctx                 the handles every unit shares: args, model, interfaces, done-set, namespace
+    run_unit()          claim one unit, fold it, score it, release the claim if anything fails
     named_job()         copy a unit's job json under a unique name, which is what fixes its output dir
     fold()              run one fold; assert it produced poses and the expected template count
+    provenance()        the unit -> (donor_pose, tmpl_chains), the two fields that identify a fold
+    score_fold()        run scorer.py per interface and append its rows to the csv
     reconcile_claims()  at startup, free claims whose unit was never scored (a killed worker's work)
     append_index()      one line per fold in index.tsv, so runs are greppable
     runmeta_md5()       checksum a pose, so run.json pins the exact file templated on
     report()            print what has been scored, per (interface, seed, arm)
     verify()            cross-check the csv against the poses on disk
-    main()              claim a unit, fold it, score every interface of its complex, append rows
+    main()              load the model once, then run every unit
 
 THREE THINGS THAT WILL BITE YOU
 
@@ -380,11 +389,36 @@ def verify(csv_path, out):
     return 1
 
 
-def main():
+class Ctx:
+    """Everything a unit needs that is the same for every unit: args, model, and shared state."""
+
+    def __init__(self, A, runner, configs, jobs, ref, scorer, ifaces, done, mm, rd):
+        self.A, self.runner, self.configs = A, runner, configs
+        self.jobs, self.ref, self.scorer = jobs, ref, scorer
+        self.ifaces = ifaces        # {pdb: [interface, ...]} -- what target=* scores
+        self.done = done            # {(iface, seed, arm)} already in the csv; mutated as rows land
+        self.mm, self.rd = mm, rd   # template namespace, or None for a free-only queue
+
+    def point_templates_at(self, use_ns):
+        """in: whether THIS unit is templated.  out: switches the template source.
+
+        Per unit, not per run: a free unit must see Protenix's own PDB templates, or the baseline it
+        provides is silently stripped of them.
+        """
+        m, r = (self.mm, self.rd) if use_ns else (self.stock_mm, self.stock_rd)
+        self.configs.data.template.prot_template_mmcif_dir = m
+        self.configs.data.template.release_dates_path = r
+        for k, v in (("SELFTMPL_MMCIF_DIR", m), ("SELFTMPL_RELEASE_DATES", r)):
+            if v is None or not use_ns:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+
+
+def parse_args():
+    """out: parsed arguments. Defaults point at the free pool, the one run with a canonical home."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--queue")
-    # default to the free pool, the one run with a canonical home. A templated queue heading there is
-    # refused below.
     ap.add_argument("--out", default=str(paths.FREE_DIR))
     ap.add_argument("--csv", default=f"{paths.FREE_DIR}/results.csv")
     ap.add_argument("--templates", help="namespace built by write_templates.py; required for "
@@ -407,7 +441,172 @@ def main():
     ap.add_argument("--report", action="store_true")
     ap.add_argument("--verify", action="store_true",
                     help="cross-check --csv against --out and exit; nothing is folded")
-    A = ap.parse_args()
+    return ap.parse_args()
+
+
+def check_queue(A, units):
+    """in: args and the parsed units.  out: (mmcif dir, release-dates path) or (None, None).
+
+    Refuses three things rather than discovering them mid-sweep: templated units with no namespace,
+    an incomplete namespace, and a templated queue aimed at the shared free pool -- whose poses would
+    then become candidates for templating themselves.
+    """
+    templated = [u for u in units if u[0] != "free"]
+    if templated and not A.templates:
+        raise SystemExit(f"{len(templated)} templated units need --templates "
+                         "(run write_templates.py first)")
+    if templated and A.out == str(paths.FREE_DIR):
+        raise SystemExit("refusing to write a templated queue into the free pool; pass --out")
+    if not A.templates:
+        return None, None
+    mm, rd = f"{A.templates}/mmcif", f"{A.templates}/release_dates.json"
+    for p in (mm, rd):
+        if not os.path.exists(p):
+            raise SystemExit(f"namespace incomplete: {p} missing -- run write_templates.py")
+    return mm, rd
+
+
+def interfaces_by_pdb(pool_csv):
+    """in: the pool csv.  out: {pdb: {interfaces}} -- what a unit with target=* gets scored on."""
+    out = collections.defaultdict(set)
+    for r in csv.DictReader(open(pool_csv)):
+        out[r["pdb"]].add(f"{r['pdb']}_{r['chain1']}{r['chain2']}")
+    return out
+
+
+def open_csv(csv_path):
+    """in: results csv path.  out: {(iface, seed, arm)} already scored; creates the file if absent."""
+    if not os.path.exists(csv_path):
+        os.makedirs(os.path.dirname(csv_path) or ".", exist_ok=True)
+        with open(csv_path, "w") as fh:
+            fh.write("iface,seed,arm,donor_pose,tmpl_chains,sample,dockq,iptm\n")
+    return {(r["iface"], r["seed"], r["arm"]) for r in csv.DictReader(open(csv_path))}
+
+
+def provenance(A, target, tag, poses):
+    """in: the unit.  out: (donor_pose, tmpl_chains) for the csv.
+
+    A fold is identified by (pose, seed, pinned chains). The tag alone once let two interfaces of one
+    complex swap donors, and these two fields are what make reuse safe.
+    """
+    if not poses:
+        return "-1", ""
+    chains = ""
+    chosen = f"{A.templates}/jobs/{target}_{tag}/chosen.json" if A.templates else None
+    if chosen and os.path.exists(chosen):
+        with open(chosen) as fh:
+            chains = " ".join("+".join(c.get("chains", [])) for c in json.load(fh))
+    return " ".join(poses), chains
+
+
+def score_fold(ctx, pdb, target, tag, seed, rdir, name, want, poses):
+    """in: a finished fold and the interfaces to score it on.
+    out: (rows written for how many interfaces, last stderr) -- appends to the csv as it goes.
+
+    Only interfaces MISSING from the csv are scored: a retried unit would otherwise append a second
+    row set and quietly double-weight that seed in every average.
+    """
+    donor, chains = provenance(ctx.A, target, tag, poses)
+    got, err = 0, ""
+    for iface in [i for i in want if (i, str(seed), tag) not in ctx.done]:
+        out = subprocess.run([PY, f"{DC}/scorer.py", "--dir", f"{rdir}/{name}", "--iface", iface,
+                              "--seed", str(seed), "--arm", tag, "--donor", donor,
+                              "--chains", chains,
+                              "--ref", ctx.ref(pdb), "--scorer", ctx.scorer],
+                             cwd=DC, capture_output=True, text=True)
+        err = out.stderr or err
+        if out.stdout.strip():
+            with open(ctx.A.csv, "a") as fh:      # flushed per interface, not at the end
+                fh.write(out.stdout)
+            ctx.done.add((iface, str(seed), tag))
+            got += 1
+    return got, err
+
+
+def run_unit(ctx, unit):
+    """in: one (kind, pdb, target, tag, seed, poses).  out: "ran", "skipped" or "failed".
+
+    Claims the unit, folds it, scores EVERY interface of its complex -- the fold produces the whole
+    complex whatever it was aimed at -- and releases the claim if anything fails, since a claimed but
+    unscored unit is skipped forever.
+    """
+    kind, pdb, target, tag, seed, poses = unit
+    A = ctx.A
+    want = sorted(ctx.ifaces.get(pdb, ()))
+    if not want:
+        print(f"  {pdb}: no interfaces to score, skipping", flush=True)
+        return "skipped"
+    if all((i, str(seed), tag) in ctx.done for i in want):
+        return "skipped"
+
+    claim = f"{A.claim_dir}/{pdb}_{target}_{tag}_{seed}".replace("*", "all") if A.claim_dir else None
+    if claim:
+        try:
+            os.mkdir(claim)
+        except FileExistsError:
+            return "skipped"            # another worker has it
+
+    def release():
+        if claim:
+            try:
+                os.rmdir(claim)
+            except OSError:
+                pass
+
+    ctx.point_templates_at(kind != "free")
+    if kind == "free":
+        job_src, env, expect = f"{ctx.jobs}/{pdb}-final-updated.json", {}, None
+    else:
+        job_src = f"{A.templates}/jobs/{target}_{tag}/job.json"
+        env = dict(TMPL_ENV, PROTENIX_MAX_TEMPLATES=str(len(poses)))
+        expect = len(poses)
+    if not os.path.exists(job_src):
+        print(f"  {target} {tag}: no job at {job_src}", flush=True)
+        release()
+        return "failed"
+
+    rdir = runmeta.run_dir(A.out, pdb, seed, runmeta.run_id())
+    name = f"{target.replace('*', pdb)}_{tag}"
+    try:
+        dt, tcounts = fold(ctx.runner, ctx.configs, named_job(job_src, name, f"{rdir}/jobs"),
+                           int(seed), name, A.ncycle, A.nsample, expect, rdir, env)
+    except Exception as e:
+        print(f"  {pdb} {target} {tag} seed {seed}: FAILED -- {type(e).__name__}: {str(e)[:120]}",
+              flush=True)
+        release()
+        return "failed"
+
+    runmeta.write_run_json(
+        rdir, kind=kind, pdb=pdb,
+        # motivating_interface is WHY this arm exists; interfaces_scored is what the fold produced.
+        motivating_interface=None if target == "*" else target,
+        seed=seed, arm=tag, precision=A.dtype, n_cycle=A.ncycle, n_sample=A.nsample,
+        fold_seconds=round(dt, 1), interfaces_scored=want,
+        templates=[{"source_pose": p, "md5": runmeta_md5(p)} for p in poses] or None,
+        templates_found=tcounts, template_namespace=A.templates,
+        templated=bool(poses), run_dir=os.path.basename(rdir))
+    append_index(A.out, pdb, seed, os.path.basename(rdir), kind, A.dtype, A.ncycle, bool(poses))
+
+    got, err = score_fold(ctx, pdb, target, tag, seed, rdir, name, want, poses)
+    result = "ran"
+    if got or all((i, str(seed), tag) in ctx.done for i in want):
+        # pdb AND target: target is "*" for a pool fold, so target alone leaves the line anonymous
+        print(f"  {kind} {pdb} {target} {tag} seed {seed}: {got}/{len(want)} interfaces "
+              f"in {dt:.0f}s", flush=True)
+    else:
+        print(f"  {pdb} {target} {tag} seed {seed}: SCORING produced no rows", flush=True)
+        for line in (err or "").strip().splitlines()[-3:]:
+            print(f"      {line}", flush=True)
+        release()
+        result = "failed"
+    if not A.keep_cifs:
+        shutil.rmtree(f"{rdir}/{name}", ignore_errors=True)
+    return result
+
+
+def main():
+    """Load the model once, then run every unit in the queue."""
+    A = parse_args()
     if A.report:
         return report(A.csv)
     if A.verify:
@@ -417,172 +616,31 @@ def main():
             raise SystemExit(f"--{req} is required")
 
     units = read_queue(A.queue)
-    JOBS, REFF, SCORER = paths.dataset(A.dataset)
-    templated = [u for u in units if u[0] != "free"]
-    if templated and not A.templates:
-        raise SystemExit(f"{len(templated)} templated units need --templates "
-                         "(run write_templates.py first)")
-
-    # The namespace supplies BOTH the template files and the release dates. Free units must NOT see
-    # it: redirecting the mmcif dir would change which templates Protenix can find, confounding any
-    # comparison against a templated arm.
-    mm = rd = None
-    if A.templates:
-        mm, rd = f"{A.templates}/mmcif", f"{A.templates}/release_dates.json"
-        for p in (mm, rd):
-            if not os.path.exists(p):
-                raise SystemExit(f"namespace incomplete: {p} missing -- run write_templates.py")
-
-    # a templated sweep must not write into the free pool: its poses would become candidates for
-    # templating themselves
-    if any(k != "free" for k, *_ in units) and A.out == str(paths.FREE_DIR):
-        raise SystemExit("refusing to write a templated queue into the free pool; pass --out")
-
-    pool_ifaces = collections.defaultdict(set)
-    for r in csv.DictReader(open(A.pool)):
-        pool_ifaces[r["pdb"]].add(f"{r['pdb']}_{r['chain1']}{r['chain2']}")
+    jobs, ref, scorer = paths.dataset(A.dataset)
+    mm, rd = check_queue(A, units)
+    ifaces = interfaces_by_pdb(A.pool)
 
     os.makedirs(A.out, exist_ok=True)
-    if not os.path.exists(A.csv):
-        os.makedirs(os.path.dirname(A.csv) or ".", exist_ok=True)
-        with open(A.csv, "w") as fh:
-            fh.write("iface,seed,arm,donor_pose,tmpl_chains,sample,dockq,iptm\n")
-    done = {(r["iface"], r["seed"], r["arm"]) for r in csv.DictReader(open(A.csv))}
+    done = open_csv(A.csv)
     if A.claim_dir:
         os.makedirs(A.claim_dir, exist_ok=True)
-        reconcile_claims(A.claim_dir, A.csv, pool_ifaces)
+        reconcile_claims(A.claim_dir, A.csv, ifaces)
 
-    # runner.error_dir is derived from configs.dump_dir when the runner is BUILT, not per fold.
+    # runner.error_dir is derived from configs.dump_dir when the runner is BUILT, not per fold
     os.makedirs(f"{A.out}/ERR", exist_ok=True)
     t_load = time.time()
     runner, configs = build_runner(A.ckpt_dir, A.model_name,
-                                   f"{JOBS}/{units[0][1]}-final-updated.json", A.out, A.dtype)
-    # the template source is PER UNIT, not per run: a free unit must see Protenix's own PDB templates,
-    # not our namespace, or the baseline it provides is silently stripped of templates
-    STOCK_MM = configs.data.template.prot_template_mmcif_dir
-    STOCK_RD = configs.data.template.release_dates_path
-
-    def point_templates_at(use_ns):
-        """Switch the template source for the unit about to run."""
-        m, r = (mm, rd) if use_ns else (STOCK_MM, STOCK_RD)
-        configs.data.template.prot_template_mmcif_dir = m
-        configs.data.template.release_dates_path = r
-        for k, v in (("SELFTMPL_MMCIF_DIR", m), ("SELFTMPL_RELEASE_DATES", r)):
-            os.environ.pop(k, None) if (v is None or not use_ns) else os.environ.__setitem__(k, v)
-
-        # Pre-registration is PER FOLD now (see the unit loop): each fold has its own release-date
-        # file, so Protenix's once-per-process cache -- keyed by path -- reads each one fresh.
+                                   f"{jobs}/{units[0][1]}-final-updated.json", A.out, A.dtype)
+    ctx = Ctx(A, runner, configs, jobs, ref, scorer, ifaces, done, mm, rd)
+    ctx.stock_mm = configs.data.template.prot_template_mmcif_dir
+    ctx.stock_rd = configs.data.template.release_dates_path
     logging.getLogger().addHandler(_CountHandler())
     print(f"  model loaded in {time.time()-t_load:.0f}s | dtype={A.dtype} | {len(units)} units "
           f"| templates={A.templates}", flush=True)
 
-    ran = skipped = failed = 0
-    for kind, pdb, target, tag, seed, poses in units:
-        # EVERY interface of this complex, always. A fold produces the whole complex whatever it was
-        # aimed at, so scoring only the motivating interface discarded measurements already paid for --
-        # and hid what templating one interface does to the others in the same complex.
-        want = sorted(pool_ifaces.get(pdb, ()))
-        if not want:
-            print(f"  {pdb}: no interfaces to score, skipping", flush=True)
-            continue
-        if all((i, str(seed), tag) in done for i in want):
-            skipped += 1
-            continue
-        claim = f"{A.claim_dir}/{pdb}_{target}_{tag}_{seed}".replace("*", "all") \
-            if A.claim_dir else None
-        if claim:
-            try:
-                os.mkdir(claim)
-            except FileExistsError:
-                continue
-
-        def release():
-            """A failed unit must give its claim back or it silently vanishes from the sweep."""
-            if claim:
-                try:
-                    os.rmdir(claim)
-                except OSError:
-                    pass
-
-        point_templates_at(kind != "free")
-        if kind == "free":
-            job_src, env, expect = f"{JOBS}/{pdb}-final-updated.json", {}, None
-        else:
-            job_src = f"{A.templates}/jobs/{target}_{tag}/job.json"
-            env = dict(TMPL_ENV, PROTENIX_MAX_TEMPLATES=str(len(poses)))
-            expect = len(poses)
-        if not os.path.exists(job_src):
-            print(f"  {target} {tag}: no job at {job_src}", flush=True)
-            failed += 1
-            release()
-            continue
-
-        rid = runmeta.run_id()
-        rdir = runmeta.run_dir(A.out, pdb, seed, rid)
-        name = f"{target.replace('*', pdb)}_{tag}"
-        try:
-            dt, tcounts = fold(runner, configs, named_job(job_src, name, f"{rdir}/jobs"), int(seed),
-                               name, A.ncycle, A.nsample, expect, rdir, env)
-        except Exception as e:
-            print(f"  {pdb} {target} {tag} seed {seed}: FAILED -- {type(e).__name__}: {str(e)[:120]}",
-                  flush=True)
-            failed += 1
-            release()
-            continue
-
-        runmeta.write_run_json(
-            # motivating_interface is WHY this arm exists (which interface's poses were chosen);
-            # interfaces_scored is what the fold actually produced. For a pool fold there is no
-            # motivation -- it deepens the pool for every interface equally.
-            rdir, kind=kind, pdb=pdb,
-            motivating_interface=None if target == "*" else target,
-            seed=seed, arm=tag, precision=A.dtype, n_cycle=A.ncycle, n_sample=A.nsample,
-            fold_seconds=round(dt, 1), interfaces_scored=want,
-            templates=[{"source_pose": p, "md5": runmeta_md5(p)} for p in poses] or None,
-            templates_found=tcounts, template_namespace=A.templates,
-            # true iff this fold minted its own templates -- so `templates/` existing and this flag
-            # always agree, and a plain fold never gets an empty templates directory
-            templated=bool(poses), run_dir=os.path.basename(rdir))
-        append_index(A.out, pdb, seed, os.path.basename(rdir), kind, A.dtype, A.ncycle,
-                     bool(poses))
-
-        got = 0
-        # a fold is identified by (pose, seed, pinned chains), so record all three: the tag alone once
-        # let two interfaces of one complex swap donors, and this is what makes reuse safe
-        donor = " ".join(poses) if poses else "-1"
-        chains = ""
-        if poses and A.templates:
-            chosen = f"{A.templates}/jobs/{target}_{tag}/chosen.json"
-            if os.path.exists(chosen):
-                with open(chosen) as fh:
-                    chains = " ".join("+".join(c.get("chains", []))
-                                      for c in json.load(fh))
-        for iface in [i for i in want if (i, str(seed), tag) not in done]:
-            out = subprocess.run([PY, f"{DC}/scorer.py", "--dir", f"{rdir}/{name}", "--iface", iface,
-                                  "--seed", str(seed), "--arm", tag, "--donor", donor,
-                                  "--chains", chains,
-                                  "--ref", REFF(pdb), "--scorer", SCORER],
-                                 cwd=DC, capture_output=True, text=True)
-            if out.stdout.strip():
-                with open(A.csv, "a") as fh:      # flushed per interface, not at the end
-                    fh.write(out.stdout)
-                done.add((iface, str(seed), tag))
-                got += 1
-        if got or all((i, str(seed), tag) in done for i in want):
-            ran += 1
-            # pdb AND target: target is "*" for a pool fold, so printing target alone left every
-            # progress line anonymous -- unreadable when diagnosing which complex is slow.
-            print(f"  {kind} {pdb} {target} {tag} seed {seed}: {got}/{len(want)} interfaces "
-                  f"in {dt:.0f}s", flush=True)
-        else:
-            print(f"  {pdb} {target} {tag} seed {seed}: SCORING produced no rows", flush=True)
-            for line in (out.stderr or "").strip().splitlines()[-3:]:
-                print(f"      {line}", flush=True)
-            failed += 1
-            release()
-        if not A.keep_cifs:
-            shutil.rmtree(f"{rdir}/{name}", ignore_errors=True)
-    print(f"queue complete: {ran} folds run, {skipped} already scored, {failed} failed", flush=True)
+    tally = collections.Counter(run_unit(ctx, u) for u in units)
+    print(f"queue complete: {tally['ran']} folds run, {tally['skipped']} already scored, "
+          f"{tally['failed']} failed", flush=True)
     return 0
 
 

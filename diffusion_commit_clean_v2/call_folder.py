@@ -1,27 +1,46 @@
 #!/usr/bin/env python
-"""STEP 1 -- generate the free pose pool, then hand it to folder.py.
+"""STEP 1 -- fold every complex N times with no self-templating, to build the pool of candidate poses.
 
-Decides WHAT to fold (which complexes, which seeds) and launches the driver. The method does not
-invent poses: it chooses which of these to feed back in as templates later, so this is the input.
+Later steps pick a handful of these poses and feed them back in as templates. This script only decides
+WHAT to fold and hands that list to folder.py, which does the folding.
 
-    call_folder.py                                   plan only, nothing launched
-    call_folder.py --run --gpus 1,5,6                every complex of pxm2025, 50 seeds
+    call_folder.py                                   print the plan, launch nothing
+    call_folder.py --run --gpus 1,5,6                every pxm2025 complex, 50 seeds
     call_folder.py --dataset foldbench --seeds 20 --complexes 8ror,9k94 --run --gpus 0
 
-Functions
-    complexes()         which complexes the dataset has an input json for
-    queue_lines()       one queue line per (complex, seed)
-    existing_seeds()    which of those already have a fold on disk
-    unreadable_warning() whether later steps will be able to FIND what this writes
-    launch()            one tmux session per GPU, all sharing the queue
+A QUEUE is the work list: a tab-separated file with one line per fold, which folder.py reads and works
+through. This script writes it to <out>/queue_free.tsv, one line per (complex, seed):
 
-seeds vs samples: ipTM is largely a property of the SEED -- a seed commits to a docking basin early
-and stays there -- so seeds buy pose diversity and samples within a seed do not. 50 seeds x 5 samples
-is not interchangeable with 5 x 50. The published pool is 50 x 5 = 250 poses per complex and every
-result assumes it.
+    free   8ror   *   free   300000
+    free   8ror   *   free   300001
 
-It will not guess GPUs. This is a shared machine, so devices are explicit and more than four is
-refused. Workers go in tmux, not background jobs, which die with the shell and leave claims behind.
+Several workers can read the same queue at once. Each one claims a line by creating a directory in
+<out>/claims before folding it, so two workers never take the same fold and there is no work to split
+up by hand.
+
+DEFAULTS
+
+    --dataset      pxm2025          the other choice is foldbench
+    --complexes    every complex the dataset has an input json for (131 for pxm2025)
+    --seeds        50               folds per complex
+    --start-seed   300000           so seeds are 300000..300049
+    --nsample      5                poses per fold, giving 250 poses per complex
+    --model        protenix         the only choice today
+    --out          paths.FREE_DIR   experimental_data/free
+    --gpus         none             required by --run; never guessed
+    --run          off              without it, nothing is launched
+
+FUNCTIONS
+
+    complexes()           which complexes the dataset has an input json for
+    queue_lines()         one queue line per (complex, seed)
+    existing_seeds()      which of those already have a fold on disk
+    unreadable_warning()  whether later steps will be able to FIND what this writes
+    launch()              one tmux session per GPU, all reading the same queue
+
+It will not guess GPUs: this is a shared machine, so devices are explicit and more than four is
+refused. Workers go in tmux rather than background jobs, which die with the shell that started them
+and leave their claims behind.
 """
 import argparse
 import glob
