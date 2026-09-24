@@ -2,11 +2,39 @@
 """Score one fold's poses against the reference and print CSV rows on stdout.
 
 Run as a subprocess by folder.py, once per interface. Writes nothing itself -- the caller captures
-stdout and appends it to results.csv. A separate process because DockQ scoring needs a different venv
+stdout and appends it to results.csv. Separate process because DockQ scoring needs a different venv
 than folding, and because a pose the scorer chokes on then kills a subprocess rather than the worker
 holding the model.
 
-    scorer.py --dir <fold dir> --iface 8w5d_AB --seed 430000 --arm A06 --donor <pose> --ref <cif>
+    scorer.py --dir <fold dir> --iface 8w5d_AB --seed 430000 --arm A06 \
+              --donor <pose.cif> --chains A+B+D --ref <reference.cif>
+
+ARGUMENTS
+
+  --dir     the fold's output directory. Every *_sample_*.cif under it gets scored.
+  --iface   which interface to score, as <pdb>_<C1><C2>, in REFERENCE chain letters. Reference
+            letters are not model letters -- the scorers translate internally, per pose.
+  --seed    the fold's seed, copied straight through to the csv.
+  --arm     the queue tag for this fold, e.g. "A06" = the 7th donor selected for this complex
+            ("A" names the sweep, 06 is the donor's index in that complex's list; earlier sweeps
+            used C## and K##). It is only a LABEL: the driver skips a unit whose
+            (iface, seed, arm) is already in the csv, so the tag must be unique per complex, but
+            it says nothing about what was templated.
+  --donor   the pose that was templated, or "-1" for a free fold. This, not --arm, is the
+            provenance: a fold is identified by (pose, seed, pinned chains).
+  --chains  which chains of that donor were pinned, joined with "+". The same pose pinned to a
+            different antigen copy is a DIFFERENT template and a different fold, so reuse keyed on
+            the pose alone would substitute one for another that never ran.
+  --ref     the reference structure to score against.
+  --scorer  ost or pxm. Both return the same shape, so the csv is identical either way.
+
+OUTPUT -- one line per pose, appended by the caller:
+
+    iface,seed,arm,donor_pose,tmpl_chains,sample,dockq,iptm
+    8w5d_AB,430000,A07,/abs/8w5d_sample_4.cif,A+B+D,0,0.0092,0.2885
+
+  sample is the diffusion sample index within the fold; dockq is against the reference; iptm is the
+  model's own confidence for that chain pair.
 """
 import argparse
 import glob
