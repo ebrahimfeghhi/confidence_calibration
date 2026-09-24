@@ -7,10 +7,10 @@ reference and expresses the rest in its terms -- no native structure involved.
 
     anchor_relabel.py --out-dir DIR [--pdbs 8ror,9puo] [--jobs 8]
 
-ONE ANCHOR PER COMPLEX, not per interface. A single anchor->pose mapping is a bijection on chains, so
-the anchor's (A,B) and (A,C) necessarily land on different chain pairs of the pose. Two independent
-per-interface mappings could both pick the pose's (A,B) pair, putting one physical interface into two
-candidate lists.
+ONE ANCHOR PER COMPLEX, not per interface. The mapping pairs each anchor chain with exactly one pose
+chain and no two share a partner, so the anchor's (A,B) and (A,C) necessarily land on different chain
+pairs of the pose. Two independent per-interface mappings could both pick the pose's (A,B) pair, putting
+one physical interface into two candidate lists.
 
 OUTPUT, both drop-in for build_matrices.py --maps/--roles:
 
