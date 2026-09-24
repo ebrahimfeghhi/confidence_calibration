@@ -40,18 +40,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import metrics  # noqa: E402
 import paths  # noqa: E402
+from pool import dockq_by_pose  # noqa: E402  was a second, divergent copy of load_pool
 from fmt import table  # noqa: E402
 
 ACC = 0.23
 SCRATCH = os.environ.get("VALIDATE_SCRATCH", "/tmp/validate_pxm")
-
-
-def load_pool():
-    pool = collections.defaultdict(dict)
-    with open(str(paths.PXM2025_POOL_CSV)) as fh:
-        for r in csv.DictReader(fh):
-            pool[f"{r['pdb']}_{r['chain1']}{r['chain2']}"][(r["seed"], int(r["sample"]))] = float(r["dockq"])
-    return pool
 
 
 def check_mapping(maps, roles, pool, n):
@@ -159,7 +152,7 @@ def main():
     ap.add_argument("--n", type=int, default=12)
     A = ap.parse_args()
 
-    maps, roles, pool = metrics.load_chain_maps(), metrics.load_roles(), load_pool()
+    maps, roles, pool = metrics.load_chain_maps(), metrics.load_roles(), dockq_by_pose()
     fails = {}
     for name in A.checks.split(","):
         print(f"\n=== {name}")

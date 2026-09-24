@@ -35,13 +35,27 @@ from separation import pool_classes             # noqa: E402
 
 MATRICES = "/home/ebrahim/tts_abag/diffusion_commit_clean/matrices"
 ACC = 0.23
+# WHICH EXPERIMENT. This was hardcoded to top_50_complex, which meant the anchor-frame run needed a
+# sed-ed copy of this file -- the exact drift watch.sh exists to avoid. The carried-over count is
+# DERIVED (claims that no queue line will ever produce) rather than a literal, because the literal 428
+# was already stale for a second experiment and nothing would have flagged it.
+EXP = os.environ.get("REPORT_EXP", "top_50_complex")
+MATRICES = os.environ.get("REPORT_MATRICES", MATRICES)
 cls = pool_classes()
-R = f"{paths.DATA_DIR}/top_50_complex/results.csv"
+R = f"{paths.DATA_DIR}/{EXP}/results.csv"
+# COMPLETENESS IS ABOUT THIS QUEUE'S OWN WORK. The old test compared arms-with-rows against
+# expected.get(iface, 10**9), so an interface whose donors were ALL carried over from a previous sweep
+# had no queue lines, defaulted to a billion, and was excluded as "partial" forever -- 172 of 205
+# interfaces on the reference-free run, every one of them actually finished. Counting carried arms
+# toward the target is equally wrong (it would call an interface done while its queued folds pend), so
+# the target is the queue tags for that interface and the progress is how many of THOSE have rows.
 expected = collections.Counter()
-for _l in open(f"{paths.DATA_DIR}/top_50_complex/queue.tsv"):
+_qtags = collections.defaultdict(set)
+for _l in open(f"{paths.DATA_DIR}/{EXP}/queue.tsv"):
     _f = _l.rstrip("\n").split("\t")
     if len(_f) >= 6:
         expected[_f[2]] += 1
+        _qtags[_f[2]].add(_f[3])
 made, folds = collections.defaultdict(list), collections.defaultdict(set)
 if os.path.exists(R):
     for r in csv.DictReader(open(R)):
@@ -50,13 +64,22 @@ if os.path.exists(R):
 
 rows = collections.defaultdict(lambda: [[], [], []])
 partial = 0
-for f in sorted(glob.glob(f"{MATRICES}/*.npz")):
-    i = os.path.basename(f)[:-4]
+# TWO DIRECTORIES, NOT ONE. matrices_anchor_all holds the 242 multi-interface reference interfaces;
+# the 50 single-interface complexes were never rebuilt in the anchor frame because for a single chain
+# pair the two frames are identical by construction. Reading only the anchor dir silently dropped 14
+# decoy, 29 solved and 7 nocov interfaces from every table. REPORT_MATRICES may be a colon-separated
+# list; earlier entries win, so the anchor frame takes precedence where both have an interface.
+_dirs = [d for d in MATRICES.split(":") if d]
+_files = {}
+for _d in _dirs:
+    for _f in sorted(glob.glob(f"{_d}/*.npz")):
+        _files.setdefault(os.path.basename(_f)[:-4], _f)
+for i, f in sorted(_files.items()):
     if i not in made:
         continue
     # K VARIES PER INTERFACE: the diversity filter exhausts the pool before 50 on 228 of 292
     # interfaces, so completeness is measured against what the QUEUE asked for, not a constant.
-    if len(folds[i]) < expected.get(i, 10**9):
+    if len(folds[i] & _qtags.get(i, set())) < expected.get(i, 0):
         partial += 1
         continue
     z = np.load(f)
@@ -90,7 +113,16 @@ for k in ("decoy", "solved", "nocov"):
 print(table(["class", "pooling", "interfaces", "mean before", "mean after",
              "acceptable before", "acceptable after", "rescued", "broken"],
             out, align="l l r r r r r r r"))
+_qtags = set()
+for _l in open(f"{paths.DATA_DIR}/{EXP}/queue.tsv"):
+    _f = _l.rstrip("\n").split("\t")
+    if len(_f) >= 6:
+        _qtags.add(f"{_f[1]}_{_f[2]}_{_f[3]}_{_f[4]}")
+_cl = set(os.listdir(f"{paths.DATA_DIR}/{EXP}/claims")) if os.path.isdir(f"{paths.DATA_DIR}/{EXP}/claims") else set()
+_nq = len(_qtags)
+_nrun = len(_cl & _qtags)
+_ncarried = len(_cl - _qtags)
 print(f"\n  complete interfaces scored: {sum(len(v[0]) for v in rows.values())}   "
       f"partial (excluded): {partial}   "
-      f"folds run: {len(os.listdir(f'{paths.DATA_DIR}/top_50_complex/claims'))} claimed "
-      f"+ 428 carried over, of {sum(1 for _ in open(f'{paths.DATA_DIR}/top_50_complex/queue.tsv'))} queued")
+      f"folds run: {_nrun} of {_nq} queued, + {_ncarried} carried over "
+      f"({_nq + _ncarried} donors total)")

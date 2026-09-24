@@ -48,9 +48,15 @@ def main():
     ap.add_argument("--ns", required=True)
     ap.add_argument("--queue", default="queue_top5.tsv")
     ap.add_argument("--show", type=int, default=6)
+    # the frame the queue was SELECTED in. Checking anchor-frame templates against the crystal mapping
+    # would report every deliberately-different pinning as a WRONG CHAINS failure, which is the check
+    # inverted: the requirement is that the template matches the pair the selection ranked, whatever
+    # frame that ranking used.
+    ap.add_argument("--maps", default=None)
+    ap.add_argument("--roles", default=None)
     A = ap.parse_args()
 
-    maps, roles = metrics.load_chain_maps(), metrics.load_roles()
+    maps, roles = metrics.load_chain_maps(A.maps), metrics.load_roles(A.roles)
     rd = json.load(open(f"{A.ns}/release_dates.json")) if os.path.exists(
         f"{A.ns}/release_dates.json") else {}
     cifs = {os.path.basename(p)[:-4] for p in glob.glob(f"{A.ns}/mmcif/*.cif")}

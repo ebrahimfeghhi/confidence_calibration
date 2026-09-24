@@ -111,6 +111,11 @@ def main():
     ap.add_argument("--queue", required=True)
     ap.add_argument("--ns", required=True)
     ap.add_argument("--jobs", type=int, default=8)
+    # The frame that decides WHICH chains of a donor get pinned. Default is the crystal-anchored
+    # mapping; pass the anchor-frame pair to build templates with no reference to the native structure.
+    # Both must move together -- roles name the reference chains that maps is keyed on.
+    ap.add_argument("--maps", default=None)
+    ap.add_argument("--roles", default=None)
     A = ap.parse_args()
 
     # one job per (target, tag); the queue repeats it once per seed
@@ -121,7 +126,7 @@ def main():
             continue
         uniq.setdefault(f"{f[2]}_{f[3]}", (f[1], f[2], f[5].split()))
 
-    maps, roles = metrics.load_chain_maps(), metrics.load_roles()
+    maps, roles = metrics.load_chain_maps(A.maps), metrics.load_roles(A.roles)
 
     os.makedirs(f"{A.ns}/mmcif", exist_ok=True)
     tasks, n = [], 0

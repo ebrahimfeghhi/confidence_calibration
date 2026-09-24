@@ -628,13 +628,18 @@ def report(csv_path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--queue")
-    ap.add_argument("--out")
-    ap.add_argument("--csv", required=True)
+    # DEFAULTS FOR THE FREE POOL, the one run that has a canonical home. paths.FREE_DIR was a
+    # convention that only paths.py knew about, so every invocation retyped it and a typo made a second
+    # pool in a stray directory. Templated runs must still say where they go -- see the guard below,
+    # which refuses a tmpl queue that would land in the shared free pool.
+    ap.add_argument("--out", default=str(paths.FREE_DIR))
+    ap.add_argument("--csv", default=f"{paths.FREE_DIR}/results.csv")
     ap.add_argument("--templates", help="namespace built by write_templates.py; required for "
                                         "templated units, never written to here")
     ap.add_argument("--pool", default=str(paths.PXM2025_POOL_CSV),
                     help="csv whose interfaces define what `target=*` scores")
-    ap.add_argument("--claim-dir", help="atomic mkdir claims so workers share one queue")
+    ap.add_argument("--claim-dir", default=f"{paths.FREE_DIR}/claims",
+                    help="atomic mkdir claims so workers share one queue")
     ap.add_argument("--dtype", choices=("bf16", "fp32", "fp16"), default="bf16")
     ap.add_argument("--ncycle", type=int, default=10)
     ap.add_argument("--nsample", type=int, default=5)
@@ -687,6 +692,12 @@ def main():
                 raise SystemExit(f"namespace incomplete: {p} missing -- run write_templates.py")
 
     # interfaces per pdb, for target=*
+    # A templated sweep writing into the free pool would mix self-templated poses into the pool that
+    # every later step selects FROM -- the poses would then be candidates for templating themselves.
+    # Cheap to prevent, expensive to notice.
+    if any(k != "free" for k, *_ in units) and A.out == str(paths.FREE_DIR):
+        raise SystemExit("refusing to write a templated queue into the free pool; pass --out")
+
     pool_ifaces = collections.defaultdict(set)
     for r in csv.DictReader(open(A.pool)):
         pool_ifaces[r["pdb"]].add(f"{r['pdb']}_{r['chain1']}{r['chain2']}")
@@ -695,7 +706,7 @@ def main():
     if not os.path.exists(A.csv):
         os.makedirs(os.path.dirname(A.csv) or ".", exist_ok=True)
         with open(A.csv, "w") as fh:
-            fh.write("iface,seed,arm,donor_pose,sample,dockq,iptm\n")
+            fh.write("iface,seed,arm,donor_pose,tmpl_chains,sample,dockq,iptm\n")
     done = {(r["iface"], r["seed"], r["arm"]) for r in csv.DictReader(open(A.csv))}
     if A.claim_dir:
         os.makedirs(A.claim_dir, exist_ok=True)
@@ -836,9 +847,23 @@ def main():
         # Score only what is MISSING. A retried unit (stale claim released) would otherwise append a
         # second row set for interfaces already scored, and duplicate rows quietly double-weight a
         # seed in every downstream average.
+        # PROVENANCE, not decoration. A row used to record donor_pose="-1", so the only link from a
+        # result back to the template it used was the tag, resolved through the queue file -- the same
+        # coupling that let sibling interfaces collide on (seed, tag) and silently swap donors. Recording
+        # the pose AND the pinned chains makes a fold self-identifying, which is what lets a later run
+        # reuse it: the fold is reusable iff (pose, seed, pinned chains) all match.
+        donor = " ".join(poses) if poses else "-1"
+        chains = ""
+        if poses and A.templates:
+            chosen = f"{A.templates}/jobs/{target}_{tag}/chosen.json"
+            if os.path.exists(chosen):
+                with open(chosen) as fh:
+                    chains = " ".join("+".join(c.get("chains", []))
+                                      for c in json.load(fh))
         for iface in [i for i in want if (i, str(seed), tag) not in done]:
             out = subprocess.run([PY, f"{DC}/row.py", "--dir", f"{rdir}/{name}", "--iface", iface,
-                                  "--seed", str(seed), "--arm", tag, "--donor", "-1",
+                                  "--seed", str(seed), "--arm", tag, "--donor", donor,
+                                  "--chains", chains,
                                   "--ref", REFF(pdb), "--scorer", SCORER],
                                  cwd=DC, capture_output=True, text=True)
             if out.stdout.strip():

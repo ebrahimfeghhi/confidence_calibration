@@ -28,12 +28,19 @@ HERE=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PY=/home/ebrahim/Protenix/.venv/bin/python
 GPUS=(1 5 6)
 NAME=$(basename "$T")
+# worker tmux sessions are named <experiment>w<i>; the restart branch below recreates them by that name
 
 while true; do
   echo "================ $(date '+%F %H:%M')  [$NAME] ================"
 
+  # COUNT ONLY CLAIMS THIS QUEUE ASKS FOR. A run that carries results over from an earlier sweep
+  # pre-creates a claim per reused donor, so a raw `ls claims | wc -l` exceeds the queue length and
+  # the restart branch below becomes unreachable -- a dead worker would idle its GPU all night.
   total=$(wc -l < "$T/queue.tsv")
-  claimed=$(ls "$T/claims" 2>/dev/null | wc -l)
+  awk -F'\t' 'NF>=6{print $2"_"$3"_"$4"_"$5}' "$T/queue.tsv" | sort -u > "$T/.qtags"
+  ls "$T/claims" 2>/dev/null | sort -u > "$T/.ctags"
+  claimed=$(comm -12 "$T/.qtags" "$T/.ctags" | wc -l)
+  carried=$(comm -13 "$T/.qtags" "$T/.ctags" | wc -l)
   if [ "$claimed" -lt "$total" ]; then
     for i in 0 1 2; do
       if ! tmux has-session -t "${NAME}w$i" 2>/dev/null; then
@@ -45,7 +52,7 @@ while true; do
       fi
     done
   fi
-  echo "workers=$(pgrep -u "$USER" -f "$NAME/queue.tsv" | wc -l)  claimed=$claimed/$total  rows=$(( $(wc -l < "$T/results.csv" 2>/dev/null || echo 1) - 1 ))"
+  echo "workers=$(pgrep -u "$USER" -f "$NAME/queue.tsv" | wc -l)  claimed=$claimed/$total (+$carried carried)  rows=$(( $(wc -l < "$T/results.csv" 2>/dev/null || echo 1) - 1 ))"
 
   for i in 0 1 2; do
     # grep -c PRINTS 0 and EXITS 1 when nothing matches, so `|| echo 0` yields "0\n0"

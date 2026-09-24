@@ -27,6 +27,12 @@ ap = argparse.ArgumentParser()
 for a in ("--dir", "--iface", "--seed", "--arm", "--donor", "--ref"):
     ap.add_argument(a, required=True)
 ap.add_argument("--scorer", choices=("ost", "pxm"), default="pxm")
+# WHY --chains. A templated fold is identified by the donor pose, the seed, AND which chains of that
+# donor were pinned as the template: two labellings of the same pose can pin different antigen copies,
+# which is a different template and a different fold. Recording only the pose would make two distinct
+# folds look interchangeable and let a reuse rule silently substitute one for the other. Chains are
+# joined with "+" because this is a csv.
+ap.add_argument("--chains", default="")
 A = ap.parse_args()
 
 chains = A.iface.split("_")[1]
@@ -52,5 +58,5 @@ for cif in sorted(glob.glob(f"{A.dir}/**/*_sample_*.cif", recursive=True)):
     if not v or v.get("dockq") is None:
         continue          # no such interface in this pose -- a real condition, not an error
     ip = v.get("pair_iptm")
-    print(f"{A.iface},{A.seed},{A.arm},{A.donor},{k},{float(v['dockq']):.4f},"
+    print(f"{A.iface},{A.seed},{A.arm},{A.donor},{A.chains},{k},{float(v['dockq']):.4f},"
           f"{'' if ip is None else f'{float(ip):.4f}'}")

@@ -41,19 +41,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import metrics  # noqa: E402
 import paths  # noqa: E402
+from pool import load_pool  # noqa: E402  one definition, shared with validate.py
 
 
-def load_pool():
-    """{interface: [(seed, sample, dockq_gt, pair_iptm), ...]}"""
-    pool = collections.defaultdict(list)
-    with open(str(paths.PXM2025_POOL_CSV)) as fh:
-        for r in csv.DictReader(fh):
-            pool[f"{r['pdb']}_{r['chain1']}{r['chain2']}"].append(
-                (r["seed"], int(r["sample"]), float(r["dockq"]), float(r["pair_iptm"])))
-    return pool
-
-
-def build(iface, rows, maps, roles, device):
+def build(iface, rows, maps, roles, device, min_poses=5):
     """Three matrices plus aligned labels for one interface, or None if too few usable poses."""
     items, nomap = metrics.items_for_interface(iface, [(s, x) for s, x, _, _ in rows], maps, roles)
     # items_for_interface drops unmapped poses, so re-pair labels to what survived rather than
@@ -68,7 +59,11 @@ def build(iface, rows, maps, roles, device):
     keep = [(it, k) for it, k in zip(items, keys)
             if len(metrics.epitope_set(it[0], it[1], it[2], cutoff=metrics.CONTACT_CUTOFF)) > 0]
     nocontact = len(items) - len(keep)
-    if len(keep) < 5:
+    # min_poses was a hard 5, written when these matrices were only for basin clustering, where a
+    # matrix over <5 poses says nothing. It silently became an interface FILTER once the interface set
+    # started coming from pose contacts: 11 of 53 predicted-only pairs were dropped by it, making 5 a
+    # tuned parameter for a job it was never chosen for. It is now explicit and caller-set.
+    if len(keep) < min_poses:
         return None, len(nomap), nocontact
     items = [it for it, _ in keep]
     keys = [k for _, k in keep]
@@ -93,11 +88,22 @@ def main():
     ap.add_argument("--ifaces", default=None, help="comma-separated subset")
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--shard", default="0/1", help="i/n -- take every n'th interface, offset i")
+    ap.add_argument("--min-poses", type=int, default=5,
+                    help="minimum contacting poses for an interface to get a matrix")
+    ap.add_argument("--pool", default=None,
+                    help="extra pool rows for interfaces absent from the reference")
+    ap.add_argument("--maps", default=None,
+                    help="chain_maps csv; default is the crystal-anchored one from chain_map.py")
+    ap.add_argument("--roles", default=None,
+                    help="chain_roles csv; must be in the same frame as --maps")
     A = ap.parse_args()
     si, sn = (int(v) for v in A.shard.split("/"))
 
     os.makedirs(A.out, exist_ok=True)
-    pool, maps, roles = load_pool(), metrics.load_chain_maps(), metrics.load_roles()
+    # --maps/--roles must move together: roles name the REFERENCE chains that maps is keyed on, so a
+    # crystal roles file against an anchor-frame maps file misses every lookup instead of erroring
+    pool = load_pool(A.pool)
+    maps, roles = metrics.load_chain_maps(A.maps), metrics.load_roles(A.roles)
     want = set(A.ifaces.split(",")) if A.ifaces else None
     todo = sorted(k for k in pool if (not want or k in want) and k in roles)
     todo = [k for k in todo if not os.path.exists(f"{A.out}/{k}.npz")][si::sn]
@@ -113,7 +119,7 @@ def main():
     for n, iface in enumerate(todo, 1):
         t = time.time()
         try:
-            out, nomap, nocon = build(iface, pool[iface], maps, roles, A.device)
+            out, nomap, nocon = build(iface, pool[iface], maps, roles, A.device, A.min_poses)
         except Exception as e:
             print(f"  {iface}: FAILED {type(e).__name__}: {e}", flush=True)
             w.writerow([iface, len(pool[iface]), 0, "", "", round(time.time() - t, 1)])
