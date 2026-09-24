@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 """Score one fold's poses against the reference and print CSV rows on stdout.
 
-    scorer.py --dir <fold dir> --iface 8w5d_AB --seed 430000 --arm A07 \
-              --donor <pose.cif> --chains A+B+D --ref <reference.cif>
-
 SUMMARY
     Run as a subprocess by folder.py, once per interface. Writes nothing itself -- the caller captures
     stdout and appends it to results.csv. A separate process because DockQ scoring needs a different
@@ -11,23 +8,23 @@ SUMMARY
     worker holding the model.
 
 INPUTS
-    --dir     the fold's output directory; every *_sample_*.cif under it gets scored
-    --iface   which interface to score, as <pdb>_<C1><C2>, in REFERENCE chain letters. Reference
-              letters are not model letters -- the scorers translate internally, per pose.
-    --seed    the fold's seed, copied through to the csv
-    --arm     the queue tag, e.g. "A07" = the 8th donor selected for this complex ("A" names the
-              sweep, 07 the donor's index; earlier sweeps used C## and K##). A LABEL only: the driver
-              skips a unit whose (iface, seed, arm) is already in the csv, so a tag must be unique per
-              complex, but it says nothing about what was templated.
-    --donor   the pose that was templated, or "-1" for a free fold. This, not --arm, is the provenance:
-              a fold is identified by (pose, seed, pinned chains).
-    --chains  which chains of that donor were pinned, joined with "+". The same pose pinned to a
-              different antigen copy is a DIFFERENT template and a different fold.
-    --ref     the reference structure to score against
-    --scorer  ost or pxm; both return the same shape, so the csv is identical either way
+    --dir:     the fold's output directory. Every *_sample_*.cif under it gets scored.
+    --iface:   which interface to score, as <pdb>_<C1><C2>, in REFERENCE chain letters. Reference
+               letters are not model letters -- the scorers translate internally, per pose.
+    --seed:    the fold's seed, copied through to the csv.
+    --arm:     the queue tag, e.g. "A07" = the 8th donor selected for this complex ("A" names the
+               sweep, 07 the donor's index; earlier sweeps used C## and K##). A LABEL only: the driver
+               skips a unit whose (iface, seed, arm) is already in the csv, so a tag must be unique per
+               complex, but it says nothing about what was templated.
+    --donor:   the pose that was templated, or "-1" for a free fold. This, not --arm, is the
+               provenance: a fold is identified by (pose, seed, pinned chains).
+    --chains:  which chains of that donor were pinned, joined with "+". The same pose pinned to a
+               different antigen copy is a DIFFERENT template and a different fold.
+    --ref:     the reference structure to score against.
+    --scorer:  ost or pxm. Default pxm. Both return the same shape, so the csv is identical either way.
 
 OUTPUTS
-    one line per pose on stdout, appended to results.csv by the caller:
+    stdout: one line per pose, appended to results.csv by the caller:
 
         iface,seed,arm,donor_pose,tmpl_chains,sample,dockq,iptm
         8w5d_AB,430000,A07,/abs/8w5d_sample_4.cif,A+B+D,0,0.0092,0.2885
@@ -35,8 +32,12 @@ OUTPUTS
     sample is the diffusion sample index within the fold; dockq is against the reference; iptm is the
     model's own confidence for that chain pair.
 
+EXAMPLE
+    scorer.py --dir out/8w5d/430000-a1b2c3/8w5d_DC_A07 --iface 8w5d_AB --seed 430000 --arm A07 \
+              --donor /abs/8w5d_sample_4.cif --chains A+B+D --ref cif/8w5d.cif
+
 FUNCTIONS
-    none -- this is a short script, read top to bottom
+    none -- a short script, read top to bottom
 """
 import argparse
 import glob

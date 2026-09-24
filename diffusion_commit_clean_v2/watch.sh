@@ -1,25 +1,28 @@
 #!/usr/bin/env bash
 # Babysit a sweep: report progress, restart dead workers, run the scorers.
 #
-#   watch.sh --exp <dir> --gpus 1,5,6 [--templates <dir>] [--interval 1800] <reporter.py> [...]
-#
 # SUMMARY
-#   Runs one cycle per interval so a sweep can be left unattended. Worker launching is delegated to
+#   One cycle per interval, so a sweep can be left unattended. Worker launching is delegated to
 #   call_folder.py, so session naming has one owner: <experiment>w<gpu>.
 #
 #   Each cycle: restart any worker whose tmux session is gone, print workers/claims/rows, grep the
 #   worker logs for tracebacks and OOM, print GPU state, run each reporter.
 #
 # INPUTS
-#   --exp        the experiment directory: queue.tsv, claims/, results.csv, w<gpu>.log
-#   --gpus       which devices the sweep uses; drives both the restart loop and the GPU report
-#   --templates  passed through to call_folder.py when restarting a templated run
-#   --interval   seconds between cycles
-#   reporters    python scripts run from this directory, output collected in order
+#   --exp:        the experiment directory -- queue.tsv, claims/, results.csv, w<gpu>.log. Required.
+#   --gpus:       which devices the sweep uses. Required. Drives both the restart loop and the GPU
+#                 report; never guessed.
+#   --templates:  passed through to call_folder.py when restarting a templated run. Optional.
+#   --interval:   seconds between cycles. Default 1800.
+#   reporters:    one or more python scripts, run from this directory, output collected in order.
 #
 # OUTPUTS
-#   stdout        the cycle report; ESCALATE prefixes anything it cannot fix itself
-#   <exp>/table.txt   the reporters' combined output, overwritten each cycle
+#   stdout:            the cycle report. ESCALATE prefixes anything it cannot fix itself.
+#   <exp>/table.txt:   the reporters' combined output, overwritten each cycle.
+#
+# EXAMPLE
+#   watch.sh --exp experimental_data/reffree_50 --gpus 1,5,6 \
+#            --templates experimental_data/reffree_50/ns --interval 1800 top50_report.py
 set -u
 
 EXP=""; GPUS=""; TMPL=""; INT=1800; REPORTERS=()

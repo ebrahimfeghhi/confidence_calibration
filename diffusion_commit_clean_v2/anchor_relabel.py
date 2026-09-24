@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 """Name every pose's chains after one chosen pose, so "interface A-B" means the same thing in all of them.
 
-    anchor_relabel.py --out-dir DIR [--pdbs 8ror,9puo] [--jobs 8]
-
 SUMMARY
     Protenix names duplicate chains arbitrarily: the antigen copy it calls B in one pose can be C in
     the next. Later steps sort poses per interface, so they need one consistent naming across the pool.
@@ -31,22 +29,33 @@ SUMMARY
     putting one physical interface into two candidate lists.
 
 INPUTS
-    paths.PXM2025_POOL_CSV     per pose per interface: pair_iptm, used to choose the anchor
-    the pose cifs              read by the chain mapper, via paths.pool_pose()
-    the crystal roles and maps naming only: which of the anchor's chain pairs is called "8w5d_AB", so
-                               the output lines up against the crystal-framed run
+    --out-dir: where to write the two csvs. Required.
+    --pdbs:    comma-separated subset of complexes. Default: every complex in the pool csv.
+    --jobs:    how many worker processes map poses in parallel. Default 8. CPU only; each process reads
+               one pose cif at a time, so this is bounded by disk and cores, not by GPU.
+
+    Files read, none of them arguments:
+    pool csv:      paths.PXM2025_POOL_CSV -- pair_iptm per pose per interface, used to pick the anchor
+    pose cifs:     via paths.pool_pose(), read by the chain mapper
+    crystal files: the reference roles and mappings, used ONLY to decide which of the anchor's chain
+                   pairs is called "8w5d_AB", so the output lines up against the crystal-framed run
 
 OUTPUTS
-    <out-dir>/chain_maps_anchor.csv   per pose: {anchor_chain: pose_chain}
-    <out-dir>/chain_roles_anchor.csv  per interface: which ANCHOR chains are antibody and antigen
+    <out-dir>/chain_maps_anchor.csv:  per pose, {anchor_chain: pose_chain}
+    <out-dir>/chain_roles_anchor.csv: per interface, which ANCHOR chains are the antibody and antigen
+
     Both are drop-in for build_matrices.py --maps/--roles.
 
+EXAMPLE
+    anchor_relabel.py --out-dir anchor_merged --jobs 8
+    anchor_relabel.py --out-dir /tmp/try --pdbs 8w5d,8w5f --jobs 4
+
 FUNCTIONS
-    pool_rows()      pool csv -> {pdb: {(seed, sample): {interface: pair_iptm}}}
-    pick_anchor()    the poses of one complex -> the (seed, sample) to use as reference
-    map_to_anchor()  one pose -> its chain mapping onto the anchor, as a csv row
-    anchor_roles()   the anchor's chain pair per interface, for the roles csv
-    main()           pick an anchor per complex, map every pose, write both csvs
+    pool_rows():     pool csv -> {pdb: {(seed, sample): {interface: pair_iptm}}}
+    pick_anchor():   the poses of one complex -> the (seed, sample) to use as reference
+    map_to_anchor(): one pose -> its chain mapping onto the anchor, as a csv row
+    anchor_roles():  the anchor's chain pair per interface, for the roles csv
+    main():          pick an anchor per complex, map every pose, write both csvs
 """
 import argparse
 import collections

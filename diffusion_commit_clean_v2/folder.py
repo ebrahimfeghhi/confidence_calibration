@@ -22,7 +22,7 @@ SUMMARY
       The rescues we measure are real; the cross-chain mechanism we attribute them to is not confirmed.
 
 INPUTS
-    --queue    one fold per line, tab separated:
+    --queue:   one fold per line, tab separated. Required.
 
         kind   pdb    target     tag    seeds            poses
         free   8vqf   *          free   300050-300099
@@ -37,10 +37,23 @@ INPUTS
                sharing a tag and seed are the same unit even if their targets differ.
       poses    absolute paths, tmpl only.
 
-    --templates  namespace built by the template builder; required for tmpl units
-    --pool       csv whose interfaces define what `target=*` scores
-    --csv        doubles as the to-do list: an (iface, seed, arm) already present is skipped
-    --claim-dir  atomic mkdir claims so several workers share one queue
+    --templates:  namespace built by the template builder. Required for tmpl units.
+    --out:        where folds land. Default paths.FREE_DIR.
+    --csv:        results csv, and the to-do list: an (iface, seed, arm) already present is skipped.
+                  Default <FREE_DIR>/results.csv.
+    --claim-dir:  atomic mkdir claims so several workers share one queue. Default <FREE_DIR>/claims.
+    --pool:       csv whose interfaces define what `target=*` scores. Default paths.PXM2025_POOL_CSV.
+    --dataset:    pxm2025 or foldbench. Default pxm2025.
+    --ncycle:     recycles per fold. Default 10.
+    --nsample:    poses per fold. Default 5.
+    --dtype:      bf16, fp32 or fp16. Default bf16.
+    --keep-cifs:  keep the poses. On by default; --drop-cifs deletes them after scoring.
+    --skip-by-template: skip a unit already folded with the same (complex, seed, template). Off by
+                  default, because a csv that records the required pair rather than the full chain set
+                  will not match and would refold everything.
+    --force:      refold even if that unit was already folded. The new fold gets its own directory.
+    --report:     print what has been scored and exit.
+    --verify:     cross-check the csv against the poses on disk and exit.
 
 OUTPUTS
     <out>/<pdb>/<seed>-<run_id>/predictions/   the poses. run_id is random because folds do not
@@ -55,28 +68,34 @@ OUTPUTS
     identified by (pose, seed, pinned chains). The tag alone used to be the only link back to the
     template, and when two interfaces of one complex both used tag K00 they silently swapped donors.
 
+EXAMPLE
+    folder.py --queue q.tsv --out experimental_data/free
+    folder.py --queue exp/queue.tsv --out exp/out --csv exp/results.csv \
+              --templates exp/ns --claim-dir exp/claims --drop-cifs
+    folder.py --verify --csv exp/results.csv --out exp/out
+
 FUNCTIONS
-    parse_args()        the command line; defaults point at the free pool
-    read_queue()        the queue file -> one (kind, pdb, target, tag, seed, poses) unit per fold
-    parse_seeds()       "300050-300099" -> a list of seeds
-    check_queue()       refuse a bad queue up front: no namespace, incomplete namespace, or a
+    parse_args():       the command line; defaults point at the free pool
+    read_queue():       the queue file -> one (kind, pdb, target, tag, seed, poses) unit per fold
+    parse_seeds():      "300050-300099" -> a list of seeds
+    check_queue():      refuse a bad queue up front: no namespace, incomplete namespace, or a
                         templated queue aimed at the shared free pool
-    interfaces_by_pdb() the pool csv -> what a unit with target=* gets scored on
-    open_csv()          create the results csv if absent; return what is already scored
-    unit_already_folded() has this (complex, seed, template) been folded before
-    build_runner()      load the checkpoint once; every unit reuses the returned runner
+    interfaces_by_pdb(): the pool csv -> what a unit with target=* gets scored on
+    open_csv():         create the results csv if absent; return what is already scored
+    unit_already_folded(): has this (complex, seed, template) been folded before
+    build_runner():     load the checkpoint once; every unit reuses the returned runner
     Ctx                 the handles every unit shares: args, model, interfaces, done-sets, namespace
-    run_unit()          claim one unit, fold it, score it, release the claim if anything fails
-    named_job()         copy a unit's job json under a unique name, which is what fixes its output dir
-    fold()              run one fold; assert it produced poses and the expected template count
-    provenance()        the unit -> (donor_pose, tmpl_chains), the two fields that identify a fold
-    score_fold()        run scorer.py per interface and append its rows to the csv
-    reconcile_claims()  at startup, free claims whose unit was never scored (a killed worker's work)
-    append_index()      one line per fold in index.tsv
+    run_unit():         claim one unit, fold it, score it, release the claim if anything fails
+    named_job():        copy a unit's job json under a unique name, which is what fixes its output dir
+    fold():             run one fold; assert it produced poses and the expected template count
+    provenance():       the unit -> (donor_pose, tmpl_chains), the two fields that identify a fold
+    score_fold():       run scorer.py per interface and append its rows to the csv
+    reconcile_claims(): at startup, free claims whose unit was never scored (a killed worker's work)
+    append_index():     one line per fold in index.tsv
     runmeta_md5()       checksum a pose, so run.json pins the exact file templated on
-    report()            print what has been scored, per (interface, seed, arm)
-    verify()            cross-check the csv against the poses on disk
-    main()              load the model once, then run every unit
+    report():           print what has been scored, per (interface, seed, arm)
+    verify():           cross-check the csv against the poses on disk
+    main():             load the model once, then run every unit
 """
 import argparse
 import collections

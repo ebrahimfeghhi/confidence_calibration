@@ -1,26 +1,29 @@
 #!/usr/bin/env python
 """Occupy GPUs so they are not taken while a sweep is paused.
 
-    CUDA_VISIBLE_DEVICES=1 hold_gpus.py --gpus 1
-    CUDA_VISIBLE_DEVICES=1 hold_gpus.py --gpus 1 --minutes 30
-
 SUMMARY
     A shared machine reclaims an idle card within minutes. Allocating a small tensor is enough to show
     up in nvidia-smi as in use. One process per GPU, launched with CUDA_VISIBLE_DEVICES set, so each
     holder is killable on its own and the device is always index 0 inside the process.
 
 INPUTS
-    --gpus     which devices this process reports holding (for the log line)
-    --gb       how much to allocate, per process
-    --minutes  0 holds until killed
+    --gpus:    which device this process reports holding, for the log line. Required.
+    --gb:      how much to allocate. Default 1.0.
+    --minutes: how long to hold. Default 0, meaning until killed.
+
+    CUDA_VISIBLE_DEVICES must be set by the caller: it is what actually selects the card.
 
 OUTPUTS
-    an allocation on the visible device, held until the process exits. Kill the tmux session to release;
-    holders must be stopped before real work is relaunched on the same card.
+    an allocation on the visible device, held until the process exits. Kill the tmux session to release.
+    Holders must be stopped before real work is relaunched on the same card.
+
+EXAMPLE
+    tmux new-session -d -s hold1 "CUDA_VISIBLE_DEVICES=1 hold_gpus.py --gpus 1 --gb 1"
+    CUDA_VISIBLE_DEVICES=5 hold_gpus.py --gpus 5 --minutes 30
 
 FUNCTIONS
-    hold()  allocate the tensor
-    main()  hold the visible device, then wait
+    hold():  allocate the tensor
+    main():  hold the visible device, then wait
 """
 import argparse
 import time

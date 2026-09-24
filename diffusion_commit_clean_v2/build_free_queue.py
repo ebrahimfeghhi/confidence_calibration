@@ -1,28 +1,26 @@
 #!/usr/bin/env python
 """Write a queue of untemplated folds -- the pool of candidate poses everything else selects from.
 
-    build_free_queue.py --out <dir>
-    call_folder.py --queue <dir>/queue_free.tsv --out <dir> --gpus 1,5,6 --run
-
 SUMMARY
     Decides WHAT to fold and writes it down. Nothing is launched here; call_folder.py runs the queue,
     and runs the templated queues too, so both kinds of run take the identical launch path.
 
 INPUTS
-    the dataset's job jsons   one per complex, matched as `*-final-updated.json` (the MSA-attached
-                             input). A complex whose json is named otherwise is silently absent from
-                             the queue, so the caller reports what it asked for and did not get.
-    --seeds, --start-seed    how many folds per complex, and the first seed
+    --out:         where the queue goes, and where the folds will land. Default paths.FREE_DIR
+                   (experimental_data/free).
+    --dataset:     pxm2025 or foldbench. Default pxm2025. Picks which job jsons and scorer are used.
+    --complexes:   comma-separated subset. Default: every complex the dataset has a job json for, 131
+                   for pxm2025. Anything named here and not found is reported, not skipped silently.
+    --seeds:       folds per complex. Default 50.
+    --start-seed:  first seed. Default 300000, so seeds run 300000..300049.
+    --force:       queue folds that already exist on disk. Default off, and it refuses instead.
 
-    DEFAULTS
-        --dataset      pxm2025          the other choice is foldbench
-        --complexes    every complex with a job json (131 for pxm2025)
-        --seeds        50               folds per complex
-        --start-seed   300000           so seeds are 300000..300049
-        --out          paths.FREE_DIR   experimental_data/free
+    Files read:
+    job jsons: one per complex, matched as `*-final-updated.json` (the MSA-attached input). A complex
+               whose json is named otherwise is absent from the queue rather than an error.
 
 OUTPUTS
-    <out>/queue_free.tsv   one line per fold, tab separated:
+    <out>/queue_free.tsv: one line per fold, tab separated:
 
         kind   pdb    target   tag    seed
         free   8ror   *        free   300000
@@ -30,12 +28,16 @@ OUTPUTS
     `target` is `*` because a free fold is not aimed at one interface -- it is scored against every
     interface of its complex. `tag` names the arm in the results csv.
 
+EXAMPLE
+    build_free_queue.py --out experimental_data/free_v2 --seeds 50
+    build_free_queue.py --out /tmp/try --complexes 8ror,9k94 --seeds 3
+
 FUNCTIONS
-    complexes()           which complexes the dataset has a job json for
-    queue_lines()         one queue line per (complex, seed)
-    existing_seeds()      which of those already have a fold on disk
-    unreadable_warning()  whether later steps will be able to FIND what this writes
-    main()                write the queue, or refuse if the folds already exist
+    complexes():           which complexes the dataset has a job json for
+    queue_lines():         one queue line per (complex, seed)
+    existing_seeds():      which of those already have a fold on disk
+    unreadable_warning():  whether later steps will be able to FIND what this writes
+    main():                write the queue, or refuse if the folds already exist
 """
 import argparse
 import glob

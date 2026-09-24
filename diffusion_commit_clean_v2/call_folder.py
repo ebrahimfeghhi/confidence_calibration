@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 """Launch folder.py workers on a queue -- any queue, free or self-templated.
 
-    call_folder.py --queue <dir>/queue_free.tsv --out <dir> --gpus 1,5,6 --run
-    call_folder.py --queue <dir>/queue.tsv --out <dir> --templates <dir>/ns --gpus 1,5,6 --run
-
 SUMMARY
     One launcher for both kinds of run: same driver, same claim directory, same GPU rules. Assembling
     the folder.py command by hand instead is how workers end up pointed at the wrong paths.
@@ -16,28 +13,38 @@ SUMMARY
     in tmux, not background jobs, which die with the shell that started them and leave claims behind.
 
 INPUTS
-    --queue        the work list, free or templated
-    --templates    template namespace, required if the queue has any tmpl lines
-    --gpus         explicit device ids; required by --run
-    --out          where folds land
-    --csv          default <out>/results.csv
-    --claim-dir    default <out>/claims
-    --log-dir      default <out>; worker logs are w<gpu>.log
-
-    DEFAULTS
-        --out       paths.FREE_DIR
-        --dataset   pxm2025
-        --nsample   5
-        --run       off; without it the plan is printed and nothing starts
+    --queue:      the work list, free or templated. Required.
+    --out:        where folds land. Default paths.FREE_DIR.
+    --templates:  template namespace. Required if the queue has any tmpl lines.
+    --gpus:       explicit device ids, e.g. 1,5,6. Required by --run; never guessed.
+    --allow-many: permit more than four GPUs. Default off.
+    --run:        launch. Default off, in which case the plan is printed and nothing starts.
+    --csv:        results csv. Default <out>/results.csv.
+    --claim-dir:  claim directory. Default <out>/claims.
+    --log-dir:    where w<gpu>.log go, and what the tmux sessions are named after. Default <out>.
+    --dataset:    pxm2025 or foldbench. Default pxm2025.
+    --nsample:    poses per fold. Default 5.
 
 OUTPUTS
-    one tmux session per GPU, named <basename of log dir>w<gpu>, each running folder.py on the queue
+    tmux sessions: one per GPU, named <basename of log dir>w<gpu>, each running folder.py on the queue
+    <log-dir>/w<gpu>.log: that worker's output
+
+EXAMPLE
+    call_folder.py --queue experimental_data/free/queue_free.tsv --out experimental_data/free \
+                   --gpus 1,5,6 --run
+
+    call_folder.py --queue experimental_data/reffree_50/queue.tsv \
+                   --out experimental_data/reffree_50/out \
+                   --csv experimental_data/reffree_50/results.csv \
+                   --claim-dir experimental_data/reffree_50/claims \
+                   --log-dir experimental_data/reffree_50 \
+                   --templates experimental_data/reffree_50/ns --gpus 1,5,6 --run
 
 FUNCTIONS
-    check()   refuse a queue that cannot run: missing, templated with no namespace, or a templated
-              queue aimed at the shared free pool
-    launch()  one tmux session per GPU, all reading the same queue
-    main()    validate, then launch
+    check():   refuse a queue that cannot run: missing, templated with no namespace, or a templated
+               queue aimed at the shared free pool
+    launch():  one tmux session per GPU, all reading the same queue
+    main():    validate, then launch
 """
 import argparse
 import os
